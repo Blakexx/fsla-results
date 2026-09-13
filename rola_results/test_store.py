@@ -84,6 +84,9 @@ class StoreContract(unittest.TestCase):
         subprocess.run([*git, "commit", "-qm", "c"], check=True)
         clean = checkout(repo)
         self.assertEqual((clean["checkout"], clean["diff_sha256"]), ("repo", None))
+        self.assertIsNotNone(clean["branch"])
+        subprocess.run([*git, "checkout", "-q", "--detach"], check=True)
+        self.assertIsNone(checkout(repo)["branch"])
         (repo / "f").write_text("b\n")
         one = checkout(repo)["diff_sha256"]
         (repo / "f").write_text("c\n")

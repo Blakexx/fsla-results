@@ -35,8 +35,9 @@ def digest(path: Path | str) -> str:
 
 
 def checkout(path: Path | str) -> dict:
-    """A git checkout's identity: its directory's name (never its path), branch, HEAD, and `diff_sha256` -- sha256 of its
-    tracked changes against HEAD, None when clean -- so two different uncommitted trees over one commit differ."""
+    """A git checkout's identity: its directory's name (never its path), its branch (None when detached), HEAD, and
+    `diff_sha256` -- sha256 of its tracked changes against HEAD, None when clean -- so two different uncommitted trees
+    over one commit differ."""
     path = Path(path)
 
     def git(*args: str) -> str:
@@ -44,7 +45,7 @@ def checkout(path: Path | str) -> dict:
         return done.stdout if done.returncode == 0 else ""
 
     diff = git("diff", "HEAD", "--", ".")
-    return {"checkout": path.resolve().name, "branch": git("rev-parse", "--abbrev-ref", "HEAD").strip() or None,
+    return {"checkout": path.resolve().name, "branch": git("symbolic-ref", "--short", "-q", "HEAD").strip() or None,
             "git_sha": git("rev-parse", "HEAD").strip() or None,
             "diff_sha256": hashlib.sha256(diff.encode()).hexdigest() if diff.strip() else None}
 
