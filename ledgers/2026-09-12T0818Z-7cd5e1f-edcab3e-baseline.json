@@ -1,0 +1,446 @@
+{
+ "utc": "2026-09-12T0818Z",
+ "sha": "7cd5e1f",
+ "tag": "edcab3e-baseline",
+ "cells": [
+  "nl64k-alt-k4",
+  "flagship-dense",
+  "flagship-alt-k4",
+  "flagship-cohort-k4"
+ ],
+ "sass": {
+  "rc": 0,
+  "instr": 6584,
+  "hmma": 45,
+  "per_hmma": 146.3,
+  "ldl": 0,
+  "calls": 0,
+  "pred_hmma": 0
+ },
+ "registers": {
+  "rc": 0,
+  "peak_live": 168,
+  "peak_by_region": {
+   "window_loop": 168,
+   "pool_fill": 162,
+   "chan_row_off": 161,
+   "box_words": 161,
+   "head": 160,
+   "snapshot_publish": 157,
+   "row32_off": 155,
+   "pool_inner_off": 151,
+   "PhaseClock::lap": 145,
+   "FoldStream::FoldStream": 145,
+   "Smem": 144,
+   "readout_issue": 144
+  }
+ },
+ "oracle": {
+  "rc": 0,
+  "passed": 88,
+  "failed": 0,
+  "failures": []
+ },
+ "phases": {
+  "nl64k-alt-k4": {
+   "rc": 0,
+   "per_phase": {
+    "head": 5467.0,
+    "readout": 7382.0,
+    "fold": 7280.0,
+    "snapshot": 2975.0,
+    "edges": 252.0,
+    "sweep": 83.0
+   },
+   "total": 23439.0,
+   "readout_per_warp": [
+    6937,
+    6893,
+    7424,
+    7582,
+    7660,
+    7146,
+    7621,
+    7790
+   ],
+   "fold_per_warp": [
+    7269,
+    7277,
+    7282,
+    7299,
+    7297,
+    7258,
+    7281,
+    7275
+   ]
+  },
+  "flagship-dense": {
+   "rc": 0,
+   "per_phase": {
+    "head": 3726.0,
+    "readout": 52086.0,
+    "fold": 47550.0,
+    "snapshot": 2479.0,
+    "edges": 1245.0,
+    "sweep": 6571.0
+   },
+   "total": 113657.0,
+   "readout_per_warp": [
+    52221,
+    52250,
+    52344,
+    52418,
+    51414,
+    51436,
+    52247,
+    52359
+   ],
+   "fold_per_warp": [
+    49018,
+    49070,
+    46518,
+    46544,
+    48282,
+    48276,
+    46317,
+    46372
+   ]
+  },
+  "flagship-alt-k4": {
+   "rc": 0,
+   "per_phase": {
+    "head": 4339.0,
+    "readout": 7447.0,
+    "fold": 7072.0,
+    "snapshot": 3027.0,
+    "edges": 1373.0,
+    "sweep": 6853.0
+   },
+   "total": 30112.0,
+   "readout_per_warp": [
+    7011,
+    7406,
+    7766,
+    7505,
+    6886,
+    7371,
+    7984,
+    7650
+   ],
+   "fold_per_warp": [
+    7151,
+    7196,
+    7069,
+    6979,
+    7122,
+    7081,
+    7116,
+    6866
+   ]
+  },
+  "flagship-cohort-k4": {
+   "rc": 0,
+   "per_phase": {
+    "head": 4068.0,
+    "readout": 2026.0,
+    "fold": 1891.0,
+    "snapshot": 1349.0,
+    "edges": 1170.0,
+    "sweep": 6135.0
+   },
+   "total": 16639.0,
+   "readout_per_warp": [
+    2146,
+    2227,
+    1849,
+    1765,
+    1957,
+    1966,
+    2172,
+    2122
+   ],
+   "fold_per_warp": [
+    1980,
+    1623,
+    1799,
+    2027,
+    1777,
+    2148,
+    2020,
+    1754
+   ]
+  }
+ },
+ "profile": {
+  "nl64k-alt-k4": {
+   "counters": {
+    "dram__bytes_read.sum": 288130432.0,
+    "dram__bytes_write.sum": 83064576.0,
+    "gpu__time_duration.sum": 8796384.0,
+    "sm__cycles_elapsed.avg": 12006838.35,
+    "sm__inst_executed_pipe_tensor_op_hmma.sum": 18721584.0,
+    "smsp__cycles_active.avg": 9604067.23,
+    "smsp__inst_executed.sum": 816352148.0,
+    "smsp__issue_active.avg.pct_of_peak_sustained_active": 26.58,
+    "smsp__sass_inst_executed_op_global_red.sum": 8174576.0,
+    "smsp__sass_inst_executed_op_ldsm.sum": 7495728.0
+   },
+   "tensor_util_elapsed": 0.15592434456319634,
+   "tensor_util_active": 0.19493391238994895,
+   "components": {
+    "FoldStream": {
+     "instr": 330264654,
+     "instr_pct": 40.4,
+     "samples_pct": 34.5,
+     "stalls": "wait:37% math:16% selected:16%"
+    },
+    "ReadoutStream": {
+     "instr": 184082960,
+     "instr_pct": 22.5,
+     "samples_pct": 22.8,
+     "stalls": "wait:30% math:24% short_sb:22%"
+    },
+    "carry_kernel": {
+     "instr": 124757600,
+     "instr_pct": 15.3,
+     "samples_pct": 15.7,
+     "stalls": "wait:26% barrier:21% short_sb:19%"
+    },
+    "head": {
+     "instr": 119887040,
+     "instr_pct": 14.7,
+     "samples_pct": 17.2,
+     "stalls": "barrier:46% wait:21% short_sb:15%"
+    },
+    "snapshot_publish": {
+     "instr": 52761088,
+     "instr_pct": 6.5,
+     "samples_pct": 9.0,
+     "stalls": "mio:59% short_sb:14% wait:11%"
+    },
+    "FoldStream [spin]": {
+     "instr": 5219824,
+     "instr_pct": 0.6,
+     "samples_pct": 0.7,
+     "stalls": "short_sb:45% wait:39% selected:10%"
+    },
+    "ReadoutStream [spin]": {
+     "instr": 0,
+     "instr_pct": 0.0,
+     "samples_pct": 0.0,
+     "stalls": "wait:80% selected:20% barrier:0%"
+    }
+   }
+  },
+  "flagship-dense": {
+   "counters": {
+    "dram__bytes_read.sum": 7406976.0,
+    "dram__bytes_write.sum": 15451648.0,
+    "gpu__time_duration.sum": 661792.0,
+    "sm__cycles_elapsed.avg": 902638.45,
+    "sm__inst_executed_pipe_tensor_op_hmma.sum": 4718592.0,
+    "smsp__cycles_active.avg": 722794.67,
+    "smsp__inst_executed.sum": 54019272.0,
+    "smsp__issue_active.avg.pct_of_peak_sustained_active": 23.37,
+    "smsp__sass_inst_executed_op_global_red.sum": 557056.0,
+    "smsp__sass_inst_executed_op_ldsm.sum": 1851392.0
+   },
+   "tensor_util_elapsed": 0.5227554842140837,
+   "tensor_util_active": 0.6528260646969076,
+   "components": {
+    "FoldStream": {
+     "instr": 23544632,
+     "instr_pct": 37.8,
+     "samples_pct": 41.5,
+     "stalls": "math:36% wait:33% short_sb:11%  RED > budget 20992.0"
+    },
+    "ReadoutStream": {
+     "instr": 22040576,
+     "instr_pct": 35.4,
+     "samples_pct": 44.1,
+     "stalls": "math:48% wait:22% short_sb:13%  RED > budget 17600.0"
+    },
+    "FoldStream [spin]": {
+     "instr": 7314808,
+     "instr_pct": 11.7,
+     "samples_pct": 0.1,
+     "stalls": "short_sb:56% wait:33% mio:4%"
+    },
+    "carry_kernel": {
+     "instr": 6222080,
+     "instr_pct": 10.0,
+     "samples_pct": 10.7,
+     "stalls": "wait:26% barrier:19% long_sb:11%"
+    },
+    "head": {
+     "instr": 2044672,
+     "instr_pct": 3.3,
+     "samples_pct": 2.5,
+     "stalls": "wait:30% barrier:23% selected:17%  RED > budget 4008.0"
+    },
+    "snapshot_publish": {
+     "instr": 1148928,
+     "instr_pct": 1.8,
+     "samples_pct": 1.0,
+     "stalls": "wait:31% mio:21% selected:21%  RED > budget 944.0"
+    },
+    "ReadoutStream [spin]": {
+     "instr": 0,
+     "instr_pct": 0.0,
+     "samples_pct": 0.0,
+     "stalls": "wait:100% barrier:0% branch_resolving:0%"
+    }
+   }
+  },
+  "flagship-alt-k4": {
+   "counters": {
+    "dram__bytes_read.sum": 3851648.0,
+    "dram__bytes_write.sum": 15390208.0,
+    "gpu__time_duration.sum": 176256.0,
+    "sm__cycles_elapsed.avg": 240279.95,
+    "sm__inst_executed_pipe_tensor_op_hmma.sum": 293472.0,
+    "smsp__cycles_active.avg": 190726.65,
+    "smsp__inst_executed.sum": 15824786.0,
+    "smsp__issue_active.avg.pct_of_peak_sustained_active": 25.99,
+    "smsp__sass_inst_executed_op_global_red.sum": 127968.0,
+    "smsp__sass_inst_executed_op_ldsm.sum": 117632.0
+   },
+   "tensor_util_elapsed": 0.12213753165838431,
+   "tensor_util_active": 0.15387047379063176,
+   "components": {
+    "FoldStream": {
+     "instr": 5237868,
+     "instr_pct": 33.0,
+     "samples_pct": 30.8,
+     "stalls": "wait:33% selected:15% short_sb:13%  RED > budget 3872.0"
+    },
+    "carry_kernel": {
+     "instr": 4550988,
+     "instr_pct": 28.7,
+     "samples_pct": 26.1,
+     "stalls": "barrier:17% long_sb:16% wait:15%"
+    },
+    "ReadoutStream": {
+     "instr": 2936176,
+     "instr_pct": 18.5,
+     "samples_pct": 20.0,
+     "stalls": "wait:31% short_sb:25% math:22%  RED > budget 1916.0"
+    },
+    "head": {
+     "instr": 1891968,
+     "instr_pct": 11.9,
+     "samples_pct": 12.3,
+     "stalls": "barrier:30% short_sb:24% wait:24%  RED > budget 4008.0"
+    },
+    "snapshot_publish": {
+     "instr": 1148928,
+     "instr_pct": 7.2,
+     "samples_pct": 10.4,
+     "stalls": "mio:59% short_sb:15% wait:10%  RED > budget 944.0"
+    },
+    "FoldStream [spin]": {
+     "instr": 82484,
+     "instr_pct": 0.5,
+     "samples_pct": 0.4,
+     "stalls": "short_sb:39% wait:33% branch_resolving:15%"
+    },
+    "ReadoutStream [spin]": {
+     "instr": 0,
+     "instr_pct": 0.0,
+     "samples_pct": 0.0,
+     "stalls": "wait:100% barrier:0% branch_resolving:0%"
+    }
+   }
+  },
+  "flagship-cohort-k4": {
+   "counters": {
+    "dram__bytes_read.sum": 2487296.0,
+    "dram__bytes_write.sum": 15326848.0,
+    "gpu__time_duration.sum": 100224.0,
+    "sm__cycles_elapsed.avg": 136680.33,
+    "sm__inst_executed_pipe_tensor_op_hmma.sum": 110592.0,
+    "smsp__cycles_active.avg": 106258.39,
+    "smsp__inst_executed.sum": 8701028.0,
+    "smsp__issue_active.avg.pct_of_peak_sustained_active": 25.68,
+    "smsp__sass_inst_executed_op_global_red.sum": 47872.0,
+    "smsp__sass_inst_executed_op_ldsm.sum": 42368.0
+   },
+   "tensor_util_elapsed": 0.08091288629461169,
+   "tensor_util_active": 0.10407836971744068,
+   "components": {
+    "carry_kernel": {
+     "instr": 4094796,
+     "instr_pct": 46.2,
+     "samples_pct": 41.8,
+     "stalls": "barrier:24% wait:15% selected:14%"
+    },
+    "head": {
+     "instr": 1748352,
+     "instr_pct": 19.7,
+     "samples_pct": 20.4,
+     "stalls": "barrier:26% wait:22% short_sb:19%  RED > budget 4008.0"
+    },
+    "ReadoutStream": {
+     "instr": 1090688,
+     "instr_pct": 12.3,
+     "samples_pct": 12.0,
+     "stalls": "short_sb:29% wait:29% math:16%  RED > budget 0.0"
+    },
+    "FoldStream": {
+     "instr": 1058941,
+     "instr_pct": 11.9,
+     "samples_pct": 16.5,
+     "stalls": "mio:29% wait:25% math:18%  RED > budget 1472.0"
+    },
+    "snapshot_publish": {
+     "instr": 690944,
+     "instr_pct": 7.8,
+     "samples_pct": 9.0,
+     "stalls": "mio:47% wait:16% short_sb:14%  RED > budget 944.0"
+    },
+    "FoldStream [spin]": {
+     "instr": 177891,
+     "instr_pct": 2.0,
+     "samples_pct": 0.3,
+     "stalls": "short_sb:31% wait:31% branch_resolving:23%"
+    },
+    "ReadoutStream [spin]": {
+     "instr": 0,
+     "instr_pct": 0.0,
+     "samples_pct": 0.0,
+     "stalls": "barrier:0% branch_resolving:0% dispatch:0%"
+    }
+   }
+  }
+ },
+ "ab": {
+  "nl64k-alt-k4": {
+   "rc": 0,
+   "master_schedule": "sparse-g32",
+   "master": 6.954,
+   "this": 7.2417,
+   "ratio": 1.0413718723037102
+  },
+  "flagship-dense": {
+   "rc": 0,
+   "master_schedule": "box",
+   "master": 0.5263,
+   "this": 0.5437,
+   "ratio": 1.0330609918297549
+  },
+  "flagship-alt-k4": {
+   "rc": 0,
+   "master_schedule": "sparse-g32",
+   "master": 0.1485,
+   "this": 0.1505,
+   "ratio": 1.0134680134680134
+  },
+  "flagship-cohort-k4": {
+   "rc": 0,
+   "master_schedule": "sparse-g32",
+   "master": 0.1014,
+   "this": 0.086,
+   "ratio": 0.8481262327416172
+  }
+ }
+}

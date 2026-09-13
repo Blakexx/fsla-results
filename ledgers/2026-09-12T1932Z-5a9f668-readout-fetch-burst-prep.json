@@ -1,0 +1,426 @@
+{
+ "utc": "2026-09-12T1932Z",
+ "sha": "5a9f668",
+ "tag": "readout-fetch-burst-prep",
+ "cells": [
+  "flagship-dense",
+  "nl64k-alt-k4"
+ ],
+ "sass": {
+  "rc": 0,
+  "instr": 6808,
+  "hmma": 45,
+  "per_hmma": 151.3,
+  "ldl": 0,
+  "calls": 0,
+  "pred_hmma": 0
+ },
+ "oracle": {
+  "rc": 0,
+  "passed": 88,
+  "failed": 0,
+  "failures": []
+ },
+ "phases": {
+  "flagship-dense": {
+   "rc": 0,
+   "per_phase": {
+    "head": 1820.0,
+    "readout": 53850.0,
+    "fold": 47685.0,
+    "snapshot": 1873.0,
+    "edges": 1272.0,
+    "sweep": 6030.0,
+    "head_words": 1482.0,
+    "head_scans": 544.0
+   },
+   "total": 114555.0,
+   "readout_per_warp": [
+    53707,
+    54070,
+    53970,
+    54003,
+    53048,
+    53792,
+    53936,
+    54272
+   ],
+   "fold_per_warp": [
+    47222,
+    47843,
+    48167,
+    47573,
+    47450,
+    47588,
+    47984,
+    47656
+   ]
+  },
+  "nl64k-alt-k4": {
+   "rc": 0,
+   "per_phase": {
+    "head": 2503.0,
+    "readout": 7472.0,
+    "fold": 7265.0,
+    "snapshot": 1649.0,
+    "edges": 140.0,
+    "sweep": 62.0,
+    "head_words": 1405.0,
+    "head_scans": 1601.0
+   },
+   "total": 22098.0,
+   "readout_per_warp": [
+    7319,
+    6818,
+    7906,
+    7694,
+    6850,
+    7559,
+    7918,
+    7711
+   ],
+   "fold_per_warp": [
+    7259,
+    7241,
+    7274,
+    7284,
+    7258,
+    7259,
+    7285,
+    7258
+   ]
+  }
+ },
+ "profile": {
+  "flagship-dense": {
+   "cta_windows": 512,
+   "counters": {
+    "dram__bytes_read.sum": 7012864.0,
+    "dram__bytes_write.sum": 15394176.0,
+    "gpu__time_duration.sum": 664416.0,
+    "sm__cycles_elapsed.avg": 906707.8,
+    "sm__inst_executed_pipe_tensor_op_hmma.sum": 4718592.0,
+    "smsp__cycles_active.avg": 727712.48,
+    "smsp__inst_executed.sum": 60290250.0,
+    "smsp__issue_active.avg.pct_of_peak_sustained_active": 25.9,
+    "smsp__sass_inst_executed_op_global_red.sum": 557056.0,
+    "smsp__sass_inst_executed_op_ldsm.sum": 1916928.0
+   },
+   "tensor_util_elapsed": 0.5204093314295962,
+   "tensor_util_active": 0.6484143297913484,
+   "components": {
+    "ReadoutStream": {
+     "instr": 54412,
+     "instr_pct": 41.6,
+     "samples_pct": 45.8,
+     "stalls": "math:49% wait:18% selected:13%  RED > budget 20416.0"
+    },
+    "FoldStream": {
+     "instr": 47041,
+     "instr_pct": 36.0,
+     "samples_pct": 41.6,
+     "stalls": "math:35% wait:31% short_sb:14%  RED > budget 20992.0"
+    },
+    "carry_kernel": {
+     "instr": 12243,
+     "instr_pct": 9.4,
+     "samples_pct": 8.9,
+     "stalls": "wait:22% long_sb:15% selected:15%"
+    },
+    "FoldStream [spin]": {
+     "instr": 10871,
+     "instr_pct": 8.3,
+     "samples_pct": 0.1,
+     "stalls": "short_sb:56% wait:31% mio:12%"
+    },
+    "head": {
+     "instr": 4082,
+     "instr_pct": 3.1,
+     "samples_pct": 2.6,
+     "stalls": "wait:28% barrier:23% short_sb:18%  RED > budget 4008.0"
+    },
+    "snapshot_publish": {
+     "instr": 2120,
+     "instr_pct": 1.6,
+     "samples_pct": 1.1,
+     "stalls": "wait:34% selected:22% mio:21%  RED > budget 944.0"
+    },
+    "ReadoutStream [spin]": {
+     "instr": 0,
+     "instr_pct": 0.0,
+     "samples_pct": 0.0,
+     "stalls": "wait:60% selected:40% barrier:0%"
+    }
+   },
+   "census": {
+    "ReadoutStream": {
+     "hmma": 4608.0,
+     "other": 49804.0,
+     "s_hmma": 6643,
+     "s_other": 6287
+    },
+    "FoldStream": {
+     "hmma": 4608.0,
+     "other": 42433.5,
+     "s_hmma": 5214,
+     "s_other": 6536
+    },
+    "carry_kernel": {
+     "hmma": 0.0,
+     "other": 12243.2,
+     "s_hmma": 0,
+     "s_other": 2525
+    },
+    "head": {
+     "hmma": 0.0,
+     "other": 4082.5,
+     "s_hmma": 0,
+     "s_other": 725
+    },
+    "snapshot_publish": {
+     "hmma": 0.0,
+     "other": 2120.0,
+     "s_hmma": 0,
+     "s_other": 301
+    }
+   },
+   "waves_excess": 5674,
+   "waves": [
+    {
+     "line": 766,
+     "excess": 3200,
+     "per_instr": 24.0,
+     "text": "ops::stage_run_if<16>(slot + pool_v_off<BP>(row, c), vrow + "
+    },
+    {
+     "line": 316,
+     "excess": 960,
+     "per_instr": 16.0,
+     "text": "ops::stage_run<4>(sm.words_addr(side, lane) + (uint32_t)(r *"
+    },
+    {
+     "line": 1178,
+     "excess": 768,
+     "per_instr": 16.0,
+     "text": "ops::stage_run_if<16>(slot + row32_off(row, h), arow + bases"
+    },
+    {
+     "line": 770,
+     "excess": 320,
+     "per_instr": 24.0,
+     "text": "ops::stage_run_if<16>(slot + pool_inner_off<BP>(row, h), aro"
+    },
+    {
+     "line": 771,
+     "excess": 320,
+     "per_instr": 24.0,
+     "text": "ops::stage_run_if<16>(slot + pool_outer_off<BP>(row, h), aro"
+    },
+    {
+     "line": 432,
+     "excess": 64,
+     "per_instr": 5.0,
+     "text": "if (lane < BP::kBuckets) counts[lane * BP::kRounds + rho] = "
+    },
+    {
+     "line": 773,
+     "excess": 32,
+     "per_instr": 2.0,
+     "text": "ops::stage_run_if<4>(slot + pool_gain_off<BP>(row),"
+    },
+    {
+     "line": 468,
+     "excess": 4,
+     "per_instr": 5.0,
+     "text": "const uint4 v = ops::load_shared_v4(row + (uint32_t)(decltyp"
+    },
+    {
+     "line": 498,
+     "excess": 4,
+     "per_instr": 5.0,
+     "text": "ops::store_shared_vec16(row + (uint32_t)(v * 16),"
+    },
+    {
+     "line": 1510,
+     "excess": 1,
+     "per_instr": 2.0,
+     "text": "ops::store_shared_vec16("
+    },
+    {
+     "line": 1504,
+     "excess": 0,
+     "per_instr": 3.0,
+     "text": "ops::store_shared_vec16(sm.pool(s) + pool_v_off<BP>(BP::kPoo"
+    }
+   ]
+  },
+  "nl64k-alt-k4": {
+   "cta_windows": 32768,
+   "counters": {
+    "dram__bytes_read.sum": 284682368.0,
+    "dram__bytes_write.sum": 83177344.0,
+    "gpu__time_duration.sum": 8300384.0,
+    "sm__cycles_elapsed.avg": 11329639.22,
+    "sm__inst_executed_pipe_tensor_op_hmma.sum": 18721584.0,
+    "smsp__cycles_active.avg": 9055154.56,
+    "smsp__inst_executed.sum": 854610903.0,
+    "smsp__issue_active.avg.pct_of_peak_sustained_active": 29.51,
+    "smsp__sass_inst_executed_op_global_red.sum": 8174576.0,
+    "smsp__sass_inst_executed_op_ldsm.sum": 8517872.0
+   },
+   "tensor_util_elapsed": 0.1652443086356284,
+   "tensor_util_active": 0.20675057367546468,
+   "components": {
+    "FoldStream": {
+     "instr": 10217,
+     "instr_pct": 39.1,
+     "samples_pct": 36.8,
+     "stalls": "wait:35% math:16% selected:16%"
+    },
+    "ReadoutStream": {
+     "instr": 6676,
+     "instr_pct": 25.6,
+     "samples_pct": 25.0,
+     "stalls": "wait:27% math:26% short_sb:22%"
+    },
+    "head": {
+     "instr": 3749,
+     "instr_pct": 14.4,
+     "samples_pct": 18.4,
+     "stalls": "barrier:45% wait:21% short_sb:16%"
+    },
+    "carry_kernel": {
+     "instr": 3617,
+     "instr_pct": 13.9,
+     "samples_pct": 15.1,
+     "stalls": "wait:28% barrier:20% short_sb:15%"
+    },
+    "snapshot_publish": {
+     "instr": 1687,
+     "instr_pct": 6.5,
+     "samples_pct": 4.0,
+     "stalls": "wait:31% selected:24% mio:17%"
+    },
+    "FoldStream [spin]": {
+     "instr": 159,
+     "instr_pct": 0.6,
+     "samples_pct": 0.7,
+     "stalls": "short_sb:47% wait:36% selected:10%"
+    },
+    "ReadoutStream [spin]": {
+     "instr": 0,
+     "instr_pct": 0.0,
+     "samples_pct": 0.0,
+     "stalls": "wait:71% selected:29% barrier:0%"
+    }
+   },
+   "census": {
+    "FoldStream": {
+     "hmma": 296.8,
+     "other": 9920.7,
+     "s_hmma": 23210,
+     "s_other": 106869
+    },
+    "ReadoutStream": {
+     "hmma": 274.6,
+     "other": 6401.7,
+     "s_hmma": 22438,
+     "s_other": 65866
+    },
+    "head": {
+     "hmma": 0.0,
+     "other": 3748.6,
+     "s_hmma": 0,
+     "s_other": 65179
+    },
+    "carry_kernel": {
+     "hmma": 0.0,
+     "other": 3616.6,
+     "s_hmma": 0,
+     "s_other": 53229
+    },
+    "snapshot_publish": {
+     "hmma": 0.0,
+     "other": 1687.0,
+     "s_hmma": 0,
+     "s_other": 14158
+    }
+   },
+   "waves_excess": 7629,
+   "waves": [
+    {
+     "line": 766,
+     "excess": 4597,
+     "per_instr": 32.3,
+     "text": "ops::stage_run_if<16>(slot + pool_v_off<BP>(row, c), vrow + "
+    },
+    {
+     "line": 316,
+     "excess": 960,
+     "per_instr": 16.0,
+     "text": "ops::stage_run<4>(sm.words_addr(side, lane) + (uint32_t)(r *"
+    },
+    {
+     "line": 770,
+     "excess": 462,
+     "per_instr": 32.4,
+     "text": "ops::stage_run_if<16>(slot + pool_inner_off<BP>(row, h), aro"
+    },
+    {
+     "line": 771,
+     "excess": 462,
+     "per_instr": 32.4,
+     "text": "ops::stage_run_if<16>(slot + pool_outer_off<BP>(row, h), aro"
+    },
+    {
+     "line": 773,
+     "excess": 397,
+     "per_instr": 12.7,
+     "text": "ops::stage_run_if<4>(slot + pool_gain_off<BP>(row),"
+    },
+    {
+     "line": 1178,
+     "excess": 199,
+     "per_instr": 17.1,
+     "text": "ops::stage_run_if<16>(slot + row32_off(row, h), arow + bases"
+    },
+    {
+     "line": 954,
+     "excess": 193,
+     "per_instr": 6.9,
+     "text": "ops::load_frag_t(*reinterpret_cast<uint32_t(*)[4]>(v + 4 * i"
+    },
+    {
+     "line": 432,
+     "excess": 64,
+     "per_instr": 5.0,
+     "text": "if (lane < BP::kBuckets) counts[lane * BP::kRounds + rho] = "
+    },
+    {
+     "line": 699,
+     "excess": 48,
+     "per_instr": 4.0,
+     "text": "if (q == 0 && t0) sm.massrow()[ro0] = st.m[bi][0];"
+    },
+    {
+     "line": 700,
+     "excess": 48,
+     "per_instr": 4.0,
+     "text": "if (q == 0 && t1) sm.massrow()[ro1] = st.m[bi][2];"
+    },
+    {
+     "line": 950,
+     "excess": 48,
+     "per_instr": 6.9,
+     "text": "ops::load_frag_t(sp, slot + pool_outer_off<BP>(rrow, rchunk)"
+    },
+    {
+     "line": 949,
+     "excess": 48,
+     "per_instr": 6.9,
+     "text": "ops::load_frag_t(a, slot + pool_inner_off<BP>(rrow, rchunk))"
+    }
+   ]
+  }
+ }
+}

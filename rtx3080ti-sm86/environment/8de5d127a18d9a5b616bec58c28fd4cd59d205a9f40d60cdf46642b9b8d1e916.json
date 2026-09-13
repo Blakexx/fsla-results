@@ -1,0 +1,45 @@
+{
+ "env_key": "8de5d127a18d9a5b616bec58c28fd4cd59d205a9f40d60cdf46642b9b8d1e916",
+ "image": "rola-dev:8de5d127a18d",
+ "image_id": "sha256:5437e421b6e06c8a9518205b4337f92daca6a992daa97ec193c0144a18683d6f",
+ "ok": false,
+ "utc": "2026-09-13T02:20:25Z",
+ "proofs": [
+  {
+   "proof": "dev check",
+   "ok": true,
+   "tail": [
+    "ok   workspace.worktrees: /workspace/worktrees",
+    "ok   store.results: /workspace/store",
+    "dev check: green"
+   ]
+  },
+  {
+   "proof": "GPU, torch and flash-attn",
+   "ok": false,
+   "tail": [
+    "Traceback (most recent call last):",
+    "  File \"<stdin>\", line 2, in <module>",
+    "AssertionError: no GPU"
+   ]
+  },
+  {
+   "proof": "a host-held lock is held here",
+   "ok": true,
+   "tail": [
+    "A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.",
+    "",
+    "held by the host: one lock governs both"
+   ]
+  },
+  {
+   "proof": "the extension builds and imports",
+   "ok": true,
+   "tail": [
+    "A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.",
+    "",
+    "built ['sm_86']"
+   ]
+  }
+ ]
+}
