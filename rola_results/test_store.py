@@ -6,7 +6,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from .store import Store, check, key, locations
+from .store import Store, check, checkout, key, locations
 
 
 class StoreContract(unittest.TestCase):
@@ -71,6 +71,24 @@ class StoreContract(unittest.TestCase):
         record["semantics"]["cell"] = "e"
         path.write_text(json.dumps(record))
         self.assertTrue(any("does not recompute" in p for p in check(self.root)))
+
+    def test_a_checkout_names_its_directory_and_digests_its_diff(self) -> None:
+        import subprocess
+
+        repo = self.root / "repo"
+        repo.mkdir()
+        git = ["git", "-C", str(repo), "-c", "user.name=t", "-c", "user.email=t@t"]
+        subprocess.run([*git, "init", "-q"], check=True)
+        (repo / "f").write_text("a\n")
+        subprocess.run([*git, "add", "f"], check=True)
+        subprocess.run([*git, "commit", "-qm", "c"], check=True)
+        clean = checkout(repo)
+        self.assertEqual((clean["checkout"], clean["diff_sha256"]), ("repo", None))
+        (repo / "f").write_text("b\n")
+        one = checkout(repo)["diff_sha256"]
+        (repo / "f").write_text("c\n")
+        self.assertNotIn(None, (one, checkout(repo)["diff_sha256"]))
+        self.assertNotEqual(one, checkout(repo)["diff_sha256"])
 
 
 if __name__ == "__main__":

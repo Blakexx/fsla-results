@@ -29,16 +29,24 @@ def utc() -> str:
     return time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
 
 
+def digest(path: Path | str) -> str:
+    """sha256 of a file's bytes."""
+    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+
 def checkout(path: Path | str) -> dict:
-    """A git checkout's provenance: its directory's name (never its path), HEAD, and whether tracked files differ."""
+    """A git checkout's identity: its directory's name (never its path), branch, HEAD, and `diff_sha256` -- sha256 of its
+    tracked changes against HEAD, None when clean -- so two different uncommitted trees over one commit differ."""
     path = Path(path)
 
     def git(*args: str) -> str:
         done = subprocess.run(["git", "-C", str(path), *args], capture_output=True, text=True, check=False)
-        return done.stdout.strip() if done.returncode == 0 else ""
+        return done.stdout if done.returncode == 0 else ""
 
-    return {"checkout": path.resolve().name, "git_sha": git("rev-parse", "HEAD") or None,
-            "dirty": bool(git("status", "--porcelain", "--untracked-files=no"))}
+    diff = git("diff", "HEAD", "--", ".")
+    return {"checkout": path.resolve().name, "branch": git("rev-parse", "--abbrev-ref", "HEAD").strip() or None,
+            "git_sha": git("rev-parse", "HEAD").strip() or None,
+            "diff_sha256": hashlib.sha256(diff.encode()).hexdigest() if diff.strip() else None}
 
 
 

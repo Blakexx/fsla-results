@@ -10,6 +10,6 @@ Every sample is kept, failures included; nothing derived from two records (a rat
 The default backend is the files of this repository: `records/<location>/<key>.json`, each sample's output beside it as
 `<key>.<n>.out<suffix>`.
 """
-from .store import ROOT, Store, check, checkout, key, locations
+from .store import ROOT, Store, check, checkout, digest, key, locations
 
-__all__ = ["ROOT", "Store", "check", "checkout", "key", "locations"]
+__all__ = ["ROOT", "Store", "check", "checkout", "digest", "key", "locations"]
