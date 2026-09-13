@@ -32,6 +32,3 @@ from every interpreter it provisions.
 
 The commit gate (`.githooks/pre-commit`, `core.hooksPath`): ruff and the contract tests on the library, `check` on the
 records. Pushing is the owner's act.
-
-The top-level `<hw-profile>/`, `ledgers/` and `perf/` directories are the rola tree's writers from before the library;
-they leave for rola-scratch as each writer moves onto it.
