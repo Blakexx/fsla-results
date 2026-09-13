@@ -135,6 +135,21 @@ def locations(root: Path | str = ROOT) -> list[str]:
     return sorted({str(p.parent.relative_to(root)) for p in root.rglob("*.json") if _RECORD.match(p.name)})
 
 
+def outputs(prefix: str, root: Path | str = ROOT) -> Iterator[tuple[dict, dict, object]]:
+    """Every successful sample under the locations `prefix` names (the location itself or any below it), oldest first
+    per record: (record, sample, its output -- parsed when JSON, else the output's path)."""
+    root = Path(root)
+    for loc in locations(root):
+        if loc != prefix and not loc.startswith(prefix.rstrip("/") + "/"):
+            continue
+        store = Store(loc, root)
+        for record in store.records():
+            for sample in record["samples"]:
+                if sample["ok"]:
+                    path = store.dir / sample["output"]
+                    yield record, sample, json.loads(path.read_text()) if path.suffix == ".json" else path
+
+
 def check(root: Path | str = ROOT) -> list[str]:
     """What is wrong with the stored records: a key that does not recompute, a location that is not the record's
     directory, samples out of order, a successful sample whose output is missing."""

@@ -6,7 +6,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from .store import Store, check, checkout, key, locations
+from .store import Store, check, checkout, key, locations, outputs
 
 
 class StoreContract(unittest.TestCase):
@@ -61,6 +61,14 @@ class StoreContract(unittest.TestCase):
         for bad in ("", "/abs", "a/../b", "a b", "a//b"):
             with self.assertRaises(ValueError):
                 Store(bad, self.root)
+
+    def test_outputs_walks_a_prefix_and_skips_failures(self) -> None:
+        Store("mqar/a", self.root).put({"cell": "x"}, output={"acc": 1})
+        Store("mqar/a", self.root).put({"cell": "y"}, error="oom")
+        Store("mqar/b", self.root).put({"cell": "z"}, output={"acc": 2})
+        Store("mqarx", self.root).put({"cell": "w"}, output={"acc": 3})
+        self.assertEqual(sorted(o["acc"] for _r, _s, o in outputs("mqar", self.root)), [1, 2])
+        self.assertEqual([o["acc"] for _r, _s, o in outputs("mqar/b", self.root)], [2])
 
     def test_check_finds_a_record_whose_semantics_were_edited(self) -> None:
         self.store.put({"cell": "d"}, output=1)
