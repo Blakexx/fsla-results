@@ -1,11 +1,13 @@
-"""python -m rola_results check | show [LOCATION] | commit -m MESSAGE [--root DIR]"""
+"""python -m rola_results check | show [LOCATION] | commit -m MESSAGE | index | sql QUERY | history|latest LOCATION"""
 from __future__ import annotations
 
 import argparse
+import json
 import subprocess
 import sys
 from pathlib import Path
 
+from . import index
 from .store import ROOT, Store, check, locations
 
 
@@ -18,7 +20,45 @@ def main() -> int:
     show.add_argument("location", nargs="?")
     commit = sub.add_parser("commit", help="commit the records (never the library) in the backend's git repository")
     commit.add_argument("-m", "--message", required=True)
+    sub.add_parser("index", help="bring the derived SQLite database beside the records up to date")
+    sql = sub.add_parser("sql", help="run a query on the database (tables records, samples; the views in views/)")
+    sql.add_argument("query")
+    for name, what in (("history", "every sample of a location's matching records, oldest first"),
+                       ("latest", "each matching record's newest successful sample, with its output")):
+        p = sub.add_parser(name, help=what)
+        p.add_argument("location")
+        p.add_argument("--where", action="append", default=[], metavar="PATH=VALUE",
+                       help="a dotted path into the semantics and the value it holds (repeatable)")
     a = ap.parse_args()
+
+    if a.cmd == "index":
+        print(json.dumps(index.build(a.root)))
+        return 0
+
+    if a.cmd == "sql":
+        columns, rows = index.query(a.query, root=a.root)
+        print("\t".join(columns))
+        for row in rows:
+            print("\t".join("" if v is None else str(v) for v in row))
+        return 0
+
+    if a.cmd in ("history", "latest"):
+        cond, params = index.matching(a.location, dict(w.split("=", 1) for w in a.where))
+        if a.cmd == "history":
+            columns, rows = index.query(
+                "SELECT s.key, s.n, s.ok, s.utc, json_extract(s.provenance, '$.git_sha'), substr(s.error, 1, 80) "
+                f"FROM samples s JOIN records r USING (location, key) WHERE {cond} ORDER BY s.utc", tuple(params), a.root)
+            for row in rows:
+                print("\t".join("" if v is None else str(v) for v in row))
+            return 0
+        columns, rows = index.query(
+            "SELECT s.key, s.n, s.utc, r.semantics, s.output FROM samples s JOIN records r USING (location, key) "
+            f"WHERE {cond} AND s.ok AND s.n = (SELECT max(n) FROM samples t WHERE t.location = s.location AND t.key = s.key "
+            "AND t.ok) ORDER BY s.utc", tuple(params), a.root)
+        for k, n, utc, semantics, output in rows:
+            print(json.dumps({"key": k, "n": n, "utc": utc, "semantics": json.loads(semantics),
+                              "output": json.loads(output) if output else None}))
+        return 0
 
     if a.cmd == "check":
         problems = check(a.root)

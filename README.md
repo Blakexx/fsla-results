@@ -20,8 +20,43 @@ record = store.get(key(semantics))                  # Store.complete(record), st
 
 Nothing derived from two records (a ratio, a baseline) is stored: that is the reader's.
 
-    records/<location>/<key>.json            the record
+    records/<location>/<key>.json            the record (format 1: key, location, format, semantics, samples)
     records/<location>/<key>.<n>.out.<ext>   sample n's output
+    views/<name>.sql                         a query view over the index
+    index.sqlite                             the index, derived from records/ (never committed)
+
+## Queries
+
+    python -m rola_results index                  # bring index.sqlite up to date (derived; never committed)
+    python -m rola_results sql "SELECT ..."       # any query; the index is brought up to date first
+    python -m rola_results history LOCATION [--where PATH=VALUE]   # every sample of the matching records
+    python -m rola_results latest LOCATION [--where PATH=VALUE]    # each matching record's newest good output
+
+The tables know no tool: `records(location, key, format, semantics)` and `samples(location, key, n, ok, utc, wall_s,
+provenance, error, output_path, output, extra)`, the JSON fields read with SQLite's JSON functions. A tool's shape is a
+view in `views/`, run after every index:
+
+| view | from | one row per |
+|---|---|---|
+| `timing_rows` | `probe_cells`, `suite/timing.session` | timed arm of a session at a cell: label, branch, commit, tree digest, unit, lane, ms, clock |
+| `timing_pairs` | `timing_rows` | pair of arms of one session, cell and unit, with the ratio |
+| `driver_rows` | `bench_driver` | driver result: subject, cell, median and IQR, or an A/B's paired ratio and verdict |
+| `cells` | fleet and local grids | stored grid cell: bench, config, cell, image or local checkouts, row |
+
+The questions the old measurements database answered, as SQL:
+
+```sql
+-- last: the newest time of a cell at a commit
+SELECT utc, label, ms FROM timing_rows WHERE cell = 'nl64k-alt-k4' AND git_sha LIKE 'b729e70%' ORDER BY utc DESC LIMIT 1;
+-- history: a cell on a branch over time
+SELECT utc, git_sha, ms FROM timing_rows WHERE cell = 'nl64k-alt-k4' AND branch = 'master' ORDER BY utc;
+-- compare: two commits measured in one session
+SELECT cell, subject, calls, ratio FROM timing_pairs WHERE git_sha LIKE 'b729e70%' AND base_sha LIKE 'd652e77%';
+-- baseline: what a stage measured
+SELECT * FROM timing_rows WHERE stage = 'rola-results-landing';
+-- regressions: arms of a stage slower than their session's base by more than 10%
+SELECT utc, cell, subject, label, base_label, ratio FROM timing_pairs WHERE stage = ? AND ratio > 1.10;
+```
 
 The rola tree names this checkout as `store.root` in its dev config, and `tools/dev.py init` makes the package importable
 from every interpreter it provisions.

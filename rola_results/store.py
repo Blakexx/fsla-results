@@ -15,6 +15,9 @@ from pathlib import Path
 
 #: THE DEFAULT BACKEND: this repository's own files
 ROOT = Path(__file__).resolve().parents[1] / "records"
+#: THE RECORD FORMAT: the envelope every record carries (key, location, format, semantics, samples). A reader refuses a
+#: format it does not know rather than guessing at it; a change to the envelope is a new number.
+FORMAT = 1
 
 _SEGMENT = re.compile(r"^[A-Za-z0-9_.-]+$")
 _RECORD = re.compile(r"^[0-9a-f]{24}\.json$")
@@ -97,7 +100,10 @@ class Store:
         k = key(semantics)
         self.dir.mkdir(parents=True, exist_ok=True)
         with self._locked(k):
-            record = self.get(k) or {"key": k, "location": self.location, "semantics": semantics, "samples": []}
+            record = self.get(k) or {"key": k, "location": self.location, "format": FORMAT, "semantics": semantics,
+                                     "samples": []}
+            if record.get("format") != FORMAT:
+                raise RuntimeError(f"{self.location}/{k} is format {record.get('format')}, this library writes {FORMAT}")
             if record["semantics"] != semantics:
                 raise RuntimeError(f"{self.location}/{k}: stored semantics differ from the ones given (a key collision)")
             n = len(record["samples"])
@@ -169,6 +175,8 @@ def check(root: Path | str = ROOT) -> list[str]:
                 problems.append(f"{where}: the key does not recompute from the semantics")
             if record.get("location") != loc:
                 problems.append(f"{where}: location {record.get('location')!r} is not its directory")
+            if record.get("format") != FORMAT:
+                problems.append(f"{where}: format {record.get('format')!r} is not {FORMAT}")
             for i, sample in enumerate(record.get("samples", [])):
                 if sample.get("n") != i:
                     problems.append(f"{where}: sample {i} is numbered {sample.get('n')}")

@@ -9,11 +9,11 @@ repos:
         entry: ruff check --select E,F,UP,B,SIM,I,C4 --line-length 127 --target-version py310
         files: ^rola_results/.*\.py$
       - id: library-contract
-        name: store contract (python -m unittest rola_results.test_store)
+        name: store and index contract (python -m unittest rola_results.test_store rola_results.test_index)
         language: system
-        entry: python3 -m unittest rola_results.test_store
+        entry: python3 -m unittest rola_results.test_store rola_results.test_index
         pass_filenames: false
-        files: ^rola_results/
+        files: ^(rola_results|views)/
       - id: records-check
         name: records consistent (python -m rola_results check)
         language: system
