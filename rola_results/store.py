@@ -21,6 +21,9 @@ FORMAT = 1
 
 _SEGMENT = re.compile(r"^[A-Za-z0-9_.-]+$")
 _RECORD = re.compile(r"^[0-9a-f]{24}\.json$")
+#: A MACHINE PATH: an absolute path into one user's home directory. A record is read on other machines and published,
+#: so it names a file by its path inside its checkout and a checkout by `checkout()`, never by where either sat here.
+_MACHINE_PATH = re.compile(r"/home/[^/\s\"']+/|/Users/[^/\s\"']+/")
 
 
 def key(semantics: dict) -> str:
@@ -35,6 +38,18 @@ def utc() -> str:
 def digest(path: Path | str) -> str:
     """sha256 of a file's bytes."""
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+
+def portable(text: str, root: Path | str) -> str:
+    """`text` (a traceback, a tool's message) with paths inside the checkout `root` made relative to it and any other
+    path under the home directory spelled from `~`."""
+    text = text.replace(str(Path(root).resolve()) + "/", "")
+    return text.replace(str(Path.home()) + "/", "~/")
+
+
+def machine_paths(blob: object) -> list[str]:
+    """The machine paths anywhere in a JSON-able value, as they appear."""
+    return sorted({m.group(0) for m in _MACHINE_PATH.finditer(json.dumps(blob))})
 
 
 def checkout(path: Path | str) -> dict:
@@ -97,6 +112,13 @@ class Store:
         the sample came from (its checkouts, a stage); the host is added. `extra` is kept on the sample as given."""
         if (error is None) == (output is None and output_file is None) or (output is not None and output_file is not None):
             raise ValueError("a sample is exactly one of output, output_file or error")
+        stored = [semantics, output, error, provenance, extra]
+        if output_file is not None and Path(output_file).suffix == ".json":
+            stored.append(json.loads(Path(output_file).read_text()))
+        found = machine_paths(stored)
+        if found:
+            raise ValueError(f"{self.location}: a record carries no machine path, found {found}: name a file by its path "
+                             "inside its checkout and a checkout by checkout(); portable() rewrites a message")
         k = key(semantics)
         self.dir.mkdir(parents=True, exist_ok=True)
         with self._locked(k):
@@ -158,7 +180,8 @@ def outputs(prefix: str, root: Path | str = ROOT) -> Iterator[tuple[dict, dict, 
 
 def check(root: Path | str = ROOT) -> list[str]:
     """What is wrong with the stored records: a key that does not recompute, a location that is not the record's
-    directory, samples out of order, a successful sample whose output is missing."""
+    directory, samples out of order, a successful sample whose output is missing, a machine path in a record or a JSON
+    output."""
     root = Path(root)
     problems = []
     for loc in locations(root):
@@ -177,11 +200,16 @@ def check(root: Path | str = ROOT) -> list[str]:
                 problems.append(f"{where}: location {record.get('location')!r} is not its directory")
             if record.get("format") != FORMAT:
                 problems.append(f"{where}: format {record.get('format')!r} is not {FORMAT}")
+            if machine_paths(record):
+                problems.append(f"{where}: carries machine paths {machine_paths(record)}")
             for i, sample in enumerate(record.get("samples", [])):
                 if sample.get("n") != i:
                     problems.append(f"{where}: sample {i} is numbered {sample.get('n')}")
-                if sample.get("ok") and not (root / loc / str(sample.get("output"))).is_file():
+                out = root / loc / str(sample.get("output"))
+                if sample.get("ok") and not out.is_file():
                     problems.append(f"{where}: sample {i}'s output {sample.get('output')} is missing")
+                elif sample.get("ok") and out.suffix == ".json" and machine_paths(json.loads(out.read_text())):
+                    problems.append(f"{where}: sample {i}'s output carries machine paths")
                 if not sample.get("ok") and not sample.get("error"):
                     problems.append(f"{where}: failed sample {i} carries no error")
     return problems

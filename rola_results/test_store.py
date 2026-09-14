@@ -6,7 +6,10 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from .store import Store, check, checkout, key, locations, outputs
+from .store import Store, check, checkout, key, locations, outputs, portable
+
+#: a home-directory prefix, joined so this file carries none
+HOME = "/".join(("", "home", "someone"))
 
 
 class StoreContract(unittest.TestCase):
@@ -100,6 +103,28 @@ class StoreContract(unittest.TestCase):
         (repo / "f").write_text("c\n")
         self.assertNotIn(None, (one, checkout(repo)["diff_sha256"]))
         self.assertNotEqual(one, checkout(repo)["diff_sha256"])
+
+    def test_a_record_carries_no_machine_path(self) -> None:
+        for sample in ({"output": {"rola_file": f"{HOME}/wt/rola/__init__.py"}},
+                       {"error": f'File "{HOME}/bench/engine.py", line 1'},
+                       {"output": {"ms": 1.0}, "provenance": {"venv": f"{HOME}/venv"}}):
+            with self.assertRaisesRegex(ValueError, "machine path"):
+                self.store.put({"cell": "p"}, **sample)
+        self.assertIsNone(self.store.get(key({"cell": "p"})))
+        self.store.put({"cell": "p"}, output={"rola_file": "rola/__init__.py"})
+        self.assertEqual(check(self.root), [])
+
+    def test_check_finds_a_machine_path_written_around_the_store(self) -> None:
+        sem = {"cell": "q"}
+        sample = self.store.put(sem, output={"rola_file": "rola/__init__.py"})
+        (self.store.dir / sample["output"]).write_text(json.dumps({"rola_file": f"{HOME}/wt/rola/__init__.py"}))
+        self.assertTrue(any("machine paths" in p for p in check(self.root)))
+
+    def test_portable_makes_checkout_paths_relative_and_other_home_paths_tilde(self) -> None:
+        home, root = Path.home(), Path(self.tmp.name) / "bench"
+        root.mkdir()
+        text = f'File "{root.resolve()}/pkg/engine.py"\nFile "{home}/venv/lib/torch.py"'
+        self.assertEqual(portable(text, root), 'File "pkg/engine.py"\nFile "~/venv/lib/torch.py"')
 
 
 if __name__ == "__main__":
