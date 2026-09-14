@@ -26,7 +26,7 @@
     ],
     "host": "DESKTOP-MKIUJID"
    },
-   "trace": "Traceback (most recent call last):\n  File \"/home/blake/rola-bench/rola_bench/measure/engine.py\", line 133, in run\n    node.run({d: outputs[d] for d in node.deps}, dest)\n  File \"/home/blake/rola-bench/rola_bench/measure/modules.py\", line 166, in _session\n    raise RuntimeError(f\"arm(s) {errors} measured nothing: {[a.get('error') for a in doc['arms']]}\")\nRuntimeError: arm(s) ['cu134'] measured nothing: ['RuntimeError: attention_reference needs flash-attn (`pip install rola[bench]`; the release wheel matching torch, CUDA, ABI and python)', None]\n",
+   "trace": "Traceback (most recent call last):\n  File \"rola_bench/measure/engine.py\", line 133, in run\n    node.run({d: outputs[d] for d in node.deps}, dest)\n  File \"rola_bench/measure/modules.py\", line 166, in _session\n    raise RuntimeError(f\"arm(s) {errors} measured nothing: {[a.get('error') for a in doc['arms']]}\")\nRuntimeError: arm(s) ['cu134'] measured nothing: ['RuntimeError: attention_reference needs flash-attn (`pip install rola[bench]`; the release wheel matching torch, CUDA, ABI and python)', None]\n",
    "utc": "2026-09-13T21:20:42Z",
    "wall_s": 11.232
   }
