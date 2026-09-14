@@ -20,3 +20,9 @@ repos:
         entry: python3 -m rola_results check
         pass_filenames: false
         always_run: true
+      - id: mirror-declarations
+        name: every tracked path is declared for the public mirror (.github/mirror/declarations.json)
+        language: system
+        entry: python3 .github/mirror/mirror.py --check
+        pass_filenames: false
+        always_run: true

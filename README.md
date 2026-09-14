@@ -67,3 +67,10 @@ from every interpreter it provisions.
 
 The commit gate (`.githooks/pre-commit`, `core.hooksPath`): ruff and the contract tests on the library, `check` on the
 records. Pushing is the owner's act.
+
+## Publishing
+
+This repository is developed in the private `rola-results-dev` and published to the public `rola-results`: a push
+to `master` runs `.github/workflows/mirror.yml`, which publishes the declared files as one snapshot commit
+([`.github/mirror/README.md`](.github/mirror/README.md)). A record carries no machine path, so every record ships as
+stored.
