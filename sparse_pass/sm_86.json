@@ -1,0 +1,1221 @@
+{
+ "experiment": "sparse_pass",
+ "question": "in a sparse window each warp's fold has a different number of steps a pass (0-8: its lists' union in the pass, by 16), so a schedule tuned on dense passes may stall or couple the warps; which pass pipeline holds across densities -- the values restaged into a tile (two pool slots, fill two passes ahead), or read in place from the swizzled pool (two pool slots, or three so the fill still runs two ahead) -- and what do the fold side's entries cost derived in the step from the warp's union words (`base + popc`) against read from a list a window ahead?",
+ "arch": "sm_86",
+ "device": "NVIDIA GeForce RTX 3080 Ti",
+ "driver": "595.95",
+ "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
+ "git": {
+  "sha": "84dd6b052bad5f7c1ed26c9cd845034613df711a",
+  "dirty": false
+ },
+ "reps": 5,
+ "date": "2026-10-04T19:52:24+00:00",
+ "utilization_before": 1,
+ "results": [
+  {
+   "lab": "result",
+   "name": "steps a pass, busiest scheduler / 1 in 1",
+   "unit": "steps",
+   "samples": [
+    16.0
+   ],
+   "median": 16.0,
+   "min": 16.0,
+   "max": 16.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp16 arm / 1 in 1 / serial, value tile, listed",
+   "unit": "cycles a pass",
+   "samples": [
+    14090.756313,
+    14086.890438,
+    14095.04575,
+    14088.76225,
+    14093.4155
+   ],
+   "median": 14090.756313,
+   "min": 14086.890438,
+   "max": 14095.04575,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp16 arm / 1 in 1 / serial, value tile, listed / floor",
+   "unit": "x",
+   "samples": [
+    1.66794,
+    1.667482,
+    1.668448,
+    1.667704,
+    1.668255
+   ],
+   "median": 1.66794,
+   "min": 1.667482,
+   "max": 1.668448,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp16 arm / 1 in 1 / pipelined, value tile, derived",
+   "unit": "cycles a pass",
+   "samples": [
+    17395.172562,
+    17391.144688,
+    17403.917,
+    17410.03225,
+    22439.466313
+   ],
+   "median": 17403.917,
+   "min": 17391.144688,
+   "max": 22439.466313,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "fp16 arm / 1 in 1 / pipelined, value tile, derived / floor",
+   "unit": "x",
+   "samples": [
+    2.059088,
+    2.058611,
+    2.060123,
+    2.060847,
+    2.656187
+   ],
+   "median": 2.060123,
+   "min": 2.058611,
+   "max": 2.656187,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "fp16 arm / 1 in 1 / pipelined, in place, 2 pool slots, derived",
+   "unit": "cycles a pass",
+   "samples": [
+    27154.310125,
+    17336.744875,
+    22368.607375,
+    17340.298125,
+    17338.138125
+   ],
+   "median": 17340.298125,
+   "min": 17336.744875,
+   "max": 27154.310125,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "fp16 arm / 1 in 1 / pipelined, in place, 2 pool slots, derived / floor",
+   "unit": "x",
+   "samples": [
+    3.214289,
+    2.052172,
+    2.647799,
+    2.052592,
+    2.052336
+   ],
+   "median": 2.052592,
+   "min": 2.052172,
+   "max": 3.214289,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "fp16 arm / 1 in 1 / pipelined, in place, 3 pool slots, derived",
+   "unit": "cycles a pass",
+   "samples": [
+    17653.085938,
+    17654.602312,
+    17653.04975,
+    17654.01,
+    17652.260625
+   ],
+   "median": 17653.085938,
+   "min": 17652.260625,
+   "max": 17654.602312,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp16 arm / 1 in 1 / pipelined, in place, 3 pool slots, derived / floor",
+   "unit": "x",
+   "samples": [
+    2.089617,
+    2.089797,
+    2.089613,
+    2.089727,
+    2.089519
+   ],
+   "median": 2.089617,
+   "min": 2.089519,
+   "max": 2.089797,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp16 arm / 1 in 1 / pipelined, in place, 3 pool slots, listed",
+   "unit": "cycles a pass",
+   "samples": [
+    16510.678313,
+    16511.14625,
+    16510.982875,
+    16511.687312,
+    16511.378437
+   ],
+   "median": 16511.14625,
+   "min": 16510.678313,
+   "max": 16511.687312,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp16 arm / 1 in 1 / pipelined, in place, 3 pool slots, listed / floor",
+   "unit": "x",
+   "samples": [
+    1.954389,
+    1.954444,
+    1.954425,
+    1.954508,
+    1.954472
+   ],
+   "median": 1.954444,
+   "min": 1.954389,
+   "max": 1.954508,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "steps a pass, busiest scheduler / 1 in 4",
+   "unit": "steps",
+   "samples": [
+    5.612813
+   ],
+   "median": 5.612813,
+   "min": 5.612813,
+   "max": 5.612813,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp16 arm / 1 in 4 / serial, value tile, listed",
+   "unit": "cycles a pass",
+   "samples": [
+    7074.278562,
+    7070.090563,
+    7067.388687,
+    7076.046687,
+    7078.625188
+   ],
+   "median": 7074.278562,
+   "min": 7067.388687,
+   "max": 7078.625188,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp16 arm / 1 in 4 / serial, value tile, listed / floor",
+   "unit": "x",
+   "samples": [
+    2.387084,
+    2.385671,
+    2.384759,
+    2.387681,
+    2.388551
+   ],
+   "median": 2.387084,
+   "min": 2.384759,
+   "max": 2.388551,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp16 arm / 1 in 4 / pipelined, value tile, derived",
+   "unit": "cycles a pass",
+   "samples": [
+    8240.6685,
+    8242.00225,
+    8241.81075,
+    8240.024438,
+    8242.268062
+   ],
+   "median": 8241.81075,
+   "min": 8240.024438,
+   "max": 8242.268062,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp16 arm / 1 in 4 / pipelined, value tile, derived / floor",
+   "unit": "x",
+   "samples": [
+    2.780661,
+    2.781111,
+    2.781046,
+    2.780443,
+    2.7812
+   ],
+   "median": 2.781046,
+   "min": 2.780443,
+   "max": 2.7812,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp16 arm / 1 in 4 / pipelined, in place, 2 pool slots, derived",
+   "unit": "cycles a pass",
+   "samples": [
+    8971.333188,
+    8936.529937,
+    8947.731438,
+    8950.826563,
+    8974.844688
+   ],
+   "median": 8950.826563,
+   "min": 8936.529937,
+   "max": 8974.844688,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp16 arm / 1 in 4 / pipelined, in place, 2 pool slots, derived / floor",
+   "unit": "x",
+   "samples": [
+    3.02721,
+    3.015466,
+    3.019246,
+    3.02029,
+    3.028395
+   ],
+   "median": 3.02029,
+   "min": 3.015466,
+   "max": 3.028395,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp16 arm / 1 in 4 / pipelined, in place, 3 pool slots, derived",
+   "unit": "cycles a pass",
+   "samples": [
+    7983.105062,
+    7983.14875,
+    7982.806687,
+    7982.126375,
+    7982.189688
+   ],
+   "median": 7982.806687,
+   "min": 7982.126375,
+   "max": 7983.14875,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp16 arm / 1 in 4 / pipelined, in place, 3 pool slots, derived / floor",
+   "unit": "x",
+   "samples": [
+    2.693751,
+    2.693765,
+    2.69365,
+    2.69342,
+    2.693442
+   ],
+   "median": 2.69365,
+   "min": 2.69342,
+   "max": 2.693765,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp16 arm / 1 in 4 / pipelined, in place, 3 pool slots, listed",
+   "unit": "cycles a pass",
+   "samples": [
+    6914.326875,
+    6915.15675,
+    6915.230062,
+    6915.188562,
+    6915.00375
+   ],
+   "median": 6915.15675,
+   "min": 6914.326875,
+   "max": 6915.230062,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp16 arm / 1 in 4 / pipelined, in place, 3 pool slots, listed / floor",
+   "unit": "x",
+   "samples": [
+    2.333111,
+    2.333391,
+    2.333416,
+    2.333402,
+    2.33334
+   ],
+   "median": 2.333391,
+   "min": 2.333111,
+   "max": 2.333416,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "steps a pass, busiest scheduler / 1 in 16",
+   "unit": "steps",
+   "samples": [
+    2.024
+   ],
+   "median": 2.024,
+   "min": 2.024,
+   "max": 2.024,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp16 arm / 1 in 16 / serial, value tile, listed",
+   "unit": "cycles a pass",
+   "samples": [
+    4546.898938,
+    4538.220312,
+    4569.314875,
+    4559.141,
+    4552.77625
+   ],
+   "median": 4552.77625,
+   "min": 4538.220312,
+   "max": 4569.314875,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp16 arm / 1 in 16 / serial, value tile, listed / floor",
+   "unit": "x",
+   "samples": [
+    4.254719,
+    4.246598,
+    4.275694,
+    4.266174,
+    4.260219
+   ],
+   "median": 4.260219,
+   "min": 4.246598,
+   "max": 4.275694,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp16 arm / 1 in 16 / pipelined, value tile, derived",
+   "unit": "cycles a pass",
+   "samples": [
+    4771.0695,
+    4772.564938,
+    4771.701063,
+    4773.026937,
+    4771.23325
+   ],
+   "median": 4771.701063,
+   "min": 4771.0695,
+   "max": 4773.026937,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp16 arm / 1 in 16 / pipelined, value tile, derived / floor",
+   "unit": "x",
+   "samples": [
+    4.464484,
+    4.465884,
+    4.465075,
+    4.466316,
+    4.464638
+   ],
+   "median": 4.465075,
+   "min": 4.464484,
+   "max": 4.466316,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp16 arm / 1 in 16 / pipelined, in place, 2 pool slots, derived",
+   "unit": "cycles a pass",
+   "samples": [
+    5457.925437,
+    5329.122125,
+    5393.260688,
+    5373.602937,
+    5412.97525
+   ],
+   "median": 5393.260688,
+   "min": 5329.122125,
+   "max": 5457.925437,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp16 arm / 1 in 16 / pipelined, in place, 2 pool slots, derived / floor",
+   "unit": "x",
+   "samples": [
+    5.107204,
+    4.986677,
+    5.046694,
+    5.0283,
+    5.065142
+   ],
+   "median": 5.046694,
+   "min": 4.986677,
+   "max": 5.107204,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp16 arm / 1 in 16 / pipelined, in place, 3 pool slots, derived",
+   "unit": "cycles a pass",
+   "samples": [
+    4410.107813,
+    4408.446687,
+    4408.995375,
+    4408.852125,
+    4409.948875
+   ],
+   "median": 4408.995375,
+   "min": 4408.446687,
+   "max": 4410.107813,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp16 arm / 1 in 16 / pipelined, in place, 3 pool slots, derived / floor",
+   "unit": "x",
+   "samples": [
+    4.126718,
+    4.125163,
+    4.125677,
+    4.125543,
+    4.126569
+   ],
+   "median": 4.125677,
+   "min": 4.125163,
+   "max": 4.126718,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp16 arm / 1 in 16 / pipelined, in place, 3 pool slots, listed",
+   "unit": "cycles a pass",
+   "samples": [
+    3727.121813,
+    3727.4595,
+    3727.269,
+    3726.189188,
+    3727.582625
+   ],
+   "median": 3727.269,
+   "min": 3726.189188,
+   "max": 3727.582625,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp16 arm / 1 in 16 / pipelined, in place, 3 pool slots, listed / floor",
+   "unit": "x",
+   "samples": [
+    3.48762,
+    3.487936,
+    3.487758,
+    3.486747,
+    3.488051
+   ],
+   "median": 3.487758,
+   "min": 3.486747,
+   "max": 3.488051,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "steps a pass, busiest scheduler / 1 in 1",
+   "unit": "steps",
+   "samples": [
+    16.0
+   ],
+   "median": 16.0,
+   "min": 16.0,
+   "max": 16.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp32 arm / 1 in 1 / serial, value tile, listed",
+   "unit": "cycles a pass",
+   "samples": [
+    21336.8065,
+    21334.246,
+    26877.9925,
+    26005.5395,
+    21339.890625
+   ],
+   "median": 21339.890625,
+   "min": 21334.246,
+   "max": 26877.9925,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "fp32 arm / 1 in 1 / serial, value tile, listed / floor",
+   "unit": "x",
+   "samples": [
+    1.262832,
+    1.26268,
+    1.59079,
+    1.539154,
+    1.263014
+   ],
+   "median": 1.263014,
+   "min": 1.26268,
+   "max": 1.59079,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "fp32 arm / 1 in 1 / pipelined, value tile, derived",
+   "unit": "cycles a pass",
+   "samples": [
+    19089.720562,
+    19090.565688,
+    19089.76025,
+    24280.887062,
+    21964.294937
+   ],
+   "median": 19090.565688,
+   "min": 19089.720562,
+   "max": 24280.887062,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "fp32 arm / 1 in 1 / pipelined, value tile, derived / floor",
+   "unit": "x",
+   "samples": [
+    1.129837,
+    1.129887,
+    1.129839,
+    1.437079,
+    1.29997
+   ],
+   "median": 1.129887,
+   "min": 1.129837,
+   "max": 1.437079,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "fp32 arm / 1 in 1 / pipelined, in place, 2 pool slots, derived",
+   "unit": "cycles a pass",
+   "samples": [
+    22527.411375,
+    22526.294625,
+    22521.940125,
+    22534.651187,
+    22517.654375
+   ],
+   "median": 22526.294625,
+   "min": 22517.654375,
+   "max": 22534.651187,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp32 arm / 1 in 1 / pipelined, in place, 2 pool slots, derived / floor",
+   "unit": "x",
+   "samples": [
+    1.333298,
+    1.333232,
+    1.332975,
+    1.333727,
+    1.332721
+   ],
+   "median": 1.333232,
+   "min": 1.332721,
+   "max": 1.333727,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp32 arm / 1 in 1 / pipelined, in place, 3 pool slots, derived",
+   "unit": "cycles a pass",
+   "samples": [
+    18476.386875,
+    18474.424813,
+    18474.94175,
+    18475.780188,
+    18476.670937
+   ],
+   "median": 18475.780188,
+   "min": 18474.424813,
+   "max": 18476.670937,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp32 arm / 1 in 1 / pipelined, in place, 3 pool slots, derived / floor",
+   "unit": "x",
+   "samples": [
+    1.093536,
+    1.09342,
+    1.093451,
+    1.0935,
+    1.093553
+   ],
+   "median": 1.0935,
+   "min": 1.09342,
+   "max": 1.093553,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp32 arm / 1 in 1 / pipelined, in place, 3 pool slots, listed",
+   "unit": "cycles a pass",
+   "samples": [
+    19133.339,
+    19150.480375,
+    19150.356062,
+    19137.022812,
+    19135.5
+   ],
+   "median": 19137.022812,
+   "min": 19133.339,
+   "max": 19150.480375,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp32 arm / 1 in 1 / pipelined, in place, 3 pool slots, listed / floor",
+   "unit": "x",
+   "samples": [
+    1.132418,
+    1.133433,
+    1.133425,
+    1.132636,
+    1.132546
+   ],
+   "median": 1.132636,
+   "min": 1.132418,
+   "max": 1.133433,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "steps a pass, busiest scheduler / 1 in 4",
+   "unit": "steps",
+   "samples": [
+    5.612813
+   ],
+   "median": 5.612813,
+   "min": 5.612813,
+   "max": 5.612813,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp32 arm / 1 in 4 / serial, value tile, listed",
+   "unit": "cycles a pass",
+   "samples": [
+    9473.382063,
+    9479.499687,
+    9482.535813,
+    9476.091875,
+    9473.010813
+   ],
+   "median": 9476.091875,
+   "min": 9473.010813,
+   "max": 9482.535813,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp32 arm / 1 in 4 / serial, value tile, listed / floor",
+   "unit": "x",
+   "samples": [
+    1.598308,
+    1.599341,
+    1.599853,
+    1.598766,
+    1.598246
+   ],
+   "median": 1.598766,
+   "min": 1.598246,
+   "max": 1.599853,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp32 arm / 1 in 4 / pipelined, value tile, derived",
+   "unit": "cycles a pass",
+   "samples": [
+    9643.844375,
+    9640.660563,
+    9639.397125,
+    9642.579938,
+    9642.69525
+   ],
+   "median": 9642.579938,
+   "min": 9639.397125,
+   "max": 9643.844375,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp32 arm / 1 in 4 / pipelined, value tile, derived / floor",
+   "unit": "x",
+   "samples": [
+    1.627068,
+    1.626531,
+    1.626318,
+    1.626855,
+    1.626874
+   ],
+   "median": 1.626855,
+   "min": 1.626318,
+   "max": 1.627068,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp32 arm / 1 in 4 / pipelined, in place, 2 pool slots, derived",
+   "unit": "cycles a pass",
+   "samples": [
+    10926.93675,
+    10870.034875,
+    10907.07075,
+    10918.765063,
+    10882.385
+   ],
+   "median": 10907.07075,
+   "min": 10870.034875,
+   "max": 10926.93675,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp32 arm / 1 in 4 / pipelined, in place, 2 pool slots, derived / floor",
+   "unit": "x",
+   "samples": [
+    1.843546,
+    1.833946,
+    1.840194,
+    1.842167,
+    1.836029
+   ],
+   "median": 1.840194,
+   "min": 1.833946,
+   "max": 1.843546,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp32 arm / 1 in 4 / pipelined, in place, 3 pool slots, derived",
+   "unit": "cycles a pass",
+   "samples": [
+    9464.515375,
+    15257.760813,
+    9461.0855,
+    9465.283438,
+    14618.908062
+   ],
+   "median": 9465.283438,
+   "min": 9461.0855,
+   "max": 15257.760813,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "fp32 arm / 1 in 4 / pipelined, in place, 3 pool slots, derived / floor",
+   "unit": "x",
+   "samples": [
+    1.596813,
+    2.574224,
+    1.596234,
+    1.596942,
+    2.46644
+   ],
+   "median": 1.596942,
+   "min": 1.596234,
+   "max": 2.574224,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "fp32 arm / 1 in 4 / pipelined, in place, 3 pool slots, listed",
+   "unit": "cycles a pass",
+   "samples": [
+    9339.791625,
+    9347.804313,
+    9341.674437,
+    9342.6045,
+    9342.701625
+   ],
+   "median": 9342.6045,
+   "min": 9339.791625,
+   "max": 9347.804313,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp32 arm / 1 in 4 / pipelined, in place, 3 pool slots, listed / floor",
+   "unit": "x",
+   "samples": [
+    1.57577,
+    1.577122,
+    1.576087,
+    1.576244,
+    1.576261
+   ],
+   "median": 1.576244,
+   "min": 1.57577,
+   "max": 1.577122,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "steps a pass, busiest scheduler / 1 in 16",
+   "unit": "steps",
+   "samples": [
+    2.024
+   ],
+   "median": 2.024,
+   "min": 2.024,
+   "max": 2.024,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp32 arm / 1 in 16 / serial, value tile, listed",
+   "unit": "cycles a pass",
+   "samples": [
+    5403.46625,
+    5385.611687,
+    5374.847563,
+    5397.912,
+    5396.696188
+   ],
+   "median": 5396.696188,
+   "min": 5374.847563,
+   "max": 5403.46625,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp32 arm / 1 in 16 / serial, value tile, listed / floor",
+   "unit": "x",
+   "samples": [
+    2.528122,
+    2.519768,
+    2.514732,
+    2.525523,
+    2.524954
+   ],
+   "median": 2.524954,
+   "min": 2.514732,
+   "max": 2.528122,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp32 arm / 1 in 16 / pipelined, value tile, derived",
+   "unit": "cycles a pass",
+   "samples": [
+    5312.136062,
+    5309.832438,
+    5311.068688,
+    5311.731375,
+    5311.043938
+   ],
+   "median": 5311.068688,
+   "min": 5309.832438,
+   "max": 5312.136062,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp32 arm / 1 in 16 / pipelined, value tile, derived / floor",
+   "unit": "x",
+   "samples": [
+    2.485391,
+    2.484313,
+    2.484892,
+    2.485202,
+    2.48488
+   ],
+   "median": 2.484892,
+   "min": 2.484313,
+   "max": 2.485391,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp32 arm / 1 in 16 / pipelined, in place, 2 pool slots, derived",
+   "unit": "cycles a pass",
+   "samples": [
+    6097.372375,
+    6105.90025,
+    6095.162125,
+    6142.696625,
+    6132.844437
+   ],
+   "median": 6105.90025,
+   "min": 6095.162125,
+   "max": 6142.696625,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp32 arm / 1 in 16 / pipelined, in place, 2 pool slots, derived / floor",
+   "unit": "x",
+   "samples": [
+    2.85278,
+    2.85677,
+    2.851746,
+    2.873986,
+    2.869376
+   ],
+   "median": 2.85677,
+   "min": 2.851746,
+   "max": 2.873986,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp32 arm / 1 in 16 / pipelined, in place, 3 pool slots, derived",
+   "unit": "cycles a pass",
+   "samples": [
+    4824.520875,
+    4824.217813,
+    4825.319375,
+    4824.350125,
+    4824.561875
+   ],
+   "median": 4824.520875,
+   "min": 4824.217813,
+   "max": 4825.319375,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp32 arm / 1 in 16 / pipelined, in place, 3 pool slots, derived / floor",
+   "unit": "x",
+   "samples": [
+    2.257251,
+    2.257109,
+    2.257624,
+    2.257171,
+    2.25727
+   ],
+   "median": 2.257251,
+   "min": 2.257109,
+   "max": 2.257624,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp32 arm / 1 in 16 / pipelined, in place, 3 pool slots, listed",
+   "unit": "cycles a pass",
+   "samples": [
+    4395.7365,
+    4396.249,
+    4396.111937,
+    4396.806562,
+    4395.787875
+   ],
+   "median": 4396.111937,
+   "min": 4395.7365,
+   "max": 4396.806562,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp32 arm / 1 in 16 / pipelined, in place, 3 pool slots, listed / floor",
+   "unit": "x",
+   "samples": [
+    2.056635,
+    2.056875,
+    2.056811,
+    2.057136,
+    2.056659
+   ],
+   "median": 2.056811,
+   "min": 2.056635,
+   "max": 2.057136,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void sparse_pass::pass<(int)0, (int)4>(int, sparse_pass::Source, long long *, int *)": {
+   "regs": 193,
+   "ops": {
+    "LOP3.LUT": 171,
+    "CS2R": 131,
+    "IMAD": 86,
+    "LDS": 65,
+    "IMAD.MOV.U32": 63,
+    "IADD3": 50,
+    "BRA": 45,
+    "IMAD.SHL.U32": 41,
+    "NOP": 33,
+    "HMMA.16816.F32": 33,
+    "HMUL2": 32,
+    "SHF.R.U32.HI": 31
+   }
+  },
+  "void sparse_pass::pass<(int)0, (int)3>(int, sparse_pass::Source, long long *, int *)": {
+   "regs": 197,
+   "ops": {
+    "LOP3.LUT": 173,
+    "CS2R": 132,
+    "IMAD": 80,
+    "LDS": 69,
+    "IMAD.MOV.U32": 59,
+    "IMAD.SHL.U32": 42,
+    "BRA": 42,
+    "IADD3": 42,
+    "NOP": 35,
+    "SHF.R.U32.HI": 34,
+    "HMMA.16816.F32": 33,
+    "HMUL2": 32
+   }
+  },
+  "void sparse_pass::pass<(int)0, (int)2>(int, sparse_pass::Source, long long *, int *)": {
+   "regs": 191,
+   "ops": {
+    "LOP3.LUT": 163,
+    "CS2R": 132,
+    "IMAD": 68,
+    "LDS": 57,
+    "IMAD.MOV.U32": 56,
+    "IADD3": 41,
+    "BRA": 39,
+    "IMAD.SHL.U32": 36,
+    "HMMA.16816.F32": 33,
+    "HMUL2": 32,
+    "SHF.R.U32.HI": 28,
+    "NOP": 26
+   }
+  },
+  "void sparse_pass::pass<(int)0, (int)1>(int, sparse_pass::Source, long long *, int *)": {
+   "regs": 194,
+   "ops": {
+    "LOP3.LUT": 206,
+    "IMAD": 83,
+    "CS2R": 68,
+    "LDS": 62,
+    "IMAD.MOV.U32": 59,
+    "IMAD.IADD": 52,
+    "IMAD.SHL.U32": 51,
+    "BRA": 45,
+    "IADD3": 35,
+    "HMMA.16816.F32": 33,
+    "NOP": 32,
+    "HMUL2": 32
+   }
+  },
+  "void sparse_pass::pass<(int)0, (int)0>(int, sparse_pass::Source, long long *, int *)": {
+   "regs": 185,
+   "ops": {
+    "LOP3.LUT": 135,
+    "CS2R": 67,
+    "IMAD.MOV.U32": 51,
+    "HMMA.16816.F32": 33,
+    "HMUL2": 32,
+    "IMAD": 30,
+    "IMAD.SHL.U32": 29,
+    "IADD3": 27,
+    "IMAD.IADD": 27,
+    "BRA": 23,
+    "FMUL": 19,
+    "LDS": 18
+   }
+  },
+  "void sparse_pass::pass<(int)1, (int)4>(int, sparse_pass::Source, long long *, int *)": {
+   "regs": 251,
+   "ops": {
+    "CS2R": 194,
+    "LOP3.LUT": 174,
+    "FADD": 136,
+    "HADD2.F32": 128,
+    "IMAD": 86,
+    "LDS": 65,
+    "IMAD.MOV.U32": 58,
+    "IADD3": 51,
+    "BRA": 45,
+    "IMAD.SHL.U32": 38,
+    "NOP": 33,
+    "SHF.R.U32.HI": 32
+   }
+  },
+  "void sparse_pass::pass<(int)1, (int)3>(int, sparse_pass::Source, long long *, int *)": {
+   "regs": 254,
+   "ops": {
+    "CS2R": 196,
+    "LOP3.LUT": 189,
+    "FADD": 136,
+    "HADD2.F32": 128,
+    "IMAD": 78,
+    "LDS": 69,
+    "IMAD.MOV.U32": 52,
+    "IMAD.SHL.U32": 49,
+    "BRA": 45,
+    "IADD3": 43,
+    "NOP": 36,
+    "SHF.R.U32.HI": 34
+   }
+  },
+  "void sparse_pass::pass<(int)1, (int)2>(int, sparse_pass::Source, long long *, int *)": {
+   "regs": 251,
+   "ops": {
+    "CS2R": 196,
+    "LOP3.LUT": 179,
+    "FADD": 136,
+    "HADD2.F32": 128,
+    "IMAD": 66,
+    "LDS": 57,
+    "IMAD.MOV.U32": 50,
+    "IMAD.SHL.U32": 42,
+    "BRA": 42,
+    "IADD3": 38,
+    "HMUL2": 32,
+    "HMMA.16816.F16": 32
+   }
+  },
+  "void sparse_pass::pass<(int)1, (int)1>(int, sparse_pass::Source, long long *, int *)": {
+   "regs": 252,
+   "ops": {
+    "LOP3.LUT": 221,
+    "CS2R": 193,
+    "FADD": 136,
+    "HADD2.F32": 128,
+    "IMAD": 81,
+    "LDS": 62,
+    "IMAD.MOV.U32": 56,
+    "IMAD.SHL.U32": 55,
+    "BRA": 48,
+    "IADD3": 46,
+    "IMAD.IADD": 44,
+    "NOP": 32
+   }
+  },
+  "void sparse_pass::pass<(int)1, (int)0>(int, sparse_pass::Source, long long *, int *)": {
+   "regs": 244,
+   "ops": {
+    "CS2R": 195,
+    "LOP3.LUT": 136,
+    "FADD": 136,
+    "HADD2.F32": 128,
+    "IMAD.MOV.U32": 38,
+    "HMUL2": 32,
+    "HMMA.16816.F16": 32,
+    "IADD3": 31,
+    "IMAD": 27,
+    "BRA": 24,
+    "IMAD.SHL.U32": 22,
+    "IMAD.IADD": 19
+   }
+  }
+ }
+}
