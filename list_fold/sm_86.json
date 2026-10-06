@@ -1,0 +1,602 @@
+{
+ "experiment": "list_fold",
+ "question": "the fold's step forms for the carve re-price. Per list (a warp steps each of its lists over that list's own tokens, gathered from the resident rows) against merged (a warp steps its lists' union, every list's MMAs on every union token, the operands loaded once): what does a per-list step cost beside its tensor floor at a 32 x 32 list tile (4 lists x 32 level-S digits x 32 channels a warp, the even carve) and at today's 16 x 32 (8 lists x 16 x 32), full and half full, and what does reloading every list's operands cost at dense against loading them once for all lists?",
+ "arch": "sm_86",
+ "device": "NVIDIA GeForce RTX 3080 Ti",
+ "driver": "595.95",
+ "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
+ "git": {
+  "sha": "48566cd9d47847834ec50dd6527eb3d3fb3937db",
+  "dirty": true
+ },
+ "reps": 7,
+ "date": "2026-10-06T01:56:19+00:00",
+ "utilization_before": 1,
+ "results": [
+  {
+   "lab": "result",
+   "name": "merged, 8 lists x 16 x 32 / 8 steps / 16 live / contiguous",
+   "unit": "cycles a pass",
+   "samples": [
+    17817.318219,
+    17824.985094,
+    17828.16975,
+    17819.579344,
+    17818.490969,
+    17820.576219,
+    17820.698844
+   ],
+   "median": 17820.576219,
+   "min": 17817.318219,
+   "max": 17828.16975,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "merged, 8 lists x 16 x 32 / 8 steps / 16 live / contiguous / floor",
+   "unit": "x",
+   "samples": [
+    1.054529,
+    1.054983,
+    1.055171,
+    1.054663,
+    1.054598,
+    1.054722,
+    1.054729
+   ],
+   "median": 1.054722,
+   "min": 1.054529,
+   "max": 1.055171,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "merged, 4 lists x 32 x 32 / 8 steps / 16 live / contiguous",
+   "unit": "cycles a pass",
+   "samples": [
+    18824.980844,
+    18825.708594,
+    18823.532219,
+    18822.016219,
+    18821.397313,
+    18823.521812,
+    18825.142281
+   ],
+   "median": 18823.532219,
+   "min": 18821.397313,
+   "max": 18825.708594,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "merged, 4 lists x 32 x 32 / 8 steps / 16 live / contiguous / floor",
+   "unit": "x",
+   "samples": [
+    1.081398,
+    1.08144,
+    1.081315,
+    1.081228,
+    1.081192,
+    1.081314,
+    1.081408
+   ],
+   "median": 1.081315,
+   "min": 1.081192,
+   "max": 1.08144,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "per list, 4 lists x 32 x 32 / 8 steps a list / 16 live / contiguous",
+   "unit": "cycles a pass",
+   "samples": [
+    25861.387062,
+    25847.610031,
+    25847.06325,
+    25846.136562,
+    25848.577219,
+    25839.197375,
+    25847.604844
+   ],
+   "median": 25847.604844,
+   "min": 25839.197375,
+   "max": 25861.387062,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "per list, 4 lists x 32 x 32 / 8 steps a list / 16 live / contiguous / floor",
+   "unit": "x",
+   "samples": [
+    1.262763,
+    1.26209,
+    1.262064,
+    1.262018,
+    1.262138,
+    1.26168,
+    1.26209
+   ],
+   "median": 1.26209,
+   "min": 1.26168,
+   "max": 1.262763,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "per list, 4 lists x 32 x 32, staged / 8 steps a list / 16 live / contiguous",
+   "unit": "cycles a pass",
+   "samples": [
+    27697.213719,
+    27630.435531,
+    27599.545625,
+    27636.962375,
+    27685.452812,
+    27669.877625,
+    27616.606125
+   ],
+   "median": 27636.962375,
+   "min": 27599.545625,
+   "max": 27697.213719,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "per list, 4 lists x 32 x 32, staged / 8 steps a list / 16 live / contiguous / floor",
+   "unit": "x",
+   "samples": [
+    1.352403,
+    1.349142,
+    1.347634,
+    1.349461,
+    1.351829,
+    1.351068,
+    1.348467
+   ],
+   "median": 1.349461,
+   "min": 1.347634,
+   "max": 1.352403,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "per list, 8 lists x 16 x 32 / 8 steps a list / 16 live / contiguous",
+   "unit": "cycles a pass",
+   "samples": [
+    40484.91175,
+    43229.443969,
+    43019.263812,
+    40518.59975,
+    40464.437187,
+    40472.712125,
+    40483.823031
+   ],
+   "median": 40484.91175,
+   "min": 40464.437187,
+   "max": 43229.443969,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "per list, 8 lists x 16 x 32 / 8 steps a list / 16 live / contiguous / floor",
+   "unit": "x",
+   "samples": [
+    1.976802,
+    2.110813,
+    2.10055,
+    1.978447,
+    1.975803,
+    1.976207,
+    1.976749
+   ],
+   "median": 1.976802,
+   "min": 1.975803,
+   "max": 2.110813,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "per list, 4 lists x 32 x 32 / 2 steps a list / 16 live / gathered",
+   "unit": "cycles a pass",
+   "samples": [
+    7288.967406,
+    7300.670281,
+    7272.191094,
+    7286.888469,
+    7291.396625,
+    7300.643594,
+    7303.630469
+   ],
+   "median": 7291.396625,
+   "min": 7272.191094,
+   "max": 7303.630469,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "per list, 4 lists x 32 x 32 / 2 steps a list / 16 live / gathered / floor",
+   "unit": "x",
+   "samples": [
+    1.423626,
+    1.425912,
+    1.42035,
+    1.42322,
+    1.424101,
+    1.425907,
+    1.42649
+   ],
+   "median": 1.424101,
+   "min": 1.42035,
+   "max": 1.42649,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "per list, 4 lists x 32 x 32, staged / 2 steps a list / 16 live / gathered",
+   "unit": "cycles a pass",
+   "samples": [
+    7273.161062,
+    7300.067031,
+    7234.098594,
+    7291.536,
+    7301.148656,
+    7295.76975,
+    7271.524187
+   ],
+   "median": 7291.536,
+   "min": 7234.098594,
+   "max": 7301.148656,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "per list, 4 lists x 32 x 32, staged / 2 steps a list / 16 live / gathered / floor",
+   "unit": "x",
+   "samples": [
+    1.420539,
+    1.425794,
+    1.41291,
+    1.424128,
+    1.426006,
+    1.424955,
+    1.42022
+   ],
+   "median": 1.424128,
+   "min": 1.41291,
+   "max": 1.426006,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "per list, 4 lists x 32 x 32 / 2 steps a list / 8 live / gathered",
+   "unit": "cycles a pass",
+   "samples": [
+    5963.478938,
+    5995.787969,
+    5976.089344,
+    5994.066156,
+    5959.670531,
+    5993.129031,
+    5971.422312
+   ],
+   "median": 5976.089344,
+   "min": 5959.670531,
+   "max": 5995.787969,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "per list, 4 lists x 32 x 32 / 2 steps a list / 8 live / gathered / floor",
+   "unit": "x",
+   "samples": [
+    1.164742,
+    1.171052,
+    1.167205,
+    1.170716,
+    1.163998,
+    1.170533,
+    1.166293
+   ],
+   "median": 1.167205,
+   "min": 1.163998,
+   "max": 1.171052,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "per list, 4 lists x 32 x 32 / 1 steps a list / 8 live / gathered",
+   "unit": "cycles a pass",
+   "samples": [
+    2980.783,
+    2986.183781,
+    2985.565625,
+    2978.952594,
+    5810.19725,
+    2992.348937,
+    2984.154562
+   ],
+   "median": 2985.565625,
+   "min": 2978.952594,
+   "max": 5810.19725,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "per list, 4 lists x 32 x 32 / 1 steps a list / 8 live / gathered / floor",
+   "unit": "x",
+   "samples": [
+    1.164368,
+    1.166478,
+    1.166237,
+    1.163653,
+    2.269608,
+    1.168886,
+    1.165685
+   ],
+   "median": 1.166237,
+   "min": 1.163653,
+   "max": 2.269608,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "per list, 8 lists x 16 x 32 / 2 steps a list / 16 live / gathered",
+   "unit": "cycles a pass",
+   "samples": [
+    11061.609188,
+    11061.046219,
+    11061.799812,
+    11059.321125,
+    11062.862031,
+    11061.110156,
+    13735.482156
+   ],
+   "median": 11061.609188,
+   "min": 11059.321125,
+   "max": 13735.482156,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "per list, 8 lists x 16 x 32 / 2 steps a list / 16 live / gathered / floor",
+   "unit": "x",
+   "samples": [
+    2.160471,
+    2.160361,
+    2.160508,
+    2.160024,
+    2.160715,
+    2.160373,
+    2.682711
+   ],
+   "median": 2.160471,
+   "min": 2.160024,
+   "max": 2.682711,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "per list, 8 lists x 16 x 32 / 1 steps a list / 8 live / gathered",
+   "unit": "cycles a pass",
+   "samples": [
+    4367.776188,
+    4366.42,
+    4366.953219,
+    4365.401906,
+    4366.896156,
+    4366.858344,
+    4366.624063
+   ],
+   "median": 4366.858344,
+   "min": 4365.401906,
+   "max": 4367.776188,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "per list, 8 lists x 16 x 32 / 1 steps a list / 8 live / gathered / floor",
+   "unit": "x",
+   "samples": [
+    1.706163,
+    1.705633,
+    1.705841,
+    1.705235,
+    1.705819,
+    1.705804,
+    1.705713
+   ],
+   "median": 1.705804,
+   "min": 1.705235,
+   "max": 1.706163,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void list_fold::fold<(int)3, (int)1, (int)8, (int)1>(int, const unsigned short *, long long *, int *)": {
+   "regs": 179,
+   "ops": {
+    "IMAD.MOV.U32": 174,
+    "LOP3.LUT": 150,
+    "CS2R": 131,
+    "FMUL": 130,
+    "IADD3": 108,
+    "IMAD": 101,
+    "ISETP.NE.AND": 80,
+    "FADD": 64,
+    "SHF.R.U32.HI": 60,
+    "PRMT": 49,
+    "LDS.U16": 48,
+    "SEL": 48
+   }
+  },
+  "void list_fold::fold<(int)3, (int)2, (int)16, (int)1>(int, const unsigned short *, long long *, int *)": {
+   "regs": 195,
+   "ops": {
+    "LOP3.LUT": 278,
+    "FMUL": 258,
+    "IMAD": 197,
+    "ISETP.NE.AND": 160,
+    "IMAD.MOV.U32": 145,
+    "CS2R": 132,
+    "SHF.R.U32.HI": 107,
+    "PRMT": 97,
+    "LDS.U16": 96,
+    "SEL": 96,
+    "FADD": 96,
+    "IADD3": 83
+   }
+  },
+  "void list_fold::fold<(int)1, (int)1, (int)8, (int)1>(int, const unsigned short *, long long *, int *)": {
+   "regs": 192,
+   "ops": {
+    "IMAD.MOV.U32": 132,
+    "CS2R": 132,
+    "IADD3": 94,
+    "LOP3.LUT": 91,
+    "FMUL": 66,
+    "FADD": 64,
+    "IMAD": 59,
+    "ISETP.NE.AND": 40,
+    "HMMA.16816.F32": 40,
+    "STS": 33,
+    "LDS": 33,
+    "SHF.R.U32.HI": 32
+   }
+  },
+  "void list_fold::fold<(int)1, (int)2, (int)8, (int)1>(int, const unsigned short *, long long *, int *)": {
+   "regs": 210,
+   "ops": {
+    "LOP3.LUT": 166,
+    "CS2R": 131,
+    "FMUL": 130,
+    "IMAD": 109,
+    "FADD": 96,
+    "IMAD.MOV.U32": 90,
+    "IADD3": 84,
+    "ISETP.NE.AND": 81,
+    "HMMA.16816.F32": 80,
+    "HMUL2": 64,
+    "SHF.R.U32.HI": 60,
+    "PRMT": 49
+   }
+  },
+  "void list_fold::fold<(int)4, (int)2, (int)16, (int)1>(int, const unsigned short *, long long *, int *)": {
+   "regs": 210,
+   "ops": {
+    "LOP3.LUT": 166,
+    "CS2R": 131,
+    "FMUL": 130,
+    "IMAD": 109,
+    "FADD": 96,
+    "IMAD.MOV.U32": 90,
+    "IADD3": 84,
+    "ISETP.NE.AND": 81,
+    "HMMA.16816.F32": 80,
+    "HMUL2": 64,
+    "SHF.R.U32.HI": 60,
+    "PRMT": 49
+   }
+  },
+  "void list_fold::fold<(int)1, (int)2, (int)16, (int)1>(int, const unsigned short *, long long *, int *)": {
+   "regs": 210,
+   "ops": {
+    "LOP3.LUT": 166,
+    "CS2R": 131,
+    "FMUL": 130,
+    "IMAD": 109,
+    "FADD": 96,
+    "IMAD.MOV.U32": 90,
+    "IADD3": 84,
+    "ISETP.NE.AND": 81,
+    "HMMA.16816.F32": 80,
+    "HMUL2": 64,
+    "SHF.R.U32.HI": 60,
+    "PRMT": 49
+   }
+  },
+  "void list_fold::fold<(int)3, (int)8, (int)16, (int)0>(int, const unsigned short *, long long *, int *)": {
+   "regs": 200,
+   "ops": {
+    "FMUL": 258,
+    "LOP3.LUT": 218,
+    "IMAD": 211,
+    "IMAD.MOV.U32": 163,
+    "ISETP.NE.AND": 160,
+    "CS2R": 154,
+    "IADD3": 140,
+    "SHF.R.U32.HI": 107,
+    "PRMT": 97,
+    "LDS.U16": 96,
+    "SEL": 96,
+    "FADD": 96
+   }
+  },
+  "void list_fold::fold<(int)4, (int)8, (int)16, (int)0>(int, const unsigned short *, long long *, int *)": {
+   "regs": 226,
+   "ops": {
+    "FMUL": 194,
+    "IMAD": 181,
+    "CS2R": 149,
+    "LOP3.LUT": 144,
+    "IMAD.MOV.U32": 120,
+    "ISETP.NE.AND": 120,
+    "FADD": 96,
+    "IADD3": 90,
+    "HMMA.16816.F32": 80,
+    "SHF.R.U32.HI": 75,
+    "PRMT": 73,
+    "LDS.U16": 72
+   }
+  },
+  "void list_fold::fold<(int)1, (int)8, (int)16, (int)0>(int, const unsigned short *, long long *, int *)": {
+   "regs": 218,
+   "ops": {
+    "CS2R": 142,
+    "FMUL": 130,
+    "IMAD": 115,
+    "LOP3.LUT": 111,
+    "FADD": 96,
+    "IADD3": 90,
+    "IMAD.MOV.U32": 85,
+    "ISETP.NE.AND": 80,
+    "HMMA.16816.F32": 80,
+    "HMUL2": 64,
+    "SHF.R.U32.HI": 51,
+    "PRMT": 49
+   }
+  },
+  "void list_fold::fold<(int)2, (int)8, (int)16, (int)0>(int, const unsigned short *, long long *, int *)": {
+   "regs": 204,
+   "ops": {
+    "CS2R": 135,
+    "IADD3": 75,
+    "HMMA.16816.F32": 68,
+    "HMUL2": 64,
+    "LOP3.LUT": 44,
+    "IMAD.MOV.U32": 36,
+    "FMUL": 34,
+    "IMAD": 32,
+    "FADD": 24,
+    "BRA": 21,
+    "ISETP.NE.AND": 20,
+    "FFMA": 16
+   }
+  },
+  "void list_fold::fold<(int)0, (int)8, (int)16, (int)0>(int, const unsigned short *, long long *, int *)": {
+   "regs": 196,
+   "ops": {
+    "CS2R": 134,
+    "IADD3": 75,
+    "HMMA.16816.F32": 66,
+    "HMUL2": 64,
+    "LOP3.LUT": 43,
+    "IMAD.MOV.U32": 34,
+    "FMUL": 34,
+    "SHFL.IDX": 32,
+    "IMAD": 31,
+    "BRA": 21,
+    "ISETP.NE.AND": 20,
+    "FFMA": 16
+   }
+  }
+ }
+}

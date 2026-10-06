@@ -1,0 +1,1291 @@
+{
+ "experiment": "read_step",
+ "question": "the readout's step on the even carve (a warp owns 4 level-S read digits x 32 level-R digits x 32 channels): per digit (each digit over its own read tokens, gathered) or merged (the warp's digits summed over the union in registers), what does a step cost beside its tensor floor, what do its output adds into the shared panel add, and does draining the panel to global memory cost anything once it is double buffered and spread through the next pass, against draining it in a burst at the pass's end?",
+ "arch": "sm_86",
+ "device": "NVIDIA GeForce RTX 3080 Ti",
+ "driver": "595.95",
+ "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
+ "git": {
+  "sha": "48566cd9d47847834ec50dd6527eb3d3fb3937db",
+  "dirty": true
+ },
+ "reps": 7,
+ "date": "2026-10-06T01:58:40+00:00",
+ "utilization_before": 2,
+ "results": [
+  {
+   "lab": "result",
+   "name": "merged / 8 steps / 16 live / steps alone",
+   "unit": "cycles a pass",
+   "samples": [
+    12466.101531,
+    12464.319844,
+    12468.193094,
+    12465.739906,
+    12458.901656,
+    12460.950031,
+    12467.450219
+   ],
+   "median": 12465.739906,
+   "min": 12458.901656,
+   "max": 12468.193094,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "merged / 8 steps / 16 live / steps alone / floor",
+   "unit": "x",
+   "samples": [
+    1.217393,
+    1.217219,
+    1.217597,
+    1.217357,
+    1.21669,
+    1.21689,
+    1.217524
+   ],
+   "median": 1.217357,
+   "min": 1.21669,
+   "max": 1.217597,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "merged / 8 steps / 16 live / + panel adds",
+   "unit": "cycles a pass",
+   "samples": [
+    11771.066531,
+    11770.221438,
+    11776.182469,
+    11763.031344,
+    11771.2995,
+    11767.941938,
+    11769.568094
+   ],
+   "median": 11770.221438,
+   "min": 11763.031344,
+   "max": 11776.182469,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "merged / 8 steps / 16 live / + panel adds / floor",
+   "unit": "x",
+   "samples": [
+    1.149518,
+    1.149436,
+    1.150018,
+    1.148734,
+    1.149541,
+    1.149213,
+    1.149372
+   ],
+   "median": 1.149436,
+   "min": 1.148734,
+   "max": 1.150018,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "merged / 8 steps / 16 live / + drain, burst at the pass end",
+   "unit": "cycles a pass",
+   "samples": [
+    16151.438844,
+    16198.687937,
+    13647.796406,
+    13651.134344,
+    13650.602063,
+    13645.330281,
+    13646.655344
+   ],
+   "median": 13650.602063,
+   "min": 13645.330281,
+   "max": 16198.687937,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "merged / 8 steps / 16 live / + drain, burst at the pass end / floor",
+   "unit": "x",
+   "samples": [
+    1.577289,
+    1.581903,
+    1.332793,
+    1.333119,
+    1.333067,
+    1.332552,
+    1.332681
+   ],
+   "median": 1.333067,
+   "min": 1.332552,
+   "max": 1.581903,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "merged / 8 steps / 16 live / + drain, double panel, spread",
+   "unit": "cycles a pass",
+   "samples": [
+    14687.960938,
+    14693.551812,
+    17439.986531,
+    15865.188531,
+    14690.195719,
+    14692.950469,
+    14700.740688
+   ],
+   "median": 14693.551812,
+   "min": 14687.960938,
+   "max": 17439.986531,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "merged / 8 steps / 16 live / + drain, double panel, spread / floor",
+   "unit": "x",
+   "samples": [
+    1.434371,
+    1.434917,
+    1.703124,
+    1.549335,
+    1.434589,
+    1.434858,
+    1.435619
+   ],
+   "median": 1.434917,
+   "min": 1.434371,
+   "max": 1.703124,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "merged / 8 steps / 16 live / + drain, burst, aligned rows, no den",
+   "unit": "cycles a pass",
+   "samples": [
+    13019.119156,
+    13020.173563,
+    13020.498844,
+    13021.457125,
+    13018.946625,
+    13018.809375,
+    13019.85825
+   ],
+   "median": 13019.85825,
+   "min": 13018.809375,
+   "max": 13021.457125,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "merged / 8 steps / 16 live / + drain, burst, aligned rows, no den / floor",
+   "unit": "x",
+   "samples": [
+    1.271398,
+    1.271501,
+    1.271533,
+    1.271627,
+    1.271382,
+    1.271368,
+    1.271471
+   ],
+   "median": 1.271471,
+   "min": 1.271368,
+   "max": 1.271627,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "merged / 8 steps / 16 live / + drain, spread, aligned rows, no den",
+   "unit": "cycles a pass",
+   "samples": [
+    13926.111344,
+    13928.048406,
+    15220.203281,
+    15253.149125,
+    13922.082937,
+    16342.157281,
+    13930.029312
+   ],
+   "median": 13930.029312,
+   "min": 13922.082937,
+   "max": 16342.157281,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "merged / 8 steps / 16 live / + drain, spread, aligned rows, no den / floor",
+   "unit": "x",
+   "samples": [
+    1.359972,
+    1.360161,
+    1.486348,
+    1.489565,
+    1.359578,
+    1.595914,
+    1.360354
+   ],
+   "median": 1.360354,
+   "min": 1.359578,
+   "max": 1.595914,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "per digit / 8 steps a digit / 16 live / steps alone",
+   "unit": "cycles a pass",
+   "samples": [
+    17407.785781,
+    17404.115219,
+    17411.167906,
+    18712.592281,
+    19953.808344,
+    17401.897688,
+    22769.590031
+   ],
+   "median": 17411.167906,
+   "min": 17401.897688,
+   "max": 22769.590031,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "per digit / 8 steps a digit / 16 live / steps alone / floor",
+   "unit": "x",
+   "samples": [
+    1.699979,
+    1.699621,
+    1.700309,
+    1.827402,
+    1.948614,
+    1.699404,
+    2.223593
+   ],
+   "median": 1.700309,
+   "min": 1.699404,
+   "max": 2.223593,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "per digit / 8 steps a digit / 16 live / + panel adds",
+   "unit": "cycles a pass",
+   "samples": [
+    31943.429031,
+    32007.8485,
+    32063.570156,
+    31991.003219,
+    32020.182219,
+    32022.669688,
+    32021.109062
+   ],
+   "median": 32020.182219,
+   "min": 31943.429031,
+   "max": 32063.570156,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "per digit / 8 steps a digit / 16 live / + panel adds / floor",
+   "unit": "x",
+   "samples": [
+    3.119475,
+    3.125766,
+    3.131208,
+    3.124121,
+    3.126971,
+    3.127214,
+    3.127061
+   ],
+   "median": 3.126971,
+   "min": 3.119475,
+   "max": 3.131208,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "per digit / 8 steps a digit / 16 live / + drain, burst at the pass end",
+   "unit": "cycles a pass",
+   "samples": [
+    33485.003031,
+    33488.864687,
+    33486.076719,
+    33483.409906,
+    33480.713219,
+    33486.262187,
+    33480.491688
+   ],
+   "median": 33485.003031,
+   "min": 33480.491688,
+   "max": 33488.864687,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "per digit / 8 steps a digit / 16 live / + drain, burst at the pass end / floor",
+   "unit": "x",
+   "samples": [
+    3.27002,
+    3.270397,
+    3.270125,
+    3.269864,
+    3.269601,
+    3.270143,
+    3.269579
+   ],
+   "median": 3.27002,
+   "min": 3.269579,
+   "max": 3.270397,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "per digit / 8 steps a digit / 16 live / + drain, double panel, spread",
+   "unit": "cycles a pass",
+   "samples": [
+    35606.339938,
+    35602.926813,
+    35607.753219,
+    35607.449437,
+    35605.57325,
+    35611.205406,
+    35603.526625
+   ],
+   "median": 35606.339938,
+   "min": 35602.926813,
+   "max": 35611.205406,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "per digit / 8 steps a digit / 16 live / + drain, double panel, spread / floor",
+   "unit": "x",
+   "samples": [
+    3.477182,
+    3.476848,
+    3.47732,
+    3.47729,
+    3.477107,
+    3.477657,
+    3.476907
+   ],
+   "median": 3.477182,
+   "min": 3.476848,
+   "max": 3.477657,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "per digit / 8 steps a digit / 16 live / + drain, burst, aligned rows, no den",
+   "unit": "cycles a pass",
+   "samples": [
+    32622.791906,
+    32624.859875,
+    32652.070906,
+    32638.76075,
+    32615.671063,
+    32590.516437,
+    38371.980812
+   ],
+   "median": 32624.859875,
+   "min": 32590.516437,
+   "max": 38371.980812,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "per digit / 8 steps a digit / 16 live / + drain, burst, aligned rows, no den / floor",
+   "unit": "x",
+   "samples": [
+    3.18582,
+    3.186021,
+    3.188679,
+    3.187379,
+    3.185124,
+    3.182668,
+    3.747264
+   ],
+   "median": 3.186021,
+   "min": 3.182668,
+   "max": 3.747264,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "per digit / 8 steps a digit / 16 live / + drain, spread, aligned rows, no den",
+   "unit": "cycles a pass",
+   "samples": [
+    35838.53625,
+    35845.240094,
+    35846.424688,
+    35851.883219,
+    35848.646031,
+    35844.997156,
+    35851.599156
+   ],
+   "median": 35846.424688,
+   "min": 35838.53625,
+   "max": 35851.883219,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "per digit / 8 steps a digit / 16 live / + drain, spread, aligned rows, no den / floor",
+   "unit": "x",
+   "samples": [
+    3.499857,
+    3.500512,
+    3.500627,
+    3.50116,
+    3.500844,
+    3.500488,
+    3.501133
+   ],
+   "median": 3.500627,
+   "min": 3.499857,
+   "max": 3.50116,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "per digit / 2 steps a digit / 16 live / steps alone",
+   "unit": "cycles a pass",
+   "samples": [
+    4463.45375,
+    4462.830875,
+    4465.941375,
+    4461.691969,
+    4461.76425,
+    4464.766219,
+    4463.966594
+   ],
+   "median": 4463.45375,
+   "min": 4461.691969,
+   "max": 4465.941375,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "per digit / 2 steps a digit / 16 live / steps alone / floor",
+   "unit": "x",
+   "samples": [
+    1.743537,
+    1.743293,
+    1.744508,
+    1.742848,
+    1.742877,
+    1.744049,
+    1.743737
+   ],
+   "median": 1.743537,
+   "min": 1.742848,
+   "max": 1.744508,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "per digit / 2 steps a digit / 16 live / + panel adds",
+   "unit": "cycles a pass",
+   "samples": [
+    8286.993469,
+    8286.061906,
+    8284.83125,
+    8283.487156,
+    8270.813562,
+    8285.016406,
+    8280.938844
+   ],
+   "median": 8284.83125,
+   "min": 8270.813562,
+   "max": 8286.993469,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "per digit / 2 steps a digit / 16 live / + panel adds / floor",
+   "unit": "x",
+   "samples": [
+    3.237107,
+    3.236743,
+    3.236262,
+    3.235737,
+    3.230787,
+    3.236335,
+    3.234742
+   ],
+   "median": 3.236262,
+   "min": 3.230787,
+   "max": 3.237107,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "per digit / 2 steps a digit / 16 live / + drain, burst at the pass end",
+   "unit": "cycles a pass",
+   "samples": [
+    9912.476312,
+    9912.334406,
+    9912.72575,
+    9915.8795,
+    9912.8345,
+    9911.924844,
+    9910.1845
+   ],
+   "median": 9912.476312,
+   "min": 9910.1845,
+   "max": 9915.8795,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "per digit / 2 steps a digit / 16 live / + drain, burst at the pass end / floor",
+   "unit": "x",
+   "samples": [
+    3.872061,
+    3.872006,
+    3.872158,
+    3.87339,
+    3.872201,
+    3.871846,
+    3.871166
+   ],
+   "median": 3.872061,
+   "min": 3.871166,
+   "max": 3.87339,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "per digit / 2 steps a digit / 16 live / + drain, double panel, spread",
+   "unit": "cycles a pass",
+   "samples": [
+    10677.919656,
+    10668.546031,
+    10679.689375,
+    10672.574094,
+    10676.693969,
+    10677.486687,
+    10673.64975
+   ],
+   "median": 10676.693969,
+   "min": 10668.546031,
+   "max": 10679.689375,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "per digit / 2 steps a digit / 16 live / + drain, double panel, spread / floor",
+   "unit": "x",
+   "samples": [
+    4.171062,
+    4.167401,
+    4.171754,
+    4.168974,
+    4.170584,
+    4.170893,
+    4.169394
+   ],
+   "median": 4.170584,
+   "min": 4.167401,
+   "max": 4.171754,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "per digit / 2 steps a digit / 16 live / + drain, burst, aligned rows, no den",
+   "unit": "cycles a pass",
+   "samples": [
+    9313.223031,
+    9315.225437,
+    9310.594875,
+    9319.123219,
+    9312.742344,
+    9314.243,
+    9313.7595
+   ],
+   "median": 9313.7595,
+   "min": 9310.594875,
+   "max": 9319.123219,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "per digit / 2 steps a digit / 16 live / + drain, burst, aligned rows, no den / floor",
+   "unit": "x",
+   "samples": [
+    3.637978,
+    3.63876,
+    3.636951,
+    3.640283,
+    3.63779,
+    3.638376,
+    3.638187
+   ],
+   "median": 3.638187,
+   "min": 3.636951,
+   "max": 3.640283,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "per digit / 2 steps a digit / 16 live / + drain, spread, aligned rows, no den",
+   "unit": "cycles a pass",
+   "samples": [
+    9842.072813,
+    9843.569312,
+    9845.859188,
+    9843.638969,
+    9839.331156,
+    9846.521094,
+    9843.099062
+   ],
+   "median": 9843.569312,
+   "min": 9839.331156,
+   "max": 9846.521094,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "per digit / 2 steps a digit / 16 live / + drain, spread, aligned rows, no den / floor",
+   "unit": "x",
+   "samples": [
+    3.84456,
+    3.845144,
+    3.846039,
+    3.845171,
+    3.843489,
+    3.846297,
+    3.844961
+   ],
+   "median": 3.845144,
+   "min": 3.843489,
+   "max": 3.846297,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "per digit / 1 steps a digit / 8 live / steps alone",
+   "unit": "cycles a pass",
+   "samples": [
+    1664.210406,
+    1661.306187,
+    1657.772813,
+    1663.771031,
+    1662.593937,
+    1661.735469,
+    1661.490031
+   ],
+   "median": 1661.735469,
+   "min": 1657.772813,
+   "max": 1664.210406,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "per digit / 1 steps a digit / 8 live / steps alone / floor",
+   "unit": "x",
+   "samples": [
+    1.300164,
+    1.297895,
+    1.295135,
+    1.299821,
+    1.298902,
+    1.298231,
+    1.298039
+   ],
+   "median": 1.298231,
+   "min": 1.295135,
+   "max": 1.300164,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "per digit / 1 steps a digit / 8 live / + panel adds",
+   "unit": "cycles a pass",
+   "samples": [
+    3324.653969,
+    3307.234469,
+    3299.524406,
+    3360.839969,
+    3334.702844,
+    3336.497188,
+    3321.55475
+   ],
+   "median": 3324.653969,
+   "min": 3299.524406,
+   "max": 3360.839969,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "per digit / 1 steps a digit / 8 live / + panel adds / floor",
+   "unit": "x",
+   "samples": [
+    2.597386,
+    2.583777,
+    2.577753,
+    2.625656,
+    2.605237,
+    2.606638,
+    2.594965
+   ],
+   "median": 2.597386,
+   "min": 2.577753,
+   "max": 2.625656,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "per digit / 1 steps a digit / 8 live / + drain, burst at the pass end",
+   "unit": "cycles a pass",
+   "samples": [
+    5580.824125,
+    5556.418906,
+    5556.752531,
+    5732.948562,
+    5627.494437,
+    5627.220531,
+    5566.985219
+   ],
+   "median": 5580.824125,
+   "min": 5556.418906,
+   "max": 5732.948562,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "per digit / 1 steps a digit / 8 live / + drain, burst at the pass end / floor",
+   "unit": "x",
+   "samples": [
+    4.360019,
+    4.340952,
+    4.341213,
+    4.478866,
+    4.39648,
+    4.396266,
+    4.349207
+   ],
+   "median": 4.360019,
+   "min": 4.340952,
+   "max": 4.478866,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "per digit / 1 steps a digit / 8 live / + drain, double panel, spread",
+   "unit": "cycles a pass",
+   "samples": [
+    5784.127125,
+    5825.826406,
+    5787.921813,
+    5788.729313,
+    6016.896313,
+    5834.957969,
+    5774.784281
+   ],
+   "median": 5788.729313,
+   "min": 5774.784281,
+   "max": 6016.896313,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "per digit / 1 steps a digit / 8 live / + drain, double panel, spread / floor",
+   "unit": "x",
+   "samples": [
+    4.518849,
+    4.551427,
+    4.521814,
+    4.522445,
+    4.7007,
+    4.558561,
+    4.51155
+   ],
+   "median": 4.522445,
+   "min": 4.51155,
+   "max": 4.7007,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "per digit / 1 steps a digit / 8 live / + drain, burst, aligned rows, no den",
+   "unit": "cycles a pass",
+   "samples": [
+    4301.368906,
+    4300.138375,
+    4307.004469,
+    4306.494437,
+    4302.575781,
+    4306.041594,
+    4311.262813
+   ],
+   "median": 4306.041594,
+   "min": 4300.138375,
+   "max": 4311.262813,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "per digit / 1 steps a digit / 8 live / + drain, burst, aligned rows, no den / floor",
+   "unit": "x",
+   "samples": [
+    3.360444,
+    3.359483,
+    3.364847,
+    3.364449,
+    3.361387,
+    3.364095,
+    3.368174
+   ],
+   "median": 3.364095,
+   "min": 3.359483,
+   "max": 3.368174,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "per digit / 1 steps a digit / 8 live / + drain, spread, aligned rows, no den",
+   "unit": "cycles a pass",
+   "samples": [
+    4727.3785,
+    4723.738531,
+    4724.065281,
+    4730.543906,
+    4722.085781,
+    4726.070312,
+    4718.435344
+   ],
+   "median": 4724.065281,
+   "min": 4718.435344,
+   "max": 4730.543906,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "per digit / 1 steps a digit / 8 live / + drain, spread, aligned rows, no den / floor",
+   "unit": "x",
+   "samples": [
+    3.693264,
+    3.690421,
+    3.690676,
+    3.695737,
+    3.68913,
+    3.692242,
+    3.686278
+   ],
+   "median": 3.690676,
+   "min": 3.686278,
+   "max": 3.695737,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void read_step::read<(int)5, (int)0, (int)1, (int)8>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "regs": 245,
+   "ops": {
+    "LDG.E": 208,
+    "IMAD": 102,
+    "IADD3": 87,
+    "PRMT": 84,
+    "F2I.S16.F16.NTZ": 80,
+    "LOP3.LUT": 75,
+    "BRA": 73,
+    "BSSY": 43,
+    "BSYNC": 43,
+    "HMMA.16816.F16": 40,
+    "HMUL2": 40,
+    "ATOMS.ADD": 40
+   }
+  },
+  "void read_step::read<(int)4, (int)0, (int)1, (int)8>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "regs": 243,
+   "ops": {
+    "LDG.E": 208,
+    "PRMT": 84,
+    "F2I.S16.F16.NTZ": 80,
+    "IADD3": 75,
+    "BRA": 55,
+    "BSSY": 44,
+    "BSYNC": 44,
+    "HMMA.16816.F16": 40,
+    "HMUL2": 40,
+    "ATOMS.ADD": 40,
+    "IMAD": 37,
+    "IMAD.MOV.U32": 32
+   }
+  },
+  "void read_step::read<(int)3, (int)0, (int)1, (int)8>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "regs": 245,
+   "ops": {
+    "LDG.E": 208,
+    "IMAD": 118,
+    "IADD3": 99,
+    "PRMT": 84,
+    "F2I.S16.F16.NTZ": 80,
+    "BRA": 79,
+    "LOP3.LUT": 65,
+    "BSSY": 49,
+    "BSYNC": 49,
+    "IMAD.MOV.U32": 40,
+    "IMAD.U32": 40,
+    "HMMA.16816.F16": 40
+   }
+  },
+  "void read_step::read<(int)2, (int)0, (int)1, (int)8>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "regs": 243,
+   "ops": {
+    "LDG.E": 208,
+    "PRMT": 84,
+    "F2I.S16.F16.NTZ": 80,
+    "IADD3": 77,
+    "BRA": 56,
+    "BSSY": 45,
+    "BSYNC": 45,
+    "HMMA.16816.F16": 40,
+    "HMUL2": 40,
+    "ATOMS.ADD": 40,
+    "IMAD": 39,
+    "IMAD.MOV.U32": 33
+   }
+  },
+  "void read_step::read<(int)1, (int)0, (int)1, (int)8>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "regs": 241,
+   "ops": {
+    "LDG.E": 208,
+    "PRMT": 84,
+    "F2I.S16.F16.NTZ": 80,
+    "IADD3": 74,
+    "BRA": 54,
+    "BSSY": 44,
+    "BSYNC": 44,
+    "HMMA.16816.F16": 40,
+    "HMUL2": 40,
+    "ATOMS.ADD": 40,
+    "IMAD.MOV.U32": 33,
+    "IMAD": 32
+   }
+  },
+  "void read_step::read<(int)0, (int)0, (int)1, (int)8>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "regs": 254,
+   "ops": {
+    "LDG.E": 208,
+    "IADD3": 85,
+    "LOP3.LUT": 46,
+    "PRMT": 44,
+    "HMMA.16816.F16": 40,
+    "HFMA2": 32,
+    "IMAD.U32": 30,
+    "IMAD.MOV.U32": 24,
+    "ISETP.NE.AND": 20,
+    "IMAD": 16,
+    "IMAD.SHL.U32": 16,
+    "FMUL": 16
+   }
+  },
+  "void read_step::read<(int)5, (int)0, (int)2, (int)16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "regs": 245,
+   "ops": {
+    "LDG.E": 208,
+    "IMAD": 110,
+    "IADD3": 92,
+    "PRMT": 84,
+    "F2I.S16.F16.NTZ": 80,
+    "BRA": 78,
+    "LOP3.LUT": 75,
+    "IMAD.MOV.U32": 47,
+    "BSSY": 43,
+    "BSYNC": 43,
+    "HMMA.16816.F16": 40,
+    "HMUL2": 40
+   }
+  },
+  "void read_step::read<(int)4, (int)0, (int)2, (int)16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "regs": 243,
+   "ops": {
+    "LDG.E": 208,
+    "PRMT": 84,
+    "F2I.S16.F16.NTZ": 80,
+    "IADD3": 79,
+    "BRA": 59,
+    "BSSY": 44,
+    "BSYNC": 44,
+    "IMAD": 41,
+    "HMMA.16816.F16": 40,
+    "HMUL2": 40,
+    "ATOMS.ADD": 40,
+    "LOP3.LUT": 38
+   }
+  },
+  "void read_step::read<(int)3, (int)0, (int)2, (int)16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "regs": 245,
+   "ops": {
+    "LDG.E": 208,
+    "IMAD": 126,
+    "IADD3": 104,
+    "BRA": 84,
+    "PRMT": 84,
+    "F2I.S16.F16.NTZ": 80,
+    "LOP3.LUT": 64,
+    "BSSY": 49,
+    "BSYNC": 49,
+    "IMAD.MOV.U32": 48,
+    "IMAD.U32": 40,
+    "HMMA.16816.F16": 40
+   }
+  },
+  "void read_step::read<(int)2, (int)0, (int)2, (int)16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "regs": 243,
+   "ops": {
+    "LDG.E": 208,
+    "PRMT": 84,
+    "IADD3": 81,
+    "F2I.S16.F16.NTZ": 80,
+    "BRA": 60,
+    "BSSY": 45,
+    "BSYNC": 45,
+    "IMAD": 43,
+    "HMMA.16816.F16": 40,
+    "HMUL2": 40,
+    "ATOMS.ADD": 40,
+    "LOP3.LUT": 37
+   }
+  },
+  "void read_step::read<(int)1, (int)0, (int)2, (int)16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "regs": 243,
+   "ops": {
+    "LDG.E": 208,
+    "PRMT": 84,
+    "F2I.S16.F16.NTZ": 80,
+    "IADD3": 78,
+    "BRA": 58,
+    "BSSY": 44,
+    "BSYNC": 44,
+    "IMAD.MOV.U32": 41,
+    "HMMA.16816.F16": 40,
+    "HMUL2": 40,
+    "ATOMS.ADD": 40,
+    "IMAD": 36
+   }
+  },
+  "void read_step::read<(int)0, (int)0, (int)2, (int)16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "regs": 242,
+   "ops": {
+    "LDG.E": 208,
+    "IADD3": 87,
+    "LOP3.LUT": 49,
+    "PRMT": 44,
+    "HMMA.16816.F16": 40,
+    "IMAD.U32": 32,
+    "HFMA2": 32,
+    "IMAD.MOV.U32": 24,
+    "IMAD": 20,
+    "ISETP.NE.AND": 20,
+    "IMAD.SHL.U32": 19,
+    "BRA": 18
+   }
+  },
+  "void read_step::read<(int)5, (int)0, (int)8, (int)16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "regs": 245,
+   "ops": {
+    "LDG.E": 208,
+    "IMAD": 110,
+    "IADD3": 92,
+    "PRMT": 84,
+    "F2I.S16.F16.NTZ": 80,
+    "BRA": 78,
+    "LOP3.LUT": 75,
+    "IMAD.MOV.U32": 43,
+    "BSSY": 43,
+    "BSYNC": 43,
+    "HMMA.16816.F16": 40,
+    "HMUL2": 40
+   }
+  },
+  "void read_step::read<(int)4, (int)0, (int)8, (int)16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "regs": 243,
+   "ops": {
+    "LDG.E": 208,
+    "PRMT": 84,
+    "F2I.S16.F16.NTZ": 80,
+    "IADD3": 79,
+    "BRA": 59,
+    "BSSY": 44,
+    "BSYNC": 44,
+    "IMAD": 41,
+    "HMMA.16816.F16": 40,
+    "HMUL2": 40,
+    "ATOMS.ADD": 40,
+    "LOP3.LUT": 38
+   }
+  },
+  "void read_step::read<(int)3, (int)0, (int)8, (int)16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "regs": 245,
+   "ops": {
+    "LDG.E": 208,
+    "IMAD": 126,
+    "IADD3": 104,
+    "BRA": 84,
+    "PRMT": 84,
+    "F2I.S16.F16.NTZ": 80,
+    "LOP3.LUT": 64,
+    "BSSY": 49,
+    "BSYNC": 49,
+    "IMAD.MOV.U32": 44,
+    "IMAD.U32": 40,
+    "HMMA.16816.F16": 40
+   }
+  },
+  "void read_step::read<(int)2, (int)0, (int)8, (int)16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "regs": 243,
+   "ops": {
+    "LDG.E": 208,
+    "PRMT": 84,
+    "IADD3": 81,
+    "F2I.S16.F16.NTZ": 80,
+    "BRA": 60,
+    "BSSY": 45,
+    "BSYNC": 45,
+    "IMAD": 43,
+    "HMMA.16816.F16": 40,
+    "HMUL2": 40,
+    "ATOMS.ADD": 40,
+    "LOP3.LUT": 37
+   }
+  },
+  "void read_step::read<(int)1, (int)0, (int)8, (int)16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "regs": 241,
+   "ops": {
+    "LDG.E": 208,
+    "PRMT": 84,
+    "F2I.S16.F16.NTZ": 80,
+    "IADD3": 78,
+    "BRA": 58,
+    "BSSY": 44,
+    "BSYNC": 44,
+    "HMMA.16816.F16": 40,
+    "HMUL2": 40,
+    "ATOMS.ADD": 40,
+    "IMAD.MOV.U32": 37,
+    "IMAD": 36
+   }
+  },
+  "void read_step::read<(int)0, (int)0, (int)8, (int)16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "regs": 242,
+   "ops": {
+    "LDG.E": 208,
+    "IADD3": 87,
+    "LOP3.LUT": 49,
+    "PRMT": 44,
+    "HMMA.16816.F16": 40,
+    "IMAD.U32": 32,
+    "HFMA2": 32,
+    "ISETP.NE.AND": 24,
+    "IMAD.MOV.U32": 20,
+    "IMAD": 20,
+    "IMAD.SHL.U32": 19,
+    "BRA": 18
+   }
+  },
+  "void read_step::read<(int)5, (int)1, (int)8, (int)16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "regs": 240,
+   "ops": {
+    "LDG.E": 208,
+    "IADD3": 83,
+    "IMAD": 46,
+    "LOP3.LUT": 44,
+    "HMMA.16816.F16": 40,
+    "BRA": 33,
+    "IMAD.MOV.U32": 21,
+    "PRMT": 21,
+    "F2I.S16.F16.NTZ": 20,
+    "NOP": 19,
+    "IMAD.SHL.U32": 17,
+    "BSSY": 13
+   }
+  },
+  "void read_step::read<(int)4, (int)1, (int)8, (int)16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "regs": 240,
+   "ops": {
+    "LDG.E": 208,
+    "IADD3": 76,
+    "HMMA.16816.F16": 40,
+    "LOP3.LUT": 24,
+    "IMAD": 23,
+    "BRA": 23,
+    "PRMT": 21,
+    "F2I.S16.F16.NTZ": 20,
+    "IMAD.MOV.U32": 19,
+    "BSSY": 14,
+    "BSYNC": 14,
+    "NOP": 13
+   }
+  },
+  "void read_step::read<(int)3, (int)1, (int)8, (int)16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "regs": 240,
+   "ops": {
+    "LDG.E": 208,
+    "IADD3": 89,
+    "IMAD": 53,
+    "LOP3.LUT": 41,
+    "HMMA.16816.F16": 40,
+    "BRA": 36,
+    "IMAD.MOV.U32": 22,
+    "PRMT": 21,
+    "NOP": 20,
+    "F2I.S16.F16.NTZ": 20,
+    "BSSY": 16,
+    "BSYNC": 16
+   }
+  },
+  "void read_step::read<(int)2, (int)1, (int)8, (int)16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "regs": 240,
+   "ops": {
+    "LDG.E": 208,
+    "IADD3": 78,
+    "HMMA.16816.F16": 40,
+    "IMAD": 25,
+    "BRA": 24,
+    "LOP3.LUT": 23,
+    "PRMT": 21,
+    "IMAD.MOV.U32": 20,
+    "F2I.S16.F16.NTZ": 20,
+    "BSSY": 15,
+    "BSYNC": 15,
+    "HMUL2": 10
+   }
+  },
+  "void read_step::read<(int)1, (int)1, (int)8, (int)16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "regs": 241,
+   "ops": {
+    "LDG.E": 208,
+    "IADD3": 75,
+    "HMMA.16816.F16": 40,
+    "BRA": 22,
+    "PRMT": 21,
+    "IMAD.MOV.U32": 20,
+    "LOP3.LUT": 20,
+    "F2I.S16.F16.NTZ": 20,
+    "IMAD": 18,
+    "BSSY": 14,
+    "BSYNC": 14,
+    "HMUL2": 10
+   }
+  },
+  "void read_step::read<(int)0, (int)1, (int)8, (int)16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "regs": 242,
+   "ops": {
+    "LDG.E": 208,
+    "IADD3": 78,
+    "HMMA.16816.F16": 40,
+    "IMAD.MOV.U32": 19,
+    "LOP3.LUT": 16,
+    "NOP": 15,
+    "BRA": 12,
+    "PRMT": 11,
+    "IMAD": 8,
+    "IMAD.U32": 8,
+    "HFMA2": 8,
+    "IMAD.SHL.U32": 7
+   }
+  }
+ }
+}
