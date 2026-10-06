@@ -1,0 +1,229 @@
+{
+ "experiment": "den_sweep",
+ "question": "the carry's window-aligned denominator depends only on routing (den(t) = the read leaf product against the write mass of the windows before t's -- tests/oracle/reference.py), so a separate pass could compute it ahead of the carry and let the carry's readout add at a common unit. What does that pass cost a window at sparse routing, against the carry's CTA-windows?",
+ "arch": "sm_86",
+ "device": "NVIDIA GeForce RTX 3080 Ti",
+ "driver": "595.95",
+ "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
+ "git": {
+  "sha": "42a56ca49f757cd24185a7977d8c741ee3c1158f",
+  "dirty": true
+ },
+ "reps": 7,
+ "date": "2026-10-06T04:13:21+00:00",
+ "utilization_before": 2,
+ "results": [
+  {
+   "lab": "result",
+   "name": "4 live level-R write digits, 4 live level-S read digits a token",
+   "unit": "cycles a window",
+   "samples": [
+    9828.555762,
+    9831.674805,
+    9829.351562,
+    9831.173828,
+    9825.09668,
+    9835.244238,
+    9825.897266
+   ],
+   "median": 9829.351562,
+   "min": 9825.09668,
+   "max": 9835.244238,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 live level-R write digits, 4 live level-S read digits a token / den alone",
+   "unit": "cycles a window",
+   "samples": [
+    6964.040234,
+    6962.829004,
+    6993.768262,
+    6992.138574,
+    6981.31709,
+    6987.98125,
+    6980.154785
+   ],
+   "median": 6981.31709,
+   "min": 6962.829004,
+   "max": 6993.768262,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 live level-R write digits, 4 live level-S read digits a token / writes alone",
+   "unit": "cycles a window",
+   "samples": [
+    5777.850098,
+    5775.805957,
+    5773.809082,
+    5780.608203,
+    5777.256543,
+    5779.415332,
+    9301.899707
+   ],
+   "median": 5777.850098,
+   "min": 5773.809082,
+   "max": 9301.899707,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "4 live level-R write digits, 4 live level-S read digits a token / neither",
+   "unit": "cycles a window",
+   "samples": [
+    2710.077148,
+    2722.487012,
+    2722.418457,
+    2722.06416,
+    2798.382227,
+    2816.518262,
+    2729.258887
+   ],
+   "median": 2722.487012,
+   "min": 2710.077148,
+   "max": 2816.518262,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "16 live level-R write digits, 16 live level-S read digits a token",
+   "unit": "cycles a window",
+   "samples": [
+    25110.727148,
+    25105.219043,
+    25330.250684,
+    25034.404492,
+    25083.224805,
+    25099.04209,
+    25302.328711
+   ],
+   "median": 25105.219043,
+   "min": 25034.404492,
+   "max": 25330.250684,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 live level-R write digits, 256 live level-S read digits a token",
+   "unit": "cycles a window",
+   "samples": [
+    19514.788086,
+    19571.431348,
+    27792.969922,
+    19613.61084,
+    19559.233203,
+    19574.025391,
+    19608.880566
+   ],
+   "median": 19574.025391,
+   "min": 19514.788086,
+   "max": 27792.969922,
+   "unstable": true
+  }
+ ],
+ "kernels": {
+  "void den_sweep::sweep<(int)4, (int)256, (int)0>(int, den_sweep::Pool, float *, long long *, int *)": {
+   "regs": 244,
+   "ops": {
+    "IMAD.MOV.U32": 705,
+    "SEL": 182,
+    "IADD3": 156,
+    "PRMT": 148,
+    "LOP3.LUT": 129,
+    "MOV": 129,
+    "HADD2": 128,
+    "IMAD.IADD": 123,
+    "IMAD.U32": 119,
+    "ISETP.GE.AND": 88,
+    "ISETP.GT.AND": 68,
+    "LDS": 66
+   }
+  },
+  "void den_sweep::sweep<(int)16, (int)16, (int)0>(int, den_sweep::Pool, float *, long long *, int *)": {
+   "regs": 244,
+   "ops": {
+    "IMAD.MOV.U32": 705,
+    "SEL": 182,
+    "IADD3": 154,
+    "PRMT": 148,
+    "LOP3.LUT": 129,
+    "HADD2": 128,
+    "MOV": 127,
+    "IMAD.IADD": 125,
+    "IMAD.U32": 119,
+    "ISETP.GE.AND": 88,
+    "ISETP.GT.AND": 68,
+    "LDS": 66
+   }
+  },
+  "void den_sweep::sweep<(int)4, (int)4, (int)3>(int, den_sweep::Pool, float *, long long *, int *)": {
+   "regs": 32,
+   "ops": {
+    "LDS": 30,
+    "IMAD.SHL.U32": 28,
+    "SHF.R.S32.HI": 20,
+    "LOP3.LUT": 19,
+    "IADD3": 19,
+    "BRA": 19,
+    "STS.U16": 16,
+    "IMAD.MOV.U32": 14,
+    "LEA": 14,
+    "LEA.HI.X": 14,
+    "IMAD": 14,
+    "LDGSTS.E.BYPASS.128": 11
+   }
+  },
+  "void den_sweep::sweep<(int)4, (int)4, (int)2>(int, den_sweep::Pool, float *, long long *, int *)": {
+   "regs": 63,
+   "ops": {
+    "IMAD.MOV.U32": 55,
+    "IMAD.SHL.U32": 34,
+    "LDS": 32,
+    "LOP3.LUT": 27,
+    "SHF.R.S32.HI": 22,
+    "IADD3": 22,
+    "BRA": 22,
+    "IMAD": 21,
+    "LEA": 16,
+    "LEA.HI.X": 16,
+    "STS.U16": 16,
+    "HADD2.F32": 16
+   }
+  },
+  "void den_sweep::sweep<(int)4, (int)4, (int)1>(int, den_sweep::Pool, float *, long long *, int *)": {
+   "regs": 184,
+   "ops": {
+    "IMAD.MOV.U32": 350,
+    "SEL": 140,
+    "IADD3": 115,
+    "IMAD.IADD": 102,
+    "LOP3.LUT": 92,
+    "PRMT": 68,
+    "IMAD.U32": 65,
+    "HADD2": 64,
+    "LDS": 62,
+    "ISETP.GE.AND": 61,
+    "ISETP.GT.AND": 60,
+    "CS2R": 58
+   }
+  },
+  "void den_sweep::sweep<(int)4, (int)4, (int)0>(int, den_sweep::Pool, float *, long long *, int *)": {
+   "regs": 244,
+   "ops": {
+    "IMAD.MOV.U32": 705,
+    "SEL": 182,
+    "IADD3": 156,
+    "PRMT": 148,
+    "LOP3.LUT": 129,
+    "MOV": 129,
+    "HADD2": 128,
+    "IMAD.IADD": 123,
+    "IMAD.U32": 119,
+    "ISETP.GE.AND": 88,
+    "ISETP.GT.AND": 68,
+    "LDS": 66
+   }
+  }
+ }
+}
