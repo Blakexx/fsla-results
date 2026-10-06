@@ -3,10 +3,10 @@
  "question": "the carry's window-aligned denominator depends only on routing (den(t) = the read leaf product against the write mass of the windows before t's -- tests/oracle/reference.py), so a pass running beside the carry could hand its readout a common unit. On the tensor cores, what does a CTA of 64 level-S rows x SPAN level-R digits (256: 4 a head; 128: 8 a head) cost a window, against the carry's ~20K?",
  "arch": "sm_86",
  "git": {
-  "sha": "0db7bf1e7d91cf79c46c36b2b8fc0b1382b90dac",
+  "sha": "ece3d4d6e983de05f55228752a2d71b366781df7",
   "dirty": true
  },
- "date": "2026-10-06T17:29:04+00:00",
+ "date": "2026-10-06T18:07:22+00:00",
  "metrics": [
   "smsp__inst_executed.sum",
   "smsp__inst_executed_pipe_tensor.sum",
@@ -15,58 +15,58 @@
  ],
  "kernels": {
   "void sweep<256, 4, 4, 0>(int, Pool, float *, long long *, int *)": {
-   "l1tex__data_bank_conflicts_pipe_lsu_mem_shared.sum": 2274172.0,
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 4935084.0,
-   "smsp__inst_executed.sum": 13417123.0,
-   "smsp__inst_executed_pipe_tensor.sum": 670976.0
+   "l1tex__data_bank_conflicts_pipe_lsu_mem_shared.sum": 950460.0,
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 3331136.0,
+   "smsp__inst_executed.sum": 11519398.0,
+   "smsp__inst_executed_pipe_tensor.sum": 585600.0
   },
   "void sweep<256, 4, 4, 1>(int, Pool, float *, long long *, int *)": {
-   "l1tex__data_bank_conflicts_pipe_lsu_mem_shared.sum": 396897.5,
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 1025059.0,
-   "smsp__inst_executed.sum": 7117419.0,
-   "smsp__inst_executed_pipe_tensor.sum": 335744.0
+   "l1tex__data_bank_conflicts_pipe_lsu_mem_shared.sum": 265660.5,
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 901790.5,
+   "smsp__inst_executed.sum": 6211830.0,
+   "smsp__inst_executed_pipe_tensor.sum": 293248.0
   },
   "void sweep<256, 4, 4, 2>(int, Pool, float *, long long *, int *)": {
-   "l1tex__data_bank_conflicts_pipe_lsu_mem_shared.sum": 2272899.0,
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 4715143.5,
-   "smsp__inst_executed.sum": 8337338.0,
-   "smsp__inst_executed_pipe_tensor.sum": 335232.0
+   "l1tex__data_bank_conflicts_pipe_lsu_mem_shared.sum": 818524.5,
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 2962898.0,
+   "smsp__inst_executed.sum": 7363310.0,
+   "smsp__inst_executed_pipe_tensor.sum": 292352.0
   },
   "void sweep<256, 4, 4, 3>(int, Pool, float *, long long *, int *)": {
-   "l1tex__data_bank_conflicts_pipe_lsu_mem_shared.sum": 395450.5,
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 786269.5,
-   "smsp__inst_executed.sum": 1892182.0,
+   "l1tex__data_bank_conflicts_pipe_lsu_mem_shared.sum": 133249.0,
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 522034.0,
+   "smsp__inst_executed.sum": 1910010.0,
    "smsp__inst_executed_pipe_tensor.sum": 0.0
   },
   "void sweep<256, 16, 16, 0>(int, Pool, float *, long long *, int *)": {
-   "l1tex__data_bank_conflicts_pipe_lsu_mem_shared.sum": 7289618.0,
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 14608319.0,
-   "smsp__inst_executed.sum": 37445976.0,
-   "smsp__inst_executed_pipe_tensor.sum": 2243968.0
+   "l1tex__data_bank_conflicts_pipe_lsu_mem_shared.sum": 1801053.0,
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 8851170.0,
+   "smsp__inst_executed.sum": 32059118.0,
+   "smsp__inst_executed_pipe_tensor.sum": 2158208.0
   },
   "void sweep<128, 4, 4, 0>(int, Pool, float *, long long *, int *)": {
-   "l1tex__data_bank_conflicts_pipe_lsu_mem_shared.sum": 2279088.0,
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 5398473.0,
-   "smsp__inst_executed.sum": 17245218.0,
-   "smsp__inst_executed_pipe_tensor.sum": 670976.0
+   "l1tex__data_bank_conflicts_pipe_lsu_mem_shared.sum": 954035.0,
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 3765655.0,
+   "smsp__inst_executed.sum": 15358408.0,
+   "smsp__inst_executed_pipe_tensor.sum": 585600.0
   },
   "void sweep<128, 4, 4, 1>(int, Pool, float *, long long *, int *)": {
-   "l1tex__data_bank_conflicts_pipe_lsu_mem_shared.sum": 401814.5,
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 1411525.0,
-   "smsp__inst_executed.sum": 10895250.0,
-   "smsp__inst_executed_pipe_tensor.sum": 335744.0
+   "l1tex__data_bank_conflicts_pipe_lsu_mem_shared.sum": 270106.5,
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 1280256.5,
+   "smsp__inst_executed.sum": 9898280.0,
+   "smsp__inst_executed_pipe_tensor.sum": 293248.0
   },
   "void sweep<128, 4, 4, 2>(int, Pool, float *, long long *, int *)": {
-   "l1tex__data_bank_conflicts_pipe_lsu_mem_shared.sum": 2275079.0,
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 5007367.0,
-   "smsp__inst_executed.sum": 10322420.0,
-   "smsp__inst_executed_pipe_tensor.sum": 335232.0
+   "l1tex__data_bank_conflicts_pipe_lsu_mem_shared.sum": 820453.0,
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 3242906.5,
+   "smsp__inst_executed.sum": 9303916.0,
+   "smsp__inst_executed_pipe_tensor.sum": 292352.0
   },
   "void sweep<128, 16, 16, 0>(int, Pool, float *, long long *, int *)": {
-   "l1tex__data_bank_conflicts_pipe_lsu_mem_shared.sum": 7309930.0,
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 15503130.0,
-   "smsp__inst_executed.sum": 45256712.0,
-   "smsp__inst_executed_pipe_tensor.sum": 2243968.0
+   "l1tex__data_bank_conflicts_pipe_lsu_mem_shared.sum": 1821252.0,
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 9697063.0,
+   "smsp__inst_executed.sum": 40443784.0,
+   "smsp__inst_executed_pipe_tensor.sum": 2158208.0
   }
  }
 }
