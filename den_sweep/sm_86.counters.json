@@ -1,75 +1,62 @@
 {
  "experiment": "den_sweep",
- "question": "the carry's window-aligned denominator depends only on routing (den(t) = the read leaf product against the write mass of the windows before t's -- tests/oracle/reference.py), so a separate pass could compute it ahead of the carry and let the carry's readout add at a common unit. What does that pass cost a window at sparse routing, against the carry's CTA-windows?",
+ "question": "the carry's window-aligned denominator depends only on routing (den(t) = the read leaf product against the write mass of the windows before t's -- tests/oracle/reference.py), so a pass running beside the carry could hand its readout a common unit. With lanes on each half's dense level and loops on its sparse level, what does a CTA of 64 level-S rows x 256 level-R digits (4 a head) cost a window, against the carry's ~20K, digit-major or token-major?",
  "arch": "sm_86",
  "git": {
-  "sha": "42a56ca49f757cd24185a7977d8c741ee3c1158f",
+  "sha": "2952dbcc33e50851844f002b96d0d3567fb7c074",
   "dirty": true
  },
- "date": "2026-10-06T04:13:36+00:00",
+ "date": "2026-10-06T06:04:09+00:00",
  "metrics": [
-  "dram__bytes_read.sum",
-  "dram__throughput.avg.pct_of_peak_sustained_elapsed",
-  "gpu__time_duration.sum",
-  "sm__cycles_elapsed.avg",
-  "smsp__inst_executed_pipe_tensor.sum",
   "smsp__inst_executed.sum",
-  "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum"
+  "smsp__issue_active.avg.pct_of_peak_sustained_active",
+  "dram__bytes_read.sum"
  ],
  "kernels": {
-  "void sweep<4, 4, 0>(int, Pool, float *, long long *, int *)": {
-   "dram__bytes_read.sum": 376329984.0,
-   "dram__throughput.avg.pct_of_peak_sustained_elapsed": 43.63,
-   "gpu__time_duration.sum": 983392.0,
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 41525930.0,
-   "sm__cycles_elapsed.avg": 1342090.48,
-   "smsp__inst_executed.sum": 185901976.0,
-   "smsp__inst_executed_pipe_tensor.sum": 2552320.0
+  "void sweep<0, 4, 4, 0>(int, Pool, float *, long long *, int *)": {
+   "dram__bytes_read.sum": 76076160.0,
+   "smsp__inst_executed.sum": 41809204.0,
+   "smsp__issue_active.avg.pct_of_peak_sustained_active": 39.11
   },
-  "void sweep<4, 4, 1>(int, Pool, float *, long long *, int *)": {
-   "dram__bytes_read.sum": 391545600.0,
-   "dram__throughput.avg.pct_of_peak_sustained_elapsed": 63.185,
-   "gpu__time_duration.sum": 703872.0,
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 12491049.0,
-   "sm__cycles_elapsed.avg": 960564.1,
-   "smsp__inst_executed.sum": 80094692.0,
-   "smsp__inst_executed_pipe_tensor.sum": 2552320.0
+  "void sweep<0, 4, 4, 1>(int, Pool, float *, long long *, int *)": {
+   "dram__bytes_read.sum": 60003072.0,
+   "smsp__inst_executed.sum": 24739548.0,
+   "smsp__issue_active.avg.pct_of_peak_sustained_active": 40.19
   },
-  "void sweep<4, 4, 2>(int, Pool, float *, long long *, int *)": {
-   "dram__bytes_read.sum": 183331776.0,
-   "dram__throughput.avg.pct_of_peak_sustained_elapsed": 37.53,
-   "gpu__time_duration.sum": 550640.0,
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 35163383.0,
-   "sm__cycles_elapsed.avg": 751373.1599999999,
-   "smsp__inst_executed.sum": 108241152.0,
-   "smsp__inst_executed_pipe_tensor.sum": 0.0
+  "void sweep<0, 4, 4, 2>(int, Pool, float *, long long *, int *)": {
+   "dram__bytes_read.sum": 38318720.0,
+   "smsp__inst_executed.sum": 17298608.0,
+   "smsp__issue_active.avg.pct_of_peak_sustained_active": 38.275
   },
-  "void sweep<4, 4, 3>(int, Pool, float *, long long *, int *)": {
-   "dram__bytes_read.sum": 183424768.0,
-   "dram__throughput.avg.pct_of_peak_sustained_elapsed": 89.39,
-   "gpu__time_duration.sum": 231344.0,
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 5851145.0,
-   "sm__cycles_elapsed.avg": 315690.81999999995,
-   "smsp__inst_executed.sum": 15741120.0,
-   "smsp__inst_executed_pipe_tensor.sum": 0.0
+  "void sweep<0, 4, 4, 3>(int, Pool, float *, long long *, int *)": {
+   "dram__bytes_read.sum": 35918144.0,
+   "smsp__inst_executed.sum": 1456032.0,
+   "smsp__issue_active.avg.pct_of_peak_sustained_active": 22.740000000000002
   },
-  "void sweep<16, 16, 0>(int, Pool, float *, long long *, int *)": {
-   "dram__bytes_read.sum": 355557248.0,
-   "dram__throughput.avg.pct_of_peak_sustained_elapsed": 17.29,
-   "gpu__time_duration.sum": 2341216.0,
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 131079798.0,
-   "sm__cycles_elapsed.avg": 3189034.25,
-   "smsp__inst_executed.sum": 445844096.0,
-   "smsp__inst_executed_pipe_tensor.sum": 7015424.0
+  "void sweep<0, 16, 16, 0>(int, Pool, float *, long long *, int *)": {
+   "dram__bytes_read.sum": 101563520.0,
+   "smsp__inst_executed.sum": 128315408.0,
+   "smsp__issue_active.avg.pct_of_peak_sustained_active": 42.15
   },
-  "void sweep<4, 256, 0>(int, Pool, float *, long long *, int *)": {
-   "dram__bytes_read.sum": 353008512.0,
-   "dram__throughput.avg.pct_of_peak_sustained_elapsed": 21.72,
-   "gpu__time_duration.sum": 1838336.0,
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 61346506.0,
-   "sm__cycles_elapsed.avg": 2508795.83,
-   "smsp__inst_executed.sum": 325595392.0,
-   "smsp__inst_executed_pipe_tensor.sum": 10485760.0
+  "void sweep<1, 4, 4, 0>(int, Pool, float *, long long *, int *)": {
+   "dram__bytes_read.sum": 105724928.0,
+   "smsp__inst_executed.sum": 89049692.0,
+   "smsp__issue_active.avg.pct_of_peak_sustained_active": 28.39
+  },
+  "void sweep<1, 4, 4, 1>(int, Pool, float *, long long *, int *)": {
+   "dram__bytes_read.sum": 59952960.0,
+   "smsp__inst_executed.sum": 34081604.0,
+   "smsp__issue_active.avg.pct_of_peak_sustained_active": 37.315
+  },
+  "void sweep<1, 4, 4, 2>(int, Pool, float *, long long *, int *)": {
+   "dram__bytes_read.sum": 66611520.0,
+   "smsp__inst_executed.sum": 53200144.0,
+   "smsp__issue_active.avg.pct_of_peak_sustained_active": 25.43
+  },
+  "void sweep<1, 16, 16, 0>(int, Pool, float *, long long *, int *)": {
+   "dram__bytes_read.sum": 190931200.0,
+   "smsp__inst_executed.sum": 294967388.0,
+   "smsp__issue_active.avg.pct_of_peak_sustained_active": 28.96
   }
  }
 }
