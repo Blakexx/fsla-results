@@ -1,263 +1,333 @@
 {
  "experiment": "den_sweep",
- "question": "the carry's window-aligned denominator depends only on routing (den(t) = the read leaf product against the write mass of the windows before t's -- tests/oracle/reference.py), so a pass running beside the carry could hand its readout a common unit. With lanes on each half's dense level and loops on its sparse level, what does a CTA of 64 level-S rows x 256 level-R digits (4 a head) cost a window, against the carry's ~20K?",
+ "question": "the carry's window-aligned denominator depends only on routing (den(t) = the read leaf product against the write mass of the windows before t's -- tests/oracle/reference.py), so a pass running beside the carry could hand its readout a common unit. On the tensor cores, what does a CTA of 64 level-S rows x SPAN level-R digits (256: 4 a head; 128: 8 a head) cost a window, against the carry's ~20K?",
  "arch": "sm_86",
  "device": "NVIDIA GeForce RTX 3080 Ti",
  "driver": "595.95",
  "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
  "git": {
-  "sha": "673c2375c35eb686de88cce865c9109d8472ab23",
+  "sha": "0db7bf1e7d91cf79c46c36b2b8fc0b1382b90dac",
   "dirty": true
  },
  "reps": 7,
- "date": "2026-10-06T06:13:33+00:00",
- "utilization_before": 1,
+ "date": "2026-10-06T17:28:58+00:00",
+ "utilization_before": 2,
  "results": [
   {
    "lab": "result",
-   "name": "4 live level-R write digits, 4 live level-S read digits a token",
+   "name": "4 CTAs a head (64 x 256), 4 live level-R write digits, 4 live level-S read digits a token",
    "unit": "cycles a window",
    "samples": [
-    34507.460938,
-    34514.433594,
-    34505.765625,
-    34526.662109,
-    41949.492188,
-    41005.685547,
-    34514.740234
+    26458.119141,
+    26444.871094,
+    26420.117188,
+    26439.759766,
+    26440.548828,
+    26439.621094,
+    26429.662109
    ],
-   "median": 34514.740234,
-   "min": 34505.765625,
-   "max": 41949.492188,
-   "unstable": true
-  },
-  {
-   "lab": "result",
-   "name": "4 live level-R write digits, 4 live level-S read digits a token / den alone",
-   "unit": "cycles a window",
-   "samples": [
-    17786.582031,
-    17786.861328,
-    17781.990234,
-    17791.488281,
-    17782.648438,
-    17777.585938,
-    17804.371094
-   ],
-   "median": 17786.582031,
-   "min": 17777.585938,
-   "max": 17804.371094,
+   "median": 26439.759766,
+   "min": 26420.117188,
+   "max": 26458.119141,
    "unstable": false
   },
   {
    "lab": "result",
-   "name": "4 live level-R write digits, 4 live level-S read digits a token / writes alone",
+   "name": "4 CTAs a head (64 x 256), 4 live level-R write digits, 4 live level-S read digits a token / den alone",
    "unit": "cycles a window",
    "samples": [
-    26341.615234,
-    19964.443359,
-    19958.349609,
-    19956.939453,
-    19969.908203,
-    19958.072266,
-    19967.951172
+    15005.376953,
+    14975.015625,
+    14996.472656,
+    14988.171875,
+    14993.810547,
+    14984.066406,
+    14980.851562
    ],
-   "median": 19964.443359,
-   "min": 19956.939453,
-   "max": 26341.615234,
-   "unstable": true
-  },
-  {
-   "lab": "result",
-   "name": "4 live level-R write digits, 4 live level-S read digits a token / neither",
-   "unit": "cycles a window",
-   "samples": [
-    3311.763672,
-    3311.880859,
-    3311.351562,
-    3311.253906,
-    3311.945312,
-    3311.222656,
-    3311.234375
-   ],
-   "median": 3311.351562,
-   "min": 3311.222656,
-   "max": 3311.945312,
+   "median": 14988.171875,
+   "min": 14975.015625,
+   "max": 15005.376953,
    "unstable": false
   },
   {
    "lab": "result",
-   "name": "16 live level-R write digits, 16 live level-S read digits a token",
+   "name": "4 CTAs a head (64 x 256), 4 live level-R write digits, 4 live level-S read digits a token / writes alone",
    "unit": "cycles a window",
    "samples": [
-    95418.607422,
-    95409.087891,
-    95389.359375,
-    95419.699219,
-    95395.855469,
-    95371.447266,
-    95395.861328
+    16383.572266,
+    16353.746094,
+    16359.509766,
+    16350.867188,
+    16356.255859,
+    16351.693359,
+    16365.742188
    ],
-   "median": 95395.861328,
-   "min": 95371.447266,
-   "max": 95419.699219,
+   "median": 16356.255859,
+   "min": 16350.867188,
+   "max": 16383.572266,
    "unstable": false
   },
   {
    "lab": "result",
-   "name": "16 live level-R write digits, 16 live level-S read digits a token / den alone",
+   "name": "4 CTAs a head (64 x 256), 4 live level-R write digits, 4 live level-S read digits a token / neither",
    "unit": "cycles a window",
    "samples": [
-    48881.554688,
-    48813.945312,
-    48905.75,
-    48879.902344,
-    48909.554688,
-    48927.892578,
-    48911.083984
+    4159.386719,
+    4160.390625,
+    4158.386719,
+    4158.039062,
+    4158.908203,
+    4157.376953,
+    4157.871094
    ],
-   "median": 48905.75,
-   "min": 48813.945312,
-   "max": 48927.892578,
+   "median": 4158.386719,
+   "min": 4157.376953,
+   "max": 4160.390625,
    "unstable": false
   },
   {
    "lab": "result",
-   "name": "16 live level-R write digits, 16 live level-S read digits a token / writes alone",
+   "name": "4 CTAs a head (64 x 256), 16 live level-R write digits, 16 live level-S read digits a token",
    "unit": "cycles a window",
    "samples": [
-    51074.423828,
-    51063.707031,
-    51145.054688,
-    51154.929688,
-    51165.441406,
-    51137.966797,
-    51123.267578
+    69513.96875,
+    69542.644531,
+    69501.111328,
+    69435.132812,
+    69406.421875,
+    69492.720703,
+    69320.332031
    ],
-   "median": 51137.966797,
-   "min": 51063.707031,
-   "max": 51165.441406,
+   "median": 69492.720703,
+   "min": 69320.332031,
+   "max": 69542.644531,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "8 CTAs a head (64 x 128), 4 live level-R write digits, 4 live level-S read digits a token",
+   "unit": "cycles a window",
+   "samples": [
+    15790.333008,
+    15778.688477,
+    15787.379883,
+    15805.103516,
+    15805.249023,
+    15793.366211,
+    15813.893555
+   ],
+   "median": 15793.366211,
+   "min": 15778.688477,
+   "max": 15813.893555,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "8 CTAs a head (64 x 128), 4 live level-R write digits, 4 live level-S read digits a token / den alone",
+   "unit": "cycles a window",
+   "samples": [
+    9619.889648,
+    9622.932617,
+    9625.001953,
+    9629.860352,
+    9623.394531,
+    9624.154297,
+    9619.361328
+   ],
+   "median": 9623.394531,
+   "min": 9619.361328,
+   "max": 9629.860352,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "8 CTAs a head (64 x 128), 4 live level-R write digits, 4 live level-S read digits a token / writes alone",
+   "unit": "cycles a window",
+   "samples": [
+    10269.012695,
+    10283.992188,
+    10261.239258,
+    10278.226562,
+    10265.822266,
+    10251.354492,
+    10267.830078
+   ],
+   "median": 10267.830078,
+   "min": 10251.354492,
+   "max": 10283.992188,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "8 CTAs a head (64 x 128), 16 live level-R write digits, 16 live level-S read digits a token",
+   "unit": "cycles a window",
+   "samples": [
+    40504.375977,
+    40466.53418,
+    40467.599609,
+    40474.558594,
+    40456.366211,
+    40498.231445,
+    40520.964844
+   ],
+   "median": 40474.558594,
+   "min": 40456.366211,
+   "max": 40520.964844,
    "unstable": false
   }
  ],
  "kernels": {
-  "void den_sweep::sweep<(int)16, (int)16, (int)2>(int, den_sweep::Pool, float *, long long *, int *)": {
-   "regs": 122,
+  "void den_sweep::sweep<(int)128, (int)16, (int)16, (int)0>(int, den_sweep::Pool, float *, long long *, int *)": {
+   "regs": 128,
    "ops": {
-    "HADD2.F32": 512,
-    "FFMA": 384,
-    "LDS": 278,
-    "LEA": 208,
-    "FADD": 192,
-    "IADD3": 178,
-    "FMUL": 132,
-    "LDS.128": 128,
-    "FSEL": 128,
-    "ISETP.GE.AND": 117,
-    "BRA": 111,
-    "IMAD": 108
+    "LOP3.LUT": 98,
+    "PRMT": 69,
+    "HADD2": 64,
+    "IADD3": 53,
+    "IMAD.MOV.U32": 52,
+    "IMAD": 42,
+    "LDS": 38,
+    "IMAD.SHL.U32": 37,
+    "ISETP.GE.AND": 32,
+    "BRA": 32,
+    "IMAD.IADD": 29,
+    "SHF.R.S32.HI": 25
    }
   },
-  "void den_sweep::sweep<(int)16, (int)16, (int)1>(int, den_sweep::Pool, float *, long long *, int *)": {
-   "regs": 120,
+  "void den_sweep::sweep<(int)128, (int)4, (int)4, (int)2>(int, den_sweep::Pool, float *, long long *, int *)": {
+   "regs": 89,
    "ops": {
-    "IMAD.MOV.U32": 218,
-    "FADD": 159,
-    "HMUL2": 128,
-    "PRMT": 128,
+    "LOP3.LUT": 68,
+    "IMAD.MOV.U32": 57,
+    "IMAD": 31,
+    "IMAD.SHL.U32": 30,
+    "IADD3": 30,
+    "STS": 24,
+    "BRA": 22,
+    "LDS": 22,
+    "SHF.R.S32.HI": 20,
+    "SHF.R.U32.HI": 20,
+    "F2FP.PACK_AB": 20,
+    "NOP": 20
+   }
+  },
+  "void den_sweep::sweep<(int)128, (int)4, (int)4, (int)1>(int, den_sweep::Pool, float *, long long *, int *)": {
+   "regs": 90,
+   "ops": {
+    "PRMT": 64,
+    "HADD2": 64,
+    "LOP3.LUT": 61,
+    "IADD3": 41,
+    "LDS": 32,
+    "IMAD": 26,
+    "IMAD.SHL.U32": 24,
+    "IMAD.MOV.U32": 23,
+    "ISETP.GE.AND": 23,
+    "BRA": 22,
+    "SHF.R.S32.HI": 20,
+    "IMAD.IADD": 17
+   }
+  },
+  "void den_sweep::sweep<(int)128, (int)4, (int)4, (int)0>(int, den_sweep::Pool, float *, long long *, int *)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 98,
+    "PRMT": 69,
+    "HADD2": 64,
+    "IADD3": 53,
+    "IMAD.MOV.U32": 52,
+    "IMAD": 42,
+    "LDS": 38,
+    "IMAD.SHL.U32": 37,
+    "ISETP.GE.AND": 32,
+    "BRA": 32,
+    "IMAD.IADD": 29,
+    "SHF.R.S32.HI": 25
+   }
+  },
+  "void den_sweep::sweep<(int)256, (int)16, (int)16, (int)0>(int, den_sweep::Pool, float *, long long *, int *)": {
+   "regs": 214,
+   "ops": {
+    "PRMT": 137,
+    "LOP3.LUT": 136,
     "HADD2": 128,
-    "HFMA2": 128,
-    "LOP3.LUT": 115,
-    "SHFL.BFLY": 97,
-    "HADD2.F32": 64,
-    "MOV": 64,
-    "CALL.REL.NOINC": 64,
-    "BRA": 63
+    "IMAD.MOV.U32": 86,
+    "IADD3": 65,
+    "IMAD": 62,
+    "STS": 48,
+    "HMMA.16816.F32": 48,
+    "BRA": 45,
+    "LDS": 44,
+    "IMAD.SHL.U32": 43,
+    "IMAD.IADD": 42
    }
   },
-  "void den_sweep::sweep<(int)16, (int)16, (int)0>(int, den_sweep::Pool, float *, long long *, int *)": {
-   "regs": 199,
+  "void den_sweep::sweep<(int)256, (int)4, (int)4, (int)3>(int, den_sweep::Pool, float *, long long *, int *)": {
+   "regs": 32,
    "ops": {
-    "HADD2.F32": 576,
-    "FFMA": 384,
-    "FADD": 351,
-    "LDS": 310,
-    "IMAD": 220,
-    "IADD3": 210,
-    "IMAD.MOV.U32": 175,
-    "MOV": 171,
-    "FMUL": 164,
-    "BRA": 162,
-    "LOP3.LUT": 148,
-    "LEA": 145
-   }
-  },
-  "void den_sweep::sweep<(int)4, (int)4, (int)3>(int, den_sweep::Pool, float *, long long *, int *)": {
-   "regs": 33,
-   "ops": {
+    "STS": 32,
+    "LOP3.LUT": 30,
     "LDS": 18,
     "IADD3": 17,
-    "NOP": 13,
-    "IMAD.MOV.U32": 11,
-    "IMAD.SHL.U32": 11,
-    "IMAD": 11,
-    "BRA": 11,
-    "ISETP.GE.AND": 10,
-    "LOP3.LUT": 10,
-    "STS.128": 8,
-    "LDG.E": 6,
-    "LEA": 6
+    "SHF.R.S32.HI": 16,
+    "IMAD": 16,
+    "IMAD.SHL.U32": 15,
+    "NOP": 15,
+    "IMAD.IADD": 12,
+    "BRA": 12,
+    "IMAD.MOV.U32": 10,
+    "ISETP.GE.AND": 10
    }
   },
-  "void den_sweep::sweep<(int)4, (int)4, (int)2>(int, den_sweep::Pool, float *, long long *, int *)": {
-   "regs": 122,
+  "void den_sweep::sweep<(int)256, (int)4, (int)4, (int)2>(int, den_sweep::Pool, float *, long long *, int *)": {
+   "regs": 125,
    "ops": {
-    "HADD2.F32": 512,
-    "FFMA": 384,
-    "LDS": 278,
-    "LEA": 208,
-    "FADD": 192,
-    "IADD3": 178,
-    "FMUL": 132,
-    "LDS.128": 128,
-    "FSEL": 128,
-    "ISETP.GE.AND": 117,
-    "BRA": 111,
-    "IMAD": 108
+    "IMAD.MOV.U32": 104,
+    "LOP3.LUT": 104,
+    "IMAD": 54,
+    "STS": 48,
+    "IADD3": 43,
+    "F2FP.PACK_AB": 40,
+    "IMAD.SHL.U32": 36,
+    "BRA": 35,
+    "FADD": 32,
+    "IMAD.IADD": 31,
+    "LDS": 28,
+    "SHF.R.U32.HI": 28
    }
   },
-  "void den_sweep::sweep<(int)4, (int)4, (int)1>(int, den_sweep::Pool, float *, long long *, int *)": {
-   "regs": 120,
+  "void den_sweep::sweep<(int)256, (int)4, (int)4, (int)1>(int, den_sweep::Pool, float *, long long *, int *)": {
+   "regs": 140,
    "ops": {
-    "IMAD.MOV.U32": 218,
-    "FADD": 159,
-    "HMUL2": 128,
     "PRMT": 128,
     "HADD2": 128,
-    "HFMA2": 128,
-    "LOP3.LUT": 115,
-    "SHFL.BFLY": 97,
-    "HADD2.F32": 64,
-    "MOV": 64,
-    "CALL.REL.NOINC": 64,
-    "BRA": 63
+    "LOP3.LUT": 62,
+    "IADD3": 45,
+    "LDS": 32,
+    "IMAD": 32,
+    "STS": 32,
+    "LDG.E.128": 32,
+    "HMMA.16816.F32": 32,
+    "IMAD.IADD": 24,
+    "ISETP.GE.AND": 23,
+    "IMAD.MOV.U32": 22
    }
   },
-  "void den_sweep::sweep<(int)4, (int)4, (int)0>(int, den_sweep::Pool, float *, long long *, int *)": {
-   "regs": 199,
+  "void den_sweep::sweep<(int)256, (int)4, (int)4, (int)0>(int, den_sweep::Pool, float *, long long *, int *)": {
+   "regs": 214,
    "ops": {
-    "HADD2.F32": 576,
-    "FFMA": 384,
-    "FADD": 351,
-    "LDS": 310,
-    "IMAD": 220,
-    "IADD3": 210,
-    "IMAD.MOV.U32": 175,
-    "MOV": 171,
-    "FMUL": 164,
-    "BRA": 162,
-    "LOP3.LUT": 148,
-    "LEA": 145
+    "PRMT": 137,
+    "LOP3.LUT": 136,
+    "HADD2": 128,
+    "IMAD.MOV.U32": 86,
+    "IADD3": 65,
+    "IMAD": 62,
+    "STS": 48,
+    "HMMA.16816.F32": 48,
+    "BRA": 45,
+    "LDS": 44,
+    "IMAD.SHL.U32": 43,
+    "IMAD.IADD": 42
    }
   }
  }
