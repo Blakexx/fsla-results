@@ -1,333 +1,378 @@
 {
  "experiment": "den_sweep",
- "question": "the carry's window-aligned denominator depends only on routing (den(t) = the read leaf product against the write mass of the windows before t's -- tests/oracle/reference.py), so a pass running beside the carry could hand its readout a common unit. On the tensor cores, what does a CTA of 64 level-S rows x SPAN level-R digits (256: 4 a head; 128: 8 a head) cost a window, against the carry's ~20K?",
+ "question": "the carry's window-aligned denominator depends only on routing (den(t) = the read leaf product against the write mass of the windows before t's -- tests/oracle/reference.py), so a pass running beside the carry could hand its readout a common unit. At 8 CTAs a head (64 level-S rows x 128 level-R digits each, 16 warps), what does it cost a window on the cells' own routing, against the carry?",
  "arch": "sm_86",
  "device": "NVIDIA GeForce RTX 3080 Ti",
  "driver": "595.95",
  "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
  "git": {
-  "sha": "d75aa84a0a6619e890ca91eb4c33680e9b11bc2c",
+  "sha": "5b26266f0d32959e36ce3711514e6a242dc1fbad",
   "dirty": true
  },
  "reps": 7,
- "date": "2026-10-06T23:10:45+00:00",
- "utilization_before": 1,
+ "date": "2026-10-06T23:30:28+00:00",
+ "utilization_before": 0,
+ "inputs": {
+  "flagship-alt-k4-L16384.den": "ee48496c9383b4df",
+  "flagship-alt-k16-L16384.den": "15fcd74ce4a02252",
+  "flagship-cohort-k16-L16384.den": "7875b77d049a776e",
+  "flagship-dense-L16384.den": "eb7e0a17a783a024",
+  "cells.txt": "8bdd4793cfb0590a"
+ },
  "results": [
   {
    "lab": "result",
-   "name": "4 CTAs a head (64 x 256), 4 live level-R write digits, 4 live level-S read digits a token",
+   "name": "flagship-alt-k4-L16384 (8 CTAs a head)",
    "unit": "cycles a window",
    "samples": [
-    18202.810547,
-    18198.544922,
-    18219.996094,
-    18173.833984,
-    18184.541016,
-    18184.423828,
-    18191.771484
+    11507.134766,
+    11507.736328,
+    11501.274414,
+    11513.646484,
+    11511.520508,
+    11502.922852,
+    11500.017578
    ],
-   "median": 18191.771484,
-   "min": 18173.833984,
-   "max": 18219.996094,
+   "median": 11507.134766,
+   "min": 11500.017578,
+   "max": 11513.646484,
    "unstable": false
   },
   {
    "lab": "result",
-   "name": "4 CTAs a head (64 x 256), 4 live level-R write digits, 4 live level-S read digits a token / den alone",
+   "name": "flagship-alt-k4-L16384 (8 CTAs a head) / den alone",
    "unit": "cycles a window",
    "samples": [
-    11133.925781,
-    11142.697266,
-    11130.027344,
-    11131.894531,
-    11129.396484,
-    11129.664062,
-    11136.556641
+    7569.671875,
+    7560.282227,
+    7562.768555,
+    7564.707031,
+    7554.161133,
+    7569.084961,
+    7564.480469
    ],
-   "median": 11131.894531,
-   "min": 11129.396484,
-   "max": 11142.697266,
+   "median": 7564.480469,
+   "min": 7554.161133,
+   "max": 7569.671875,
    "unstable": false
   },
   {
    "lab": "result",
-   "name": "4 CTAs a head (64 x 256), 4 live level-R write digits, 4 live level-S read digits a token / writes alone",
+   "name": "flagship-alt-k4-L16384 (8 CTAs a head) / writes alone",
    "unit": "cycles a window",
    "samples": [
-    10864.25,
-    10861.160156,
-    10859.166016,
-    10877.433594,
-    10873.171875,
-    10868.912109,
-    10866.527344
+    7646.000977,
+    7644.077148,
+    7633.40918,
+    7647.527344,
+    7630.866211,
+    7643.032227,
+    7641.762695
    ],
-   "median": 10866.527344,
-   "min": 10859.166016,
-   "max": 10877.433594,
+   "median": 7643.032227,
+   "min": 7630.866211,
+   "max": 7647.527344,
    "unstable": false
   },
   {
    "lab": "result",
-   "name": "4 CTAs a head (64 x 256), 4 live level-R write digits, 4 live level-S read digits a token / neither",
+   "name": "flagship-alt-k4-L16384 (8 CTAs a head) / neither",
    "unit": "cycles a window",
    "samples": [
-    3950.476562,
-    3949.9375,
-    3951.449219,
-    3950.691406,
-    3951.335938,
-    3951.392578,
-    3951.296875
+    4174.201172,
+    4173.568359,
+    4171.850586,
+    4174.495117,
+    4181.419922,
+    4168.994141,
+    4175.43457
    ],
-   "median": 3951.296875,
-   "min": 3949.9375,
-   "max": 3951.449219,
+   "median": 4174.201172,
+   "min": 4168.994141,
+   "max": 4181.419922,
    "unstable": false
   },
   {
    "lab": "result",
-   "name": "4 CTAs a head (64 x 256), 16 live level-R write digits, 16 live level-S read digits a token",
+   "name": "flagship-alt-k16-L16384 (8 CTAs a head)",
    "unit": "cycles a window",
    "samples": [
-    47381.958984,
-    47446.736328,
-    47411.583984,
-    47402.123047,
-    47414.667969,
-    47430.845703,
-    47421.902344
+    26719.922852,
+    26720.638672,
+    26716.669922,
+    26716.640625,
+    26700.351562,
+    26699.081055,
+    26716.374023
    ],
-   "median": 47414.667969,
-   "min": 47381.958984,
-   "max": 47446.736328,
+   "median": 26716.640625,
+   "min": 26699.081055,
+   "max": 26720.638672,
    "unstable": false
   },
   {
    "lab": "result",
-   "name": "8 CTAs a head (64 x 128), 4 live level-R write digits, 4 live level-S read digits a token",
+   "name": "flagship-alt-k16-L16384 (8 CTAs a head) / den alone",
    "unit": "cycles a window",
    "samples": [
-    11256.135742,
-    11259.026367,
-    11262.475586,
-    11256.84375,
-    11257.121094,
-    11258.423828,
-    11272.643555
+    15443.236328,
+    15425.821289,
+    15433.665039,
+    15431.110352,
+    15438.643555,
+    15449.410156,
+    15435.762695
    ],
-   "median": 11258.423828,
-   "min": 11256.135742,
-   "max": 11272.643555,
+   "median": 15435.762695,
+   "min": 15425.821289,
+   "max": 15449.410156,
    "unstable": false
   },
   {
    "lab": "result",
-   "name": "8 CTAs a head (64 x 128), 4 live level-R write digits, 4 live level-S read digits a token / den alone",
+   "name": "flagship-alt-k16-L16384 (8 CTAs a head) / writes alone",
    "unit": "cycles a window",
    "samples": [
-    7328.360352,
-    7334.032227,
-    7333.129883,
-    7337.355469,
-    7339.62793,
-    7329.623047,
-    7335.889648
+    15446.836914,
+    15471.418945,
+    15448.106445,
+    15451.621094,
+    15456.331055,
+    15461.737305,
+    22727.427734
    ],
-   "median": 7334.032227,
-   "min": 7328.360352,
-   "max": 7339.62793,
+   "median": 15456.331055,
+   "min": 15446.836914,
+   "max": 22727.427734,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "flagship-cohort-k16-L16384 (8 CTAs a head)",
+   "unit": "cycles a window",
+   "samples": [
+    30843.456055,
+    30832.62793,
+    30836.079102,
+    30839.742188,
+    30832.738281,
+    30840.338867,
+    30839.019531
+   ],
+   "median": 30839.019531,
+   "min": 30832.62793,
+   "max": 30843.456055,
    "unstable": false
   },
   {
    "lab": "result",
-   "name": "8 CTAs a head (64 x 128), 4 live level-R write digits, 4 live level-S read digits a token / writes alone",
+   "name": "flagship-cohort-k16-L16384 (8 CTAs a head) / den alone",
    "unit": "cycles a window",
    "samples": [
-    7347.298828,
-    7347.22168,
-    7351.720703,
-    7356.538086,
-    7347.354492,
-    7354.941406,
-    7342.790039
+    23333.020508,
+    16883.791992,
+    16886.819336,
+    16889.972656,
+    16878.302734,
+    16877.926758,
+    16887.570312
    ],
-   "median": 7347.354492,
-   "min": 7342.790039,
-   "max": 7356.538086,
+   "median": 16886.819336,
+   "min": 16877.926758,
+   "max": 23333.020508,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "flagship-cohort-k16-L16384 (8 CTAs a head) / writes alone",
+   "unit": "cycles a window",
+   "samples": [
+    18908.861328,
+    25355.348633,
+    18904.261719,
+    18930.191406,
+    24996.762695,
+    18917.114258,
+    18913.164062
+   ],
+   "median": 18917.114258,
+   "min": 18904.261719,
+   "max": 25355.348633,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "flagship-dense-L16384 (8 CTAs a head, dense form)",
+   "unit": "cycles a window",
+   "samples": [
+    39857.639648,
+    39842.664062,
+    39897.142578,
+    39908.84082,
+    39796.625,
+    39844.923828,
+    39877.751953
+   ],
+   "median": 39857.639648,
+   "min": 39796.625,
+   "max": 39908.84082,
    "unstable": false
   },
   {
    "lab": "result",
-   "name": "8 CTAs a head (64 x 128), 16 live level-R write digits, 16 live level-S read digits a token",
+   "name": "flagship-dense-L16384 (8 CTAs a head, dense form) / den alone",
    "unit": "cycles a window",
    "samples": [
-    26729.348633,
-    26745.374023,
-    26753.348633,
-    26753.21875,
-    26726.291016,
-    26735.006836,
-    26752.011719
+    13493.454102,
+    13506.246094,
+    13499.161133,
+    13498.745117,
+    13510.483398,
+    13490.036133,
+    13501.499023
    ],
-   "median": 26745.374023,
-   "min": 26726.291016,
-   "max": 26753.348633,
+   "median": 13499.161133,
+   "min": 13490.036133,
+   "max": 13510.483398,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "flagship-dense-L16384 (8 CTAs a head, dense form) / writes alone",
+   "unit": "cycles a window",
+   "samples": [
+    26208.310547,
+    26200.450195,
+    26226.225586,
+    26207.657227,
+    26201.866211,
+    26194.914062,
+    26219.507812
+   ],
+   "median": 26207.657227,
+   "min": 26194.914062,
+   "max": 26226.225586,
    "unstable": false
   }
  ],
  "kernels": {
-  "void den_sweep::sweep<(int)128, (int)16, (int)16, (int)0>(int, den_sweep::Pool, float *, long long *, int *)": {
-   "regs": 118,
+  "void den_sweep::sweep_dense<(int)2>(int, den_sweep::DensePool, float *, long long *, int *)": {
+   "regs": 100,
    "ops": {
-    "IMAD.MOV.U32": 92,
-    "LOP3.LUT": 86,
-    "IADD3": 53,
-    "IMAD.SHL.U32": 37,
-    "FFMA": 36,
-    "LDS": 35,
-    "PRMT": 34,
-    "IMAD": 32,
-    "HADD2.F32": 32,
-    "ISETP.GE.AND": 27,
-    "BRA": 27,
-    "SHF.R.S32.HI": 21
+    "LOP3.LUT": 70,
+    "IMAD": 36,
+    "IMAD.MOV.U32": 35,
+    "FMUL": 33,
+    "IMAD.SHL.U32": 26,
+    "LDS": 26,
+    "BRA": 23,
+    "IADD3": 23,
+    "LDSM.16.MT88.4": 18,
+    "HMMA.16816.F32": 16,
+    "SHF.R.S32.HI": 13,
+    "LEA": 10
    }
   },
-  "void den_sweep::sweep<(int)128, (int)4, (int)4, (int)2>(int, den_sweep::Pool, float *, long long *, int *)": {
+  "void den_sweep::sweep_dense<(int)1>(int, den_sweep::DensePool, float *, long long *, int *)": {
+   "regs": 128,
+   "ops": {
+    "FFMA": 87,
+    "IMAD.MOV.U32": 76,
+    "HADD2.F32": 64,
+    "PRMT": 64,
+    "LOP3.LUT": 38,
+    "HMNMX2": 32,
+    "IMMA.16832.U8.U8": 32,
+    "IADD3": 26,
+    "IMAD.SHL.U32": 21,
+    "IMAD": 20,
+    "SHF.R.U32.HI": 19,
+    "FMUL": 17
+   }
+  },
+  "void den_sweep::sweep_dense<(int)0>(int, den_sweep::DensePool, float *, long long *, int *)": {
+   "regs": 128,
+   "ops": {
+    "IMAD.MOV.U32": 93,
+    "FFMA": 87,
+    "LOP3.LUT": 84,
+    "HADD2.F32": 64,
+    "PRMT": 64,
+    "IMAD": 51,
+    "FMUL": 49,
+    "IMAD.SHL.U32": 37,
+    "IADD3": 37,
+    "HMNMX2": 32,
+    "IMMA.16832.U8.U8": 32,
+    "BRA": 27
+   }
+  },
+  "void den_sweep::sweep<(int)128, (int)3>(int, den_sweep::Pool, float *, long long *, int *)": {
+   "regs": 31,
+   "ops": {
+    "LOP3.LUT": 29,
+    "IADD3": 24,
+    "IMAD.SHL.U32": 23,
+    "BRA": 21,
+    "LDS": 18,
+    "IMAD.MOV.U32": 15,
+    "SHF.R.S32.HI": 15,
+    "LEA": 13,
+    "LEA.HI.X": 11,
+    "IMAD": 10,
+    "ISETP.GE.AND": 9,
+    "LEA.HI.X.SX32": 9
+   }
+  },
+  "void den_sweep::sweep<(int)128, (int)2>(int, den_sweep::Pool, float *, long long *, int *)": {
    "regs": 64,
    "ops": {
-    "LOP3.LUT": 39,
-    "IMAD.MOV.U32": 30,
-    "IADD3": 29,
-    "IMAD.SHL.U32": 25,
-    "IMAD": 22,
-    "LDS": 21,
-    "BRA": 16,
-    "LEA": 15,
-    "SHF.R.S32.HI": 13,
-    "ISETP.GE.AND": 12,
-    "LEA.HI.X": 12,
-    "STS": 12
+    "LOP3.LUT": 53,
+    "IMAD.MOV.U32": 38,
+    "FMUL": 35,
+    "IADD3": 34,
+    "IMAD.SHL.U32": 28,
+    "BRA": 24,
+    "LDS": 22,
+    "IMAD": 19,
+    "SHF.R.S32.HI": 16,
+    "NOP": 16,
+    "LEA": 14,
+    "SHF.R.U32.HI": 14
    }
   },
-  "void den_sweep::sweep<(int)128, (int)4, (int)4, (int)1>(int, den_sweep::Pool, float *, long long *, int *)": {
+  "void den_sweep::sweep<(int)128, (int)1>(int, den_sweep::Pool, float *, long long *, int *)": {
    "regs": 95,
    "ops": {
-    "IMAD.MOV.U32": 72,
-    "LOP3.LUT": 60,
-    "IADD3": 46,
-    "FFMA": 36,
-    "LDS": 32,
+    "IMAD.MOV.U32": 83,
+    "LOP3.LUT": 69,
+    "IADD3": 48,
+    "FFMA": 43,
+    "IMAD.SHL.U32": 35,
     "HADD2.F32": 32,
     "PRMT": 32,
-    "IMAD.SHL.U32": 31,
-    "BRA": 23,
-    "IMAD": 23,
+    "BRA": 30,
+    "LDS": 29,
     "ISETP.GE.AND": 22,
-    "SHF.R.S32.HI": 19
+    "SHF.R.S32.HI": 20,
+    "IMAD": 17
    }
   },
-  "void den_sweep::sweep<(int)128, (int)4, (int)4, (int)0>(int, den_sweep::Pool, float *, long long *, int *)": {
-   "regs": 118,
+  "void den_sweep::sweep<(int)128, (int)0>(int, den_sweep::Pool, float *, long long *, int *)": {
+   "regs": 125,
    "ops": {
-    "IMAD.MOV.U32": 92,
-    "LOP3.LUT": 86,
+    "IMAD.MOV.U32": 104,
+    "LOP3.LUT": 94,
     "IADD3": 53,
-    "IMAD.SHL.U32": 37,
-    "FFMA": 36,
-    "LDS": 35,
-    "PRMT": 34,
-    "IMAD": 32,
+    "FFMA": 43,
+    "FMUL": 43,
+    "IMAD.SHL.U32": 40,
+    "PRMT": 35,
+    "BRA": 34,
+    "LDS": 33,
     "HADD2.F32": 32,
     "ISETP.GE.AND": 27,
-    "BRA": 27,
-    "SHF.R.S32.HI": 21
-   }
-  },
-  "void den_sweep::sweep<(int)256, (int)16, (int)16, (int)0>(int, den_sweep::Pool, float *, long long *, int *)": {
-   "regs": 128,
-   "ops": {
-    "IMAD.MOV.U32": 116,
-    "LOP3.LUT": 102,
-    "IADD3": 63,
-    "IMAD": 46,
-    "LDS": 38,
-    "IMAD.SHL.U32": 37,
-    "FFMA": 36,
-    "PRMT": 36,
-    "BRA": 33,
-    "HADD2.F32": 32,
-    "ISETP.GE.AND": 31,
-    "IMAD.IADD": 27
-   }
-  },
-  "void den_sweep::sweep<(int)256, (int)4, (int)4, (int)3>(int, den_sweep::Pool, float *, long long *, int *)": {
-   "regs": 34,
-   "ops": {
-    "IADD3": 23,
-    "LOP3.LUT": 21,
-    "LDS": 18,
-    "IMAD.SHL.U32": 17,
-    "STS": 16,
-    "NOP": 15,
-    "IMAD": 14,
-    "SHF.R.S32.HI": 12,
-    "LEA": 12,
-    "BRA": 12,
-    "IMAD.MOV.U32": 10,
-    "LEA.HI.X": 10
-   }
-  },
-  "void den_sweep::sweep<(int)256, (int)4, (int)4, (int)2>(int, den_sweep::Pool, float *, long long *, int *)": {
-   "regs": 86,
-   "ops": {
-    "LOP3.LUT": 67,
-    "IMAD.MOV.U32": 52,
-    "IADD3": 38,
-    "IMAD": 35,
-    "IMAD.SHL.U32": 34,
-    "LDS": 24,
-    "STS": 24,
-    "BRA": 22,
-    "SHF.R.U32.HI": 21,
-    "F2FP.PACK_AB": 20,
-    "SHF.R.S32.HI": 18,
-    "ISETP.GE.AND": 17
-   }
-  },
-  "void den_sweep::sweep<(int)256, (int)4, (int)4, (int)1>(int, den_sweep::Pool, float *, long long *, int *)": {
-   "regs": 95,
-   "ops": {
-    "IMAD.MOV.U32": 74,
-    "LOP3.LUT": 66,
-    "IADD3": 55,
-    "FFMA": 36,
-    "LDS": 32,
-    "HADD2.F32": 32,
-    "PRMT": 32,
-    "IMAD": 29,
-    "IMAD.SHL.U32": 27,
-    "BRA": 23,
-    "ISETP.GE.AND": 22,
-    "SHF.R.S32.HI": 20
-   }
-  },
-  "void den_sweep::sweep<(int)256, (int)4, (int)4, (int)0>(int, den_sweep::Pool, float *, long long *, int *)": {
-   "regs": 128,
-   "ops": {
-    "IMAD.MOV.U32": 116,
-    "LOP3.LUT": 102,
-    "IADD3": 63,
-    "IMAD": 46,
-    "LDS": 38,
-    "IMAD.SHL.U32": 37,
-    "FFMA": 36,
-    "PRMT": 36,
-    "BRA": 33,
-    "HADD2.F32": 32,
-    "ISETP.GE.AND": 31,
-    "IMAD.IADD": 27
+    "IMAD": 25
    }
   }
  }

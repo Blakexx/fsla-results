@@ -1,62 +1,59 @@
 {
  "experiment": "den_sweep",
- "question": "the carry's window-aligned denominator depends only on routing (den(t) = the read leaf product against the write mass of the windows before t's -- tests/oracle/reference.py), so a pass running beside the carry could hand its readout a common unit. On the tensor cores, what does a CTA of 64 level-S rows x SPAN level-R digits (256: 4 a head; 128: 8 a head) cost a window, against the carry's ~20K?",
+ "question": "the carry's window-aligned denominator depends only on routing (den(t) = the read leaf product against the write mass of the windows before t's -- tests/oracle/reference.py), so a pass running beside the carry could hand its readout a common unit. At 8 CTAs a head (64 level-S rows x 128 level-R digits each, 16 warps), what does it cost a window on the cells' own routing, against the carry?",
  "arch": "sm_86",
  "git": {
-  "sha": "d75aa84a0a6619e890ca91eb4c33680e9b11bc2c",
+  "sha": "5b26266f0d32959e36ce3711514e6a242dc1fbad",
   "dirty": true
  },
- "date": "2026-10-06T23:10:51+00:00",
+ "date": "2026-10-06T23:30:36+00:00",
  "metrics": [
   "smsp__inst_executed.sum",
   "smsp__issue_active.avg.pct_of_peak_sustained_active",
   "smsp__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_active"
  ],
+ "inputs": {
+  "flagship-alt-k4-L16384.den": "ee48496c9383b4df",
+  "flagship-alt-k16-L16384.den": "15fcd74ce4a02252",
+  "flagship-cohort-k16-L16384.den": "7875b77d049a776e",
+  "flagship-dense-L16384.den": "eb7e0a17a783a024",
+  "cells.txt": "8bdd4793cfb0590a"
+ },
  "kernels": {
-  "void sweep<256, 4, 4, 0>(int, Pool, float *, long long *, int *)": {
-   "smsp__inst_executed.sum": 14048830.0,
-   "smsp__issue_active.avg.pct_of_peak_sustained_active": 37.95,
-   "smsp__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_active": 25.31
+  "void sweep<128, 0>(int, Pool, float *, long long *, int *)": {
+   "smsp__inst_executed.sum": 18792736.0,
+   "smsp__issue_active.avg.pct_of_peak_sustained_active": 39.99,
+   "smsp__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_active": 26.73
   },
-  "void sweep<256, 4, 4, 1>(int, Pool, float *, long long *, int *)": {
-   "smsp__inst_executed.sum": 8603270.0,
-   "smsp__issue_active.avg.pct_of_peak_sustained_active": 37.84,
-   "smsp__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_active": 20.634999999999998
+  "void sweep<128, 1>(int, Pool, float *, long long *, int *)": {
+   "smsp__inst_executed.sum": 24492776.0,
+   "smsp__issue_active.avg.pct_of_peak_sustained_active": 39.565,
+   "smsp__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_active": 24.299999999999997
   },
-  "void sweep<256, 4, 4, 2>(int, Pool, float *, long long *, int *)": {
-   "smsp__inst_executed.sum": 8162453.0,
-   "smsp__issue_active.avg.pct_of_peak_sustained_active": 36.97,
-   "smsp__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_active": 21.185000000000002
+  "void sweep<128, 2>(int, Pool, float *, long long *, int *)": {
+   "smsp__inst_executed.sum": 22716168.0,
+   "smsp__issue_active.avg.pct_of_peak_sustained_active": 34.205,
+   "smsp__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_active": 22.03
   },
-  "void sweep<256, 4, 4, 3>(int, Pool, float *, long long *, int *)": {
-   "smsp__inst_executed.sum": 2210936.0,
-   "smsp__issue_active.avg.pct_of_peak_sustained_active": 27.51,
+  "void sweep<128, 3>(int, Pool, float *, long long *, int *)": {
+   "smsp__inst_executed.sum": 4642756.0,
+   "smsp__issue_active.avg.pct_of_peak_sustained_active": 27.66,
    "smsp__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_active": 0.0
   },
-  "void sweep<256, 16, 16, 0>(int, Pool, float *, long long *, int *)": {
-   "smsp__inst_executed.sum": 38742496.0,
-   "smsp__issue_active.avg.pct_of_peak_sustained_active": 40.1,
-   "smsp__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_active": 35.73
+  "void sweep_dense<0>(int, DensePool, float *, long long *, int *)": {
+   "smsp__inst_executed.sum": 49094784.0,
+   "smsp__issue_active.avg.pct_of_peak_sustained_active": 30.14,
+   "smsp__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_active": 41.18
   },
-  "void sweep<128, 4, 4, 0>(int, Pool, float *, long long *, int *)": {
-   "smsp__inst_executed.sum": 18164064.0,
-   "smsp__issue_active.avg.pct_of_peak_sustained_active": 39.43,
-   "smsp__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_active": 20.34
+  "void sweep_dense<1>(int, DensePool, float *, long long *, int *)": {
+   "smsp__inst_executed.sum": 24055680.0,
+   "smsp__issue_active.avg.pct_of_peak_sustained_active": 43.5,
+   "smsp__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_active": 60.635000000000005
   },
-  "void sweep<128, 4, 4, 1>(int, Pool, float *, long long *, int *)": {
-   "smsp__inst_executed.sum": 12563956.0,
-   "smsp__issue_active.avg.pct_of_peak_sustained_active": 41.825,
-   "smsp__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_active": 15.614999999999998
-  },
-  "void sweep<128, 4, 4, 2>(int, Pool, float *, long long *, int *)": {
-   "smsp__inst_executed.sum": 9679626.0,
-   "smsp__issue_active.avg.pct_of_peak_sustained_active": 32.41,
-   "smsp__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_active": 15.66
-  },
-  "void sweep<128, 16, 16, 0>(int, Pool, float *, long long *, int *)": {
-   "smsp__inst_executed.sum": 43324072.0,
-   "smsp__issue_active.avg.pct_of_peak_sustained_active": 39.7,
-   "smsp__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_active": 31.64
+  "void sweep_dense<2>(int, DensePool, float *, long long *, int *)": {
+   "smsp__inst_executed.sum": 25385728.0,
+   "smsp__issue_active.avg.pct_of_peak_sustained_active": 23.65,
+   "smsp__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_active": 31.259999999999998
   }
  }
 }
