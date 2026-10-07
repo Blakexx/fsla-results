@@ -1,0 +1,61 @@
+{
+ "experiment": "list_fold",
+ "question": "the fold's step forms for the carve re-price. Per list (a warp steps each of its lists over that list's own tokens, gathered from the resident rows) against merged (a warp steps its lists' union, every list's MMAs on every union token, the operands loaded once): what does a per-list step cost beside its tensor floor at a 32 x 32 list tile (4 lists x 32 level-S digits x 32 channels a warp, the even carve) and at today's 16 x 32 (8 lists x 16 x 32), full and half full, and what does reloading every list's operands cost at dense against loading them once for all lists?",
+ "arch": "sm_86",
+ "git": {
+  "sha": "30cf6f7c000c4b36dbfa2b2f49ec0f8a790499ca",
+  "dirty": false
+ },
+ "date": "2026-10-07T01:12:51+00:00",
+ "metrics": [
+  "smsp__inst_executed.sum",
+  "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum"
+ ],
+ "inputs": {},
+ "kernels": {
+  "void fold<0, 8, 16, 0>(int, const unsigned short *, long long *, int *)": {
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 96609764.5,
+   "smsp__inst_executed.sum": 465459840.0
+  },
+  "void fold<2, 8, 16, 0>(int, const unsigned short *, long long *, int *)": {
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 90470243.0,
+   "smsp__inst_executed.sum": 468020480.0
+  },
+  "void fold<1, 8, 16, 0>(int, const unsigned short *, long long *, int *)": {
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 294991463.5,
+   "smsp__inst_executed.sum": 1213229440.0
+  },
+  "void fold<4, 8, 16, 0>(int, const unsigned short *, long long *, int *)": {
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 294991471.0,
+   "smsp__inst_executed.sum": 1232686080.0
+  },
+  "void fold<3, 8, 16, 0>(int, const unsigned short *, long long *, int *)": {
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 507983463.5,
+   "smsp__inst_executed.sum": 2270504960.0
+  },
+  "void fold<1, 2, 16, 1>(int, const unsigned short *, long long *, int *)": {
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 144367482.5,
+   "smsp__inst_executed.sum": 352805760.0
+  },
+  "void fold<4, 2, 16, 1>(int, const unsigned short *, long long *, int *)": {
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 144367476.5,
+   "smsp__inst_executed.sum": 352805760.0
+  },
+  "void fold<1, 2, 8, 1>(int, const unsigned short *, long long *, int *)": {
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 101871479.0,
+   "smsp__inst_executed.sum": 282149760.0
+  },
+  "void fold<1, 1, 8, 1>(int, const unsigned short *, long long *, int *)": {
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 60431492.0,
+   "smsp__inst_executed.sum": 151139200.0
+  },
+  "void fold<3, 2, 16, 1>(int, const unsigned short *, long long *, int *)": {
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 236656396.0,
+   "smsp__inst_executed.sum": 599591680.0
+  },
+  "void fold<3, 1, 8, 1>(int, const unsigned short *, long long *, int *)": {
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 91375470.0,
+   "smsp__inst_executed.sum": 243297920.0
+  }
+ }
+}

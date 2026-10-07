@@ -1,0 +1,113 @@
+{
+ "experiment": "read_step",
+ "question": "the readout's step on the even carve (a warp owns 4 level-S read digits x 32 level-R digits x 32 channels): per digit (each digit over its own read tokens, gathered) or merged (the warp's digits summed over the union in registers), what does a step cost beside its tensor floor, what do its output adds into the shared panel add, and does draining the panel to global memory cost anything once it is double buffered and spread through the next pass, against draining it in a burst at the pass's end?",
+ "arch": "sm_86",
+ "git": {
+  "sha": "30cf6f7c000c4b36dbfa2b2f49ec0f8a790499ca",
+  "dirty": false
+ },
+ "date": "2026-10-07T01:12:42+00:00",
+ "metrics": [
+  "smsp__inst_executed.sum",
+  "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum"
+ ],
+ "inputs": {},
+ "kernels": {
+  "void read<0, 1, 8, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 18462800.0,
+   "smsp__inst_executed.sum": 259233920.0
+  },
+  "void read<1, 1, 8, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 55326800.0,
+   "smsp__inst_executed.sum": 453792000.0
+  },
+  "void read<2, 1, 8, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 67678800.0,
+   "smsp__inst_executed.sum": 509854080.0
+  },
+  "void read<3, 1, 8, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 70766553.5,
+   "smsp__inst_executed.sum": 583594534.0
+  },
+  "void read<4, 1, 8, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 63582800.0,
+   "smsp__inst_executed.sum": 485022080.0
+  },
+  "void read<5, 1, 8, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 66684066.5,
+   "smsp__inst_executed.sum": 554729546.0
+  },
+  "void read<0, 0, 8, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 147006800.0,
+   "smsp__inst_executed.sum": 775841280.0
+  },
+  "void read<1, 0, 8, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 371422800.0,
+   "smsp__inst_executed.sum": 1433247360.0
+  },
+  "void read<2, 0, 8, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 383774800.0,
+   "smsp__inst_executed.sum": 1481118080.0
+  },
+  "void read<3, 0, 8, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 386701245.5,
+   "smsp__inst_executed.sum": 1627189302.0
+  },
+  "void read<4, 0, 8, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 379678800.0,
+   "smsp__inst_executed.sum": 1456286080.0
+  },
+  "void read<5, 0, 8, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 384966636.0,
+   "smsp__inst_executed.sum": 1608734704.0
+  },
+  "void read<0, 0, 2, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 36318800.0,
+   "smsp__inst_executed.sum": 200353280.0
+  },
+  "void read<1, 0, 2, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 93214800.0,
+   "smsp__inst_executed.sum": 364703360.0
+  },
+  "void read<2, 0, 2, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 105566800.0,
+   "smsp__inst_executed.sum": 418718080.0
+  },
+  "void read<3, 0, 2, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 107566352.0,
+   "smsp__inst_executed.sum": 469433728.0
+  },
+  "void read<4, 0, 2, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 101470800.0,
+   "smsp__inst_executed.sum": 393886080.0
+  },
+  "void read<5, 0, 2, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 103674395.5,
+   "smsp__inst_executed.sum": 443373742.0
+  },
+  "void read<0, 0, 1, 8>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 11522080.0,
+   "smsp__inst_executed.sum": 74165760.0
+  },
+  "void read<1, 0, 1, 8>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 27998800.0,
+   "smsp__inst_executed.sum": 143781120.0
+  },
+  "void read<2, 0, 1, 8>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 40350800.0,
+   "smsp__inst_executed.sum": 201630080.0
+  },
+  "void read<3, 0, 1, 8>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 42358655.0,
+   "smsp__inst_executed.sum": 235226300.0
+  },
+  "void read<4, 0, 1, 8>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 36254800.0,
+   "smsp__inst_executed.sum": 176798080.0
+  },
+  "void read<5, 0, 1, 8>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 38111503.0,
+   "smsp__inst_executed.sum": 206724092.0
+  }
+ }
+}
