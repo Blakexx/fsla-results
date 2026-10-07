@@ -1,0 +1,285 @@
+{
+ "experiment": "smem_rates",
+ "question": "what does an SM's shared-memory pipe sustain a wavefront (128 bytes a cycle is the documented bank rate) for loads -- `ld.shared.v4` and `ldmatrix.x4`, 4 wavefronts a warp each -- and for atomic adds -- `red.shared.add.u32` with a lane a bank (1 wavefront a warp), two lanes a bank (2), four (4)?",
+ "arch": "sm_86",
+ "device": "NVIDIA GeForce RTX 3080 Ti",
+ "driver": "595.95",
+ "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
+ "git": {
+  "sha": "2b4ce17b5e546613ecce36174ad26c79a6aa9eeb",
+  "dirty": true
+ },
+ "reps": 7,
+ "date": "2026-10-07T01:37:06+00:00",
+ "utilization_before": 1,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "ld.shared.v4, 4 wavefronts a warp / 8 warps",
+   "unit": "cycles a wavefront",
+   "samples": [
+    1.012428,
+    1.012429,
+    1.01212,
+    1.012427,
+    1.012425,
+    1.012219,
+    1.012124
+   ],
+   "median": 1.012425,
+   "min": 1.01212,
+   "max": 1.012429,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "ldmatrix.x4, 4 wavefronts a warp / 8 warps",
+   "unit": "cycles a wavefront",
+   "samples": [
+    1.001684,
+    1.001686,
+    1.001688,
+    1.001692,
+    1.001686,
+    1.001693,
+    1.001681
+   ],
+   "median": 1.001686,
+   "min": 1.001681,
+   "max": 1.001693,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "red.shared.add, a lane a bank, 1 wavefront a warp / 8 warps",
+   "unit": "cycles a wavefront",
+   "samples": [
+    2.002719,
+    2.002643,
+    2.002639,
+    2.002644,
+    2.002729,
+    2.002732,
+    2.00277
+   ],
+   "median": 2.002719,
+   "min": 2.002639,
+   "max": 2.00277,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "red.shared.add, two lanes a bank, 2 wavefronts a warp / 8 warps",
+   "unit": "cycles a wavefront",
+   "samples": [
+    1.001064,
+    1.001087,
+    1.00107,
+    1.001092,
+    1.001089,
+    1.00108,
+    1.001056
+   ],
+   "median": 1.00108,
+   "min": 1.001056,
+   "max": 1.001092,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "red.shared.add, four lanes a bank, 4 wavefronts a warp / 8 warps",
+   "unit": "cycles a wavefront",
+   "samples": [
+    1.000411,
+    1.000424,
+    1.000415,
+    1.000432,
+    1.000414,
+    1.000424,
+    1.000418
+   ],
+   "median": 1.000418,
+   "min": 1.000411,
+   "max": 1.000432,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "ld.shared.v4, 4 wavefronts a warp / 16 warps",
+   "unit": "cycles a wavefront",
+   "samples": [
+    1.008996,
+    1.009026,
+    1.009023,
+    1.009023,
+    1.009024,
+    1.009023,
+    1.009021
+   ],
+   "median": 1.009023,
+   "min": 1.008996,
+   "max": 1.009026,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "ldmatrix.x4, 4 wavefronts a warp / 16 warps",
+   "unit": "cycles a wavefront",
+   "samples": [
+    1.00064,
+    1.000639,
+    1.00064,
+    1.00064,
+    1.00064,
+    1.000641,
+    1.00064
+   ],
+   "median": 1.00064,
+   "min": 1.000639,
+   "max": 1.000641,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "red.shared.add, a lane a bank, 1 wavefront a warp / 16 warps",
+   "unit": "cycles a wavefront",
+   "samples": [
+    2.003132,
+    2.003135,
+    2.003151,
+    2.00334,
+    2.003135,
+    2.003141,
+    2.003347
+   ],
+   "median": 2.003141,
+   "min": 2.003132,
+   "max": 2.003347,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "red.shared.add, two lanes a bank, 2 wavefronts a warp / 16 warps",
+   "unit": "cycles a wavefront",
+   "samples": [
+    1.000668,
+    1.000676,
+    1.000694,
+    1.000692,
+    1.000677,
+    1.000677,
+    1.000669
+   ],
+   "median": 1.000677,
+   "min": 1.000668,
+   "max": 1.000694,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "red.shared.add, four lanes a bank, 4 wavefronts a warp / 16 warps",
+   "unit": "cycles a wavefront",
+   "samples": [
+    1.000275,
+    1.000263,
+    1.000267,
+    1.000264,
+    1.000275,
+    1.000277,
+    2.005476
+   ],
+   "median": 1.000275,
+   "min": 1.000263,
+   "max": 2.005476,
+   "unstable": true
+  }
+ ],
+ "kernels": {
+  "void smem_rates::pipe<(int)4>(int, long long *, int *)": {
+   "regs": 16,
+   "ops": {
+    "NOP": 13,
+    "IADD3": 12,
+    "IMAD.MOV.U32": 9,
+    "BRA": 8,
+    "IMAD": 8,
+    "ULOP3.LUT": 8,
+    "ATOMS.ADD": 8,
+    "UIADD3": 7,
+    "LOP3.LUT": 5,
+    "IMAD.SHL.U32": 5,
+    "STS": 5,
+    "ISETP.GE.U32.AND": 3
+   }
+  },
+  "void smem_rates::pipe<(int)3>(int, long long *, int *)": {
+   "regs": 16,
+   "ops": {
+    "NOP": 13,
+    "IADD3": 12,
+    "IMAD.MOV.U32": 9,
+    "BRA": 8,
+    "IMAD": 8,
+    "ULOP3.LUT": 8,
+    "ATOMS.ADD": 8,
+    "UIADD3": 7,
+    "LOP3.LUT": 5,
+    "IMAD.SHL.U32": 5,
+    "STS": 5,
+    "ISETP.GE.U32.AND": 3
+   }
+  },
+  "void smem_rates::pipe<(int)2>(int, long long *, int *)": {
+   "regs": 16,
+   "ops": {
+    "IADD3": 12,
+    "IMAD": 9,
+    "IMAD.MOV.U32": 8,
+    "BRA": 8,
+    "ULOP3.LUT": 8,
+    "ATOMS.ADD": 8,
+    "NOP": 8,
+    "UIADD3": 7,
+    "STS": 5,
+    "IMAD.SHL.U32": 4,
+    "LOP3.LUT": 3,
+    "ISETP.GE.U32.AND": 3
+   }
+  },
+  "void smem_rates::pipe<(int)1>(int, long long *, int *)": {
+   "regs": 34,
+   "ops": {
+    "LOP3.LUT": 20,
+    "IMAD.MOV.U32": 12,
+    "IADD3": 12,
+    "IMAD": 10,
+    "NOP": 10,
+    "BRA": 9,
+    "ULOP3.LUT": 8,
+    "LDSM.16.M88.4": 8,
+    "UIADD3": 7,
+    "STS": 5,
+    "IMAD.SHL.U32": 4,
+    "BSSY": 3
+   }
+  },
+  "void smem_rates::pipe<(int)0>(int, long long *, int *)": {
+   "regs": 34,
+   "ops": {
+    "LOP3.LUT": 20,
+    "IMAD.MOV.U32": 12,
+    "IADD3": 12,
+    "IMAD": 10,
+    "NOP": 10,
+    "BRA": 9,
+    "ULOP3.LUT": 8,
+    "LDS.128": 8,
+    "UIADD3": 7,
+    "STS": 5,
+    "IMAD.SHL.U32": 4,
+    "BSSY": 3
+   }
+  }
+ }
+}
