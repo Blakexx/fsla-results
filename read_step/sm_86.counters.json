@@ -3,10 +3,10 @@
  "question": "the readout's step on the even carve (a warp owns 4 level-S read digits x 32 level-R digits x 32 channels): per digit (each digit over its own read tokens, gathered) or merged (the warp's digits summed over the union in registers), what does a step cost beside its tensor floor, what do its output adds into the shared panel add, and does draining the panel to global memory cost anything once it is double buffered and spread through the next pass, against draining it in a burst at the pass's end?",
  "arch": "sm_86",
  "git": {
-  "sha": "200403c1dce10f5b68430c1e06403fe3a9b5d148",
+  "sha": "3d36e772fed4d8b0d266dd4804f37d4828b8d93b",
   "dirty": true
  },
- "date": "2026-10-07T06:00:28+00:00",
+ "date": "2026-10-07T17:25:05+00:00",
  "metrics": [
   "smsp__inst_executed.sum",
   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum"
@@ -14,180 +14,216 @@
  "inputs": {},
  "kernels": {
   "void read<0, 1, 8, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 18473040.0,
-   "smsp__inst_executed.sum": 251155200.0
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 18486136.0,
+   "smsp__inst_executed.sum": 251230880.0
   },
   "void read<1, 1, 8, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 55337040.0,
-   "smsp__inst_executed.sum": 451857280.0
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 55350143.5,
+   "smsp__inst_executed.sum": 451932960.0
   },
   "void read<2, 1, 8, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 67689040.0,
-   "smsp__inst_executed.sum": 505871360.0
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 67702130.5,
+   "smsp__inst_executed.sum": 505947040.0
   },
   "void read<3, 1, 8, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 70800542.5,
-   "smsp__inst_executed.sum": 583802810.0
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 70815505.0,
+   "smsp__inst_executed.sum": 583847340.0
   },
   "void read<4, 1, 8, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 63593040.0,
-   "smsp__inst_executed.sum": 481039360.0
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 63606134.5,
+   "smsp__inst_executed.sum": 481115040.0
   },
   "void read<5, 1, 8, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 66777857.0,
-   "smsp__inst_executed.sum": 555177028.0
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 66841578.5,
+   "smsp__inst_executed.sum": 555383420.0
   },
   "void read<6, 1, 8, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 51241040.0,
-   "smsp__inst_executed.sum": 390663040.0
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 51254124.0,
+   "smsp__inst_executed.sum": 390738720.0
   },
   "void read<7, 1, 8, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 59497040.0,
-   "smsp__inst_executed.sum": 421893120.0
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 59510137.5,
+   "smsp__inst_executed.sum": 421968800.0
   },
   "void read<0, 0, 8, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 73769040.0,
-   "smsp__inst_executed.sum": 737554560.0
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 73782132.0,
+   "smsp__inst_executed.sum": 737630240.0
   },
   "void read<1, 0, 8, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 286761040.0,
-   "smsp__inst_executed.sum": 1422096640.0
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 286774144.5,
+   "smsp__inst_executed.sum": 1422172320.0
   },
   "void read<2, 0, 8, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 299113040.0,
-   "smsp__inst_executed.sum": 1474063360.0
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 299126125.0,
+   "smsp__inst_executed.sum": 1474139040.0
   },
   "void read<3, 0, 8, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 302726988.0,
-   "smsp__inst_executed.sum": 1621860592.0
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 303663815.5,
+   "smsp__inst_executed.sum": 1625618398.0
   },
   "void read<4, 0, 8, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 295017040.0,
-   "smsp__inst_executed.sum": 1449231360.0
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 295030170.5,
+   "smsp__inst_executed.sum": 1449307040.0
   },
   "void read<5, 0, 8, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 299167133.0,
-   "smsp__inst_executed.sum": 1596105012.0
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 299090061.0,
+   "smsp__inst_executed.sum": 1595806426.0
   },
   "void read<6, 0, 8, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 270377040.0,
-   "smsp__inst_executed.sum": 1319686400.0
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 270390131.0,
+   "smsp__inst_executed.sum": 1319762080.0
   },
   "void read<7, 0, 8, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 278633040.0,
-   "smsp__inst_executed.sum": 1350661760.0
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 278646141.5,
+   "smsp__inst_executed.sum": 1350737440.0
   },
   "void read<8, 0, 8, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 270377040.0,
-   "smsp__inst_executed.sum": 1080069760.0
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 270390136.5,
+   "smsp__inst_executed.sum": 1080145440.0
   },
   "void read<9, 0, 8, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 270377040.0,
-   "smsp__inst_executed.sum": 967429760.0
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 270390140.5,
+   "smsp__inst_executed.sum": 967505440.0
   },
   "void read<10, 0, 8, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 270377040.0,
-   "smsp__inst_executed.sum": 903173760.0
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 270390134.0,
+   "smsp__inst_executed.sum": 903249440.0
   },
   "void read<11, 0, 8, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 270377040.0,
-   "smsp__inst_executed.sum": 864005760.0
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 270390130.0,
+   "smsp__inst_executed.sum": 864081440.0
+  },
+  "void read<12, 0, 8, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 139318159.5,
+   "smsp__inst_executed.sum": 864081440.0
+  },
+  "void read<13, 0, 8, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 139318164.5,
+   "smsp__inst_executed.sum": 594001440.0
+  },
+  "void read<14, 0, 8, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 41014136.5,
+   "smsp__inst_executed.sum": 336722720.0
   },
   "void read<0, 0, 2, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 18473040.0,
-   "smsp__inst_executed.sum": 189714560.0
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 18486139.0,
+   "smsp__inst_executed.sum": 189790240.0
   },
   "void read<1, 0, 2, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 71721040.0,
-   "smsp__inst_executed.sum": 361744640.0
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 71734140.5,
+   "smsp__inst_executed.sum": 361820320.0
   },
   "void read<2, 0, 2, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 84073040.0,
-   "smsp__inst_executed.sum": 419855360.0
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 84086135.0,
+   "smsp__inst_executed.sum": 419931040.0
   },
   "void read<3, 0, 2, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 86013980.5,
-   "smsp__inst_executed.sum": 467264562.0
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 86042397.0,
+   "smsp__inst_executed.sum": 467348204.0
   },
   "void read<4, 0, 2, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 79977040.0,
-   "smsp__inst_executed.sum": 395023360.0
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 79990124.0,
+   "smsp__inst_executed.sum": 395099040.0
   },
   "void read<5, 0, 2, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 81897365.5,
-   "smsp__inst_executed.sum": 440305942.0
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 81921064.5,
+   "smsp__inst_executed.sum": 440327892.0
   },
   "void read<6, 0, 2, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 67625040.0,
-   "smsp__inst_executed.sum": 338694400.0
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 67638132.5,
+   "smsp__inst_executed.sum": 338770080.0
   },
   "void read<7, 0, 2, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 75881040.0,
-   "smsp__inst_executed.sum": 369669760.0
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 75894123.0,
+   "smsp__inst_executed.sum": 369745440.0
   },
   "void read<8, 0, 2, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 67625040.0,
-   "smsp__inst_executed.sum": 273157760.0
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 67638137.0,
+   "smsp__inst_executed.sum": 273233440.0
   },
   "void read<9, 0, 2, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 67625040.0,
-   "smsp__inst_executed.sum": 244485760.0
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 67638141.5,
+   "smsp__inst_executed.sum": 244561440.0
   },
   "void read<10, 0, 2, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 67625040.0,
-   "smsp__inst_executed.sum": 230917760.0
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 67638137.5,
+   "smsp__inst_executed.sum": 230993440.0
   },
   "void read<11, 0, 2, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 67625040.0,
-   "smsp__inst_executed.sum": 217861760.0
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 67638133.0,
+   "smsp__inst_executed.sum": 217937440.0
+  },
+  "void read<12, 0, 2, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 34870158.5,
+   "smsp__inst_executed.sum": 217937440.0
+  },
+  "void read<13, 0, 2, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 34870152.5,
+   "smsp__inst_executed.sum": 152657440.0
+  },
+  "void read<14, 0, 2, 16>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 10294149.0,
+   "smsp__inst_executed.sum": 86866080.0
   },
   "void read<0, 0, 1, 8>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 4150526.0,
-   "smsp__inst_executed.sum": 45441920.0
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 4163605.0,
+   "smsp__inst_executed.sum": 45517600.0
   },
   "void read<1, 0, 1, 8>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 22569040.0,
-   "smsp__inst_executed.sum": 142871040.0
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 22582150.5,
+   "smsp__inst_executed.sum": 142946720.0
   },
   "void read<2, 0, 1, 8>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 34921040.0,
-   "smsp__inst_executed.sum": 200975360.0
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 34934132.5,
+   "smsp__inst_executed.sum": 201051040.0
   },
   "void read<3, 0, 1, 8>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 36971794.5,
-   "smsp__inst_executed.sum": 234487178.0
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 36984033.0,
+   "smsp__inst_executed.sum": 234483084.0
   },
   "void read<4, 0, 1, 8>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 30825040.0,
-   "smsp__inst_executed.sum": 176143360.0
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 30838125.0,
+   "smsp__inst_executed.sum": 176219040.0
   },
   "void read<5, 0, 1, 8>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 32907511.5,
-   "smsp__inst_executed.sum": 206716446.0
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 32985795.5,
+   "smsp__inst_executed.sum": 206825104.0
   },
   "void read<6, 0, 1, 8>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 21545040.0,
-   "smsp__inst_executed.sum": 125964800.0
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 21558122.0,
+   "smsp__inst_executed.sum": 126040480.0
   },
   "void read<7, 0, 1, 8>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 29801040.0,
-   "smsp__inst_executed.sum": 159237760.0
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 29814131.0,
+   "smsp__inst_executed.sum": 159313440.0
   },
   "void read<8, 0, 1, 8>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 54313040.0,
-   "smsp__inst_executed.sum": 139525120.0
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 54326129.5,
+   "smsp__inst_executed.sum": 139600800.0
   },
   "void read<9, 0, 1, 8>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 54313040.0,
-   "smsp__inst_executed.sum": 125189120.0
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 54326141.5,
+   "smsp__inst_executed.sum": 125264800.0
   },
   "void read<10, 0, 1, 8>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 54313040.0,
-   "smsp__inst_executed.sum": 116997760.0
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 54326130.5,
+   "smsp__inst_executed.sum": 117073440.0
   },
   "void read<11, 0, 1, 8>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
-   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 54313040.0,
-   "smsp__inst_executed.sum": 111877120.0
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 54326127.0,
+   "smsp__inst_executed.sum": 111952800.0
+  },
+  "void read<12, 0, 1, 8>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 17462130.0,
+   "smsp__inst_executed.sum": 111952800.0
+  },
+  "void read<13, 0, 1, 8>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 17462153.5,
+   "smsp__inst_executed.sum": 76887200.0
+  },
+  "void read<14, 0, 1, 8>(int, const unsigned short *, unsigned int *, const unsigned int *, long long *, int *)": {
+   "l1tex__data_pipe_lsu_wavefronts_mem_shared.sum": 4152668.0,
+   "smsp__inst_executed.sum": 41051680.0
   }
  }
 }
