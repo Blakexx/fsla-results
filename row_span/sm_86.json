@@ -1,0 +1,709 @@
+{
+ "experiment": "row_span",
+ "question": "how fast does the facts pass's row stream read DRAM when a work item owns a wider span of a level's digits? A level's rows are [T, H, width] u8 -- a token's head's row `width` contiguous bytes, heads side by side -- and today an item owns 32 digits, one 32-byte piece of each token's row.",
+ "arch": "sm_86",
+ "device": "NVIDIA GeForce RTX 3080 Ti",
+ "driver": "595.95",
+ "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
+ "git": {
+  "sha": "f44ee647ef69b278df962da9954f06b6fd62bf96",
+  "dirty": true
+ },
+ "reps": 7,
+ "date": "2026-10-08T06:40:16+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "flat stream / 2 x 8 warps an SM",
+   "unit": "bytes a cycle",
+   "samples": [
+    540.701035,
+    541.910285,
+    541.700975,
+    541.890088,
+    541.712645,
+    541.557578,
+    541.411951
+   ],
+   "median": 541.700975,
+   "min": 540.701035,
+   "max": 541.910285,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "flat stream / 2 x 8 warps an SM / flat",
+   "unit": "x",
+   "samples": [
+    0.998154,
+    1.000386,
+    1.0,
+    1.000349,
+    1.000022,
+    0.999735,
+    0.999466
+   ],
+   "median": 1.0,
+   "min": 0.998154,
+   "max": 1.000386,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32-digit span / 2 x 8 warps an SM",
+   "unit": "bytes a cycle",
+   "samples": [
+    271.27684,
+    271.229253,
+    269.407012,
+    266.898637,
+    259.1108,
+    255.394426,
+    268.044684
+   ],
+   "median": 268.044684,
+   "min": 255.394426,
+   "max": 271.27684,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "32-digit span / 2 x 8 warps an SM / flat",
+   "unit": "x",
+   "samples": [
+    0.500787,
+    0.500699,
+    0.497335,
+    0.492705,
+    0.478328,
+    0.471468,
+    0.49482
+   ],
+   "median": 0.49482,
+   "min": 0.471468,
+   "max": 0.500787,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "64-digit span / 2 x 8 warps an SM",
+   "unit": "bytes a cycle",
+   "samples": [
+    432.679729,
+    439.822135,
+    436.326053,
+    433.920804,
+    436.356152,
+    436.771011,
+    430.047724
+   ],
+   "median": 436.326053,
+   "min": 430.047724,
+   "max": 439.822135,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "64-digit span / 2 x 8 warps an SM / flat",
+   "unit": "x",
+   "samples": [
+    0.798743,
+    0.811928,
+    0.805474,
+    0.801034,
+    0.80553,
+    0.806295,
+    0.793884
+   ],
+   "median": 0.805474,
+   "min": 0.793884,
+   "max": 0.811928,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "128-digit span / 2 x 8 warps an SM",
+   "unit": "bytes a cycle",
+   "samples": [
+    527.138227,
+    529.562003,
+    527.869445,
+    527.213805,
+    528.310135,
+    531.661915,
+    528.010227
+   ],
+   "median": 528.010227,
+   "min": 527.138227,
+   "max": 531.661915,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "128-digit span / 2 x 8 warps an SM / flat",
+   "unit": "x",
+   "samples": [
+    0.973117,
+    0.977591,
+    0.974466,
+    0.973256,
+    0.97528,
+    0.981468,
+    0.974726
+   ],
+   "median": 0.974726,
+   "min": 0.973117,
+   "max": 0.981468,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "256-digit span / 2 x 8 warps an SM",
+   "unit": "bytes a cycle",
+   "samples": [
+    539.573257,
+    539.355859,
+    539.075393,
+    538.883129,
+    529.63108,
+    520.945731,
+    523.261419
+   ],
+   "median": 538.883129,
+   "min": 520.945731,
+   "max": 539.573257,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "256-digit span / 2 x 8 warps an SM / flat",
+   "unit": "x",
+   "samples": [
+    0.996072,
+    0.995671,
+    0.995153,
+    0.994798,
+    0.977719,
+    0.961685,
+    0.96596
+   ],
+   "median": 0.994798,
+   "min": 0.961685,
+   "max": 0.996072,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "flat stream / 1 x 16 warps an SM",
+   "unit": "bytes a cycle",
+   "samples": [
+    539.450809,
+    539.760303,
+    539.93393,
+    539.617321,
+    539.808822,
+    539.89014,
+    539.93412
+   ],
+   "median": 539.808822,
+   "min": 539.450809,
+   "max": 539.93412,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "flat stream / 1 x 16 warps an SM / flat",
+   "unit": "x",
+   "samples": [
+    0.999337,
+    0.99991,
+    1.000232,
+    0.999645,
+    1.0,
+    1.000151,
+    1.000232
+   ],
+   "median": 1.0,
+   "min": 0.999337,
+   "max": 1.000232,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32-digit span / 1 x 16 warps an SM",
+   "unit": "bytes a cycle",
+   "samples": [
+    245.565134,
+    243.704732,
+    238.059757,
+    238.006028,
+    244.300275,
+    242.951716,
+    241.790886
+   ],
+   "median": 242.951716,
+   "min": 238.006028,
+   "max": 245.565134,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32-digit span / 1 x 16 warps an SM / flat",
+   "unit": "x",
+   "samples": [
+    0.454911,
+    0.451465,
+    0.441008,
+    0.440908,
+    0.452568,
+    0.45007,
+    0.447919
+   ],
+   "median": 0.45007,
+   "min": 0.440908,
+   "max": 0.454911,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "64-digit span / 1 x 16 warps an SM",
+   "unit": "bytes a cycle",
+   "samples": [
+    426.133327,
+    431.511803,
+    437.269563,
+    446.250787,
+    437.986681,
+    438.989437,
+    440.622121
+   ],
+   "median": 437.986681,
+   "min": 426.133327,
+   "max": 446.250787,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "64-digit span / 1 x 16 warps an SM / flat",
+   "unit": "x",
+   "samples": [
+    0.789415,
+    0.799379,
+    0.810045,
+    0.826683,
+    0.811374,
+    0.813231,
+    0.816256
+   ],
+   "median": 0.811374,
+   "min": 0.789415,
+   "max": 0.826683,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "128-digit span / 1 x 16 warps an SM",
+   "unit": "bytes a cycle",
+   "samples": [
+    524.237701,
+    523.577515,
+    525.264304,
+    525.029656,
+    522.661268,
+    524.282803,
+    526.490881
+   ],
+   "median": 524.282803,
+   "min": 522.661268,
+   "max": 526.490881,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "128-digit span / 1 x 16 warps an SM / flat",
+   "unit": "x",
+   "samples": [
+    0.971154,
+    0.969931,
+    0.973056,
+    0.972621,
+    0.968234,
+    0.971238,
+    0.975328
+   ],
+   "median": 0.971238,
+   "min": 0.968234,
+   "max": 0.975328,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "256-digit span / 1 x 16 warps an SM",
+   "unit": "bytes a cycle",
+   "samples": [
+    536.901381,
+    537.704165,
+    537.38527,
+    536.970413,
+    537.347378,
+    537.488352,
+    537.282766
+   ],
+   "median": 537.347378,
+   "min": 536.901381,
+   "max": 537.704165,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "256-digit span / 1 x 16 warps an SM / flat",
+   "unit": "x",
+   "samples": [
+    0.994614,
+    0.996101,
+    0.99551,
+    0.994742,
+    0.99544,
+    0.995701,
+    0.99532
+   ],
+   "median": 0.99544,
+   "min": 0.994614,
+   "max": 0.996101,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "flat stream / 1 x 8 warps an SM",
+   "unit": "bytes a cycle",
+   "samples": [
+    525.393635,
+    525.632135,
+    508.209473,
+    507.218991,
+    518.435576,
+    525.610393,
+    525.007245
+   ],
+   "median": 525.007245,
+   "min": 507.218991,
+   "max": 525.632135,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "flat stream / 1 x 8 warps an SM / flat",
+   "unit": "x",
+   "samples": [
+    1.000736,
+    1.00119,
+    0.968005,
+    0.966118,
+    0.987483,
+    1.001149,
+    1.0
+   ],
+   "median": 1.0,
+   "min": 0.966118,
+   "max": 1.00119,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "128-digit span / 1 x 8 warps an SM",
+   "unit": "bytes a cycle",
+   "samples": [
+    533.650332,
+    533.830958,
+    532.920849,
+    532.832204,
+    533.523877,
+    532.609424,
+    533.161997
+   ],
+   "median": 533.161997,
+   "min": 532.609424,
+   "max": 533.830958,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "128-digit span / 1 x 8 warps an SM / flat",
+   "unit": "x",
+   "samples": [
+    1.016463,
+    1.016807,
+    1.015073,
+    1.014904,
+    1.016222,
+    1.01448,
+    1.015533
+   ],
+   "median": 1.015533,
+   "min": 1.01448,
+   "max": 1.016807,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "256-digit span / 1 x 8 warps an SM",
+   "unit": "bytes a cycle",
+   "samples": [
+    524.70333,
+    524.948877,
+    524.184852,
+    525.117599,
+    524.754719,
+    524.620576,
+    524.477688
+   ],
+   "median": 524.70333,
+   "min": 524.184852,
+   "max": 525.117599,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "256-digit span / 1 x 8 warps an SM / flat",
+   "unit": "x",
+   "samples": [
+    0.999421,
+    0.999889,
+    0.998434,
+    1.00021,
+    0.999519,
+    0.999263,
+    0.998991
+   ],
+   "median": 0.999421,
+   "min": 0.998434,
+   "max": 1.00021,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void row_span::stream<(int)256, (int)8, (int)1>(const unsigned char *, long long *, int *)": {
+   "regs": 52,
+   "ops": {
+    "LOP3.LUT": 39,
+    "NOP": 26,
+    "IADD3": 24,
+    "LEA.HI": 19,
+    "IMAD.WIDE": 18,
+    "LEA": 16,
+    "LEA.HI.X": 16,
+    "IADD3.X": 16,
+    "LDGSTS.E.BYPASS.128": 16,
+    "LDS.128": 16,
+    "LDS": 15,
+    "LDGDEPBAR": 11
+   }
+  },
+  "void row_span::stream<(int)128, (int)8, (int)1>(const unsigned char *, long long *, int *)": {
+   "regs": 51,
+   "ops": {
+    "LOP3.LUT": 39,
+    "NOP": 28,
+    "IADD3": 24,
+    "LEA.HI": 21,
+    "IMAD.WIDE": 18,
+    "LEA": 16,
+    "LEA.HI.X": 16,
+    "IADD3.X": 16,
+    "LDGSTS.E.BYPASS.128": 16,
+    "LDS.128": 16,
+    "LDS": 15,
+    "LDGDEPBAR": 11
+   }
+  },
+  "void row_span::stream<(int)0, (int)8, (int)1>(const unsigned char *, long long *, int *)": {
+   "regs": 49,
+   "ops": {
+    "LOP3.LUT": 60,
+    "NOP": 29,
+    "IADD3": 17,
+    "IADD3.X": 16,
+    "LDGSTS.E.BYPASS.128": 16,
+    "LDS.128": 16,
+    "LDS": 15,
+    "LDGDEPBAR": 11,
+    "DEPBAR.LE": 8,
+    "IMAD.MOV.U32": 6,
+    "IMAD.SHL.U32": 5,
+    "BRA": 4
+   }
+  },
+  "void row_span::stream<(int)256, (int)16, (int)1>(const unsigned char *, long long *, int *)": {
+   "regs": 51,
+   "ops": {
+    "LOP3.LUT": 44,
+    "IADD3": 24,
+    "NOP": 24,
+    "LEA.HI": 19,
+    "IMAD.WIDE": 18,
+    "LEA": 16,
+    "LEA.HI.X": 16,
+    "IADD3.X": 16,
+    "LDGSTS.E.BYPASS.128": 16,
+    "LDS.128": 16,
+    "LDS": 15,
+    "LDGDEPBAR": 11
+   }
+  },
+  "void row_span::stream<(int)128, (int)16, (int)1>(const unsigned char *, long long *, int *)": {
+   "regs": 51,
+   "ops": {
+    "LOP3.LUT": 43,
+    "NOP": 27,
+    "IADD3": 24,
+    "LEA.HI": 21,
+    "IMAD.WIDE": 18,
+    "LEA": 16,
+    "LEA.HI.X": 16,
+    "IADD3.X": 16,
+    "LDGSTS.E.BYPASS.128": 16,
+    "LDS.128": 16,
+    "LDS": 15,
+    "LDGDEPBAR": 11
+   }
+  },
+  "void row_span::stream<(int)64, (int)16, (int)1>(const unsigned char *, long long *, int *)": {
+   "regs": 51,
+   "ops": {
+    "LOP3.LUT": 43,
+    "NOP": 27,
+    "IADD3": 24,
+    "LEA.HI": 21,
+    "IMAD.WIDE": 18,
+    "LEA": 16,
+    "LEA.HI.X": 16,
+    "IADD3.X": 16,
+    "LDGSTS.E.BYPASS.128": 16,
+    "LDS.128": 16,
+    "LDS": 15,
+    "LDGDEPBAR": 11
+   }
+  },
+  "void row_span::stream<(int)32, (int)16, (int)1>(const unsigned char *, long long *, int *)": {
+   "regs": 51,
+   "ops": {
+    "LOP3.LUT": 43,
+    "NOP": 25,
+    "IADD3": 24,
+    "IMAD.IADD": 19,
+    "IMAD.WIDE": 18,
+    "LEA": 16,
+    "LEA.HI.X": 16,
+    "IADD3.X": 16,
+    "LDGSTS.E.BYPASS.128": 16,
+    "LDS.128": 16,
+    "LDS": 15,
+    "LDGDEPBAR": 11
+   }
+  },
+  "void row_span::stream<(int)0, (int)16, (int)1>(const unsigned char *, long long *, int *)": {
+   "regs": 50,
+   "ops": {
+    "LOP3.LUT": 60,
+    "NOP": 29,
+    "IADD3": 17,
+    "IADD3.X": 16,
+    "LDGSTS.E.BYPASS.128": 16,
+    "LDS.128": 16,
+    "LDS": 15,
+    "LDGDEPBAR": 11,
+    "DEPBAR.LE": 8,
+    "IMAD.MOV.U32": 6,
+    "IMAD.SHL.U32": 5,
+    "IMAD": 5
+   }
+  },
+  "void row_span::stream<(int)256, (int)8, (int)2>(const unsigned char *, long long *, int *)": {
+   "regs": 52,
+   "ops": {
+    "LOP3.LUT": 39,
+    "NOP": 26,
+    "IADD3": 24,
+    "LEA.HI": 19,
+    "IMAD.WIDE": 18,
+    "LEA": 16,
+    "LEA.HI.X": 16,
+    "IADD3.X": 16,
+    "LDGSTS.E.BYPASS.128": 16,
+    "LDS.128": 16,
+    "LDS": 15,
+    "LDGDEPBAR": 11
+   }
+  },
+  "void row_span::stream<(int)128, (int)8, (int)2>(const unsigned char *, long long *, int *)": {
+   "regs": 51,
+   "ops": {
+    "LOP3.LUT": 39,
+    "NOP": 28,
+    "IADD3": 24,
+    "LEA.HI": 21,
+    "IMAD.WIDE": 18,
+    "LEA": 16,
+    "LEA.HI.X": 16,
+    "IADD3.X": 16,
+    "LDGSTS.E.BYPASS.128": 16,
+    "LDS.128": 16,
+    "LDS": 15,
+    "LDGDEPBAR": 11
+   }
+  },
+  "void row_span::stream<(int)64, (int)8, (int)2>(const unsigned char *, long long *, int *)": {
+   "regs": 51,
+   "ops": {
+    "LOP3.LUT": 39,
+    "NOP": 28,
+    "IADD3": 24,
+    "LEA.HI": 21,
+    "IMAD.WIDE": 18,
+    "LEA": 16,
+    "LEA.HI.X": 16,
+    "IADD3.X": 16,
+    "LDGSTS.E.BYPASS.128": 16,
+    "LDS.128": 16,
+    "LDS": 15,
+    "LDGDEPBAR": 11
+   }
+  },
+  "void row_span::stream<(int)32, (int)8, (int)2>(const unsigned char *, long long *, int *)": {
+   "regs": 52,
+   "ops": {
+    "LOP3.LUT": 39,
+    "NOP": 26,
+    "IADD3": 24,
+    "IMAD.IADD": 19,
+    "IMAD.WIDE": 18,
+    "LEA": 16,
+    "LEA.HI.X": 16,
+    "IADD3.X": 16,
+    "LDGSTS.E.BYPASS.128": 16,
+    "LDS.128": 16,
+    "LDS": 15,
+    "LDGDEPBAR": 11
+   }
+  },
+  "void row_span::stream<(int)0, (int)8, (int)2>(const unsigned char *, long long *, int *)": {
+   "regs": 49,
+   "ops": {
+    "LOP3.LUT": 60,
+    "NOP": 29,
+    "IADD3": 17,
+    "IADD3.X": 16,
+    "LDGSTS.E.BYPASS.128": 16,
+    "LDS.128": 16,
+    "LDS": 15,
+    "LDGDEPBAR": 11,
+    "DEPBAR.LE": 8,
+    "IMAD.MOV.U32": 6,
+    "IMAD.SHL.U32": 5,
+    "BRA": 4
+   }
+  }
+ }
+}
