@@ -1,0 +1,647 @@
+{
+ "experiment": "gang_ring",
+ "question": "in one persistent cooperative grid, can sidecar CTAs build each window's per-list slot lists from the bitlists into a ring of R windows fast enough for the carry CTAs that consume them, and what do the ring's waits cost the consumers against the same consumers given every list up front?",
+ "arch": "sm_86",
+ "device": "NVIDIA GeForce RTX 3080 Ti",
+ "driver": "595.95",
+ "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
+ "git": {
+  "sha": "403c3d6ee7ee01da92cada37d7383d9cd71783a0",
+  "dirty": true
+ },
+ "reps": 7,
+ "date": "2026-10-08T00:04:37+00:00",
+ "utilization_before": 1,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "k 4 / build alone, 1 sidecars",
+   "unit": "cycles a window",
+   "samples": [
+    61283.421875,
+    61273.703125,
+    67957.296875,
+    61335.9375,
+    61287.328125,
+    73869.015625,
+    61305.953125
+   ],
+   "median": 61305.953125,
+   "min": 61273.703125,
+   "max": 73869.015625,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "k 4 / build alone, 2 sidecars",
+   "unit": "cycles a window",
+   "samples": [
+    30642.015625,
+    30648.578125,
+    30635.234375,
+    44702.09375,
+    30641.84375,
+    30639.015625,
+    30630.140625
+   ],
+   "median": 30641.84375,
+   "min": 30630.140625,
+   "max": 44702.09375,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "k 4 / build alone, 4 sidecars",
+   "unit": "cycles a window",
+   "samples": [
+    15372.0,
+    21132.109375,
+    15396.375,
+    15374.765625,
+    15362.890625,
+    15372.9375,
+    15372.453125
+   ],
+   "median": 15372.9375,
+   "min": 15362.890625,
+   "max": 21132.109375,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "k 4 / build alone, 8 sidecars",
+   "unit": "cycles a window",
+   "samples": [
+    7711.5625,
+    7731.46875,
+    7719.515625,
+    7718.5625,
+    7713.796875,
+    7716.3125,
+    7712.953125
+   ],
+   "median": 7716.3125,
+   "min": 7711.5625,
+   "max": 7731.46875,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "k 4 / lists given, 76 carry CTAs",
+   "unit": "cycles a window",
+   "samples": [
+    3989.1875,
+    4005.671875,
+    3986.015625,
+    4018.15625,
+    3996.9375,
+    4005.453125,
+    3982.734375
+   ],
+   "median": 3996.9375,
+   "min": 3982.734375,
+   "max": 4018.15625,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "k 4 / lists given, 76 carry CTAs / floor",
+   "unit": "x",
+   "samples": [
+    1.461241,
+    1.467279,
+    1.460079,
+    1.471852,
+    1.46408,
+    1.467199,
+    1.458877
+   ],
+   "median": 1.46408,
+   "min": 1.458877,
+   "max": 1.471852,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "k 4 / ring of 3, 2 sidecars",
+   "unit": "cycles a window",
+   "samples": [
+    36058.265625,
+    36015.203125,
+    36017.5625,
+    36037.171875,
+    36039.03125,
+    36001.65625,
+    36015.03125
+   ],
+   "median": 36017.5625,
+   "min": 36001.65625,
+   "max": 36058.265625,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "k 4 / ring of 3, 2 sidecars / floor",
+   "unit": "x",
+   "samples": [
+    13.208156,
+    13.192382,
+    13.193246,
+    13.200429,
+    13.20111,
+    13.18742,
+    13.192319
+   ],
+   "median": 13.193246,
+   "min": 13.18742,
+   "max": 13.208156,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "k 4 / ring of 3, 4 sidecars",
+   "unit": "cycles a window",
+   "samples": [
+    17955.40625,
+    17965.828125,
+    17957.21875,
+    17969.09375,
+    17943.046875,
+    17917.953125,
+    17955.03125
+   ],
+   "median": 17955.40625,
+   "min": 17917.953125,
+   "max": 17969.09375,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "k 4 / ring of 3, 4 sidecars / floor",
+   "unit": "x",
+   "samples": [
+    6.577072,
+    6.580889,
+    6.577736,
+    6.582086,
+    6.572545,
+    6.563353,
+    6.576935
+   ],
+   "median": 6.577072,
+   "min": 6.563353,
+   "max": 6.582086,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "k 4 / ring of 3, 8 sidecars",
+   "unit": "cycles a window",
+   "samples": [
+    8805.125,
+    8780.671875,
+    8785.6875,
+    8810.734375,
+    8832.46875,
+    8822.03125,
+    8792.6875
+   ],
+   "median": 8805.125,
+   "min": 8780.671875,
+   "max": 8832.46875,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "k 4 / ring of 3, 8 sidecars / floor",
+   "unit": "x",
+   "samples": [
+    3.225321,
+    3.216363,
+    3.218201,
+    3.227375,
+    3.235337,
+    3.231513,
+    3.220765
+   ],
+   "median": 3.225321,
+   "min": 3.216363,
+   "max": 3.235337,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "k 4 / ring of 2, 4 sidecars",
+   "unit": "cycles a window",
+   "samples": [
+    17864.28125,
+    17867.65625,
+    17872.4375,
+    17956.21875,
+    17863.078125,
+    17887.3125,
+    17870.109375
+   ],
+   "median": 17870.109375,
+   "min": 17863.078125,
+   "max": 17956.21875,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "k 4 / ring of 2, 4 sidecars / floor",
+   "unit": "x",
+   "samples": [
+    6.543693,
+    6.544929,
+    6.54668,
+    6.57737,
+    6.543252,
+    6.552129,
+    6.545828
+   ],
+   "median": 6.545828,
+   "min": 6.543252,
+   "max": 6.57737,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "k 4 / ring of 4, 4 sidecars",
+   "unit": "cycles a window",
+   "samples": [
+    17910.390625,
+    17950.484375,
+    17987.4375,
+    17940.140625,
+    17972.296875,
+    17980.140625,
+    17944.421875
+   ],
+   "median": 17950.484375,
+   "min": 17910.390625,
+   "max": 17987.4375,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "k 4 / ring of 4, 4 sidecars / floor",
+   "unit": "x",
+   "samples": [
+    6.560583,
+    6.575269,
+    6.588805,
+    6.57148,
+    6.583259,
+    6.586132,
+    6.573048
+   ],
+   "median": 6.575269,
+   "min": 6.560583,
+   "max": 6.588805,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "k 16 / build alone, 1 sidecars",
+   "unit": "cycles a window",
+   "samples": [
+    90279.484375,
+    90262.609375,
+    90283.640625,
+    90315.5,
+    90299.578125,
+    90290.875,
+    90306.578125
+   ],
+   "median": 90290.875,
+   "min": 90262.609375,
+   "max": 90315.5,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "k 16 / build alone, 2 sidecars",
+   "unit": "cycles a window",
+   "samples": [
+    45294.703125,
+    45293.984375,
+    57194.078125,
+    45301.171875,
+    45290.53125,
+    45290.484375,
+    45275.171875
+   ],
+   "median": 45293.984375,
+   "min": 45275.171875,
+   "max": 57194.078125,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "k 16 / build alone, 4 sidecars",
+   "unit": "cycles a window",
+   "samples": [
+    22725.953125,
+    22755.15625,
+    22744.359375,
+    22738.953125,
+    22732.546875,
+    22787.984375,
+    22738.625
+   ],
+   "median": 22738.953125,
+   "min": 22725.953125,
+   "max": 22787.984375,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "k 16 / build alone, 8 sidecars",
+   "unit": "cycles a window",
+   "samples": [
+    11405.109375,
+    11398.609375,
+    11387.671875,
+    11396.1875,
+    11399.953125,
+    11394.453125,
+    11386.046875
+   ],
+   "median": 11396.1875,
+   "min": 11386.046875,
+   "max": 11405.109375,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "k 16 / lists given, 76 carry CTAs",
+   "unit": "cycles a window",
+   "samples": [
+    7411.484375,
+    7419.84375,
+    7435.359375,
+    7435.8125,
+    7399.703125,
+    7399.28125,
+    7449.40625
+   ],
+   "median": 7419.84375,
+   "min": 7399.28125,
+   "max": 7449.40625,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "k 16 / lists given, 76 carry CTAs / floor",
+   "unit": "x",
+   "samples": [
+    1.03368,
+    1.034846,
+    1.03701,
+    1.037073,
+    1.032037,
+    1.031978,
+    1.038969
+   ],
+   "median": 1.034846,
+   "min": 1.031978,
+   "max": 1.038969,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "k 16 / ring of 3, 2 sidecars",
+   "unit": "cycles a window",
+   "samples": [
+    50707.90625,
+    50498.078125,
+    50549.984375,
+    50660.46875,
+    50659.59375,
+    50641.40625,
+    50644.578125
+   ],
+   "median": 50644.578125,
+   "min": 50498.078125,
+   "max": 50707.90625,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "k 16 / ring of 3, 2 sidecars / floor",
+   "unit": "x",
+   "samples": [
+    7.072232,
+    7.042968,
+    7.050207,
+    7.065616,
+    7.065494,
+    7.062958,
+    7.0634
+   ],
+   "median": 7.0634,
+   "min": 7.042968,
+   "max": 7.072232,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "k 16 / ring of 3, 4 sidecars",
+   "unit": "cycles a window",
+   "samples": [
+    25049.140625,
+    25226.765625,
+    25224.265625,
+    25093.71875,
+    25155.890625,
+    25227.96875,
+    25238.84375
+   ],
+   "median": 25224.265625,
+   "min": 25049.140625,
+   "max": 25238.84375,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "k 16 / ring of 3, 4 sidecars / floor",
+   "unit": "x",
+   "samples": [
+    3.493604,
+    3.518377,
+    3.518029,
+    3.499821,
+    3.508492,
+    3.518545,
+    3.520062
+   ],
+   "median": 3.518029,
+   "min": 3.493604,
+   "max": 3.520062,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "k 16 / ring of 3, 8 sidecars",
+   "unit": "cycles a window",
+   "samples": [
+    12528.9375,
+    12533.625,
+    12539.390625,
+    12526.65625,
+    12532.78125,
+    12540.90625,
+    12541.65625
+   ],
+   "median": 12533.625,
+   "min": 12526.65625,
+   "max": 12541.65625,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "k 16 / ring of 3, 8 sidecars / floor",
+   "unit": "x",
+   "samples": [
+    1.747411,
+    1.748065,
+    1.748869,
+    1.747093,
+    1.747947,
+    1.74908,
+    1.749185
+   ],
+   "median": 1.748065,
+   "min": 1.747093,
+   "max": 1.749185,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "k 16 / ring of 2, 4 sidecars",
+   "unit": "cycles a window",
+   "samples": [
+    25041.03125,
+    25143.375,
+    25020.59375,
+    25071.140625,
+    25258.828125,
+    25175.796875,
+    25159.171875
+   ],
+   "median": 25143.375,
+   "min": 25020.59375,
+   "max": 25258.828125,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "k 16 / ring of 2, 4 sidecars / floor",
+   "unit": "x",
+   "samples": [
+    3.492473,
+    3.506747,
+    3.489623,
+    3.496672,
+    3.522849,
+    3.511269,
+    3.50895
+   ],
+   "median": 3.506747,
+   "min": 3.489623,
+   "max": 3.522849,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "k 16 / ring of 4, 4 sidecars",
+   "unit": "cycles a window",
+   "samples": [
+    25245.515625,
+    25252.53125,
+    25324.5,
+    25218.578125,
+    25154.296875,
+    25261.515625,
+    25212.390625
+   ],
+   "median": 25245.515625,
+   "min": 25154.296875,
+   "max": 25324.5,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "k 16 / ring of 4, 4 sidecars / floor",
+   "unit": "x",
+   "samples": [
+    3.520992,
+    3.521971,
+    3.532008,
+    3.517235,
+    3.50827,
+    3.523224,
+    3.516372
+   ],
+   "median": 3.520992,
+   "min": 3.50827,
+   "max": 3.532008,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void gang_ring::gang<(int)2>(int, int, int, const unsigned int *, const unsigned char *, const float2 *, gang_ring::Lists *, gang_ring::Lists *, int *, int *, long long *, int *)": {
+   "regs": 101,
+   "ops": {
+    "IADD3": 159,
+    "SEL": 144,
+    "LOP3.LUT": 103,
+    "IMAD.IADD": 77,
+    "IMAD": 57,
+    "SHF.R.S32.HI": 53,
+    "SHF.R.U32.HI": 51,
+    "ISETP.NE.AND": 50,
+    "BRA": 46,
+    "LDS": 40,
+    "IMAD.MOV.U32": 39,
+    "IMAD.SHL.U32": 39
+   }
+  },
+  "void gang_ring::gang<(int)1>(int, int, int, const unsigned int *, const unsigned char *, const float2 *, gang_ring::Lists *, gang_ring::Lists *, int *, int *, long long *, int *)": {
+   "regs": 224,
+   "ops": {
+    "IADD3": 252,
+    "HMMA.16816.F32": 240,
+    "LDS": 223,
+    "HMUL2": 192,
+    "IMAD": 133,
+    "LOP3.LUT": 100,
+    "CS2R": 98,
+    "LDSM.16.MT88.4": 96,
+    "BRA": 87,
+    "IMAD.IADD": 81,
+    "LEA": 77,
+    "IMAD.MOV.U32": 73
+   }
+  },
+  "void gang_ring::gang<(int)0>(int, int, int, const unsigned int *, const unsigned char *, const float2 *, gang_ring::Lists *, gang_ring::Lists *, int *, int *, long long *, int *)": {
+   "regs": 215,
+   "ops": {
+    "IADD3": 409,
+    "LDS": 263,
+    "HMMA.16816.F32": 240,
+    "LOP3.LUT": 211,
+    "IMAD": 195,
+    "HMUL2": 192,
+    "IMAD.IADD": 148,
+    "SEL": 144,
+    "BRA": 141,
+    "IMAD.MOV.U32": 129,
+    "CS2R": 105,
+    "LEA": 104
+   }
+  }
+ }
+}
