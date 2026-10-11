@@ -1,0 +1,169 @@
+{
+ "experiment": "fold_part",
+ "question": "where does the carry's composed fold phase spend its 1.54x of the structural floor at nl64k-alt-k4?",
+ "arch": "sm_86",
+ "device": "NVIDIA GeForce RTX 3080 Ti",
+ "driver": "595.95",
+ "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
+ "git": {
+  "sha": "0d0d8eebdaa17d3a8aee775b4857e921a49d9572",
+  "dirty": true
+ },
+ "reps": 5,
+ "date": "2026-10-11T02:45:18+00:00",
+ "utilization_before": 0,
+ "inputs": {
+  "lists.bin": "b797b5d36b95a217"
+ },
+ "results": [
+  {
+   "lab": "result",
+   "name": "composed: a window's units then a barrier",
+   "unit": "cycles a CTA-window",
+   "samples": [
+    2474.153906,
+    2476.028076,
+    2472.65625,
+    2469.841699,
+    2472.220313
+   ],
+   "median": 2472.65625,
+   "min": 2469.841699,
+   "max": 2476.028076,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "composed: a window's units then a barrier / floor",
+   "unit": "x",
+   "samples": [
+    1.197558,
+    1.198465,
+    1.196833,
+    1.19547,
+    1.196622
+   ],
+   "median": 1.196833,
+   "min": 1.19547,
+   "max": 1.198465,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "steady: the same units back to back",
+   "unit": "cycles a CTA-window",
+   "samples": [
+    2177.271533,
+    2177.5896,
+    2177.576514,
+    2177.487012,
+    2177.546143
+   ],
+   "median": 2177.546143,
+   "min": 2177.271533,
+   "max": 2177.5896,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "steady: the same units back to back / floor",
+   "unit": "x",
+   "samples": [
+    1.053858,
+    1.054012,
+    1.054006,
+    1.053963,
+    1.053991
+   ],
+   "median": 1.053991,
+   "min": 1.053858,
+   "max": 1.054012,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the MMAs alone: fixed rows and c",
+   "unit": "cycles a CTA-window",
+   "samples": [
+    2179.361621,
+    2181.5896,
+    2182.19248,
+    2183.205566,
+    2183.345166
+   ],
+   "median": 2182.19248,
+   "min": 2179.361621,
+   "max": 2183.345166,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the MMAs alone: fixed rows and c / floor",
+   "unit": "x",
+   "samples": [
+    1.05487,
+    1.055948,
+    1.05624,
+    1.056731,
+    1.056798
+   ],
+   "median": 1.05624,
+   "min": 1.05487,
+   "max": 1.056798,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void fold_part::fold<(int)2>(rola::carry::CarryParams, fold_part::Lists, long long *, int *)": {
+   "regs": 174,
+   "ops": {
+    "CS2R": 139,
+    "IADD3": 101,
+    "IMAD.MOV.U32": 77,
+    "HMUL2": 44,
+    "BRA": 40,
+    "HMMA.16816.F32": 32,
+    "LOP3.LUT": 27,
+    "ISETP.GE.AND": 22,
+    "LEA": 22,
+    "LDS.U16": 22,
+    "IMAD.SHL.U32": 20,
+    "IMAD.IADD": 19
+   }
+  },
+  "void fold_part::fold<(int)1>(rola::carry::CarryParams, fold_part::Lists, long long *, int *)": {
+   "regs": 198,
+   "ops": {
+    "CS2R": 137,
+    "IADD3": 119,
+    "IMAD.MOV.U32": 85,
+    "HMUL2": 84,
+    "LOP3.LUT": 72,
+    "HMMA.16816.F32": 64,
+    "BRA": 43,
+    "IMAD.SHL.U32": 41,
+    "LDS.U16": 38,
+    "IMAD.IADD": 33,
+    "LDSM.16.MT88.4": 32,
+    "IMAD": 31
+   }
+  },
+  "void fold_part::fold<(int)0>(rola::carry::CarryParams, fold_part::Lists, long long *, int *)": {
+   "regs": 187,
+   "ops": {
+    "CS2R": 139,
+    "IADD3": 111,
+    "HMUL2": 84,
+    "LOP3.LUT": 72,
+    "IMAD.MOV.U32": 70,
+    "HMMA.16816.F32": 64,
+    "BRA": 42,
+    "IMAD.SHL.U32": 38,
+    "LDS.U16": 38,
+    "IMAD": 34,
+    "IMAD.IADD": 33,
+    "LEA": 33
+   }
+  }
+ }
+}
