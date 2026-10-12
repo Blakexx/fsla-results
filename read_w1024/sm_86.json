@@ -1,0 +1,522 @@
+{
+ "experiment": "read_w1024",
+ "question": "what does the readout cost a token at W = 1024 with sm_80's 512-slot pass, where a read digit holds ~16 tokens a window, against W = 512's ~8 (each digit's state read from the image serving twice the tokens)?",
+ "arch": "sm_86",
+ "device": "NVIDIA GeForce RTX 3080 Ti",
+ "checks": [
+  {
+   "lab": "check",
+   "variant": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered / W 1024, a 512-slot pass / FMA conversion / facts-form entries",
+   "ok": true,
+   "detail": "655360 of 655360 panel words exact (each CTA's panel)"
+  },
+  {
+   "lab": "check",
+   "variant": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered / W 1024, a 512-slot pass / no pass barrier / FMA conversion / facts-form entries",
+   "ok": true,
+   "detail": "655360 of 655360 panel words exact (each CTA's panel)"
+  },
+  {
+   "lab": "check",
+   "variant": "alt-k4 / tokens on M / + panel adds + drain / first steps straight-line / ordered / W 1024, a 512-slot pass / FMA conversion / facts-form entries",
+   "ok": true,
+   "detail": "262144 of 262144 panel words exact (each window-pass's drain)"
+  },
+  {
+   "lab": "check",
+   "variant": "alt-k4 / tokens on N / + panel adds / first steps straight-line / ordered / W 1024, a 512-slot pass / FMA conversion / facts-form entries",
+   "ok": true,
+   "detail": "655360 of 655360 panel words exact (each CTA's panel)"
+  },
+  {
+   "lab": "check",
+   "variant": "alt-k4 / tokens on N / + panel adds / first steps straight-line / ordered / W 1024, a 512-slot pass / no pass barrier / FMA conversion / facts-form entries",
+   "ok": true,
+   "detail": "655360 of 655360 panel words exact (each CTA's panel)"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "alt-k4 / tokens on N / the MMAs alone / first steps straight-line / ordered / W 1024, a 512-slot pass / no pass barrier / FMA conversion / facts-form entries",
+   "reason": "an isolation: the MMAs alone, their outputs folded into a sink"
+  },
+  {
+   "lab": "check",
+   "variant": "alt-k4 / tokens on N / + panel adds + drain / first steps straight-line / ordered / W 1024, a 512-slot pass / FMA conversion / facts-form entries",
+   "ok": true,
+   "detail": "262144 of 262144 panel words exact (each window-pass's drain)"
+  }
+ ],
+ "driver": "595.95",
+ "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
+ "git": {
+  "sha": "fff99dc9330e35ff95a8f5f1dc683136f761ef46",
+  "dirty": true
+ },
+ "reps": 5,
+ "date": "2026-10-12T02:13:05+00:00",
+ "utilization_before": 0,
+ "inputs": {
+  "read.bin": "e34c93b7698bd0b2",
+  "ordered.bin": "8bd97d4d794f0a16",
+  "offsets.bin": "1675ead779270053"
+ },
+ "results": [
+  {
+   "lab": "result",
+   "name": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered / W 1024, a 512-slot pass / FMA conversion / facts-form entries",
+   "unit": "cycles a CTA-window",
+   "samples": [
+    5337.375391,
+    5337.482031,
+    5349.415918,
+    5342.64834,
+    5352.58916
+   ],
+   "median": 5342.64834,
+   "min": 5337.375391,
+   "max": 5352.58916,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered / W 1024, a 512-slot pass / FMA conversion / facts-form entries / its floor",
+   "unit": "x",
+   "samples": [
+    1.6125,
+    1.612532,
+    1.616138,
+    1.614093,
+    1.617096
+   ],
+   "median": 1.614093,
+   "min": 1.6125,
+   "max": 1.617096,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered / W 1024, a 512-slot pass / FMA conversion / facts-form entries / tokens-on-M floor",
+   "unit": "x",
+   "samples": [
+    1.6125,
+    1.612532,
+    1.616138,
+    1.614093,
+    1.617096
+   ],
+   "median": 1.614093,
+   "min": 1.6125,
+   "max": 1.617096,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered / W 1024, a 512-slot pass / no pass barrier / FMA conversion / facts-form entries",
+   "unit": "cycles a CTA-window",
+   "samples": [
+    4345.137891,
+    4345.762207,
+    4346.991406,
+    4346.503125,
+    4350.828223
+   ],
+   "median": 4346.503125,
+   "min": 4345.137891,
+   "max": 4350.828223,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered / W 1024, a 512-slot pass / no pass barrier / FMA conversion / facts-form entries / its floor",
+   "unit": "x",
+   "samples": [
+    1.31273,
+    1.312919,
+    1.31329,
+    1.313143,
+    1.31445
+   ],
+   "median": 1.313143,
+   "min": 1.31273,
+   "max": 1.31445,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered / W 1024, a 512-slot pass / no pass barrier / FMA conversion / facts-form entries / tokens-on-M floor",
+   "unit": "x",
+   "samples": [
+    1.31273,
+    1.312919,
+    1.31329,
+    1.313143,
+    1.31445
+   ],
+   "median": 1.313143,
+   "min": 1.31273,
+   "max": 1.31445,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alt-k4 / tokens on M / + panel adds + drain / first steps straight-line / ordered / W 1024, a 512-slot pass / FMA conversion / facts-form entries",
+   "unit": "cycles a CTA-window",
+   "samples": [
+    7365.919531,
+    7364.128418,
+    7371.320215,
+    7367.277051,
+    7363.658984
+   ],
+   "median": 7365.919531,
+   "min": 7363.658984,
+   "max": 7371.320215,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alt-k4 / tokens on M / + panel adds + drain / first steps straight-line / ordered / W 1024, a 512-slot pass / FMA conversion / facts-form entries / its floor",
+   "unit": "x",
+   "samples": [
+    2.225353,
+    2.224812,
+    2.226985,
+    2.225763,
+    2.22467
+   ],
+   "median": 2.225353,
+   "min": 2.22467,
+   "max": 2.226985,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alt-k4 / tokens on M / + panel adds + drain / first steps straight-line / ordered / W 1024, a 512-slot pass / FMA conversion / facts-form entries / tokens-on-M floor",
+   "unit": "x",
+   "samples": [
+    2.225353,
+    2.224812,
+    2.226985,
+    2.225763,
+    2.22467
+   ],
+   "median": 2.225353,
+   "min": 2.22467,
+   "max": 2.226985,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alt-k4 / tokens on N / + panel adds / first steps straight-line / ordered / W 1024, a 512-slot pass / FMA conversion / facts-form entries",
+   "unit": "cycles a CTA-window",
+   "samples": [
+    5410.051855,
+    5418.422168,
+    5415.203418,
+    5419.915137,
+    5417.481543
+   ],
+   "median": 5417.481543,
+   "min": 5410.051855,
+   "max": 5419.915137,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alt-k4 / tokens on N / + panel adds / first steps straight-line / ordered / W 1024, a 512-slot pass / FMA conversion / facts-form entries / its floor",
+   "unit": "x",
+   "samples": [
+    1.99928,
+    2.002373,
+    2.001184,
+    2.002925,
+    2.002026
+   ],
+   "median": 2.002026,
+   "min": 1.99928,
+   "max": 2.002925,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alt-k4 / tokens on N / + panel adds / first steps straight-line / ordered / W 1024, a 512-slot pass / FMA conversion / facts-form entries / tokens-on-M floor",
+   "unit": "x",
+   "samples": [
+    1.634457,
+    1.636986,
+    1.636013,
+    1.637437,
+    1.636701
+   ],
+   "median": 1.636701,
+   "min": 1.634457,
+   "max": 1.637437,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alt-k4 / tokens on N / + panel adds / first steps straight-line / ordered / W 1024, a 512-slot pass / no pass barrier / FMA conversion / facts-form entries",
+   "unit": "cycles a CTA-window",
+   "samples": [
+    4553.139063,
+    4589.154883,
+    4770.227734,
+    4781.565625,
+    4555.376758
+   ],
+   "median": 4589.154883,
+   "min": 4553.139063,
+   "max": 4781.565625,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "alt-k4 / tokens on N / + panel adds / first steps straight-line / ordered / W 1024, a 512-slot pass / no pass barrier / FMA conversion / facts-form entries / its floor",
+   "unit": "x",
+   "samples": [
+    1.682609,
+    1.695918,
+    1.762834,
+    1.767024,
+    1.683436
+   ],
+   "median": 1.695918,
+   "min": 1.682609,
+   "max": 1.767024,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "alt-k4 / tokens on N / + panel adds / first steps straight-line / ordered / W 1024, a 512-slot pass / no pass barrier / FMA conversion / facts-form entries / tokens-on-M floor",
+   "unit": "x",
+   "samples": [
+    1.375571,
+    1.386452,
+    1.441156,
+    1.444582,
+    1.376247
+   ],
+   "median": 1.386452,
+   "min": 1.375571,
+   "max": 1.444582,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "alt-k4 / tokens on N / the MMAs alone / first steps straight-line / ordered / W 1024, a 512-slot pass / no pass barrier / FMA conversion / facts-form entries",
+   "unit": "cycles a CTA-window",
+   "samples": [
+    4040.43457,
+    4041.966895,
+    4041.77959,
+    4124.430176,
+    4049.459277
+   ],
+   "median": 4041.966895,
+   "min": 4040.43457,
+   "max": 4124.430176,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alt-k4 / tokens on N / the MMAs alone / first steps straight-line / ordered / W 1024, a 512-slot pass / no pass barrier / FMA conversion / facts-form entries / its floor",
+   "unit": "x",
+   "samples": [
+    1.493139,
+    1.493705,
+    1.493636,
+    1.52418,
+    1.496474
+   ],
+   "median": 1.493705,
+   "min": 1.493139,
+   "max": 1.52418,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alt-k4 / tokens on N / the MMAs alone / first steps straight-line / ordered / W 1024, a 512-slot pass / no pass barrier / FMA conversion / facts-form entries / tokens-on-M floor",
+   "unit": "x",
+   "samples": [
+    1.220675,
+    1.221138,
+    1.221081,
+    1.246051,
+    1.223402
+   ],
+   "median": 1.221138,
+   "min": 1.220675,
+   "max": 1.246051,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alt-k4 / tokens on N / + panel adds + drain / first steps straight-line / ordered / W 1024, a 512-slot pass / FMA conversion / facts-form entries",
+   "unit": "cycles a CTA-window",
+   "samples": [
+    7386.440137,
+    7401.920313,
+    7375.036816,
+    7382.732324,
+    7386.131738
+   ],
+   "median": 7386.131738,
+   "min": 7375.036816,
+   "max": 7401.920313,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alt-k4 / tokens on N / + panel adds + drain / first steps straight-line / ordered / W 1024, a 512-slot pass / FMA conversion / facts-form entries / its floor",
+   "unit": "x",
+   "samples": [
+    2.729653,
+    2.735373,
+    2.725439,
+    2.728282,
+    2.729539
+   ],
+   "median": 2.729539,
+   "min": 2.725439,
+   "max": 2.735373,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alt-k4 / tokens on N / + panel adds + drain / first steps straight-line / ordered / W 1024, a 512-slot pass / FMA conversion / facts-form entries / tokens-on-M floor",
+   "unit": "x",
+   "samples": [
+    2.231553,
+    2.23623,
+    2.228108,
+    2.230433,
+    2.23146
+   ],
+   "median": 2.23146,
+   "min": 2.228108,
+   "max": 2.23623,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void read_image::read<(int)1, (int)2, (int)0, (int)2, (int)0, (int)1, (int)3>(read_image::Lists, long long *, int *)": {
+   "regs": 125,
+   "ops": {
+    "FFMA": 128,
+    "IMAD": 111,
+    "LOP3.LUT": 107,
+    "IADD3": 84,
+    "IMAD.MOV.U32": 73,
+    "HMMA.16816.F32.BF16": 64,
+    "ATOMS.ADD": 64,
+    "BRA": 59,
+    "LEA.HI": 53,
+    "SEL": 51,
+    "SHFL.IDX": 49,
+    "SHF.R.S32.HI": 44
+   }
+  },
+  "void read_image::read<(int)1, (int)0, (int)0, (int)2, (int)0, (int)0, (int)3>(read_image::Lists, long long *, int *)": {
+   "regs": 119,
+   "ops": {
+    "FADD": 128,
+    "IMAD.MOV.U32": 92,
+    "IADD3": 72,
+    "HMMA.16816.F32.BF16": 64,
+    "LOP3.LUT": 62,
+    "BRA": 52,
+    "CALL.REL.NOINC": 51,
+    "MOV": 49,
+    "IMAD": 39,
+    "SHF.R.S32.HI": 33,
+    "BRA.CONV": 33,
+    "ISETP.GE.AND": 32
+   }
+  },
+  "void read_image::read<(int)1, (int)1, (int)0, (int)2, (int)0, (int)0, (int)3>(read_image::Lists, long long *, int *)": {
+   "regs": 122,
+   "ops": {
+    "FFMA": 128,
+    "IMAD.MOV.U32": 114,
+    "IMAD": 107,
+    "LOP3.LUT": 104,
+    "IADD3": 82,
+    "BRA": 73,
+    "HMMA.16816.F32.BF16": 64,
+    "ATOMS.ADD": 64,
+    "LEA.HI": 52,
+    "SEL": 52,
+    "CALL.REL.NOINC": 51,
+    "MOV": 49
+   }
+  },
+  "void read_image::read<(int)1, (int)1, (int)0, (int)2, (int)0, (int)1, (int)3>(read_image::Lists, long long *, int *)": {
+   "regs": 122,
+   "ops": {
+    "FFMA": 128,
+    "IMAD": 107,
+    "LOP3.LUT": 104,
+    "IADD3": 82,
+    "IMAD.MOV.U32": 73,
+    "HMMA.16816.F32.BF16": 64,
+    "ATOMS.ADD": 64,
+    "BRA": 57,
+    "LEA.HI": 52,
+    "SEL": 52,
+    "SHFL.IDX": 49,
+    "SHF.R.S32.HI": 45
+   }
+  },
+  "void read_image::read<(int)0, (int)2, (int)0, (int)2, (int)0, (int)1, (int)3>(read_image::Lists, long long *, int *)": {
+   "regs": 124,
+   "ops": {
+    "FFMA": 192,
+    "LOP3.LUT": 102,
+    "HMMA.16816.F32.BF16": 96,
+    "PRMT": 96,
+    "ATOMS.ADD": 96,
+    "IADD3": 78,
+    "IMAD.MOV.U32": 53,
+    "BRA": 47,
+    "LEA.HI": 44,
+    "SHF.R.S32.HI": 42,
+    "IMAD": 39,
+    "SHFL.IDX": 37
+   }
+  },
+  "void read_image::read<(int)0, (int)1, (int)0, (int)2, (int)0, (int)0, (int)3>(read_image::Lists, long long *, int *)": {
+   "regs": 124,
+   "ops": {
+    "FFMA": 192,
+    "HMMA.16816.F32.BF16": 96,
+    "PRMT": 96,
+    "ATOMS.ADD": 96,
+    "IMAD.MOV.U32": 95,
+    "LOP3.LUT": 94,
+    "IADD3": 75,
+    "BRA": 61,
+    "LEA.HI": 42,
+    "SHF.R.S32.HI": 41,
+    "IMAD": 39,
+    "CALL.REL.NOINC": 39
+   }
+  },
+  "void read_image::read<(int)0, (int)1, (int)0, (int)2, (int)0, (int)1, (int)3>(read_image::Lists, long long *, int *)": {
+   "regs": 124,
+   "ops": {
+    "FFMA": 192,
+    "HMMA.16816.F32.BF16": 96,
+    "PRMT": 96,
+    "ATOMS.ADD": 96,
+    "LOP3.LUT": 94,
+    "IADD3": 75,
+    "IMAD.MOV.U32": 65,
+    "BRA": 45,
+    "LEA.HI": 42,
+    "SHF.R.S32.HI": 41,
+    "IMAD": 39,
+    "SHFL.IDX": 37
+   }
+  }
+ }
+}
