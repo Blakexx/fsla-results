@@ -1,0 +1,190 @@
+{
+ "experiment": "digit_box",
+ "question": "on sm_86, does a box of 32 lists x 16 digits x 32 channels (its image 32 KB, so the whole image and the two-barrier hand-off fit) cost a token less than the 32-digit box's? Its readout keeps 32-channel tiles and gathers per entry, its read union shrinks; its fold loads each write token's values in both digit boxes.",
+ "arch": "sm_86",
+ "device": "NVIDIA GeForce RTX 3080 Ti",
+ "checks": [
+  {
+   "lab": "check",
+   "variant": "a static image, free-running / 16-digit box",
+   "ok": true,
+   "detail": "327680 of 327680 panel words exact (each CTA's panel)"
+  },
+  {
+   "lab": "check",
+   "variant": "the hand-off: readout, barrier, fold storing, barrier / 16-digit box",
+   "ok": true,
+   "detail": "327680 of 327680 panel words exact (each CTA's panel)"
+  },
+  {
+   "lab": "check",
+   "variant": "the readout alone, free-running / 16-digit box",
+   "ok": true,
+   "detail": "327680 of 327680 panel words exact (each CTA's panel)"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "the fold alone / 16-digit box",
+   "reason": "an isolation: the fold's state is not read out"
+  }
+ ],
+ "driver": "595.95",
+ "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
+ "git": {
+  "sha": "d49571af011348288227b87d3fd99bac7f738329",
+  "dirty": true
+ },
+ "reps": 5,
+ "date": "2026-10-12T04:47:59+00:00",
+ "utilization_before": 2,
+ "inputs": {
+  "read.bin": "2cf2e6dd98ee3966",
+  "entries_m.bin": "814c069499d3c016",
+  "heads_m.bin": "8845f15c15a37a77",
+  "entries_n.bin": "fd95017d3e177839",
+  "heads_n.bin": "cabd01b944fb3844",
+  "banks.json": "f97f3491dc71bd03",
+  "fold/read.bin": "bb5103914a740e71",
+  "fold/entries_m.bin": "99ac8a15b830800c",
+  "fold/heads_m.bin": "2e8acc49d55b4854",
+  "fold/entries_n.bin": "a1647f8ea4dcc65d",
+  "fold/heads_n.bin": "c1e9814c95419b92",
+  "fold/banks.json": "dd4d3cbd55657e70"
+ },
+ "results": [
+  {
+   "lab": "result",
+   "name": "a static image, free-running / 16-digit box",
+   "unit": "cycles a CTA-window",
+   "samples": [
+    2207.4625,
+    2210.132422,
+    2207.022656,
+    2209.720703,
+    2208.108594
+   ],
+   "median": 2208.108594,
+   "min": 2207.022656,
+   "max": 2210.132422,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the hand-off: readout, barrier, fold storing, barrier / 16-digit box",
+   "unit": "cycles a CTA-window",
+   "samples": [
+    3199.974219,
+    3200.175391,
+    3198.370313,
+    3200.506641,
+    3199.593359
+   ],
+   "median": 3199.974219,
+   "min": 3198.370313,
+   "max": 3200.506641,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the readout alone, free-running / 16-digit box",
+   "unit": "cycles a CTA-window",
+   "samples": [
+    1063.433984,
+    1072.505078,
+    1071.849219,
+    1067.364063,
+    1063.728125
+   ],
+   "median": 1067.364063,
+   "min": 1063.433984,
+   "max": 1072.505078,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the fold alone / 16-digit box",
+   "unit": "cycles a CTA-window",
+   "samples": [
+    1233.895313,
+    1233.123828,
+    1233.734766,
+    1234.244141,
+    1232.997656
+   ],
+   "median": 1233.734766,
+   "min": 1232.997656,
+   "max": 1234.244141,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void digit_box::box<(int)3>(read_image::Lists, read_image::Lists, const unsigned int *, long long *, int *)": {
+   "regs": 108,
+   "ops": {
+    "IMAD.MOV.U32": 161,
+    "LOP3.LUT": 77,
+    "FADD": 64,
+    "HMMA.1688.F32": 48,
+    "IADD3": 47,
+    "SHFL.IDX": 36,
+    "SHF.R.S32.HI": 29,
+    "IMAD.IADD": 24,
+    "BRA": 24,
+    "HMUL2": 24,
+    "IMAD": 21,
+    "SHF.R.U32.HI": 20
+   }
+  },
+  "void digit_box::box<(int)2>(read_image::Lists, read_image::Lists, const unsigned int *, long long *, int *)": {
+   "regs": 70,
+   "ops": {
+    "FADD": 64,
+    "LOP3.LUT": 63,
+    "FFMA": 48,
+    "IMAD": 44,
+    "IMAD.MOV.U32": 35,
+    "IADD3": 35,
+    "LEA.HI": 29,
+    "SHF.R.S32.HI": 27,
+    "HMMA.16816.F32.BF16": 24,
+    "ATOMS.ADD": 24,
+    "IMAD.SHL.U32": 20,
+    "BRA": 18
+   }
+  },
+  "void digit_box::box<(int)1>(read_image::Lists, read_image::Lists, const unsigned int *, long long *, int *)": {
+   "regs": 141,
+   "ops": {
+    "IMAD.MOV.U32": 172,
+    "LOP3.LUT": 142,
+    "IMAD": 65,
+    "FADD": 64,
+    "IADD3": 56,
+    "SHFL.IDX": 54,
+    "FFMA": 48,
+    "HMMA.1688.F32": 48,
+    "SHF.R.S32.HI": 38,
+    "IMAD.SHL.U32": 35,
+    "F2FP.BF16.PACK_AB": 32,
+    "STS": 32
+   }
+  },
+  "void digit_box::box<(int)0>(read_image::Lists, read_image::Lists, const unsigned int *, long long *, int *)": {
+   "regs": 138,
+   "ops": {
+    "IMAD.MOV.U32": 159,
+    "LOP3.LUT": 122,
+    "FADD": 64,
+    "IMAD": 58,
+    "IADD3": 55,
+    "SHFL.IDX": 54,
+    "FFMA": 48,
+    "HMMA.1688.F32": 48,
+    "SHF.R.S32.HI": 38,
+    "BRA": 30,
+    "LEA.HI": 29,
+    "IMAD.SHL.U32": 29
+   }
+  }
+ }
+}
