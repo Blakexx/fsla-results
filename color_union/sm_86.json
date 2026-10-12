@@ -1,0 +1,227 @@
+{
+ "experiment": "color_union",
+ "question": "(no QUESTION in the header)",
+ "arch": "sm_86",
+ "device": "NVIDIA GeForce RTX 3080 Ti",
+ "checks": [
+  {
+   "lab": "check",
+   "variant": "a warp's cycles a box-window / alt-k4",
+   "ok": true,
+   "detail": "256 box-windows' slots and extents, 0 of 131328 differ from the mirror"
+  },
+  {
+   "lab": "check",
+   "variant": "an SM's cycles a box-window, 16 warps / alt-k4",
+   "ok": true,
+   "detail": "256 box-windows' slots and extents, 0 of 131328 differ from the mirror"
+  },
+  {
+   "lab": "check",
+   "variant": "a warp's cycles a box-window / alt-k16",
+   "ok": true,
+   "detail": "256 box-windows' slots and extents, 0 of 131328 differ from the mirror"
+  },
+  {
+   "lab": "check",
+   "variant": "an SM's cycles a box-window, 16 warps / alt-k16",
+   "ok": true,
+   "detail": "256 box-windows' slots and extents, 0 of 131328 differ from the mirror"
+  },
+  {
+   "lab": "check",
+   "variant": "a warp's cycles a box-window / thinned 1/16",
+   "ok": true,
+   "detail": "256 box-windows' slots and extents, 0 of 131328 differ from the mirror"
+  },
+  {
+   "lab": "check",
+   "variant": "an SM's cycles a box-window, 16 warps / thinned 1/16",
+   "ok": true,
+   "detail": "256 box-windows' slots and extents, 0 of 131328 differ from the mirror"
+  }
+ ],
+ "driver": "595.95",
+ "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
+ "git": {
+  "sha": "0ec8f1882c2edfc4227f041ba0b08663f9c7731c",
+  "dirty": true
+ },
+ "reps": 7,
+ "date": "2026-10-12T23:12:32+00:00",
+ "utilization_before": 1,
+ "inputs": {
+  "alt-k4/tiles.bin": "488b9d8319cd219e",
+  "alt-k4/expected.bin": "6079e9e446978737",
+  "alt-k4/banks.json": "14d006d9e016b341",
+  "alt-k16/tiles.bin": "0e1c0c0174f71fbb",
+  "alt-k16/expected.bin": "5265292b767510c1",
+  "alt-k16/banks.json": "ddae83722e99f150",
+  "thin/tiles.bin": "bfe5caf3c59a46ee",
+  "thin/expected.bin": "bc6bb34262955304",
+  "thin/banks.json": "5054b49d6771bb1f"
+ },
+ "results": [
+  {
+   "lab": "result",
+   "name": "an SM's cycles a box-window, 16 warps / alt-k4",
+   "unit": "cycles",
+   "samples": [
+    2644.165283,
+    2642.911377,
+    2643.297363,
+    2644.054199,
+    2643.638916,
+    2642.483398,
+    2644.022461
+   ],
+   "median": 2643.638916,
+   "min": 2642.483398,
+   "max": 2644.165283,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a warp's cycles a box-window / alt-k4",
+   "unit": "cycles",
+   "samples": [
+    38608.96875,
+    38599.979736,
+    38599.258301,
+    38596.061035,
+    38598.142578,
+    38582.489014,
+    38598.569336
+   ],
+   "median": 38598.569336,
+   "min": 38582.489014,
+   "max": 38608.96875,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "an SM's cycles a box-window, 16 warps / alt-k16",
+   "unit": "cycles",
+   "samples": [
+    9410.149414,
+    9406.214844,
+    9407.847656,
+    9410.913818,
+    9406.578125,
+    9411.594971,
+    9403.827148
+   ],
+   "median": 9407.847656,
+   "min": 9403.827148,
+   "max": 9411.594971,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a warp's cycles a box-window / alt-k16",
+   "unit": "cycles",
+   "samples": [
+    144031.578125,
+    144013.270264,
+    143998.264648,
+    144048.998291,
+    144025.021729,
+    144006.775879,
+    144016.040771
+   ],
+   "median": 144016.040771,
+   "min": 143998.264648,
+   "max": 144048.998291,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "an SM's cycles a box-window, 16 warps / thinned 1/16",
+   "unit": "cycles",
+   "samples": [
+    1059.047852,
+    1060.318848,
+    1060.614258,
+    1060.27124,
+    1059.618408,
+    1059.665527,
+    1059.821777
+   ],
+   "median": 1059.821777,
+   "min": 1059.047852,
+   "max": 1060.614258,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a warp's cycles a box-window / thinned 1/16",
+   "unit": "cycles",
+   "samples": [
+    15374.401611,
+    15374.524902,
+    15375.680908,
+    15375.987061,
+    15368.642822,
+    15376.715332,
+    15369.493652
+   ],
+   "median": 15374.524902,
+   "min": 15368.642822,
+   "max": 15376.715332,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void color_union::color<(int)2>(const unsigned int *, int, unsigned short *, unsigned short *, long long *, int *)": {
+   "regs": 124,
+   "ops": {
+    "LOP3.LUT": 352,
+    "IADD3": 181,
+    "IMAD.MOV": 143,
+    "ISETP.GT.U32.AND": 142,
+    "IMAD.MOV.U32": 127,
+    "IMAD": 96,
+    "SEL": 73,
+    "BRA": 69,
+    "IMAD.IADD": 66,
+    "CALL.REL.NOINC": 49,
+    "MOV": 47,
+    "SHF.R.U32.HI": 43
+   }
+  },
+  "void color_union::color<(int)1>(const unsigned int *, int, unsigned short *, unsigned short *, long long *, int *)": {
+   "regs": 124,
+   "ops": {
+    "LOP3.LUT": 352,
+    "IADD3": 181,
+    "IMAD.MOV": 143,
+    "ISETP.GT.U32.AND": 142,
+    "IMAD.MOV.U32": 127,
+    "IMAD": 96,
+    "SEL": 73,
+    "BRA": 69,
+    "IMAD.IADD": 66,
+    "CALL.REL.NOINC": 49,
+    "MOV": 47,
+    "SHF.R.U32.HI": 43
+   }
+  },
+  "void color_union::color<(int)0>(const unsigned int *, int, unsigned short *, unsigned short *, long long *, int *)": {
+   "regs": 124,
+   "ops": {
+    "LOP3.LUT": 352,
+    "IADD3": 181,
+    "IMAD.MOV": 143,
+    "ISETP.GT.U32.AND": 142,
+    "IMAD.MOV.U32": 127,
+    "IMAD": 96,
+    "SEL": 73,
+    "BRA": 69,
+    "IMAD.IADD": 66,
+    "CALL.REL.NOINC": 49,
+    "MOV": 47,
+    "SHF.R.U32.HI": 43
+   }
+  }
+ }
+}
