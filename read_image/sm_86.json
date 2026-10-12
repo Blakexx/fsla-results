@@ -3,15 +3,238 @@
  "question": "the carry's readout with the state from a bf16 image in shared memory: tokens on the MMA's M (16-token steps, the state the B operand) or on its N (8-token tiles, the state the A operand), what does each cost against its tensor floor at nl64k-alt-k4's read lists and at a dense cell, and what do the panel's adds and the pass's drain add?",
  "arch": "sm_86",
  "device": "NVIDIA GeForce RTX 3080 Ti",
+ "checks": [
+  {
+   "lab": "check",
+   "variant": "alt-k4 / tokens on M / + panel adds / state a digit at a time",
+   "ok": true,
+   "detail": "327680 of 327680 panel words exact (each CTA's panel)"
+  },
+  {
+   "lab": "check",
+   "variant": "alt-k4 / tokens on N / + panel adds / state a digit at a time",
+   "ok": true,
+   "detail": "327680 of 327680 panel words exact (each CTA's panel)"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "alt-k4 / tokens on M / the MMAs alone / state ring",
+   "reason": "an isolation: the MMAs alone, their outputs folded into a sink"
+  },
+  {
+   "lab": "check",
+   "variant": "alt-k4 / tokens on M / + panel adds / state ring",
+   "ok": true,
+   "detail": "327680 of 327680 panel words exact (each CTA's panel)"
+  },
+  {
+   "lab": "check",
+   "variant": "alt-k4 / tokens on M / + panel adds + drain / state ring",
+   "ok": true,
+   "detail": "262144 of 262144 panel words exact (each window-pass's drain)"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "alt-k4 / tokens on N / the MMAs alone / state ring",
+   "reason": "an isolation: the MMAs alone, their outputs folded into a sink"
+  },
+  {
+   "lab": "check",
+   "variant": "alt-k4 / tokens on N / + panel adds / state ring",
+   "ok": true,
+   "detail": "327680 of 327680 panel words exact (each CTA's panel)"
+  },
+  {
+   "lab": "check",
+   "variant": "alt-k4 / tokens on N / + panel adds + drain / state ring",
+   "ok": true,
+   "detail": "262144 of 262144 panel words exact (each window-pass's drain)"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "alt-k4 / tokens on M / the MMAs alone / first steps straight-line",
+   "reason": "an isolation: the MMAs alone, their outputs folded into a sink"
+  },
+  {
+   "lab": "check",
+   "variant": "alt-k4 / tokens on M / + panel adds / first steps straight-line",
+   "ok": true,
+   "detail": "327680 of 327680 panel words exact (each CTA's panel)"
+  },
+  {
+   "lab": "check",
+   "variant": "alt-k4 / tokens on M / + panel adds + drain / first steps straight-line",
+   "ok": true,
+   "detail": "262144 of 262144 panel words exact (each window-pass's drain)"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "alt-k4 / tokens on M / the MMAs alone / first steps straight-line / ordered",
+   "reason": "an isolation: the MMAs alone, their outputs folded into a sink"
+  },
+  {
+   "lab": "check",
+   "variant": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered",
+   "ok": true,
+   "detail": "327680 of 327680 panel words exact (each CTA's panel)"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "alt-k4 / tokens on M / the MMAs alone / first steps straight-line / ordered / half steps",
+   "reason": "an isolation: the MMAs alone, their outputs folded into a sink"
+  },
+  {
+   "lab": "check",
+   "variant": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered / half steps",
+   "ok": true,
+   "detail": "327680 of 327680 panel words exact (each CTA's panel)"
+  },
+  {
+   "lab": "check",
+   "variant": "alt-k4 / tokens on M / + panel adds + drain / first steps straight-line / ordered / half steps",
+   "ok": true,
+   "detail": "262144 of 262144 panel words exact (each window-pass's drain)"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "alt-k4 / tokens on M / the MMAs alone / first steps straight-line / ordered / half steps / no pass barrier",
+   "reason": "an isolation: the MMAs alone, their outputs folded into a sink"
+  },
+  {
+   "lab": "check",
+   "variant": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered / half steps / no pass barrier",
+   "ok": true,
+   "detail": "327680 of 327680 panel words exact (each CTA's panel)"
+  },
+  {
+   "lab": "check",
+   "variant": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered / FMA conversion",
+   "ok": true,
+   "detail": "327680 of 327680 panel words exact (each CTA's panel)"
+  },
+  {
+   "lab": "check",
+   "variant": "alt-k4 / tokens on M / + panel adds + drain / first steps straight-line / ordered / FMA conversion",
+   "ok": true,
+   "detail": "262144 of 262144 panel words exact (each window-pass's drain)"
+  },
+  {
+   "lab": "check",
+   "variant": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered / half steps / FMA conversion",
+   "ok": true,
+   "detail": "327680 of 327680 panel words exact (each CTA's panel)"
+  },
+  {
+   "lab": "check",
+   "variant": "alt-k4 / tokens on M / + panel adds + drain / first steps straight-line / ordered / half steps / FMA conversion",
+   "ok": true,
+   "detail": "262144 of 262144 panel words exact (each window-pass's drain)"
+  },
+  {
+   "lab": "check",
+   "variant": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered / no pass barrier / FMA conversion",
+   "ok": true,
+   "detail": "327680 of 327680 panel words exact (each CTA's panel)"
+  },
+  {
+   "lab": "check",
+   "variant": "dense / tokens on M / + panel adds + drain / first steps straight-line / FMA conversion",
+   "ok": true,
+   "detail": "262144 of 262144 panel words exact (each window-pass's drain)"
+  },
+  {
+   "lab": "check",
+   "variant": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered / FMA conversion / a token's panel base once",
+   "ok": true,
+   "detail": "327680 of 327680 panel words exact (each CTA's panel)"
+  },
+  {
+   "lab": "check",
+   "variant": "alt-k4 / tokens on M / + panel adds + drain / first steps straight-line / ordered / FMA conversion / a token's panel base once",
+   "ok": true,
+   "detail": "262144 of 262144 panel words exact (each window-pass's drain)"
+  },
+  {
+   "lab": "check",
+   "variant": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered / no pass barrier / FMA conversion / a token's panel base once",
+   "ok": true,
+   "detail": "327680 of 327680 panel words exact (each CTA's panel)"
+  },
+  {
+   "lab": "check",
+   "variant": "dense / tokens on M / + panel adds + drain / first steps straight-line / FMA conversion / a token's panel base once",
+   "ok": true,
+   "detail": "262144 of 262144 panel words exact (each window-pass's drain)"
+  },
+  {
+   "lab": "check",
+   "variant": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered / FMA conversion / facts-form entries",
+   "ok": true,
+   "detail": "327680 of 327680 panel words exact (each CTA's panel)"
+  },
+  {
+   "lab": "check",
+   "variant": "alt-k4 / tokens on M / + panel adds + drain / first steps straight-line / ordered / FMA conversion / facts-form entries",
+   "ok": true,
+   "detail": "262144 of 262144 panel words exact (each window-pass's drain)"
+  },
+  {
+   "lab": "check",
+   "variant": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered / no pass barrier / FMA conversion / facts-form entries",
+   "ok": true,
+   "detail": "327680 of 327680 panel words exact (each CTA's panel)"
+  },
+  {
+   "lab": "check",
+   "variant": "alt-k4 / tokens on N / + panel adds / first steps straight-line / ordered / FMA conversion / facts-form entries",
+   "ok": true,
+   "detail": "327680 of 327680 panel words exact (each CTA's panel)"
+  },
+  {
+   "lab": "check",
+   "variant": "alt-k4 / tokens on N / + panel adds / first steps straight-line / ordered / no pass barrier / FMA conversion / facts-form entries",
+   "ok": true,
+   "detail": "327680 of 327680 panel words exact (each CTA's panel)"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "alt-k4 / tokens on N / the MMAs alone / first steps straight-line / ordered / no pass barrier / FMA conversion / facts-form entries",
+   "reason": "an isolation: the MMAs alone, their outputs folded into a sink"
+  },
+  {
+   "lab": "check",
+   "variant": "alt-k4 / tokens on N / + panel adds + drain / first steps straight-line / ordered / FMA conversion / facts-form entries",
+   "ok": true,
+   "detail": "262144 of 262144 panel words exact (each window-pass's drain)"
+  },
+  {
+   "lab": "check",
+   "variant": "dense / tokens on M / + panel adds + drain / first steps straight-line / half steps",
+   "ok": true,
+   "detail": "262144 of 262144 panel words exact (each window-pass's drain)"
+  },
+  {
+   "lab": "check",
+   "variant": "dense / tokens on M / + panel adds + drain / state ring",
+   "ok": true,
+   "detail": "262144 of 262144 panel words exact (each window-pass's drain)"
+  },
+  {
+   "lab": "check",
+   "variant": "dense / tokens on N / + panel adds + drain / state ring",
+   "ok": true,
+   "detail": "262144 of 262144 panel words exact (each window-pass's drain)"
+  }
+ ],
  "driver": "595.95",
  "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
  "git": {
-  "sha": "ccb6a64d47e2e41caf65519f21351697d823f27c",
+  "sha": "3f67f7cfe7fa11c27fa873a2ce061e52b845d5fb",
   "dirty": true
  },
  "reps": 5,
- "date": "2026-10-12T02:00:29+00:00",
- "utilization_before": 1,
+ "date": "2026-10-12T02:09:31+00:00",
+ "utilization_before": 0,
  "inputs": {
   "read.bin": "a52e2350332bfd43",
   "ordered.bin": "7156b93668a62a08",
@@ -23,15 +246,15 @@
    "name": "alt-k4 / tokens on M / + panel adds / state a digit at a time",
    "unit": "cycles a CTA-window",
    "samples": [
-    4361.045947,
-    4362.002979,
-    4364.159619,
-    4365.619775,
-    4364.521729
+    4492.299658,
+    4495.567236,
+    4496.395752,
+    4493.398486,
+    4492.168018
    ],
-   "median": 4364.159619,
-   "min": 4361.045947,
-   "max": 4365.619775,
+   "median": 4493.398486,
+   "min": 4492.168018,
+   "max": 4496.395752,
    "unstable": false
   },
   {
@@ -39,15 +262,15 @@
    "name": "alt-k4 / tokens on M / + panel adds / state a digit at a time / its floor",
    "unit": "x",
    "samples": [
-    2.102722,
-    2.103184,
-    2.104224,
-    2.104928,
-    2.104398
+    2.166008,
+    2.167583,
+    2.167983,
+    2.166537,
+    2.165944
    ],
-   "median": 2.104224,
-   "min": 2.102722,
-   "max": 2.104928,
+   "median": 2.166537,
+   "min": 2.165944,
+   "max": 2.167983,
    "unstable": false
   },
   {
@@ -55,15 +278,15 @@
    "name": "alt-k4 / tokens on M / + panel adds / state a digit at a time / tokens-on-M floor",
    "unit": "x",
    "samples": [
-    2.102722,
-    2.103184,
-    2.104224,
-    2.104928,
-    2.104398
+    2.166008,
+    2.167583,
+    2.167983,
+    2.166537,
+    2.165944
    ],
-   "median": 2.104224,
-   "min": 2.102722,
-   "max": 2.104928,
+   "median": 2.166537,
+   "min": 2.165944,
+   "max": 2.167983,
    "unstable": false
   },
   {
@@ -71,15 +294,15 @@
    "name": "alt-k4 / tokens on N / + panel adds / state a digit at a time",
    "unit": "cycles a CTA-window",
    "samples": [
-    4592.805176,
-    4594.778223,
-    4589.877051,
-    4594.698926,
-    4594.474707
+    4676.555664,
+    4676.474023,
+    4675.742773,
+    4674.191211,
+    4678.48418
    ],
-   "median": 4594.474707,
-   "min": 4589.877051,
-   "max": 4594.778223,
+   "median": 4676.474023,
+   "min": 4674.191211,
+   "max": 4678.48418,
    "unstable": false
   },
   {
@@ -87,15 +310,15 @@
    "name": "alt-k4 / tokens on N / + panel adds / state a digit at a time / its floor",
    "unit": "x",
    "samples": [
-    2.822,
-    2.823212,
-    2.820201,
-    2.823164,
-    2.823026
+    2.87346,
+    2.87341,
+    2.87296,
+    2.872007,
+    2.874645
    ],
-   "median": 2.823026,
-   "min": 2.820201,
-   "max": 2.823212,
+   "median": 2.87341,
+   "min": 2.872007,
+   "max": 2.874645,
    "unstable": false
   },
   {
@@ -103,15 +326,15 @@
    "name": "alt-k4 / tokens on N / + panel adds / state a digit at a time / tokens-on-M floor",
    "unit": "x",
    "samples": [
-    2.214467,
-    2.215419,
-    2.213055,
-    2.21538,
-    2.215272
+    2.254848,
+    2.254809,
+    2.254456,
+    2.253708,
+    2.255778
    ],
-   "median": 2.215272,
-   "min": 2.213055,
-   "max": 2.215419,
+   "median": 2.254809,
+   "min": 2.253708,
+   "max": 2.255778,
    "unstable": false
   },
   {
@@ -119,15 +342,15 @@
    "name": "alt-k4 / tokens on M / the MMAs alone / state ring",
    "unit": "cycles a CTA-window",
    "samples": [
-    3200.093848,
-    3199.140576,
-    3199.125928,
-    3199.005957,
-    3196.833545
+    3198.262158,
+    3199.02666,
+    3199.050879,
+    3200.184277,
+    3200.204541
    ],
-   "median": 3199.125928,
-   "min": 3196.833545,
-   "max": 3200.093848,
+   "median": 3199.050879,
+   "min": 3198.262158,
+   "max": 3200.204541,
    "unstable": false
   },
   {
@@ -135,15 +358,15 @@
    "name": "alt-k4 / tokens on M / the MMAs alone / state ring / its floor",
    "unit": "x",
    "samples": [
-    1.542957,
-    1.542498,
-    1.542491,
-    1.542433,
-    1.541386
+    1.542074,
+    1.542443,
+    1.542455,
+    1.543001,
+    1.543011
    ],
-   "median": 1.542491,
-   "min": 1.541386,
-   "max": 1.542957,
+   "median": 1.542455,
+   "min": 1.542074,
+   "max": 1.543011,
    "unstable": false
   },
   {
@@ -151,15 +374,15 @@
    "name": "alt-k4 / tokens on M / the MMAs alone / state ring / tokens-on-M floor",
    "unit": "x",
    "samples": [
-    1.542957,
-    1.542498,
-    1.542491,
-    1.542433,
-    1.541386
+    1.542074,
+    1.542443,
+    1.542455,
+    1.543001,
+    1.543011
    ],
-   "median": 1.542491,
-   "min": 1.541386,
-   "max": 1.542957,
+   "median": 1.542455,
+   "min": 1.542074,
+   "max": 1.543011,
    "unstable": false
   },
   {
@@ -167,15 +390,15 @@
    "name": "alt-k4 / tokens on M / + panel adds / state ring",
    "unit": "cycles a CTA-window",
    "samples": [
-    4137.503857,
-    4136.413623,
-    4137.160889,
-    4137.728467,
-    4134.914404
+    4106.098975,
+    4105.060938,
+    4106.992285,
+    4109.765234,
+    4111.044531
    ],
-   "median": 4137.160889,
-   "min": 4134.914404,
-   "max": 4137.728467,
+   "median": 4106.992285,
+   "min": 4105.060938,
+   "max": 4111.044531,
    "unstable": false
   },
   {
@@ -183,15 +406,15 @@
    "name": "alt-k4 / tokens on M / + panel adds / state ring / its floor",
    "unit": "x",
    "samples": [
-    1.994939,
-    1.994414,
-    1.994774,
-    1.995047,
-    1.993691
+    1.979797,
+    1.979296,
+    1.980228,
+    1.981565,
+    1.982182
    ],
-   "median": 1.994774,
-   "min": 1.993691,
-   "max": 1.995047,
+   "median": 1.980228,
+   "min": 1.979296,
+   "max": 1.982182,
    "unstable": false
   },
   {
@@ -199,15 +422,15 @@
    "name": "alt-k4 / tokens on M / + panel adds / state ring / tokens-on-M floor",
    "unit": "x",
    "samples": [
-    1.994939,
-    1.994414,
-    1.994774,
-    1.995047,
-    1.993691
+    1.979797,
+    1.979296,
+    1.980228,
+    1.981565,
+    1.982182
    ],
-   "median": 1.994774,
-   "min": 1.993691,
-   "max": 1.995047,
+   "median": 1.980228,
+   "min": 1.979296,
+   "max": 1.982182,
    "unstable": false
   },
   {
@@ -215,15 +438,15 @@
    "name": "alt-k4 / tokens on M / + panel adds + drain / state ring",
    "unit": "cycles a CTA-window",
    "samples": [
-    5210.415869,
-    5216.127393,
-    5213.720264,
-    5220.635693,
-    5223.229639
+    5193.642432,
+    5195.905469,
+    5192.056006,
+    5185.308008,
+    5192.942725
    ],
-   "median": 5216.127393,
-   "min": 5210.415869,
-   "max": 5223.229639,
+   "median": 5192.942725,
+   "min": 5185.308008,
+   "max": 5195.905469,
    "unstable": false
   },
   {
@@ -231,15 +454,15 @@
    "name": "alt-k4 / tokens on M / + panel adds + drain / state ring / its floor",
    "unit": "x",
    "samples": [
-    2.512255,
-    2.515008,
-    2.513848,
-    2.517182,
-    2.518433
+    2.504167,
+    2.505258,
+    2.503402,
+    2.500149,
+    2.50383
    ],
-   "median": 2.515008,
-   "min": 2.512255,
-   "max": 2.518433,
+   "median": 2.50383,
+   "min": 2.500149,
+   "max": 2.505258,
    "unstable": false
   },
   {
@@ -247,15 +470,15 @@
    "name": "alt-k4 / tokens on M / + panel adds + drain / state ring / tokens-on-M floor",
    "unit": "x",
    "samples": [
-    2.512255,
-    2.515008,
-    2.513848,
-    2.517182,
-    2.518433
+    2.504167,
+    2.505258,
+    2.503402,
+    2.500149,
+    2.50383
    ],
-   "median": 2.515008,
-   "min": 2.512255,
-   "max": 2.518433,
+   "median": 2.50383,
+   "min": 2.500149,
+   "max": 2.505258,
    "unstable": false
   },
   {
@@ -263,15 +486,15 @@
    "name": "alt-k4 / tokens on N / the MMAs alone / state ring",
    "unit": "cycles a CTA-window",
    "samples": [
-    3388.584717,
-    3387.715576,
-    3385.676514,
-    3385.938232,
-    3386.376123
+    3384.912061,
+    3387.600732,
+    3386.271826,
+    3386.824951,
+    3384.983936
    ],
-   "median": 3386.376123,
-   "min": 3385.676514,
-   "max": 3388.584717,
+   "median": 3386.271826,
+   "min": 3384.912061,
+   "max": 3387.600732,
    "unstable": false
   },
   {
@@ -279,15 +502,15 @@
    "name": "alt-k4 / tokens on N / the MMAs alone / state ring / its floor",
    "unit": "x",
    "samples": [
-    2.08208,
-    2.081546,
-    2.080293,
-    2.080454,
-    2.080723
+    2.079823,
+    2.081475,
+    2.080659,
+    2.080998,
+    2.079867
    ],
-   "median": 2.080723,
-   "min": 2.080293,
-   "max": 2.08208,
+   "median": 2.080659,
+   "min": 2.079823,
+   "max": 2.081475,
    "unstable": false
   },
   {
@@ -295,15 +518,15 @@
    "name": "alt-k4 / tokens on N / the MMAs alone / state ring / tokens-on-M floor",
    "unit": "x",
    "samples": [
-    1.63384,
-    1.633421,
-    1.632438,
-    1.632564,
-    1.632775
+    1.632069,
+    1.633366,
+    1.632725,
+    1.632992,
+    1.632104
    ],
-   "median": 1.632775,
-   "min": 1.632438,
-   "max": 1.63384,
+   "median": 1.632725,
+   "min": 1.632069,
+   "max": 1.633366,
    "unstable": false
   },
   {
@@ -311,15 +534,15 @@
    "name": "alt-k4 / tokens on N / + panel adds / state ring",
    "unit": "cycles a CTA-window",
    "samples": [
-    4486.42959,
-    4484.389746,
-    4488.91123,
-    4488.411621,
-    4485.38623
+    4488.813574,
+    4486.162402,
+    4488.882715,
+    4484.121387,
+    4486.934277
    ],
-   "median": 4486.42959,
-   "min": 4484.389746,
-   "max": 4488.91123,
+   "median": 4486.934277,
+   "min": 4484.121387,
+   "max": 4488.882715,
    "unstable": false
   },
   {
@@ -327,15 +550,15 @@
    "name": "alt-k4 / tokens on N / + panel adds / state ring / its floor",
    "unit": "x",
    "samples": [
-    2.756639,
-    2.755385,
-    2.758164,
-    2.757857,
-    2.755998
+    2.758104,
+    2.756475,
+    2.758146,
+    2.755221,
+    2.756949
    ],
-   "median": 2.756639,
-   "min": 2.755385,
-   "max": 2.758164,
+   "median": 2.756949,
+   "min": 2.755221,
+   "max": 2.758146,
    "unstable": false
   },
   {
@@ -343,15 +566,15 @@
    "name": "alt-k4 / tokens on N / + panel adds / state ring / tokens-on-M floor",
    "unit": "x",
    "samples": [
-    2.163177,
-    2.162194,
-    2.164374,
-    2.164133,
-    2.162674
+    2.164327,
+    2.163048,
+    2.16436,
+    2.162064,
+    2.163421
    ],
-   "median": 2.163177,
-   "min": 2.162194,
-   "max": 2.164374,
+   "median": 2.163421,
+   "min": 2.162064,
+   "max": 2.16436,
    "unstable": false
   },
   {
@@ -359,15 +582,15 @@
    "name": "alt-k4 / tokens on N / + panel adds + drain / state ring",
    "unit": "cycles a CTA-window",
    "samples": [
-    5520.410059,
-    5521.124609,
-    5519.625,
-    5522.513086,
-    5521.132617
+    5524.770557,
+    5519.916504,
+    5521.273975,
+    5520.483057,
+    5519.5771
    ],
-   "median": 5521.124609,
-   "min": 5519.625,
-   "max": 5522.513086,
+   "median": 5520.483057,
+   "min": 5519.5771,
+   "max": 5524.770557,
    "unstable": false
   },
   {
@@ -375,15 +598,15 @@
    "name": "alt-k4 / tokens on N / + panel adds + drain / state ring / its floor",
    "unit": "x",
    "samples": [
-    3.391957,
-    3.392396,
-    3.391475,
-    3.393249,
-    3.392401
+    3.394636,
+    3.391654,
+    3.392488,
+    3.392002,
+    3.391445
    ],
-   "median": 3.392396,
-   "min": 3.391475,
-   "max": 3.393249,
+   "median": 3.392002,
+   "min": 3.391445,
+   "max": 3.394636,
    "unstable": false
   },
   {
@@ -391,15 +614,15 @@
    "name": "alt-k4 / tokens on N / + panel adds + drain / state ring / tokens-on-M floor",
    "unit": "x",
    "samples": [
-    2.661721,
-    2.662066,
-    2.661343,
-    2.662735,
-    2.66207
+    2.663824,
+    2.661483,
+    2.662138,
+    2.661757,
+    2.66132
    ],
-   "median": 2.662066,
-   "min": 2.661343,
-   "max": 2.662735,
+   "median": 2.661757,
+   "min": 2.66132,
+   "max": 2.663824,
    "unstable": false
   },
   {
@@ -407,15 +630,15 @@
    "name": "alt-k4 / tokens on M / the MMAs alone / first steps straight-line",
    "unit": "cycles a CTA-window",
    "samples": [
-    3206.124414,
-    3206.489795,
-    3208.118555,
-    3208.704199,
-    3206.502441
+    3206.851855,
+    3206.847803,
+    3206.195703,
+    3206.074707,
+    3207.07002
    ],
-   "median": 3206.502441,
-   "min": 3206.124414,
-   "max": 3208.704199,
+   "median": 3206.847803,
+   "min": 3206.074707,
+   "max": 3207.07002,
    "unstable": false
   },
   {
@@ -423,15 +646,15 @@
    "name": "alt-k4 / tokens on M / the MMAs alone / first steps straight-line / its floor",
    "unit": "x",
    "samples": [
-    1.545865,
-    1.546041,
-    1.546827,
-    1.547109,
-    1.546047
+    1.546216,
+    1.546214,
+    1.5459,
+    1.545841,
+    1.546321
    ],
-   "median": 1.546047,
-   "min": 1.545865,
-   "max": 1.547109,
+   "median": 1.546214,
+   "min": 1.545841,
+   "max": 1.546321,
    "unstable": false
   },
   {
@@ -439,15 +662,15 @@
    "name": "alt-k4 / tokens on M / the MMAs alone / first steps straight-line / tokens-on-M floor",
    "unit": "x",
    "samples": [
-    1.545865,
-    1.546041,
-    1.546827,
-    1.547109,
-    1.546047
+    1.546216,
+    1.546214,
+    1.5459,
+    1.545841,
+    1.546321
    ],
-   "median": 1.546047,
-   "min": 1.545865,
-   "max": 1.547109,
+   "median": 1.546214,
+   "min": 1.545841,
+   "max": 1.546321,
    "unstable": false
   },
   {
@@ -455,15 +678,15 @@
    "name": "alt-k4 / tokens on M / + panel adds / first steps straight-line",
    "unit": "cycles a CTA-window",
    "samples": [
-    3843.227441,
-    3847.781738,
-    3845.836816,
-    3851.012988,
-    3849.199316
+    3858.203906,
+    3849.570312,
+    3849.221875,
+    3854.878906,
+    3852.491797
    ],
-   "median": 3847.781738,
-   "min": 3843.227441,
-   "max": 3851.012988,
+   "median": 3852.491797,
+   "min": 3849.221875,
+   "max": 3858.203906,
    "unstable": false
   },
   {
@@ -471,15 +694,15 @@
    "name": "alt-k4 / tokens on M / + panel adds / first steps straight-line / its floor",
    "unit": "x",
    "samples": [
-    1.853051,
-    1.855247,
-    1.854309,
-    1.856805,
-    1.85593
+    1.860272,
+    1.856109,
+    1.855941,
+    1.858669,
+    1.857518
    ],
-   "median": 1.855247,
-   "min": 1.853051,
-   "max": 1.856805,
+   "median": 1.857518,
+   "min": 1.855941,
+   "max": 1.860272,
    "unstable": false
   },
   {
@@ -487,15 +710,15 @@
    "name": "alt-k4 / tokens on M / + panel adds / first steps straight-line / tokens-on-M floor",
    "unit": "x",
    "samples": [
-    1.853051,
-    1.855247,
-    1.854309,
-    1.856805,
-    1.85593
+    1.860272,
+    1.856109,
+    1.855941,
+    1.858669,
+    1.857518
    ],
-   "median": 1.855247,
-   "min": 1.853051,
-   "max": 1.856805,
+   "median": 1.857518,
+   "min": 1.855941,
+   "max": 1.860272,
    "unstable": false
   },
   {
@@ -503,15 +726,15 @@
    "name": "alt-k4 / tokens on M / + panel adds + drain / first steps straight-line",
    "unit": "cycles a CTA-window",
    "samples": [
-    5054.188037,
-    5051.939648,
-    5052.260791,
-    5054.487988,
-    5051.16416
+    5049.46626,
+    5051.540186,
+    5047.660791,
+    5046.40376,
+    5050.200098
    ],
-   "median": 5052.260791,
-   "min": 5051.16416,
-   "max": 5054.487988,
+   "median": 5049.46626,
+   "min": 5046.40376,
+   "max": 5051.540186,
    "unstable": false
   },
   {
@@ -519,15 +742,15 @@
    "name": "alt-k4 / tokens on M / + panel adds + drain / first steps straight-line / its floor",
    "unit": "x",
    "samples": [
-    2.436928,
-    2.435844,
-    2.435998,
-    2.437072,
-    2.43547
+    2.434651,
+    2.435651,
+    2.433781,
+    2.433174,
+    2.435005
    ],
-   "median": 2.435998,
-   "min": 2.43547,
-   "max": 2.437072,
+   "median": 2.434651,
+   "min": 2.433174,
+   "max": 2.435651,
    "unstable": false
   },
   {
@@ -535,15 +758,15 @@
    "name": "alt-k4 / tokens on M / + panel adds + drain / first steps straight-line / tokens-on-M floor",
    "unit": "x",
    "samples": [
-    2.436928,
-    2.435844,
-    2.435998,
-    2.437072,
-    2.43547
+    2.434651,
+    2.435651,
+    2.433781,
+    2.433174,
+    2.435005
    ],
-   "median": 2.435998,
-   "min": 2.43547,
-   "max": 2.437072,
+   "median": 2.434651,
+   "min": 2.433174,
+   "max": 2.435651,
    "unstable": false
   },
   {
@@ -551,15 +774,15 @@
    "name": "alt-k4 / tokens on M / the MMAs alone / first steps straight-line / ordered",
    "unit": "cycles a CTA-window",
    "samples": [
-    3202.386865,
-    3204.523242,
-    3204.570898,
-    3205.454102,
-    3207.377588
+    3205.121436,
+    3205.657373,
+    3204.430566,
+    3205.661279,
+    3206.405029
    ],
-   "median": 3204.570898,
-   "min": 3202.386865,
-   "max": 3207.377588,
+   "median": 3205.657373,
+   "min": 3204.430566,
+   "max": 3206.405029,
    "unstable": false
   },
   {
@@ -567,15 +790,15 @@
    "name": "alt-k4 / tokens on M / the MMAs alone / first steps straight-line / ordered / its floor",
    "unit": "x",
    "samples": [
-    1.544063,
-    1.545093,
-    1.545116,
-    1.545542,
-    1.546469
+    1.545382,
+    1.54564,
+    1.545048,
+    1.545642,
+    1.546
    ],
-   "median": 1.545116,
-   "min": 1.544063,
-   "max": 1.546469,
+   "median": 1.54564,
+   "min": 1.545048,
+   "max": 1.546,
    "unstable": false
   },
   {
@@ -583,15 +806,15 @@
    "name": "alt-k4 / tokens on M / the MMAs alone / first steps straight-line / ordered / tokens-on-M floor",
    "unit": "x",
    "samples": [
-    1.544063,
-    1.545093,
-    1.545116,
-    1.545542,
-    1.546469
+    1.545382,
+    1.54564,
+    1.545048,
+    1.545642,
+    1.546
    ],
-   "median": 1.545116,
-   "min": 1.544063,
-   "max": 1.546469,
+   "median": 1.54564,
+   "min": 1.545048,
+   "max": 1.546,
    "unstable": false
   },
   {
@@ -599,15 +822,15 @@
    "name": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered",
    "unit": "cycles a CTA-window",
    "samples": [
-    3839.332129,
-    3840.036035,
-    3840.182129,
-    3843.595801,
-    3837.087598
+    3838.743018,
+    3841.952783,
+    3837.197705,
+    3842.838721,
+    3841.366064
    ],
-   "median": 3840.036035,
-   "min": 3837.087598,
-   "max": 3843.595801,
+   "median": 3841.366064,
+   "min": 3837.197705,
+   "max": 3842.838721,
    "unstable": false
   },
   {
@@ -615,15 +838,15 @@
    "name": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered / its floor",
    "unit": "x",
    "samples": [
-    1.851173,
-    1.851512,
-    1.851583,
-    1.853228,
-    1.85009
+    1.850889,
+    1.852436,
+    1.850144,
+    1.852863,
+    1.852153
    ],
-   "median": 1.851512,
-   "min": 1.85009,
-   "max": 1.853228,
+   "median": 1.852153,
+   "min": 1.850144,
+   "max": 1.852863,
    "unstable": false
   },
   {
@@ -631,15 +854,15 @@
    "name": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered / tokens-on-M floor",
    "unit": "x",
    "samples": [
-    1.851173,
-    1.851512,
-    1.851583,
-    1.853228,
-    1.85009
+    1.850889,
+    1.852436,
+    1.850144,
+    1.852863,
+    1.852153
    ],
-   "median": 1.851512,
-   "min": 1.85009,
-   "max": 1.853228,
+   "median": 1.852153,
+   "min": 1.850144,
+   "max": 1.852863,
    "unstable": false
   },
   {
@@ -647,15 +870,15 @@
    "name": "alt-k4 / tokens on M / the MMAs alone / first steps straight-line / ordered / half steps",
    "unit": "cycles a CTA-window",
    "samples": [
-    3680.816846,
-    3682.378174,
-    3679.848096,
-    3680.606689,
-    3680.306299
+    3682.958643,
+    3680.112549,
+    3680.536768,
+    3675.108643,
+    3676.974268
    ],
-   "median": 3680.606689,
-   "min": 3679.848096,
-   "max": 3682.378174,
+   "median": 3680.112549,
+   "min": 3675.108643,
+   "max": 3682.958643,
    "unstable": false
   },
   {
@@ -663,15 +886,15 @@
    "name": "alt-k4 / tokens on M / the MMAs alone / first steps straight-line / ordered / half steps / its floor",
    "unit": "x",
    "samples": [
-    1.774743,
-    1.775496,
-    1.774276,
-    1.774642,
-    1.774497
+    1.775776,
+    1.774403,
+    1.774608,
+    1.771991,
+    1.77289
    ],
-   "median": 1.774642,
-   "min": 1.774276,
-   "max": 1.775496,
+   "median": 1.774403,
+   "min": 1.771991,
+   "max": 1.775776,
    "unstable": false
   },
   {
@@ -679,15 +902,15 @@
    "name": "alt-k4 / tokens on M / the MMAs alone / first steps straight-line / ordered / half steps / tokens-on-M floor",
    "unit": "x",
    "samples": [
-    1.774743,
-    1.775496,
-    1.774276,
-    1.774642,
-    1.774497
+    1.775776,
+    1.774403,
+    1.774608,
+    1.771991,
+    1.77289
    ],
-   "median": 1.774642,
-   "min": 1.774276,
-   "max": 1.775496,
+   "median": 1.774403,
+   "min": 1.771991,
+   "max": 1.775776,
    "unstable": false
   },
   {
@@ -695,15 +918,15 @@
    "name": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered / half steps",
    "unit": "cycles a CTA-window",
    "samples": [
-    4125.153223,
-    4124.722705,
-    4124.696582,
-    4127.827148,
-    4124.494531
+    4123.747021,
+    4121.974609,
+    4125.774072,
+    4124.514258,
+    4127.622266
    ],
-   "median": 4124.722705,
-   "min": 4124.494531,
-   "max": 4127.827148,
+   "median": 4124.514258,
+   "min": 4121.974609,
+   "max": 4127.622266,
    "unstable": false
   },
   {
@@ -711,15 +934,15 @@
    "name": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered / half steps / its floor",
    "unit": "x",
    "samples": [
-    1.988984,
-    1.988777,
-    1.988764,
-    1.990273,
-    1.988667
+    1.988306,
+    1.987452,
+    1.989284,
+    1.988676,
+    1.990175
    ],
-   "median": 1.988777,
-   "min": 1.988667,
-   "max": 1.990273,
+   "median": 1.988676,
+   "min": 1.987452,
+   "max": 1.990175,
    "unstable": false
   },
   {
@@ -727,15 +950,15 @@
    "name": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered / half steps / tokens-on-M floor",
    "unit": "x",
    "samples": [
-    1.988984,
-    1.988777,
-    1.988764,
-    1.990273,
-    1.988667
+    1.988306,
+    1.987452,
+    1.989284,
+    1.988676,
+    1.990175
    ],
-   "median": 1.988777,
-   "min": 1.988667,
-   "max": 1.990273,
+   "median": 1.988676,
+   "min": 1.987452,
+   "max": 1.990175,
    "unstable": false
   },
   {
@@ -743,15 +966,15 @@
    "name": "alt-k4 / tokens on M / + panel adds + drain / first steps straight-line / ordered / half steps",
    "unit": "cycles a CTA-window",
    "samples": [
-    5179.763184,
-    5170.295459,
-    5171.819238,
-    5178.028125,
-    5173.08374
+    5178.730469,
+    5170.046582,
+    5175.682813,
+    5173.657178,
+    5176.107568
    ],
-   "median": 5173.08374,
-   "min": 5170.295459,
-   "max": 5179.763184,
+   "median": 5175.682813,
+   "min": 5170.046582,
+   "max": 5178.730469,
    "unstable": false
   },
   {
@@ -759,15 +982,15 @@
    "name": "alt-k4 / tokens on M / + panel adds + drain / first steps straight-line / ordered / half steps / its floor",
    "unit": "x",
    "samples": [
-    2.497475,
-    2.49291,
-    2.493645,
-    2.496638,
-    2.494254
+    2.496977,
+    2.49279,
+    2.495508,
+    2.494531,
+    2.495712
    ],
-   "median": 2.494254,
-   "min": 2.49291,
-   "max": 2.497475,
+   "median": 2.495508,
+   "min": 2.49279,
+   "max": 2.496977,
    "unstable": false
   },
   {
@@ -775,15 +998,15 @@
    "name": "alt-k4 / tokens on M / + panel adds + drain / first steps straight-line / ordered / half steps / tokens-on-M floor",
    "unit": "x",
    "samples": [
-    2.497475,
-    2.49291,
-    2.493645,
-    2.496638,
-    2.494254
+    2.496977,
+    2.49279,
+    2.495508,
+    2.494531,
+    2.495712
    ],
-   "median": 2.494254,
-   "min": 2.49291,
-   "max": 2.497475,
+   "median": 2.495508,
+   "min": 2.49279,
+   "max": 2.496977,
    "unstable": false
   },
   {
@@ -791,15 +1014,15 @@
    "name": "alt-k4 / tokens on M / the MMAs alone / first steps straight-line / ordered / half steps / no pass barrier",
    "unit": "cycles a CTA-window",
    "samples": [
-    3178.63457,
-    3176.430078,
-    3173.210107,
-    3179.143799,
-    3179.239795
+    3183.578516,
+    3171.628027,
+    3175.077539,
+    3173.315967,
+    3171.58833
    ],
-   "median": 3178.63457,
-   "min": 3173.210107,
-   "max": 3179.239795,
+   "median": 3173.315967,
+   "min": 3171.58833,
+   "max": 3183.578516,
    "unstable": false
   },
   {
@@ -807,15 +1030,15 @@
    "name": "alt-k4 / tokens on M / the MMAs alone / first steps straight-line / ordered / half steps / no pass barrier / its floor",
    "unit": "x",
    "samples": [
-    1.532611,
-    1.531548,
-    1.529995,
-    1.532856,
-    1.532903
+    1.534994,
+    1.529232,
+    1.530896,
+    1.530046,
+    1.529213
    ],
-   "median": 1.532611,
-   "min": 1.529995,
-   "max": 1.532903,
+   "median": 1.530046,
+   "min": 1.529213,
+   "max": 1.534994,
    "unstable": false
   },
   {
@@ -823,15 +1046,15 @@
    "name": "alt-k4 / tokens on M / the MMAs alone / first steps straight-line / ordered / half steps / no pass barrier / tokens-on-M floor",
    "unit": "x",
    "samples": [
-    1.532611,
-    1.531548,
-    1.529995,
-    1.532856,
-    1.532903
+    1.534994,
+    1.529232,
+    1.530896,
+    1.530046,
+    1.529213
    ],
-   "median": 1.532611,
-   "min": 1.529995,
-   "max": 1.532903,
+   "median": 1.530046,
+   "min": 1.529213,
+   "max": 1.534994,
    "unstable": false
   },
   {
@@ -839,15 +1062,15 @@
    "name": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered / half steps / no pass barrier",
    "unit": "cycles a CTA-window",
    "samples": [
-    3715.163281,
-    3717.9646,
-    3719.041211,
-    3717.650146,
-    3718.415137
+    3716.94458,
+    3717.302979,
+    3716.018457,
+    3718.053955,
+    3717.05542
    ],
-   "median": 3717.9646,
-   "min": 3715.163281,
-   "max": 3719.041211,
+   "median": 3717.05542,
+   "min": 3716.018457,
+   "max": 3718.053955,
    "unstable": false
   },
   {
@@ -855,15 +1078,15 @@
    "name": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered / half steps / no pass barrier / its floor",
    "unit": "x",
    "samples": [
-    1.791303,
-    1.792654,
-    1.793173,
-    1.792502,
-    1.792871
+    1.792162,
+    1.792335,
+    1.791716,
+    1.792697,
+    1.792216
    ],
-   "median": 1.792654,
-   "min": 1.791303,
-   "max": 1.793173,
+   "median": 1.792216,
+   "min": 1.791716,
+   "max": 1.792697,
    "unstable": false
   },
   {
@@ -871,15 +1094,15 @@
    "name": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered / half steps / no pass barrier / tokens-on-M floor",
    "unit": "x",
    "samples": [
-    1.791303,
-    1.792654,
-    1.793173,
-    1.792502,
-    1.792871
+    1.792162,
+    1.792335,
+    1.791716,
+    1.792697,
+    1.792216
    ],
-   "median": 1.792654,
-   "min": 1.791303,
-   "max": 1.793173,
+   "median": 1.792216,
+   "min": 1.791716,
+   "max": 1.792697,
    "unstable": false
   },
   {
@@ -887,15 +1110,15 @@
    "name": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered / FMA conversion",
    "unit": "cycles a CTA-window",
    "samples": [
-    3406.796582,
-    3408.594238,
-    3409.069238,
-    3409.487207,
-    3408.837988
+    3412.703564,
+    3408.485596,
+    3410.422705,
+    3409.033643,
+    3409.69458
    ],
-   "median": 3408.837988,
-   "min": 3406.796582,
-   "max": 3409.487207,
+   "median": 3409.69458,
+   "min": 3408.485596,
+   "max": 3412.703564,
    "unstable": false
   },
   {
@@ -903,15 +1126,15 @@
    "name": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered / FMA conversion / its floor",
    "unit": "x",
    "samples": [
-    1.642621,
-    1.643488,
-    1.643717,
-    1.643919,
-    1.643606
+    1.645469,
+    1.643436,
+    1.64437,
+    1.6437,
+    1.644019
    ],
-   "median": 1.643606,
-   "min": 1.642621,
-   "max": 1.643919,
+   "median": 1.644019,
+   "min": 1.643436,
+   "max": 1.645469,
    "unstable": false
   },
   {
@@ -919,15 +1142,15 @@
    "name": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered / FMA conversion / tokens-on-M floor",
    "unit": "x",
    "samples": [
-    1.642621,
-    1.643488,
-    1.643717,
-    1.643919,
-    1.643606
+    1.645469,
+    1.643436,
+    1.64437,
+    1.6437,
+    1.644019
    ],
-   "median": 1.643606,
-   "min": 1.642621,
-   "max": 1.643919,
+   "median": 1.644019,
+   "min": 1.643436,
+   "max": 1.645469,
    "unstable": false
   },
   {
@@ -935,15 +1158,15 @@
    "name": "alt-k4 / tokens on M / + panel adds + drain / first steps straight-line / ordered / FMA conversion",
    "unit": "cycles a CTA-window",
    "samples": [
-    4489.020996,
-    4498.929932,
-    4506.35791,
-    4494.231201,
-    4493.727393
+    4496.474609,
+    4500.582227,
+    4497.037842,
+    4496.549365,
+    4491.056494
    ],
-   "median": 4494.231201,
-   "min": 4489.020996,
-   "max": 4506.35791,
+   "median": 4496.549365,
+   "min": 4491.056494,
+   "max": 4500.582227,
    "unstable": false
   },
   {
@@ -951,15 +1174,15 @@
    "name": "alt-k4 / tokens on M / + panel adds + drain / first steps straight-line / ordered / FMA conversion / its floor",
    "unit": "x",
    "samples": [
-    2.164427,
-    2.169204,
-    2.172786,
-    2.166939,
-    2.166696
+    2.168021,
+    2.170001,
+    2.168292,
+    2.168057,
+    2.165408
    ],
-   "median": 2.166939,
-   "min": 2.164427,
-   "max": 2.172786,
+   "median": 2.168057,
+   "min": 2.165408,
+   "max": 2.170001,
    "unstable": false
   },
   {
@@ -967,15 +1190,15 @@
    "name": "alt-k4 / tokens on M / + panel adds + drain / first steps straight-line / ordered / FMA conversion / tokens-on-M floor",
    "unit": "x",
    "samples": [
-    2.164427,
-    2.169204,
-    2.172786,
-    2.166939,
-    2.166696
+    2.168021,
+    2.170001,
+    2.168292,
+    2.168057,
+    2.165408
    ],
-   "median": 2.166939,
-   "min": 2.164427,
-   "max": 2.172786,
+   "median": 2.168057,
+   "min": 2.165408,
+   "max": 2.170001,
    "unstable": false
   },
   {
@@ -983,15 +1206,15 @@
    "name": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered / half steps / FMA conversion",
    "unit": "cycles a CTA-window",
    "samples": [
-    3894.64248,
-    3895.915527,
-    3894.634668,
-    3893.775293,
-    3893.931934
+    3895.300293,
+    3893.96123,
+    3896.518652,
+    3891.806152,
+    3896.814746
    ],
-   "median": 3894.634668,
-   "min": 3893.775293,
-   "max": 3895.915527,
+   "median": 3895.300293,
+   "min": 3891.806152,
+   "max": 3896.814746,
    "unstable": false
   },
   {
@@ -999,15 +1222,15 @@
    "name": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered / half steps / FMA conversion / its floor",
    "unit": "x",
    "samples": [
-    1.877841,
-    1.878455,
-    1.877837,
-    1.877423,
-    1.877499
+    1.878158,
+    1.877513,
+    1.878746,
+    1.876474,
+    1.878888
    ],
-   "median": 1.877837,
-   "min": 1.877423,
-   "max": 1.878455,
+   "median": 1.878158,
+   "min": 1.876474,
+   "max": 1.878888,
    "unstable": false
   },
   {
@@ -1015,15 +1238,15 @@
    "name": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered / half steps / FMA conversion / tokens-on-M floor",
    "unit": "x",
    "samples": [
-    1.877841,
-    1.878455,
-    1.877837,
-    1.877423,
-    1.877499
+    1.878158,
+    1.877513,
+    1.878746,
+    1.876474,
+    1.878888
    ],
-   "median": 1.877837,
-   "min": 1.877423,
-   "max": 1.878455,
+   "median": 1.878158,
+   "min": 1.876474,
+   "max": 1.878888,
    "unstable": false
   },
   {
@@ -1031,15 +1254,15 @@
    "name": "alt-k4 / tokens on M / + panel adds + drain / first steps straight-line / ordered / half steps / FMA conversion",
    "unit": "cycles a CTA-window",
    "samples": [
-    4925.57334,
-    4927.878711,
-    4934.915234,
-    4929.984961,
-    4940.847754
+    4931.310693,
+    4929.078076,
+    4937.010596,
+    4931.776953,
+    4931.277539
    ],
-   "median": 4929.984961,
-   "min": 4925.57334,
-   "max": 4940.847754,
+   "median": 4931.310693,
+   "min": 4929.078076,
+   "max": 4937.010596,
    "unstable": false
   },
   {
@@ -1047,15 +1270,15 @@
    "name": "alt-k4 / tokens on M / + panel adds + drain / first steps straight-line / ordered / half steps / FMA conversion / its floor",
    "unit": "x",
    "samples": [
-    2.374915,
-    2.376026,
-    2.379419,
-    2.377042,
-    2.38228
+    2.377681,
+    2.376605,
+    2.380429,
+    2.377906,
+    2.377665
    ],
-   "median": 2.377042,
-   "min": 2.374915,
-   "max": 2.38228,
+   "median": 2.377681,
+   "min": 2.376605,
+   "max": 2.380429,
    "unstable": false
   },
   {
@@ -1063,15 +1286,15 @@
    "name": "alt-k4 / tokens on M / + panel adds + drain / first steps straight-line / ordered / half steps / FMA conversion / tokens-on-M floor",
    "unit": "x",
    "samples": [
-    2.374915,
-    2.376026,
-    2.379419,
-    2.377042,
-    2.38228
+    2.377681,
+    2.376605,
+    2.380429,
+    2.377906,
+    2.377665
    ],
-   "median": 2.377042,
-   "min": 2.374915,
-   "max": 2.38228,
+   "median": 2.377681,
+   "min": 2.376605,
+   "max": 2.380429,
    "unstable": false
   },
   {
@@ -1079,15 +1302,15 @@
    "name": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered / no pass barrier / FMA conversion",
    "unit": "cycles a CTA-window",
    "samples": [
-    3074.836084,
-    3073.803711,
-    3073.383105,
-    3075.051855,
-    3071.144629
+    3071.856543,
+    3075.532959,
+    3072.453076,
+    3073.50127,
+    3072.293457
    ],
-   "median": 3073.803711,
-   "min": 3071.144629,
-   "max": 3075.051855,
+   "median": 3072.453076,
+   "min": 3071.856543,
+   "max": 3075.532959,
    "unstable": false
   },
   {
@@ -1095,15 +1318,15 @@
    "name": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered / no pass barrier / FMA conversion / its floor",
    "unit": "x",
    "samples": [
-    1.482563,
-    1.482065,
-    1.481863,
-    1.482667,
-    1.480783
+    1.481127,
+    1.482899,
+    1.481414,
+    1.48192,
+    1.481337
    ],
-   "median": 1.482065,
-   "min": 1.480783,
-   "max": 1.482667,
+   "median": 1.481414,
+   "min": 1.481127,
+   "max": 1.482899,
    "unstable": false
   },
   {
@@ -1111,15 +1334,15 @@
    "name": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered / no pass barrier / FMA conversion / tokens-on-M floor",
    "unit": "x",
    "samples": [
-    1.482563,
-    1.482065,
-    1.481863,
-    1.482667,
-    1.480783
+    1.481127,
+    1.482899,
+    1.481414,
+    1.48192,
+    1.481337
    ],
-   "median": 1.482065,
-   "min": 1.480783,
-   "max": 1.482667,
+   "median": 1.481414,
+   "min": 1.481127,
+   "max": 1.482899,
    "unstable": false
   },
   {
@@ -1127,15 +1350,15 @@
    "name": "dense / tokens on M / + panel adds + drain / first steps straight-line / FMA conversion",
    "unit": "cycles a CTA-window",
    "samples": [
-    73462.801953,
-    73456.047314,
-    73445.518359,
-    73451.081104,
-    73452.225488
+    73456.010938,
+    73446.927979,
+    73444.977246,
+    73451.920459,
+    73457.706396
    ],
-   "median": 73452.225488,
-   "min": 73445.518359,
-   "max": 73462.801953,
+   "median": 73451.920459,
+   "min": 73444.977246,
+   "max": 73457.706396,
    "unstable": false
   },
   {
@@ -1143,15 +1366,15 @@
    "name": "dense / tokens on M / + panel adds + drain / first steps straight-line / FMA conversion / its floor",
    "unit": "x",
    "samples": [
-    1.120953,
     1.12085,
-    1.12069,
-    1.120775,
-    1.120792
+    1.120711,
+    1.120681,
+    1.120787,
+    1.120876
    ],
-   "median": 1.120792,
-   "min": 1.12069,
-   "max": 1.120953,
+   "median": 1.120787,
+   "min": 1.120681,
+   "max": 1.120876,
    "unstable": false
   },
   {
@@ -1159,15 +1382,15 @@
    "name": "dense / tokens on M / + panel adds + drain / first steps straight-line / FMA conversion / tokens-on-M floor",
    "unit": "x",
    "samples": [
-    1.120953,
     1.12085,
-    1.12069,
-    1.120775,
-    1.120792
+    1.120711,
+    1.120681,
+    1.120787,
+    1.120876
    ],
-   "median": 1.120792,
-   "min": 1.12069,
-   "max": 1.120953,
+   "median": 1.120787,
+   "min": 1.120681,
+   "max": 1.120876,
    "unstable": false
   },
   {
@@ -1175,15 +1398,15 @@
    "name": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered / FMA conversion / a token's panel base once",
    "unit": "cycles a CTA-window",
    "samples": [
-    3312.467822,
-    3313.862646,
-    3314.896191,
-    3314.116211,
-    3314.407178
+    3317.072119,
+    3314.17627,
+    3316.091992,
+    3314.523877,
+    3315.606982
    ],
-   "median": 3314.116211,
-   "min": 3312.467822,
-   "max": 3314.896191,
+   "median": 3315.606982,
+   "min": 3314.17627,
+   "max": 3317.072119,
    "unstable": false
   },
   {
@@ -1191,15 +1414,15 @@
    "name": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered / FMA conversion / a token's panel base once / its floor",
    "unit": "x",
    "samples": [
-    1.59714,
-    1.597812,
-    1.598311,
-    1.597935,
-    1.598075
+    1.59936,
+    1.597963,
+    1.598887,
+    1.598131,
+    1.598653
    ],
-   "median": 1.597935,
-   "min": 1.59714,
-   "max": 1.598311,
+   "median": 1.598653,
+   "min": 1.597963,
+   "max": 1.59936,
    "unstable": false
   },
   {
@@ -1207,15 +1430,15 @@
    "name": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered / FMA conversion / a token's panel base once / tokens-on-M floor",
    "unit": "x",
    "samples": [
-    1.59714,
-    1.597812,
-    1.598311,
-    1.597935,
-    1.598075
+    1.59936,
+    1.597963,
+    1.598887,
+    1.598131,
+    1.598653
    ],
-   "median": 1.597935,
-   "min": 1.59714,
-   "max": 1.598311,
+   "median": 1.598653,
+   "min": 1.597963,
+   "max": 1.59936,
    "unstable": false
   },
   {
@@ -1223,15 +1446,15 @@
    "name": "alt-k4 / tokens on M / + panel adds + drain / first steps straight-line / ordered / FMA conversion / a token's panel base once",
    "unit": "cycles a CTA-window",
    "samples": [
-    4400.467725,
-    4402.39165,
-    4402.476855,
-    4398.521045,
-    4395.479492
+    4399.475537,
+    4406.049658,
+    4404.346533,
+    4406.198242,
+    4399.979932
    ],
-   "median": 4400.467725,
-   "min": 4395.479492,
-   "max": 4402.476855,
+   "median": 4404.346533,
+   "min": 4399.475537,
+   "max": 4406.198242,
    "unstable": false
   },
   {
@@ -1239,15 +1462,15 @@
    "name": "alt-k4 / tokens on M / + panel adds + drain / first steps straight-line / ordered / FMA conversion / a token's panel base once / its floor",
    "unit": "x",
    "samples": [
-    2.12173,
-    2.122657,
-    2.122699,
-    2.120791,
-    2.119325
+    2.121251,
+    2.124421,
+    2.1236,
+    2.124493,
+    2.121495
    ],
-   "median": 2.12173,
-   "min": 2.119325,
-   "max": 2.122699,
+   "median": 2.1236,
+   "min": 2.121251,
+   "max": 2.124493,
    "unstable": false
   },
   {
@@ -1255,15 +1478,15 @@
    "name": "alt-k4 / tokens on M / + panel adds + drain / first steps straight-line / ordered / FMA conversion / a token's panel base once / tokens-on-M floor",
    "unit": "x",
    "samples": [
-    2.12173,
-    2.122657,
-    2.122699,
-    2.120791,
-    2.119325
+    2.121251,
+    2.124421,
+    2.1236,
+    2.124493,
+    2.121495
    ],
-   "median": 2.12173,
-   "min": 2.119325,
-   "max": 2.122699,
+   "median": 2.1236,
+   "min": 2.121251,
+   "max": 2.124493,
    "unstable": false
   },
   {
@@ -1271,15 +1494,15 @@
    "name": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered / no pass barrier / FMA conversion / a token's panel base once",
    "unit": "cycles a CTA-window",
    "samples": [
-    2990.743359,
-    2991.061475,
-    2990.312256,
-    2990.06626,
-    2990.940723
+    2991.027881,
+    2992.070898,
+    2989.355078,
+    2990.75293,
+    2991.105273
    ],
-   "median": 2990.743359,
-   "min": 2990.06626,
-   "max": 2991.061475,
+   "median": 2991.027881,
+   "min": 2989.355078,
+   "max": 2992.070898,
    "unstable": false
   },
   {
@@ -1287,15 +1510,15 @@
    "name": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered / no pass barrier / FMA conversion / a token's panel base once / its floor",
    "unit": "x",
    "samples": [
-    1.442017,
-    1.44217,
-    1.441809,
-    1.441691,
-    1.442112
+    1.442154,
+    1.442657,
+    1.441348,
+    1.442022,
+    1.442192
    ],
-   "median": 1.442017,
-   "min": 1.441691,
-   "max": 1.44217,
+   "median": 1.442154,
+   "min": 1.441348,
+   "max": 1.442657,
    "unstable": false
   },
   {
@@ -1303,15 +1526,15 @@
    "name": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered / no pass barrier / FMA conversion / a token's panel base once / tokens-on-M floor",
    "unit": "x",
    "samples": [
-    1.442017,
-    1.44217,
-    1.441809,
-    1.441691,
-    1.442112
+    1.442154,
+    1.442657,
+    1.441348,
+    1.442022,
+    1.442192
    ],
-   "median": 1.442017,
-   "min": 1.441691,
-   "max": 1.44217,
+   "median": 1.442154,
+   "min": 1.441348,
+   "max": 1.442657,
    "unstable": false
   },
   {
@@ -1319,15 +1542,15 @@
    "name": "dense / tokens on M / + panel adds + drain / first steps straight-line / FMA conversion / a token's panel base once",
    "unit": "cycles a CTA-window",
    "samples": [
-    73188.098828,
-    73168.485547,
-    73179.746094,
-    73177.217969,
-    73175.489062
+    73169.057031,
+    73175.247656,
+    73178.670703,
+    73174.795313,
+    73172.847266
    ],
-   "median": 73177.217969,
-   "min": 73168.485547,
-   "max": 73188.098828,
+   "median": 73174.795313,
+   "min": 73169.057031,
+   "max": 73178.670703,
    "unstable": false
   },
   {
@@ -1335,15 +1558,15 @@
    "name": "dense / tokens on M / + panel adds + drain / first steps straight-line / FMA conversion / a token's panel base once / its floor",
    "unit": "x",
    "samples": [
-    1.116762,
-    1.116462,
-    1.116634,
-    1.116596,
-    1.116569
+    1.116471,
+    1.116566,
+    1.116618,
+    1.116559,
+    1.116529
    ],
-   "median": 1.116596,
-   "min": 1.116462,
-   "max": 1.116762,
+   "median": 1.116559,
+   "min": 1.116471,
+   "max": 1.116618,
    "unstable": false
   },
   {
@@ -1351,15 +1574,15 @@
    "name": "dense / tokens on M / + panel adds + drain / first steps straight-line / FMA conversion / a token's panel base once / tokens-on-M floor",
    "unit": "x",
    "samples": [
-    1.116762,
-    1.116462,
-    1.116634,
-    1.116596,
-    1.116569
+    1.116471,
+    1.116566,
+    1.116618,
+    1.116559,
+    1.116529
    ],
-   "median": 1.116596,
-   "min": 1.116462,
-   "max": 1.116762,
+   "median": 1.116559,
+   "min": 1.116471,
+   "max": 1.116618,
    "unstable": false
   },
   {
@@ -1367,15 +1590,15 @@
    "name": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered / FMA conversion / facts-form entries",
    "unit": "cycles a CTA-window",
    "samples": [
-    3349.904932,
-    3351.846826,
-    3357.471484,
-    3353.85415,
-    3346.327393
+    3352.262988,
+    3355.168555,
+    3358.46499,
+    3357.550586,
+    3357.181738
    ],
-   "median": 3351.846826,
-   "min": 3346.327393,
-   "max": 3357.471484,
+   "median": 3357.181738,
+   "min": 3352.262988,
+   "max": 3358.46499,
    "unstable": false
   },
   {
@@ -1383,15 +1606,15 @@
    "name": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered / FMA conversion / facts-form entries / its floor",
    "unit": "x",
    "samples": [
-    1.61519,
-    1.616127,
-    1.618839,
-    1.617095,
-    1.613465
+    1.616327,
+    1.617728,
+    1.619318,
+    1.618877,
+    1.618699
    ],
-   "median": 1.616127,
-   "min": 1.613465,
-   "max": 1.618839,
+   "median": 1.618699,
+   "min": 1.616327,
+   "max": 1.619318,
    "unstable": false
   },
   {
@@ -1399,15 +1622,15 @@
    "name": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered / FMA conversion / facts-form entries / tokens-on-M floor",
    "unit": "x",
    "samples": [
-    1.61519,
-    1.616127,
-    1.618839,
-    1.617095,
-    1.613465
+    1.616327,
+    1.617728,
+    1.619318,
+    1.618877,
+    1.618699
    ],
-   "median": 1.616127,
-   "min": 1.613465,
-   "max": 1.618839,
+   "median": 1.618699,
+   "min": 1.616327,
+   "max": 1.619318,
    "unstable": false
   },
   {
@@ -1415,15 +1638,15 @@
    "name": "alt-k4 / tokens on M / + panel adds + drain / first steps straight-line / ordered / FMA conversion / facts-form entries",
    "unit": "cycles a CTA-window",
    "samples": [
-    4405.482568,
-    4408.851318,
-    4409.626709,
-    4411.156787,
-    4410.595068
+    4407.726709,
+    4408.554053,
+    4417.434033,
+    4415.112451,
+    4409.32124
    ],
-   "median": 4409.626709,
-   "min": 4405.482568,
-   "max": 4411.156787,
+   "median": 4409.32124,
+   "min": 4407.726709,
+   "max": 4417.434033,
    "unstable": false
   },
   {
@@ -1431,15 +1654,15 @@
    "name": "alt-k4 / tokens on M / + panel adds + drain / first steps straight-line / ordered / FMA conversion / facts-form entries / its floor",
    "unit": "x",
    "samples": [
-    2.124148,
-    2.125772,
-    2.126146,
-    2.126884,
-    2.126613
+    2.12523,
+    2.125629,
+    2.12991,
+    2.128791,
+    2.125999
    ],
-   "median": 2.126146,
-   "min": 2.124148,
-   "max": 2.126884,
+   "median": 2.125999,
+   "min": 2.12523,
+   "max": 2.12991,
    "unstable": false
   },
   {
@@ -1447,15 +1670,15 @@
    "name": "alt-k4 / tokens on M / + panel adds + drain / first steps straight-line / ordered / FMA conversion / facts-form entries / tokens-on-M floor",
    "unit": "x",
    "samples": [
-    2.124148,
-    2.125772,
-    2.126146,
-    2.126884,
-    2.126613
+    2.12523,
+    2.125629,
+    2.12991,
+    2.128791,
+    2.125999
    ],
-   "median": 2.126146,
-   "min": 2.124148,
-   "max": 2.126884,
+   "median": 2.125999,
+   "min": 2.12523,
+   "max": 2.12991,
    "unstable": false
   },
   {
@@ -1463,15 +1686,15 @@
    "name": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered / no pass barrier / FMA conversion / facts-form entries",
    "unit": "cycles a CTA-window",
    "samples": [
-    3014.906055,
-    3014.52793,
-    3014.439453,
-    3018.145508,
-    3017.041064
+    3016.162891,
+    3015.762061,
+    3015.23208,
+    3015.43291,
+    3018.100635
    ],
-   "median": 3014.906055,
-   "min": 3014.439453,
-   "max": 3018.145508,
+   "median": 3015.762061,
+   "min": 3015.23208,
+   "max": 3018.100635,
    "unstable": false
   },
   {
@@ -1479,15 +1702,15 @@
    "name": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered / no pass barrier / FMA conversion / facts-form entries / its floor",
    "unit": "x",
    "samples": [
-    1.453667,
-    1.453485,
-    1.453442,
-    1.455229,
-    1.454697
+    1.454273,
+    1.45408,
+    1.453825,
+    1.453921,
+    1.455208
    ],
-   "median": 1.453667,
-   "min": 1.453442,
-   "max": 1.455229,
+   "median": 1.45408,
+   "min": 1.453825,
+   "max": 1.455208,
    "unstable": false
   },
   {
@@ -1495,15 +1718,15 @@
    "name": "alt-k4 / tokens on M / + panel adds / first steps straight-line / ordered / no pass barrier / FMA conversion / facts-form entries / tokens-on-M floor",
    "unit": "x",
    "samples": [
-    1.453667,
-    1.453485,
-    1.453442,
-    1.455229,
-    1.454697
+    1.454273,
+    1.45408,
+    1.453825,
+    1.453921,
+    1.455208
    ],
-   "median": 1.453667,
-   "min": 1.453442,
-   "max": 1.455229,
+   "median": 1.45408,
+   "min": 1.453825,
+   "max": 1.455208,
    "unstable": false
   },
   {
@@ -1511,15 +1734,15 @@
    "name": "alt-k4 / tokens on N / + panel adds / first steps straight-line / ordered / FMA conversion / facts-form entries",
    "unit": "cycles a CTA-window",
    "samples": [
-    3428.662695,
-    3430.957617,
-    3427.468945,
-    3427.848633,
-    3425.972461
+    3429.104883,
+    3425.481836,
+    3433.749023,
+    3431.791992,
+    3427.214258
    ],
-   "median": 3427.848633,
-   "min": 3425.972461,
-   "max": 3430.957617,
+   "median": 3429.104883,
+   "min": 3425.481836,
+   "max": 3433.749023,
    "unstable": false
   },
   {
@@ -1527,15 +1750,15 @@
    "name": "alt-k4 / tokens on N / + panel adds / first steps straight-line / ordered / FMA conversion / facts-form entries / its floor",
    "unit": "x",
    "samples": [
-    2.106705,
-    2.108115,
-    2.105972,
-    2.106205,
-    2.105052
+    2.106977,
+    2.104751,
+    2.10983,
+    2.108628,
+    2.105815
    ],
-   "median": 2.106205,
-   "min": 2.105052,
-   "max": 2.108115,
+   "median": 2.106977,
+   "min": 2.104751,
+   "max": 2.10983,
    "unstable": false
   },
   {
@@ -1543,15 +1766,15 @@
    "name": "alt-k4 / tokens on N / + panel adds / first steps straight-line / ordered / FMA conversion / facts-form entries / tokens-on-M floor",
    "unit": "x",
    "samples": [
-    1.653164,
-    1.654271,
-    1.652589,
-    1.652772,
-    1.651867
+    1.653377,
+    1.651631,
+    1.655617,
+    1.654673,
+    1.652466
    ],
-   "median": 1.652772,
-   "min": 1.651867,
-   "max": 1.654271,
+   "median": 1.653377,
+   "min": 1.651631,
+   "max": 1.655617,
    "unstable": false
   },
   {
@@ -1559,15 +1782,15 @@
    "name": "alt-k4 / tokens on N / + panel adds / first steps straight-line / ordered / no pass barrier / FMA conversion / facts-form entries",
    "unit": "cycles a CTA-window",
    "samples": [
-    2901.922119,
-    2900.831836,
-    2900.675684,
-    2900.470068,
-    2902.013232
+    2902.532422,
+    2900.884424,
+    2901.199902,
+    2905.435547,
+    2902.862402
    ],
-   "median": 2900.831836,
-   "min": 2900.470068,
-   "max": 2902.013232,
+   "median": 2902.532422,
+   "min": 2900.884424,
+   "max": 2905.435547,
    "unstable": false
   },
   {
@@ -1575,15 +1798,15 @@
    "name": "alt-k4 / tokens on N / + panel adds / first steps straight-line / ordered / no pass barrier / FMA conversion / facts-form entries / its floor",
    "unit": "x",
    "samples": [
-    1.783055,
-    1.782385,
-    1.782289,
-    1.782163,
-    1.783111
+    1.78343,
+    1.782417,
+    1.782611,
+    1.785214,
+    1.783633
    ],
-   "median": 1.782385,
-   "min": 1.782163,
-   "max": 1.783111,
+   "median": 1.78343,
+   "min": 1.782417,
+   "max": 1.785214,
    "unstable": false
   },
   {
@@ -1591,15 +1814,15 @@
    "name": "alt-k4 / tokens on N / + panel adds / first steps straight-line / ordered / no pass barrier / FMA conversion / facts-form entries / tokens-on-M floor",
    "unit": "x",
    "samples": [
-    1.399191,
-    1.398665,
-    1.39859,
-    1.398491,
-    1.399235
+    1.399485,
+    1.398691,
+    1.398843,
+    1.400885,
+    1.399644
    ],
-   "median": 1.398665,
-   "min": 1.398491,
-   "max": 1.399235,
+   "median": 1.399485,
+   "min": 1.398691,
+   "max": 1.400885,
    "unstable": false
   },
   {
@@ -1607,15 +1830,15 @@
    "name": "alt-k4 / tokens on N / the MMAs alone / first steps straight-line / ordered / no pass barrier / FMA conversion / facts-form entries",
    "unit": "cycles a CTA-window",
    "samples": [
-    2532.784961,
-    2533.27627,
-    2533.384717,
-    2533.893555,
-    2532.866211
+    2531.449463,
+    2531.348633,
+    2532.24375,
+    2533.789893,
+    2532.257617
    ],
-   "median": 2533.27627,
-   "min": 2532.784961,
-   "max": 2533.893555,
+   "median": 2532.24375,
+   "min": 2531.348633,
+   "max": 2533.789893,
    "unstable": false
   },
   {
@@ -1623,15 +1846,15 @@
    "name": "alt-k4 / tokens on N / the MMAs alone / first steps straight-line / ordered / no pass barrier / FMA conversion / facts-form entries / its floor",
    "unit": "x",
    "samples": [
-    1.556243,
-    1.556545,
-    1.556611,
-    1.556924,
-    1.556293
+    1.555422,
+    1.55536,
+    1.55591,
+    1.55686,
+    1.555919
    ],
-   "median": 1.556545,
-   "min": 1.556243,
-   "max": 1.556924,
+   "median": 1.55591,
+   "min": 1.55536,
+   "max": 1.55686,
    "unstable": false
   },
   {
@@ -1639,15 +1862,63 @@
    "name": "alt-k4 / tokens on N / the MMAs alone / first steps straight-line / ordered / no pass barrier / FMA conversion / facts-form entries / tokens-on-M floor",
    "unit": "x",
    "samples": [
-    1.221208,
-    1.221445,
-    1.221497,
-    1.221742,
-    1.221247
+    1.220564,
+    1.220515,
+    1.220947,
+    1.221692,
+    1.220954
    ],
-   "median": 1.221445,
-   "min": 1.221208,
-   "max": 1.221742,
+   "median": 1.220947,
+   "min": 1.220515,
+   "max": 1.221692,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alt-k4 / tokens on N / + panel adds + drain / first steps straight-line / ordered / FMA conversion / facts-form entries",
+   "unit": "cycles a CTA-window",
+   "samples": [
+    4457.555273,
+    4462.359082,
+    4454.713477,
+    4463.23916,
+    4454.728711
+   ],
+   "median": 4457.555273,
+   "min": 4454.713477,
+   "max": 4463.23916,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alt-k4 / tokens on N / + panel adds + drain / first steps straight-line / ordered / FMA conversion / facts-form entries / its floor",
+   "unit": "x",
+   "samples": [
+    2.738897,
+    2.741849,
+    2.737151,
+    2.74239,
+    2.73716
+   ],
+   "median": 2.738897,
+   "min": 2.737151,
+   "max": 2.74239,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alt-k4 / tokens on N / + panel adds + drain / first steps straight-line / ordered / FMA conversion / facts-form entries / tokens-on-M floor",
+   "unit": "x",
+   "samples": [
+    2.149255,
+    2.151571,
+    2.147885,
+    2.151996,
+    2.147892
+   ],
+   "median": 2.149255,
+   "min": 2.147885,
+   "max": 2.151996,
    "unstable": false
   },
   {
@@ -1655,15 +1926,15 @@
    "name": "dense / tokens on M / + panel adds + drain / first steps straight-line / half steps",
    "unit": "cycles a CTA-window",
    "samples": [
-    76792.247266,
-    76789.926807,
-    76797.04834,
-    76797.635986,
-    76801.585596
+    76788.798633,
+    76806.274219,
+    76804.443604,
+    76792.704834,
+    76790.037939
    ],
-   "median": 76797.04834,
-   "min": 76789.926807,
-   "max": 76801.585596,
+   "median": 76792.704834,
+   "min": 76788.798633,
+   "max": 76806.274219,
    "unstable": false
   },
   {
@@ -1671,15 +1942,15 @@
    "name": "dense / tokens on M / + panel adds + drain / first steps straight-line / half steps / its floor",
    "unit": "x",
    "samples": [
-    1.171757,
-    1.171721,
-    1.17183,
-    1.171839,
-    1.171899
+    1.171704,
+    1.171971,
+    1.171943,
+    1.171764,
+    1.171723
    ],
-   "median": 1.17183,
-   "min": 1.171721,
-   "max": 1.171899,
+   "median": 1.171764,
+   "min": 1.171704,
+   "max": 1.171971,
    "unstable": false
   },
   {
@@ -1687,15 +1958,15 @@
    "name": "dense / tokens on M / + panel adds + drain / first steps straight-line / half steps / tokens-on-M floor",
    "unit": "x",
    "samples": [
-    1.171757,
-    1.171721,
-    1.17183,
-    1.171839,
-    1.171899
+    1.171704,
+    1.171971,
+    1.171943,
+    1.171764,
+    1.171723
    ],
-   "median": 1.17183,
-   "min": 1.171721,
-   "max": 1.171899,
+   "median": 1.171764,
+   "min": 1.171704,
+   "max": 1.171971,
    "unstable": false
   },
   {
@@ -1703,63 +1974,63 @@
    "name": "dense / tokens on M / + panel adds + drain / state ring",
    "unit": "cycles a CTA-window",
    "samples": [
-    76194.868359,
-    76179.810938,
-    76182.438672,
-    76185.433594,
-    76198.257031
+    92598.627344,
+    76378.088672,
+    76359.624609,
+    76360.900391,
+    76375.524609
    ],
-   "median": 76185.433594,
-   "min": 76179.810938,
-   "max": 76198.257031,
-   "unstable": false
+   "median": 76375.524609,
+   "min": 76359.624609,
+   "max": 92598.627344,
+   "unstable": true
   },
   {
    "lab": "result",
    "name": "dense / tokens on M / + panel adds + drain / state ring / its floor",
    "unit": "x",
    "samples": [
-    1.162641,
-    1.162412,
-    1.162452,
-    1.162497,
-    1.162693
+    1.412943,
+    1.165437,
+    1.165155,
+    1.165175,
+    1.165398
    ],
-   "median": 1.162497,
-   "min": 1.162412,
-   "max": 1.162693,
-   "unstable": false
+   "median": 1.165398,
+   "min": 1.165155,
+   "max": 1.412943,
+   "unstable": true
   },
   {
    "lab": "result",
    "name": "dense / tokens on M / + panel adds + drain / state ring / tokens-on-M floor",
    "unit": "x",
    "samples": [
-    1.162641,
-    1.162412,
-    1.162452,
-    1.162497,
-    1.162693
+    1.412943,
+    1.165437,
+    1.165155,
+    1.165175,
+    1.165398
    ],
-   "median": 1.162497,
-   "min": 1.162412,
-   "max": 1.162693,
-   "unstable": false
+   "median": 1.165398,
+   "min": 1.165155,
+   "max": 1.412943,
+   "unstable": true
   },
   {
    "lab": "result",
    "name": "dense / tokens on N / + panel adds + drain / state ring",
    "unit": "cycles a CTA-window",
    "samples": [
-    92323.058203,
-    92357.641016,
-    92419.454687,
-    92375.980273,
-    92347.366211
+    92368.29082,
+    92387.185938,
+    92402.288086,
+    92405.607617,
+    92398.241016
    ],
-   "median": 92357.641016,
-   "min": 92323.058203,
-   "max": 92419.454687,
+   "median": 92398.241016,
+   "min": 92368.29082,
+   "max": 92405.607617,
    "unstable": false
   },
   {
@@ -1767,15 +2038,15 @@
    "name": "dense / tokens on N / + panel adds + drain / state ring / its floor",
    "unit": "x",
    "samples": [
-    1.408738,
-    1.409266,
-    1.410209,
-    1.409546,
-    1.409109
+    1.409428,
+    1.409717,
+    1.409947,
+    1.409998,
+    1.409885
    ],
-   "median": 1.409266,
-   "min": 1.408738,
-   "max": 1.410209,
+   "median": 1.409885,
+   "min": 1.409428,
+   "max": 1.409998,
    "unstable": false
   },
   {
@@ -1783,15 +2054,15 @@
    "name": "dense / tokens on N / + panel adds + drain / state ring / tokens-on-M floor",
    "unit": "x",
    "samples": [
-    1.408738,
-    1.409266,
-    1.410209,
-    1.409546,
-    1.409109
+    1.409428,
+    1.409717,
+    1.409947,
+    1.409998,
+    1.409885
    ],
-   "median": 1.409266,
-   "min": 1.408738,
-   "max": 1.410209,
+   "median": 1.409885,
+   "min": 1.409428,
+   "max": 1.409998,
    "unstable": false
   }
  ],
@@ -1799,52 +2070,69 @@
   "void read_image::read<(int)1, (int)2, (int)1, (int)1, (int)0, (int)1, (int)0>(read_image::Lists, long long *, int *)": {
    "regs": 84,
    "ops": {
-    "LOP3.LUT": 65,
-    "IMAD": 52,
+    "LOP3.LUT": 71,
+    "IMAD": 57,
     "FMUL": 40,
+    "IADD3": 33,
     "F2I.S16.NTZ": 32,
-    "IADD3": 24,
-    "IMAD.MOV.U32": 21,
-    "BRA": 21,
-    "LEA": 18,
+    "IMAD.MOV.U32": 28,
+    "BRA": 26,
+    "LEA": 20,
+    "SHF.R.S32.HI": 19,
+    "NOP": 16,
     "LDSM.16.MT88.4": 16,
-    "HMMA.16816.F32.BF16": 16,
-    "PRMT": 16,
-    "SEL": 16
+    "HMMA.16816.F32.BF16": 16
    }
   },
   "void read_image::read<(int)0, (int)2, (int)1, (int)1, (int)0, (int)1, (int)0>(read_image::Lists, long long *, int *)": {
-   "regs": 90,
+   "regs": 89,
    "ops": {
-    "LOP3.LUT": 100,
+    "LOP3.LUT": 106,
     "FMUL": 72,
     "F2I.S16.NTZ": 64,
-    "IMAD": 48,
-    "LEA": 34,
+    "IMAD": 53,
+    "IADD3": 37,
+    "LEA": 36,
+    "IMAD.IADD": 34,
     "HMMA.16816.F32.BF16": 32,
     "PRMT": 32,
     "SEL": 32,
     "ATOMS.ADD": 32,
-    "IMAD.IADD": 29,
-    "IADD3": 28,
-    "BRA": 21
+    "IMAD.MOV.U32": 27
    }
   },
   "void read_image::read<(int)0, (int)2, (int)1, (int)2, (int)1, (int)1, (int)0>(read_image::Lists, long long *, int *)": {
    "regs": 118,
    "ops": {
-    "LOP3.LUT": 173,
+    "LOP3.LUT": 179,
     "FMUL": 144,
     "F2I.S16.NTZ": 128,
-    "LEA": 66,
+    "LEA": 68,
+    "IMAD": 66,
     "HMMA.16816.F32.BF16": 64,
     "PRMT": 64,
     "SEL": 64,
     "ATOMS.ADD": 64,
-    "IMAD": 61,
-    "IMAD.IADD": 53,
-    "IADD3": 27,
-    "SHFL.IDX": 24
+    "IMAD.IADD": 58,
+    "IADD3": 36,
+    "IMAD.MOV.U32": 26
+   }
+  },
+  "void read_image::read<(int)1, (int)2, (int)0, (int)2, (int)0, (int)1, (int)3>(read_image::Lists, long long *, int *)": {
+   "regs": 125,
+   "ops": {
+    "FFMA": 128,
+    "IMAD": 111,
+    "LOP3.LUT": 107,
+    "IADD3": 84,
+    "IMAD.MOV.U32": 73,
+    "HMMA.16816.F32.BF16": 64,
+    "ATOMS.ADD": 64,
+    "BRA": 59,
+    "LEA.HI": 53,
+    "SEL": 51,
+    "SHFL.IDX": 49,
+    "SHF.R.S32.HI": 44
    }
   },
   "void read_image::read<(int)1, (int)0, (int)0, (int)2, (int)0, (int)0, (int)3>(read_image::Lists, long long *, int *)": {
@@ -1868,34 +2156,34 @@
    "regs": 122,
    "ops": {
     "FFMA": 128,
-    "IMAD.MOV.U32": 107,
-    "IMAD": 102,
-    "LOP3.LUT": 98,
-    "IADD3": 73,
-    "BRA": 68,
+    "IMAD.MOV.U32": 114,
+    "IMAD": 107,
+    "LOP3.LUT": 104,
+    "IADD3": 82,
+    "BRA": 73,
     "HMMA.16816.F32.BF16": 64,
     "ATOMS.ADD": 64,
+    "LEA.HI": 52,
     "SEL": 52,
     "CALL.REL.NOINC": 51,
-    "MOV": 49,
-    "SHFL.IDX": 49
+    "MOV": 49
    }
   },
   "void read_image::read<(int)1, (int)1, (int)0, (int)2, (int)0, (int)1, (int)3>(read_image::Lists, long long *, int *)": {
    "regs": 122,
    "ops": {
     "FFMA": 128,
-    "IMAD": 102,
-    "LOP3.LUT": 98,
-    "IADD3": 73,
-    "IMAD.MOV.U32": 66,
+    "IMAD": 107,
+    "LOP3.LUT": 104,
+    "IADD3": 82,
+    "IMAD.MOV.U32": 73,
     "HMMA.16816.F32.BF16": 64,
     "ATOMS.ADD": 64,
-    "BRA": 52,
+    "BRA": 57,
+    "LEA.HI": 52,
     "SEL": 52,
     "SHFL.IDX": 49,
-    "LEA.HI": 46,
-    "ISETP.NE.AND": 38
+    "SHF.R.S32.HI": 45
    }
   },
   "void read_image::read<(int)0, (int)1, (int)0, (int)2, (int)0, (int)0, (int)3>(read_image::Lists, long long *, int *)": {
@@ -1905,31 +2193,31 @@
     "HMMA.16816.F32.BF16": 96,
     "PRMT": 96,
     "ATOMS.ADD": 96,
-    "IMAD.MOV.U32": 88,
-    "LOP3.LUT": 88,
-    "IADD3": 66,
-    "BRA": 56,
-    "CALL.REL.NOINC": 39,
-    "MOV": 37,
-    "SHFL.IDX": 37,
-    "LEA.HI": 36
+    "IMAD.MOV.U32": 95,
+    "LOP3.LUT": 94,
+    "IADD3": 75,
+    "BRA": 61,
+    "LEA.HI": 42,
+    "SHF.R.S32.HI": 41,
+    "IMAD": 39,
+    "CALL.REL.NOINC": 39
    }
   },
   "void read_image::read<(int)0, (int)2, (int)0, (int)2, (int)0, (int)1, (int)3>(read_image::Lists, long long *, int *)": {
    "regs": 124,
    "ops": {
     "FFMA": 192,
-    "LOP3.LUT": 96,
+    "LOP3.LUT": 102,
     "HMMA.16816.F32.BF16": 96,
     "PRMT": 96,
     "ATOMS.ADD": 96,
-    "IADD3": 69,
-    "IMAD.MOV.U32": 46,
-    "BRA": 42,
-    "LEA.HI": 38,
-    "SHFL.IDX": 37,
-    "SEL": 36,
-    "IMAD": 34
+    "IADD3": 78,
+    "IMAD.MOV.U32": 53,
+    "BRA": 47,
+    "LEA.HI": 44,
+    "SHF.R.S32.HI": 42,
+    "IMAD": 39,
+    "SHFL.IDX": 37
    }
   },
   "void read_image::read<(int)0, (int)1, (int)0, (int)2, (int)0, (int)1, (int)3>(read_image::Lists, long long *, int *)": {
@@ -1939,47 +2227,47 @@
     "HMMA.16816.F32.BF16": 96,
     "PRMT": 96,
     "ATOMS.ADD": 96,
-    "LOP3.LUT": 88,
-    "IADD3": 66,
-    "IMAD.MOV.U32": 58,
-    "BRA": 40,
-    "SHFL.IDX": 37,
-    "LEA.HI": 36,
-    "SEL": 36,
-    "IMAD": 34
+    "LOP3.LUT": 94,
+    "IADD3": 75,
+    "IMAD.MOV.U32": 65,
+    "BRA": 45,
+    "LEA.HI": 42,
+    "SHF.R.S32.HI": 41,
+    "IMAD": 39,
+    "SHFL.IDX": 37
    }
   },
   "void read_image::read<(int)0, (int)2, (int)1, (int)2, (int)0, (int)1, (int)2>(read_image::Lists, long long *, int *)": {
    "regs": 113,
    "ops": {
     "FFMA": 128,
-    "LOP3.LUT": 90,
+    "LOP3.LUT": 96,
+    "IMAD": 66,
     "HMMA.16816.F32.BF16": 64,
     "PRMT": 64,
     "ATOMS.ADD": 64,
-    "IMAD": 61,
-    "IADD3": 27,
+    "IADD3": 36,
+    "IMAD.MOV.U32": 26,
+    "BRA": 26,
     "SHFL.IDX": 24,
-    "ISETP.NE.AND": 22,
-    "BRA": 21,
-    "IMAD.MOV.U32": 18,
-    "LEA": 18
+    "ISETP.NE.AND": 23,
+    "LEA": 20
    }
   },
   "void read_image::read<(int)0, (int)1, (int)0, (int)2, (int)0, (int)0, (int)2>(read_image::Lists, long long *, int *)": {
    "regs": 124,
    "ops": {
     "FFMA": 128,
-    "LOP3.LUT": 101,
-    "IMAD": 81,
+    "LOP3.LUT": 107,
+    "IMAD": 86,
+    "IADD3": 71,
     "HMMA.16816.F32.BF16": 64,
     "PRMT": 64,
     "ATOMS.ADD": 64,
-    "IADD3": 62,
-    "IMAD.MOV.U32": 46,
-    "LEA": 33,
-    "BRA": 32,
-    "SHF.R.S32.HI": 29,
+    "IMAD.MOV.U32": 53,
+    "SHF.R.S32.HI": 41,
+    "BRA": 37,
+    "LEA": 35,
     "SEL": 28
    }
   },
@@ -1987,16 +2275,16 @@
    "regs": 124,
    "ops": {
     "FFMA": 128,
-    "LOP3.LUT": 108,
-    "IMAD": 81,
-    "IADD3": 65,
+    "LOP3.LUT": 114,
+    "IMAD": 86,
+    "IADD3": 74,
     "HMMA.16816.F32.BF16": 64,
     "PRMT": 64,
     "ATOMS.ADD": 64,
-    "IMAD.MOV.U32": 46,
-    "LEA": 35,
-    "BRA": 34,
-    "SHF.R.S32.HI": 30,
+    "IMAD.MOV.U32": 53,
+    "SHF.R.S32.HI": 42,
+    "BRA": 39,
+    "LEA": 37,
     "SEL": 28
    }
   },
@@ -2004,16 +2292,16 @@
    "regs": 124,
    "ops": {
     "FFMA": 128,
-    "LOP3.LUT": 101,
-    "IMAD": 81,
+    "LOP3.LUT": 107,
+    "IMAD": 86,
+    "IADD3": 71,
     "HMMA.16816.F32.BF16": 64,
     "PRMT": 64,
     "ATOMS.ADD": 64,
-    "IADD3": 62,
-    "IMAD.MOV.U32": 45,
-    "LEA": 33,
-    "BRA": 32,
-    "SHF.R.S32.HI": 29,
+    "IMAD.MOV.U32": 52,
+    "SHF.R.S32.HI": 41,
+    "BRA": 37,
+    "LEA": 35,
     "SEL": 28
    }
   },
@@ -2021,119 +2309,119 @@
    "regs": 116,
    "ops": {
     "FFMA": 128,
-    "LOP3.LUT": 109,
-    "LEA": 66,
+    "LOP3.LUT": 115,
+    "LEA": 68,
+    "IMAD": 66,
     "HMMA.16816.F32.BF16": 64,
     "PRMT": 64,
     "SEL": 64,
     "ATOMS.ADD": 64,
-    "IMAD": 61,
-    "IMAD.IADD": 53,
-    "IADD3": 27,
-    "SHFL.IDX": 24,
-    "ISETP.NE.AND": 22
+    "IMAD.IADD": 58,
+    "IADD3": 36,
+    "IMAD.MOV.U32": 26,
+    "BRA": 26
    }
   },
   "void read_image::read<(int)0, (int)1, (int)0, (int)2, (int)0, (int)0, (int)1>(read_image::Lists, long long *, int *)": {
    "regs": 127,
    "ops": {
     "FFMA": 128,
-    "LOP3.LUT": 120,
-    "IMAD": 81,
-    "LEA": 81,
+    "LOP3.LUT": 126,
+    "IMAD": 86,
+    "LEA": 83,
     "SEL": 76,
-    "IMAD.IADD": 65,
+    "IADD3": 71,
+    "IMAD.IADD": 70,
     "HMMA.16816.F32.BF16": 64,
     "PRMT": 64,
     "ATOMS.ADD": 64,
-    "IADD3": 62,
-    "IMAD.MOV.U32": 47,
-    "BRA": 32
+    "IMAD.MOV.U32": 54,
+    "SHF.R.S32.HI": 41
    }
   },
   "void read_image::read<(int)0, (int)2, (int)0, (int)2, (int)1, (int)1, (int)1>(read_image::Lists, long long *, int *)": {
    "regs": 127,
    "ops": {
-    "IMAD.MOV.U32": 264,
+    "IMAD.MOV.U32": 271,
     "FFMA": 192,
-    "LOP3.LUT": 180,
-    "IADD3": 141,
+    "LOP3.LUT": 186,
+    "IADD3": 150,
     "HMMA.16816.F32.BF16": 128,
     "SEL": 124,
     "PRMT": 100,
+    "IMAD": 96,
     "ATOMS.ADD": 96,
-    "IMAD": 91,
-    "LEA": 91,
-    "BRA": 78,
-    "IMAD.IADD": 75
+    "LEA": 93,
+    "BRA": 83,
+    "IMAD.IADD": 80
    }
   },
   "void read_image::read<(int)0, (int)1, (int)0, (int)2, (int)1, (int)1, (int)1>(read_image::Lists, long long *, int *)": {
    "regs": 127,
    "ops": {
-    "IMAD.MOV.U32": 259,
+    "IMAD.MOV.U32": 266,
     "FFMA": 192,
-    "LOP3.LUT": 173,
-    "IADD3": 138,
+    "LOP3.LUT": 179,
+    "IADD3": 147,
     "HMMA.16816.F32.BF16": 128,
     "SEL": 124,
     "PRMT": 100,
+    "IMAD": 96,
     "ATOMS.ADD": 96,
-    "IMAD": 91,
-    "LEA": 89,
-    "BRA": 76,
-    "IMAD.IADD": 74
+    "LEA": 91,
+    "BRA": 81,
+    "IMAD.IADD": 79
    }
   },
   "void read_image::read<(int)0, (int)2, (int)0, (int)2, (int)0, (int)1, (int)1>(read_image::Lists, long long *, int *)": {
    "regs": 127,
    "ops": {
+    "LOP3.LUT": 133,
     "FFMA": 128,
-    "LOP3.LUT": 127,
-    "LEA": 83,
-    "IMAD": 81,
+    "IMAD": 86,
+    "LEA": 85,
     "SEL": 76,
-    "IMAD.IADD": 66,
-    "IADD3": 65,
+    "IADD3": 74,
+    "IMAD.IADD": 71,
     "HMMA.16816.F32.BF16": 64,
     "PRMT": 64,
     "ATOMS.ADD": 64,
-    "IMAD.MOV.U32": 47,
-    "BRA": 34
+    "IMAD.MOV.U32": 54,
+    "SHF.R.S32.HI": 42
    }
   },
   "void read_image::read<(int)0, (int)1, (int)0, (int)2, (int)0, (int)1, (int)1>(read_image::Lists, long long *, int *)": {
    "regs": 127,
    "ops": {
     "FFMA": 128,
-    "LOP3.LUT": 120,
-    "IMAD": 81,
-    "LEA": 81,
+    "LOP3.LUT": 126,
+    "IMAD": 86,
+    "LEA": 83,
     "SEL": 76,
-    "IMAD.IADD": 65,
+    "IADD3": 71,
+    "IMAD.IADD": 70,
     "HMMA.16816.F32.BF16": 64,
     "PRMT": 64,
     "ATOMS.ADD": 64,
-    "IADD3": 62,
-    "IMAD.MOV.U32": 46,
-    "BRA": 32
+    "IMAD.MOV.U32": 53,
+    "SHF.R.S32.HI": 41
    }
   },
   "void read_image::read<(int)0, (int)1, (int)0, (int)2, (int)1, (int)0, (int)0>(read_image::Lists, long long *, int *)": {
    "regs": 126,
    "ops": {
-    "LOP3.LUT": 269,
-    "IMAD.MOV.U32": 260,
+    "LOP3.LUT": 275,
+    "IMAD.MOV.U32": 267,
     "FMUL": 216,
     "F2I.S16.NTZ": 192,
-    "IADD3": 138,
+    "IADD3": 147,
     "HMMA.16816.F32.BF16": 128,
     "SEL": 124,
     "PRMT": 100,
+    "IMAD": 96,
     "ATOMS.ADD": 96,
-    "IMAD": 91,
-    "LEA": 89,
-    "BRA": 76
+    "LEA": 91,
+    "BRA": 81
    }
   },
   "void read_image::read<(int)0, (int)0, (int)0, (int)2, (int)1, (int)0, (int)0>(read_image::Lists, long long *, int *)": {
@@ -2156,35 +2444,35 @@
   "void read_image::read<(int)0, (int)2, (int)0, (int)2, (int)1, (int)1, (int)0>(read_image::Lists, long long *, int *)": {
    "regs": 126,
    "ops": {
-    "LOP3.LUT": 276,
-    "IMAD.MOV.U32": 264,
+    "LOP3.LUT": 282,
+    "IMAD.MOV.U32": 271,
     "FMUL": 216,
     "F2I.S16.NTZ": 192,
-    "IADD3": 141,
+    "IADD3": 150,
     "HMMA.16816.F32.BF16": 128,
     "SEL": 124,
     "PRMT": 100,
+    "IMAD": 96,
     "ATOMS.ADD": 96,
-    "IMAD": 91,
-    "LEA": 91,
-    "BRA": 78
+    "LEA": 93,
+    "BRA": 83
    }
   },
   "void read_image::read<(int)0, (int)1, (int)0, (int)2, (int)1, (int)1, (int)0>(read_image::Lists, long long *, int *)": {
    "regs": 126,
    "ops": {
-    "LOP3.LUT": 269,
-    "IMAD.MOV.U32": 259,
+    "LOP3.LUT": 275,
+    "IMAD.MOV.U32": 266,
     "FMUL": 216,
     "F2I.S16.NTZ": 192,
-    "IADD3": 138,
+    "IADD3": 147,
     "HMMA.16816.F32.BF16": 128,
     "SEL": 124,
     "PRMT": 100,
+    "IMAD": 96,
     "ATOMS.ADD": 96,
-    "IMAD": 91,
-    "LEA": 89,
-    "BRA": 76
+    "LEA": 91,
+    "BRA": 81
    }
   },
   "void read_image::read<(int)0, (int)0, (int)0, (int)2, (int)1, (int)1, (int)0>(read_image::Lists, long long *, int *)": {
@@ -2207,35 +2495,35 @@
   "void read_image::read<(int)0, (int)2, (int)0, (int)2, (int)0, (int)1, (int)0>(read_image::Lists, long long *, int *)": {
    "regs": 128,
    "ops": {
-    "LOP3.LUT": 191,
+    "LOP3.LUT": 197,
     "FMUL": 144,
     "F2I.S16.NTZ": 128,
-    "LEA": 83,
-    "IMAD": 81,
+    "IMAD": 86,
+    "LEA": 85,
     "SEL": 76,
-    "IMAD.IADD": 66,
-    "IADD3": 65,
+    "IADD3": 74,
+    "IMAD.IADD": 71,
     "HMMA.16816.F32.BF16": 64,
     "PRMT": 64,
     "ATOMS.ADD": 64,
-    "IMAD.MOV.U32": 47
+    "IMAD.MOV.U32": 54
    }
   },
   "void read_image::read<(int)0, (int)1, (int)0, (int)2, (int)0, (int)1, (int)0>(read_image::Lists, long long *, int *)": {
    "regs": 128,
    "ops": {
-    "LOP3.LUT": 184,
+    "LOP3.LUT": 190,
     "FMUL": 144,
     "F2I.S16.NTZ": 128,
-    "IMAD": 81,
-    "LEA": 81,
+    "IMAD": 86,
+    "LEA": 83,
     "SEL": 76,
-    "IMAD.IADD": 65,
+    "IADD3": 71,
+    "IMAD.IADD": 70,
     "HMMA.16816.F32.BF16": 64,
     "PRMT": 64,
     "ATOMS.ADD": 64,
-    "IADD3": 62,
-    "IMAD.MOV.U32": 46
+    "IMAD.MOV.U32": 53
    }
   },
   "void read_image::read<(int)0, (int)0, (int)0, (int)2, (int)0, (int)1, (int)0>(read_image::Lists, long long *, int *)": {
@@ -2258,35 +2546,35 @@
   "void read_image::read<(int)1, (int)2, (int)0, (int)1, (int)0, (int)1, (int)0>(read_image::Lists, long long *, int *)": {
    "regs": 94,
    "ops": {
-    "LOP3.LUT": 82,
-    "IMAD.MOV.U32": 64,
-    "IMAD": 64,
-    "IADD3": 63,
+    "LOP3.LUT": 88,
+    "IADD3": 72,
+    "IMAD.MOV.U32": 71,
+    "IMAD": 69,
     "FMUL": 40,
-    "BRA": 34,
+    "BRA": 39,
+    "SHF.R.S32.HI": 38,
     "F2I.S16.NTZ": 32,
-    "SHF.R.S32.HI": 26,
+    "LEA": 25,
+    "IMAD.IADD": 24,
     "SEL": 24,
-    "IMAD.SHL.U32": 23,
-    "LEA": 23,
-    "ISETP.GE.AND": 22
+    "ISETP.GE.AND": 23
    }
   },
   "void read_image::read<(int)1, (int)1, (int)0, (int)1, (int)0, (int)1, (int)0>(read_image::Lists, long long *, int *)": {
    "regs": 94,
    "ops": {
-    "LOP3.LUT": 78,
-    "IMAD.MOV.U32": 63,
-    "IMAD": 61,
-    "IADD3": 60,
+    "LOP3.LUT": 84,
+    "IMAD.MOV.U32": 70,
+    "IADD3": 69,
+    "IMAD": 66,
     "FMUL": 40,
-    "BRA": 32,
+    "SHF.R.S32.HI": 37,
+    "BRA": 37,
     "F2I.S16.NTZ": 32,
-    "SHF.R.S32.HI": 25,
     "SEL": 24,
-    "IMAD.SHL.U32": 21,
-    "LEA": 21,
-    "ISETP.GE.AND": 20
+    "IMAD.IADD": 23,
+    "LEA": 23,
+    "ISETP.GE.AND": 21
    }
   },
   "void read_image::read<(int)1, (int)0, (int)0, (int)1, (int)0, (int)1, (int)0>(read_image::Lists, long long *, int *)": {
@@ -2307,37 +2595,37 @@
    }
   },
   "void read_image::read<(int)0, (int)2, (int)0, (int)1, (int)0, (int)1, (int)0>(read_image::Lists, long long *, int *)": {
-   "regs": 114,
+   "regs": 112,
    "ops": {
-    "LOP3.LUT": 121,
+    "LOP3.LUT": 129,
     "FMUL": 72,
-    "IMAD": 64,
+    "IMAD.MOV.U32": 71,
+    "IMAD": 69,
+    "IADD3": 66,
     "F2I.S16.NTZ": 64,
-    "IMAD.MOV.U32": 59,
-    "IADD3": 57,
-    "LEA": 47,
-    "IMAD.IADD": 43,
+    "LEA": 49,
+    "IMAD.IADD": 48,
     "SEL": 40,
-    "BRA": 34,
-    "HMMA.16816.F32.BF16": 32,
-    "PRMT": 32
+    "BRA": 39,
+    "SHF.R.S32.HI": 38,
+    "HMMA.16816.F32.BF16": 32
    }
   },
   "void read_image::read<(int)0, (int)1, (int)0, (int)1, (int)0, (int)1, (int)0>(read_image::Lists, long long *, int *)": {
-   "regs": 113,
+   "regs": 112,
    "ops": {
-    "LOP3.LUT": 119,
+    "LOP3.LUT": 126,
     "FMUL": 72,
+    "IMAD.MOV.U32": 70,
+    "IMAD": 66,
     "F2I.S16.NTZ": 64,
-    "IMAD.MOV.U32": 63,
-    "IMAD": 61,
-    "IADD3": 54,
-    "LEA": 45,
-    "IMAD.IADD": 42,
+    "IADD3": 63,
+    "IMAD.IADD": 47,
+    "LEA": 47,
     "SEL": 40,
-    "BRA": 32,
-    "HMMA.16816.F32.BF16": 32,
-    "PRMT": 32
+    "SHF.R.S32.HI": 37,
+    "BRA": 37,
+    "HMMA.16816.F32.BF16": 32
    }
   },
   "void read_image::read<(int)0, (int)0, (int)0, (int)1, (int)0, (int)1, (int)0>(read_image::Lists, long long *, int *)": {
@@ -2358,37 +2646,37 @@
    }
   },
   "void read_image::read<(int)1, (int)1, (int)0, (int)0, (int)0, (int)1, (int)0>(read_image::Lists, long long *, int *)": {
-   "regs": 72,
+   "regs": 77,
    "ops": {
-    "LOP3.LUT": 34,
-    "IADD3": 31,
-    "IMAD.MOV.U32": 30,
-    "IMAD": 29,
-    "BRA": 21,
-    "SHF.R.S32.HI": 16,
-    "IMAD.SHL.U32": 14,
-    "NOP": 14,
-    "LEA": 13,
-    "ISETP.GE.AND": 11,
-    "STS": 10,
-    "FMUL": 10
+    "IADD3": 40,
+    "IMAD.MOV.U32": 36,
+    "LOP3.LUT": 36,
+    "IMAD": 34,
+    "SHF.R.S32.HI": 26,
+    "BRA": 26,
+    "IMAD.IADD": 16,
+    "LEA": 16,
+    "LEA.HI": 12,
+    "ISETP.GE.AND": 12,
+    "IMAD.SHL.U32": 12,
+    "LDS": 11
    }
   },
   "void read_image::read<(int)0, (int)1, (int)0, (int)0, (int)0, (int)1, (int)0>(read_image::Lists, long long *, int *)": {
-   "regs": 86,
+   "regs": 87,
    "ops": {
-    "LOP3.LUT": 46,
-    "IMAD": 31,
-    "IMAD.MOV.U32": 30,
-    "IADD3": 30,
-    "BRA": 21,
-    "LEA": 19,
+    "LOP3.LUT": 52,
+    "IADD3": 40,
+    "IMAD.MOV.U32": 36,
+    "IMAD": 35,
+    "SHF.R.S32.HI": 28,
+    "BRA": 26,
+    "IMAD.IADD": 21,
+    "LEA": 21,
     "FMUL": 18,
-    "IMAD.IADD": 17,
-    "SHF.R.S32.HI": 16,
+    "NOP": 16,
     "F2I.S16.NTZ": 16,
-    "IMAD.SHL.U32": 13,
-    "ISETP.GE.AND": 11
+    "LEA.HI": 13
    }
   }
  }
