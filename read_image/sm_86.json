@@ -61,23 +61,36 @@
    "variant": "dense / tokens on M / + panel adds + drain",
    "ok": true,
    "detail": "262144 of 262144 panel words exact (each window-pass's drain)"
+  },
+  {
+   "lab": "check",
+   "variant": "dense / tokens on N / + panel adds",
+   "ok": true,
+   "detail": "327680 of 327680 panel words exact (each CTA's panel)"
+  },
+  {
+   "lab": "check",
+   "variant": "dense / tokens on N / + panel adds + drain",
+   "ok": true,
+   "detail": "262144 of 262144 panel words exact (each window-pass's drain)"
   }
  ],
  "driver": "595.95",
  "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
  "git": {
-  "sha": "f7581c72306b9a8125a3ae2f0f4e40c211229704",
+  "sha": "66c79def10e1981ae7155e54279be243beb6130c",
   "dirty": true
  },
  "reps": 5,
- "date": "2026-10-12T02:51:28+00:00",
+ "date": "2026-10-12T03:27:59+00:00",
  "utilization_before": 0,
  "inputs": {
-  "read.bin": "a52e2350332bfd43",
-  "entries_m.bin": "d20d6c73f2b4d75d",
-  "entries_n.bin": "fc1c19b916353a31",
-  "heads_m.bin": "069a1487dc5a7c4f",
-  "heads_n.bin": "73347622c0accff1"
+  "read.bin": "bb5103914a740e71",
+  "entries_m.bin": "c750d0f206e61ae1",
+  "entries_n.bin": "58a440f6a6d5b58c",
+  "heads_m.bin": "12f6a3ac2712d110",
+  "heads_n.bin": "4cf76efb54118a8b",
+  "banks.json": "dd4d3cbd55657e70"
  },
  "results": [
   {
@@ -85,15 +98,15 @@
    "name": "alt-k4 / tokens on M / the MMAs alone",
    "unit": "cycles a CTA-window",
    "samples": [
-    2909.264062,
-    2903.574219,
-    2911.933203,
-    2908.057422,
-    2902.105469
+    2805.759766,
+    2805.273828,
+    2803.570703,
+    2805.727344,
+    2798.463281
    ],
-   "median": 2908.057422,
-   "min": 2902.105469,
-   "max": 2911.933203,
+   "median": 2805.273828,
+   "min": 2798.463281,
+   "max": 2805.759766,
    "unstable": false
   },
   {
@@ -101,15 +114,15 @@
    "name": "alt-k4 / tokens on M / the MMAs alone / its floor",
    "unit": "x",
    "samples": [
-    1.402731,
-    1.399988,
-    1.404018,
-    1.402149,
-    1.399279
+    1.352825,
+    1.352591,
+    1.35177,
+    1.35281,
+    1.349307
    ],
-   "median": 1.402149,
-   "min": 1.399279,
-   "max": 1.404018,
+   "median": 1.352591,
+   "min": 1.349307,
+   "max": 1.352825,
    "unstable": false
   },
   {
@@ -117,15 +130,15 @@
    "name": "alt-k4 / tokens on M / the MMAs alone / tokens-on-M floor",
    "unit": "x",
    "samples": [
-    1.402731,
-    1.399988,
-    1.404018,
-    1.402149,
-    1.399279
+    1.352825,
+    1.352591,
+    1.35177,
+    1.35281,
+    1.349307
    ],
-   "median": 1.402149,
-   "min": 1.399279,
-   "max": 1.404018,
+   "median": 1.352591,
+   "min": 1.349307,
+   "max": 1.352825,
    "unstable": false
   },
   {
@@ -133,15 +146,15 @@
    "name": "alt-k4 / tokens on M / + panel adds",
    "unit": "cycles a CTA-window",
    "samples": [
-    2640.351953,
-    2640.436719,
-    2641.175781,
-    2642.576172,
-    2642.484766
+    2621.411328,
+    2620.742969,
+    2620.480078,
+    2621.653125,
+    2622.567969
    ],
-   "median": 2641.175781,
-   "min": 2640.351953,
-   "max": 2642.576172,
+   "median": 2621.411328,
+   "min": 2620.480078,
+   "max": 2622.567969,
    "unstable": false
   },
   {
@@ -149,15 +162,15 @@
    "name": "alt-k4 / tokens on M / + panel adds / its floor",
    "unit": "x",
    "samples": [
-    1.273072,
-    1.273113,
-    1.27347,
-    1.274145,
-    1.274101
+    1.26394,
+    1.263618,
+    1.263491,
+    1.264056,
+    1.264498
    ],
-   "median": 1.27347,
-   "min": 1.273072,
-   "max": 1.274145,
+   "median": 1.26394,
+   "min": 1.263491,
+   "max": 1.264498,
    "unstable": false
   },
   {
@@ -165,15 +178,15 @@
    "name": "alt-k4 / tokens on M / + panel adds / tokens-on-M floor",
    "unit": "x",
    "samples": [
-    1.273072,
-    1.273113,
-    1.27347,
-    1.274145,
-    1.274101
+    1.26394,
+    1.263618,
+    1.263491,
+    1.264056,
+    1.264498
    ],
-   "median": 1.27347,
-   "min": 1.273072,
-   "max": 1.274145,
+   "median": 1.26394,
+   "min": 1.263491,
+   "max": 1.264498,
    "unstable": false
   },
   {
@@ -181,15 +194,15 @@
    "name": "alt-k4 / tokens on M / + panel adds / no pass barrier",
    "unit": "cycles a CTA-window",
    "samples": [
-    2208.128516,
-    2210.824219,
-    2203.987891,
-    2204.810937,
-    2206.732812
+    2193.407813,
+    2197.476562,
+    2197.031641,
+    2199.553516,
+    2197.276953
    ],
-   "median": 2206.732812,
-   "min": 2203.987891,
-   "max": 2210.824219,
+   "median": 2197.276953,
+   "min": 2193.407813,
+   "max": 2199.553516,
    "unstable": false
   },
   {
@@ -197,15 +210,15 @@
    "name": "alt-k4 / tokens on M / + panel adds / no pass barrier / its floor",
    "unit": "x",
    "samples": [
-    1.071387,
-    1.072695,
-    1.069378,
-    1.069777,
-    1.07071
+    1.064244,
+    1.066219,
+    1.066003,
+    1.067226,
+    1.066122
    ],
-   "median": 1.07071,
-   "min": 1.069378,
-   "max": 1.072695,
+   "median": 1.066122,
+   "min": 1.064244,
+   "max": 1.067226,
    "unstable": false
   },
   {
@@ -213,15 +226,15 @@
    "name": "alt-k4 / tokens on M / + panel adds / no pass barrier / tokens-on-M floor",
    "unit": "x",
    "samples": [
-    1.071387,
-    1.072695,
-    1.069378,
-    1.069777,
-    1.07071
+    1.064244,
+    1.066219,
+    1.066003,
+    1.067226,
+    1.066122
    ],
-   "median": 1.07071,
-   "min": 1.069378,
-   "max": 1.072695,
+   "median": 1.066122,
+   "min": 1.064244,
+   "max": 1.067226,
    "unstable": false
   },
   {
@@ -229,15 +242,15 @@
    "name": "alt-k4 / tokens on M / + panel adds + drain",
    "unit": "cycles a CTA-window",
    "samples": [
-    3708.064453,
-    3711.000781,
-    3711.553906,
-    3714.30625,
-    3710.792188
+    3681.656641,
+    3680.5375,
+    3682.980859,
+    3681.903516,
+    3681.317969
    ],
-   "median": 3711.000781,
-   "min": 3708.064453,
-   "max": 3714.30625,
+   "median": 3681.656641,
+   "min": 3680.5375,
+   "max": 3682.980859,
    "unstable": false
   },
   {
@@ -245,15 +258,15 @@
    "name": "alt-k4 / tokens on M / + panel adds + drain / its floor",
    "unit": "x",
    "samples": [
-    1.787881,
-    1.789296,
-    1.789563,
-    1.79089,
-    1.789196
+    1.775148,
+    1.774608,
+    1.775786,
+    1.775267,
+    1.774985
    ],
-   "median": 1.789296,
-   "min": 1.787881,
-   "max": 1.79089,
+   "median": 1.775148,
+   "min": 1.774608,
+   "max": 1.775786,
    "unstable": false
   },
   {
@@ -261,15 +274,15 @@
    "name": "alt-k4 / tokens on M / + panel adds + drain / tokens-on-M floor",
    "unit": "x",
    "samples": [
-    1.787881,
-    1.789296,
-    1.789563,
-    1.79089,
-    1.789196
+    1.775148,
+    1.774608,
+    1.775786,
+    1.775267,
+    1.774985
    ],
-   "median": 1.789296,
-   "min": 1.787881,
-   "max": 1.79089,
+   "median": 1.775148,
+   "min": 1.774608,
+   "max": 1.775786,
    "unstable": false
   },
   {
@@ -277,15 +290,15 @@
    "name": "alt-k4 / tokens on N / the MMAs alone",
    "unit": "cycles a CTA-window",
    "samples": [
-    2165.636719,
-    2165.928125,
-    2166.060156,
-    2164.526953,
-    2165.687891
+    2539.452734,
+    2539.453125,
+    2542.640234,
+    2541.150781,
+    2539.160156
    ],
-   "median": 2165.687891,
-   "min": 2164.526953,
-   "max": 2166.060156,
+   "median": 2539.453125,
+   "min": 2539.160156,
+   "max": 2542.640234,
    "unstable": false
   },
   {
@@ -293,15 +306,15 @@
    "name": "alt-k4 / tokens on N / the MMAs alone / its floor",
    "unit": "x",
    "samples": [
-    1.330652,
-    1.330831,
-    1.330913,
-    1.32997,
-    1.330684
+    1.56034,
+    1.56034,
+    1.562298,
+    1.561383,
+    1.56016
    ],
-   "median": 1.330684,
-   "min": 1.32997,
-   "max": 1.330913,
+   "median": 1.56034,
+   "min": 1.56016,
+   "max": 1.562298,
    "unstable": false
   },
   {
@@ -309,15 +322,15 @@
    "name": "alt-k4 / tokens on N / the MMAs alone / tokens-on-M floor",
    "unit": "x",
    "samples": [
-    1.044184,
-    1.044324,
-    1.044388,
-    1.043648,
-    1.044208
+    1.224423,
+    1.224423,
+    1.22596,
+    1.225241,
+    1.224282
    ],
-   "median": 1.044208,
-   "min": 1.043648,
-   "max": 1.044388,
+   "median": 1.224423,
+   "min": 1.224282,
+   "max": 1.22596,
    "unstable": false
   },
   {
@@ -325,15 +338,15 @@
    "name": "alt-k4 / tokens on N / + panel adds",
    "unit": "cycles a CTA-window",
    "samples": [
-    2473.391406,
-    2472.864453,
-    2470.396484,
-    2471.114453,
-    2475.012891
+    2345.882422,
+    2344.859375,
+    2345.271094,
+    2345.597656,
+    2344.794922
    ],
-   "median": 2472.864453,
-   "min": 2470.396484,
-   "max": 2475.012891,
+   "median": 2345.271094,
+   "min": 2344.794922,
+   "max": 2345.882422,
    "unstable": false
   },
   {
@@ -341,15 +354,15 @@
    "name": "alt-k4 / tokens on N / + panel adds / its floor",
    "unit": "x",
    "samples": [
-    1.519749,
-    1.519425,
-    1.517909,
-    1.51835,
-    1.520745
+    1.441402,
+    1.440774,
+    1.441027,
+    1.441227,
+    1.440734
    ],
-   "median": 1.519425,
-   "min": 1.517909,
-   "max": 1.520745,
+   "median": 1.441027,
+   "min": 1.440734,
+   "max": 1.441402,
    "unstable": false
   },
   {
@@ -357,15 +370,15 @@
    "name": "alt-k4 / tokens on N / + panel adds / tokens-on-M floor",
    "unit": "x",
    "samples": [
-    1.192571,
-    1.192317,
-    1.191127,
-    1.191473,
-    1.193352
+    1.131091,
+    1.130598,
+    1.130796,
+    1.130954,
+    1.130567
    ],
-   "median": 1.192317,
-   "min": 1.191127,
-   "max": 1.193352,
+   "median": 1.130796,
+   "min": 1.130567,
+   "max": 1.131091,
    "unstable": false
   },
   {
@@ -373,15 +386,15 @@
    "name": "alt-k4 / tokens on N / + panel adds / no pass barrier",
    "unit": "cycles a CTA-window",
    "samples": [
-    1982.039062,
-    1987.915625,
-    1983.670312,
-    1982.437109,
-    1979.249609
+    1892.289062,
+    1897.034766,
+    1890.923047,
+    1896.326953,
+    1895.471875
    ],
-   "median": 1982.437109,
-   "min": 1979.249609,
-   "max": 1987.915625,
+   "median": 1895.471875,
+   "min": 1890.923047,
+   "max": 1897.034766,
    "unstable": false
   },
   {
@@ -389,15 +402,15 @@
    "name": "alt-k4 / tokens on N / + panel adds / no pass barrier / its floor",
    "unit": "x",
    "samples": [
-    1.356632,
-    1.360654,
-    1.357748,
-    1.356904,
-    1.354723
+    1.295201,
+    1.29845,
+    1.294266,
+    1.297965,
+    1.29738
    ],
-   "median": 1.356904,
-   "min": 1.354723,
-   "max": 1.360654,
+   "median": 1.29738,
+   "min": 1.294266,
+   "max": 1.29845,
    "unstable": false
   },
   {
@@ -405,15 +418,15 @@
    "name": "alt-k4 / tokens on N / + panel adds / no pass barrier / tokens-on-M floor",
    "unit": "x",
    "samples": [
-    0.961688,
-    0.964539,
-    0.96248,
-    0.961881,
-    0.960335
+    0.918141,
+    0.920444,
+    0.917478,
+    0.9201,
+    0.919686
    ],
-   "median": 0.961881,
-   "min": 0.960335,
-   "max": 0.964539,
+   "median": 0.919686,
+   "min": 0.917478,
+   "max": 0.920444,
    "unstable": false
   },
   {
@@ -421,15 +434,15 @@
    "name": "alt-k4 / tokens on N / + panel adds + drain",
    "unit": "cycles a CTA-window",
    "samples": [
-    3479.225391,
-    3478.6875,
-    3476.178125,
-    3478.248437,
-    3478.297266
+    3564.549609,
+    3565.29375,
+    3565.235938,
+    3563.533984,
+    3569.752344
    ],
-   "median": 3478.297266,
-   "min": 3476.178125,
-   "max": 3479.225391,
+   "median": 3565.235938,
+   "min": 3563.533984,
+   "max": 3569.752344,
    "unstable": false
   },
   {
@@ -437,15 +450,15 @@
    "name": "alt-k4 / tokens on N / + panel adds + drain / its floor",
    "unit": "x",
    "samples": [
-    2.137773,
-    2.137442,
-    2.135901,
-    2.137173,
-    2.137203
+    2.190199,
+    2.190657,
+    2.190621,
+    2.189575,
+    2.193396
    ],
-   "median": 2.137203,
-   "min": 2.135901,
-   "max": 2.137773,
+   "median": 2.190621,
+   "min": 2.189575,
+   "max": 2.193396,
    "unstable": false
   },
   {
@@ -453,15 +466,15 @@
    "name": "alt-k4 / tokens on N / + panel adds + drain / tokens-on-M floor",
    "unit": "x",
    "samples": [
-    1.677544,
-    1.677284,
-    1.676074,
-    1.677073,
-    1.677096
+    1.718684,
+    1.719042,
+    1.719014,
+    1.718194,
+    1.721192
    ],
-   "median": 1.677096,
-   "min": 1.676074,
-   "max": 1.677544,
+   "median": 1.719014,
+   "min": 1.718194,
+   "max": 1.721192,
    "unstable": false
   },
   {
@@ -469,15 +482,15 @@
    "name": "dense / tokens on M / + panel adds",
    "unit": "cycles a CTA-window",
    "samples": [
-    67586.583984,
-    67583.685938,
-    67580.146484,
-    67580.239453,
-    67579.962891
+    67613.608984,
+    67606.865234,
+    67607.882422,
+    67609.037891,
+    67610.453516
    ],
-   "median": 67580.239453,
-   "min": 67579.962891,
-   "max": 67586.583984,
+   "median": 67609.037891,
+   "min": 67606.865234,
+   "max": 67613.608984,
    "unstable": false
   },
   {
@@ -485,15 +498,15 @@
    "name": "dense / tokens on M / + panel adds / its floor",
    "unit": "x",
    "samples": [
-    1.031289,
-    1.031245,
-    1.031191,
-    1.031193,
-    1.031188
+    1.031702,
+    1.031599,
+    1.031614,
+    1.031632,
+    1.031654
    ],
-   "median": 1.031193,
-   "min": 1.031188,
-   "max": 1.031289,
+   "median": 1.031632,
+   "min": 1.031599,
+   "max": 1.031702,
    "unstable": false
   },
   {
@@ -501,15 +514,15 @@
    "name": "dense / tokens on M / + panel adds / tokens-on-M floor",
    "unit": "x",
    "samples": [
-    1.031289,
-    1.031245,
-    1.031191,
-    1.031193,
-    1.031188
+    1.031702,
+    1.031599,
+    1.031614,
+    1.031632,
+    1.031654
    ],
-   "median": 1.031193,
-   "min": 1.031188,
-   "max": 1.031289,
+   "median": 1.031632,
+   "min": 1.031599,
+   "max": 1.031702,
    "unstable": false
   },
   {
@@ -517,15 +530,15 @@
    "name": "dense / tokens on M / + panel adds + drain",
    "unit": "cycles a CTA-window",
    "samples": [
-    69799.003516,
-    69792.082422,
-    69794.489844,
-    69789.4375,
-    69784.4
+    69790.559766,
+    69795.435938,
+    69793.391797,
+    69789.758203,
+    69783.756641
    ],
-   "median": 69792.082422,
-   "min": 69784.4,
-   "max": 69799.003516,
+   "median": 69790.559766,
+   "min": 69783.756641,
+   "max": 69795.435938,
    "unstable": false
   },
   {
@@ -533,15 +546,15 @@
    "name": "dense / tokens on M / + panel adds + drain / its floor",
    "unit": "x",
    "samples": [
-    1.065048,
-    1.064943,
-    1.064979,
-    1.064902,
-    1.064825
+    1.064919,
+    1.064994,
+    1.064963,
+    1.064907,
+    1.064816
    ],
-   "median": 1.064943,
-   "min": 1.064825,
-   "max": 1.065048,
+   "median": 1.064919,
+   "min": 1.064816,
+   "max": 1.064994,
    "unstable": false
   },
   {
@@ -549,19 +562,149 @@
    "name": "dense / tokens on M / + panel adds + drain / tokens-on-M floor",
    "unit": "x",
    "samples": [
-    1.065048,
-    1.064943,
-    1.064979,
-    1.064902,
-    1.064825
+    1.064919,
+    1.064994,
+    1.064963,
+    1.064907,
+    1.064816
    ],
-   "median": 1.064943,
-   "min": 1.064825,
-   "max": 1.065048,
+   "median": 1.064919,
+   "min": 1.064816,
+   "max": 1.064994,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "dense / tokens on N / + panel adds",
+   "unit": "cycles a CTA-window",
+   "samples": [
+    68027.273828,
+    68021.740234,
+    68022.799219,
+    68023.867188,
+    68023.394922
+   ],
+   "median": 68023.394922,
+   "min": 68021.740234,
+   "max": 68027.273828,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "dense / tokens on N / + panel adds / its floor",
+   "unit": "x",
+   "samples": [
+    1.038014,
+    1.037929,
+    1.037946,
+    1.037962,
+    1.037955
+   ],
+   "median": 1.037955,
+   "min": 1.037929,
+   "max": 1.038014,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "dense / tokens on N / + panel adds / tokens-on-M floor",
+   "unit": "x",
+   "samples": [
+    1.038014,
+    1.037929,
+    1.037946,
+    1.037962,
+    1.037955
+   ],
+   "median": 1.037955,
+   "min": 1.037929,
+   "max": 1.038014,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "dense / tokens on N / + panel adds + drain",
+   "unit": "cycles a CTA-window",
+   "samples": [
+    70452.958203,
+    70454.442187,
+    70453.797266,
+    70452.098047,
+    70453.792188
+   ],
+   "median": 70453.792188,
+   "min": 70452.098047,
+   "max": 70454.442187,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "dense / tokens on N / + panel adds + drain / its floor",
+   "unit": "x",
+   "samples": [
+    1.075027,
+    1.075049,
+    1.07504,
+    1.075014,
+    1.07504
+   ],
+   "median": 1.07504,
+   "min": 1.075014,
+   "max": 1.075049,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "dense / tokens on N / + panel adds + drain / tokens-on-M floor",
+   "unit": "x",
+   "samples": [
+    1.075027,
+    1.075049,
+    1.07504,
+    1.075014,
+    1.07504
+   ],
+   "median": 1.07504,
+   "min": 1.075014,
+   "max": 1.075049,
    "unstable": false
   }
  ],
  "kernels": {
+  "void read_image::read<(int)1, (int)2, (int)1, (int)1>(read_image::Lists, long long *, int *)": {
+   "regs": 48,
+   "ops": {
+    "FFMA": 256,
+    "HMMA.16816.F32.BF16": 128,
+    "ATOMS.ADD": 128,
+    "LEA": 127,
+    "UIADD3": 65,
+    "LDSM.16.M88.4": 32,
+    "MOV": 29,
+    "IADD3": 25,
+    "LOP3.LUT": 23,
+    "IMAD": 20,
+    "BRA": 16,
+    "ISETP.GE.AND": 16
+   }
+  },
+  "void read_image::read<(int)1, (int)1, (int)1, (int)1>(read_image::Lists, long long *, int *)": {
+   "regs": 40,
+   "ops": {
+    "FFMA": 256,
+    "LEA": 135,
+    "HMMA.16816.F32.BF16": 128,
+    "ATOMS.ADD": 128,
+    "UIADD3": 65,
+    "LDSM.16.M88.4": 32,
+    "MOV": 30,
+    "IADD3": 21,
+    "LOP3.LUT": 17,
+    "BRA": 14,
+    "ISETP.GE.AND": 14,
+    "SEL": 10
+   }
+  },
   "void read_image::read<(int)0, (int)2, (int)1, (int)1>(read_image::Lists, long long *, int *)": {
    "regs": 56,
    "ops": {
@@ -597,68 +740,68 @@
    }
   },
   "void read_image::read<(int)1, (int)2, (int)0, (int)1>(read_image::Lists, long long *, int *)": {
-   "regs": 69,
+   "regs": 117,
    "ops": {
     "FFMA": 96,
     "IMAD": 69,
-    "LOP3.LUT": 69,
+    "LOP3.LUT": 67,
     "HMMA.16816.F32.BF16": 48,
     "ATOMS.ADD": 48,
-    "IMAD.MOV.U32": 38,
+    "IMAD.MOV.U32": 39,
     "SHFL.IDX": 36,
     "LEA.HI": 34,
-    "IADD3": 32,
-    "LDSM.16.MT88.4": 32,
+    "IADD3": 33,
     "BRA": 27,
-    "IMAD.U32": 23
+    "IMAD.U32": 22,
+    "SHF.R.S32.HI": 18
    }
   },
   "void read_image::read<(int)1, (int)1, (int)0, (int)0>(read_image::Lists, long long *, int *)": {
-   "regs": 61,
-   "ops": {
-    "FFMA": 96,
-    "IMAD": 64,
-    "LOP3.LUT": 64,
-    "HMMA.16816.F32.BF16": 48,
-    "ATOMS.ADD": 48,
-    "IMAD.MOV.U32": 37,
-    "SHFL.IDX": 36,
-    "LEA.HI": 33,
-    "IADD3": 32,
-    "LDSM.16.MT88.4": 32,
-    "BRA": 25,
-    "IMAD.U32": 21
-   }
-  },
-  "void read_image::read<(int)1, (int)1, (int)0, (int)1>(read_image::Lists, long long *, int *)": {
-   "regs": 61,
+   "regs": 110,
    "ops": {
     "FFMA": 96,
     "IMAD": 65,
-    "LOP3.LUT": 63,
+    "LOP3.LUT": 62,
     "HMMA.16816.F32.BF16": 48,
     "ATOMS.ADD": 48,
     "IMAD.MOV.U32": 39,
     "SHFL.IDX": 36,
     "LEA.HI": 33,
     "IADD3": 32,
-    "LDSM.16.MT88.4": 32,
     "BRA": 25,
-    "IMAD.U32": 20
+    "IMAD.U32": 20,
+    "LEA": 17
+   }
+  },
+  "void read_image::read<(int)1, (int)1, (int)0, (int)1>(read_image::Lists, long long *, int *)": {
+   "regs": 110,
+   "ops": {
+    "FFMA": 96,
+    "IMAD": 65,
+    "LOP3.LUT": 61,
+    "HMMA.16816.F32.BF16": 48,
+    "ATOMS.ADD": 48,
+    "IMAD.MOV.U32": 36,
+    "SHFL.IDX": 36,
+    "LEA.HI": 33,
+    "IADD3": 32,
+    "BRA": 25,
+    "IMAD.U32": 19,
+    "LEA": 17
    }
   },
   "void read_image::read<(int)1, (int)0, (int)0, (int)1>(read_image::Lists, long long *, int *)": {
-   "regs": 56,
+   "regs": 132,
    "ops": {
     "FADD": 96,
     "HMMA.16816.F32.BF16": 48,
     "LOP3.LUT": 46,
     "IMAD.MOV.U32": 32,
-    "LDSM.16.MT88.4": 32,
-    "UIADD3": 23,
     "IADD3": 22,
     "BRA": 22,
     "IMAD": 17,
+    "LDSM.16.MT88.4": 16,
+    "UIADD3": 16,
     "ISETP.GE.AND": 14,
     "LDS": 14,
     "VOTE.ANY": 13
