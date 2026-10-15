@@ -18,6 +18,24 @@
   },
   {
    "lab": "check",
+   "variant": "form 5, form 4 with the fills' loads ahead / alt-k4",
+   "ok": true,
+   "detail": "0 of 524288 num words differ from the call's, by at most 0 in an s16 half"
+  },
+  {
+   "lab": "check",
+   "variant": "form 4, A with the read buffer at the top, the drain in the fold / alt-k4",
+   "ok": true,
+   "detail": "0 of 524288 num words differ from the call's, by at most 0 in an s16 half"
+  },
+  {
+   "lab": "check",
+   "variant": "form 3, A with the next rows under the fold / alt-k4",
+   "ok": true,
+   "detail": "0 of 524288 num words differ from the call's, by at most 0 in an s16 half"
+  },
+  {
+   "lab": "check",
    "variant": "the production kernel / thinned 1/16",
    "ok": true,
    "detail": "0 of 524288 num words differ from the call's, by at most 0 in an s16 half"
@@ -27,16 +45,34 @@
    "variant": "form 1, option A by hand / thinned 1/16",
    "ok": true,
    "detail": "0 of 524288 num words differ from the call's, by at most 0 in an s16 half"
+  },
+  {
+   "lab": "check",
+   "variant": "form 5, form 4 with the fills' loads ahead / thinned 1/16",
+   "ok": true,
+   "detail": "0 of 524288 num words differ from the call's, by at most 0 in an s16 half"
+  },
+  {
+   "lab": "check",
+   "variant": "form 4, A with the read buffer at the top, the drain in the fold / thinned 1/16",
+   "ok": true,
+   "detail": "0 of 524288 num words differ from the call's, by at most 0 in an s16 half"
+  },
+  {
+   "lab": "check",
+   "variant": "form 3, A with the next rows under the fold / thinned 1/16",
+   "ok": true,
+   "detail": "0 of 524288 num words differ from the call's, by at most 0 in an s16 half"
   }
  ],
  "driver": "595.95",
  "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
  "git": {
-  "sha": "f74cde88983a4221eb296ecffa4edeafcb80ce18",
+  "sha": "8764414d42737fad0b81ca150697107212541127",
   "dirty": true
  },
  "reps": 7,
- "date": "2026-10-15T00:43:30+00:00",
+ "date": "2026-10-15T01:16:58+00:00",
  "utilization_before": 0,
  "inputs": {
   "alt/capture.bin": "842b1e0d95e86ee3",
@@ -51,7 +87,7 @@
   "alt/buffer_6.bin": "387e7ef3e7354cd2",
   "alt/buffer_7.bin": "4fe7b59af6de3b66",
   "alt/buffer_8.bin": "8d05ef939508f016",
-  "alt/buffer_9.bin": "64507b74448b05f7",
+  "alt/buffer_9.bin": "2154a7c530891536",
   "alt/buffer_10.bin": "a76ceac6525d2a29",
   "alt/buffer_11.bin": "cd6873902b81ee81",
   "alt/buffer_12.bin": "b594fb4f98eb4fd4",
@@ -70,7 +106,7 @@
   "thin/buffer_6.bin": "489a3524f9b016e0",
   "thin/buffer_7.bin": "4fe7b59af6de3b66",
   "thin/buffer_8.bin": "58c0348d36857523",
-  "thin/buffer_9.bin": "15887bd4f2187f89",
+  "thin/buffer_9.bin": "e3026cbd72f0d52c",
   "thin/buffer_10.bin": "8435c4433b20732f",
   "thin/buffer_11.bin": "cd6873902b81ee81",
   "thin/buffer_12.bin": "b594fb4f98eb4fd4",
@@ -84,29 +120,41 @@
    "name": "the production kernel / alt-k4",
    "unit": "cycles a CTA-window (busiest warp)",
    "samples": [
-    25932.958008,
-    38802.996094,
-    25925.176758,
-    25920.498535,
-    25910.262939,
-    25916.955322,
-    25922.820312
+    25899.231201,
+    25942.510986,
+    25884.064453,
+    25906.442139,
+    25917.923828,
+    25894.219482,
+    25904.499268
    ],
-   "median": 25922.820312,
-   "min": 25910.262939,
-   "max": 38802.996094,
-   "unstable": true
+   "median": 25904.499268,
+   "min": 25884.064453,
+   "max": 25942.510986,
+   "unstable": false
   },
   {
    "lab": "result",
    "name": "the production kernel / alt-k4 / landed",
    "unit": "cycles a warp-window",
    "samples": [
-    3913.070984
+    3901.778259
    ],
-   "median": 3913.070984,
-   "min": 3913.070984,
-   "max": 3913.070984,
+   "median": 3901.778259,
+   "min": 3901.778259,
+   "max": 3901.778259,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / alt-k4 / landed busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    3940.825684
+   ],
+   "median": 3940.825684,
+   "min": 3940.825684,
+   "max": 3940.825684,
    "unstable": false
   },
   {
@@ -114,11 +162,23 @@
    "name": "the production kernel / alt-k4 / maxima",
    "unit": "cycles a warp-window",
    "samples": [
-    1746.850067
+    1750.473511
    ],
-   "median": 1746.850067,
-   "min": 1746.850067,
-   "max": 1746.850067,
+   "median": 1750.473511,
+   "min": 1750.473511,
+   "max": 1750.473511,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / alt-k4 / maxima busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    1785.484375
+   ],
+   "median": 1785.484375,
+   "min": 1785.484375,
+   "max": 1785.484375,
    "unstable": false
   },
   {
@@ -126,11 +186,23 @@
    "name": "the production kernel / alt-k4 / store",
    "unit": "cycles a warp-window",
    "samples": [
-    4017.926147
+    4006.74173
    ],
-   "median": 4017.926147,
-   "min": 4017.926147,
-   "max": 4017.926147,
+   "median": 4006.74173,
+   "min": 4006.74173,
+   "max": 4006.74173,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / alt-k4 / store busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    4079.405762
+   ],
+   "median": 4079.405762,
+   "min": 4079.405762,
+   "max": 4079.405762,
    "unstable": false
   },
   {
@@ -138,11 +210,23 @@
    "name": "the production kernel / alt-k4 / readout",
    "unit": "cycles a warp-window",
    "samples": [
-    3574.632233
+    3572.053925
    ],
-   "median": 3574.632233,
-   "min": 3574.632233,
-   "max": 3574.632233,
+   "median": 3572.053925,
+   "min": 3572.053925,
+   "max": 3572.053925,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / alt-k4 / readout busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    3659.55542
+   ],
+   "median": 3659.55542,
+   "min": 3659.55542,
+   "max": 3659.55542,
    "unstable": false
   },
   {
@@ -150,11 +234,23 @@
    "name": "the production kernel / alt-k4 / drain",
    "unit": "cycles a warp-window",
    "samples": [
-    1888.935577
+    1888.651245
    ],
-   "median": 1888.935577,
-   "min": 1888.935577,
-   "max": 1888.935577,
+   "median": 1888.651245,
+   "min": 1888.651245,
+   "max": 1888.651245,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / alt-k4 / drain busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    1921.962402
+   ],
+   "median": 1921.962402,
+   "min": 1921.962402,
+   "max": 1921.962402,
    "unstable": false
   },
   {
@@ -162,11 +258,23 @@
    "name": "the production kernel / alt-k4 / fill",
    "unit": "cycles a warp-window",
    "samples": [
-    3957.776154
+    3958.030396
    ],
-   "median": 3957.776154,
-   "min": 3957.776154,
-   "max": 3957.776154,
+   "median": 3958.030396,
+   "min": 3958.030396,
+   "max": 3958.030396,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / alt-k4 / fill busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    4092.094971
+   ],
+   "median": 4092.094971,
+   "min": 4092.094971,
+   "max": 4092.094971,
    "unstable": false
   },
   {
@@ -174,11 +282,23 @@
    "name": "the production kernel / alt-k4 / fold",
    "unit": "cycles a warp-window",
    "samples": [
-    3908.496857
+    3911.854645
    ],
-   "median": 3908.496857,
-   "min": 3908.496857,
-   "max": 3908.496857,
+   "median": 3911.854645,
+   "min": 3911.854645,
+   "max": 3911.854645,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / alt-k4 / fold busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    3958.424316
+   ],
+   "median": 3958.424316,
+   "min": 3958.424316,
+   "max": 3958.424316,
    "unstable": false
   },
   {
@@ -186,11 +306,23 @@
    "name": "the production kernel / alt-k4 / wait",
    "unit": "cycles a warp-window",
    "samples": [
-    2907.026611
+    2907.162567
    ],
-   "median": 2907.026611,
-   "min": 2907.026611,
-   "max": 2907.026611,
+   "median": 2907.162567,
+   "min": 2907.162567,
+   "max": 2907.162567,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / alt-k4 / wait busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    3047.058594
+   ],
+   "median": 3047.058594,
+   "min": 3047.058594,
+   "max": 3047.058594,
    "unstable": false
   },
   {
@@ -198,17 +330,17 @@
    "name": "form 1, option A by hand / alt-k4",
    "unit": "cycles a CTA-window (busiest warp)",
    "samples": [
-    17567.60498,
-    17553.05835,
-    17570.342041,
-    17560.418701,
-    17558.471191,
-    17551.359131,
-    17537.808838
+    17540.70166,
+    17551.730469,
+    17571.118652,
+    17553.618408,
+    17553.335449,
+    17566.156738,
+    17566.221191
    ],
-   "median": 17558.471191,
-   "min": 17537.808838,
-   "max": 17570.342041,
+   "median": 17553.618408,
+   "min": 17540.70166,
+   "max": 17571.118652,
    "unstable": false
   },
   {
@@ -216,11 +348,23 @@
    "name": "form 1, option A by hand / alt-k4 / landed",
    "unit": "cycles a warp-window",
    "samples": [
-    1049.252991
+    1072.870544
    ],
-   "median": 1049.252991,
-   "min": 1049.252991,
-   "max": 1049.252991,
+   "median": 1072.870544,
+   "min": 1072.870544,
+   "max": 1072.870544,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 1, option A by hand / alt-k4 / landed busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    1185.407715
+   ],
+   "median": 1185.407715,
+   "min": 1185.407715,
+   "max": 1185.407715,
    "unstable": false
   },
   {
@@ -228,11 +372,23 @@
    "name": "form 1, option A by hand / alt-k4 / maxima",
    "unit": "cycles a warp-window",
    "samples": [
-    1847.342712
+    1847.270721
    ],
-   "median": 1847.342712,
-   "min": 1847.342712,
-   "max": 1847.342712,
+   "median": 1847.270721,
+   "min": 1847.270721,
+   "max": 1847.270721,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 1, option A by hand / alt-k4 / maxima busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    1865.322266
+   ],
+   "median": 1865.322266,
+   "min": 1865.322266,
+   "max": 1865.322266,
    "unstable": false
   },
   {
@@ -240,11 +396,23 @@
    "name": "form 1, option A by hand / alt-k4 / store",
    "unit": "cycles a warp-window",
    "samples": [
-    2506.99707
+    2506.051483
    ],
-   "median": 2506.99707,
-   "min": 2506.99707,
-   "max": 2506.99707,
+   "median": 2506.051483,
+   "min": 2506.051483,
+   "max": 2506.051483,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 1, option A by hand / alt-k4 / store busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2563.417236
+   ],
+   "median": 2563.417236,
+   "min": 2563.417236,
+   "max": 2563.417236,
    "unstable": false
   },
   {
@@ -252,11 +420,23 @@
    "name": "form 1, option A by hand / alt-k4 / readout",
    "unit": "cycles a warp-window",
    "samples": [
-    3214.459961
+    3215.095367
    ],
-   "median": 3214.459961,
-   "min": 3214.459961,
-   "max": 3214.459961,
+   "median": 3215.095367,
+   "min": 3215.095367,
+   "max": 3215.095367,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 1, option A by hand / alt-k4 / readout busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    3282.018799
+   ],
+   "median": 3282.018799,
+   "min": 3282.018799,
+   "max": 3282.018799,
    "unstable": false
   },
   {
@@ -264,11 +444,23 @@
    "name": "form 1, option A by hand / alt-k4 / drain",
    "unit": "cycles a warp-window",
    "samples": [
-    1427.256104
+    1427.053253
    ],
-   "median": 1427.256104,
-   "min": 1427.256104,
-   "max": 1427.256104,
+   "median": 1427.053253,
+   "min": 1427.053253,
+   "max": 1427.053253,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 1, option A by hand / alt-k4 / drain busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    1448.193115
+   ],
+   "median": 1448.193115,
+   "min": 1448.193115,
+   "max": 1448.193115,
    "unstable": false
   },
   {
@@ -276,11 +468,23 @@
    "name": "form 1, option A by hand / alt-k4 / fill",
    "unit": "cycles a warp-window",
    "samples": [
-    4030.1922
+    4033.852722
    ],
-   "median": 4030.1922,
-   "min": 4030.1922,
-   "max": 4030.1922,
+   "median": 4033.852722,
+   "min": 4033.852722,
+   "max": 4033.852722,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 1, option A by hand / alt-k4 / fill busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    4192.637695
+   ],
+   "median": 4192.637695,
+   "min": 4192.637695,
+   "max": 4192.637695,
    "unstable": false
   },
   {
@@ -288,11 +492,23 @@
    "name": "form 1, option A by hand / alt-k4 / fold",
    "unit": "cycles a warp-window",
    "samples": [
-    3145.588196
+    3145.111572
    ],
-   "median": 3145.588196,
-   "min": 3145.588196,
-   "max": 3145.588196,
+   "median": 3145.111572,
+   "min": 3145.111572,
+   "max": 3145.111572,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 1, option A by hand / alt-k4 / fold busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    3216.720215
+   ],
+   "median": 3216.720215,
+   "min": 3216.720215,
+   "max": 3216.720215,
    "unstable": false
   },
   {
@@ -300,11 +516,653 @@
    "name": "form 1, option A by hand / alt-k4 / wait",
    "unit": "cycles a warp-window",
    "samples": [
-    291.22113
+    289.760132
    ],
-   "median": 291.22113,
-   "min": 291.22113,
-   "max": 291.22113,
+   "median": 289.760132,
+   "min": 289.760132,
+   "max": 289.760132,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 1, option A by hand / alt-k4 / wait busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    379.064209
+   ],
+   "median": 379.064209,
+   "min": 379.064209,
+   "max": 379.064209,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 5, form 4 with the fills' loads ahead / alt-k4",
+   "unit": "cycles a CTA-window (busiest warp)",
+   "samples": [
+    16600.219482,
+    16643.318359,
+    16683.431885,
+    16682.465088,
+    16612.030029,
+    16645.468262,
+    16667.26123
+   ],
+   "median": 16645.468262,
+   "min": 16600.219482,
+   "max": 16683.431885,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 5, form 4 with the fills' loads ahead / alt-k4 / landed",
+   "unit": "cycles a warp-window",
+   "samples": [
+    734.140289
+   ],
+   "median": 734.140289,
+   "min": 734.140289,
+   "max": 734.140289,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 5, form 4 with the fills' loads ahead / alt-k4 / landed busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    807.837891
+   ],
+   "median": 807.837891,
+   "min": 807.837891,
+   "max": 807.837891,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 5, form 4 with the fills' loads ahead / alt-k4 / maxima",
+   "unit": "cycles a warp-window",
+   "samples": [
+    1791.019348
+   ],
+   "median": 1791.019348,
+   "min": 1791.019348,
+   "max": 1791.019348,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 5, form 4 with the fills' loads ahead / alt-k4 / maxima busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    1822.062744
+   ],
+   "median": 1822.062744,
+   "min": 1822.062744,
+   "max": 1822.062744,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 5, form 4 with the fills' loads ahead / alt-k4 / store",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2477.200012
+   ],
+   "median": 2477.200012,
+   "min": 2477.200012,
+   "max": 2477.200012,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 5, form 4 with the fills' loads ahead / alt-k4 / store busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2538.507812
+   ],
+   "median": 2538.507812,
+   "min": 2538.507812,
+   "max": 2538.507812,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 5, form 4 with the fills' loads ahead / alt-k4 / readout",
+   "unit": "cycles a warp-window",
+   "samples": [
+    3233.290741
+   ],
+   "median": 3233.290741,
+   "min": 3233.290741,
+   "max": 3233.290741,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 5, form 4 with the fills' loads ahead / alt-k4 / readout busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    3308.398926
+   ],
+   "median": 3308.398926,
+   "min": 3308.398926,
+   "max": 3308.398926,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 5, form 4 with the fills' loads ahead / alt-k4 / drain",
+   "unit": "cycles a warp-window",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 5, form 4 with the fills' loads ahead / alt-k4 / drain busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 5, form 4 with the fills' loads ahead / alt-k4 / fill",
+   "unit": "cycles a warp-window",
+   "samples": [
+    3730.279999
+   ],
+   "median": 3730.279999,
+   "min": 3730.279999,
+   "max": 3730.279999,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 5, form 4 with the fills' loads ahead / alt-k4 / fill busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    3793.015869
+   ],
+   "median": 3793.015869,
+   "min": 3793.015869,
+   "max": 3793.015869,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 5, form 4 with the fills' loads ahead / alt-k4 / fold",
+   "unit": "cycles a warp-window",
+   "samples": [
+    4135.651154
+   ],
+   "median": 4135.651154,
+   "min": 4135.651154,
+   "max": 4135.651154,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 5, form 4 with the fills' loads ahead / alt-k4 / fold busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    4202.05835
+   ],
+   "median": 4202.05835,
+   "min": 4202.05835,
+   "max": 4202.05835,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 5, form 4 with the fills' loads ahead / alt-k4 / wait",
+   "unit": "cycles a warp-window",
+   "samples": [
+    544.053497
+   ],
+   "median": 544.053497,
+   "min": 544.053497,
+   "max": 544.053497,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 5, form 4 with the fills' loads ahead / alt-k4 / wait busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    591.22876
+   ],
+   "median": 591.22876,
+   "min": 591.22876,
+   "max": 591.22876,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 4, A with the read buffer at the top, the drain in the fold / alt-k4",
+   "unit": "cycles a CTA-window (busiest warp)",
+   "samples": [
+    17050.724609,
+    17012.256592,
+    17046.961426,
+    17044.255615,
+    17049.993408,
+    17043.66748,
+    17102.030273
+   ],
+   "median": 17046.961426,
+   "min": 17012.256592,
+   "max": 17102.030273,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 4, A with the read buffer at the top, the drain in the fold / alt-k4 / landed",
+   "unit": "cycles a warp-window",
+   "samples": [
+    760.877136
+   ],
+   "median": 760.877136,
+   "min": 760.877136,
+   "max": 760.877136,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 4, A with the read buffer at the top, the drain in the fold / alt-k4 / landed busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    817.497559
+   ],
+   "median": 817.497559,
+   "min": 817.497559,
+   "max": 817.497559,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 4, A with the read buffer at the top, the drain in the fold / alt-k4 / maxima",
+   "unit": "cycles a warp-window",
+   "samples": [
+    1883.586823
+   ],
+   "median": 1883.586823,
+   "min": 1883.586823,
+   "max": 1883.586823,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 4, A with the read buffer at the top, the drain in the fold / alt-k4 / maxima busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    1908.717529
+   ],
+   "median": 1908.717529,
+   "min": 1908.717529,
+   "max": 1908.717529,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 4, A with the read buffer at the top, the drain in the fold / alt-k4 / store",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2432.720001
+   ],
+   "median": 2432.720001,
+   "min": 2432.720001,
+   "max": 2432.720001,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 4, A with the read buffer at the top, the drain in the fold / alt-k4 / store busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2525.525146
+   ],
+   "median": 2525.525146,
+   "min": 2525.525146,
+   "max": 2525.525146,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 4, A with the read buffer at the top, the drain in the fold / alt-k4 / readout",
+   "unit": "cycles a warp-window",
+   "samples": [
+    3265.490814
+   ],
+   "median": 3265.490814,
+   "min": 3265.490814,
+   "max": 3265.490814,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 4, A with the read buffer at the top, the drain in the fold / alt-k4 / readout busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    3364.711182
+   ],
+   "median": 3364.711182,
+   "min": 3364.711182,
+   "max": 3364.711182,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 4, A with the read buffer at the top, the drain in the fold / alt-k4 / drain",
+   "unit": "cycles a warp-window",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 4, A with the read buffer at the top, the drain in the fold / alt-k4 / drain busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 4, A with the read buffer at the top, the drain in the fold / alt-k4 / fill",
+   "unit": "cycles a warp-window",
+   "samples": [
+    3983.584137
+   ],
+   "median": 3983.584137,
+   "min": 3983.584137,
+   "max": 3983.584137,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 4, A with the read buffer at the top, the drain in the fold / alt-k4 / fill busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    4101.050293
+   ],
+   "median": 4101.050293,
+   "min": 4101.050293,
+   "max": 4101.050293,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 4, A with the read buffer at the top, the drain in the fold / alt-k4 / fold",
+   "unit": "cycles a warp-window",
+   "samples": [
+    4201.030121
+   ],
+   "median": 4201.030121,
+   "min": 4201.030121,
+   "max": 4201.030121,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 4, A with the read buffer at the top, the drain in the fold / alt-k4 / fold busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    4264.01123
+   ],
+   "median": 4264.01123,
+   "min": 4264.01123,
+   "max": 4264.01123,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 4, A with the read buffer at the top, the drain in the fold / alt-k4 / wait",
+   "unit": "cycles a warp-window",
+   "samples": [
+    552.702332
+   ],
+   "median": 552.702332,
+   "min": 552.702332,
+   "max": 552.702332,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 4, A with the read buffer at the top, the drain in the fold / alt-k4 / wait busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    615.934082
+   ],
+   "median": 615.934082,
+   "min": 615.934082,
+   "max": 615.934082,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 3, A with the next rows under the fold / alt-k4",
+   "unit": "cycles a CTA-window (busiest warp)",
+   "samples": [
+    17858.918701,
+    17850.760254,
+    17858.509277,
+    17850.131836,
+    17859.843506,
+    17868.607666,
+    17870.172363
+   ],
+   "median": 17858.918701,
+   "min": 17850.131836,
+   "max": 17870.172363,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 3, A with the next rows under the fold / alt-k4 / landed",
+   "unit": "cycles a warp-window",
+   "samples": [
+    1099.416351
+   ],
+   "median": 1099.416351,
+   "min": 1099.416351,
+   "max": 1099.416351,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 3, A with the next rows under the fold / alt-k4 / landed busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    1497.508301
+   ],
+   "median": 1497.508301,
+   "min": 1497.508301,
+   "max": 1497.508301,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 3, A with the next rows under the fold / alt-k4 / maxima",
+   "unit": "cycles a warp-window",
+   "samples": [
+    1832.449768
+   ],
+   "median": 1832.449768,
+   "min": 1832.449768,
+   "max": 1832.449768,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 3, A with the next rows under the fold / alt-k4 / maxima busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    1851.800537
+   ],
+   "median": 1851.800537,
+   "min": 1851.800537,
+   "max": 1851.800537,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 3, A with the next rows under the fold / alt-k4 / store",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2492.310181
+   ],
+   "median": 2492.310181,
+   "min": 2492.310181,
+   "max": 2492.310181,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 3, A with the next rows under the fold / alt-k4 / store busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2551.760742
+   ],
+   "median": 2551.760742,
+   "min": 2551.760742,
+   "max": 2551.760742,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 3, A with the next rows under the fold / alt-k4 / readout",
+   "unit": "cycles a warp-window",
+   "samples": [
+    3176.693329
+   ],
+   "median": 3176.693329,
+   "min": 3176.693329,
+   "max": 3176.693329,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 3, A with the next rows under the fold / alt-k4 / readout busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    3246.55127
+   ],
+   "median": 3246.55127,
+   "min": 3246.55127,
+   "max": 3246.55127,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 3, A with the next rows under the fold / alt-k4 / drain",
+   "unit": "cycles a warp-window",
+   "samples": [
+    1444.189331
+   ],
+   "median": 1444.189331,
+   "min": 1444.189331,
+   "max": 1444.189331,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 3, A with the next rows under the fold / alt-k4 / drain busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    1465.619141
+   ],
+   "median": 1465.619141,
+   "min": 1465.619141,
+   "max": 1465.619141,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 3, A with the next rows under the fold / alt-k4 / fill",
+   "unit": "cycles a warp-window",
+   "samples": [
+    3439.413361
+   ],
+   "median": 3439.413361,
+   "min": 3439.413361,
+   "max": 3439.413361,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 3, A with the next rows under the fold / alt-k4 / fill busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    3533.991211
+   ],
+   "median": 3533.991211,
+   "min": 3533.991211,
+   "max": 3533.991211,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 3, A with the next rows under the fold / alt-k4 / fold",
+   "unit": "cycles a warp-window",
+   "samples": [
+    4049.202057
+   ],
+   "median": 4049.202057,
+   "min": 4049.202057,
+   "max": 4049.202057,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 3, A with the next rows under the fold / alt-k4 / fold busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    4226.664062
+   ],
+   "median": 4226.664062,
+   "min": 4226.664062,
+   "max": 4226.664062,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 3, A with the next rows under the fold / alt-k4 / wait",
+   "unit": "cycles a warp-window",
+   "samples": [
+    299.321747
+   ],
+   "median": 299.321747,
+   "min": 299.321747,
+   "max": 299.321747,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 3, A with the next rows under the fold / alt-k4 / wait busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    391.322266
+   ],
+   "median": 391.322266,
+   "min": 391.322266,
+   "max": 391.322266,
    "unstable": false
   },
   {
@@ -312,17 +1170,17 @@
    "name": "the production kernel / thinned 1/16",
    "unit": "cycles a CTA-window (busiest warp)",
    "samples": [
-    18497.491455,
-    18497.647949,
-    18492.64624,
-    18487.131348,
-    18494.038574,
-    18476.880127,
-    18506.103516
+    18407.85791,
+    18461.953125,
+    18474.30127,
+    18462.8479,
+    18463.774414,
+    18472.039551,
+    18457.219971
    ],
-   "median": 18494.038574,
-   "min": 18476.880127,
-   "max": 18506.103516,
+   "median": 18462.8479,
+   "min": 18407.85791,
+   "max": 18474.30127,
    "unstable": false
   },
   {
@@ -330,11 +1188,23 @@
    "name": "the production kernel / thinned 1/16 / landed",
    "unit": "cycles a warp-window",
    "samples": [
-    3368.519073
+    3355.401367
    ],
-   "median": 3368.519073,
-   "min": 3368.519073,
-   "max": 3368.519073,
+   "median": 3355.401367,
+   "min": 3355.401367,
+   "max": 3355.401367,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / thinned 1/16 / landed busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    3419.151855
+   ],
+   "median": 3419.151855,
+   "min": 3419.151855,
+   "max": 3419.151855,
    "unstable": false
   },
   {
@@ -342,11 +1212,23 @@
    "name": "the production kernel / thinned 1/16 / maxima",
    "unit": "cycles a warp-window",
    "samples": [
-    1803.897003
+    1795.610321
    ],
-   "median": 1803.897003,
-   "min": 1803.897003,
-   "max": 1803.897003,
+   "median": 1795.610321,
+   "min": 1795.610321,
+   "max": 1795.610321,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / thinned 1/16 / maxima busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    1858.893066
+   ],
+   "median": 1858.893066,
+   "min": 1858.893066,
+   "max": 1858.893066,
    "unstable": false
   },
   {
@@ -354,11 +1236,23 @@
    "name": "the production kernel / thinned 1/16 / store",
    "unit": "cycles a warp-window",
    "samples": [
-    2228.907562
+    2222.390289
    ],
-   "median": 2228.907562,
-   "min": 2228.907562,
-   "max": 2228.907562,
+   "median": 2222.390289,
+   "min": 2222.390289,
+   "max": 2222.390289,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / thinned 1/16 / store busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2279.199707
+   ],
+   "median": 2279.199707,
+   "min": 2279.199707,
+   "max": 2279.199707,
    "unstable": false
   },
   {
@@ -366,11 +1260,23 @@
    "name": "the production kernel / thinned 1/16 / readout",
    "unit": "cycles a warp-window",
    "samples": [
-    2093.186401
+    2084.018799
    ],
-   "median": 2093.186401,
-   "min": 2093.186401,
-   "max": 2093.186401,
+   "median": 2084.018799,
+   "min": 2084.018799,
+   "max": 2084.018799,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / thinned 1/16 / readout busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2189.843506
+   ],
+   "median": 2189.843506,
+   "min": 2189.843506,
+   "max": 2189.843506,
    "unstable": false
   },
   {
@@ -378,11 +1284,23 @@
    "name": "the production kernel / thinned 1/16 / drain",
    "unit": "cycles a warp-window",
    "samples": [
-    699.349762
+    697.343628
    ],
-   "median": 699.349762,
-   "min": 699.349762,
-   "max": 699.349762,
+   "median": 697.343628,
+   "min": 697.343628,
+   "max": 697.343628,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / thinned 1/16 / drain busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    710.867676
+   ],
+   "median": 710.867676,
+   "min": 710.867676,
+   "max": 710.867676,
    "unstable": false
   },
   {
@@ -390,11 +1308,23 @@
    "name": "the production kernel / thinned 1/16 / fill",
    "unit": "cycles a warp-window",
    "samples": [
-    2683.299561
+    2679.078613
    ],
-   "median": 2683.299561,
-   "min": 2683.299561,
-   "max": 2683.299561,
+   "median": 2679.078613,
+   "min": 2679.078613,
+   "max": 2679.078613,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / thinned 1/16 / fill busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2851.747314
+   ],
+   "median": 2851.747314,
+   "min": 2851.747314,
+   "max": 2851.747314,
    "unstable": false
   },
   {
@@ -402,11 +1332,23 @@
    "name": "the production kernel / thinned 1/16 / fold",
    "unit": "cycles a warp-window",
    "samples": [
-    2575.467926
+    2567.705658
    ],
-   "median": 2575.467926,
-   "min": 2575.467926,
-   "max": 2575.467926,
+   "median": 2567.705658,
+   "min": 2567.705658,
+   "max": 2567.705658,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / thinned 1/16 / fold busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2640.350098
+   ],
+   "median": 2640.350098,
+   "min": 2640.350098,
+   "max": 2640.350098,
    "unstable": false
   },
   {
@@ -414,11 +1356,23 @@
    "name": "the production kernel / thinned 1/16 / wait",
    "unit": "cycles a warp-window",
    "samples": [
-    3042.255981
+    3044.184814
    ],
-   "median": 3042.255981,
-   "min": 3042.255981,
-   "max": 3042.255981,
+   "median": 3044.184814,
+   "min": 3044.184814,
+   "max": 3044.184814,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / thinned 1/16 / wait busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    3177.420166
+   ],
+   "median": 3177.420166,
+   "min": 3177.420166,
+   "max": 3177.420166,
    "unstable": false
   },
   {
@@ -426,17 +1380,17 @@
    "name": "form 1, option A by hand / thinned 1/16",
    "unit": "cycles a CTA-window (busiest warp)",
    "samples": [
-    12901.404785,
-    12896.884766,
-    12868.267334,
-    12882.131592,
-    12881.853027,
-    12895.762695,
-    12883.604492
+    12864.49292,
+    12892.00415,
+    12869.517822,
+    12886.616211,
+    12888.647705,
+    12875.896973,
+    12875.534424
    ],
-   "median": 12883.604492,
-   "min": 12868.267334,
-   "max": 12901.404785,
+   "median": 12875.896973,
+   "min": 12864.49292,
+   "max": 12892.00415,
    "unstable": false
   },
   {
@@ -444,11 +1398,23 @@
    "name": "form 1, option A by hand / thinned 1/16 / landed",
    "unit": "cycles a warp-window",
    "samples": [
-    1121.599823
+    1114.624603
    ],
-   "median": 1121.599823,
-   "min": 1121.599823,
-   "max": 1121.599823,
+   "median": 1114.624603,
+   "min": 1114.624603,
+   "max": 1114.624603,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 1, option A by hand / thinned 1/16 / landed busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    1259.740967
+   ],
+   "median": 1259.740967,
+   "min": 1259.740967,
+   "max": 1259.740967,
    "unstable": false
   },
   {
@@ -456,11 +1422,23 @@
    "name": "form 1, option A by hand / thinned 1/16 / maxima",
    "unit": "cycles a warp-window",
    "samples": [
-    1842.281097
+    1842.316406
    ],
-   "median": 1842.281097,
-   "min": 1842.281097,
-   "max": 1842.281097,
+   "median": 1842.316406,
+   "min": 1842.316406,
+   "max": 1842.316406,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 1, option A by hand / thinned 1/16 / maxima busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    1859.966309
+   ],
+   "median": 1859.966309,
+   "min": 1859.966309,
+   "max": 1859.966309,
    "unstable": false
   },
   {
@@ -468,11 +1446,23 @@
    "name": "form 1, option A by hand / thinned 1/16 / store",
    "unit": "cycles a warp-window",
    "samples": [
-    2489.080963
+    2489.325867
    ],
-   "median": 2489.080963,
-   "min": 2489.080963,
-   "max": 2489.080963,
+   "median": 2489.325867,
+   "min": 2489.325867,
+   "max": 2489.325867,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 1, option A by hand / thinned 1/16 / store busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2565.616943
+   ],
+   "median": 2565.616943,
+   "min": 2565.616943,
+   "max": 2565.616943,
    "unstable": false
   },
   {
@@ -480,11 +1470,23 @@
    "name": "form 1, option A by hand / thinned 1/16 / readout",
    "unit": "cycles a warp-window",
    "samples": [
-    2089.497833
+    2089.592957
    ],
-   "median": 2089.497833,
-   "min": 2089.497833,
-   "max": 2089.497833,
+   "median": 2089.592957,
+   "min": 2089.592957,
+   "max": 2089.592957,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 1, option A by hand / thinned 1/16 / readout busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2173.564697
+   ],
+   "median": 2173.564697,
+   "min": 2173.564697,
+   "max": 2173.564697,
    "unstable": false
   },
   {
@@ -492,11 +1494,23 @@
    "name": "form 1, option A by hand / thinned 1/16 / drain",
    "unit": "cycles a warp-window",
    "samples": [
-    406.134338
+    406.130127
    ],
-   "median": 406.134338,
-   "min": 406.134338,
-   "max": 406.134338,
+   "median": 406.130127,
+   "min": 406.130127,
+   "max": 406.130127,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 1, option A by hand / thinned 1/16 / drain busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    412.470703
+   ],
+   "median": 412.470703,
+   "min": 412.470703,
+   "max": 412.470703,
    "unstable": false
   },
   {
@@ -504,11 +1518,23 @@
    "name": "form 1, option A by hand / thinned 1/16 / fill",
    "unit": "cycles a warp-window",
    "samples": [
-    2717.875397
+    2717.750031
    ],
-   "median": 2717.875397,
-   "min": 2717.875397,
-   "max": 2717.875397,
+   "median": 2717.750031,
+   "min": 2717.750031,
+   "max": 2717.750031,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 1, option A by hand / thinned 1/16 / fill busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2898.079346
+   ],
+   "median": 2898.079346,
+   "min": 2898.079346,
+   "max": 2898.079346,
    "unstable": false
   },
   {
@@ -516,11 +1542,23 @@
    "name": "form 1, option A by hand / thinned 1/16 / fold",
    "unit": "cycles a warp-window",
    "samples": [
-    1862.513794
+    1862.232971
    ],
-   "median": 1862.513794,
-   "min": 1862.513794,
-   "max": 1862.513794,
+   "median": 1862.232971,
+   "min": 1862.232971,
+   "max": 1862.232971,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 1, option A by hand / thinned 1/16 / fold busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2008.482422
+   ],
+   "median": 2008.482422,
+   "min": 2008.482422,
+   "max": 2008.482422,
    "unstable": false
   },
   {
@@ -528,15 +1566,708 @@
    "name": "form 1, option A by hand / thinned 1/16 / wait",
    "unit": "cycles a warp-window",
    "samples": [
-    260.340302
+    260.857697
    ],
-   "median": 260.340302,
-   "min": 260.340302,
-   "max": 260.340302,
+   "median": 260.857697,
+   "min": 260.857697,
+   "max": 260.857697,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 1, option A by hand / thinned 1/16 / wait busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    315.697754
+   ],
+   "median": 315.697754,
+   "min": 315.697754,
+   "max": 315.697754,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 5, form 4 with the fills' loads ahead / thinned 1/16",
+   "unit": "cycles a CTA-window (busiest warp)",
+   "samples": [
+    12193.148682,
+    12149.151855,
+    12166.27417,
+    12170.741455,
+    12188.951172,
+    12166.356445,
+    12177.284912
+   ],
+   "median": 12170.741455,
+   "min": 12149.151855,
+   "max": 12193.148682,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 5, form 4 with the fills' loads ahead / thinned 1/16 / landed",
+   "unit": "cycles a warp-window",
+   "samples": [
+    879.653015
+   ],
+   "median": 879.653015,
+   "min": 879.653015,
+   "max": 879.653015,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 5, form 4 with the fills' loads ahead / thinned 1/16 / landed busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    965.383545
+   ],
+   "median": 965.383545,
+   "min": 965.383545,
+   "max": 965.383545,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 5, form 4 with the fills' loads ahead / thinned 1/16 / maxima",
+   "unit": "cycles a warp-window",
+   "samples": [
+    1775.796997
+   ],
+   "median": 1775.796997,
+   "min": 1775.796997,
+   "max": 1775.796997,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 5, form 4 with the fills' loads ahead / thinned 1/16 / maxima busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    1869.549561
+   ],
+   "median": 1869.549561,
+   "min": 1869.549561,
+   "max": 1869.549561,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 5, form 4 with the fills' loads ahead / thinned 1/16 / store",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2519.647522
+   ],
+   "median": 2519.647522,
+   "min": 2519.647522,
+   "max": 2519.647522,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 5, form 4 with the fills' loads ahead / thinned 1/16 / store busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2621.14209
+   ],
+   "median": 2621.14209,
+   "min": 2621.14209,
+   "max": 2621.14209,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 5, form 4 with the fills' loads ahead / thinned 1/16 / readout",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2112.89093
+   ],
+   "median": 2112.89093,
+   "min": 2112.89093,
+   "max": 2112.89093,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 5, form 4 with the fills' loads ahead / thinned 1/16 / readout busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2232.593506
+   ],
+   "median": 2232.593506,
+   "min": 2232.593506,
+   "max": 2232.593506,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 5, form 4 with the fills' loads ahead / thinned 1/16 / drain",
+   "unit": "cycles a warp-window",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 5, form 4 with the fills' loads ahead / thinned 1/16 / drain busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 5, form 4 with the fills' loads ahead / thinned 1/16 / fill",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2416.368988
+   ],
+   "median": 2416.368988,
+   "min": 2416.368988,
+   "max": 2416.368988,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 5, form 4 with the fills' loads ahead / thinned 1/16 / fill busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2764.555176
+   ],
+   "median": 2764.555176,
+   "min": 2764.555176,
+   "max": 2764.555176,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 5, form 4 with the fills' loads ahead / thinned 1/16 / fold",
+   "unit": "cycles a warp-window",
+   "samples": [
+    1936.659729
+   ],
+   "median": 1936.659729,
+   "min": 1936.659729,
+   "max": 1936.659729,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 5, form 4 with the fills' loads ahead / thinned 1/16 / fold busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2004.112305
+   ],
+   "median": 2004.112305,
+   "min": 2004.112305,
+   "max": 2004.112305,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 5, form 4 with the fills' loads ahead / thinned 1/16 / wait",
+   "unit": "cycles a warp-window",
+   "samples": [
+    514.309418
+   ],
+   "median": 514.309418,
+   "min": 514.309418,
+   "max": 514.309418,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 5, form 4 with the fills' loads ahead / thinned 1/16 / wait busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    630.155273
+   ],
+   "median": 630.155273,
+   "min": 630.155273,
+   "max": 630.155273,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 4, A with the read buffer at the top, the drain in the fold / thinned 1/16",
+   "unit": "cycles a CTA-window (busiest warp)",
+   "samples": [
+    12273.120605,
+    12278.801025,
+    12280.290283,
+    12249.822021,
+    12281.826904,
+    12296.96875,
+    12261.240967
+   ],
+   "median": 12278.801025,
+   "min": 12249.822021,
+   "max": 12296.96875,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 4, A with the read buffer at the top, the drain in the fold / thinned 1/16 / landed",
+   "unit": "cycles a warp-window",
+   "samples": [
+    863.076752
+   ],
+   "median": 863.076752,
+   "min": 863.076752,
+   "max": 863.076752,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 4, A with the read buffer at the top, the drain in the fold / thinned 1/16 / landed busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    952.901611
+   ],
+   "median": 952.901611,
+   "min": 952.901611,
+   "max": 952.901611,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 4, A with the read buffer at the top, the drain in the fold / thinned 1/16 / maxima",
+   "unit": "cycles a warp-window",
+   "samples": [
+    1895.289398
+   ],
+   "median": 1895.289398,
+   "min": 1895.289398,
+   "max": 1895.289398,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 4, A with the read buffer at the top, the drain in the fold / thinned 1/16 / maxima busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    1956.003174
+   ],
+   "median": 1956.003174,
+   "min": 1956.003174,
+   "max": 1956.003174,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 4, A with the read buffer at the top, the drain in the fold / thinned 1/16 / store",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2463.056213
+   ],
+   "median": 2463.056213,
+   "min": 2463.056213,
+   "max": 2463.056213,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 4, A with the read buffer at the top, the drain in the fold / thinned 1/16 / store busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2565.531006
+   ],
+   "median": 2565.531006,
+   "min": 2565.531006,
+   "max": 2565.531006,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 4, A with the read buffer at the top, the drain in the fold / thinned 1/16 / readout",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2116.744904
+   ],
+   "median": 2116.744904,
+   "min": 2116.744904,
+   "max": 2116.744904,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 4, A with the read buffer at the top, the drain in the fold / thinned 1/16 / readout busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2233.591309
+   ],
+   "median": 2233.591309,
+   "min": 2233.591309,
+   "max": 2233.591309,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 4, A with the read buffer at the top, the drain in the fold / thinned 1/16 / drain",
+   "unit": "cycles a warp-window",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 4, A with the read buffer at the top, the drain in the fold / thinned 1/16 / drain busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 4, A with the read buffer at the top, the drain in the fold / thinned 1/16 / fill",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2594.785156
+   ],
+   "median": 2594.785156,
+   "min": 2594.785156,
+   "max": 2594.785156,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 4, A with the read buffer at the top, the drain in the fold / thinned 1/16 / fill busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2763.949951
+   ],
+   "median": 2763.949951,
+   "min": 2763.949951,
+   "max": 2763.949951,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 4, A with the read buffer at the top, the drain in the fold / thinned 1/16 / fold",
+   "unit": "cycles a warp-window",
+   "samples": [
+    1928.33197
+   ],
+   "median": 1928.33197,
+   "min": 1928.33197,
+   "max": 1928.33197,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 4, A with the read buffer at the top, the drain in the fold / thinned 1/16 / fold busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    1999.101074
+   ],
+   "median": 1999.101074,
+   "min": 1999.101074,
+   "max": 1999.101074,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 4, A with the read buffer at the top, the drain in the fold / thinned 1/16 / wait",
+   "unit": "cycles a warp-window",
+   "samples": [
+    377.59433
+   ],
+   "median": 377.59433,
+   "min": 377.59433,
+   "max": 377.59433,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 4, A with the read buffer at the top, the drain in the fold / thinned 1/16 / wait busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    425.330811
+   ],
+   "median": 425.330811,
+   "min": 425.330811,
+   "max": 425.330811,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 3, A with the next rows under the fold / thinned 1/16",
+   "unit": "cycles a CTA-window (busiest warp)",
+   "samples": [
+    13072.00415,
+    13079.712891,
+    13097.963623,
+    13096.783203,
+    13073.881348,
+    13080.867432,
+    13089.05249
+   ],
+   "median": 13080.867432,
+   "min": 13072.00415,
+   "max": 13097.963623,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 3, A with the next rows under the fold / thinned 1/16 / landed",
+   "unit": "cycles a warp-window",
+   "samples": [
+    1046.810211
+   ],
+   "median": 1046.810211,
+   "min": 1046.810211,
+   "max": 1046.810211,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 3, A with the next rows under the fold / thinned 1/16 / landed busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    1165.476318
+   ],
+   "median": 1165.476318,
+   "min": 1165.476318,
+   "max": 1165.476318,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 3, A with the next rows under the fold / thinned 1/16 / maxima",
+   "unit": "cycles a warp-window",
+   "samples": [
+    1841.007812
+   ],
+   "median": 1841.007812,
+   "min": 1841.007812,
+   "max": 1841.007812,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 3, A with the next rows under the fold / thinned 1/16 / maxima busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    1860.768799
+   ],
+   "median": 1860.768799,
+   "min": 1860.768799,
+   "max": 1860.768799,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 3, A with the next rows under the fold / thinned 1/16 / store",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2475.839874
+   ],
+   "median": 2475.839874,
+   "min": 2475.839874,
+   "max": 2475.839874,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 3, A with the next rows under the fold / thinned 1/16 / store busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2552.629883
+   ],
+   "median": 2552.629883,
+   "min": 2552.629883,
+   "max": 2552.629883,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 3, A with the next rows under the fold / thinned 1/16 / readout",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2064.019531
+   ],
+   "median": 2064.019531,
+   "min": 2064.019531,
+   "max": 2064.019531,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 3, A with the next rows under the fold / thinned 1/16 / readout busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2147.94165
+   ],
+   "median": 2147.94165,
+   "min": 2147.94165,
+   "max": 2147.94165,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 3, A with the next rows under the fold / thinned 1/16 / drain",
+   "unit": "cycles a warp-window",
+   "samples": [
+    410.90564
+   ],
+   "median": 410.90564,
+   "min": 410.90564,
+   "max": 410.90564,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 3, A with the next rows under the fold / thinned 1/16 / drain busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    417.350098
+   ],
+   "median": 417.350098,
+   "min": 417.350098,
+   "max": 417.350098,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 3, A with the next rows under the fold / thinned 1/16 / fill",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2525.248596
+   ],
+   "median": 2525.248596,
+   "min": 2525.248596,
+   "max": 2525.248596,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 3, A with the next rows under the fold / thinned 1/16 / fill busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2599.592773
+   ],
+   "median": 2599.592773,
+   "min": 2599.592773,
+   "max": 2599.592773,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 3, A with the next rows under the fold / thinned 1/16 / fold",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2417.642151
+   ],
+   "median": 2417.642151,
+   "min": 2417.642151,
+   "max": 2417.642151,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 3, A with the next rows under the fold / thinned 1/16 / fold busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2625.84668
+   ],
+   "median": 2625.84668,
+   "min": 2625.84668,
+   "max": 2625.84668,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 3, A with the next rows under the fold / thinned 1/16 / wait",
+   "unit": "cycles a warp-window",
+   "samples": [
+    254.371735
+   ],
+   "median": 254.371735,
+   "min": 254.371735,
+   "max": 254.371735,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 3, A with the next rows under the fold / thinned 1/16 / wait busiest",
+   "unit": "cycles a warp-window",
+   "samples": [
+    300.125488
+   ],
+   "median": 300.125488,
+   "min": 300.125488,
+   "max": 300.125488,
    "unstable": false
   }
  ],
  "kernels": {
+  "void carry_window::window<(int)5>(rola::carry::CarryParams)": {
+   "regs": 223,
+   "ops": {
+    "LOP3.LUT": 347,
+    "FMUL": 256,
+    "IMAD": 226,
+    "IADD3": 218,
+    "IMAD.IADD": 189,
+    "IMAD.SHL.U32": 163,
+    "CS2R": 139,
+    "BRA": 131,
+    "LDS": 130,
+    "FMNMX": 128,
+    "FADD": 128,
+    "IMAD.MOV.U32": 101
+   }
+  },
+  "void carry_window::window<(int)4>(rola::carry::CarryParams)": {
+   "regs": 227,
+   "ops": {
+    "LOP3.LUT": 377,
+    "FMUL": 256,
+    "IADD3": 253,
+    "IMAD": 247,
+    "IMAD.IADD": 213,
+    "LDS": 212,
+    "IMAD.MOV.U32": 200,
+    "BRA": 189,
+    "IMAD.SHL.U32": 175,
+    "CS2R": 139,
+    "FMNMX": 128,
+    "FADD": 128
+   }
+  },
+  "void carry_window::window<(int)3>(rola::carry::CarryParams)": {
+   "regs": 240,
+   "ops": {
+    "LOP3.LUT": 460,
+    "IMAD.MOV.U32": 394,
+    "LDS": 385,
+    "IMAD": 334,
+    "BRA": 330,
+    "IADD3": 306,
+    "IMAD.IADD": 280,
+    "FMUL": 256,
+    "IMAD.SHL.U32": 188,
+    "SHF.R.S32.HI": 180,
+    "CS2R": 141,
+    "FMNMX": 128
+   }
+  },
   "void carry_window::window<(int)1>(rola::carry::CarryParams)": {
    "regs": 239,
    "ops": {
