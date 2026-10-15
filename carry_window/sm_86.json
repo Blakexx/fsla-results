@@ -1,0 +1,592 @@
+{
+ "experiment": "carry_window",
+ "question": "what does the carry's window cost a CTA on sm_86 in each form the critical-path design admits, phase by phase in cycles and registers, against the production kernel on the same inputs?",
+ "arch": "sm_86",
+ "device": "NVIDIA GeForce RTX 3080 Ti",
+ "checks": [
+  {
+   "lab": "check",
+   "variant": "the production kernel / alt-k4",
+   "ok": true,
+   "detail": "0 of 524288 num words differ from the call's, by at most 0 in an s16 half"
+  },
+  {
+   "lab": "check",
+   "variant": "form 1, option A by hand / alt-k4",
+   "ok": true,
+   "detail": "0 of 524288 num words differ from the call's, by at most 0 in an s16 half"
+  },
+  {
+   "lab": "check",
+   "variant": "the production kernel / thinned 1/16",
+   "ok": true,
+   "detail": "0 of 524288 num words differ from the call's, by at most 0 in an s16 half"
+  },
+  {
+   "lab": "check",
+   "variant": "form 1, option A by hand / thinned 1/16",
+   "ok": true,
+   "detail": "0 of 524288 num words differ from the call's, by at most 0 in an s16 half"
+  }
+ ],
+ "driver": "595.95",
+ "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
+ "git": {
+  "sha": "f74cde88983a4221eb296ecffa4edeafcb80ce18",
+  "dirty": true
+ },
+ "reps": 7,
+ "date": "2026-10-15T00:43:30+00:00",
+ "utilization_before": 0,
+ "inputs": {
+  "alt/capture.bin": "842b1e0d95e86ee3",
+  "alt/buffers.txt": "d75c9330e0e5ff9b",
+  "alt/arm.txt": "08c786d5ba7df982",
+  "alt/buffer_0.bin": "df39b705ad5e4dcb",
+  "alt/buffer_1.bin": "918499184484430a",
+  "alt/buffer_2.bin": "95d2490e6d6ceb4d",
+  "alt/buffer_3.bin": "6744d02c265affc8",
+  "alt/buffer_4.bin": "32fb57c71f0b9110",
+  "alt/buffer_5.bin": "17f0b588ba726aa1",
+  "alt/buffer_6.bin": "387e7ef3e7354cd2",
+  "alt/buffer_7.bin": "4fe7b59af6de3b66",
+  "alt/buffer_8.bin": "8d05ef939508f016",
+  "alt/buffer_9.bin": "64507b74448b05f7",
+  "alt/buffer_10.bin": "a76ceac6525d2a29",
+  "alt/buffer_11.bin": "cd6873902b81ee81",
+  "alt/buffer_12.bin": "b594fb4f98eb4fd4",
+  "alt/buffer_13.bin": "722774e4de35b8b7",
+  "alt/buffer_14.bin": "6aff37f516763663",
+  "alt/buffer_15.bin": "1e76ae6df9427d94",
+  "thin/capture.bin": "3ca2385d07485b4d",
+  "thin/buffers.txt": "a3ff977cf7154b3b",
+  "thin/arm.txt": "08c786d5ba7df982",
+  "thin/buffer_0.bin": "54dbbc487f653968",
+  "thin/buffer_1.bin": "9cefdfe194003388",
+  "thin/buffer_2.bin": "6d9add9e979549a0",
+  "thin/buffer_3.bin": "085fb61c8ac8e2d7",
+  "thin/buffer_4.bin": "5bff9b37783e898a",
+  "thin/buffer_5.bin": "cf2763e4c25e1869",
+  "thin/buffer_6.bin": "489a3524f9b016e0",
+  "thin/buffer_7.bin": "4fe7b59af6de3b66",
+  "thin/buffer_8.bin": "58c0348d36857523",
+  "thin/buffer_9.bin": "15887bd4f2187f89",
+  "thin/buffer_10.bin": "8435c4433b20732f",
+  "thin/buffer_11.bin": "cd6873902b81ee81",
+  "thin/buffer_12.bin": "b594fb4f98eb4fd4",
+  "thin/buffer_13.bin": "722774e4de35b8b7",
+  "thin/buffer_14.bin": "b29860a0a4984240",
+  "thin/buffer_15.bin": "da8f24dfc74c46b1"
+ },
+ "results": [
+  {
+   "lab": "result",
+   "name": "the production kernel / alt-k4",
+   "unit": "cycles a CTA-window (busiest warp)",
+   "samples": [
+    25932.958008,
+    38802.996094,
+    25925.176758,
+    25920.498535,
+    25910.262939,
+    25916.955322,
+    25922.820312
+   ],
+   "median": 25922.820312,
+   "min": 25910.262939,
+   "max": 38802.996094,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / alt-k4 / landed",
+   "unit": "cycles a warp-window",
+   "samples": [
+    3913.070984
+   ],
+   "median": 3913.070984,
+   "min": 3913.070984,
+   "max": 3913.070984,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / alt-k4 / maxima",
+   "unit": "cycles a warp-window",
+   "samples": [
+    1746.850067
+   ],
+   "median": 1746.850067,
+   "min": 1746.850067,
+   "max": 1746.850067,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / alt-k4 / store",
+   "unit": "cycles a warp-window",
+   "samples": [
+    4017.926147
+   ],
+   "median": 4017.926147,
+   "min": 4017.926147,
+   "max": 4017.926147,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / alt-k4 / readout",
+   "unit": "cycles a warp-window",
+   "samples": [
+    3574.632233
+   ],
+   "median": 3574.632233,
+   "min": 3574.632233,
+   "max": 3574.632233,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / alt-k4 / drain",
+   "unit": "cycles a warp-window",
+   "samples": [
+    1888.935577
+   ],
+   "median": 1888.935577,
+   "min": 1888.935577,
+   "max": 1888.935577,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / alt-k4 / fill",
+   "unit": "cycles a warp-window",
+   "samples": [
+    3957.776154
+   ],
+   "median": 3957.776154,
+   "min": 3957.776154,
+   "max": 3957.776154,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / alt-k4 / fold",
+   "unit": "cycles a warp-window",
+   "samples": [
+    3908.496857
+   ],
+   "median": 3908.496857,
+   "min": 3908.496857,
+   "max": 3908.496857,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / alt-k4 / wait",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2907.026611
+   ],
+   "median": 2907.026611,
+   "min": 2907.026611,
+   "max": 2907.026611,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 1, option A by hand / alt-k4",
+   "unit": "cycles a CTA-window (busiest warp)",
+   "samples": [
+    17567.60498,
+    17553.05835,
+    17570.342041,
+    17560.418701,
+    17558.471191,
+    17551.359131,
+    17537.808838
+   ],
+   "median": 17558.471191,
+   "min": 17537.808838,
+   "max": 17570.342041,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 1, option A by hand / alt-k4 / landed",
+   "unit": "cycles a warp-window",
+   "samples": [
+    1049.252991
+   ],
+   "median": 1049.252991,
+   "min": 1049.252991,
+   "max": 1049.252991,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 1, option A by hand / alt-k4 / maxima",
+   "unit": "cycles a warp-window",
+   "samples": [
+    1847.342712
+   ],
+   "median": 1847.342712,
+   "min": 1847.342712,
+   "max": 1847.342712,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 1, option A by hand / alt-k4 / store",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2506.99707
+   ],
+   "median": 2506.99707,
+   "min": 2506.99707,
+   "max": 2506.99707,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 1, option A by hand / alt-k4 / readout",
+   "unit": "cycles a warp-window",
+   "samples": [
+    3214.459961
+   ],
+   "median": 3214.459961,
+   "min": 3214.459961,
+   "max": 3214.459961,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 1, option A by hand / alt-k4 / drain",
+   "unit": "cycles a warp-window",
+   "samples": [
+    1427.256104
+   ],
+   "median": 1427.256104,
+   "min": 1427.256104,
+   "max": 1427.256104,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 1, option A by hand / alt-k4 / fill",
+   "unit": "cycles a warp-window",
+   "samples": [
+    4030.1922
+   ],
+   "median": 4030.1922,
+   "min": 4030.1922,
+   "max": 4030.1922,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 1, option A by hand / alt-k4 / fold",
+   "unit": "cycles a warp-window",
+   "samples": [
+    3145.588196
+   ],
+   "median": 3145.588196,
+   "min": 3145.588196,
+   "max": 3145.588196,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 1, option A by hand / alt-k4 / wait",
+   "unit": "cycles a warp-window",
+   "samples": [
+    291.22113
+   ],
+   "median": 291.22113,
+   "min": 291.22113,
+   "max": 291.22113,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / thinned 1/16",
+   "unit": "cycles a CTA-window (busiest warp)",
+   "samples": [
+    18497.491455,
+    18497.647949,
+    18492.64624,
+    18487.131348,
+    18494.038574,
+    18476.880127,
+    18506.103516
+   ],
+   "median": 18494.038574,
+   "min": 18476.880127,
+   "max": 18506.103516,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / thinned 1/16 / landed",
+   "unit": "cycles a warp-window",
+   "samples": [
+    3368.519073
+   ],
+   "median": 3368.519073,
+   "min": 3368.519073,
+   "max": 3368.519073,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / thinned 1/16 / maxima",
+   "unit": "cycles a warp-window",
+   "samples": [
+    1803.897003
+   ],
+   "median": 1803.897003,
+   "min": 1803.897003,
+   "max": 1803.897003,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / thinned 1/16 / store",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2228.907562
+   ],
+   "median": 2228.907562,
+   "min": 2228.907562,
+   "max": 2228.907562,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / thinned 1/16 / readout",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2093.186401
+   ],
+   "median": 2093.186401,
+   "min": 2093.186401,
+   "max": 2093.186401,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / thinned 1/16 / drain",
+   "unit": "cycles a warp-window",
+   "samples": [
+    699.349762
+   ],
+   "median": 699.349762,
+   "min": 699.349762,
+   "max": 699.349762,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / thinned 1/16 / fill",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2683.299561
+   ],
+   "median": 2683.299561,
+   "min": 2683.299561,
+   "max": 2683.299561,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / thinned 1/16 / fold",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2575.467926
+   ],
+   "median": 2575.467926,
+   "min": 2575.467926,
+   "max": 2575.467926,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / thinned 1/16 / wait",
+   "unit": "cycles a warp-window",
+   "samples": [
+    3042.255981
+   ],
+   "median": 3042.255981,
+   "min": 3042.255981,
+   "max": 3042.255981,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 1, option A by hand / thinned 1/16",
+   "unit": "cycles a CTA-window (busiest warp)",
+   "samples": [
+    12901.404785,
+    12896.884766,
+    12868.267334,
+    12882.131592,
+    12881.853027,
+    12895.762695,
+    12883.604492
+   ],
+   "median": 12883.604492,
+   "min": 12868.267334,
+   "max": 12901.404785,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 1, option A by hand / thinned 1/16 / landed",
+   "unit": "cycles a warp-window",
+   "samples": [
+    1121.599823
+   ],
+   "median": 1121.599823,
+   "min": 1121.599823,
+   "max": 1121.599823,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 1, option A by hand / thinned 1/16 / maxima",
+   "unit": "cycles a warp-window",
+   "samples": [
+    1842.281097
+   ],
+   "median": 1842.281097,
+   "min": 1842.281097,
+   "max": 1842.281097,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 1, option A by hand / thinned 1/16 / store",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2489.080963
+   ],
+   "median": 2489.080963,
+   "min": 2489.080963,
+   "max": 2489.080963,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 1, option A by hand / thinned 1/16 / readout",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2089.497833
+   ],
+   "median": 2089.497833,
+   "min": 2089.497833,
+   "max": 2089.497833,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 1, option A by hand / thinned 1/16 / drain",
+   "unit": "cycles a warp-window",
+   "samples": [
+    406.134338
+   ],
+   "median": 406.134338,
+   "min": 406.134338,
+   "max": 406.134338,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 1, option A by hand / thinned 1/16 / fill",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2717.875397
+   ],
+   "median": 2717.875397,
+   "min": 2717.875397,
+   "max": 2717.875397,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 1, option A by hand / thinned 1/16 / fold",
+   "unit": "cycles a warp-window",
+   "samples": [
+    1862.513794
+   ],
+   "median": 1862.513794,
+   "min": 1862.513794,
+   "max": 1862.513794,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 1, option A by hand / thinned 1/16 / wait",
+   "unit": "cycles a warp-window",
+   "samples": [
+    260.340302
+   ],
+   "median": 260.340302,
+   "min": 260.340302,
+   "max": 260.340302,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void carry_window::window<(int)1>(rola::carry::CarryParams)": {
+   "regs": 239,
+   "ops": {
+    "LOP3.LUT": 489,
+    "IMAD.MOV.U32": 450,
+    "BRA": 314,
+    "IADD3": 305,
+    "IMAD": 291,
+    "IMAD.IADD": 281,
+    "LDS": 269,
+    "FMUL": 256,
+    "IMAD.SHL.U32": 212,
+    "CALL.REL.NOINC": 166,
+    "MOV": 162,
+    "SHF.R.S32.HI": 143
+   }
+  },
+  "void rola::carry::carry_kernel<rola::Arm<(int)0, (int)32, (int)1, (int)32, (int)1, (int)32, (int)0>>(rola::carry::CarryParams)": {
+   "regs": 255,
+   "ops": {
+    "LOP3.LUT": 776,
+    "IMAD.MOV.U32": 733,
+    "IADD3": 725,
+    "FMUL": 708,
+    "IMAD.IADD": 665,
+    "BRA": 606,
+    "IMAD": 544,
+    "LDS": 382,
+    "STS.64": 284,
+    "IMAD.SHL.U32": 273,
+    "CS2R": 261,
+    "CALL.REL.NOINC": 255
+   }
+  },
+  "void rola::carry::window_plan_kernel<rola::Arm<(int)0, (int)32, (int)1, (int)32, (int)1, (int)32, (int)0>>(rola::carry::CarryParams)": {
+   "regs": 56,
+   "ops": {
+    "IMAD.MOV.U32": 382,
+    "ISETP.NE.AND": 322,
+    "BRA": 298,
+    "SEL": 272,
+    "LOP3.LUT": 265,
+    "IADD3": 217,
+    "IMAD.IADD": 173,
+    "IMAD": 167,
+    "ISETP.GE.AND": 151,
+    "IMAD.SHL.U32": 149,
+    "BSSY": 113,
+    "BSYNC": 113
+   }
+  }
+ }
+}
