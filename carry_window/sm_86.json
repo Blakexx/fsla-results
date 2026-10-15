@@ -5,6 +5,16 @@
  "device": "NVIDIA GeForce RTX 3080 Ti",
  "checks": [
   {
+   "lab": "unchecked",
+   "variant": "the production kernel / alt-k4 / by windows",
+   "reason": "a shorter call's readout is a prefix of the full call's, checked with the form"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "form 6, form 5 with the stores in chains / alt-k4 / by windows",
+   "reason": "a shorter call's readout is a prefix of the full call's, checked with the form"
+  },
+  {
    "lab": "check",
    "variant": "the production kernel / alt-k4",
    "ok": true,
@@ -39,6 +49,16 @@
    "variant": "form 5, form 4 with the fills' loads ahead / alt-k4",
    "ok": true,
    "detail": "clocks off 0, on 0 of 524288 num words differ from the call's, by at most 0 in an s16 half"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "the production kernel / thinned 1/16 / by windows",
+   "reason": "a shorter call's readout is a prefix of the full call's, checked with the form"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "form 6, form 5 with the stores in chains / thinned 1/16 / by windows",
+   "reason": "a shorter call's readout is a prefix of the full call's, checked with the form"
   },
   {
    "lab": "check",
@@ -80,12 +100,12 @@
  "driver": "595.95",
  "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
  "git": {
-  "sha": "dbb84445dffe4965d83b6523fca31b26eb7c6863",
+  "sha": "da8bf350aec905e9ff006afafaa14c147775c214",
   "dirty": true
  },
  "reps": 7,
- "date": "2026-10-15T03:29:14+00:00",
- "utilization_before": 0,
+ "date": "2026-10-15T04:05:37+00:00",
+ "utilization_before": 1,
  "inputs": {
   "alt/capture.bin": "842b1e0d95e86ee3",
   "alt/buffers.txt": "d75c9330e0e5ff9b",
@@ -99,7 +119,7 @@
   "alt/buffer_6.bin": "387e7ef3e7354cd2",
   "alt/buffer_7.bin": "4fe7b59af6de3b66",
   "alt/buffer_8.bin": "8d05ef939508f016",
-  "alt/buffer_9.bin": "9727f269df19b9e9",
+  "alt/buffer_9.bin": "4eff69ac65451c5b",
   "alt/buffer_10.bin": "a76ceac6525d2a29",
   "alt/buffer_11.bin": "cd6873902b81ee81",
   "alt/buffer_12.bin": "b594fb4f98eb4fd4",
@@ -118,7 +138,7 @@
   "thin/buffer_6.bin": "489a3524f9b016e0",
   "thin/buffer_7.bin": "4fe7b59af6de3b66",
   "thin/buffer_8.bin": "58c0348d36857523",
-  "thin/buffer_9.bin": "84e4ccb8abcd9b28",
+  "thin/buffer_9.bin": "2064c12bb14ed70c",
   "thin/buffer_10.bin": "8435c4433b20732f",
   "thin/buffer_11.bin": "cd6873902b81ee81",
   "thin/buffer_12.bin": "b594fb4f98eb4fd4",
@@ -129,20 +149,284 @@
  "results": [
   {
    "lab": "result",
+   "name": "the production kernel / alt-k4 / by windows / 1",
+   "unit": "us a launch, every clock off",
+   "samples": [
+    47.968,
+    47.104001,
+    46.080001,
+    45.152001,
+    46.080001,
+    46.080001,
+    46.080001
+   ],
+   "median": 46.080001,
+   "min": 45.152001,
+   "max": 47.968,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / alt-k4 / by windows / 2",
+   "unit": "us a launch, every clock off",
+   "samples": [
+    72.704002,
+    72.704002,
+    72.704002,
+    72.704002,
+    72.704002,
+    72.704002,
+    71.872003
+   ],
+   "median": 72.704002,
+   "min": 71.872003,
+   "max": 72.704002,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / alt-k4 / by windows / 4",
+   "unit": "us a launch, every clock off",
+   "samples": [
+    124.927998,
+    124.927998,
+    125.727996,
+    125.888005,
+    124.991998,
+    124.927998,
+    135.168001
+   ],
+   "median": 124.991998,
+   "min": 124.927998,
+   "max": 135.168001,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / alt-k4 / by windows / 8",
+   "unit": "us a launch, every clock off",
+   "samples": [
+    234.367996,
+    235.520005,
+    239.616007,
+    240.64,
+    234.495997,
+    234.495997,
+    233.472005
+   ],
+   "median": 234.495997,
+   "min": 233.472005,
+   "max": 240.64,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / alt-k4 / by windows / 16",
+   "unit": "us a launch, every clock off",
+   "samples": [
+    442.559987,
+    442.368001,
+    441.056013,
+    442.368001,
+    443.392009,
+    441.343993,
+    442.368001
+   ],
+   "median": 442.368001,
+   "min": 441.056013,
+   "max": 443.392009,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / alt-k4 / by windows / 32",
+   "unit": "us a launch, every clock off",
+   "samples": [
+    860.159993,
+    860.159993,
+    858.111978,
+    858.111978,
+    861.184001,
+    861.184001,
+    858.111978
+   ],
+   "median": 860.159993,
+   "min": 858.111978,
+   "max": 861.184001,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / alt-k4 / by windows / fixed",
+   "unit": "us a call, the line's intercept",
+   "samples": [
+    21.098031
+   ],
+   "median": 21.098031,
+   "min": 21.098031,
+   "max": 21.098031,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / alt-k4 / by windows / a window",
+   "unit": "us a window, the line's slope",
+   "samples": [
+    26.25733
+   ],
+   "median": 26.25733,
+   "min": 26.25733,
+   "max": 26.25733,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 6, form 5 with the stores in chains / alt-k4 / by windows / 1",
+   "unit": "us a launch, every clock off",
+   "samples": [
+    27.648,
+    27.648,
+    28.672,
+    27.648,
+    27.84,
+    27.648,
+    27.648
+   ],
+   "median": 27.648,
+   "min": 27.648,
+   "max": 28.672,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 6, form 5 with the stores in chains / alt-k4 / by windows / 2",
+   "unit": "us a launch, every clock off",
+   "samples": [
+    46.080001,
+    46.080001,
+    46.080001,
+    46.080001,
+    46.080001,
+    46.080001,
+    47.104001
+   ],
+   "median": 46.080001,
+   "min": 46.080001,
+   "max": 47.104001,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 6, form 5 with the stores in chains / alt-k4 / by windows / 4",
+   "unit": "us a launch, every clock off",
+   "samples": [
+    84.991999,
+    83.967999,
+    83.903998,
+    82.943998,
+    82.943998,
+    82.943998,
+    82.847998
+   ],
+   "median": 82.943998,
+   "min": 82.847998,
+   "max": 84.991999,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 6, form 5 with the stores in chains / alt-k4 / by windows / 8",
+   "unit": "us a launch, every clock off",
+   "samples": [
+    155.616,
+    154.624,
+    154.624,
+    155.647993,
+    155.647993,
+    155.328006,
+    155.616
+   ],
+   "median": 155.616,
+   "min": 154.624,
+   "max": 155.647993,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 6, form 5 with the stores in chains / alt-k4 / by windows / 16",
+   "unit": "us a launch, every clock off",
+   "samples": [
+    296.959996,
+    297.984004,
+    297.984004,
+    297.984004,
+    296.959996,
+    297.984004,
+    297.984004
+   ],
+   "median": 297.984004,
+   "min": 296.959996,
+   "max": 297.984004,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 6, form 5 with the stores in chains / alt-k4 / by windows / 32",
+   "unit": "us a launch, every clock off",
+   "samples": [
+    581.535995,
+    581.632018,
+    580.60801,
+    881.663978,
+    583.45598,
+    581.376016,
+    582.656026
+   ],
+   "median": 581.632018,
+   "min": 580.60801,
+   "max": 881.663978,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "form 6, form 5 with the stores in chains / alt-k4 / by windows / fixed",
+   "unit": "us a call, the line's intercept",
+   "samples": [
+    11.165769
+   ],
+   "median": 11.165769,
+   "min": 11.165769,
+   "max": 11.165769,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 6, form 5 with the stores in chains / alt-k4 / by windows / a window",
+   "unit": "us a window, the line's slope",
+   "samples": [
+    17.855705
+   ],
+   "median": 17.855705,
+   "min": 17.855705,
+   "max": 17.855705,
+   "unstable": false
+  },
+  {
+   "lab": "result",
    "name": "the production kernel / alt-k4",
    "unit": "us a launch, every clock off",
    "samples": [
-    784.384012,
-    783.360004,
-    784.384012,
-    782.335997,
-    784.384012,
-    783.360004,
-    783.360004
+    860.159993,
+    860.159993,
+    859.135985,
+    861.184001,
+    860.159993,
+    859.135985,
+    859.135985
    ],
-   "median": 783.360004,
-   "min": 782.335997,
-   "max": 784.384012,
+   "median": 860.159993,
+   "min": 859.135985,
+   "max": 861.184001,
    "unstable": false
   },
   {
@@ -150,47 +434,47 @@
    "name": "the production kernel / alt-k4 / clocked",
    "unit": "cycles a CTA-window, its clock on",
    "samples": [
-    25933.849854,
-    25954.57666,
-    25926.849365,
-    38777.503906,
-    25935.861084,
-    25946.844971,
-    25935.171143
+    25633.208496,
+    25631.088379,
+    25640.675049,
+    25628.341064,
+    25631.552734,
+    25614.217529,
+    25626.985596
    ],
-   "median": 25935.861084,
-   "min": 25926.849365,
-   "max": 38777.503906,
-   "unstable": true
+   "median": 25631.088379,
+   "min": 25614.217529,
+   "max": 25640.675049,
+   "unstable": false
   },
   {
    "lab": "result",
    "name": "the production kernel / alt-k4 / clocked launch",
    "unit": "us a launch, its clock on",
    "samples": [
-    907.263994,
-    908.288002,
-    909.31201,
-    1479.679942,
-    908.288002,
-    909.31201,
-    907.263994
+    998.399973,
+    999.423981,
+    1000.447989,
+    998.399973,
+    996.352017,
+    996.352017,
+    998.399973
    ],
-   "median": 908.288002,
-   "min": 907.263994,
-   "max": 1479.679942,
-   "unstable": true
+   "median": 998.399973,
+   "min": 996.352017,
+   "max": 1000.447989,
+   "unstable": false
   },
   {
    "lab": "result",
    "name": "the production kernel / alt-k4 / landed",
    "unit": "cycles a warp-window",
    "samples": [
-    3934.645538
+    3677.637421
    ],
-   "median": 3934.645538,
-   "min": 3934.645538,
-   "max": 3934.645538,
+   "median": 3677.637421,
+   "min": 3677.637421,
+   "max": 3677.637421,
    "unstable": false
   },
   {
@@ -198,11 +482,11 @@
    "name": "the production kernel / alt-k4 / landed busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    3973.011475
+    3722.986084
    ],
-   "median": 3973.011475,
-   "min": 3973.011475,
-   "max": 3973.011475,
+   "median": 3722.986084,
+   "min": 3722.986084,
+   "max": 3722.986084,
    "unstable": false
   },
   {
@@ -210,11 +494,11 @@
    "name": "the production kernel / alt-k4 / maxima",
    "unit": "cycles a warp-window",
    "samples": [
-    1751.701172
+    1753.232758
    ],
-   "median": 1751.701172,
-   "min": 1751.701172,
-   "max": 1751.701172,
+   "median": 1753.232758,
+   "min": 1753.232758,
+   "max": 1753.232758,
    "unstable": false
   },
   {
@@ -222,11 +506,11 @@
    "name": "the production kernel / alt-k4 / maxima busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    1786.267334
+    1788.715088
    ],
-   "median": 1786.267334,
-   "min": 1786.267334,
-   "max": 1786.267334,
+   "median": 1788.715088,
+   "min": 1788.715088,
+   "max": 1788.715088,
    "unstable": false
   },
   {
@@ -234,11 +518,11 @@
    "name": "the production kernel / alt-k4 / store",
    "unit": "cycles a warp-window",
    "samples": [
-    4007.942291
+    4032.688904
    ],
-   "median": 4007.942291,
-   "min": 4007.942291,
-   "max": 4007.942291,
+   "median": 4032.688904,
+   "min": 4032.688904,
+   "max": 4032.688904,
    "unstable": false
   },
   {
@@ -246,11 +530,11 @@
    "name": "the production kernel / alt-k4 / store busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    4080.671631
+    4108.964355
    ],
-   "median": 4080.671631,
-   "min": 4080.671631,
-   "max": 4080.671631,
+   "median": 4108.964355,
+   "min": 4108.964355,
+   "max": 4108.964355,
    "unstable": false
   },
   {
@@ -258,11 +542,11 @@
    "name": "the production kernel / alt-k4 / readout",
    "unit": "cycles a warp-window",
    "samples": [
-    3571.599335
+    3542.81189
    ],
-   "median": 3571.599335,
-   "min": 3571.599335,
-   "max": 3571.599335,
+   "median": 3542.81189,
+   "min": 3542.81189,
+   "max": 3542.81189,
    "unstable": false
   },
   {
@@ -270,11 +554,11 @@
    "name": "the production kernel / alt-k4 / readout busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    3659.695557
+    3631.51001
    ],
-   "median": 3659.695557,
-   "min": 3659.695557,
-   "max": 3659.695557,
+   "median": 3631.51001,
+   "min": 3631.51001,
+   "max": 3631.51001,
    "unstable": false
   },
   {
@@ -282,11 +566,11 @@
    "name": "the production kernel / alt-k4 / drain",
    "unit": "cycles a warp-window",
    "samples": [
-    1890.170105
+    1878.126984
    ],
-   "median": 1890.170105,
-   "min": 1890.170105,
-   "max": 1890.170105,
+   "median": 1878.126984,
+   "min": 1878.126984,
+   "max": 1878.126984,
    "unstable": false
   },
   {
@@ -294,11 +578,11 @@
    "name": "the production kernel / alt-k4 / drain busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    1923.025879
+    1914.783203
    ],
-   "median": 1923.025879,
-   "min": 1923.025879,
-   "max": 1923.025879,
+   "median": 1914.783203,
+   "min": 1914.783203,
+   "max": 1914.783203,
    "unstable": false
   },
   {
@@ -306,11 +590,11 @@
    "name": "the production kernel / alt-k4 / fill",
    "unit": "cycles a warp-window",
    "samples": [
-    3956.866272
+    3961.437286
    ],
-   "median": 3956.866272,
-   "min": 3956.866272,
-   "max": 3956.866272,
+   "median": 3961.437286,
+   "min": 3961.437286,
+   "max": 3961.437286,
    "unstable": false
   },
   {
@@ -318,11 +602,11 @@
    "name": "the production kernel / alt-k4 / fill busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    4091.155029
+    4099.640381
    ],
-   "median": 4091.155029,
-   "min": 4091.155029,
-   "max": 4091.155029,
+   "median": 4099.640381,
+   "min": 4099.640381,
+   "max": 4099.640381,
    "unstable": false
   },
   {
@@ -330,11 +614,11 @@
    "name": "the production kernel / alt-k4 / fold",
    "unit": "cycles a warp-window",
    "samples": [
-    3908.422333
+    3867.747437
    ],
-   "median": 3908.422333,
-   "min": 3908.422333,
-   "max": 3908.422333,
+   "median": 3867.747437,
+   "min": 3867.747437,
+   "max": 3867.747437,
    "unstable": false
   },
   {
@@ -342,11 +626,11 @@
    "name": "the production kernel / alt-k4 / fold busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    3955.610352
+    3912.713623
    ],
-   "median": 3955.610352,
-   "min": 3955.610352,
-   "max": 3955.610352,
+   "median": 3912.713623,
+   "min": 3912.713623,
+   "max": 3912.713623,
    "unstable": false
   },
   {
@@ -354,11 +638,11 @@
    "name": "the production kernel / alt-k4 / wait",
    "unit": "cycles a warp-window",
    "samples": [
-    2906.320251
+    2905.050079
    ],
-   "median": 2906.320251,
-   "min": 2906.320251,
-   "max": 2906.320251,
+   "median": 2905.050079,
+   "min": 2905.050079,
+   "max": 2905.050079,
    "unstable": false
   },
   {
@@ -366,11 +650,11 @@
    "name": "the production kernel / alt-k4 / wait busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    3047.217285
+    3050.22168
    ],
-   "median": 3047.217285,
-   "min": 3047.217285,
-   "max": 3047.217285,
+   "median": 3050.22168,
+   "min": 3050.22168,
+   "max": 3050.22168,
    "unstable": false
   },
   {
@@ -378,17 +662,17 @@
    "name": "form 1, option A by hand / alt-k4",
    "unit": "us a launch, every clock off",
    "samples": [
-    854.016006,
-    579.584002,
-    575.487971,
-    573.440015,
-    573.440015,
-    576.511979,
-    572.416008
+    613.536,
+    615.423977,
+    613.536,
+    613.376021,
+    613.536,
+    614.655972,
+    932.928026
    ],
-   "median": 575.487971,
-   "min": 572.416008,
-   "max": 854.016006,
+   "median": 613.536,
+   "min": 613.376021,
+   "max": 932.928026,
    "unstable": true
   },
   {
@@ -396,17 +680,17 @@
    "name": "form 1, option A by hand / alt-k4 / span",
    "unit": "cycles a CTA-window, its span, every clock off",
    "samples": [
-    22481.199219,
-    16288.582275,
-    16207.905273,
-    16220.251221,
-    16205.211914,
-    16218.836914,
-    16204.577148
+    15816.279053,
+    15821.3125,
+    15816.638184,
+    15820.117188,
+    15820.357666,
+    15821.177979,
+    22079.063477
    ],
-   "median": 16218.836914,
-   "min": 16204.577148,
-   "max": 22481.199219,
+   "median": 15820.357666,
+   "min": 15816.279053,
+   "max": 22079.063477,
    "unstable": true
   },
   {
@@ -414,17 +698,17 @@
    "name": "form 1, option A by hand / alt-k4 / clocked",
    "unit": "cycles a CTA-window, its clock on",
    "samples": [
-    18225.208496,
-    18231.71167,
-    18222.672363,
-    18220.858154,
-    18218.986816,
-    18227.40918,
-    18344.653809
+    17874.164307,
+    17873.301758,
+    17876.098145,
+    17877.048584,
+    17874.541016,
+    17875.655029,
+    17872.626221
    ],
-   "median": 18225.208496,
-   "min": 18218.986816,
-   "max": 18344.653809,
+   "median": 17874.541016,
+   "min": 17872.626221,
+   "max": 17877.048584,
    "unstable": false
   },
   {
@@ -432,17 +716,17 @@
    "name": "form 1, option A by hand / alt-k4 / clocked launch",
    "unit": "us a launch, its clock on",
    "samples": [
-    641.023993,
-    642.048001,
-    639.999986,
-    639.999986,
-    641.023993,
-    642.048001,
-    645.120025
+    692.224026,
+    692.224026,
+    692.224026,
+    692.224026,
+    692.224026,
+    693.247974,
+    691.200018
    ],
-   "median": 641.023993,
-   "min": 639.999986,
-   "max": 645.120025,
+   "median": 692.224026,
+   "min": 691.200018,
+   "max": 693.247974,
    "unstable": false
   },
   {
@@ -450,11 +734,11 @@
    "name": "form 1, option A by hand / alt-k4 / landed",
    "unit": "cycles a warp-window",
    "samples": [
-    1051.457581
+    661.949768
    ],
-   "median": 1051.457581,
-   "min": 1051.457581,
-   "max": 1051.457581,
+   "median": 661.949768,
+   "min": 661.949768,
+   "max": 661.949768,
    "unstable": false
   },
   {
@@ -462,11 +746,11 @@
    "name": "form 1, option A by hand / alt-k4 / landed busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    1177.313477
+    788.485596
    ],
-   "median": 1177.313477,
-   "min": 1177.313477,
-   "max": 1177.313477,
+   "median": 788.485596,
+   "min": 788.485596,
+   "max": 788.485596,
    "unstable": false
   },
   {
@@ -474,11 +758,11 @@
    "name": "form 1, option A by hand / alt-k4 / maxima",
    "unit": "cycles a warp-window",
    "samples": [
-    1917.662445
+    1909.578156
    ],
-   "median": 1917.662445,
-   "min": 1917.662445,
-   "max": 1917.662445,
+   "median": 1909.578156,
+   "min": 1909.578156,
+   "max": 1909.578156,
    "unstable": false
   },
   {
@@ -486,11 +770,11 @@
    "name": "form 1, option A by hand / alt-k4 / maxima busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    1978.5625
+    1970.214355
    ],
-   "median": 1978.5625,
-   "min": 1978.5625,
-   "max": 1978.5625,
+   "median": 1970.214355,
+   "min": 1970.214355,
+   "max": 1970.214355,
    "unstable": false
   },
   {
@@ -498,11 +782,11 @@
    "name": "form 1, option A by hand / alt-k4 / store",
    "unit": "cycles a warp-window",
    "samples": [
-    2117.815369
+    2113.073486
    ],
-   "median": 2117.815369,
-   "min": 2117.815369,
-   "max": 2117.815369,
+   "median": 2113.073486,
+   "min": 2113.073486,
+   "max": 2113.073486,
    "unstable": false
   },
   {
@@ -510,11 +794,11 @@
    "name": "form 1, option A by hand / alt-k4 / store busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    2149.689209
+    2151.382324
    ],
-   "median": 2149.689209,
-   "min": 2149.689209,
-   "max": 2149.689209,
+   "median": 2151.382324,
+   "min": 2151.382324,
+   "max": 2151.382324,
    "unstable": false
   },
   {
@@ -522,11 +806,11 @@
    "name": "form 1, option A by hand / alt-k4 / readout",
    "unit": "cycles a warp-window",
    "samples": [
-    3142.045074
+    3167.788757
    ],
-   "median": 3142.045074,
-   "min": 3142.045074,
-   "max": 3142.045074,
+   "median": 3167.788757,
+   "min": 3167.788757,
+   "max": 3167.788757,
    "unstable": false
   },
   {
@@ -534,11 +818,11 @@
    "name": "form 1, option A by hand / alt-k4 / readout busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    3260.552246
+    3287.11499
    ],
-   "median": 3260.552246,
-   "min": 3260.552246,
-   "max": 3260.552246,
+   "median": 3287.11499,
+   "min": 3287.11499,
+   "max": 3287.11499,
    "unstable": false
   },
   {
@@ -546,11 +830,11 @@
    "name": "form 1, option A by hand / alt-k4 / drain",
    "unit": "cycles a warp-window",
    "samples": [
-    1409.391541
+    1406.343292
    ],
-   "median": 1409.391541,
-   "min": 1409.391541,
-   "max": 1409.391541,
+   "median": 1406.343292,
+   "min": 1406.343292,
+   "max": 1406.343292,
    "unstable": false
   },
   {
@@ -558,11 +842,11 @@
    "name": "form 1, option A by hand / alt-k4 / drain busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    1426.814697
+    1422.653076
    ],
-   "median": 1426.814697,
-   "min": 1426.814697,
-   "max": 1426.814697,
+   "median": 1422.653076,
+   "min": 1422.653076,
+   "max": 1422.653076,
    "unstable": false
   },
   {
@@ -570,11 +854,11 @@
    "name": "form 1, option A by hand / alt-k4 / fill",
    "unit": "cycles a warp-window",
    "samples": [
-    3672.042786
+    3686.935455
    ],
-   "median": 3672.042786,
-   "min": 3672.042786,
-   "max": 3672.042786,
+   "median": 3686.935455,
+   "min": 3686.935455,
+   "max": 3686.935455,
    "unstable": false
   },
   {
@@ -582,11 +866,11 @@
    "name": "form 1, option A by hand / alt-k4 / fill busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    3845.211914
+    3869.220703
    ],
-   "median": 3845.211914,
-   "min": 3845.211914,
-   "max": 3845.211914,
+   "median": 3869.220703,
+   "min": 3869.220703,
+   "max": 3869.220703,
    "unstable": false
   },
   {
@@ -594,11 +878,11 @@
    "name": "form 1, option A by hand / alt-k4 / fold",
    "unit": "cycles a warp-window",
    "samples": [
-    3201.419678
+    3099.589844
    ],
-   "median": 3201.419678,
-   "min": 3201.419678,
-   "max": 3201.419678,
+   "median": 3099.589844,
+   "min": 3099.589844,
+   "max": 3099.589844,
    "unstable": false
   },
   {
@@ -606,11 +890,11 @@
    "name": "form 1, option A by hand / alt-k4 / fold busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    3282.25
+    3177.151855
    ],
-   "median": 3282.25,
-   "min": 3282.25,
-   "max": 3282.25,
+   "median": 3177.151855,
+   "min": 3177.151855,
+   "max": 3177.151855,
    "unstable": false
   },
   {
@@ -618,11 +902,11 @@
    "name": "form 1, option A by hand / alt-k4 / wait",
    "unit": "cycles a warp-window",
    "samples": [
-    1817.509033
+    1811.962128
    ],
-   "median": 1817.509033,
-   "min": 1817.509033,
-   "max": 1817.509033,
+   "median": 1811.962128,
+   "min": 1811.962128,
+   "max": 1811.962128,
    "unstable": false
   },
   {
@@ -630,11 +914,11 @@
    "name": "form 1, option A by hand / alt-k4 / wait busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    2104.619873
+    2097.327393
    ],
-   "median": 2104.619873,
-   "min": 2104.619873,
-   "max": 2104.619873,
+   "median": 2097.327393,
+   "min": 2097.327393,
+   "max": 2097.327393,
    "unstable": false
   },
   {
@@ -642,17 +926,17 @@
    "name": "form 3, A with the next rows under the fold / alt-k4",
    "unit": "us a launch, every clock off",
    "samples": [
-    591.871977,
-    599.039972,
-    592.064023,
-    598.016024,
-    592.895985,
-    591.871977,
-    592.895985
+    627.712011,
+    627.712011,
+    627.712011,
+    627.712011,
+    627.712011,
+    628.736019,
+    627.712011
    ],
-   "median": 592.895985,
-   "min": 591.871977,
-   "max": 599.039972,
+   "median": 627.712011,
+   "min": 627.712011,
+   "max": 628.736019,
    "unstable": false
   },
   {
@@ -660,17 +944,17 @@
    "name": "form 3, A with the next rows under the fold / alt-k4 / span",
    "unit": "cycles a CTA-window, its span, every clock off",
    "samples": [
-    16702.098389,
-    16816.518311,
-    16701.794678,
-    16827.818115,
-    16702.036377,
-    16695.34082,
-    16702.368164
+    16174.027832,
+    16173.891846,
+    16176.327393,
+    16178.920654,
+    16175.945312,
+    16178.802002,
+    16175.037354
    ],
-   "median": 16702.098389,
-   "min": 16695.34082,
-   "max": 16827.818115,
+   "median": 16175.945312,
+   "min": 16173.891846,
+   "max": 16178.920654,
    "unstable": false
   },
   {
@@ -678,47 +962,47 @@
    "name": "form 3, A with the next rows under the fold / alt-k4 / clocked",
    "unit": "cycles a CTA-window, its clock on",
    "samples": [
-    18716.16333,
-    18709.304199,
-    18712.916504,
-    18696.498291,
-    18716.088867,
-    18713.316162,
-    18714.879395
+    18383.616699,
+    18384.783447,
+    18379.292969,
+    18385.376465,
+    18382.218994,
+    18391.077881,
+    35084.567139
    ],
-   "median": 18713.316162,
-   "min": 18696.498291,
-   "max": 18716.16333,
-   "unstable": false
+   "median": 18384.783447,
+   "min": 18379.292969,
+   "max": 35084.567139,
+   "unstable": true
   },
   {
    "lab": "result",
    "name": "form 3, A with the next rows under the fold / alt-k4 / clocked launch",
    "unit": "us a launch, its clock on",
    "samples": [
-    658.432007,
-    657.407999,
-    658.432007,
-    662.720025,
-    662.527978,
-    663.551986,
-    663.551986
+    710.655987,
+    711.679995,
+    712.704003,
+    711.839974,
+    712.704003,
+    713.728011,
+    1337.34405
    ],
-   "median": 662.527978,
-   "min": 657.407999,
-   "max": 663.551986,
-   "unstable": false
+   "median": 712.704003,
+   "min": 710.655987,
+   "max": 1337.34405,
+   "unstable": true
   },
   {
    "lab": "result",
    "name": "form 3, A with the next rows under the fold / alt-k4 / landed",
    "unit": "cycles a warp-window",
    "samples": [
-    1117.570038
+    2599.8396
    ],
-   "median": 1117.570038,
-   "min": 1117.570038,
-   "max": 1117.570038,
+   "median": 2599.8396,
+   "min": 2599.8396,
+   "max": 2599.8396,
    "unstable": false
   },
   {
@@ -726,11 +1010,11 @@
    "name": "form 3, A with the next rows under the fold / alt-k4 / landed busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    1537.321289
+    3937.486328
    ],
-   "median": 1537.321289,
-   "min": 1537.321289,
-   "max": 1537.321289,
+   "median": 3937.486328,
+   "min": 3937.486328,
+   "max": 3937.486328,
    "unstable": false
   },
   {
@@ -738,11 +1022,11 @@
    "name": "form 3, A with the next rows under the fold / alt-k4 / maxima",
    "unit": "cycles a warp-window",
    "samples": [
-    1909.858002
+    6507.795593
    ],
-   "median": 1909.858002,
-   "min": 1909.858002,
-   "max": 1909.858002,
+   "median": 6507.795593,
+   "min": 6507.795593,
+   "max": 6507.795593,
    "unstable": false
   },
   {
@@ -750,11 +1034,11 @@
    "name": "form 3, A with the next rows under the fold / alt-k4 / maxima busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    1980.537598
+    6747.513916
    ],
-   "median": 1980.537598,
-   "min": 1980.537598,
-   "max": 1980.537598,
+   "median": 6747.513916,
+   "min": 6747.513916,
+   "max": 6747.513916,
    "unstable": false
   },
   {
@@ -762,11 +1046,11 @@
    "name": "form 3, A with the next rows under the fold / alt-k4 / store",
    "unit": "cycles a warp-window",
    "samples": [
-    2106.058624
+    4667.105133
    ],
-   "median": 2106.058624,
-   "min": 2106.058624,
-   "max": 2106.058624,
+   "median": 4667.105133,
+   "min": 4667.105133,
+   "max": 4667.105133,
    "unstable": false
   },
   {
@@ -774,11 +1058,11 @@
    "name": "form 3, A with the next rows under the fold / alt-k4 / store busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    2139.05957
+    5076.529053
    ],
-   "median": 2139.05957,
-   "min": 2139.05957,
-   "max": 2139.05957,
+   "median": 5076.529053,
+   "min": 5076.529053,
+   "max": 5076.529053,
    "unstable": false
   },
   {
@@ -786,11 +1070,11 @@
    "name": "form 3, A with the next rows under the fold / alt-k4 / readout",
    "unit": "cycles a warp-window",
    "samples": [
-    3145.003784
+    5184.626648
    ],
-   "median": 3145.003784,
-   "min": 3145.003784,
-   "max": 3145.003784,
+   "median": 5184.626648,
+   "min": 5184.626648,
+   "max": 5184.626648,
    "unstable": false
   },
   {
@@ -798,11 +1082,11 @@
    "name": "form 3, A with the next rows under the fold / alt-k4 / readout busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    3270.719727
+    5308.484619
    ],
-   "median": 3270.719727,
-   "min": 3270.719727,
-   "max": 3270.719727,
+   "median": 5308.484619,
+   "min": 5308.484619,
+   "max": 5308.484619,
    "unstable": false
   },
   {
@@ -810,11 +1094,11 @@
    "name": "form 3, A with the next rows under the fold / alt-k4 / drain",
    "unit": "cycles a warp-window",
    "samples": [
-    1467.020599
+    1486.554413
    ],
-   "median": 1467.020599,
-   "min": 1467.020599,
-   "max": 1467.020599,
+   "median": 1486.554413,
+   "min": 1486.554413,
+   "max": 1486.554413,
    "unstable": false
   },
   {
@@ -822,11 +1106,11 @@
    "name": "form 3, A with the next rows under the fold / alt-k4 / drain busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    1481.846191
+    1503.781982
    ],
-   "median": 1481.846191,
-   "min": 1481.846191,
-   "max": 1481.846191,
+   "median": 1503.781982,
+   "min": 1503.781982,
+   "max": 1503.781982,
    "unstable": false
   },
   {
@@ -834,11 +1118,11 @@
    "name": "form 3, A with the next rows under the fold / alt-k4 / fill",
    "unit": "cycles a warp-window",
    "samples": [
-    3109.607361
+    3160.992065
    ],
-   "median": 3109.607361,
-   "min": 3109.607361,
-   "max": 3109.607361,
+   "median": 3160.992065,
+   "min": 3160.992065,
+   "max": 3160.992065,
    "unstable": false
   },
   {
@@ -846,11 +1130,11 @@
    "name": "form 3, A with the next rows under the fold / alt-k4 / fill busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    3222.749023
+    3278.379639
    ],
-   "median": 3222.749023,
-   "min": 3222.749023,
-   "max": 3222.749023,
+   "median": 3278.379639,
+   "min": 3278.379639,
+   "max": 3278.379639,
    "unstable": false
   },
   {
@@ -858,11 +1142,11 @@
    "name": "form 3, A with the next rows under the fold / alt-k4 / fold",
    "unit": "cycles a warp-window",
    "samples": [
-    4029.910217
+    8762.354797
    ],
-   "median": 4029.910217,
-   "min": 4029.910217,
-   "max": 4029.910217,
+   "median": 8762.354797,
+   "min": 8762.354797,
+   "max": 8762.354797,
    "unstable": false
   },
   {
@@ -870,11 +1154,11 @@
    "name": "form 3, A with the next rows under the fold / alt-k4 / fold busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    4203.898193
+    9925.222656
    ],
-   "median": 4203.898193,
-   "min": 4203.898193,
-   "max": 4203.898193,
+   "median": 9925.222656,
+   "min": 9925.222656,
+   "max": 9925.222656,
    "unstable": false
   },
   {
@@ -882,11 +1166,11 @@
    "name": "form 3, A with the next rows under the fold / alt-k4 / wait",
    "unit": "cycles a warp-window",
    "samples": [
-    1813.663757
+    2699.148682
    ],
-   "median": 1813.663757,
-   "min": 1813.663757,
-   "max": 1813.663757,
+   "median": 2699.148682,
+   "min": 2699.148682,
+   "max": 2699.148682,
    "unstable": false
   },
   {
@@ -894,11 +1178,11 @@
    "name": "form 3, A with the next rows under the fold / alt-k4 / wait busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    2114.888916
+    3360.665527
    ],
-   "median": 2114.888916,
-   "min": 2114.888916,
-   "max": 2114.888916,
+   "median": 3360.665527,
+   "min": 3360.665527,
+   "max": 3360.665527,
    "unstable": false
   },
   {
@@ -906,53 +1190,53 @@
    "name": "form 4, A with the read buffer at the top, the drain in the fold / alt-k4",
    "unit": "us a launch, every clock off",
    "samples": [
-    590.848029,
-    590.848029,
-    589.824021,
-    590.848029,
-    589.824021,
-    592.895985,
-    588.800013
+    1304.576039,
+    617.471993,
+    621.568024,
+    616.447985,
+    616.447985,
+    620.544016,
+    613.376021
    ],
-   "median": 590.848029,
-   "min": 588.800013,
-   "max": 592.895985,
-   "unstable": false
+   "median": 617.471993,
+   "min": 613.376021,
+   "max": 1304.576039,
+   "unstable": true
   },
   {
    "lab": "result",
    "name": "form 4, A with the read buffer at the top, the drain in the fold / alt-k4 / span",
    "unit": "cycles a CTA-window, its span, every clock off",
    "samples": [
-    16476.9021,
-    16480.568848,
-    16474.737549,
-    16464.392578,
-    16488.981445,
-    16483.398438,
-    16499.149414
+    34774.155029,
+    15917.452637,
+    16050.898193,
+    15943.773193,
+    15895.994873,
+    16029.617432,
+    15842.241211
    ],
-   "median": 16480.568848,
-   "min": 16464.392578,
-   "max": 16499.149414,
-   "unstable": false
+   "median": 15943.773193,
+   "min": 15842.241211,
+   "max": 34774.155029,
+   "unstable": true
   },
   {
    "lab": "result",
    "name": "form 4, A with the read buffer at the top, the drain in the fold / alt-k4 / clocked",
    "unit": "cycles a CTA-window, its clock on",
    "samples": [
-    18295.005127,
-    18318.182861,
-    18206.813721,
-    18270.020264,
-    18112.419189,
-    18297.746094,
-    18343.669189
+    17875.23999,
+    17786.251709,
+    17838.126953,
+    17684.328369,
+    17854.628662,
+    17789.20459,
+    17755.798584
    ],
-   "median": 18295.005127,
-   "min": 18112.419189,
-   "max": 18343.669189,
+   "median": 17789.20459,
+   "min": 17684.328369,
+   "max": 17875.23999,
    "unstable": false
   },
   {
@@ -960,17 +1244,17 @@
    "name": "form 4, A with the read buffer at the top, the drain in the fold / alt-k4 / clocked launch",
    "unit": "us a launch, its clock on",
    "samples": [
-    645.120025,
-    652.28802,
-    642.048001,
-    647.167981,
-    637.95203,
-    651.264012,
-    650.240004
+    691.200018,
+    688.127995,
+    689.152002,
+    683.008015,
+    690.17601,
+    690.17601,
+    687.103987
    ],
-   "median": 647.167981,
-   "min": 637.95203,
-   "max": 652.28802,
+   "median": 689.152002,
+   "min": 683.008015,
+   "max": 691.200018,
    "unstable": false
   },
   {
@@ -978,11 +1262,11 @@
    "name": "form 4, A with the read buffer at the top, the drain in the fold / alt-k4 / landed",
    "unit": "cycles a warp-window",
    "samples": [
-    481.433136
+    200.367584
    ],
-   "median": 481.433136,
-   "min": 481.433136,
-   "max": 481.433136,
+   "median": 200.367584,
+   "min": 200.367584,
+   "max": 200.367584,
    "unstable": false
   },
   {
@@ -990,11 +1274,11 @@
    "name": "form 4, A with the read buffer at the top, the drain in the fold / alt-k4 / landed busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    484.16626
+    203.132324
    ],
-   "median": 484.16626,
-   "min": 484.16626,
-   "max": 484.16626,
+   "median": 203.132324,
+   "min": 203.132324,
+   "max": 203.132324,
    "unstable": false
   },
   {
@@ -1002,11 +1286,11 @@
    "name": "form 4, A with the read buffer at the top, the drain in the fold / alt-k4 / maxima",
    "unit": "cycles a warp-window",
    "samples": [
-    1894.347351
+    1893.236694
    ],
-   "median": 1894.347351,
-   "min": 1894.347351,
-   "max": 1894.347351,
+   "median": 1893.236694,
+   "min": 1893.236694,
+   "max": 1893.236694,
    "unstable": false
   },
   {
@@ -1014,11 +1298,11 @@
    "name": "form 4, A with the read buffer at the top, the drain in the fold / alt-k4 / maxima busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    1967.108643
+    1967.505127
    ],
-   "median": 1967.108643,
-   "min": 1967.108643,
-   "max": 1967.108643,
+   "median": 1967.505127,
+   "min": 1967.505127,
+   "max": 1967.505127,
    "unstable": false
   },
   {
@@ -1026,11 +1310,11 @@
    "name": "form 4, A with the read buffer at the top, the drain in the fold / alt-k4 / store",
    "unit": "cycles a warp-window",
    "samples": [
-    2163.459961
+    2155.822998
    ],
-   "median": 2163.459961,
-   "min": 2163.459961,
-   "max": 2163.459961,
+   "median": 2155.822998,
+   "min": 2155.822998,
+   "max": 2155.822998,
    "unstable": false
   },
   {
@@ -1038,11 +1322,11 @@
    "name": "form 4, A with the read buffer at the top, the drain in the fold / alt-k4 / store busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    2206.443359
+    2191.856445
    ],
-   "median": 2206.443359,
-   "min": 2206.443359,
-   "max": 2206.443359,
+   "median": 2191.856445,
+   "min": 2191.856445,
+   "max": 2191.856445,
    "unstable": false
   },
   {
@@ -1050,11 +1334,11 @@
    "name": "form 4, A with the read buffer at the top, the drain in the fold / alt-k4 / readout",
    "unit": "cycles a warp-window",
    "samples": [
-    3238.255341
+    3237.466278
    ],
-   "median": 3238.255341,
-   "min": 3238.255341,
-   "max": 3238.255341,
+   "median": 3237.466278,
+   "min": 3237.466278,
+   "max": 3237.466278,
    "unstable": false
   },
   {
@@ -1062,11 +1346,11 @@
    "name": "form 4, A with the read buffer at the top, the drain in the fold / alt-k4 / readout busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    3317.120605
+    3315.169922
    ],
-   "median": 3317.120605,
-   "min": 3317.120605,
-   "max": 3317.120605,
+   "median": 3315.169922,
+   "min": 3315.169922,
+   "max": 3315.169922,
    "unstable": false
   },
   {
@@ -1098,11 +1382,11 @@
    "name": "form 4, A with the read buffer at the top, the drain in the fold / alt-k4 / fill",
    "unit": "cycles a warp-window",
    "samples": [
-    3917.909332
+    3915.603729
    ],
-   "median": 3917.909332,
-   "min": 3917.909332,
-   "max": 3917.909332,
+   "median": 3915.603729,
+   "min": 3915.603729,
+   "max": 3915.603729,
    "unstable": false
   },
   {
@@ -1110,11 +1394,11 @@
    "name": "form 4, A with the read buffer at the top, the drain in the fold / alt-k4 / fill busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    4041.466553
+    4038.813721
    ],
-   "median": 4041.466553,
-   "min": 4041.466553,
-   "max": 4041.466553,
+   "median": 4038.813721,
+   "min": 4038.813721,
+   "max": 4038.813721,
    "unstable": false
   },
   {
@@ -1122,11 +1406,11 @@
    "name": "form 4, A with the read buffer at the top, the drain in the fold / alt-k4 / fold",
    "unit": "cycles a warp-window",
    "samples": [
-    4200.951263
+    4201.770538
    ],
-   "median": 4200.951263,
-   "min": 4200.951263,
-   "max": 4200.951263,
+   "median": 4201.770538,
+   "min": 4201.770538,
+   "max": 4201.770538,
    "unstable": false
   },
   {
@@ -1134,11 +1418,11 @@
    "name": "form 4, A with the read buffer at the top, the drain in the fold / alt-k4 / fold busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    4299.763916
+    4296.733154
    ],
-   "median": 4299.763916,
-   "min": 4299.763916,
-   "max": 4299.763916,
+   "median": 4296.733154,
+   "min": 4296.733154,
+   "max": 4296.733154,
    "unstable": false
   },
   {
@@ -1146,11 +1430,11 @@
    "name": "form 4, A with the read buffer at the top, the drain in the fold / alt-k4 / wait",
    "unit": "cycles a warp-window",
    "samples": [
-    2430.735962
+    2135.847992
    ],
-   "median": 2430.735962,
-   "min": 2430.735962,
-   "max": 2430.735962,
+   "median": 2135.847992,
+   "min": 2135.847992,
+   "max": 2135.847992,
    "unstable": false
   },
   {
@@ -1158,11 +1442,11 @@
    "name": "form 4, A with the read buffer at the top, the drain in the fold / alt-k4 / wait busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    2596.187744
+    2296.730957
    ],
-   "median": 2596.187744,
-   "min": 2596.187744,
-   "max": 2596.187744,
+   "median": 2296.730957,
+   "min": 2296.730957,
+   "max": 2296.730957,
    "unstable": false
   },
   {
@@ -1170,35 +1454,35 @@
    "name": "form 6, form 5 with the stores in chains / alt-k4",
    "unit": "us a launch, every clock off",
    "samples": [
-    545.791984,
-    545.791984,
-    543.744028,
-    546.815991,
-    545.791984,
-    545.791984,
-    545.791984
+    582.656026,
+    582.656026,
+    502.784014,
+    499.71199,
+    501.760006,
+    502.784014,
+    502.784014
    ],
-   "median": 545.791984,
-   "min": 543.744028,
-   "max": 546.815991,
-   "unstable": false
+   "median": 502.784014,
+   "min": 499.71199,
+   "max": 582.656026,
+   "unstable": true
   },
   {
    "lab": "result",
    "name": "form 6, form 5 with the stores in chains / alt-k4 / span",
    "unit": "cycles a CTA-window, its span, every clock off",
    "samples": [
-    15485.751465,
-    15443.502686,
-    15532.902344,
-    15462.925049,
-    15454.72998,
-    15468.765625,
-    15403.340088
+    15039.450684,
+    15023.645264,
+    15085.970703,
+    15034.734863,
+    15088.268066,
+    15103.372314,
+    15110.856934
    ],
-   "median": 15462.925049,
-   "min": 15403.340088,
-   "max": 15532.902344,
+   "median": 15085.970703,
+   "min": 15023.645264,
+   "max": 15110.856934,
    "unstable": false
   },
   {
@@ -1206,47 +1490,47 @@
    "name": "form 6, form 5 with the stores in chains / alt-k4 / clocked",
    "unit": "cycles a CTA-window, its clock on",
    "samples": [
-    29514.462646,
-    33897.996338,
-    17427.74707,
-    17297.792725,
-    17417.796143,
-    17357.590088,
-    17357.20459
+    17026.371826,
+    17080.637207,
+    16997.950439,
+    16969.429932,
+    17224.681885,
+    17049.387451,
+    17072.730957
    ],
-   "median": 17417.796143,
-   "min": 17297.792725,
-   "max": 33897.996338,
-   "unstable": true
+   "median": 17049.387451,
+   "min": 16969.429932,
+   "max": 17224.681885,
+   "unstable": false
   },
   {
    "lab": "result",
    "name": "form 6, form 5 with the stores in chains / alt-k4 / clocked launch",
    "unit": "us a launch, its clock on",
    "samples": [
-    943.104029,
-    1164.288044,
-    616.447985,
-    606.208026,
-    600.06398,
-    600.06398,
-    599.039972
+    565.248013,
+    566.27202,
+    564.224005,
+    563.488007,
+    570.367992,
+    567.296028,
+    567.423999
    ],
-   "median": 606.208026,
-   "min": 599.039972,
-   "max": 1164.288044,
-   "unstable": true
+   "median": 566.27202,
+   "min": 563.488007,
+   "max": 570.367992,
+   "unstable": false
   },
   {
    "lab": "result",
    "name": "form 6, form 5 with the stores in chains / alt-k4 / landed",
    "unit": "cycles a warp-window",
    "samples": [
-    401.794586
+    204.746643
    ],
-   "median": 401.794586,
-   "min": 401.794586,
-   "max": 401.794586,
+   "median": 204.746643,
+   "min": 204.746643,
+   "max": 204.746643,
    "unstable": false
   },
   {
@@ -1254,11 +1538,11 @@
    "name": "form 6, form 5 with the stores in chains / alt-k4 / landed busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    404.017334
+    206.869141
    ],
-   "median": 404.017334,
-   "min": 404.017334,
-   "max": 404.017334,
+   "median": 206.869141,
+   "min": 206.869141,
+   "max": 206.869141,
    "unstable": false
   },
   {
@@ -1266,11 +1550,11 @@
    "name": "form 6, form 5 with the stores in chains / alt-k4 / maxima",
    "unit": "cycles a warp-window",
    "samples": [
-    1792.85968
+    1787.953217
    ],
-   "median": 1792.85968,
-   "min": 1792.85968,
-   "max": 1792.85968,
+   "median": 1787.953217,
+   "min": 1787.953217,
+   "max": 1787.953217,
    "unstable": false
   },
   {
@@ -1278,11 +1562,11 @@
    "name": "form 6, form 5 with the stores in chains / alt-k4 / maxima busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    1844.861084
+    1839.545654
    ],
-   "median": 1844.861084,
-   "min": 1844.861084,
-   "max": 1844.861084,
+   "median": 1839.545654,
+   "min": 1839.545654,
+   "max": 1839.545654,
    "unstable": false
   },
   {
@@ -1290,11 +1574,11 @@
    "name": "form 6, form 5 with the stores in chains / alt-k4 / store",
    "unit": "cycles a warp-window",
    "samples": [
-    1932.334808
+    1918.556854
    ],
-   "median": 1932.334808,
-   "min": 1932.334808,
-   "max": 1932.334808,
+   "median": 1918.556854,
+   "min": 1918.556854,
+   "max": 1918.556854,
    "unstable": false
   },
   {
@@ -1302,11 +1586,11 @@
    "name": "form 6, form 5 with the stores in chains / alt-k4 / store busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    2000.433105
+    1979.312256
    ],
-   "median": 2000.433105,
-   "min": 2000.433105,
-   "max": 2000.433105,
+   "median": 1979.312256,
+   "min": 1979.312256,
+   "max": 1979.312256,
    "unstable": false
   },
   {
@@ -1314,11 +1598,11 @@
    "name": "form 6, form 5 with the stores in chains / alt-k4 / readout",
    "unit": "cycles a warp-window",
    "samples": [
-    3140.825195
+    3142.127045
    ],
-   "median": 3140.825195,
-   "min": 3140.825195,
-   "max": 3140.825195,
+   "median": 3142.127045,
+   "min": 3142.127045,
+   "max": 3142.127045,
    "unstable": false
   },
   {
@@ -1326,11 +1610,11 @@
    "name": "form 6, form 5 with the stores in chains / alt-k4 / readout busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    3243.061035
+    3243.323242
    ],
-   "median": 3243.061035,
-   "min": 3243.061035,
-   "max": 3243.061035,
+   "median": 3243.323242,
+   "min": 3243.323242,
+   "max": 3243.323242,
    "unstable": false
   },
   {
@@ -1362,11 +1646,11 @@
    "name": "form 6, form 5 with the stores in chains / alt-k4 / fill",
    "unit": "cycles a warp-window",
    "samples": [
-    3666.938568
+    3589.846039
    ],
-   "median": 3666.938568,
-   "min": 3666.938568,
-   "max": 3666.938568,
+   "median": 3589.846039,
+   "min": 3589.846039,
+   "max": 3589.846039,
    "unstable": false
   },
   {
@@ -1374,11 +1658,11 @@
    "name": "form 6, form 5 with the stores in chains / alt-k4 / fill busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    3742.941895
+    3660.957031
    ],
-   "median": 3742.941895,
-   "min": 3742.941895,
-   "max": 3742.941895,
+   "median": 3660.957031,
+   "min": 3660.957031,
+   "max": 3660.957031,
    "unstable": false
   },
   {
@@ -1386,11 +1670,11 @@
    "name": "form 6, form 5 with the stores in chains / alt-k4 / fold",
    "unit": "cycles a warp-window",
    "samples": [
-    4119.765076
+    4101.167725
    ],
-   "median": 4119.765076,
-   "min": 4119.765076,
-   "max": 4119.765076,
+   "median": 4101.167725,
+   "min": 4101.167725,
+   "max": 4101.167725,
    "unstable": false
   },
   {
@@ -1398,11 +1682,11 @@
    "name": "form 6, form 5 with the stores in chains / alt-k4 / fold busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    4186.205566
+    4167.837646
    ],
-   "median": 4186.205566,
-   "min": 4186.205566,
-   "max": 4186.205566,
+   "median": 4167.837646,
+   "min": 4167.837646,
+   "max": 4167.837646,
    "unstable": false
   },
   {
@@ -1410,11 +1694,11 @@
    "name": "form 6, form 5 with the stores in chains / alt-k4 / wait",
    "unit": "cycles a warp-window",
    "samples": [
-    2284.023315
+    2313.427155
    ],
-   "median": 2284.023315,
-   "min": 2284.023315,
-   "max": 2284.023315,
+   "median": 2313.427155,
+   "min": 2313.427155,
+   "max": 2313.427155,
    "unstable": false
   },
   {
@@ -1422,11 +1706,11 @@
    "name": "form 6, form 5 with the stores in chains / alt-k4 / wait busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    2486.10498
+    2510.739014
    ],
-   "median": 2486.10498,
-   "min": 2486.10498,
-   "max": 2486.10498,
+   "median": 2510.739014,
+   "min": 2510.739014,
+   "max": 2510.739014,
    "unstable": false
   },
   {
@@ -1434,53 +1718,53 @@
    "name": "form 5, form 4 with the fills' loads ahead / alt-k4",
    "unit": "us a launch, every clock off",
    "samples": [
-    541.696012,
-    542.72002,
-    542.72002,
-    540.672004,
-    541.696012,
-    541.696012,
-    542.72002
+    505.855978,
+    506.879985,
+    507.903993,
+    506.048024,
+    764.991999,
+    508.928001,
+    505.855978
    ],
-   "median": 541.696012,
-   "min": 540.672004,
-   "max": 542.72002,
-   "unstable": false
+   "median": 506.879985,
+   "min": 505.855978,
+   "max": 764.991999,
+   "unstable": true
   },
   {
    "lab": "result",
    "name": "form 5, form 4 with the fills' loads ahead / alt-k4 / span",
    "unit": "cycles a CTA-window, its span, every clock off",
    "samples": [
-    15603.386719,
-    15624.901367,
-    15636.631592,
-    15606.398682,
-    15623.392334,
-    15635.762207,
-    15612.804688
+    15221.751709,
+    15202.530762,
+    15214.969482,
+    15195.736084,
+    19528.15625,
+    15255.837646,
+    15189.126709
    ],
-   "median": 15623.392334,
-   "min": 15603.386719,
-   "max": 15636.631592,
-   "unstable": false
+   "median": 15214.969482,
+   "min": 15189.126709,
+   "max": 19528.15625,
+   "unstable": true
   },
   {
    "lab": "result",
    "name": "form 5, form 4 with the fills' loads ahead / alt-k4 / clocked",
    "unit": "cycles a CTA-window, its clock on",
    "samples": [
-    17456.219482,
-    17410.067383,
-    17410.701172,
-    17507.931885,
-    17533.967285,
-    17529.227783,
-    17443.520264
+    17050.405273,
+    17041.148682,
+    17122.681641,
+    17077.781006,
+    17053.416504,
+    17086.135254,
+    17043.020752
    ],
-   "median": 17456.219482,
-   "min": 17410.067383,
-   "max": 17533.967285,
+   "median": 17053.416504,
+   "min": 17041.148682,
+   "max": 17122.681641,
    "unstable": false
   },
   {
@@ -1488,17 +1772,17 @@
    "name": "form 5, form 4 with the fills' loads ahead / alt-k4 / clocked launch",
    "unit": "us a launch, its clock on",
    "samples": [
-    600.06398,
-    601.087987,
-    602.46402,
-    608.255982,
-    606.208026,
-    609.27999,
-    603.136003
+    566.27202,
+    565.248013,
+    568.319976,
+    566.27202,
+    566.27202,
+    567.296028,
+    566.27202
    ],
-   "median": 603.136003,
-   "min": 600.06398,
-   "max": 609.27999,
+   "median": 566.27202,
+   "min": 565.248013,
+   "max": 568.319976,
    "unstable": false
   },
   {
@@ -1506,11 +1790,11 @@
    "name": "form 5, form 4 with the fills' loads ahead / alt-k4 / landed",
    "unit": "cycles a warp-window",
    "samples": [
-    377.987457
+    202.728058
    ],
-   "median": 377.987457,
-   "min": 377.987457,
-   "max": 377.987457,
+   "median": 202.728058,
+   "min": 202.728058,
+   "max": 202.728058,
    "unstable": false
   },
   {
@@ -1518,11 +1802,11 @@
    "name": "form 5, form 4 with the fills' loads ahead / alt-k4 / landed busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    380.526123
+    205.228271
    ],
-   "median": 380.526123,
-   "min": 380.526123,
-   "max": 380.526123,
+   "median": 205.228271,
+   "min": 205.228271,
+   "max": 205.228271,
    "unstable": false
   },
   {
@@ -1530,11 +1814,11 @@
    "name": "form 5, form 4 with the fills' loads ahead / alt-k4 / maxima",
    "unit": "cycles a warp-window",
    "samples": [
-    1797.630615
+    1789.048309
    ],
-   "median": 1797.630615,
-   "min": 1797.630615,
-   "max": 1797.630615,
+   "median": 1789.048309,
+   "min": 1789.048309,
+   "max": 1789.048309,
    "unstable": false
   },
   {
@@ -1542,11 +1826,11 @@
    "name": "form 5, form 4 with the fills' loads ahead / alt-k4 / maxima busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    1848.720947
+    1839.509277
    ],
-   "median": 1848.720947,
-   "min": 1848.720947,
-   "max": 1848.720947,
+   "median": 1839.509277,
+   "min": 1839.509277,
+   "max": 1839.509277,
    "unstable": false
   },
   {
@@ -1554,11 +1838,11 @@
    "name": "form 5, form 4 with the fills' loads ahead / alt-k4 / store",
    "unit": "cycles a warp-window",
    "samples": [
-    2098.823517
+    2086.688812
    ],
-   "median": 2098.823517,
-   "min": 2098.823517,
-   "max": 2098.823517,
+   "median": 2086.688812,
+   "min": 2086.688812,
+   "max": 2086.688812,
    "unstable": false
   },
   {
@@ -1566,11 +1850,11 @@
    "name": "form 5, form 4 with the fills' loads ahead / alt-k4 / store busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    2136.058105
+    2112.972168
    ],
-   "median": 2136.058105,
-   "min": 2136.058105,
-   "max": 2136.058105,
+   "median": 2112.972168,
+   "min": 2112.972168,
+   "max": 2112.972168,
    "unstable": false
   },
   {
@@ -1578,11 +1862,11 @@
    "name": "form 5, form 4 with the fills' loads ahead / alt-k4 / readout",
    "unit": "cycles a warp-window",
    "samples": [
-    3154.328491
+    3153.930939
    ],
-   "median": 3154.328491,
-   "min": 3154.328491,
-   "max": 3154.328491,
+   "median": 3153.930939,
+   "min": 3153.930939,
+   "max": 3153.930939,
    "unstable": false
   },
   {
@@ -1590,11 +1874,11 @@
    "name": "form 5, form 4 with the fills' loads ahead / alt-k4 / readout busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    3228.29541
+    3228.372559
    ],
-   "median": 3228.29541,
-   "min": 3228.29541,
-   "max": 3228.29541,
+   "median": 3228.372559,
+   "min": 3228.372559,
+   "max": 3228.372559,
    "unstable": false
   },
   {
@@ -1626,11 +1910,11 @@
    "name": "form 5, form 4 with the fills' loads ahead / alt-k4 / fill",
    "unit": "cycles a warp-window",
    "samples": [
-    3685.531311
+    3589.887543
    ],
-   "median": 3685.531311,
-   "min": 3685.531311,
-   "max": 3685.531311,
+   "median": 3589.887543,
+   "min": 3589.887543,
+   "max": 3589.887543,
    "unstable": false
   },
   {
@@ -1638,11 +1922,11 @@
    "name": "form 5, form 4 with the fills' loads ahead / alt-k4 / fill busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    3766.568604
+    3668.661377
    ],
-   "median": 3766.568604,
-   "min": 3766.568604,
-   "max": 3766.568604,
+   "median": 3668.661377,
+   "min": 3668.661377,
+   "max": 3668.661377,
    "unstable": false
   },
   {
@@ -1650,11 +1934,11 @@
    "name": "form 5, form 4 with the fills' loads ahead / alt-k4 / fold",
    "unit": "cycles a warp-window",
    "samples": [
-    4142.026611
+    4098.324249
    ],
-   "median": 4142.026611,
-   "min": 4142.026611,
-   "max": 4142.026611,
+   "median": 4098.324249,
+   "min": 4098.324249,
+   "max": 4098.324249,
    "unstable": false
   },
   {
@@ -1662,11 +1946,11 @@
    "name": "form 5, form 4 with the fills' loads ahead / alt-k4 / fold busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    4231.753174
+    4184.868408
    ],
-   "median": 4231.753174,
-   "min": 4231.753174,
-   "max": 4231.753174,
+   "median": 4184.868408,
+   "min": 4184.868408,
+   "max": 4184.868408,
    "unstable": false
   },
   {
@@ -1674,11 +1958,11 @@
    "name": "form 5, form 4 with the fills' loads ahead / alt-k4 / wait",
    "unit": "cycles a warp-window",
    "samples": [
-    2166.086975
+    2107.171936
    ],
-   "median": 2166.086975,
-   "min": 2166.086975,
-   "max": 2166.086975,
+   "median": 2107.171936,
+   "min": 2107.171936,
+   "max": 2107.171936,
    "unstable": false
   },
   {
@@ -1686,11 +1970,275 @@
    "name": "form 5, form 4 with the fills' loads ahead / alt-k4 / wait busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    2325.519531
+    2259.858398
    ],
-   "median": 2325.519531,
-   "min": 2325.519531,
-   "max": 2325.519531,
+   "median": 2259.858398,
+   "min": 2259.858398,
+   "max": 2259.858398,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / thinned 1/16 / by windows / 1",
+   "unit": "us a launch, every clock off",
+   "samples": [
+    32.768,
+    31.744,
+    32.768,
+    32.992002,
+    31.808,
+    32.768,
+    31.744
+   ],
+   "median": 32.768,
+   "min": 31.744,
+   "max": 32.992002,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / thinned 1/16 / by windows / 2",
+   "unit": "us a launch, every clock off",
+   "samples": [
+    49.152002,
+    49.152002,
+    48.128001,
+    48.128001,
+    48.128001,
+    48.128001,
+    48.128001
+   ],
+   "median": 48.128001,
+   "min": 48.128001,
+   "max": 49.152002,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / thinned 1/16 / by windows / 4",
+   "unit": "us a launch, every clock off",
+   "samples": [
+    78.847997,
+    78.847997,
+    78.847997,
+    78.847997,
+    79.871997,
+    77.823997,
+    78.847997
+   ],
+   "median": 78.847997,
+   "min": 77.823997,
+   "max": 79.871997,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / thinned 1/16 / by windows / 8",
+   "unit": "us a launch, every clock off",
+   "samples": [
+    140.287995,
+    140.287995,
+    140.287995,
+    140.287995,
+    140.256003,
+    140.287995,
+    139.487997
+   ],
+   "median": 140.287995,
+   "min": 139.487997,
+   "max": 140.287995,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / thinned 1/16 / by windows / 16",
+   "unit": "us a launch, every clock off",
+   "samples": [
+    264.160007,
+    262.143999,
+    263.168007,
+    262.335986,
+    262.143999,
+    262.143999,
+    263.168007
+   ],
+   "median": 262.335986,
+   "min": 262.143999,
+   "max": 264.160007,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / thinned 1/16 / by windows / 32",
+   "unit": "us a launch, every clock off",
+   "samples": [
+    509.952009,
+    510.976017,
+    510.176003,
+    508.928001,
+    510.976017,
+    509.952009,
+    507.968009
+   ],
+   "median": 509.952009,
+   "min": 507.968009,
+   "max": 510.976017,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / thinned 1/16 / by windows / fixed",
+   "unit": "us a call, the line's intercept",
+   "samples": [
+    17.179698
+   ],
+   "median": 17.179698,
+   "min": 17.179698,
+   "max": 17.179698,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the production kernel / thinned 1/16 / by windows / a window",
+   "unit": "us a window, the line's slope",
+   "samples": [
+    15.384791
+   ],
+   "median": 15.384791,
+   "min": 15.384791,
+   "max": 15.384791,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 6, form 5 with the stores in chains / thinned 1/16 / by windows / 1",
+   "unit": "us a launch, every clock off",
+   "samples": [
+    19.455999,
+    19.200001,
+    18.432001,
+    19.455999,
+    19.455999,
+    19.455999,
+    19.455999
+   ],
+   "median": 19.455999,
+   "min": 18.432001,
+   "max": 19.455999,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "form 6, form 5 with the stores in chains / thinned 1/16 / by windows / 2",
+   "unit": "us a launch, every clock off",
+   "samples": [
+    30.719999,
+    29.696001,
+    29.696001,
+    29.824,
+    30.719999,
+    30.719999,
+    30.719999
+   ],
+   "median": 30.719999,
+   "min": 29.696001,
+   "max": 30.719999,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 6, form 5 with the stores in chains / thinned 1/16 / by windows / 4",
+   "unit": "us a launch, every clock off",
+   "samples": [
+    51.199999,
+    52.223999,
+    51.968001,
+    52.223999,
+    51.199999,
+    52.223999,
+    52.223999
+   ],
+   "median": 52.223999,
+   "min": 51.199999,
+   "max": 52.223999,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 6, form 5 with the stores in chains / thinned 1/16 / by windows / 8",
+   "unit": "us a launch, every clock off",
+   "samples": [
+    95.232002,
+    95.232002,
+    95.232002,
+    94.208002,
+    95.232002,
+    95.232002,
+    94.208002
+   ],
+   "median": 95.232002,
+   "min": 94.208002,
+   "max": 95.232002,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 6, form 5 with the stores in chains / thinned 1/16 / by windows / 16",
+   "unit": "us a launch, every clock off",
+   "samples": [
+    182.272002,
+    182.047993,
+    182.272002,
+    181.472003,
+    182.047993,
+    181.247994,
+    181.952
+   ],
+   "median": 182.047993,
+   "min": 181.247994,
+   "max": 182.272002,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 6, form 5 with the stores in chains / thinned 1/16 / by windows / 32",
+   "unit": "us a launch, every clock off",
+   "samples": [
+    359.423995,
+    359.423995,
+    358.399987,
+    358.624011,
+    358.399987,
+    359.423995,
+    359.423995
+   ],
+   "median": 359.423995,
+   "min": 358.399987,
+   "max": 359.423995,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 6, form 5 with the stores in chains / thinned 1/16 / by windows / fixed",
+   "unit": "us a call, the line's intercept",
+   "samples": [
+    8.178149
+   ],
+   "median": 8.178149,
+   "min": 8.178149,
+   "max": 8.178149,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "form 6, form 5 with the stores in chains / thinned 1/16 / by windows / a window",
+   "unit": "us a window, the line's slope",
+   "samples": [
+    10.952938
+   ],
+   "median": 10.952938,
+   "min": 10.952938,
+   "max": 10.952938,
    "unstable": false
   },
   {
@@ -1698,17 +2246,17 @@
    "name": "the production kernel / thinned 1/16",
    "unit": "us a launch, every clock off",
    "samples": [
-    550.912023,
-    550.912023,
-    548.864007,
-    551.072001,
-    549.888015,
-    548.864007,
-    549.888015
+    508.928001,
+    509.952009,
+    508.032024,
+    507.903993,
+    509.952009,
+    508.928001,
+    508.928001
    ],
-   "median": 549.888015,
-   "min": 548.864007,
-   "max": 551.072001,
+   "median": 508.928001,
+   "min": 507.903993,
+   "max": 509.952009,
    "unstable": false
   },
   {
@@ -1716,17 +2264,17 @@
    "name": "the production kernel / thinned 1/16 / clocked",
    "unit": "cycles a CTA-window, its clock on",
    "samples": [
-    18514.549316,
-    18493.787354,
-    18490.001221,
-    18518.070801,
-    18507.905029,
-    18487.893799,
-    18508.618896
+    18205.490479,
+    18210.086914,
+    18210.920654,
+    18210.212402,
+    18208.220215,
+    18206.190186,
+    18209.539795
    ],
-   "median": 18507.905029,
-   "min": 18487.893799,
-   "max": 18518.070801,
+   "median": 18209.539795,
+   "min": 18205.490479,
+   "max": 18210.920654,
    "unstable": false
   },
   {
@@ -1734,17 +2282,17 @@
    "name": "the production kernel / thinned 1/16 / clocked launch",
    "unit": "us a launch, its clock on",
    "samples": [
-    653.312027,
-    651.264012,
-    651.264012,
-    653.312027,
-    652.28802,
-    650.528014,
-    652.28802
+    611.328006,
+    611.328006,
+    611.328006,
+    611.328006,
+    611.328006,
+    612.352014,
+    611.328006
    ],
-   "median": 652.28802,
-   "min": 650.528014,
-   "max": 653.312027,
+   "median": 611.328006,
+   "min": 611.328006,
+   "max": 612.352014,
    "unstable": false
   },
   {
@@ -1752,11 +2300,11 @@
    "name": "the production kernel / thinned 1/16 / landed",
    "unit": "cycles a warp-window",
    "samples": [
-    3378.095459
+    3212.057343
    ],
-   "median": 3378.095459,
-   "min": 3378.095459,
-   "max": 3378.095459,
+   "median": 3212.057343,
+   "min": 3212.057343,
+   "max": 3212.057343,
    "unstable": false
   },
   {
@@ -1764,11 +2312,11 @@
    "name": "the production kernel / thinned 1/16 / landed busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    3441.056885
+    3290.568115
    ],
-   "median": 3441.056885,
-   "min": 3441.056885,
-   "max": 3441.056885,
+   "median": 3290.568115,
+   "min": 3290.568115,
+   "max": 3290.568115,
    "unstable": false
   },
   {
@@ -1776,11 +2324,11 @@
    "name": "the production kernel / thinned 1/16 / maxima",
    "unit": "cycles a warp-window",
    "samples": [
-    1802.130066
+    1799.943207
    ],
-   "median": 1802.130066,
-   "min": 1802.130066,
-   "max": 1802.130066,
+   "median": 1799.943207,
+   "min": 1799.943207,
+   "max": 1799.943207,
    "unstable": false
   },
   {
@@ -1788,11 +2336,11 @@
    "name": "the production kernel / thinned 1/16 / maxima busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    1862.793457
+    1861.923584
    ],
-   "median": 1862.793457,
-   "min": 1862.793457,
-   "max": 1862.793457,
+   "median": 1861.923584,
+   "min": 1861.923584,
+   "max": 1861.923584,
    "unstable": false
   },
   {
@@ -1800,11 +2348,11 @@
    "name": "the production kernel / thinned 1/16 / store",
    "unit": "cycles a warp-window",
    "samples": [
-    2227.889862
+    2180.843475
    ],
-   "median": 2227.889862,
-   "min": 2227.889862,
-   "max": 2227.889862,
+   "median": 2180.843475,
+   "min": 2180.843475,
+   "max": 2180.843475,
    "unstable": false
   },
   {
@@ -1812,11 +2360,11 @@
    "name": "the production kernel / thinned 1/16 / store busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    2285.868652
+    2284.064697
    ],
-   "median": 2285.868652,
-   "min": 2285.868652,
-   "max": 2285.868652,
+   "median": 2284.064697,
+   "min": 2284.064697,
+   "max": 2284.064697,
    "unstable": false
   },
   {
@@ -1824,11 +2372,11 @@
    "name": "the production kernel / thinned 1/16 / readout",
    "unit": "cycles a warp-window",
    "samples": [
-    2084.014771
+    2049.201385
    ],
-   "median": 2084.014771,
-   "min": 2084.014771,
-   "max": 2084.014771,
+   "median": 2049.201385,
+   "min": 2049.201385,
+   "max": 2049.201385,
    "unstable": false
   },
   {
@@ -1836,11 +2384,11 @@
    "name": "the production kernel / thinned 1/16 / readout busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    2190.628418
+    2163.644287
    ],
-   "median": 2190.628418,
-   "min": 2190.628418,
-   "max": 2190.628418,
+   "median": 2163.644287,
+   "min": 2163.644287,
+   "max": 2163.644287,
    "unstable": false
   },
   {
@@ -1848,11 +2396,11 @@
    "name": "the production kernel / thinned 1/16 / drain",
    "unit": "cycles a warp-window",
    "samples": [
-    696.384857
+    688.316681
    ],
-   "median": 696.384857,
-   "min": 696.384857,
-   "max": 696.384857,
+   "median": 688.316681,
+   "min": 688.316681,
+   "max": 688.316681,
    "unstable": false
   },
   {
@@ -1860,11 +2408,11 @@
    "name": "the production kernel / thinned 1/16 / drain busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    709.802246
+    701.481445
    ],
-   "median": 709.802246,
-   "min": 709.802246,
-   "max": 709.802246,
+   "median": 701.481445,
+   "min": 701.481445,
+   "max": 701.481445,
    "unstable": false
   },
   {
@@ -1872,11 +2420,11 @@
    "name": "the production kernel / thinned 1/16 / fill",
    "unit": "cycles a warp-window",
    "samples": [
-    2683.87265
+    2678.716614
    ],
-   "median": 2683.87265,
-   "min": 2683.87265,
-   "max": 2683.87265,
+   "median": 2678.716614,
+   "min": 2678.716614,
+   "max": 2678.716614,
    "unstable": false
   },
   {
@@ -1884,11 +2432,11 @@
    "name": "the production kernel / thinned 1/16 / fill busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    2851.55835
+    2849.39917
    ],
-   "median": 2851.55835,
-   "min": 2851.55835,
-   "max": 2851.55835,
+   "median": 2849.39917,
+   "min": 2849.39917,
+   "max": 2849.39917,
    "unstable": false
   },
   {
@@ -1896,11 +2444,11 @@
    "name": "the production kernel / thinned 1/16 / fold",
    "unit": "cycles a warp-window",
    "samples": [
-    2581.245972
+    2567.281525
    ],
-   "median": 2581.245972,
-   "min": 2581.245972,
-   "max": 2581.245972,
+   "median": 2567.281525,
+   "min": 2567.281525,
+   "max": 2567.281525,
    "unstable": false
   },
   {
@@ -1908,11 +2456,11 @@
    "name": "the production kernel / thinned 1/16 / fold busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    2652.973145
+    2639.789307
    ],
-   "median": 2652.973145,
-   "min": 2652.973145,
-   "max": 2652.973145,
+   "median": 2639.789307,
+   "min": 2639.789307,
+   "max": 2639.789307,
    "unstable": false
   },
   {
@@ -1920,11 +2468,11 @@
    "name": "the production kernel / thinned 1/16 / wait",
    "unit": "cycles a warp-window",
    "samples": [
-    3043.661865
+    3021.959839
    ],
-   "median": 3043.661865,
-   "min": 3043.661865,
-   "max": 3043.661865,
+   "median": 3021.959839,
+   "min": 3021.959839,
+   "max": 3021.959839,
    "unstable": false
   },
   {
@@ -1932,11 +2480,11 @@
    "name": "the production kernel / thinned 1/16 / wait busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    3173.779541
+    3169.708496
    ],
-   "median": 3173.779541,
-   "min": 3173.779541,
-   "max": 3173.779541,
+   "median": 3169.708496,
+   "min": 3169.708496,
+   "max": 3169.708496,
    "unstable": false
   },
   {
@@ -1944,17 +2492,17 @@
    "name": "form 1, option A by hand / thinned 1/16",
    "unit": "us a launch, every clock off",
    "samples": [
-    416.768014,
-    416.768014,
-    415.744007,
-    417.791992,
-    416.768014,
-    417.791992,
-    416.768014
+    376.832008,
+    376.928002,
+    376.832008,
+    375.808001,
+    376.832008,
+    377.855986,
+    375.808001
    ],
-   "median": 416.768014,
-   "min": 415.744007,
-   "max": 417.791992,
+   "median": 376.832008,
+   "min": 375.808001,
+   "max": 377.855986,
    "unstable": false
   },
   {
@@ -1962,17 +2510,17 @@
    "name": "form 1, option A by hand / thinned 1/16 / span",
    "unit": "cycles a CTA-window, its span, every clock off",
    "samples": [
-    11601.958008,
-    11610.493164,
-    11599.961914,
-    11614.864014,
-    11624.304199,
-    11626.603271,
-    11619.811523
+    11244.784424,
+    11251.18335,
+    11250.86499,
+    11246.30249,
+    11242.875,
+    11245.142822,
+    11250.431641
    ],
-   "median": 11614.864014,
-   "min": 11599.961914,
-   "max": 11626.603271,
+   "median": 11246.30249,
+   "min": 11242.875,
+   "max": 11251.18335,
    "unstable": false
   },
   {
@@ -1980,17 +2528,17 @@
    "name": "form 1, option A by hand / thinned 1/16 / clocked",
    "unit": "cycles a CTA-window, its clock on",
    "samples": [
-    13573.99707,
-    13572.229492,
-    13579.838623,
-    13581.125,
-    13581.870605,
-    13573.368164,
-    13579.969971
+    13231.594727,
+    13234.501465,
+    13363.947998,
+    13364.638916,
+    13234.103027,
+    13233.358154,
+    13235.201172
    ],
-   "median": 13579.838623,
-   "min": 13572.229492,
-   "max": 13581.870605,
+   "median": 13234.501465,
+   "min": 13231.594727,
+   "max": 13364.638916,
    "unstable": false
   },
   {
@@ -1998,17 +2546,17 @@
    "name": "form 1, option A by hand / thinned 1/16 / clocked launch",
    "unit": "us a launch, its clock on",
    "samples": [
-    478.495985,
-    480.255991,
-    479.232013,
-    480.255991,
-    480.255991,
-    480.255991,
-    480.255991
+    441.343993,
+    441.343993,
+    445.439994,
+    445.760012,
+    440.319985,
+    442.368001,
+    441.343993
    ],
-   "median": 480.255991,
-   "min": 478.495985,
-   "max": 480.255991,
+   "median": 441.343993,
+   "min": 440.319985,
+   "max": 445.760012,
    "unstable": false
   },
   {
@@ -2016,11 +2564,11 @@
    "name": "form 1, option A by hand / thinned 1/16 / landed",
    "unit": "cycles a warp-window",
    "samples": [
-    1152.16629
+    787.047668
    ],
-   "median": 1152.16629,
-   "min": 1152.16629,
-   "max": 1152.16629,
+   "median": 787.047668,
+   "min": 787.047668,
+   "max": 787.047668,
    "unstable": false
   },
   {
@@ -2028,11 +2576,11 @@
    "name": "form 1, option A by hand / thinned 1/16 / landed busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    1281.446045
+    910.16333
    ],
-   "median": 1281.446045,
-   "min": 1281.446045,
-   "max": 1281.446045,
+   "median": 910.16333,
+   "min": 910.16333,
+   "max": 910.16333,
    "unstable": false
   },
   {
@@ -2040,11 +2588,11 @@
    "name": "form 1, option A by hand / thinned 1/16 / maxima",
    "unit": "cycles a warp-window",
    "samples": [
-    1922.952667
+    1916.098816
    ],
-   "median": 1922.952667,
-   "min": 1922.952667,
-   "max": 1922.952667,
+   "median": 1916.098816,
+   "min": 1916.098816,
+   "max": 1916.098816,
    "unstable": false
   },
   {
@@ -2052,11 +2600,11 @@
    "name": "form 1, option A by hand / thinned 1/16 / maxima busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    1981.702637
+    1971.836182
    ],
-   "median": 1981.702637,
-   "min": 1981.702637,
-   "max": 1981.702637,
+   "median": 1971.836182,
+   "min": 1971.836182,
+   "max": 1971.836182,
    "unstable": false
   },
   {
@@ -2064,11 +2612,11 @@
    "name": "form 1, option A by hand / thinned 1/16 / store",
    "unit": "cycles a warp-window",
    "samples": [
-    2116.664764
+    2113.774506
    ],
-   "median": 2116.664764,
-   "min": 2116.664764,
-   "max": 2116.664764,
+   "median": 2113.774506,
+   "min": 2113.774506,
+   "max": 2113.774506,
    "unstable": false
   },
   {
@@ -2076,11 +2624,11 @@
    "name": "form 1, option A by hand / thinned 1/16 / store busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    2145.572754
+    2153.413574
    ],
-   "median": 2145.572754,
-   "min": 2145.572754,
-   "max": 2145.572754,
+   "median": 2153.413574,
+   "min": 2153.413574,
+   "max": 2153.413574,
    "unstable": false
   },
   {
@@ -2088,11 +2636,11 @@
    "name": "form 1, option A by hand / thinned 1/16 / readout",
    "unit": "cycles a warp-window",
    "samples": [
-    2034.899597
+    2034.863434
    ],
-   "median": 2034.899597,
-   "min": 2034.899597,
-   "max": 2034.899597,
+   "median": 2034.863434,
+   "min": 2034.863434,
+   "max": 2034.863434,
    "unstable": false
   },
   {
@@ -2100,11 +2648,11 @@
    "name": "form 1, option A by hand / thinned 1/16 / readout busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    2164.15918
+    2171.025146
    ],
-   "median": 2164.15918,
-   "min": 2164.15918,
-   "max": 2164.15918,
+   "median": 2171.025146,
+   "min": 2171.025146,
+   "max": 2171.025146,
    "unstable": false
   },
   {
@@ -2112,11 +2660,11 @@
    "name": "form 1, option A by hand / thinned 1/16 / drain",
    "unit": "cycles a warp-window",
    "samples": [
-    381.906891
+    381.537628
    ],
-   "median": 381.906891,
-   "min": 381.906891,
-   "max": 381.906891,
+   "median": 381.537628,
+   "min": 381.537628,
+   "max": 381.537628,
    "unstable": false
   },
   {
@@ -2124,11 +2672,11 @@
    "name": "form 1, option A by hand / thinned 1/16 / drain busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    389.768066
+    389.423828
    ],
-   "median": 389.768066,
-   "min": 389.768066,
-   "max": 389.768066,
+   "median": 389.423828,
+   "min": 389.423828,
+   "max": 389.423828,
    "unstable": false
   },
   {
@@ -2136,11 +2684,11 @@
    "name": "form 1, option A by hand / thinned 1/16 / fill",
    "unit": "cycles a warp-window",
    "samples": [
-    2364.748474
+    2394.284912
    ],
-   "median": 2364.748474,
-   "min": 2364.748474,
-   "max": 2364.748474,
+   "median": 2394.284912,
+   "min": 2394.284912,
+   "max": 2394.284912,
    "unstable": false
   },
   {
@@ -2148,11 +2696,11 @@
    "name": "form 1, option A by hand / thinned 1/16 / fill busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    2585.591309
+    2600.549561
    ],
-   "median": 2585.591309,
-   "min": 2585.591309,
-   "max": 2585.591309,
+   "median": 2600.549561,
+   "min": 2600.549561,
+   "max": 2600.549561,
    "unstable": false
   },
   {
@@ -2160,11 +2708,11 @@
    "name": "form 1, option A by hand / thinned 1/16 / fold",
    "unit": "cycles a warp-window",
    "samples": [
-    1822.471344
+    1819.176666
    ],
-   "median": 1822.471344,
-   "min": 1822.471344,
-   "max": 1822.471344,
+   "median": 1819.176666,
+   "min": 1819.176666,
+   "max": 1819.176666,
    "unstable": false
   },
   {
@@ -2172,11 +2720,11 @@
    "name": "form 1, option A by hand / thinned 1/16 / fold busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    1904.082275
+    1903.156982
    ],
-   "median": 1904.082275,
-   "min": 1904.082275,
-   "max": 1904.082275,
+   "median": 1903.156982,
+   "min": 1903.156982,
+   "max": 1903.156982,
    "unstable": false
   },
   {
@@ -2184,11 +2732,11 @@
    "name": "form 1, option A by hand / thinned 1/16 / wait",
    "unit": "cycles a warp-window",
    "samples": [
-    1766.13681
+    1770.345978
    ],
-   "median": 1766.13681,
-   "min": 1766.13681,
-   "max": 1766.13681,
+   "median": 1770.345978,
+   "min": 1770.345978,
+   "max": 1770.345978,
    "unstable": false
   },
   {
@@ -2196,11 +2744,11 @@
    "name": "form 1, option A by hand / thinned 1/16 / wait busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    2019.790283
+    2026.728271
    ],
-   "median": 2019.790283,
-   "min": 2019.790283,
-   "max": 2019.790283,
+   "median": 2026.728271,
+   "min": 2026.728271,
+   "max": 2026.728271,
    "unstable": false
   },
   {
@@ -2208,17 +2756,17 @@
    "name": "form 3, A with the next rows under the fold / thinned 1/16",
    "unit": "us a launch, every clock off",
    "samples": [
-    430.079997,
-    430.079997,
-    430.079997,
-    435.200006,
-    429.055989,
-    436.224014,
-    428.223997
+    388.096005,
+    387.071997,
+    387.16799,
+    387.071997,
+    387.071997,
+    388.096005,
+    388.096005
    ],
-   "median": 430.079997,
-   "min": 428.223997,
-   "max": 436.224014,
+   "median": 387.16799,
+   "min": 387.071997,
+   "max": 388.096005,
    "unstable": false
   },
   {
@@ -2226,17 +2774,17 @@
    "name": "form 3, A with the next rows under the fold / thinned 1/16 / span",
    "unit": "cycles a CTA-window, its span, every clock off",
    "samples": [
-    11963.223145,
-    11997.634277,
-    11996.713379,
-    12119.810059,
-    11955.979736,
-    12135.10498,
-    11995.038086
+    11574.914795,
+    11570.780273,
+    11573.19165,
+    11575.691162,
+    11577.723389,
+    11579.951416,
+    11580.288574
    ],
-   "median": 11996.713379,
-   "min": 11955.979736,
-   "max": 12135.10498,
+   "median": 11575.691162,
+   "min": 11570.780273,
+   "max": 11580.288574,
    "unstable": false
   },
   {
@@ -2244,17 +2792,17 @@
    "name": "form 3, A with the next rows under the fold / thinned 1/16 / clocked",
    "unit": "cycles a CTA-window, its clock on",
    "samples": [
-    13887.029297,
-    13882.167236,
-    13880.962891,
-    13890.016602,
-    13892.663086,
-    13896.493652,
-    13879.702393
+    13613.18457,
+    13605.644531,
+    13609.477051,
+    13609.065674,
+    13606.26416,
+    13606.59375,
+    13608.318115
    ],
-   "median": 13887.029297,
-   "min": 13879.702393,
-   "max": 13896.493652,
+   "median": 13608.318115,
+   "min": 13605.644531,
+   "max": 13613.18457,
    "unstable": false
   },
   {
@@ -2262,17 +2810,17 @@
    "name": "form 3, A with the next rows under the fold / thinned 1/16 / clocked launch",
    "unit": "us a launch, its clock on",
    "samples": [
-    489.472002,
-    490.49601,
-    489.472002,
-    491.519988,
-    490.49601,
-    491.519988,
-    490.49601
+    454.656005,
+    454.656005,
+    453.631997,
+    454.656005,
+    453.631997,
+    454.751998,
+    453.631997
    ],
-   "median": 490.49601,
-   "min": 489.472002,
-   "max": 491.519988,
+   "median": 454.656005,
+   "min": 453.631997,
+   "max": 454.751998,
    "unstable": false
   },
   {
@@ -2280,11 +2828,11 @@
    "name": "form 3, A with the next rows under the fold / thinned 1/16 / landed",
    "unit": "cycles a warp-window",
    "samples": [
-    1102.901703
+    780.504944
    ],
-   "median": 1102.901703,
-   "min": 1102.901703,
-   "max": 1102.901703,
+   "median": 780.504944,
+   "min": 780.504944,
+   "max": 780.504944,
    "unstable": false
   },
   {
@@ -2292,11 +2840,11 @@
    "name": "form 3, A with the next rows under the fold / thinned 1/16 / landed busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    1216.999023
+    894.170654
    ],
-   "median": 1216.999023,
-   "min": 1216.999023,
-   "max": 1216.999023,
+   "median": 894.170654,
+   "min": 894.170654,
+   "max": 894.170654,
    "unstable": false
   },
   {
@@ -2304,11 +2852,11 @@
    "name": "form 3, A with the next rows under the fold / thinned 1/16 / maxima",
    "unit": "cycles a warp-window",
    "samples": [
-    1910.860229
+    1912.227539
    ],
-   "median": 1910.860229,
-   "min": 1910.860229,
-   "max": 1910.860229,
+   "median": 1912.227539,
+   "min": 1912.227539,
+   "max": 1912.227539,
    "unstable": false
   },
   {
@@ -2316,11 +2864,11 @@
    "name": "form 3, A with the next rows under the fold / thinned 1/16 / maxima busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    1983.332764
+    1981.812744
    ],
-   "median": 1983.332764,
-   "min": 1983.332764,
-   "max": 1983.332764,
+   "median": 1981.812744,
+   "min": 1981.812744,
+   "max": 1981.812744,
    "unstable": false
   },
   {
@@ -2328,11 +2876,11 @@
    "name": "form 3, A with the next rows under the fold / thinned 1/16 / store",
    "unit": "cycles a warp-window",
    "samples": [
-    2106.887817
+    2118.709045
    ],
-   "median": 2106.887817,
-   "min": 2106.887817,
-   "max": 2106.887817,
+   "median": 2118.709045,
+   "min": 2118.709045,
+   "max": 2118.709045,
    "unstable": false
   },
   {
@@ -2340,11 +2888,11 @@
    "name": "form 3, A with the next rows under the fold / thinned 1/16 / store busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    2141.511963
+    2153.250244
    ],
-   "median": 2141.511963,
-   "min": 2141.511963,
-   "max": 2141.511963,
+   "median": 2153.250244,
+   "min": 2153.250244,
+   "max": 2153.250244,
    "unstable": false
   },
   {
@@ -2352,11 +2900,11 @@
    "name": "form 3, A with the next rows under the fold / thinned 1/16 / readout",
    "unit": "cycles a warp-window",
    "samples": [
-    2034.943451
+    2044.860321
    ],
-   "median": 2034.943451,
-   "min": 2034.943451,
-   "max": 2034.943451,
+   "median": 2044.860321,
+   "min": 2044.860321,
+   "max": 2044.860321,
    "unstable": false
   },
   {
@@ -2364,11 +2912,11 @@
    "name": "form 3, A with the next rows under the fold / thinned 1/16 / readout busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    2176.638184
+    2178.389648
    ],
-   "median": 2176.638184,
-   "min": 2176.638184,
-   "max": 2176.638184,
+   "median": 2178.389648,
+   "min": 2178.389648,
+   "max": 2178.389648,
    "unstable": false
   },
   {
@@ -2376,11 +2924,11 @@
    "name": "form 3, A with the next rows under the fold / thinned 1/16 / drain",
    "unit": "cycles a warp-window",
    "samples": [
-    392.280609
+    394.709015
    ],
-   "median": 392.280609,
-   "min": 392.280609,
-   "max": 392.280609,
+   "median": 394.709015,
+   "min": 394.709015,
+   "max": 394.709015,
    "unstable": false
   },
   {
@@ -2388,11 +2936,11 @@
    "name": "form 3, A with the next rows under the fold / thinned 1/16 / drain busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    399.903809
+    402.130615
    ],
-   "median": 399.903809,
-   "min": 399.903809,
-   "max": 399.903809,
+   "median": 402.130615,
+   "min": 402.130615,
+   "max": 402.130615,
    "unstable": false
   },
   {
@@ -2400,11 +2948,11 @@
    "name": "form 3, A with the next rows under the fold / thinned 1/16 / fill",
    "unit": "cycles a warp-window",
    "samples": [
-    2181.107819
+    2172.688507
    ],
-   "median": 2181.107819,
-   "min": 2181.107819,
-   "max": 2181.107819,
+   "median": 2172.688507,
+   "min": 2172.688507,
+   "max": 2172.688507,
    "unstable": false
   },
   {
@@ -2412,11 +2960,11 @@
    "name": "form 3, A with the next rows under the fold / thinned 1/16 / fill busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    2295.426025
+    2282.933594
    ],
-   "median": 2295.426025,
-   "min": 2295.426025,
-   "max": 2295.426025,
+   "median": 2282.933594,
+   "min": 2282.933594,
+   "max": 2282.933594,
    "unstable": false
   },
   {
@@ -2424,11 +2972,11 @@
    "name": "form 3, A with the next rows under the fold / thinned 1/16 / fold",
    "unit": "cycles a warp-window",
    "samples": [
-    2369.836639
+    2395.539124
    ],
-   "median": 2369.836639,
-   "min": 2369.836639,
-   "max": 2369.836639,
+   "median": 2395.539124,
+   "min": 2395.539124,
+   "max": 2395.539124,
    "unstable": false
   },
   {
@@ -2436,11 +2984,11 @@
    "name": "form 3, A with the next rows under the fold / thinned 1/16 / fold busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    2551.616211
+    2571.456787
    ],
-   "median": 2551.616211,
-   "min": 2551.616211,
-   "max": 2551.616211,
+   "median": 2571.456787,
+   "min": 2571.456787,
+   "max": 2571.456787,
    "unstable": false
   },
   {
@@ -2448,11 +2996,11 @@
    "name": "form 3, A with the next rows under the fold / thinned 1/16 / wait",
    "unit": "cycles a warp-window",
    "samples": [
-    1763.080658
+    1771.13031
    ],
-   "median": 1763.080658,
-   "min": 1763.080658,
-   "max": 1763.080658,
+   "median": 1771.13031,
+   "min": 1771.13031,
+   "max": 1771.13031,
    "unstable": false
   },
   {
@@ -2460,11 +3008,11 @@
    "name": "form 3, A with the next rows under the fold / thinned 1/16 / wait busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    2011.542969
+    2016.408691
    ],
-   "median": 2011.542969,
-   "min": 2011.542969,
-   "max": 2011.542969,
+   "median": 2016.408691,
+   "min": 2016.408691,
+   "max": 2016.408691,
    "unstable": false
   },
   {
@@ -2472,17 +3020,17 @@
    "name": "form 4, A with the read buffer at the top, the drain in the fold / thinned 1/16",
    "unit": "us a launch, every clock off",
    "samples": [
-    414.719999,
-    414.719999,
-    416.768014,
-    414.719999,
-    416.768014,
-    415.744007,
-    413.695991
+    373.760015,
+    372.736007,
+    373.760015,
+    372.736007,
+    372.736007,
+    373.760015,
+    373.760015
    ],
-   "median": 414.719999,
-   "min": 413.695991,
-   "max": 416.768014,
+   "median": 373.760015,
+   "min": 372.736007,
+   "max": 373.760015,
    "unstable": false
   },
   {
@@ -2490,17 +3038,17 @@
    "name": "form 4, A with the read buffer at the top, the drain in the fold / thinned 1/16 / span",
    "unit": "cycles a CTA-window, its span, every clock off",
    "samples": [
-    11490.9021,
-    11506.652832,
-    11469.600098,
-    11504.85083,
-    11485.325928,
-    11496.567383,
-    11511.786377
+    11150.839111,
+    11151.917969,
+    11154.698242,
+    11149.536865,
+    11151.64502,
+    11155.914795,
+    11157.204346
    ],
-   "median": 11496.567383,
-   "min": 11469.600098,
-   "max": 11511.786377,
+   "median": 11151.917969,
+   "min": 11149.536865,
+   "max": 11157.204346,
    "unstable": false
   },
   {
@@ -2508,17 +3056,17 @@
    "name": "form 4, A with the read buffer at the top, the drain in the fold / thinned 1/16 / clocked",
    "unit": "cycles a CTA-window, its clock on",
    "samples": [
-    13331.862305,
-    13344.309814,
-    13324.211426,
-    13349.331299,
-    13342.150879,
-    13358.069824,
-    13351.252441
+    12985.497803,
+    12984.65625,
+    12980.378418,
+    12985.355469,
+    12983.820068,
+    12982.696777,
+    12983.953369
    ],
-   "median": 13344.309814,
-   "min": 13324.211426,
-   "max": 13358.069824,
+   "median": 12983.953369,
+   "min": 12980.378418,
+   "max": 12985.497803,
    "unstable": false
   },
   {
@@ -2526,17 +3074,17 @@
    "name": "form 4, A with the read buffer at the top, the drain in the fold / thinned 1/16 / clocked launch",
    "unit": "us a launch, its clock on",
    "samples": [
-    473.343998,
-    473.087996,
-    473.120004,
-    474.112004,
-    473.087996,
-    475.136012,
-    474.112004
+    433.15199,
+    433.15199,
+    433.15199,
+    433.15199,
+    432.128012,
+    433.15199,
+    432.352006
    ],
-   "median": 473.343998,
-   "min": 473.087996,
-   "max": 475.136012,
+   "median": 433.15199,
+   "min": 432.128012,
+   "max": 433.15199,
    "unstable": false
   },
   {
@@ -2544,11 +3092,11 @@
    "name": "form 4, A with the read buffer at the top, the drain in the fold / thinned 1/16 / landed",
    "unit": "cycles a warp-window",
    "samples": [
-    483.396423
+    213.546844
    ],
-   "median": 483.396423,
-   "min": 483.396423,
-   "max": 483.396423,
+   "median": 213.546844,
+   "min": 213.546844,
+   "max": 213.546844,
    "unstable": false
   },
   {
@@ -2556,11 +3104,11 @@
    "name": "form 4, A with the read buffer at the top, the drain in the fold / thinned 1/16 / landed busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    487.385254
+    217.581543
    ],
-   "median": 487.385254,
-   "min": 487.385254,
-   "max": 487.385254,
+   "median": 217.581543,
+   "min": 217.581543,
+   "max": 217.581543,
    "unstable": false
   },
   {
@@ -2568,11 +3116,11 @@
    "name": "form 4, A with the read buffer at the top, the drain in the fold / thinned 1/16 / maxima",
    "unit": "cycles a warp-window",
    "samples": [
-    1897.634308
+    1860.142639
    ],
-   "median": 1897.634308,
-   "min": 1897.634308,
-   "max": 1897.634308,
+   "median": 1860.142639,
+   "min": 1860.142639,
+   "max": 1860.142639,
    "unstable": false
   },
   {
@@ -2580,11 +3128,11 @@
    "name": "form 4, A with the read buffer at the top, the drain in the fold / thinned 1/16 / maxima busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    1966.948242
+    1929.156982
    ],
-   "median": 1966.948242,
-   "min": 1966.948242,
-   "max": 1966.948242,
+   "median": 1929.156982,
+   "min": 1929.156982,
+   "max": 1929.156982,
    "unstable": false
   },
   {
@@ -2592,11 +3140,11 @@
    "name": "form 4, A with the read buffer at the top, the drain in the fold / thinned 1/16 / store",
    "unit": "cycles a warp-window",
    "samples": [
-    2195.066132
+    2153.520508
    ],
-   "median": 2195.066132,
-   "min": 2195.066132,
-   "max": 2195.066132,
+   "median": 2153.520508,
+   "min": 2153.520508,
+   "max": 2153.520508,
    "unstable": false
   },
   {
@@ -2604,11 +3152,11 @@
    "name": "form 4, A with the read buffer at the top, the drain in the fold / thinned 1/16 / store busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    2253.33252
+    2191.197021
    ],
-   "median": 2253.33252,
-   "min": 2253.33252,
-   "max": 2253.33252,
+   "median": 2191.197021,
+   "min": 2191.197021,
+   "max": 2191.197021,
    "unstable": false
   },
   {
@@ -2616,11 +3164,11 @@
    "name": "form 4, A with the read buffer at the top, the drain in the fold / thinned 1/16 / readout",
    "unit": "cycles a warp-window",
    "samples": [
-    2085.820282
+    2085.887512
    ],
-   "median": 2085.820282,
-   "min": 2085.820282,
-   "max": 2085.820282,
+   "median": 2085.887512,
+   "min": 2085.887512,
+   "max": 2085.887512,
    "unstable": false
   },
   {
@@ -2628,11 +3176,11 @@
    "name": "form 4, A with the read buffer at the top, the drain in the fold / thinned 1/16 / readout busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    2183.270264
+    2182.235596
    ],
-   "median": 2183.270264,
-   "min": 2183.270264,
-   "max": 2183.270264,
+   "median": 2182.235596,
+   "min": 2182.235596,
+   "max": 2182.235596,
    "unstable": false
   },
   {
@@ -2664,11 +3212,11 @@
    "name": "form 4, A with the read buffer at the top, the drain in the fold / thinned 1/16 / fill",
    "unit": "cycles a warp-window",
    "samples": [
-    2706.558472
+    2706.58548
    ],
-   "median": 2706.558472,
-   "min": 2706.558472,
-   "max": 2706.558472,
+   "median": 2706.58548,
+   "min": 2706.58548,
+   "max": 2706.58548,
    "unstable": false
   },
   {
@@ -2676,11 +3224,11 @@
    "name": "form 4, A with the read buffer at the top, the drain in the fold / thinned 1/16 / fill busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    2905.760986
+    2904.46875
    ],
-   "median": 2905.760986,
-   "min": 2905.760986,
-   "max": 2905.760986,
+   "median": 2904.46875,
+   "min": 2904.46875,
+   "max": 2904.46875,
    "unstable": false
   },
   {
@@ -2688,11 +3236,11 @@
    "name": "form 4, A with the read buffer at the top, the drain in the fold / thinned 1/16 / fold",
    "unit": "cycles a warp-window",
    "samples": [
-    1960.22757
+    1960.015656
    ],
-   "median": 1960.22757,
-   "min": 1960.22757,
-   "max": 1960.22757,
+   "median": 1960.015656,
+   "min": 1960.015656,
+   "max": 1960.015656,
    "unstable": false
   },
   {
@@ -2700,11 +3248,11 @@
    "name": "form 4, A with the read buffer at the top, the drain in the fold / thinned 1/16 / fold busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    2034.125732
+    2033.305176
    ],
-   "median": 2034.125732,
-   "min": 2034.125732,
-   "max": 2034.125732,
+   "median": 2033.305176,
+   "min": 2033.305176,
+   "max": 2033.305176,
    "unstable": false
   },
   {
@@ -2712,11 +3260,11 @@
    "name": "form 4, A with the read buffer at the top, the drain in the fold / thinned 1/16 / wait",
    "unit": "cycles a warp-window",
    "samples": [
-    2005.957458
+    1987.780853
    ],
-   "median": 2005.957458,
-   "min": 2005.957458,
-   "max": 2005.957458,
+   "median": 1987.780853,
+   "min": 1987.780853,
+   "max": 1987.780853,
    "unstable": false
   },
   {
@@ -2724,11 +3272,11 @@
    "name": "form 4, A with the read buffer at the top, the drain in the fold / thinned 1/16 / wait busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    2223.248779
+    2180.038574
    ],
-   "median": 2223.248779,
-   "min": 2223.248779,
-   "max": 2223.248779,
+   "median": 2180.038574,
+   "min": 2180.038574,
+   "max": 2180.038574,
    "unstable": false
   },
   {
@@ -2736,53 +3284,53 @@
    "name": "form 6, form 5 with the stores in chains / thinned 1/16",
    "unit": "us a launch, every clock off",
    "samples": [
-    400.384009,
-    401.407987,
-    402.431995,
-    400.384009,
-    403.456002,
-    402.431995,
-    402.431995
+    360.448003,
+    360.448003,
+    359.423995,
+    359.423995,
+    627.712011,
+    361.472011,
+    360.448003
    ],
-   "median": 402.431995,
-   "min": 400.384009,
-   "max": 403.456002,
-   "unstable": false
+   "median": 360.448003,
+   "min": 359.423995,
+   "max": 627.712011,
+   "unstable": true
   },
   {
    "lab": "result",
    "name": "form 6, form 5 with the stores in chains / thinned 1/16 / span",
    "unit": "cycles a CTA-window, its span, every clock off",
    "samples": [
-    11104.990967,
-    11103.453369,
-    11122.139648,
-    11104.430176,
-    11125.602539,
-    11135.645996,
-    11125.518799
+    10737.784912,
+    10739.223389,
+    10737.334473,
+    10729.908936,
+    16845.619141,
+    10734.461914,
+    10733.148438
    ],
-   "median": 11122.139648,
-   "min": 11103.453369,
-   "max": 11135.645996,
-   "unstable": false
+   "median": 10737.334473,
+   "min": 10729.908936,
+   "max": 16845.619141,
+   "unstable": true
   },
   {
    "lab": "result",
    "name": "form 6, form 5 with the stores in chains / thinned 1/16 / clocked",
    "unit": "cycles a CTA-window, its clock on",
    "samples": [
-    12874.337158,
-    12811.90332,
-    12851.435059,
-    12890.95874,
-    12844.50293,
-    12863.625244,
-    12839.541992
+    12505.071045,
+    12505.328613,
+    12502.334473,
+    12508.305176,
+    12503.825439,
+    12496.880127,
+    12506.934326
    ],
-   "median": 12851.435059,
-   "min": 12811.90332,
-   "max": 12890.95874,
+   "median": 12505.071045,
+   "min": 12496.880127,
+   "max": 12508.305176,
    "unstable": false
   },
   {
@@ -2790,17 +3338,17 @@
    "name": "form 6, form 5 with the stores in chains / thinned 1/16 / clocked launch",
    "unit": "us a launch, its clock on",
    "samples": [
-    458.752006,
-    462.848008,
-    457.727998,
-    461.919993,
-    458.752006,
-    458.976001,
-    458.752006
+    416.768014,
+    417.791992,
+    416.768014,
+    417.791992,
+    416.768014,
+    417.791992,
+    416.768014
    ],
-   "median": 458.752006,
-   "min": 457.727998,
-   "max": 462.848008,
+   "median": 416.768014,
+   "min": 416.768014,
+   "max": 417.791992,
    "unstable": false
   },
   {
@@ -2808,11 +3356,11 @@
    "name": "form 6, form 5 with the stores in chains / thinned 1/16 / landed",
    "unit": "cycles a warp-window",
    "samples": [
-    468.598724
+    213.347321
    ],
-   "median": 468.598724,
-   "min": 468.598724,
-   "max": 468.598724,
+   "median": 213.347321,
+   "min": 213.347321,
+   "max": 213.347321,
    "unstable": false
   },
   {
@@ -2820,11 +3368,11 @@
    "name": "form 6, form 5 with the stores in chains / thinned 1/16 / landed busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    472.240479
+    217.256348
    ],
-   "median": 472.240479,
-   "min": 472.240479,
-   "max": 472.240479,
+   "median": 217.256348,
+   "min": 217.256348,
+   "max": 217.256348,
    "unstable": false
   },
   {
@@ -2832,11 +3380,11 @@
    "name": "form 6, form 5 with the stores in chains / thinned 1/16 / maxima",
    "unit": "cycles a warp-window",
    "samples": [
-    1744.892578
+    1715.847565
    ],
-   "median": 1744.892578,
-   "min": 1744.892578,
-   "max": 1744.892578,
+   "median": 1715.847565,
+   "min": 1715.847565,
+   "max": 1715.847565,
    "unstable": false
   },
   {
@@ -2844,11 +3392,11 @@
    "name": "form 6, form 5 with the stores in chains / thinned 1/16 / maxima busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    1839.281006
+    1809.369141
    ],
-   "median": 1839.281006,
-   "min": 1839.281006,
-   "max": 1839.281006,
+   "median": 1809.369141,
+   "min": 1809.369141,
+   "max": 1809.369141,
    "unstable": false
   },
   {
@@ -2856,11 +3404,11 @@
    "name": "form 6, form 5 with the stores in chains / thinned 1/16 / store",
    "unit": "cycles a warp-window",
    "samples": [
-    1948.646759
+    1921.603821
    ],
-   "median": 1948.646759,
-   "min": 1948.646759,
-   "max": 1948.646759,
+   "median": 1921.603821,
+   "min": 1921.603821,
+   "max": 1921.603821,
    "unstable": false
   },
   {
@@ -2868,11 +3416,11 @@
    "name": "form 6, form 5 with the stores in chains / thinned 1/16 / store busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    2047.431641
+    2006.975098
    ],
-   "median": 2047.431641,
-   "min": 2047.431641,
-   "max": 2047.431641,
+   "median": 2006.975098,
+   "min": 2006.975098,
+   "max": 2006.975098,
    "unstable": false
   },
   {
@@ -2880,11 +3428,11 @@
    "name": "form 6, form 5 with the stores in chains / thinned 1/16 / readout",
    "unit": "cycles a warp-window",
    "samples": [
-    2030.546326
+    2030.136963
    ],
-   "median": 2030.546326,
-   "min": 2030.546326,
-   "max": 2030.546326,
+   "median": 2030.136963,
+   "min": 2030.136963,
+   "max": 2030.136963,
    "unstable": false
   },
   {
@@ -2892,11 +3440,11 @@
    "name": "form 6, form 5 with the stores in chains / thinned 1/16 / readout busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    2154.342773
+    2155.621338
    ],
-   "median": 2154.342773,
-   "min": 2154.342773,
-   "max": 2154.342773,
+   "median": 2155.621338,
+   "min": 2155.621338,
+   "max": 2155.621338,
    "unstable": false
   },
   {
@@ -2928,11 +3476,11 @@
    "name": "form 6, form 5 with the stores in chains / thinned 1/16 / fill",
    "unit": "cycles a warp-window",
    "samples": [
-    2452.398621
+    2451.581451
    ],
-   "median": 2452.398621,
-   "min": 2452.398621,
-   "max": 2452.398621,
+   "median": 2451.581451,
+   "min": 2451.581451,
+   "max": 2451.581451,
    "unstable": false
   },
   {
@@ -2940,11 +3488,11 @@
    "name": "form 6, form 5 with the stores in chains / thinned 1/16 / fill busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    2818.512695
+    2817.800781
    ],
-   "median": 2818.512695,
-   "min": 2818.512695,
-   "max": 2818.512695,
+   "median": 2817.800781,
+   "min": 2817.800781,
+   "max": 2817.800781,
    "unstable": false
   },
   {
@@ -2952,11 +3500,11 @@
    "name": "form 6, form 5 with the stores in chains / thinned 1/16 / fold",
    "unit": "cycles a warp-window",
    "samples": [
-    1954.552307
+    1954.600769
    ],
-   "median": 1954.552307,
-   "min": 1954.552307,
-   "max": 1954.552307,
+   "median": 1954.600769,
+   "min": 1954.600769,
+   "max": 1954.600769,
    "unstable": false
   },
   {
@@ -2964,11 +3512,11 @@
    "name": "form 6, form 5 with the stores in chains / thinned 1/16 / fold busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    2023.658691
+    2023.230469
    ],
-   "median": 2023.658691,
-   "min": 2023.658691,
-   "max": 2023.658691,
+   "median": 2023.230469,
+   "min": 2023.230469,
+   "max": 2023.230469,
    "unstable": false
   },
   {
@@ -2976,11 +3524,11 @@
    "name": "form 6, form 5 with the stores in chains / thinned 1/16 / wait",
    "unit": "cycles a warp-window",
    "samples": [
-    2224.055237
+    2204.148041
    ],
-   "median": 2224.055237,
-   "min": 2224.055237,
-   "max": 2224.055237,
+   "median": 2204.148041,
+   "min": 2204.148041,
+   "max": 2204.148041,
    "unstable": false
   },
   {
@@ -2988,11 +3536,11 @@
    "name": "form 6, form 5 with the stores in chains / thinned 1/16 / wait busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    2623.73877
+    2588.328613
    ],
-   "median": 2623.73877,
-   "min": 2623.73877,
-   "max": 2623.73877,
+   "median": 2588.328613,
+   "min": 2588.328613,
+   "max": 2588.328613,
    "unstable": false
   },
   {
@@ -3000,17 +3548,17 @@
    "name": "form 5, form 4 with the fills' loads ahead / thinned 1/16",
    "unit": "us a launch, every clock off",
    "samples": [
-    404.48001,
-    403.456002,
-    404.48001,
-    403.456002,
-    404.48001,
-    403.456002,
-    403.456002
+    362.495989,
+    363.519996,
+    362.495989,
+    363.519996,
+    362.495989,
+    363.519996,
+    362.495989
    ],
-   "median": 403.456002,
-   "min": 403.456002,
-   "max": 404.48001,
+   "median": 362.495989,
+   "min": 362.495989,
+   "max": 363.519996,
    "unstable": false
   },
   {
@@ -3018,17 +3566,17 @@
    "name": "form 5, form 4 with the fills' loads ahead / thinned 1/16 / span",
    "unit": "cycles a CTA-window, its span, every clock off",
    "samples": [
-    11202.607666,
-    11198.01416,
-    11174.892334,
-    11179.783203,
-    11201.085938,
-    11192.613281,
-    11184.031738
+    10828.399902,
+    10827.547119,
+    10827.89502,
+    10827.363525,
+    10816.043213,
+    10833.252686,
+    10830.2854
    ],
-   "median": 11192.613281,
-   "min": 11174.892334,
-   "max": 11202.607666,
+   "median": 10827.89502,
+   "min": 10816.043213,
+   "max": 10833.252686,
    "unstable": false
   },
   {
@@ -3036,17 +3584,17 @@
    "name": "form 5, form 4 with the fills' loads ahead / thinned 1/16 / clocked",
    "unit": "cycles a CTA-window, its clock on",
    "samples": [
-    12952.327393,
-    12967.880615,
-    12965.197266,
-    12946.268066,
-    12946.107178,
-    12925.820312,
-    12921.095703
+    12573.170898,
+    12582.543945,
+    12583.894775,
+    12574.773438,
+    12576.4375,
+    12576.961182,
+    12577.717529
    ],
-   "median": 12946.268066,
-   "min": 12921.095703,
-   "max": 12967.880615,
+   "median": 12576.961182,
+   "min": 12573.170898,
+   "max": 12583.894775,
    "unstable": false
   },
   {
@@ -3054,17 +3602,17 @@
    "name": "form 5, form 4 with the fills' loads ahead / thinned 1/16 / clocked launch",
    "unit": "us a launch, its clock on",
    "samples": [
-    461.952001,
-    462.848008,
-    461.824,
-    460.799992,
-    460.799992,
-    460.799992,
-    459.872007
+    419.840008,
+    419.840008,
+    419.840008,
+    419.840008,
+    418.976009,
+    420.863986,
+    419.840008
    ],
-   "median": 460.799992,
-   "min": 459.872007,
-   "max": 462.848008,
+   "median": 419.840008,
+   "min": 418.976009,
+   "max": 420.863986,
    "unstable": false
   },
   {
@@ -3072,11 +3620,11 @@
    "name": "form 5, form 4 with the fills' loads ahead / thinned 1/16 / landed",
    "unit": "cycles a warp-window",
    "samples": [
-    478.839417
+    216.294159
    ],
-   "median": 478.839417,
-   "min": 478.839417,
-   "max": 478.839417,
+   "median": 216.294159,
+   "min": 216.294159,
+   "max": 216.294159,
    "unstable": false
   },
   {
@@ -3084,11 +3632,11 @@
    "name": "form 5, form 4 with the fills' loads ahead / thinned 1/16 / landed busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    482.630127
+    219.996826
    ],
-   "median": 482.630127,
-   "min": 482.630127,
-   "max": 482.630127,
+   "median": 219.996826,
+   "min": 219.996826,
+   "max": 219.996826,
    "unstable": false
   },
   {
@@ -3096,11 +3644,11 @@
    "name": "form 5, form 4 with the fills' loads ahead / thinned 1/16 / maxima",
    "unit": "cycles a warp-window",
    "samples": [
-    1745.132874
+    1715.566833
    ],
-   "median": 1745.132874,
-   "min": 1745.132874,
-   "max": 1745.132874,
+   "median": 1715.566833,
+   "min": 1715.566833,
+   "max": 1715.566833,
    "unstable": false
   },
   {
@@ -3108,11 +3656,11 @@
    "name": "form 5, form 4 with the fills' loads ahead / thinned 1/16 / maxima busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    1838.995605
+    1808.467529
    ],
-   "median": 1838.995605,
-   "min": 1838.995605,
-   "max": 1838.995605,
+   "median": 1808.467529,
+   "min": 1808.467529,
+   "max": 1808.467529,
    "unstable": false
   },
   {
@@ -3120,11 +3668,11 @@
    "name": "form 5, form 4 with the fills' loads ahead / thinned 1/16 / store",
    "unit": "cycles a warp-window",
    "samples": [
-    2129.354675
+    2097.892212
    ],
-   "median": 2129.354675,
-   "min": 2129.354675,
-   "max": 2129.354675,
+   "median": 2097.892212,
+   "min": 2097.892212,
+   "max": 2097.892212,
    "unstable": false
   },
   {
@@ -3132,11 +3680,11 @@
    "name": "form 5, form 4 with the fills' loads ahead / thinned 1/16 / store busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    2186.091064
+    2134.0
    ],
-   "median": 2186.091064,
-   "min": 2186.091064,
-   "max": 2186.091064,
+   "median": 2134.0,
+   "min": 2134.0,
+   "max": 2134.0,
    "unstable": false
   },
   {
@@ -3144,11 +3692,11 @@
    "name": "form 5, form 4 with the fills' loads ahead / thinned 1/16 / readout",
    "unit": "cycles a warp-window",
    "samples": [
-    2038.69809
+    2038.751312
    ],
-   "median": 2038.69809,
-   "min": 2038.69809,
-   "max": 2038.69809,
+   "median": 2038.751312,
+   "min": 2038.751312,
+   "max": 2038.751312,
    "unstable": false
   },
   {
@@ -3156,11 +3704,11 @@
    "name": "form 5, form 4 with the fills' loads ahead / thinned 1/16 / readout busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    2122.710693
+    2124.570312
    ],
-   "median": 2122.710693,
-   "min": 2122.710693,
-   "max": 2122.710693,
+   "median": 2124.570312,
+   "min": 2124.570312,
+   "max": 2124.570312,
    "unstable": false
   },
   {
@@ -3192,11 +3740,11 @@
    "name": "form 5, form 4 with the fills' loads ahead / thinned 1/16 / fill",
    "unit": "cycles a warp-window",
    "samples": [
-    2455.672485
+    2455.353027
    ],
-   "median": 2455.672485,
-   "min": 2455.672485,
-   "max": 2455.672485,
+   "median": 2455.353027,
+   "min": 2455.353027,
+   "max": 2455.353027,
    "unstable": false
   },
   {
@@ -3204,11 +3752,11 @@
    "name": "form 5, form 4 with the fills' loads ahead / thinned 1/16 / fill busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    2833.810791
+    2835.056641
    ],
-   "median": 2833.810791,
-   "min": 2833.810791,
-   "max": 2833.810791,
+   "median": 2835.056641,
+   "min": 2835.056641,
+   "max": 2835.056641,
    "unstable": false
   },
   {
@@ -3216,11 +3764,11 @@
    "name": "form 5, form 4 with the fills' loads ahead / thinned 1/16 / fold",
    "unit": "cycles a warp-window",
    "samples": [
-    1951.966644
+    1951.833405
    ],
-   "median": 1951.966644,
-   "min": 1951.966644,
-   "max": 1951.966644,
+   "median": 1951.833405,
+   "min": 1951.833405,
+   "max": 1951.833405,
    "unstable": false
   },
   {
@@ -3228,11 +3776,11 @@
    "name": "form 5, form 4 with the fills' loads ahead / thinned 1/16 / fold busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    2023.922119
+    2023.105713
    ],
-   "median": 2023.922119,
-   "min": 2023.922119,
-   "max": 2023.922119,
+   "median": 2023.105713,
+   "min": 2023.105713,
+   "max": 2023.105713,
    "unstable": false
   },
   {
@@ -3240,11 +3788,11 @@
    "name": "form 5, form 4 with the fills' loads ahead / thinned 1/16 / wait",
    "unit": "cycles a warp-window",
    "samples": [
-    2105.383881
+    2086.112427
    ],
-   "median": 2105.383881,
-   "min": 2105.383881,
-   "max": 2105.383881,
+   "median": 2086.112427,
+   "min": 2086.112427,
+   "max": 2086.112427,
    "unstable": false
   },
   {
@@ -3252,11 +3800,11 @@
    "name": "form 5, form 4 with the fills' loads ahead / thinned 1/16 / wait busiest",
    "unit": "cycles a warp-window",
    "samples": [
-    2410.170654
+    2367.990479
    ],
-   "median": 2410.170654,
-   "min": 2410.170654,
-   "max": 2410.170654,
+   "median": 2367.990479,
+   "min": 2367.990479,
+   "max": 2367.990479,
    "unstable": false
   }
  ],
@@ -3270,9 +3818,9 @@
     "IADD3": 211,
     "IMAD.IADD": 191,
     "IMAD.SHL.U32": 164,
+    "FADD": 133,
     "LDS": 130,
     "FMNMX": 128,
-    "FADD": 128,
     "BRA": 122,
     "IMAD.MOV.U32": 104,
     "SHFL.IDX": 92
@@ -3288,44 +3836,10 @@
     "IMAD.IADD": 204,
     "IMAD.SHL.U32": 177,
     "BRA": 136,
+    "FADD": 133,
     "LDS": 130,
     "FMNMX": 128,
-    "FADD": 128,
     "SHF.R.S32.HI": 110,
-    "IMAD.MOV.U32": 109
-   }
-  },
-  "void carry_window::window<(int)6, (bool)0>(rola::carry::CarryParams)": {
-   "regs": 223,
-   "ops": {
-    "LOP3.LUT": 346,
-    "FMUL": 256,
-    "IMAD": 218,
-    "IMAD.IADD": 207,
-    "IADD3": 204,
-    "IMAD.SHL.U32": 164,
-    "LDS": 134,
-    "FMNMX": 128,
-    "FADD": 128,
-    "BRA": 119,
-    "IMAD.MOV.U32": 104,
-    "SHFL.IDX": 92
-   }
-  },
-  "void carry_window::window<(int)6, (bool)1>(rola::carry::CarryParams)": {
-   "regs": 226,
-   "ops": {
-    "LOP3.LUT": 364,
-    "FMUL": 256,
-    "IMAD": 245,
-    "IMAD.IADD": 220,
-    "IADD3": 204,
-    "IMAD.SHL.U32": 179,
-    "LDS": 134,
-    "BRA": 133,
-    "FMNMX": 128,
-    "FADD": 128,
-    "SHF.R.S32.HI": 111,
     "IMAD.MOV.U32": 109
    }
   },
@@ -3341,8 +3855,8 @@
     "IMAD.MOV.U32": 203,
     "BRA": 180,
     "IMAD.SHL.U32": 176,
+    "FADD": 133,
     "FMNMX": 128,
-    "FADD": 128,
     "SHF.R.S32.HI": 111
    }
   },
@@ -3359,93 +3873,127 @@
     "BRA": 194,
     "IMAD.SHL.U32": 189,
     "SHF.R.S32.HI": 135,
-    "FMNMX": 128,
-    "FADD": 128
+    "FADD": 133,
+    "FMNMX": 128
    }
   },
   "void carry_window::window<(int)3, (bool)0>(rola::carry::CarryParams)": {
-   "regs": 238,
+   "regs": 240,
    "ops": {
-    "LOP3.LUT": 455,
-    "IMAD.MOV.U32": 403,
+    "LOP3.LUT": 457,
+    "IMAD.MOV.U32": 418,
     "LDS": 385,
-    "IMAD": 329,
-    "BRA": 320,
-    "IADD3": 302,
+    "IMAD": 327,
+    "BRA": 322,
+    "IADD3": 305,
     "IMAD.IADD": 282,
     "FMUL": 256,
-    "IMAD.SHL.U32": 185,
+    "IMAD.SHL.U32": 186,
     "SHF.R.S32.HI": 173,
-    "FMNMX": 128,
-    "FADD": 128
+    "FADD": 136,
+    "FMNMX": 128
    }
   },
   "void carry_window::window<(int)3, (bool)1>(rola::carry::CarryParams)": {
-   "regs": 245,
+   "regs": 247,
    "ops": {
-    "LOP3.LUT": 476,
-    "IMAD.MOV.U32": 419,
+    "LOP3.LUT": 478,
+    "IMAD.MOV.U32": 457,
     "LDS": 385,
-    "IMAD": 359,
-    "BRA": 335,
-    "IADD3": 311,
+    "IMAD": 357,
+    "BRA": 337,
+    "IADD3": 314,
     "IMAD.IADD": 296,
     "FMUL": 256,
     "SHF.R.S32.HI": 213,
-    "IMAD.SHL.U32": 203,
-    "FMNMX": 128,
-    "FADD": 128
+    "IMAD.SHL.U32": 204,
+    "FADD": 136,
+    "FMNMX": 128
    }
   },
   "void carry_window::window<(int)1, (bool)0>(rola::carry::CarryParams)": {
-   "regs": 239,
+   "regs": 240,
    "ops": {
-    "LOP3.LUT": 484,
-    "IMAD.MOV.U32": 447,
-    "BRA": 304,
-    "IADD3": 299,
-    "IMAD": 287,
+    "LOP3.LUT": 485,
+    "IMAD.MOV.U32": 455,
+    "BRA": 306,
+    "IADD3": 302,
+    "IMAD": 285,
     "IMAD.IADD": 283,
     "LDS": 269,
     "FMUL": 256,
-    "IMAD.SHL.U32": 213,
-    "CALL.REL.NOINC": 166,
-    "MOV": 162,
+    "IMAD.SHL.U32": 214,
+    "CALL.REL.NOINC": 171,
+    "MOV": 167,
     "SHF.R.S32.HI": 136
    }
   },
   "void carry_window::window<(int)1, (bool)1>(rola::carry::CarryParams)": {
-   "regs": 243,
+   "regs": 245,
    "ops": {
-    "LOP3.LUT": 505,
-    "IMAD.MOV.U32": 440,
-    "BRA": 319,
-    "IMAD": 316,
-    "IADD3": 314,
+    "LOP3.LUT": 506,
+    "IMAD.MOV.U32": 464,
+    "BRA": 321,
+    "IADD3": 317,
+    "IMAD": 314,
     "IMAD.IADD": 297,
     "LDS": 269,
     "FMUL": 256,
-    "IMAD.SHL.U32": 227,
+    "IMAD.SHL.U32": 228,
     "SHF.R.S32.HI": 176,
-    "CALL.REL.NOINC": 166,
-    "MOV": 162
+    "CALL.REL.NOINC": 171,
+    "MOV": 167
+   }
+  },
+  "void carry_window::window<(int)6, (bool)0>(rola::carry::CarryParams)": {
+   "regs": 223,
+   "ops": {
+    "LOP3.LUT": 346,
+    "FMUL": 256,
+    "IMAD": 218,
+    "IMAD.IADD": 207,
+    "IADD3": 204,
+    "IMAD.SHL.U32": 164,
+    "LDS": 134,
+    "FADD": 133,
+    "FMNMX": 128,
+    "BRA": 119,
+    "IMAD.MOV.U32": 104,
+    "SHFL.IDX": 92
+   }
+  },
+  "void carry_window::window<(int)6, (bool)1>(rola::carry::CarryParams)": {
+   "regs": 226,
+   "ops": {
+    "LOP3.LUT": 364,
+    "FMUL": 256,
+    "IMAD": 245,
+    "IMAD.IADD": 220,
+    "IADD3": 204,
+    "IMAD.SHL.U32": 179,
+    "LDS": 134,
+    "BRA": 133,
+    "FADD": 133,
+    "FMNMX": 128,
+    "SHF.R.S32.HI": 111,
+    "IMAD.MOV.U32": 109
    }
   },
   "void rola::carry::carry_kernel<rola::Arm<(int)0, (int)32, (int)1, (int)32, (int)1, (int)32, (int)0>>(rola::carry::CarryParams)": {
    "regs": 255,
    "ops": {
     "LOP3.LUT": 776,
-    "IMAD.MOV.U32": 733,
+    "IMAD.MOV.U32": 739,
     "IADD3": 725,
     "FMUL": 708,
     "IMAD.IADD": 665,
-    "BRA": 606,
+    "BRA": 608,
     "IMAD": 544,
     "LDS": 382,
     "STS.64": 284,
     "IMAD.SHL.U32": 273,
     "CS2R": 261,
-    "CALL.REL.NOINC": 255
+    "CALL.REL.NOINC": 260
    }
   },
   "void rola::carry::window_plan_kernel<rola::Arm<(int)0, (int)32, (int)1, (int)32, (int)1, (int)32, (int)0>>(rola::carry::CarryParams)": {
