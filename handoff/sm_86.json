@@ -1,0 +1,272 @@
+{
+ "experiment": "handoff",
+ "question": "what does the carry's hand-off cost a window on sm_86 -- each digit's exponent from the fold's state (its largest value over the box's 32 lists, each list at its own unit) and the state stored into the image, f16 at each digit's power of two -- in the carry's form and in a lean form, the image whole (sm_80's form) or in two halves with a barrier between (sm_86's), and how near its floor does it run?",
+ "arch": "sm_86",
+ "device": "NVIDIA GeForce RTX 3080 Ti",
+ "checks": [
+  {
+   "lab": "check",
+   "variant": "the carry's form, the image whole",
+   "ok": true,
+   "detail": "0 of 65536 image bytes and 0 of 32 exponents differ"
+  },
+  {
+   "lab": "check",
+   "variant": "the carry's form, two halves",
+   "ok": true,
+   "detail": "0 of 65536 image bytes and 0 of 32 exponents differ"
+  },
+  {
+   "lab": "check",
+   "variant": "lean, the image whole",
+   "ok": true,
+   "detail": "0 of 65536 image bytes and 0 of 32 exponents differ"
+  },
+  {
+   "lab": "check",
+   "variant": "lean, two halves",
+   "ok": true,
+   "detail": "0 of 65536 image bytes and 0 of 32 exponents differ"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "bound: lean, the maxima alone",
+   "reason": "a bound: the maxima alone, no image formed"
+  },
+  {
+   "lab": "check",
+   "variant": "bound: lean, the stores alone",
+   "ok": true,
+   "detail": "0 of 65536 image bytes and 0 of 32 exponents differ"
+  }
+ ],
+ "driver": "595.95",
+ "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
+ "git": {
+  "sha": "9cb4b5876e37b10a45cdbc36e37c8bc85d31e84c",
+  "dirty": true
+ },
+ "reps": 7,
+ "date": "2026-10-18T20:08:38+00:00",
+ "utilization_before": 0,
+ "inputs": {
+  "state.bin": "635e3942c1808548",
+  "units.bin": "33a6f65e2911be82",
+  "image.bin": "1572e8048748b39e",
+  "exps.bin": "c792e6e2d8661289"
+ },
+ "results": [
+  {
+   "lab": "result",
+   "name": "the carry's form, the image whole",
+   "unit": "cycles a window",
+   "samples": [
+    3060.513867,
+    3059.205859,
+    3060.824219,
+    3059.28418,
+    3058.529102,
+    3058.348047,
+    3059.485156
+   ],
+   "median": 3059.28418,
+   "min": 3058.348047,
+   "max": 3060.824219,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the carry's form, two halves",
+   "unit": "cycles a window",
+   "samples": [
+    3184.789648,
+    3183.183203,
+    3184.143164,
+    3183.497852,
+    3184.30957,
+    3184.008594,
+    3184.289453
+   ],
+   "median": 3184.143164,
+   "min": 3183.183203,
+   "max": 3184.789648,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "lean, the image whole",
+   "unit": "cycles a window",
+   "samples": [
+    2249.030664,
+    2248.716406,
+    2247.980469,
+    2248.780664,
+    2247.729883,
+    2247.885938,
+    2247.191797
+   ],
+   "median": 2247.980469,
+   "min": 2247.191797,
+   "max": 2249.030664,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "lean, two halves",
+   "unit": "cycles a window",
+   "samples": [
+    2265.121484,
+    2264.50625,
+    2265.791602,
+    2265.874805,
+    2265.835156,
+    2265.837695,
+    2265.640039
+   ],
+   "median": 2265.791602,
+   "min": 2264.50625,
+   "max": 2265.874805,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "bound: lean, the maxima alone",
+   "unit": "cycles a window",
+   "samples": [
+    581.560742,
+    581.261523,
+    582.832422,
+    582.520703,
+    581.953516,
+    582.032227,
+    581.039648
+   ],
+   "median": 581.953516,
+   "min": 581.039648,
+   "max": 582.832422,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "bound: lean, the stores alone",
+   "unit": "cycles a window",
+   "samples": [
+    1416.423633,
+    1416.431055,
+    1416.420703,
+    1416.426953,
+    1416.434766,
+    1416.44043,
+    1416.435742
+   ],
+   "median": 1416.431055,
+   "min": 1416.420703,
+   "max": 1416.44043,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void handoff::handoff<(int)3, (int)0>(const float *, const int *, unsigned char *, int *, long long *)": {
+   "regs": 216,
+   "ops": {
+    "LDG.E": 129,
+    "FMNMX": 128,
+    "FMUL": 128,
+    "STS": 67,
+    "F2FP.PACK_AB": 64,
+    "IMNMX": 61,
+    "LDS.128": 30,
+    "STG.E.128": 29,
+    "LOP3.LUT": 28,
+    "IADD3": 25,
+    "IMAD": 22,
+    "IMAD.IADD": 22
+   }
+  },
+  "void handoff::handoff<(int)2, (int)0>(const float *, const int *, unsigned char *, int *, long long *)": {
+   "regs": 141,
+   "ops": {
+    "LDG.E": 129,
+    "FMNMX": 128,
+    "LDS.128": 30,
+    "IMNMX": 29,
+    "STG.E.128": 29,
+    "ISETP.NE.AND": 24,
+    "IADD3": 21,
+    "LOP3.LUT": 19,
+    "IMAD": 19,
+    "SEL": 17,
+    "IMAD.MOV.U32": 14,
+    "BRA": 11
+   }
+  },
+  "void handoff::handoff<(int)1, (int)1>(const float *, const int *, unsigned char *, int *, long long *)": {
+   "regs": 219,
+   "ops": {
+    "LDG.E": 129,
+    "FMNMX": 128,
+    "FMUL": 128,
+    "STS": 67,
+    "F2FP.PACK_AB": 64,
+    "IMNMX": 61,
+    "LDS.128": 30,
+    "STG.E.128": 29,
+    "LOP3.LUT": 28,
+    "IADD3": 25,
+    "ISETP.NE.AND": 24,
+    "IMAD": 23
+   }
+  },
+  "void handoff::handoff<(int)1, (int)0>(const float *, const int *, unsigned char *, int *, long long *)": {
+   "regs": 219,
+   "ops": {
+    "LDG.E": 129,
+    "FMNMX": 128,
+    "FMUL": 128,
+    "STS": 67,
+    "F2FP.PACK_AB": 64,
+    "IMNMX": 61,
+    "LDS.128": 30,
+    "STG.E.128": 29,
+    "LOP3.LUT": 28,
+    "IADD3": 25,
+    "ISETP.NE.AND": 24,
+    "IMAD": 23
+   }
+  },
+  "void handoff::handoff<(int)0, (int)1>(const float *, const int *, unsigned char *, int *, long long *)": {
+   "regs": 188,
+   "ops": {
+    "LDG.E": 129,
+    "FMNMX": 128,
+    "FMUL": 128,
+    "STS": 67,
+    "IMNMX": 65,
+    "F2FP.PACK_AB": 64,
+    "IADD3": 44,
+    "IMAD.IADD": 44,
+    "LOP3.LUT": 38,
+    "LDS.128": 29,
+    "STG.E.128": 29,
+    "SHF.R.U32.HI": 27
+   }
+  },
+  "void handoff::handoff<(int)0, (int)0>(const float *, const int *, unsigned char *, int *, long long *)": {
+   "regs": 219,
+   "ops": {
+    "LDG.E": 129,
+    "FMNMX": 128,
+    "FMUL": 128,
+    "STS": 67,
+    "IMNMX": 65,
+    "F2FP.PACK_AB": 64,
+    "IADD3": 40,
+    "IMAD.IADD": 40,
+    "LOP3.LUT": 38,
+    "LDS.128": 29,
+    "STG.E.128": 29,
+    "SHF.R.U32.HI": 27
+   }
+  }
+ }
+}
