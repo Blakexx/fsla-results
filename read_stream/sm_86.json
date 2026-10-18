@@ -106,16 +106,72 @@
    "variant": "cohort-k16: streamed, ring 5, L1-allocating copies (.ca)",
    "ok": true,
    "detail": "655360 of 655360 drained panel words exact (each CTA's, summed over the windows)"
+  },
+  {
+   "lab": "check",
+   "variant": "staged, ring 8",
+   "ok": true,
+   "detail": "655360 of 655360 drained panel words exact (each CTA's, summed over the windows)"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "staged: bound: the readout with the producer, no row copies",
+   "reason": "a bound: the readout over stale rows, no panel formed"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "staged: bound: the copies alone",
+   "reason": "a bound: copies and their waits alone, no panel formed"
+  },
+  {
+   "lab": "check",
+   "variant": "alt-k16: staged, ring 8",
+   "ok": true,
+   "detail": "655360 of 655360 drained panel words exact (each CTA's, summed over the windows)"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "alt-k16: staged: bound: the readout with the producer, no row copies",
+   "reason": "a bound: the readout over stale rows, no panel formed"
+  },
+  {
+   "lab": "check",
+   "variant": "cohort-k16: staged, ring 8",
+   "ok": true,
+   "detail": "655360 of 655360 drained panel words exact (each CTA's, summed over the windows)"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "cohort-k16: staged: bound: the readout with the producer, no row copies",
+   "reason": "a bound: the readout over stale rows, no panel formed"
+  },
+  {
+   "lab": "check",
+   "variant": "staged, ring 8, pads not copied",
+   "ok": true,
+   "detail": "655360 of 655360 drained panel words exact (each CTA's, summed over the windows)"
+  },
+  {
+   "lab": "check",
+   "variant": "alt-k16: staged, ring 8, pads not copied",
+   "ok": true,
+   "detail": "655360 of 655360 drained panel words exact (each CTA's, summed over the windows)"
+  },
+  {
+   "lab": "check",
+   "variant": "cohort-k16: staged, ring 8, pads not copied",
+   "ok": true,
+   "detail": "655360 of 655360 drained panel words exact (each CTA's, summed over the windows)"
   }
  ],
  "driver": "595.95",
  "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
  "git": {
-  "sha": "aff50fc0ae53227c8c9036ffc825dd87d50420ee",
+  "sha": "237f54d5440e4a214961a36bb554c4cbae4eb34a",
   "dirty": true
  },
  "reps": 7,
- "date": "2026-10-18T18:17:16+00:00",
+ "date": "2026-10-18T19:15:09+00:00",
  "utilization_before": 1,
  "inputs": {
   "head.bin": "9c98aaac2ac7e728",
@@ -125,6 +181,7 @@
   "words.bin": "f67ff671fdbfeeaf",
   "rows.bin": "c4cd831eb6f27791",
   "panel.bin": "786fe66c990b3f5e",
+  "staged.bin": "e019ac17c2230800",
   "k16/head.bin": "1f8b4776ffc9b26a",
   "k16/passes.bin": "37326ea816f273d1",
   "k16/tiles.bin": "0eef4d341631d7cb",
@@ -132,13 +189,15 @@
   "k16/words.bin": "94397b1965326432",
   "k16/rows.bin": "62c4220babb96f07",
   "k16/panel.bin": "9ce7baef4972eed0",
+  "k16/staged.bin": "0b5e2a43aaff3949",
   "c16/head.bin": "325dd8e4f18b34bf",
   "c16/passes.bin": "36961a0af0add5bb",
   "c16/tiles.bin": "faeb18901b88ea72",
   "c16/records.bin": "dfd26f85b3b746df",
   "c16/words.bin": "81ea252015c49017",
   "c16/rows.bin": "62c4220babb96f07",
-  "c16/panel.bin": "606607caa4ec980f"
+  "c16/panel.bin": "606607caa4ec980f",
+  "c16/staged.bin": "02f619c9e83e23a9"
  },
  "results": [
   {
@@ -146,17 +205,17 @@
    "name": "streamed, ring 4 (the first tiles' block, nothing ahead)",
    "unit": "cycles a window",
    "samples": [
-    5358.775391,
-    5360.699805,
-    5380.283398,
-    5351.195508,
-    5362.023438,
-    5378.180469,
-    5365.725586
+    5348.600391,
+    5366.673828,
+    5367.991016,
+    5372.096875,
+    5357.241602,
+    5350.926953,
+    5350.12168
    ],
-   "median": 5362.023438,
-   "min": 5351.195508,
-   "max": 5380.283398,
+   "median": 5357.241602,
+   "min": 5348.600391,
+   "max": 5372.096875,
    "unstable": false
   },
   {
@@ -164,17 +223,17 @@
    "name": "streamed, ring 5",
    "unit": "cycles a window",
    "samples": [
-    5122.015039,
-    5121.470898,
-    5138.044531,
-    5111.566602,
-    5129.266016,
-    5114.983984,
-    5125.962109
+    5123.376367,
+    5127.529297,
+    5119.203711,
+    5128.00293,
+    5122.24082,
+    5129.363867,
+    5123.803516
    ],
-   "median": 5122.015039,
-   "min": 5111.566602,
-   "max": 5138.044531,
+   "median": 5123.803516,
+   "min": 5119.203711,
+   "max": 5129.363867,
    "unstable": false
   },
   {
@@ -182,17 +241,17 @@
    "name": "streamed, ring 6",
    "unit": "cycles a window",
    "samples": [
-    5410.039648,
-    5412.666797,
-    5401.10293,
-    5413.047656,
-    5399.13457,
-    5414.069141,
-    5398.104688
+    5399.550391,
+    5413.296094,
+    5409.506836,
+    5392.523047,
+    5392.694336,
+    5401.237109,
+    5404.421289
    ],
-   "median": 5410.039648,
-   "min": 5398.104688,
-   "max": 5414.069141,
+   "median": 5401.237109,
+   "min": 5392.523047,
+   "max": 5413.296094,
    "unstable": false
   },
   {
@@ -200,17 +259,17 @@
    "name": "bound: the readout with the producer, no row copies (ring 5)",
    "unit": "cycles a window",
    "samples": [
-    4802.791016,
-    4803.430469,
-    4798.713477,
-    4796.429688,
-    4793.511133,
-    4804.549414,
-    4792.789453
+    4806.403125,
+    4807.405469,
+    4802.961328,
+    4799.584766,
+    4798.267187,
+    4798.908203,
+    4800.509766
    ],
-   "median": 4798.713477,
-   "min": 4792.789453,
-   "max": 4804.549414,
+   "median": 4800.509766,
+   "min": 4798.267187,
+   "max": 4807.405469,
    "unstable": false
   },
   {
@@ -218,17 +277,17 @@
    "name": "bound: the copies alone (ring 5)",
    "unit": "cycles a window",
    "samples": [
-    2706.416797,
-    2714.453711,
-    2704.085742,
-    2718.055469,
-    2715.032422,
-    2718.784961,
-    2707.528711
+    2712.322266,
+    2705.829297,
+    2694.132617,
+    2713.089453,
+    2700.081641,
+    2709.239062,
+    2701.100781
    ],
-   "median": 2714.453711,
-   "min": 2704.085742,
-   "max": 2718.784961,
+   "median": 2705.829297,
+   "min": 2694.132617,
+   "max": 2713.089453,
    "unstable": false
   },
   {
@@ -236,17 +295,17 @@
    "name": "bound: the readout alone, no producer",
    "unit": "cycles a window",
    "samples": [
-    3749.838281,
-    3753.513281,
-    3773.919336,
-    3763.727539,
-    3751.023828,
-    3763.885547,
-    3771.073633
+    3758.82168,
+    3755.178711,
+    3761.459766,
+    3758.944531,
+    3758.86875,
+    3755.23457,
+    3751.307813
    ],
-   "median": 3763.727539,
-   "min": 3749.838281,
-   "max": 3773.919336,
+   "median": 3758.82168,
+   "min": 3751.307813,
+   "max": 3761.459766,
    "unstable": false
   },
   {
@@ -254,17 +313,17 @@
    "name": "bound: the readout alone, no producer, no drain",
    "unit": "cycles a window",
    "samples": [
-    2788.011914,
-    2788.979688,
-    2789.087109,
-    2788.445703,
-    2789.094531,
-    2788.415234,
-    2787.409766
+    2787.894336,
+    2788.304883,
+    2788.379687,
+    2787.918945,
+    2788.641211,
+    2788.280664,
+    2787.999414
    ],
-   "median": 2788.445703,
-   "min": 2787.409766,
-   "max": 2789.094531,
+   "median": 2788.280664,
+   "min": 2787.894336,
+   "max": 2788.641211,
    "unstable": false
   },
   {
@@ -272,17 +331,17 @@
    "name": "bound: the stream with no waits on its stages (ring 5)",
    "unit": "cycles a window",
    "samples": [
-    5101.986133,
-    5106.480273,
-    5113.935352,
-    5089.007227,
-    5100.797461,
-    5118.154883,
-    5107.116211
+    5101.550977,
+    5116.868945,
+    5110.543555,
+    5094.322461,
+    5108.470312,
+    5110.782812,
+    5099.646094
    ],
-   "median": 5106.480273,
-   "min": 5089.007227,
-   "max": 5118.154883,
+   "median": 5108.470312,
+   "min": 5094.322461,
+   "max": 5116.868945,
    "unstable": false
   },
   {
@@ -290,17 +349,17 @@
    "name": "alt-k16: streamed, ring 5",
    "unit": "cycles a window",
    "samples": [
-    12324.742188,
-    12323.447656,
-    12320.566016,
-    12323.379688,
-    12341.457813,
-    12319.589844,
-    12329.203516
+    12316.462109,
+    12347.098438,
+    12333.884375,
+    12315.93125,
+    12346.328125,
+    12315.214844,
+    12327.139453
    ],
-   "median": 12323.447656,
-   "min": 12319.589844,
-   "max": 12341.457813,
+   "median": 12327.139453,
+   "min": 12315.214844,
+   "max": 12347.098438,
    "unstable": false
   },
   {
@@ -308,17 +367,17 @@
    "name": "alt-k16: bound: the readout with the producer, no row copies",
    "unit": "cycles a window",
    "samples": [
-    12088.969922,
-    12101.707422,
-    12115.701172,
-    12102.881641,
-    12091.753125,
-    12112.344922,
-    12120.577344
+    12110.059766,
+    12130.550391,
+    12110.346484,
+    12123.366016,
+    12115.497656,
+    12125.336719,
+    12111.315234
    ],
-   "median": 12102.881641,
-   "min": 12088.969922,
-   "max": 12120.577344,
+   "median": 12115.497656,
+   "min": 12110.059766,
+   "max": 12130.550391,
    "unstable": false
   },
   {
@@ -326,17 +385,17 @@
    "name": "alt-k16: bound: the readout alone, no producer",
    "unit": "cycles a window",
    "samples": [
-    9474.052734,
-    9466.478516,
-    9471.325781,
-    9459.794922,
-    9457.998438,
-    9481.762891,
-    9457.783984
+    9458.466406,
+    9482.632812,
+    9464.201953,
+    9447.998438,
+    9462.703516,
+    9484.316406,
+    9458.017578
    ],
-   "median": 9466.478516,
-   "min": 9457.783984,
-   "max": 9481.762891,
+   "median": 9462.703516,
+   "min": 9447.998438,
+   "max": 9484.316406,
    "unstable": false
   },
   {
@@ -344,17 +403,17 @@
    "name": "alt-k16: bound: the readout alone, no producer, no drain",
    "unit": "cycles a window",
    "samples": [
-    7635.638672,
-    7638.726172,
-    7643.812891,
-    7636.910156,
-    7636.105078,
-    7636.809375,
-    7642.877344
+    7639.791406,
+    7637.582812,
+    7646.662109,
+    7636.617969,
+    7639.217578,
+    7639.628516,
+    7643.640625
    ],
-   "median": 7636.910156,
-   "min": 7635.638672,
-   "max": 7643.812891,
+   "median": 7639.628516,
+   "min": 7636.617969,
+   "max": 7646.662109,
    "unstable": false
   },
   {
@@ -362,17 +421,17 @@
    "name": "cohort-k16: streamed, ring 5",
    "unit": "cycles a window",
    "samples": [
-    21601.586328,
-    21563.221484,
-    21613.611328,
-    21725.878906,
-    21672.436328,
-    21643.919141,
-    21682.764453
+    21679.585547,
+    21917.365234,
+    21790.991797,
+    21736.747656,
+    21672.678516,
+    21785.578906,
+    21774.915234
    ],
-   "median": 21643.919141,
-   "min": 21563.221484,
-   "max": 21725.878906,
+   "median": 21774.915234,
+   "min": 21672.678516,
+   "max": 21917.365234,
    "unstable": false
   },
   {
@@ -380,17 +439,17 @@
    "name": "cohort-k16: bound: the readout with the producer, no row copies",
    "unit": "cycles a window",
    "samples": [
-    20180.507812,
-    20178.495312,
-    20172.027344,
-    20170.184375,
-    20191.742969,
-    20173.584766,
-    20165.988672
+    20172.4375,
+    20162.710156,
+    20172.221094,
+    20166.110547,
+    20172.081641,
+    20168.830859,
+    20175.509766
    ],
-   "median": 20173.584766,
-   "min": 20165.988672,
-   "max": 20191.742969,
+   "median": 20172.081641,
+   "min": 20162.710156,
+   "max": 20175.509766,
    "unstable": false
   },
   {
@@ -398,17 +457,17 @@
    "name": "cohort-k16: bound: the readout alone, no producer",
    "unit": "cycles a window",
    "samples": [
-    15855.772656,
-    15852.658594,
-    15852.708594,
-    15876.973047,
-    15872.667187,
-    15860.828125,
-    15871.184375
+    15394.921094,
+    15391.672266,
+    15397.305078,
+    15384.361719,
+    15394.794531,
+    15404.528125,
+    15411.278906
    ],
-   "median": 15860.828125,
-   "min": 15852.658594,
-   "max": 15876.973047,
+   "median": 15394.921094,
+   "min": 15384.361719,
+   "max": 15411.278906,
    "unstable": false
   },
   {
@@ -416,17 +475,17 @@
    "name": "cohort-k16: bound: the readout alone, no producer, no drain",
    "unit": "cycles a window",
    "samples": [
-    13503.086328,
-    13497.377344,
-    13496.782422,
-    13490.642969,
-    13504.651562,
-    13504.756641,
-    13499.494922
+    13498.283203,
+    13495.592188,
+    13493.882812,
+    13486.00625,
+    13501.547656,
+    13497.055078,
+    13492.528516
    ],
-   "median": 13499.494922,
-   "min": 13490.642969,
-   "max": 13504.756641,
+   "median": 13495.592188,
+   "min": 13486.00625,
+   "max": 13501.547656,
    "unstable": false
   },
   {
@@ -434,17 +493,17 @@
    "name": "streamed, ring 5, L1-allocating copies (.ca)",
    "unit": "cycles a window",
    "samples": [
-    5133.386328,
-    5117.316016,
-    5117.006055,
-    5123.395508,
-    5119.461133,
-    5123.085547,
-    5127.751172
+    5117.081445,
+    5116.310352,
+    5118.755664,
+    5128.072461,
+    5121.195117,
+    5120.286328,
+    5118.610937
    ],
-   "median": 5123.085547,
-   "min": 5117.006055,
-   "max": 5133.386328,
+   "median": 5118.755664,
+   "min": 5116.310352,
+   "max": 5128.072461,
    "unstable": false
   },
   {
@@ -452,17 +511,17 @@
    "name": "alt-k16: streamed, ring 5, L1-allocating copies (.ca)",
    "unit": "cycles a window",
    "samples": [
-    12337.283984,
-    12330.832422,
-    12352.903125,
-    12322.742578,
-    12328.910938,
-    12342.827344,
-    12339.0125
+    12356.220703,
+    12320.867969,
+    12353.152734,
+    12342.758984,
+    12345.516016,
+    12357.717188,
+    12356.651953
    ],
-   "median": 12337.283984,
-   "min": 12322.742578,
-   "max": 12352.903125,
+   "median": 12353.152734,
+   "min": 12320.867969,
+   "max": 12357.717188,
    "unstable": false
   },
   {
@@ -470,21 +529,371 @@
    "name": "cohort-k16: streamed, ring 5, L1-allocating copies (.ca)",
    "unit": "cycles a window",
    "samples": [
-    19879.303906,
-    19851.153516,
-    19877.283984,
-    19878.297266,
-    19865.095703,
-    19856.059766,
-    19874.868359
+    19874.437109,
+    19856.642188,
+    19871.432031,
+    19861.088672,
+    19887.066406,
+    19852.350391,
+    19870.587109
    ],
-   "median": 19874.868359,
-   "min": 19851.153516,
-   "max": 19879.303906,
+   "median": 19870.587109,
+   "min": 19852.350391,
+   "max": 19887.066406,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "staged, ring 8",
+   "unit": "cycles a window",
+   "samples": [
+    4552.189062,
+    4563.513477,
+    4563.857617,
+    4574.381641,
+    4548.913281,
+    4564.489453,
+    4543.2
+   ],
+   "median": 4563.513477,
+   "min": 4543.2,
+   "max": 4574.381641,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "staged: bound: the readout with the producer, no row copies",
+   "unit": "cycles a window",
+   "samples": [
+    4013.881641,
+    4013.516992,
+    4021.337305,
+    4035.808203,
+    4017.028906,
+    4000.860156,
+    4012.827539
+   ],
+   "median": 4013.881641,
+   "min": 4000.860156,
+   "max": 4035.808203,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "staged: bound: the copies alone",
+   "unit": "cycles a window",
+   "samples": [
+    1911.231836,
+    1906.005859,
+    1914.6625,
+    1903.750195,
+    1903.192773,
+    1909.421484,
+    1898.43457
+   ],
+   "median": 1906.005859,
+   "min": 1898.43457,
+   "max": 1914.6625,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alt-k16: staged, ring 8",
+   "unit": "cycles a window",
+   "samples": [
+    11739.55,
+    11730.881641,
+    11730.116797,
+    11723.883203,
+    11740.952734,
+    11726.219531,
+    11736.170703
+   ],
+   "median": 11730.881641,
+   "min": 11723.883203,
+   "max": 11740.952734,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alt-k16: staged: bound: the readout with the producer, no row copies",
+   "unit": "cycles a window",
+   "samples": [
+    10211.079297,
+    10225.344531,
+    10199.956641,
+    10196.193359,
+    10217.915234,
+    10213.941797,
+    10211.964844
+   ],
+   "median": 10211.964844,
+   "min": 10196.193359,
+   "max": 10225.344531,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "cohort-k16: staged, ring 8",
+   "unit": "cycles a window",
+   "samples": [
+    18818.123828,
+    18810.637109,
+    18802.636328,
+    18816.336719,
+    18809.446094,
+    18819.59375,
+    18801.780859
+   ],
+   "median": 18810.637109,
+   "min": 18801.780859,
+   "max": 18819.59375,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "cohort-k16: staged: bound: the readout with the producer, no row copies",
+   "unit": "cycles a window",
+   "samples": [
+    16143.887109,
+    16128.613672,
+    16141.314844,
+    16141.454687,
+    16136.541406,
+    16123.275781,
+    16140.098047
+   ],
+   "median": 16140.098047,
+   "min": 16123.275781,
+   "max": 16143.887109,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "staged, ring 8, pads not copied",
+   "unit": "cycles a window",
+   "samples": [
+    4550.288477,
+    4556.688477,
+    4564.55625,
+    4542.755078,
+    4544.119141,
+    4536.790234,
+    4548.605859
+   ],
+   "median": 4548.605859,
+   "min": 4536.790234,
+   "max": 4564.55625,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alt-k16: staged, ring 8, pads not copied",
+   "unit": "cycles a window",
+   "samples": [
+    11691.220312,
+    11686.777344,
+    11675.451172,
+    11671.308984,
+    11675.930078,
+    11667.71875,
+    11679.175
+   ],
+   "median": 11675.930078,
+   "min": 11667.71875,
+   "max": 11691.220312,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "cohort-k16: staged, ring 8, pads not copied",
+   "unit": "cycles a window",
+   "samples": [
+    18670.327344,
+    18668.204297,
+    18659.035938,
+    18673.266797,
+    18671.875391,
+    18677.077344,
+    18659.276953
+   ],
+   "median": 18670.327344,
+   "min": 18659.035938,
+   "max": 18677.077344,
    "unstable": false
   }
  ],
  "kernels": {
+  "void read_stream::staged<(int)0, (int)2, (int)1>(read_stream::In, const unsigned char *, int, long long *)": {
+   "regs": 123,
+   "ops": {
+    "IMAD.MOV.U32": 117,
+    "IADD3": 69,
+    "FFMA": 64,
+    "IMAD": 51,
+    "ISETP.GE.AND": 49,
+    "LDS": 47,
+    "LOP3.LUT": 45,
+    "IMAD.IADD": 45,
+    "HMMA.16816.F32.BF16": 32,
+    "ATOMS.ADD": 32,
+    "SEL": 30,
+    "STS.128": 29
+   }
+  },
+  "void read_stream::staged<(int)0, (int)1, (int)1>(read_stream::In, const unsigned char *, int, long long *)": {
+   "regs": 123,
+   "ops": {
+    "IMAD.MOV.U32": 117,
+    "IADD3": 69,
+    "FFMA": 64,
+    "IMAD": 51,
+    "ISETP.GE.AND": 49,
+    "LDS": 47,
+    "LOP3.LUT": 45,
+    "IMAD.IADD": 45,
+    "HMMA.16816.F32.BF16": 32,
+    "ATOMS.ADD": 32,
+    "SEL": 30,
+    "STS.128": 29
+   }
+  },
+  "void read_stream::staged<(int)0, (int)0, (int)1>(read_stream::In, const unsigned char *, int, long long *)": {
+   "regs": 123,
+   "ops": {
+    "IMAD.MOV.U32": 117,
+    "IADD3": 69,
+    "FFMA": 64,
+    "IMAD": 51,
+    "ISETP.GE.AND": 49,
+    "LDS": 47,
+    "LOP3.LUT": 45,
+    "IMAD.IADD": 45,
+    "HMMA.16816.F32.BF16": 32,
+    "ATOMS.ADD": 32,
+    "SEL": 30,
+    "STS.128": 29
+   }
+  },
+  "void read_stream::staged<(int)1, (int)2, (int)0>(read_stream::In, const unsigned char *, int, long long *)": {
+   "regs": 117,
+   "ops": {
+    "IMAD.MOV.U32": 111,
+    "IADD3": 65,
+    "FFMA": 64,
+    "IMAD": 49,
+    "ISETP.GE.AND": 42,
+    "LDS": 40,
+    "LOP3.LUT": 39,
+    "IMAD.IADD": 33,
+    "MOV": 32,
+    "HMMA.16816.F32.BF16": 32,
+    "ATOMS.ADD": 32,
+    "SEL": 30
+   }
+  },
+  "void read_stream::staged<(int)0, (int)2, (int)0>(read_stream::In, const unsigned char *, int, long long *)": {
+   "regs": 123,
+   "ops": {
+    "IMAD.MOV.U32": 117,
+    "IADD3": 67,
+    "FFMA": 64,
+    "IMAD": 55,
+    "LOP3.LUT": 52,
+    "ISETP.GE.AND": 49,
+    "IMAD.IADD": 47,
+    "LDS": 47,
+    "HMMA.16816.F32.BF16": 32,
+    "ATOMS.ADD": 32,
+    "SEL": 30,
+    "STS.128": 29
+   }
+  },
+  "void read_stream::staged<(int)1, (int)1, (int)0>(read_stream::In, const unsigned char *, int, long long *)": {
+   "regs": 117,
+   "ops": {
+    "IMAD.MOV.U32": 111,
+    "IADD3": 65,
+    "FFMA": 64,
+    "IMAD": 49,
+    "ISETP.GE.AND": 42,
+    "LDS": 40,
+    "LOP3.LUT": 39,
+    "IMAD.IADD": 33,
+    "MOV": 32,
+    "HMMA.16816.F32.BF16": 32,
+    "ATOMS.ADD": 32,
+    "SEL": 30
+   }
+  },
+  "void read_stream::staged<(int)0, (int)1, (int)0>(read_stream::In, const unsigned char *, int, long long *)": {
+   "regs": 123,
+   "ops": {
+    "IMAD.MOV.U32": 117,
+    "IADD3": 67,
+    "FFMA": 64,
+    "IMAD": 55,
+    "LOP3.LUT": 52,
+    "ISETP.GE.AND": 49,
+    "IMAD.IADD": 47,
+    "LDS": 47,
+    "HMMA.16816.F32.BF16": 32,
+    "ATOMS.ADD": 32,
+    "SEL": 30,
+    "STS.128": 29
+   }
+  },
+  "void read_stream::staged<(int)2, (int)0, (int)0>(read_stream::In, const unsigned char *, int, long long *)": {
+   "regs": 40,
+   "ops": {
+    "IMAD.MOV.U32": 138,
+    "IADD3": 50,
+    "ISETP.GE.AND": 48,
+    "LDS": 31,
+    "SEL": 30,
+    "STS.128": 29,
+    "BRA": 27,
+    "LOP3.LUT": 26,
+    "IMAD.IADD": 24,
+    "NOP": 19,
+    "IMAD": 15,
+    "LDGSTS.E.BYPASS.128": 15
+   }
+  },
+  "void read_stream::staged<(int)1, (int)0, (int)0>(read_stream::In, const unsigned char *, int, long long *)": {
+   "regs": 117,
+   "ops": {
+    "IMAD.MOV.U32": 111,
+    "IADD3": 65,
+    "FFMA": 64,
+    "IMAD": 49,
+    "ISETP.GE.AND": 42,
+    "LDS": 40,
+    "LOP3.LUT": 39,
+    "IMAD.IADD": 33,
+    "MOV": 32,
+    "HMMA.16816.F32.BF16": 32,
+    "ATOMS.ADD": 32,
+    "SEL": 30
+   }
+  },
+  "void read_stream::staged<(int)0, (int)0, (int)0>(read_stream::In, const unsigned char *, int, long long *)": {
+   "regs": 123,
+   "ops": {
+    "IMAD.MOV.U32": 117,
+    "IADD3": 67,
+    "FFMA": 64,
+    "IMAD": 55,
+    "LOP3.LUT": 52,
+    "ISETP.GE.AND": 49,
+    "IMAD.IADD": 47,
+    "LDS": 47,
+    "HMMA.16816.F32.BF16": 32,
+    "ATOMS.ADD": 32,
+    "SEL": 30,
+    "STS.128": 29
+   }
+  },
   "void read_stream::stream<(int)5, (int)0, (int)2, (int)1>(read_stream::In, long long *)": {
    "regs": 138,
    "ops": {
