@@ -88,16 +88,34 @@
    "lab": "unchecked",
    "variant": "cohort-k16: bound: the readout alone, no producer, no drain",
    "reason": "a bound: the readout with no producer and no drain, no panel formed"
+  },
+  {
+   "lab": "check",
+   "variant": "streamed, ring 5, L1-allocating copies (.ca)",
+   "ok": true,
+   "detail": "655360 of 655360 drained panel words exact (each CTA's, summed over the windows)"
+  },
+  {
+   "lab": "check",
+   "variant": "alt-k16: streamed, ring 5, L1-allocating copies (.ca)",
+   "ok": true,
+   "detail": "655360 of 655360 drained panel words exact (each CTA's, summed over the windows)"
+  },
+  {
+   "lab": "check",
+   "variant": "cohort-k16: streamed, ring 5, L1-allocating copies (.ca)",
+   "ok": true,
+   "detail": "655360 of 655360 drained panel words exact (each CTA's, summed over the windows)"
   }
  ],
  "driver": "595.95",
  "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
  "git": {
-  "sha": "a43afc27e7e3f33432117b7655a325cb4d8a11da",
+  "sha": "aff50fc0ae53227c8c9036ffc825dd87d50420ee",
   "dirty": true
  },
  "reps": 7,
- "date": "2026-10-18T07:07:46+00:00",
+ "date": "2026-10-18T18:17:16+00:00",
  "utilization_before": 1,
  "inputs": {
   "head.bin": "9c98aaac2ac7e728",
@@ -128,17 +146,17 @@
    "name": "streamed, ring 4 (the first tiles' block, nothing ahead)",
    "unit": "cycles a window",
    "samples": [
-    5358.847266,
-    5368.3125,
-    5359.267969,
-    5359.857227,
-    5367.379102,
-    5364.886719,
-    5358.761719
+    5358.775391,
+    5360.699805,
+    5380.283398,
+    5351.195508,
+    5362.023438,
+    5378.180469,
+    5365.725586
    ],
-   "median": 5359.857227,
-   "min": 5358.761719,
-   "max": 5368.3125,
+   "median": 5362.023438,
+   "min": 5351.195508,
+   "max": 5380.283398,
    "unstable": false
   },
   {
@@ -146,17 +164,17 @@
    "name": "streamed, ring 5",
    "unit": "cycles a window",
    "samples": [
-    5117.825195,
-    5128.80293,
-    5123.069141,
-    5118.485352,
-    5116.631445,
-    5119.959375,
-    5124.465625
+    5122.015039,
+    5121.470898,
+    5138.044531,
+    5111.566602,
+    5129.266016,
+    5114.983984,
+    5125.962109
    ],
-   "median": 5119.959375,
-   "min": 5116.631445,
-   "max": 5128.80293,
+   "median": 5122.015039,
+   "min": 5111.566602,
+   "max": 5138.044531,
    "unstable": false
   },
   {
@@ -164,17 +182,17 @@
    "name": "streamed, ring 6",
    "unit": "cycles a window",
    "samples": [
-    5409.147852,
-    5411.517773,
-    5405.945508,
-    5394.003516,
-    5396.673633,
-    5412.611523,
-    5405.79668
+    5410.039648,
+    5412.666797,
+    5401.10293,
+    5413.047656,
+    5399.13457,
+    5414.069141,
+    5398.104688
    ],
-   "median": 5405.945508,
-   "min": 5394.003516,
-   "max": 5412.611523,
+   "median": 5410.039648,
+   "min": 5398.104688,
+   "max": 5414.069141,
    "unstable": false
   },
   {
@@ -182,17 +200,17 @@
    "name": "bound: the readout with the producer, no row copies (ring 5)",
    "unit": "cycles a window",
    "samples": [
-    4798.493945,
-    4804.128125,
-    4797.140039,
-    4800.129492,
-    4800.826563,
-    4802.511328,
-    4800.801367
+    4802.791016,
+    4803.430469,
+    4798.713477,
+    4796.429688,
+    4793.511133,
+    4804.549414,
+    4792.789453
    ],
-   "median": 4800.801367,
-   "min": 4797.140039,
-   "max": 4804.128125,
+   "median": 4798.713477,
+   "min": 4792.789453,
+   "max": 4804.549414,
    "unstable": false
   },
   {
@@ -200,17 +218,17 @@
    "name": "bound: the copies alone (ring 5)",
    "unit": "cycles a window",
    "samples": [
-    2696.093164,
-    2702.547266,
-    2705.928125,
-    2704.455078,
-    2715.156836,
-    2713.186914,
-    2694.157422
+    2706.416797,
+    2714.453711,
+    2704.085742,
+    2718.055469,
+    2715.032422,
+    2718.784961,
+    2707.528711
    ],
-   "median": 2704.455078,
-   "min": 2694.157422,
-   "max": 2715.156836,
+   "median": 2714.453711,
+   "min": 2704.085742,
+   "max": 2718.784961,
    "unstable": false
   },
   {
@@ -218,17 +236,17 @@
    "name": "bound: the readout alone, no producer",
    "unit": "cycles a window",
    "samples": [
-    3770.007812,
-    3765.095898,
-    3762.230469,
-    3737.416406,
-    3757.028125,
-    3761.261133,
-    3771.483594
+    3749.838281,
+    3753.513281,
+    3773.919336,
+    3763.727539,
+    3751.023828,
+    3763.885547,
+    3771.073633
    ],
-   "median": 3762.230469,
-   "min": 3737.416406,
-   "max": 3771.483594,
+   "median": 3763.727539,
+   "min": 3749.838281,
+   "max": 3773.919336,
    "unstable": false
   },
   {
@@ -236,17 +254,17 @@
    "name": "bound: the readout alone, no producer, no drain",
    "unit": "cycles a window",
    "samples": [
-    2788.702734,
-    2789.22793,
-    2789.074219,
-    2789.189258,
-    2787.274805,
-    2788.88125,
-    2787.544727
+    2788.011914,
+    2788.979688,
+    2789.087109,
+    2788.445703,
+    2789.094531,
+    2788.415234,
+    2787.409766
    ],
-   "median": 2788.88125,
-   "min": 2787.274805,
-   "max": 2789.22793,
+   "median": 2788.445703,
+   "min": 2787.409766,
+   "max": 2789.094531,
    "unstable": false
   },
   {
@@ -254,17 +272,17 @@
    "name": "bound: the stream with no waits on its stages (ring 5)",
    "unit": "cycles a window",
    "samples": [
-    5097.341016,
-    5117.362109,
-    5100.728125,
-    5101.713477,
-    5110.218555,
-    5113.486133,
-    5107.600391
+    5101.986133,
+    5106.480273,
+    5113.935352,
+    5089.007227,
+    5100.797461,
+    5118.154883,
+    5107.116211
    ],
-   "median": 5107.600391,
-   "min": 5097.341016,
-   "max": 5117.362109,
+   "median": 5106.480273,
+   "min": 5089.007227,
+   "max": 5118.154883,
    "unstable": false
   },
   {
@@ -272,17 +290,17 @@
    "name": "alt-k16: streamed, ring 5",
    "unit": "cycles a window",
    "samples": [
-    12323.507422,
-    12331.929688,
-    12346.470703,
-    12332.826563,
-    12345.992578,
-    12342.842578,
-    12325.622656
+    12324.742188,
+    12323.447656,
+    12320.566016,
+    12323.379688,
+    12341.457813,
+    12319.589844,
+    12329.203516
    ],
-   "median": 12332.826563,
-   "min": 12323.507422,
-   "max": 12346.470703,
+   "median": 12323.447656,
+   "min": 12319.589844,
+   "max": 12341.457813,
    "unstable": false
   },
   {
@@ -290,17 +308,17 @@
    "name": "alt-k16: bound: the readout with the producer, no row copies",
    "unit": "cycles a window",
    "samples": [
-    12118.971094,
-    12113.122656,
-    12127.414844,
-    12104.225,
-    12117.348438,
-    12109.504688,
-    12107.042187
+    12088.969922,
+    12101.707422,
+    12115.701172,
+    12102.881641,
+    12091.753125,
+    12112.344922,
+    12120.577344
    ],
-   "median": 12113.122656,
-   "min": 12104.225,
-   "max": 12127.414844,
+   "median": 12102.881641,
+   "min": 12088.969922,
+   "max": 12120.577344,
    "unstable": false
   },
   {
@@ -308,35 +326,35 @@
    "name": "alt-k16: bound: the readout alone, no producer",
    "unit": "cycles a window",
    "samples": [
-    9467.692578,
-    9469.287891,
-    9469.414062,
-    9453.511328,
-    9452.322266,
-    9471.218359,
-    15190.351953
+    9474.052734,
+    9466.478516,
+    9471.325781,
+    9459.794922,
+    9457.998438,
+    9481.762891,
+    9457.783984
    ],
-   "median": 9469.287891,
-   "min": 9452.322266,
-   "max": 15190.351953,
-   "unstable": true
+   "median": 9466.478516,
+   "min": 9457.783984,
+   "max": 9481.762891,
+   "unstable": false
   },
   {
    "lab": "result",
    "name": "alt-k16: bound: the readout alone, no producer, no drain",
    "unit": "cycles a window",
    "samples": [
-    7636.060938,
-    7639.225391,
-    7641.718359,
-    7638.188672,
-    7637.890625,
-    7637.679297,
-    7641.214844
+    7635.638672,
+    7638.726172,
+    7643.812891,
+    7636.910156,
+    7636.105078,
+    7636.809375,
+    7642.877344
    ],
-   "median": 7638.188672,
-   "min": 7636.060938,
-   "max": 7641.718359,
+   "median": 7636.910156,
+   "min": 7635.638672,
+   "max": 7643.812891,
    "unstable": false
   },
   {
@@ -344,17 +362,17 @@
    "name": "cohort-k16: streamed, ring 5",
    "unit": "cycles a window",
    "samples": [
-    21576.026172,
-    21679.732422,
-    21599.779297,
-    21706.017188,
-    21754.032031,
-    21689.135937,
-    21656.038281
+    21601.586328,
+    21563.221484,
+    21613.611328,
+    21725.878906,
+    21672.436328,
+    21643.919141,
+    21682.764453
    ],
-   "median": 21679.732422,
-   "min": 21576.026172,
-   "max": 21754.032031,
+   "median": 21643.919141,
+   "min": 21563.221484,
+   "max": 21725.878906,
    "unstable": false
   },
   {
@@ -362,17 +380,17 @@
    "name": "cohort-k16: bound: the readout with the producer, no row copies",
    "unit": "cycles a window",
    "samples": [
-    20183.947266,
-    20186.294922,
-    20173.892969,
-    20171.279297,
-    20191.269922,
-    20188.375,
-    20174.764844
+    20180.507812,
+    20178.495312,
+    20172.027344,
+    20170.184375,
+    20191.742969,
+    20173.584766,
+    20165.988672
    ],
-   "median": 20183.947266,
-   "min": 20171.279297,
-   "max": 20191.269922,
+   "median": 20173.584766,
+   "min": 20165.988672,
+   "max": 20191.742969,
    "unstable": false
   },
   {
@@ -380,17 +398,17 @@
    "name": "cohort-k16: bound: the readout alone, no producer",
    "unit": "cycles a window",
    "samples": [
-    15874.923828,
-    15861.489844,
-    15855.223438,
-    15851.044531,
-    15872.132812,
-    15855.23125,
-    15861.111719
+    15855.772656,
+    15852.658594,
+    15852.708594,
+    15876.973047,
+    15872.667187,
+    15860.828125,
+    15871.184375
    ],
-   "median": 15861.111719,
-   "min": 15851.044531,
-   "max": 15874.923828,
+   "median": 15860.828125,
+   "min": 15852.658594,
+   "max": 15876.973047,
    "unstable": false
   },
   {
@@ -398,22 +416,127 @@
    "name": "cohort-k16: bound: the readout alone, no producer, no drain",
    "unit": "cycles a window",
    "samples": [
-    13505.419531,
-    13502.470312,
-    13499.85,
-    13490.526172,
-    13504.537109,
-    13499.266406,
-    13499.926563
+    13503.086328,
+    13497.377344,
+    13496.782422,
+    13490.642969,
+    13504.651562,
+    13504.756641,
+    13499.494922
    ],
-   "median": 13499.926563,
-   "min": 13490.526172,
-   "max": 13505.419531,
+   "median": 13499.494922,
+   "min": 13490.642969,
+   "max": 13504.756641,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "streamed, ring 5, L1-allocating copies (.ca)",
+   "unit": "cycles a window",
+   "samples": [
+    5133.386328,
+    5117.316016,
+    5117.006055,
+    5123.395508,
+    5119.461133,
+    5123.085547,
+    5127.751172
+   ],
+   "median": 5123.085547,
+   "min": 5117.006055,
+   "max": 5133.386328,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alt-k16: streamed, ring 5, L1-allocating copies (.ca)",
+   "unit": "cycles a window",
+   "samples": [
+    12337.283984,
+    12330.832422,
+    12352.903125,
+    12322.742578,
+    12328.910938,
+    12342.827344,
+    12339.0125
+   ],
+   "median": 12337.283984,
+   "min": 12322.742578,
+   "max": 12352.903125,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "cohort-k16: streamed, ring 5, L1-allocating copies (.ca)",
+   "unit": "cycles a window",
+   "samples": [
+    19879.303906,
+    19851.153516,
+    19877.283984,
+    19878.297266,
+    19865.095703,
+    19856.059766,
+    19874.868359
+   ],
+   "median": 19874.868359,
+   "min": 19851.153516,
+   "max": 19879.303906,
    "unstable": false
   }
  ],
  "kernels": {
-  "void read_stream::stream<(int)5, (int)5, (int)2>(read_stream::In, long long *)": {
+  "void read_stream::stream<(int)5, (int)0, (int)2, (int)1>(read_stream::In, long long *)": {
+   "regs": 138,
+   "ops": {
+    "IMAD.MOV.U32": 203,
+    "IADD3": 128,
+    "ISETP.GE.AND": 106,
+    "IMAD": 90,
+    "BRA": 87,
+    "IMAD.IADD": 75,
+    "LDS": 64,
+    "FFMA": 64,
+    "SEL": 54,
+    "BSSY": 44,
+    "BSYNC": 44,
+    "LOP3.LUT": 43
+   }
+  },
+  "void read_stream::stream<(int)5, (int)0, (int)1, (int)1>(read_stream::In, long long *)": {
+   "regs": 138,
+   "ops": {
+    "IMAD.MOV.U32": 203,
+    "IADD3": 128,
+    "ISETP.GE.AND": 106,
+    "IMAD": 90,
+    "BRA": 87,
+    "IMAD.IADD": 75,
+    "LDS": 64,
+    "FFMA": 64,
+    "SEL": 54,
+    "BSSY": 44,
+    "BSYNC": 44,
+    "LOP3.LUT": 43
+   }
+  },
+  "void read_stream::stream<(int)5, (int)0, (int)0, (int)1>(read_stream::In, long long *)": {
+   "regs": 138,
+   "ops": {
+    "IMAD.MOV.U32": 203,
+    "IADD3": 128,
+    "ISETP.GE.AND": 106,
+    "IMAD": 90,
+    "BRA": 87,
+    "IMAD.IADD": 75,
+    "LDS": 64,
+    "FFMA": 64,
+    "SEL": 54,
+    "BSSY": 44,
+    "BSYNC": 44,
+    "LOP3.LUT": 43
+   }
+  },
+  "void read_stream::stream<(int)5, (int)5, (int)2, (int)0>(read_stream::In, long long *)": {
    "regs": 121,
    "ops": {
     "IMAD.MOV.U32": 126,
@@ -430,7 +553,7 @@
     "LOP3.LUT": 24
    }
   },
-  "void read_stream::stream<(int)5, (int)3, (int)2>(read_stream::In, long long *)": {
+  "void read_stream::stream<(int)5, (int)3, (int)2, (int)0>(read_stream::In, long long *)": {
    "regs": 120,
    "ops": {
     "IMAD.MOV.U32": 133,
@@ -447,7 +570,7 @@
     "STS.128": 29
    }
   },
-  "void read_stream::stream<(int)5, (int)1, (int)2>(read_stream::In, long long *)": {
+  "void read_stream::stream<(int)5, (int)1, (int)2, (int)0>(read_stream::In, long long *)": {
    "regs": 132,
    "ops": {
     "IMAD.MOV.U32": 199,
@@ -464,7 +587,7 @@
     "LOP3.LUT": 42
    }
   },
-  "void read_stream::stream<(int)5, (int)0, (int)2>(read_stream::In, long long *)": {
+  "void read_stream::stream<(int)5, (int)0, (int)2, (int)0>(read_stream::In, long long *)": {
    "regs": 138,
    "ops": {
     "IMAD.MOV.U32": 203,
@@ -481,7 +604,7 @@
     "LOP3.LUT": 43
    }
   },
-  "void read_stream::stream<(int)5, (int)5, (int)1>(read_stream::In, long long *)": {
+  "void read_stream::stream<(int)5, (int)5, (int)1, (int)0>(read_stream::In, long long *)": {
    "regs": 121,
    "ops": {
     "IMAD.MOV.U32": 126,
@@ -498,7 +621,7 @@
     "LOP3.LUT": 24
    }
   },
-  "void read_stream::stream<(int)5, (int)3, (int)1>(read_stream::In, long long *)": {
+  "void read_stream::stream<(int)5, (int)3, (int)1, (int)0>(read_stream::In, long long *)": {
    "regs": 120,
    "ops": {
     "IMAD.MOV.U32": 133,
@@ -515,7 +638,7 @@
     "STS.128": 29
    }
   },
-  "void read_stream::stream<(int)5, (int)1, (int)1>(read_stream::In, long long *)": {
+  "void read_stream::stream<(int)5, (int)1, (int)1, (int)0>(read_stream::In, long long *)": {
    "regs": 132,
    "ops": {
     "IMAD.MOV.U32": 199,
@@ -532,7 +655,7 @@
     "LOP3.LUT": 42
    }
   },
-  "void read_stream::stream<(int)5, (int)0, (int)1>(read_stream::In, long long *)": {
+  "void read_stream::stream<(int)5, (int)0, (int)1, (int)0>(read_stream::In, long long *)": {
    "regs": 138,
    "ops": {
     "IMAD.MOV.U32": 203,
@@ -549,7 +672,7 @@
     "LOP3.LUT": 43
    }
   },
-  "void read_stream::stream<(int)5, (int)4, (int)0>(read_stream::In, long long *)": {
+  "void read_stream::stream<(int)5, (int)4, (int)0, (int)0>(read_stream::In, long long *)": {
    "regs": 138,
    "ops": {
     "IMAD.MOV.U32": 203,
@@ -566,7 +689,7 @@
     "LOP3.LUT": 43
    }
   },
-  "void read_stream::stream<(int)5, (int)5, (int)0>(read_stream::In, long long *)": {
+  "void read_stream::stream<(int)5, (int)5, (int)0, (int)0>(read_stream::In, long long *)": {
    "regs": 121,
    "ops": {
     "IMAD.MOV.U32": 126,
@@ -583,7 +706,7 @@
     "LOP3.LUT": 24
    }
   },
-  "void read_stream::stream<(int)5, (int)3, (int)0>(read_stream::In, long long *)": {
+  "void read_stream::stream<(int)5, (int)3, (int)0, (int)0>(read_stream::In, long long *)": {
    "regs": 120,
    "ops": {
     "IMAD.MOV.U32": 133,
@@ -600,7 +723,7 @@
     "STS.128": 29
    }
   },
-  "void read_stream::stream<(int)5, (int)2, (int)0>(read_stream::In, long long *)": {
+  "void read_stream::stream<(int)5, (int)2, (int)0, (int)0>(read_stream::In, long long *)": {
    "regs": 56,
    "ops": {
     "IMAD.MOV.U32": 215,
@@ -617,7 +740,7 @@
     "LOP3.LUT": 28
    }
   },
-  "void read_stream::stream<(int)5, (int)1, (int)0>(read_stream::In, long long *)": {
+  "void read_stream::stream<(int)5, (int)1, (int)0, (int)0>(read_stream::In, long long *)": {
    "regs": 132,
    "ops": {
     "IMAD.MOV.U32": 199,
@@ -634,7 +757,7 @@
     "LOP3.LUT": 42
    }
   },
-  "void read_stream::stream<(int)6, (int)0, (int)0>(read_stream::In, long long *)": {
+  "void read_stream::stream<(int)6, (int)0, (int)0, (int)0>(read_stream::In, long long *)": {
    "regs": 138,
    "ops": {
     "IMAD.MOV.U32": 203,
@@ -651,7 +774,7 @@
     "LOP3.LUT": 43
    }
   },
-  "void read_stream::stream<(int)5, (int)0, (int)0>(read_stream::In, long long *)": {
+  "void read_stream::stream<(int)5, (int)0, (int)0, (int)0>(read_stream::In, long long *)": {
    "regs": 138,
    "ops": {
     "IMAD.MOV.U32": 203,
@@ -668,7 +791,7 @@
     "LOP3.LUT": 43
    }
   },
-  "void read_stream::stream<(int)4, (int)0, (int)0>(read_stream::In, long long *)": {
+  "void read_stream::stream<(int)4, (int)0, (int)0, (int)0>(read_stream::In, long long *)": {
    "regs": 138,
    "ops": {
     "IMAD.MOV.U32": 202,
