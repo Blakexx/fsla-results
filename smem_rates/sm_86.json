@@ -1,16 +1,98 @@
 {
  "experiment": "smem_rates",
- "question": "what does an SM's shared-memory pipe sustain a wavefront (128 bytes a cycle is the documented bank rate) for loads -- `ld.shared.v4` and `ldmatrix.x4`, 4 wavefronts a warp each -- and for atomic adds -- `red.shared.add.u32` with a lane a bank (1 wavefront a warp), two lanes a bank (2), four (4)?",
+ "question": "what does an SM's shared-memory pipe sustain a wavefront (128 bytes a cycle is the documented bank rate) for loads -- `ld.shared.v4` and `ldmatrix.x4`, 4 wavefronts a warp each -- and for atomic adds -- `red.shared.add.u32` with a lane a bank (1 wavefront a warp), two lanes a bank (2), four (4) -- and which global traffic takes its cycles: data a load returns to registers from L1 or from L2, allocated in L1 or not, and a `cp.async` copy's write into shared memory, allocated in L1 or not?",
  "arch": "sm_86",
  "device": "NVIDIA GeForce RTX 3080 Ti",
+ "checks": [
+  {
+   "lab": "unchecked",
+   "variant": "ldmatrix.x4 alone, 8 of 16 warps",
+   "reason": "a rate probe: its loads fold into a sink"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "ld.global.nc.v4, L1 hits, alone",
+   "reason": "a rate probe: its loads fold into a sink"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "ldmatrix.x4 beside ld.global.nc.v4, L1 hits",
+   "reason": "a rate probe: its loads fold into a sink"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "ld.global.nc.v4, L1 hits, beside ldmatrix.x4",
+   "reason": "a rate probe: its loads fold into a sink"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "ld.global.nc.v4, L2 hits, alone",
+   "reason": "a rate probe: its loads fold into a sink"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "ldmatrix.x4 beside ld.global.nc.v4, L2 hits",
+   "reason": "a rate probe: its loads fold into a sink"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "ld.global.nc.v4, L2 hits, beside ldmatrix.x4",
+   "reason": "a rate probe: its loads fold into a sink"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "ld.global.cg.v4, L2 hits, alone",
+   "reason": "a rate probe: its loads fold into a sink"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "ldmatrix.x4 beside ld.global.cg.v4, L2 hits",
+   "reason": "a rate probe: its loads fold into a sink"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "ld.global.cg.v4, L2 hits, beside ldmatrix.x4",
+   "reason": "a rate probe: its loads fold into a sink"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "cp.async.cg into shared memory, L2 hits, alone",
+   "reason": "a rate probe: its loads fold into a sink"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "ldmatrix.x4 beside cp.async.cg into shared memory, L2 hits",
+   "reason": "a rate probe: its loads fold into a sink"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "cp.async.cg into shared memory, L2 hits, beside ldmatrix.x4",
+   "reason": "a rate probe: its loads fold into a sink"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "cp.async.ca into shared memory, L2 hits, alone",
+   "reason": "a rate probe: its loads fold into a sink"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "ldmatrix.x4 beside cp.async.ca into shared memory, L2 hits",
+   "reason": "a rate probe: its loads fold into a sink"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "cp.async.ca into shared memory, L2 hits, beside ldmatrix.x4",
+   "reason": "a rate probe: its loads fold into a sink"
+  }
+ ],
  "driver": "595.95",
  "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
  "git": {
-  "sha": "2b4ce17b5e546613ecce36174ad26c79a6aa9eeb",
+  "sha": "f5b58ff3a624914d585c3d0046c965a8fef3f0ea",
   "dirty": true
  },
  "reps": 7,
- "date": "2026-10-07T01:37:06+00:00",
+ "date": "2026-10-18T18:37:26+00:00",
  "utilization_before": 1,
  "inputs": {},
  "results": [
@@ -19,17 +101,17 @@
    "name": "ld.shared.v4, 4 wavefronts a warp / 8 warps",
    "unit": "cycles a wavefront",
    "samples": [
-    1.012428,
-    1.012429,
-    1.01212,
-    1.012427,
-    1.012425,
-    1.012219,
-    1.012124
+    1.012442,
+    1.012439,
+    1.012435,
+    1.012437,
+    1.012437,
+    1.012434,
+    1.012437
    ],
-   "median": 1.012425,
-   "min": 1.01212,
-   "max": 1.012429,
+   "median": 1.012437,
+   "min": 1.012434,
+   "max": 1.012442,
    "unstable": false
   },
   {
@@ -37,35 +119,35 @@
    "name": "ldmatrix.x4, 4 wavefronts a warp / 8 warps",
    "unit": "cycles a wavefront",
    "samples": [
-    1.001684,
-    1.001686,
-    1.001688,
-    1.001692,
-    1.001686,
-    1.001693,
-    1.001681
+    1.912351,
+    1.002427,
+    1.001701,
+    1.001705,
+    1.001699,
+    1.001697,
+    1.001699
    ],
-   "median": 1.001686,
-   "min": 1.001681,
-   "max": 1.001693,
-   "unstable": false
+   "median": 1.001701,
+   "min": 1.001697,
+   "max": 1.912351,
+   "unstable": true
   },
   {
    "lab": "result",
    "name": "red.shared.add, a lane a bank, 1 wavefront a warp / 8 warps",
    "unit": "cycles a wavefront",
    "samples": [
-    2.002719,
-    2.002643,
-    2.002639,
-    2.002644,
-    2.002729,
-    2.002732,
-    2.00277
+    2.002755,
+    2.002763,
+    2.002779,
+    2.004334,
+    2.00275,
+    2.002756,
+    2.002757
    ],
-   "median": 2.002719,
-   "min": 2.002639,
-   "max": 2.00277,
+   "median": 2.002757,
+   "min": 2.00275,
+   "max": 2.004334,
    "unstable": false
   },
   {
@@ -73,17 +155,17 @@
    "name": "red.shared.add, two lanes a bank, 2 wavefronts a warp / 8 warps",
    "unit": "cycles a wavefront",
    "samples": [
-    1.001064,
-    1.001087,
-    1.00107,
-    1.001092,
-    1.001089,
-    1.00108,
-    1.001056
+    1.001122,
+    1.001111,
+    1.001108,
+    1.001118,
+    1.001107,
+    1.001132,
+    1.001102
    ],
-   "median": 1.00108,
-   "min": 1.001056,
-   "max": 1.001092,
+   "median": 1.001111,
+   "min": 1.001102,
+   "max": 1.001132,
    "unstable": false
   },
   {
@@ -91,17 +173,17 @@
    "name": "red.shared.add, four lanes a bank, 4 wavefronts a warp / 8 warps",
    "unit": "cycles a wavefront",
    "samples": [
-    1.000411,
-    1.000424,
-    1.000415,
-    1.000432,
-    1.000414,
-    1.000424,
-    1.000418
+    1.000429,
+    1.000427,
+    1.000429,
+    1.000429,
+    1.00043,
+    1.00043,
+    1.000431
    ],
-   "median": 1.000418,
-   "min": 1.000411,
-   "max": 1.000432,
+   "median": 1.000429,
+   "min": 1.000427,
+   "max": 1.000431,
    "unstable": false
   },
   {
@@ -109,17 +191,17 @@
    "name": "ld.shared.v4, 4 wavefronts a warp / 16 warps",
    "unit": "cycles a wavefront",
    "samples": [
-    1.008996,
-    1.009026,
-    1.009023,
-    1.009023,
-    1.009024,
-    1.009023,
-    1.009021
+    1.00903,
+    1.009028,
+    1.009027,
+    1.009027,
+    1.009029,
+    1.009032,
+    1.009028
    ],
-   "median": 1.009023,
-   "min": 1.008996,
-   "max": 1.009026,
+   "median": 1.009028,
+   "min": 1.009027,
+   "max": 1.009032,
    "unstable": false
   },
   {
@@ -127,17 +209,17 @@
    "name": "ldmatrix.x4, 4 wavefronts a warp / 16 warps",
    "unit": "cycles a wavefront",
    "samples": [
-    1.00064,
-    1.000639,
-    1.00064,
-    1.00064,
-    1.00064,
-    1.000641,
-    1.00064
+    1.000646,
+    1.000645,
+    1.000646,
+    1.000647,
+    1.000645,
+    1.000644,
+    1.000645
    ],
-   "median": 1.00064,
-   "min": 1.000639,
-   "max": 1.000641,
+   "median": 1.000645,
+   "min": 1.000644,
+   "max": 1.000647,
    "unstable": false
   },
   {
@@ -145,17 +227,17 @@
    "name": "red.shared.add, a lane a bank, 1 wavefront a warp / 16 warps",
    "unit": "cycles a wavefront",
    "samples": [
-    2.003132,
-    2.003135,
+    2.003165,
+    2.00315,
+    2.003155,
     2.003151,
-    2.00334,
-    2.003135,
-    2.003141,
-    2.003347
+    2.003152,
+    2.003152,
+    2.003169
    ],
-   "median": 2.003141,
-   "min": 2.003132,
-   "max": 2.003347,
+   "median": 2.003152,
+   "min": 2.00315,
+   "max": 2.003169,
    "unstable": false
   },
   {
@@ -163,17 +245,17 @@
    "name": "red.shared.add, two lanes a bank, 2 wavefronts a warp / 16 warps",
    "unit": "cycles a wavefront",
    "samples": [
-    1.000668,
-    1.000676,
-    1.000694,
-    1.000692,
-    1.000677,
-    1.000677,
-    1.000669
+    1.000703,
+    1.000704,
+    1.000704,
+    1.0007,
+    1.0007,
+    1.000714,
+    1.0007
    ],
-   "median": 1.000677,
-   "min": 1.000668,
-   "max": 1.000694,
+   "median": 1.000703,
+   "min": 1.0007,
+   "max": 1.000714,
    "unstable": false
   },
   {
@@ -181,21 +263,496 @@
    "name": "red.shared.add, four lanes a bank, 4 wavefronts a warp / 16 warps",
    "unit": "cycles a wavefront",
    "samples": [
-    1.000275,
-    1.000263,
-    1.000267,
-    1.000264,
-    1.000275,
-    1.000277,
-    2.005476
+    1.000283,
+    1.000282,
+    1.000281,
+    1.000285,
+    1.00028,
+    1.000281,
+    1.000285
    ],
-   "median": 1.000275,
-   "min": 1.000263,
-   "max": 2.005476,
+   "median": 1.000282,
+   "min": 1.00028,
+   "max": 1.000285,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "ldmatrix.x4 alone, 8 of 16 warps",
+   "unit": "cycles a wavefront",
+   "samples": [
+    1.011321,
+    1.011324,
+    1.011322,
+    1.011323,
+    1.011321,
+    1.011322,
+    1.011324
+   ],
+   "median": 1.011322,
+   "min": 1.011321,
+   "max": 1.011324,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "ld.global.nc.v4, L1 hits, alone",
+   "unit": "bytes a cycle",
+   "samples": [
+    119.71404,
+    119.780125,
+    119.826904,
+    119.810708,
+    119.646621,
+    119.65919,
+    119.855303
+   ],
+   "median": 119.780125,
+   "min": 119.646621,
+   "max": 119.855303,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "ldmatrix.x4 beside ld.global.nc.v4, L1 hits",
+   "unit": "cycles a wavefront",
+   "samples": [
+    2.027879,
+    2.027927,
+    2.028006,
+    2.027823,
+    2.027946,
+    2.027602,
+    2.027868
+   ],
+   "median": 2.027879,
+   "min": 2.027602,
+   "max": 2.028006,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "ld.global.nc.v4, L1 hits, beside ldmatrix.x4",
+   "unit": "bytes a cycle",
+   "samples": [
+    53.74463,
+    53.74197,
+    53.74553,
+    53.749303,
+    53.74179,
+    53.753325,
+    53.744918
+   ],
+   "median": 53.744918,
+   "min": 53.74179,
+   "max": 53.753325,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "ld.global.nc.v4, L2 hits, alone",
+   "unit": "bytes a cycle",
+   "samples": [
+    20.736641,
+    21.287821,
+    20.92263,
+    21.741693,
+    21.557434,
+    21.743404,
+    20.875101
+   ],
+   "median": 21.287821,
+   "min": 20.736641,
+   "max": 21.743404,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "ldmatrix.x4 beside ld.global.nc.v4, L2 hits",
+   "unit": "cycles a wavefront",
+   "samples": [
+    1.303324,
+    1.308626,
+    1.30189,
+    1.308784,
+    1.303726,
+    1.313883,
+    1.302474
+   ],
+   "median": 1.303726,
+   "min": 1.30189,
+   "max": 1.313883,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "ld.global.nc.v4, L2 hits, beside ldmatrix.x4",
+   "unit": "bytes a cycle",
+   "samples": [
+    16.32284,
+    16.291844,
+    16.349818,
+    16.381043,
+    16.267721,
+    16.399444,
+    16.309263
+   ],
+   "median": 16.32284,
+   "min": 16.267721,
+   "max": 16.399444,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "ld.global.cg.v4, L2 hits, alone",
+   "unit": "bytes a cycle",
+   "samples": [
+    14.493884,
+    15.513536,
+    16.3414,
+    15.452724,
+    14.646186,
+    16.341821,
+    16.336875
+   ],
+   "median": 15.513536,
+   "min": 14.493884,
+   "max": 16.341821,
    "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "ldmatrix.x4 beside ld.global.cg.v4, L2 hits",
+   "unit": "cycles a wavefront",
+   "samples": [
+    1.270449,
+    1.274945,
+    1.271706,
+    1.270228,
+    1.273373,
+    1.281026,
+    1.274288
+   ],
+   "median": 1.273373,
+   "min": 1.270228,
+   "max": 1.281026,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "ld.global.cg.v4, L2 hits, beside ldmatrix.x4",
+   "unit": "bytes a cycle",
+   "samples": [
+    16.313474,
+    16.312251,
+    16.299779,
+    16.304435,
+    16.309387,
+    16.254099,
+    16.277155
+   ],
+   "median": 16.304435,
+   "min": 16.254099,
+   "max": 16.313474,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "cp.async.cg into shared memory, L2 hits, alone",
+   "unit": "bytes a cycle",
+   "samples": [
+    17.962999,
+    17.944732,
+    17.975185,
+    17.978675,
+    17.977145,
+    18.010933,
+    17.967924
+   ],
+   "median": 17.975185,
+   "min": 17.944732,
+   "max": 18.010933,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "ldmatrix.x4 beside cp.async.cg into shared memory, L2 hits",
+   "unit": "cycles a wavefront",
+   "samples": [
+    1.087463,
+    1.087382,
+    1.087466,
+    1.086541,
+    1.087246,
+    1.0874,
+    1.087453
+   ],
+   "median": 1.0874,
+   "min": 1.086541,
+   "max": 1.087466,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "cp.async.cg into shared memory, L2 hits, beside ldmatrix.x4",
+   "unit": "bytes a cycle",
+   "samples": [
+    17.876132,
+    17.867548,
+    17.857936,
+    17.742546,
+    17.848781,
+    17.861261,
+    17.864226
+   ],
+   "median": 17.861261,
+   "min": 17.742546,
+   "max": 17.876132,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "cp.async.ca into shared memory, L2 hits, alone",
+   "unit": "bytes a cycle",
+   "samples": [
+    20.733452,
+    20.921781,
+    21.154859,
+    21.063757,
+    21.039503,
+    18.100476,
+    19.849795
+   ],
+   "median": 20.921781,
+   "min": 18.100476,
+   "max": 21.154859,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "ldmatrix.x4 beside cp.async.ca into shared memory, L2 hits",
+   "unit": "cycles a wavefront",
+   "samples": [
+    4.559577,
+    4.835846,
+    4.617785,
+    4.702869,
+    4.567396,
+    4.724937,
+    4.668868
+   ],
+   "median": 4.668868,
+   "min": 4.559577,
+   "max": 4.835846,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "cp.async.ca into shared memory, L2 hits, beside ldmatrix.x4",
+   "unit": "bytes a cycle",
+   "samples": [
+    18.709748,
+    17.96734,
+    18.474502,
+    18.293878,
+    18.64893,
+    18.208569,
+    18.443134
+   ],
+   "median": 18.443134,
+   "min": 17.96734,
+   "max": 18.709748,
+   "unstable": false
   }
  ],
  "kernels": {
+  "void smem_rates::share<(int)4, (int)3>(int, const unsigned char *, long long *, int *, int *)": {
+   "regs": 37,
+   "ops": {
+    "LOP3.LUT": 37,
+    "IADD3": 37,
+    "IMAD.MOV.U32": 18,
+    "IMAD.IADD": 17,
+    "BRA": 14,
+    "IMAD": 13,
+    "IMAD.SHL.U32": 10,
+    "IMAD.X": 8,
+    "LDGSTS.E.128": 8,
+    "LDSM.16.M88.4": 8,
+    "NOP": 8,
+    "STS": 6
+   }
+  },
+  "void smem_rates::share<(int)4, (int)2>(int, const unsigned char *, long long *, int *, int *)": {
+   "regs": 27,
+   "ops": {
+    "IADD3": 30,
+    "LOP3.LUT": 13,
+    "IMAD.MOV.U32": 12,
+    "IMAD": 12,
+    "IMAD.IADD": 9,
+    "BRA": 8,
+    "IMAD.X": 8,
+    "LDGSTS.E.128": 8,
+    "NOP": 8,
+    "IMAD.SHL.U32": 6,
+    "STS": 6,
+    "ISETP.NE.AND": 5
+   }
+  },
+  "void smem_rates::share<(int)3, (int)3>(int, const unsigned char *, long long *, int *, int *)": {
+   "regs": 37,
+   "ops": {
+    "LOP3.LUT": 37,
+    "IADD3": 37,
+    "IMAD.MOV.U32": 18,
+    "IMAD.IADD": 17,
+    "BRA": 14,
+    "IMAD": 13,
+    "IMAD.SHL.U32": 10,
+    "IMAD.X": 8,
+    "LDGSTS.E.BYPASS.128": 8,
+    "LDSM.16.M88.4": 8,
+    "NOP": 8,
+    "STS": 6
+   }
+  },
+  "void smem_rates::share<(int)3, (int)2>(int, const unsigned char *, long long *, int *, int *)": {
+   "regs": 27,
+   "ops": {
+    "IADD3": 30,
+    "LOP3.LUT": 13,
+    "IMAD.MOV.U32": 12,
+    "IMAD": 12,
+    "IMAD.IADD": 9,
+    "BRA": 8,
+    "IMAD.X": 8,
+    "LDGSTS.E.BYPASS.128": 8,
+    "NOP": 8,
+    "IMAD.SHL.U32": 6,
+    "STS": 6,
+    "ISETP.NE.AND": 5
+   }
+  },
+  "void smem_rates::share<(int)2, (int)3>(int, const unsigned char *, long long *, int *, int *)": {
+   "regs": 44,
+   "ops": {
+    "LOP3.LUT": 52,
+    "IADD3": 36,
+    "IMAD": 20,
+    "IMAD.MOV.U32": 19,
+    "BRA": 14,
+    "NOP": 11,
+    "IMAD.X": 8,
+    "LDG.E.128.STRONG.GPU": 8,
+    "IMAD.IADD": 8,
+    "LDSM.16.M88.4": 8,
+    "IMAD.SHL.U32": 7,
+    "STS": 6
+   }
+  },
+  "void smem_rates::share<(int)2, (int)2>(int, const unsigned char *, long long *, int *, int *)": {
+   "regs": 44,
+   "ops": {
+    "IADD3": 29,
+    "LOP3.LUT": 28,
+    "IMAD": 19,
+    "IMAD.MOV.U32": 12,
+    "BRA": 10,
+    "IMAD.X": 8,
+    "LDG.E.128.STRONG.GPU": 8,
+    "NOP": 8,
+    "STS": 6,
+    "ISETP.NE.AND": 5,
+    "S2R": 3,
+    "BSSY": 3
+   }
+  },
+  "void smem_rates::share<(int)1, (int)3>(int, const unsigned char *, long long *, int *, int *)": {
+   "regs": 44,
+   "ops": {
+    "LOP3.LUT": 52,
+    "IADD3": 36,
+    "IMAD": 20,
+    "IMAD.MOV.U32": 19,
+    "BRA": 14,
+    "NOP": 11,
+    "IMAD.X": 8,
+    "LDG.E.128.CONSTANT": 8,
+    "IMAD.IADD": 8,
+    "LDSM.16.M88.4": 8,
+    "IMAD.SHL.U32": 7,
+    "STS": 6
+   }
+  },
+  "void smem_rates::share<(int)1, (int)2>(int, const unsigned char *, long long *, int *, int *)": {
+   "regs": 44,
+   "ops": {
+    "IADD3": 29,
+    "LOP3.LUT": 28,
+    "IMAD": 19,
+    "IMAD.MOV.U32": 12,
+    "BRA": 10,
+    "NOP": 9,
+    "IMAD.X": 8,
+    "LDG.E.128.CONSTANT": 8,
+    "STS": 6,
+    "ISETP.NE.AND": 5,
+    "S2R": 3,
+    "BSSY": 3
+   }
+  },
+  "void smem_rates::share<(int)0, (int)3>(int, const unsigned char *, long long *, int *, int *)": {
+   "regs": 43,
+   "ops": {
+    "LOP3.LUT": 51,
+    "IADD3": 36,
+    "IMAD.MOV.U32": 20,
+    "IMAD": 19,
+    "BRA": 14,
+    "NOP": 13,
+    "IMAD.X": 8,
+    "LDG.E.128.CONSTANT": 8,
+    "IMAD.IADD": 8,
+    "LDSM.16.M88.4": 8,
+    "IMAD.SHL.U32": 7,
+    "STS": 6
+   }
+  },
+  "void smem_rates::share<(int)0, (int)2>(int, const unsigned char *, long long *, int *, int *)": {
+   "regs": 42,
+   "ops": {
+    "IADD3": 21,
+    "LOP3.LUT": 19,
+    "IMAD.MOV.U32": 14,
+    "NOP": 12,
+    "IMAD": 10,
+    "BRA": 8,
+    "UIADD3": 8,
+    "LEA": 8,
+    "ULOP3.LUT": 8,
+    "IMAD.X": 8,
+    "LDG.E.128.CONSTANT": 8,
+    "STS": 6
+   }
+  },
+  "void smem_rates::share<(int)0, (int)1>(int, const unsigned char *, long long *, int *, int *)": {
+   "regs": 36,
+   "ops": {
+    "LOP3.LUT": 27,
+    "IADD3": 19,
+    "IMAD.MOV.U32": 15,
+    "BRA": 10,
+    "IMAD": 10,
+    "IMAD.IADD": 8,
+    "LDSM.16.M88.4": 8,
+    "NOP": 8,
+    "IMAD.SHL.U32": 7,
+    "STS": 6,
+    "ISETP.NE.AND": 4,
+    "BSSY": 3
+   }
+  },
   "void smem_rates::pipe<(int)4>(int, long long *, int *)": {
    "regs": 16,
    "ops": {
