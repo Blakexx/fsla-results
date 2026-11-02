@@ -1,0 +1,575 @@
+{
+ "experiment": "fold_alone",
+ "question": "what does the carry's fold phase cost a warp-window ALONE -- production's `fold_chunk` over lists drawn as nl64k-alt-k4's are, nothing else in the window -- against its tensor floor and against the composed kernel's fold phase?",
+ "arch": "sm_86",
+ "device": "NVIDIA GeForce RTX 3080 Ti",
+ "checks": [
+  {
+   "lab": "unchecked",
+   "variant": "composed: a rendezvous a window",
+   "reason": "a timing isolation; the fold's arithmetic is the oracle's (test_carry_fold)"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "windows back to back",
+   "reason": "a timing isolation; the fold's arithmetic is the oracle's (test_carry_fold)"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "no list rescaled",
+   "reason": "a timing isolation; the fold's arithmetic is the oracle's (test_carry_fold)"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "composed, traced",
+   "reason": "a timing isolation; the fold's arithmetic is the oracle's (test_carry_fold)"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "trace: lists' first lanes",
+   "reason": "a lap of the traced variant"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "trace: list 0 guard",
+   "reason": "a lap of the traced variant"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "trace: list 0 steps",
+   "reason": "a lap of the traced variant"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "trace: list 1 guard",
+   "reason": "a lap of the traced variant"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "trace: list 1 steps",
+   "reason": "a lap of the traced variant"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "trace: list 2 guard",
+   "reason": "a lap of the traced variant"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "trace: list 2 steps",
+   "reason": "a lap of the traced variant"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "trace: list 3 guard",
+   "reason": "a lap of the traced variant"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "trace: list 3 steps",
+   "reason": "a lap of the traced variant"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "tensor floor (mean scheduler)",
+   "reason": "computed on the host from the same draw"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "tensor floor (busiest scheduler)",
+   "reason": "computed on the host from the same draw"
+  }
+ ],
+ "driver": "610.88",
+ "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
+ "git": {
+  "sha": "a9bb40d98821491b7f4f01d3beb2a58c88b9f8b2",
+  "dirty": true
+ },
+ "reps": 7,
+ "date": "2026-11-02T06:17:47+00:00",
+ "utilization_before": 1,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "composed: a rendezvous a window",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2490.780151,
+    2491.772559,
+    2489.053174,
+    2488.897534,
+    2491.078662,
+    2489.512085,
+    2489.218481
+   ],
+   "median": 2489.512085,
+   "min": 2488.897534,
+   "max": 2491.772559,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "windows back to back",
+   "unit": "cycles a warp-window",
+   "samples": [
+    1940.637061,
+    1937.062061,
+    1938.092236,
+    1939.024023,
+    1940.025952,
+    1938.756421,
+    1942.250879
+   ],
+   "median": 1939.024023,
+   "min": 1937.062061,
+   "max": 1942.250879,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "no list rescaled",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2420.366553,
+    2420.20835,
+    2422.246924,
+    2423.328052,
+    2421.563696,
+    2420.915112,
+    2422.120874
+   ],
+   "median": 2421.563696,
+   "min": 2420.20835,
+   "max": 2423.328052,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "composed, traced",
+   "unit": "cycles a warp-window",
+   "samples": [
+    2665.546704,
+    2663.659497,
+    2665.76604,
+    2664.174365,
+    2664.077832,
+    2667.138452,
+    2667.5177
+   ],
+   "median": 2665.546704,
+   "min": 2663.659497,
+   "max": 2667.5177,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "trace: lists' first lanes",
+   "unit": "cycles a warp-window",
+   "samples": [
+    608.499536
+   ],
+   "median": 608.499536,
+   "min": 608.499536,
+   "max": 608.499536,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "trace: list 0 guard",
+   "unit": "cycles a warp-window",
+   "samples": [
+    66.289844
+   ],
+   "median": 66.289844,
+   "min": 66.289844,
+   "max": 66.289844,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "trace: list 0 steps",
+   "unit": "cycles a warp-window",
+   "samples": [
+    540.579321
+   ],
+   "median": 540.579321,
+   "min": 540.579321,
+   "max": 540.579321,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "trace: list 1 guard",
+   "unit": "cycles a warp-window",
+   "samples": [
+    62.111597
+   ],
+   "median": 62.111597,
+   "min": 62.111597,
+   "max": 62.111597,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "trace: list 1 steps",
+   "unit": "cycles a warp-window",
+   "samples": [
+    431.682544
+   ],
+   "median": 431.682544,
+   "min": 431.682544,
+   "max": 431.682544,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "trace: list 2 guard",
+   "unit": "cycles a warp-window",
+   "samples": [
+    61.978564
+   ],
+   "median": 61.978564,
+   "min": 61.978564,
+   "max": 61.978564,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "trace: list 2 steps",
+   "unit": "cycles a warp-window",
+   "samples": [
+    411.44585
+   ],
+   "median": 411.44585,
+   "min": 411.44585,
+   "max": 411.44585,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "trace: list 3 guard",
+   "unit": "cycles a warp-window",
+   "samples": [
+    61.449951
+   ],
+   "median": 61.449951,
+   "min": 61.449951,
+   "max": 61.449951,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "trace: list 3 steps",
+   "unit": "cycles a warp-window",
+   "samples": [
+    408.880493
+   ],
+   "median": 408.880493,
+   "min": 408.880493,
+   "max": 408.880493,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "tensor floor (mean scheduler)",
+   "unit": "cycles a warp-window",
+   "samples": [
+    1434.4
+   ],
+   "median": 1434.4,
+   "min": 1434.4,
+   "max": 1434.4,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "tensor floor (busiest scheduler)",
+   "unit": "cycles a warp-window",
+   "samples": [
+    1614.2
+   ],
+   "median": 1614.2,
+   "min": 1614.2,
+   "max": 1614.2,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void fold_alone::fold<(int)3>(long long *, int *, long long *)": {
+   "regs": 214,
+   "ops": {
+    "LOP3.LUT": 359,
+    "SHF.R.U32.HI": 194,
+    "IMAD": 160,
+    "FMUL": 128,
+    "IADD3": 112,
+    "CS2R": 85,
+    "HMUL2": 56,
+    "BRA": 52,
+    "SHFL.IDX": 40,
+    "IMAD.WIDE.U32": 39,
+    "IMAD.MOV.U32": 33,
+    "STS.64": 32
+   }
+  },
+  "void fold_alone::fold<(int)2>(long long *, int *, long long *)": {
+   "regs": 193,
+   "ops": {
+    "LOP3.LUT": 331,
+    "SHF.R.U32.HI": 170,
+    "IMAD": 135,
+    "FMUL": 128,
+    "IADD3": 92,
+    "CS2R": 67,
+    "HMUL2": 56,
+    "BRA": 47,
+    "SHFL.IDX": 40,
+    "STS.64": 32,
+    "HMMA.16816.F32": 32,
+    "HMMA.1688.F32": 32
+   }
+  },
+  "void fold_alone::fold<(int)1>(long long *, int *, long long *)": {
+   "regs": 193,
+   "ops": {
+    "LOP3.LUT": 359,
+    "SHF.R.U32.HI": 194,
+    "IMAD": 159,
+    "FMUL": 128,
+    "IADD3": 95,
+    "CS2R": 67,
+    "HMUL2": 56,
+    "BRA": 51,
+    "SHFL.IDX": 40,
+    "STS.64": 32,
+    "HMMA.16816.F32": 32,
+    "HMMA.1688.F32": 32
+   }
+  },
+  "void fold_alone::fold<(int)0>(long long *, int *, long long *)": {
+   "regs": 193,
+   "ops": {
+    "LOP3.LUT": 359,
+    "SHF.R.U32.HI": 194,
+    "IMAD": 159,
+    "FMUL": 128,
+    "IADD3": 95,
+    "CS2R": 67,
+    "HMUL2": 56,
+    "BRA": 51,
+    "SHFL.IDX": 40,
+    "STS.64": 32,
+    "HMMA.16816.F32": 32,
+    "HMMA.1688.F32": 32
+   }
+  }
+ },
+ "counters": {
+  "fold<0>": {
+   "hmma": 1310712.0,
+   "imma": 0.0,
+   "tensor_counted": 14688192.0,
+   "tensor_counted_imma": 0.0,
+   "inst": 28512958.0,
+   "alu": 12663907.0,
+   "fma": 8467054.0,
+   "fma_fp16": 1147516.0,
+   "fmaheavy": 7274903.0,
+   "xu": 40960.0,
+   "wavefronts": 6382973.0,
+   "conflicts": 2089512.0,
+   "load_wavefronts": 4482863.0,
+   "stores": 344959.0,
+   "store_wavefronts": 344959.0,
+   "atomics": 0.0,
+   "atomic_wavefronts": 0.0,
+   "copy_bypass_bytes": 0.0,
+   "copy_access_bytes": 0.0,
+   "global_reads": 0.0,
+   "global_fill_bytes": 0.0,
+   "l2_read": 0.0,
+   "red_requests": 0.0,
+   "l2_write": 3152.0,
+   "elapsed": 287835.92,
+   "elapsed_sum": 23026874.0,
+   "busy_issue": 30.96,
+   "busy_alu": 27.5,
+   "busy_fma": 10.62,
+   "busy_fmaheavy": 16.16,
+   "stalls": {
+    "long_scoreboard": 0.0,
+    "short_scoreboard": 12.04,
+    "mio_throttle": 2.72,
+    "math_pipe_throttle": 17.14,
+    "barrier": 6.3,
+    "wait": 33.45,
+    "not_selected": 2.94,
+    "lg_throttle": 0.0,
+    "dispatch_stall": 0.32,
+    "branch_resolving": 5.65,
+    "no_instruction": 3.41,
+    "membar": 0.0,
+    "drain": 0.01,
+    "sleeping": 0.0,
+    "tex_throttle": 0.0,
+    "imc_miss": 0.15,
+    "misc": 0.0
+   }
+  },
+  "fold<1>": {
+   "hmma": 1310712.0,
+   "imma": 0.0,
+   "tensor_counted": 14688192.0,
+   "tensor_counted_imma": 0.0,
+   "inst": 28471998.0,
+   "alu": 12663907.0,
+   "fma": 8467054.0,
+   "fma_fp16": 1147516.0,
+   "fmaheavy": 7287876.0,
+   "xu": 40960.0,
+   "wavefronts": 6377894.0,
+   "conflicts": 2089568.0,
+   "load_wavefronts": 4482904.0,
+   "stores": 344959.0,
+   "store_wavefronts": 344959.0,
+   "atomics": 0.0,
+   "atomic_wavefronts": 0.0,
+   "copy_bypass_bytes": 0.0,
+   "copy_access_bytes": 0.0,
+   "global_reads": 0.0,
+   "global_fill_bytes": 0.0,
+   "l2_read": 0.0,
+   "red_requests": 0.0,
+   "l2_write": 3195.0,
+   "elapsed": 256536.2,
+   "elapsed_sum": 20522896.0,
+   "busy_issue": 34.69,
+   "busy_alu": 30.85,
+   "busy_fma": 11.91,
+   "busy_fmaheavy": 18.16,
+   "stalls": {
+    "long_scoreboard": 0.0,
+    "short_scoreboard": 11.72,
+    "mio_throttle": 0.17,
+    "math_pipe_throttle": 17.86,
+    "barrier": 0.0,
+    "wait": 37.8,
+    "not_selected": 3.26,
+    "lg_throttle": 0.0,
+    "dispatch_stall": 0.44,
+    "branch_resolving": 6.36,
+    "no_instruction": 4.32,
+    "membar": 0.0,
+    "drain": 0.01,
+    "sleeping": 0.0,
+    "tex_throttle": 0.0,
+    "imc_miss": 0.17,
+    "misc": 0.0
+   }
+  },
+  "fold<2>": {
+   "hmma": 1310712.0,
+   "imma": 0.0,
+   "tensor_counted": 14688192.0,
+   "tensor_counted_imma": 0.0,
+   "inst": 21935806.0,
+   "alu": 10083427.0,
+   "fma": 5125742.0,
+   "fma_fp16": 1147516.0,
+   "fmaheavy": 5125742.0,
+   "xu": 40960.0,
+   "wavefronts": 6382980.0,
+   "conflicts": 2089512.0,
+   "load_wavefronts": 4482871.0,
+   "stores": 344959.0,
+   "store_wavefronts": 344959.0,
+   "atomics": 0.0,
+   "atomic_wavefronts": 0.0,
+   "copy_bypass_bytes": 0.0,
+   "copy_access_bytes": 0.0,
+   "global_reads": 0.0,
+   "global_fill_bytes": 0.0,
+   "l2_read": 0.0,
+   "red_requests": 0.0,
+   "l2_write": 3154.0,
+   "elapsed": 247688.62,
+   "elapsed_sum": 19815090.0,
+   "busy_issue": 27.68,
+   "busy_alu": 25.44,
+   "busy_fma": 8.12,
+   "busy_fmaheavy": 13.35,
+   "stalls": {
+    "long_scoreboard": 0.0,
+    "short_scoreboard": 13.79,
+    "mio_throttle": 3.21,
+    "math_pipe_throttle": 19.52,
+    "barrier": 7.23,
+    "wait": 30.61,
+    "not_selected": 2.34,
+    "lg_throttle": 0.0,
+    "dispatch_stall": 0.34,
+    "branch_resolving": 4.49,
+    "no_instruction": 4.02,
+    "membar": 0.0,
+    "drain": 0.01,
+    "sleeping": 0.0,
+    "tex_throttle": 0.0,
+    "imc_miss": 0.22,
+    "misc": 0.0
+   }
+  },
+  "fold<3>": {
+   "hmma": 1310712.0,
+   "imma": 0.0,
+   "tensor_counted": 14688192.0,
+   "tensor_counted_imma": 0.0,
+   "inst": 29653438.0,
+   "alu": 13406307.0,
+   "fma": 8482414.0,
+   "fma_fp16": 1147516.0,
+   "fmaheavy": 7295341.0,
+   "xu": 40960.0,
+   "wavefronts": 6382968.0,
+   "conflicts": 2089512.0,
+   "load_wavefronts": 4482856.0,
+   "stores": 344959.0,
+   "store_wavefronts": 344959.0,
+   "atomics": 0.0,
+   "atomic_wavefronts": 0.0,
+   "copy_bypass_bytes": 0.0,
+   "copy_access_bytes": 0.0,
+   "global_reads": 0.0,
+   "global_fill_bytes": 0.0,
+   "l2_read": 0.0,
+   "red_requests": 0.0,
+   "l2_write": 7636.0,
+   "elapsed": 299336.53,
+   "elapsed_sum": 23946922.0,
+   "busy_issue": 30.96,
+   "busy_alu": 27.99,
+   "busy_fma": 10.23,
+   "busy_fmaheavy": 15.59,
+   "stalls": {
+    "long_scoreboard": 0.03,
+    "short_scoreboard": 12.66,
+    "mio_throttle": 1.77,
+    "math_pipe_throttle": 15.96,
+    "barrier": 5.71,
+    "wait": 36.03,
+    "not_selected": 3.02,
+    "lg_throttle": 0.0,
+    "dispatch_stall": 0.31,
+    "branch_resolving": 5.43,
+    "no_instruction": 3.06,
+    "membar": 0.0,
+    "drain": 0.01,
+    "sleeping": 0.0,
+    "tex_throttle": 0.0,
+    "imc_miss": 0.21,
+    "misc": 0.0
+   }
+  }
+ }
+}
