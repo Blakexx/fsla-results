@@ -1,0 +1,1024 @@
+{
+ "experiment": "read_alone",
+ "question": "what does the value-carve readout cost a warp-window ALONE -- production's `read_chunk` over a read chunk drawn as nl64k-alt-k4's is, nothing else in the window -- against its tensor and shared-memory floors and against the composed kernel's readout phase?",
+ "arch": "sm_86",
+ "device": "NVIDIA GeForce RTX 3080 Ti",
+ "checks": [
+  {
+   "lab": "unchecked",
+   "variant": "f16 panel, fp16 accumulate (sm_86's form)",
+   "reason": "a timing isolation; the readout's arithmetic is the oracle's (test_carry_readout)"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "f16 panel, fp16 accumulate (sm_86's form): tensor floor",
+   "reason": "computed on the host from the same draw"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "f16 panel, fp16 accumulate (sm_86's form): shared floor",
+   "reason": "computed on the host from the same draw"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "f16 panel, fp32 accumulate (the A100's form)",
+   "reason": "a timing isolation; the readout's arithmetic is the oracle's (test_carry_readout)"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "f16 panel, fp32 accumulate (the A100's form): tensor floor",
+   "reason": "computed on the host from the same draw"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "f16 panel, fp32 accumulate (the A100's form): shared floor",
+   "reason": "computed on the host from the same draw"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "fp32 panel, fp32 accumulate",
+   "reason": "a timing isolation; the readout's arithmetic is the oracle's (test_carry_readout)"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "fp32 panel, fp32 accumulate: tensor floor",
+   "reason": "computed on the host from the same draw"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "fp32 panel, fp32 accumulate: shared floor",
+   "reason": "computed on the host from the same draw"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "colored slots: f16 panel, fp16 accumulate",
+   "reason": "a timing isolation; the readout's arithmetic is the oracle's (test_carry_readout)"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "colored slots: f16 panel, fp16 accumulate: tensor floor",
+   "reason": "computed on the host from the same draw"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "colored slots: f16 panel, fp16 accumulate: shared floor",
+   "reason": "computed on the host from the same draw"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "colored slots: f16 panel, fp32 accumulate",
+   "reason": "a timing isolation; the readout's arithmetic is the oracle's (test_carry_readout)"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "colored slots: f16 panel, fp32 accumulate: tensor floor",
+   "reason": "computed on the host from the same draw"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "colored slots: f16 panel, fp32 accumulate: shared floor",
+   "reason": "computed on the host from the same draw"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "colored slots: fp32 panel, fp32 accumulate",
+   "reason": "a timing isolation; the readout's arithmetic is the oracle's (test_carry_readout)"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "colored slots: fp32 panel, fp32 accumulate: tensor floor",
+   "reason": "computed on the host from the same draw"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "colored slots: fp32 panel, fp32 accumulate: shared floor",
+   "reason": "computed on the host from the same draw"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "control: the timed span without the readout",
+   "reason": "a timing isolation; the readout's arithmetic is the oracle's (test_carry_readout)"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "control: the timed span without the readout: tensor floor",
+   "reason": "computed on the host from the same draw"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "control: the timed span without the readout: shared floor",
+   "reason": "computed on the host from the same draw"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "control: the timed span without the readout, colored slots",
+   "reason": "a timing isolation; the readout's arithmetic is the oracle's (test_carry_readout)"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "control: the timed span without the readout, colored slots: tensor floor",
+   "reason": "computed on the host from the same draw"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "control: the timed span without the readout, colored slots: shared floor",
+   "reason": "computed on the host from the same draw"
+  }
+ ],
+ "driver": "610.88",
+ "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
+ "git": {
+  "sha": "5f833e8da7b143d217e24d9d4b377cd44d54b122",
+  "dirty": true
+ },
+ "reps": 7,
+ "date": "2026-11-06T20:40:58+00:00",
+ "utilization_before": 2,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "f16 panel, fp16 accumulate (sm_86's form)",
+   "unit": "cycles a warp-window",
+   "samples": [
+    13481.797607,
+    13481.649414,
+    13481.649414,
+    13481.649414,
+    13481.649414,
+    13481.649414,
+    13481.649414
+   ],
+   "median": 13481.649414,
+   "min": 13481.649414,
+   "max": 13481.797607,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "f16 panel, fp16 accumulate (sm_86's form): tensor floor",
+   "unit": "cycles a warp-window",
+   "samples": [
+    4022.6
+   ],
+   "median": 4022.6,
+   "min": 4022.6,
+   "max": 4022.6,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "f16 panel, fp16 accumulate (sm_86's form): shared floor",
+   "unit": "cycles a warp-window",
+   "samples": [
+    8091.1
+   ],
+   "median": 8091.1,
+   "min": 8091.1,
+   "max": 8091.1,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "f16 panel, fp32 accumulate (the A100's form)",
+   "unit": "cycles a warp-window",
+   "samples": [
+    13396.867773,
+    13398.230688,
+    13397.55083,
+    13397.207642,
+    13396.359082,
+    16570.723364,
+    13397.098242
+   ],
+   "median": 13397.207642,
+   "min": 13396.359082,
+   "max": 16570.723364,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "f16 panel, fp32 accumulate (the A100's form): tensor floor",
+   "unit": "cycles a warp-window",
+   "samples": [
+    8045.3
+   ],
+   "median": 8045.3,
+   "min": 8045.3,
+   "max": 8045.3,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "f16 panel, fp32 accumulate (the A100's form): shared floor",
+   "unit": "cycles a warp-window",
+   "samples": [
+    8091.1
+   ],
+   "median": 8091.1,
+   "min": 8091.1,
+   "max": 8091.1,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp32 panel, fp32 accumulate",
+   "unit": "cycles a warp-window",
+   "samples": [
+    13579.181567,
+    13579.245068,
+    13578.61792,
+    13578.428101,
+    13579.273511,
+    13579.557202,
+    13576.491211
+   ],
+   "median": 13579.181567,
+   "min": 13576.491211,
+   "max": 13579.557202,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp32 panel, fp32 accumulate: tensor floor",
+   "unit": "cycles a warp-window",
+   "samples": [
+    8045.3
+   ],
+   "median": 8045.3,
+   "min": 8045.3,
+   "max": 8045.3,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp32 panel, fp32 accumulate: shared floor",
+   "unit": "cycles a warp-window",
+   "samples": [
+    9096.8
+   ],
+   "median": 9096.8,
+   "min": 9096.8,
+   "max": 9096.8,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "colored slots: f16 panel, fp16 accumulate",
+   "unit": "cycles a warp-window",
+   "samples": [
+    13157.171899,
+    13157.171899,
+    13157.171899,
+    13157.171899,
+    13157.171899,
+    13157.171899,
+    13157.171899
+   ],
+   "median": 13157.171899,
+   "min": 13157.171899,
+   "max": 13157.171899,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "colored slots: f16 panel, fp16 accumulate: tensor floor",
+   "unit": "cycles a warp-window",
+   "samples": [
+    4091.8
+   ],
+   "median": 4091.8,
+   "min": 4091.8,
+   "max": 4091.8,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "colored slots: f16 panel, fp16 accumulate: shared floor",
+   "unit": "cycles a warp-window",
+   "samples": [
+    8186.2
+   ],
+   "median": 8186.2,
+   "min": 8186.2,
+   "max": 8186.2,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "colored slots: f16 panel, fp32 accumulate",
+   "unit": "cycles a warp-window",
+   "samples": [
+    13142.763989,
+    13140.754443,
+    13140.968994,
+    13141.269824,
+    13140.695972,
+    13141.963403,
+    13142.669702
+   ],
+   "median": 13141.269824,
+   "min": 13140.695972,
+   "max": 13142.763989,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "colored slots: f16 panel, fp32 accumulate: tensor floor",
+   "unit": "cycles a warp-window",
+   "samples": [
+    8183.5
+   ],
+   "median": 8183.5,
+   "min": 8183.5,
+   "max": 8183.5,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "colored slots: f16 panel, fp32 accumulate: shared floor",
+   "unit": "cycles a warp-window",
+   "samples": [
+    8186.2
+   ],
+   "median": 8186.2,
+   "min": 8186.2,
+   "max": 8186.2,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "colored slots: fp32 panel, fp32 accumulate",
+   "unit": "cycles a warp-window",
+   "samples": [
+    13252.699976,
+    13253.70498,
+    13253.108569,
+    13253.493848,
+    13253.703247,
+    13254.318823,
+    13254.659741
+   ],
+   "median": 13253.703247,
+   "min": 13252.699976,
+   "max": 13254.659741,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "colored slots: fp32 panel, fp32 accumulate: tensor floor",
+   "unit": "cycles a warp-window",
+   "samples": [
+    8183.5
+   ],
+   "median": 8183.5,
+   "min": 8183.5,
+   "max": 8183.5,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "colored slots: fp32 panel, fp32 accumulate: shared floor",
+   "unit": "cycles a warp-window",
+   "samples": [
+    9209.1
+   ],
+   "median": 9209.1,
+   "min": 9209.1,
+   "max": 9209.1,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "control: the timed span without the readout",
+   "unit": "cycles a warp-window",
+   "samples": [
+    76.0,
+    76.0,
+    76.0,
+    76.0,
+    76.0,
+    76.0,
+    76.0
+   ],
+   "median": 76.0,
+   "min": 76.0,
+   "max": 76.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "control: the timed span without the readout: tensor floor",
+   "unit": "cycles a warp-window",
+   "samples": [
+    4091.8
+   ],
+   "median": 4091.8,
+   "min": 4091.8,
+   "max": 4091.8,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "control: the timed span without the readout: shared floor",
+   "unit": "cycles a warp-window",
+   "samples": [
+    8186.2
+   ],
+   "median": 8186.2,
+   "min": 8186.2,
+   "max": 8186.2,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "control: the timed span without the readout, colored slots",
+   "unit": "cycles a warp-window",
+   "samples": [
+    76.0,
+    76.0,
+    76.0,
+    76.0,
+    76.0,
+    76.0,
+    76.0
+   ],
+   "median": 76.0,
+   "min": 76.0,
+   "max": 76.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "control: the timed span without the readout, colored slots: tensor floor",
+   "unit": "cycles a warp-window",
+   "samples": [
+    4091.8
+   ],
+   "median": 4091.8,
+   "min": 4091.8,
+   "max": 4091.8,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "control: the timed span without the readout, colored slots: shared floor",
+   "unit": "cycles a warp-window",
+   "samples": [
+    8186.2
+   ],
+   "median": 8186.2,
+   "min": 8186.2,
+   "max": 8186.2,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void read_alone::read<(int)9>(long long *, int *)": {
+   "regs": 23,
+   "ops": {
+    "LOP3.LUT": 65,
+    "IADD3": 45,
+    "SHF.R.U32.HI": 39,
+    "BRA": 37,
+    "IMAD": 35,
+    "IMAD.MOV.U32": 32,
+    "STS": 26,
+    "ISETP.GE.U32.AND": 16,
+    "NOP": 14,
+    "BSSY": 13,
+    "BSYNC": 13,
+    "ISETP.GE.AND": 10
+   }
+  },
+  "void read_alone::read<(int)6>(long long *, int *)": {
+   "regs": 36,
+   "ops": {
+    "LOP3.LUT": 112,
+    "SHF.R.U32.HI": 82,
+    "IADD3": 75,
+    "IMAD": 60,
+    "IMAD.MOV.U32": 34,
+    "BRA": 34,
+    "STS": 26,
+    "IMAD.MOV": 16,
+    "BSSY": 15,
+    "BSYNC": 15,
+    "ISETP.GE.U32.AND": 14,
+    "NOP": 13
+   }
+  },
+  "void read_alone::read<(int)5>(long long *, int *)": {
+   "regs": 67,
+   "ops": {
+    "LOP3.LUT": 236,
+    "IMAD.MOV.U32": 144,
+    "IMAD.IADD": 120,
+    "IADD3": 105,
+    "BRA": 78,
+    "IMAD.SHL.U32": 70,
+    "IMAD": 57,
+    "SHFL.IDX": 57,
+    "ISETP.GE.AND": 48,
+    "SHF.R.U32.HI": 43,
+    "SEL": 42,
+    "STS": 34
+   }
+  },
+  "void read_alone::read<(int)4>(long long *, int *)": {
+   "regs": 67,
+   "ops": {
+    "LOP3.LUT": 241,
+    "IMAD.MOV.U32": 140,
+    "IMAD.IADD": 120,
+    "IADD3": 110,
+    "BRA": 78,
+    "IMAD.SHL.U32": 75,
+    "SHFL.IDX": 57,
+    "IMAD": 53,
+    "SHF.R.U32.HI": 51,
+    "ISETP.GE.AND": 48,
+    "STS": 42,
+    "SEL": 42
+   }
+  },
+  "void read_alone::read<(int)3>(long long *, int *)": {
+   "regs": 64,
+   "ops": {
+    "LOP3.LUT": 241,
+    "IMAD.MOV.U32": 135,
+    "IMAD.IADD": 120,
+    "IADD3": 110,
+    "BRA": 78,
+    "IMAD.SHL.U32": 75,
+    "HADD2.F32": 60,
+    "SHFL.IDX": 57,
+    "IMAD": 53,
+    "SHF.R.U32.HI": 51,
+    "ISETP.GE.AND": 48,
+    "STS": 42
+   }
+  },
+  "void read_alone::read<(int)2>(long long *, int *)": {
+   "regs": 67,
+   "ops": {
+    "LOP3.LUT": 284,
+    "IMAD.MOV.U32": 143,
+    "IADD3": 135,
+    "IMAD.IADD": 118,
+    "SHF.R.U32.HI": 86,
+    "IMAD": 82,
+    "BRA": 75,
+    "IMAD.SHL.U32": 71,
+    "SHFL.IDX": 57,
+    "ISETP.GE.AND": 48,
+    "SEL": 40,
+    "STS": 34
+   }
+  },
+  "void read_alone::read<(int)1>(long long *, int *)": {
+   "regs": 67,
+   "ops": {
+    "LOP3.LUT": 289,
+    "IADD3": 140,
+    "IMAD.MOV.U32": 139,
+    "IMAD.IADD": 118,
+    "SHF.R.U32.HI": 94,
+    "IMAD": 78,
+    "IMAD.SHL.U32": 76,
+    "BRA": 75,
+    "SHFL.IDX": 57,
+    "ISETP.GE.AND": 48,
+    "STS": 42,
+    "SEL": 40
+   }
+  },
+  "void read_alone::read<(int)0>(long long *, int *)": {
+   "regs": 64,
+   "ops": {
+    "LOP3.LUT": 289,
+    "IADD3": 140,
+    "IMAD.MOV.U32": 136,
+    "IMAD.IADD": 118,
+    "SHF.R.U32.HI": 94,
+    "IMAD": 78,
+    "IMAD.SHL.U32": 76,
+    "BRA": 75,
+    "HADD2.F32": 60,
+    "SHFL.IDX": 57,
+    "ISETP.GE.AND": 48,
+    "STS": 42
+   }
+  }
+ },
+ "counters": {
+  "read<0>": {
+   "hmma": 3261632.0,
+   "imma": 0.0,
+   "tensor_counted": 52186112.0,
+   "tensor_counted_imma": 0.0,
+   "inst": 329214491.0,
+   "alu": 189200293.0,
+   "fma": 93172729.0,
+   "fma_fp16": 9948691.0,
+   "fmaheavy": 86991279.0,
+   "xu": 3589312.0,
+   "wavefronts": 51492164.0,
+   "conflicts": 7171810.0,
+   "load_wavefronts": 33428863.0,
+   "stores": 3369471.0,
+   "store_wavefronts": 4729931.0,
+   "atomics": 0.0,
+   "atomic_wavefronts": 0.0,
+   "copy_bypass_bytes": 0.0,
+   "copy_access_bytes": 0.0,
+   "global_reads": 0.0,
+   "global_fill_bytes": 0.0,
+   "l2_read": 0.0,
+   "red_requests": 0.0,
+   "l2_write": 2720.0,
+   "elapsed": 3018962.45,
+   "elapsed_sum": 241516996.0,
+   "busy_issue": 34.08,
+   "busy_alu": 39.17,
+   "busy_fma": 9.91,
+   "busy_fmaheavy": 18.01,
+   "stalls": {
+    "long_scoreboard": 0.0,
+    "short_scoreboard": 8.51,
+    "mio_throttle": 0.33,
+    "math_pipe_throttle": 6.55,
+    "barrier": 42.08,
+    "wait": 15.05,
+    "not_selected": 7.69,
+    "lg_throttle": 0.0,
+    "dispatch_stall": 0.51,
+    "branch_resolving": 1.7,
+    "no_instruction": 0.44,
+    "membar": 0.0,
+    "drain": 0.0,
+    "sleeping": 0.0,
+    "tex_throttle": 0.0,
+    "imc_miss": 0.03,
+    "misc": 0.0
+   }
+  },
+  "read<1>": {
+   "hmma": 3261632.0,
+   "imma": 0.0,
+   "tensor_counted": 52186112.0,
+   "tensor_counted_imma": 0.0,
+   "inst": 323343667.0,
+   "alu": 189200293.0,
+   "fma": 87953705.0,
+   "fma_fp16": 3425427.0,
+   "fmaheavy": 81869078.0,
+   "xu": 3589312.0,
+   "wavefronts": 51489419.0,
+   "conflicts": 7171810.0,
+   "load_wavefronts": 33426228.0,
+   "stores": 3369471.0,
+   "store_wavefronts": 4729931.0,
+   "atomics": 0.0,
+   "atomic_wavefronts": 0.0,
+   "copy_bypass_bytes": 0.0,
+   "copy_access_bytes": 0.0,
+   "global_reads": 0.0,
+   "global_fill_bytes": 0.0,
+   "l2_read": 0.0,
+   "red_requests": 0.0,
+   "l2_write": 2721.0,
+   "elapsed": 3017653.3,
+   "elapsed_sum": 241412264.0,
+   "busy_issue": 33.49,
+   "busy_alu": 39.19,
+   "busy_fma": 9.38,
+   "busy_fmaheavy": 16.96,
+   "stalls": {
+    "long_scoreboard": 0.0,
+    "short_scoreboard": 9.1,
+    "mio_throttle": 0.23,
+    "math_pipe_throttle": 7.34,
+    "barrier": 42.1,
+    "wait": 13.96,
+    "not_selected": 7.61,
+    "lg_throttle": 0.0,
+    "dispatch_stall": 0.59,
+    "branch_resolving": 1.7,
+    "no_instruction": 0.51,
+    "membar": 0.0,
+    "drain": 0.0,
+    "sleeping": 0.0,
+    "tex_throttle": 0.0,
+    "imc_miss": 0.03,
+    "misc": 0.0
+   }
+  },
+  "read<2>": {
+   "hmma": 3261632.0,
+   "imma": 0.0,
+   "tensor_counted": 52186112.0,
+   "tensor_counted_imma": 0.0,
+   "inst": 317745672.0,
+   "alu": 183305203.0,
+   "fma": 86404435.0,
+   "fma_fp16": 818227.0,
+   "fmaheavy": 81964634.0,
+   "xu": 3589312.0,
+   "wavefronts": 54349613.0,
+   "conflicts": 8536902.0,
+   "load_wavefronts": 34454087.0,
+   "stores": 3922431.0,
+   "store_wavefronts": 6536583.0,
+   "atomics": 0.0,
+   "atomic_wavefronts": 0.0,
+   "copy_bypass_bytes": 0.0,
+   "copy_access_bytes": 0.0,
+   "global_reads": 0.0,
+   "global_fill_bytes": 0.0,
+   "l2_read": 0.0,
+   "red_requests": 0.0,
+   "l2_write": 2720.0,
+   "elapsed": 3038876.73,
+   "elapsed_sum": 243110138.0,
+   "busy_issue": 32.68,
+   "busy_alu": 37.7,
+   "busy_fma": 8.89,
+   "busy_fmaheavy": 16.86,
+   "stalls": {
+    "long_scoreboard": 0.0,
+    "short_scoreboard": 9.94,
+    "mio_throttle": 0.45,
+    "math_pipe_throttle": 7.09,
+    "barrier": 41.69,
+    "wait": 14.71,
+    "not_selected": 7.0,
+    "lg_throttle": 0.0,
+    "dispatch_stall": 0.43,
+    "branch_resolving": 1.71,
+    "no_instruction": 0.55,
+    "membar": 0.0,
+    "drain": 0.0,
+    "sleeping": 0.0,
+    "tex_throttle": 0.0,
+    "imc_miss": 0.02,
+    "misc": 0.0
+   }
+  },
+  "read<3>": {
+   "hmma": 3276660.0,
+   "imma": 0.0,
+   "tensor_counted": 52426560.0,
+   "tensor_counted_imma": 0.0,
+   "inst": 700676793.0,
+   "alu": 348672852.0,
+   "fma": 197888277.0,
+   "fma_fp16": 9993818.0,
+   "fmaheavy": 191632407.0,
+   "xu": 33505140.0,
+   "wavefronts": 44129821.0,
+   "conflicts": 140006.0,
+   "load_wavefronts": 27558405.0,
+   "stores": 2821375.0,
+   "store_wavefronts": 3104795.0,
+   "atomics": 0.0,
+   "atomic_wavefronts": 0.0,
+   "copy_bypass_bytes": 0.0,
+   "copy_access_bytes": 0.0,
+   "global_reads": 0.0,
+   "global_fill_bytes": 0.0,
+   "l2_read": 0.0,
+   "red_requests": 0.0,
+   "l2_write": 2720.0,
+   "elapsed": 10306628.97,
+   "elapsed_sum": 824530318.0,
+   "busy_issue": 21.26,
+   "busy_alu": 21.14,
+   "busy_fma": 6.83,
+   "busy_fmaheavy": 13.12,
+   "stalls": {
+    "long_scoreboard": 0.0,
+    "short_scoreboard": 7.51,
+    "mio_throttle": 0.08,
+    "math_pipe_throttle": 0.97,
+    "barrier": 40.32,
+    "wait": 32.88,
+    "not_selected": 1.16,
+    "lg_throttle": 0.0,
+    "dispatch_stall": 0.24,
+    "branch_resolving": 4.61,
+    "no_instruction": 1.4,
+    "membar": 0.0,
+    "drain": 0.0,
+    "sleeping": 0.0,
+    "tex_throttle": 0.0,
+    "imc_miss": 0.01,
+    "misc": 0.01
+   }
+  },
+  "read<4>": {
+   "hmma": 3276660.0,
+   "imma": 0.0,
+   "tensor_counted": 52426560.0,
+   "tensor_counted_imma": 0.0,
+   "inst": 703667121.0,
+   "alu": 348672852.0,
+   "fma": 201574893.0,
+   "fma_fp16": 3440498.0,
+   "fmaheavy": 195474215.0,
+   "xu": 33505140.0,
+   "wavefronts": 44126332.0,
+   "conflicts": 140006.0,
+   "load_wavefronts": 27554828.0,
+   "stores": 2821375.0,
+   "store_wavefronts": 3104795.0,
+   "atomics": 0.0,
+   "atomic_wavefronts": 0.0,
+   "copy_bypass_bytes": 0.0,
+   "copy_access_bytes": 0.0,
+   "global_reads": 0.0,
+   "global_fill_bytes": 0.0,
+   "l2_read": 0.0,
+   "red_requests": 0.0,
+   "l2_write": 2720.0,
+   "elapsed": 10316258.47,
+   "elapsed_sum": 825300678.0,
+   "busy_issue": 21.33,
+   "busy_alu": 21.12,
+   "busy_fma": 6.93,
+   "busy_fmaheavy": 13.34,
+   "stalls": {
+    "long_scoreboard": 0.0,
+    "short_scoreboard": 8.08,
+    "mio_throttle": 0.06,
+    "math_pipe_throttle": 1.15,
+    "barrier": 40.32,
+    "wait": 31.98,
+    "not_selected": 1.22,
+    "lg_throttle": 0.0,
+    "dispatch_stall": 0.21,
+    "branch_resolving": 4.62,
+    "no_instruction": 1.5,
+    "membar": 0.0,
+    "drain": 0.0,
+    "sleeping": 0.0,
+    "tex_throttle": 0.0,
+    "imc_miss": 0.01,
+    "misc": 0.01
+   }
+  },
+  "read<5>": {
+   "hmma": 3276660.0,
+   "imma": 0.0,
+   "tensor_counted": 52426560.0,
+   "tensor_counted_imma": 0.0,
+   "inst": 698040515.0,
+   "alu": 342749280.0,
+   "fma": 200018481.0,
+   "fma_fp16": 819186.0,
+   "fmaheavy": 194908504.0,
+   "xu": 33505140.0,
+   "wavefronts": 48627747.0,
+   "conflicts": 3199282.0,
+   "load_wavefronts": 29416032.0,
+   "stores": 3374335.0,
+   "store_wavefronts": 5719371.0,
+   "atomics": 0.0,
+   "atomic_wavefronts": 0.0,
+   "copy_bypass_bytes": 0.0,
+   "copy_access_bytes": 0.0,
+   "global_reads": 0.0,
+   "global_fill_bytes": 0.0,
+   "l2_read": 0.0,
+   "red_requests": 0.0,
+   "l2_write": 2720.0,
+   "elapsed": 10331343.68,
+   "elapsed_sum": 826507494.0,
+   "busy_issue": 21.13,
+   "busy_alu": 20.73,
+   "busy_fma": 6.8,
+   "busy_fmaheavy": 13.29,
+   "stalls": {
+    "long_scoreboard": 0.0,
+    "short_scoreboard": 8.39,
+    "mio_throttle": 0.1,
+    "math_pipe_throttle": 1.02,
+    "barrier": 40.24,
+    "wait": 32.16,
+    "not_selected": 1.03,
+    "lg_throttle": 0.0,
+    "dispatch_stall": 0.18,
+    "branch_resolving": 4.62,
+    "no_instruction": 1.51,
+    "membar": 0.0,
+    "drain": 0.0,
+    "sleeping": 0.0,
+    "tex_throttle": 0.0,
+    "imc_miss": 0.01,
+    "misc": 0.01
+   }
+  },
+  "read<6>": {
+   "hmma": 0.0,
+   "imma": 0.0,
+   "tensor_counted": 0.0,
+   "tensor_counted_imma": 0.0,
+   "inst": 178967052.0,
+   "alu": 128107735.0,
+   "fma": 42525935.0,
+   "fma_fp16": 0.0,
+   "fmaheavy": 42484975.0,
+   "xu": 0.0,
+   "wavefronts": 2084392.0,
+   "conflicts": 23690.0,
+   "load_wavefronts": 40960.0,
+   "stores": 1537651.0,
+   "store_wavefronts": 1806632.0,
+   "atomics": 0.0,
+   "atomic_wavefronts": 0.0,
+   "copy_bypass_bytes": 0.0,
+   "copy_access_bytes": 0.0,
+   "global_reads": 0.0,
+   "global_fill_bytes": 0.0,
+   "l2_read": 0.0,
+   "red_requests": 0.0,
+   "l2_write": 2720.0,
+   "elapsed": 2154981.58,
+   "elapsed_sum": 172398526.0,
+   "busy_issue": 25.95,
+   "busy_alu": 37.15,
+   "busy_fma": 6.17,
+   "busy_fmaheavy": 12.32,
+   "stalls": {
+    "long_scoreboard": 0.0,
+    "short_scoreboard": 1.32,
+    "mio_throttle": 0.01,
+    "math_pipe_throttle": 7.38,
+    "barrier": 58.37,
+    "wait": 10.23,
+    "not_selected": 7.41,
+    "lg_throttle": 0.0,
+    "dispatch_stall": 0.0,
+    "branch_resolving": 1.78,
+    "no_instruction": 0.43,
+    "membar": 0.0,
+    "drain": 0.0,
+    "sleeping": 0.0,
+    "tex_throttle": 0.0,
+    "imc_miss": 0.02,
+    "misc": 0.0
+   }
+  },
+  "read<9>": {
+   "hmma": 0.0,
+   "imma": 0.0,
+   "tensor_counted": 0.0,
+   "tensor_counted_imma": 0.0,
+   "inst": 549989629.0,
+   "alu": 287520046.0,
+   "fma": 147018048.0,
+   "fma_fp16": 0.0,
+   "fmaheavy": 146977088.0,
+   "xu": 29900800.0,
+   "wavefronts": 1621417.0,
+   "conflicts": 96230.0,
+   "load_wavefronts": 40960.0,
+   "stores": 1019277.0,
+   "store_wavefronts": 1302697.0,
+   "atomics": 0.0,
+   "atomic_wavefronts": 0.0,
+   "copy_bypass_bytes": 0.0,
+   "copy_access_bytes": 0.0,
+   "global_reads": 0.0,
+   "global_fill_bytes": 0.0,
+   "l2_read": 0.0,
+   "red_requests": 0.0,
+   "l2_write": 2720.0,
+   "elapsed": 9487968.8,
+   "elapsed_sum": 759037504.0,
+   "busy_issue": 18.13,
+   "busy_alu": 18.94,
+   "busy_fma": 5.66,
+   "busy_fmaheavy": 11.31,
+   "stalls": {
+    "long_scoreboard": 0.0,
+    "short_scoreboard": 6.55,
+    "mio_throttle": 0.0,
+    "math_pipe_throttle": 0.42,
+    "barrier": 43.72,
+    "wait": 32.99,
+    "not_selected": 0.44,
+    "lg_throttle": 0.0,
+    "dispatch_stall": 0.34,
+    "branch_resolving": 4.83,
+    "no_instruction": 1.47,
+    "membar": 0.0,
+    "drain": 0.0,
+    "sleeping": 0.0,
+    "tex_throttle": 0.0,
+    "imc_miss": 0.0,
+    "misc": 0.01
+   }
+  }
+ }
+}
