@@ -1,6 +1,6 @@
 {
  "experiment": "byte_expand",
- "question": "what does a warp take to expand a tile of u8 bytes into bf16 times each token's fp32 scale, with nothing else in its loop -- no ring, no barrier -- and which of its instruction classes holds an SM's rate?",
+ "question": "what does a warp take to expand a tile of u8 bytes into bf16 times each token's fp32 scale, with nothing else in its loop -- no ring, no barrier -- and what holds an SM's rate?",
  "arch": "sm_90a",
  "device": "NVIDIA H100 80GB HBM3",
  "checks": [
@@ -65,16 +65,34 @@
    "lab": "unchecked",
    "variant": "no store of the tile, 8 warps a CTA",
    "reason": "an isolation: one instruction class is dropped, so the tile is not the product"
+  },
+  {
+   "lab": "check",
+   "variant": "the expansion, a warp's lanes on eight bank groups, 1 warp a CTA",
+   "ok": true,
+   "detail": "0 of 135168 operand words differ from the host's"
+  },
+  {
+   "lab": "check",
+   "variant": "the expansion, a warp's lanes on eight bank groups, 4 warps a CTA",
+   "ok": true,
+   "detail": "0 of 540672 operand words differ from the host's"
+  },
+  {
+   "lab": "check",
+   "variant": "the expansion, a warp's lanes on eight bank groups, 8 warps a CTA",
+   "ok": true,
+   "detail": "0 of 1081344 operand words differ from the host's"
   }
  ],
  "driver": "595.91.07",
  "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
  "git": {
-  "sha": "154f9f170009d57f11d6bf7063b7e905a6edf261",
+  "sha": "dc21ff38b0daeaf27eb8fd022a60d4d20885cddf",
   "dirty": false
  },
  "reps": 7,
- "date": "2026-11-11T05:42:22+00:00",
+ "date": "2026-11-11T05:47:41+00:00",
  "utilization_before": 0,
  "inputs": {},
  "results": [
@@ -83,17 +101,17 @@
    "name": "the expansion, 1 warp a CTA",
    "unit": "cycles a tile a warp",
    "samples": [
-    202.075641,
-    202.07563,
-    202.122559,
-    202.077953,
-    202.075741,
-    202.075746,
-    202.075922
+    210.079059,
+    210.079044,
+    210.079055,
+    210.079164,
+    210.079163,
+    210.079164,
+    210.079161
    ],
-   "median": 202.075746,
-   "min": 202.07563,
-   "max": 202.122559,
+   "median": 210.079161,
+   "min": 210.079044,
+   "max": 210.079164,
    "unstable": false
   },
   {
@@ -101,17 +119,17 @@
    "name": "the expansion, 4 warps a CTA",
    "unit": "cycles a tile a warp",
    "samples": [
-    224.114463,
-    224.114467,
-    224.114459,
-    224.114454,
-    224.114463,
-    224.114458,
-    224.114465
+    224.121795,
+    224.121782,
+    224.121787,
+    224.121782,
+    224.121787,
+    224.121782,
+    224.121787
    ],
-   "median": 224.114463,
-   "min": 224.114454,
-   "max": 224.114467,
+   "median": 224.121787,
+   "min": 224.121782,
+   "max": 224.121795,
    "unstable": false
   },
   {
@@ -119,17 +137,17 @@
    "name": "the expansion, 8 warps a CTA",
    "unit": "cycles a tile a warp",
    "samples": [
-    448.128943,
-    448.129091,
-    448.12893,
-    448.129056,
-    448.129189,
-    448.129091,
-    448.128738
+    448.099047,
+    448.099088,
+    448.099506,
+    448.099069,
+    448.099101,
+    448.099095,
+    448.09903
    ],
-   "median": 448.129056,
-   "min": 448.128738,
-   "max": 448.129189,
+   "median": 448.099088,
+   "min": 448.09903,
+   "max": 448.099506,
    "unstable": false
   },
   {
@@ -137,17 +155,17 @@
    "name": "the pair packed by truncation, 4 warps a CTA",
    "unit": "cycles a tile a warp",
    "samples": [
-    224.113242,
-    224.113242,
-    224.113241,
-    224.113239,
-    224.113241,
-    224.113241,
-    224.113239
+    224.115928,
+    224.115928,
+    224.115928,
+    224.115922,
+    224.115934,
+    224.115926,
+    224.115932
    ],
-   "median": 224.113241,
-   "min": 224.113239,
-   "max": 224.113242,
+   "median": 224.115928,
+   "min": 224.115922,
+   "max": 224.115934,
    "unstable": false
   },
   {
@@ -155,17 +173,17 @@
    "name": "the pair packed by truncation, 8 warps a CTA",
    "unit": "cycles a tile a warp",
    "samples": [
-    448.096807,
-    448.096805,
-    448.096807,
-    448.096805,
-    448.096807,
-    448.096807,
-    448.096807
+    448.122781,
+    448.122769,
+    448.122827,
+    448.123152,
+    448.12306,
+    448.123152,
+    448.122503
    ],
-   "median": 448.096807,
-   "min": 448.096805,
-   "max": 448.096807,
+   "median": 448.122827,
+   "min": 448.122503,
+   "max": 448.123152,
    "unstable": false
   },
   {
@@ -173,17 +191,17 @@
    "name": "no product, 4 warps a CTA",
    "unit": "cycles a tile a warp",
    "samples": [
+    224.085166,
+    224.085161,
+    224.085166,
     224.085164,
+    224.085166,
     224.085164,
-    224.085166,
-    224.085166,
-    224.085166,
-    224.085157,
-    224.085166
+    224.08517
    ],
    "median": 224.085166,
-   "min": 224.085157,
-   "max": 224.085166,
+   "min": 224.085161,
+   "max": 224.08517,
    "unstable": false
   },
   {
@@ -191,17 +209,17 @@
    "name": "no product, 8 warps a CTA",
    "unit": "cycles a tile a warp",
    "samples": [
-    448.067042,
-    448.066778,
+    448.066952,
+    448.066976,
+    448.066939,
     448.066817,
-    448.066876,
-    448.066837,
-    448.066852,
-    448.067013
+    448.067024,
+    448.066734,
+    448.066963
    ],
-   "median": 448.066852,
-   "min": 448.066778,
-   "max": 448.067042,
+   "median": 448.066952,
+   "min": 448.066734,
+   "max": 448.067024,
    "unstable": false
   },
   {
@@ -209,17 +227,17 @@
    "name": "no reload of the bytes, 4 warps a CTA",
    "unit": "cycles a tile a warp",
    "samples": [
-    128.085899,
-    128.085899,
-    128.085899,
-    128.085893,
-    128.085899,
-    128.085893,
-    128.085895
+    128.080772,
+    128.080762,
+    128.080774,
+    128.080766,
+    128.080768,
+    128.080766,
+    128.080772
    ],
-   "median": 128.085899,
-   "min": 128.085893,
-   "max": 128.085899,
+   "median": 128.080768,
+   "min": 128.080762,
+   "max": 128.080774,
    "unstable": false
   },
   {
@@ -227,17 +245,17 @@
    "name": "no reload of the bytes, 8 warps a CTA",
    "unit": "cycles a tile a warp",
    "samples": [
-    256.108406,
-    256.107973,
-    256.108041,
-    256.107906,
-    256.107832,
-    256.108017,
-    256.107936
+    256.109971,
+    256.11,
+    256.109974,
+    256.109885,
+    256.109974,
+    256.109922,
+    256.110002
    ],
-   "median": 256.107973,
-   "min": 256.107832,
-   "max": 256.108406,
+   "median": 256.109974,
+   "min": 256.109885,
+   "max": 256.110002,
    "unstable": false
   },
   {
@@ -245,17 +263,17 @@
    "name": "no store of the tile, 4 warps a CTA",
    "unit": "cycles a tile a warp",
    "samples": [
-    64.104211,
-    64.104209,
-    64.104211,
-    64.104206,
-    64.104209,
-    64.104207,
-    64.104209
+    64.08077,
+    64.080766,
+    64.080774,
+    64.080766,
+    64.080772,
+    64.08077,
+    64.080774
    ],
-   "median": 64.104209,
-   "min": 64.104206,
-   "max": 64.104211,
+   "median": 64.08077,
+   "min": 64.080766,
+   "max": 64.080774,
    "unstable": false
   },
   {
@@ -263,86 +281,191 @@
    "name": "no store of the tile, 8 warps a CTA",
    "unit": "cycles a tile a warp",
    "samples": [
-    128.128216,
-    128.128285,
-    128.128153,
-    128.12807,
-    128.128298,
-    128.128176,
-    128.128102
+    128.108014,
+    128.10801,
+    128.108017,
+    128.108016,
+    128.108016,
+    128.108016,
+    128.108017
    ],
-   "median": 128.128176,
-   "min": 128.12807,
-   "max": 128.128298,
+   "median": 128.108016,
+   "min": 128.10801,
+   "max": 128.108017,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the expansion, a warp's lanes on eight bank groups, 1 warp a CTA",
+   "unit": "cycles a tile a warp",
+   "samples": [
+    67.074176,
+    67.074167,
+    67.074176,
+    67.074282,
+    67.07428,
+    67.074285,
+    67.07428
+   ],
+   "median": 67.07428,
+   "min": 67.074167,
+   "max": 67.074285,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the expansion, a warp's lanes on eight bank groups, 4 warps a CTA",
+   "unit": "cycles a tile a warp",
+   "samples": [
+    99.076133,
+    99.076127,
+    99.076137,
+    99.076127,
+    99.076133,
+    99.076127,
+    99.076133
+   ],
+   "median": 99.076133,
+   "min": 99.076127,
+   "max": 99.076137,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the expansion, a warp's lanes on eight bank groups, 8 warps a CTA",
+   "unit": "cycles a tile a warp",
+   "samples": [
+    192.108631,
+    192.108626,
+    192.108633,
+    192.10863,
+    192.108637,
+    192.108626,
+    192.108631
+   ],
+   "median": 192.108631,
+   "min": 192.108626,
+   "max": 192.108637,
    "unstable": false
   }
  ],
  "kernels": {
-  "void byte_expand::tiles<(int)8, (int)4>(long long *, int *, unsigned short *, int)": {
-   "regs": 31,
+  "void byte_expand::tiles<(int)8, (int)5>(long long *, int *, unsigned short *, int)": {
+   "regs": 40,
    "ops": {
-    "LOP3.LUT": 58,
+    "LOP3.LUT": 53,
     "PRMT": 36,
-    "IMAD.IADD": 35,
+    "VIADD": 32,
     "FFMA": 32,
-    "VIADD": 31,
+    "IMAD.IADD": 27,
     "SHF.R.S32.HI": 26,
     "LEA.HI": 24,
+    "IMAD": 17,
     "F2FP.BF16.F32.PACK_AB": 16,
-    "NOP": 15,
-    "IMAD.SHL.U32": 14,
-    "IMAD": 11,
-    "IMAD.U32": 8
+    "IMAD.SHL.U32": 13,
+    "IMAD.U32": 9,
+    "NOP": 9
+   }
+  },
+  "void byte_expand::tiles<(int)4, (int)5>(long long *, int *, unsigned short *, int)": {
+   "regs": 40,
+   "ops": {
+    "LOP3.LUT": 53,
+    "PRMT": 36,
+    "VIADD": 32,
+    "FFMA": 32,
+    "IMAD.IADD": 27,
+    "SHF.R.S32.HI": 26,
+    "LEA.HI": 24,
+    "IMAD": 17,
+    "F2FP.BF16.F32.PACK_AB": 16,
+    "IMAD.SHL.U32": 13,
+    "IMAD.U32": 9,
+    "NOP": 9
+   }
+  },
+  "void byte_expand::tiles<(int)1, (int)5>(long long *, int *, unsigned short *, int)": {
+   "regs": 40,
+   "ops": {
+    "LOP3.LUT": 53,
+    "PRMT": 36,
+    "VIADD": 34,
+    "FFMA": 32,
+    "IMAD.IADD": 27,
+    "SHF.R.S32.HI": 26,
+    "LEA.HI": 24,
+    "IMAD": 17,
+    "F2FP.BF16.F32.PACK_AB": 16,
+    "IMAD.SHL.U32": 13,
+    "IMAD.U32": 9,
+    "NOP": 8
+   }
+  },
+  "void byte_expand::tiles<(int)8, (int)4>(long long *, int *, unsigned short *, int)": {
+   "regs": 32,
+   "ops": {
+    "LOP3.LUT": 53,
+    "IMAD.IADD": 39,
+    "PRMT": 36,
+    "VIADD": 34,
+    "FFMA": 32,
+    "SHF.R.S32.HI": 26,
+    "LEA.HI": 24,
+    "IMAD": 17,
+    "F2FP.BF16.F32.PACK_AB": 16,
+    "IMAD.SHL.U32": 12,
+    "NOP": 12,
+    "IMAD.MOV.U32": 8
    }
   },
   "void byte_expand::tiles<(int)4, (int)4>(long long *, int *, unsigned short *, int)": {
-   "regs": 31,
+   "regs": 32,
    "ops": {
-    "LOP3.LUT": 58,
+    "LOP3.LUT": 53,
+    "IMAD.IADD": 39,
     "PRMT": 36,
-    "IMAD.IADD": 35,
+    "VIADD": 34,
     "FFMA": 32,
-    "VIADD": 31,
     "SHF.R.S32.HI": 26,
     "LEA.HI": 24,
+    "IMAD": 17,
     "F2FP.BF16.F32.PACK_AB": 16,
-    "NOP": 15,
-    "IMAD.SHL.U32": 14,
-    "IMAD": 11,
-    "IMAD.U32": 8
+    "IMAD.SHL.U32": 12,
+    "NOP": 12,
+    "IMAD.MOV.U32": 8
    }
   },
   "void byte_expand::tiles<(int)8, (int)3>(long long *, int *, unsigned short *, int)": {
    "regs": 32,
    "ops": {
-    "LOP3.LUT": 56,
+    "LOP3.LUT": 54,
     "PRMT": 36,
-    "VIADD": 32,
+    "VIADD": 34,
     "FFMA": 32,
     "IMAD.IADD": 27,
     "SHF.R.S32.HI": 25,
     "LEA.HI": 24,
-    "IMAD.SHL.U32": 16,
     "F2FP.BF16.F32.PACK_AB": 16,
-    "IMAD": 13,
-    "NOP": 13,
+    "IMAD": 15,
+    "IMAD.SHL.U32": 14,
+    "NOP": 14,
     "IMAD.U32": 8
    }
   },
   "void byte_expand::tiles<(int)4, (int)3>(long long *, int *, unsigned short *, int)": {
    "regs": 32,
    "ops": {
-    "LOP3.LUT": 56,
+    "LOP3.LUT": 54,
     "PRMT": 36,
-    "VIADD": 32,
+    "VIADD": 34,
     "FFMA": 32,
     "IMAD.IADD": 27,
     "SHF.R.S32.HI": 25,
     "LEA.HI": 24,
-    "IMAD.SHL.U32": 16,
     "F2FP.BF16.F32.PACK_AB": 16,
-    "IMAD": 13,
-    "NOP": 13,
+    "IMAD": 15,
+    "IMAD.SHL.U32": 14,
+    "NOP": 14,
     "IMAD.U32": 8
    }
   },
@@ -383,85 +506,85 @@
   "void byte_expand::tiles<(int)8, (int)1>(long long *, int *, unsigned short *, int)": {
    "regs": 40,
    "ops": {
-    "LOP3.LUT": 57,
+    "LOP3.LUT": 55,
     "PRMT": 52,
-    "VIADD": 32,
+    "VIADD": 34,
     "FFMA": 32,
     "IMAD.IADD": 27,
     "SHF.R.S32.HI": 26,
     "LEA.HI": 24,
-    "IMAD.SHL.U32": 17,
-    "IMAD": 15,
-    "NOP": 10,
+    "IMAD": 17,
+    "IMAD.SHL.U32": 15,
+    "NOP": 11,
     "IMAD.U32": 9,
-    "IADD3": 8
+    "IADD3": 6
    }
   },
   "void byte_expand::tiles<(int)4, (int)1>(long long *, int *, unsigned short *, int)": {
    "regs": 40,
    "ops": {
-    "LOP3.LUT": 57,
+    "LOP3.LUT": 55,
     "PRMT": 52,
-    "VIADD": 32,
+    "VIADD": 34,
     "FFMA": 32,
     "IMAD.IADD": 27,
     "SHF.R.S32.HI": 26,
     "LEA.HI": 24,
-    "IMAD.SHL.U32": 17,
-    "IMAD": 15,
-    "NOP": 10,
+    "IMAD": 17,
+    "IMAD.SHL.U32": 15,
+    "NOP": 11,
     "IMAD.U32": 9,
-    "IADD3": 8
+    "IADD3": 6
    }
   },
   "void byte_expand::tiles<(int)8, (int)0>(long long *, int *, unsigned short *, int)": {
    "regs": 40,
    "ops": {
-    "LOP3.LUT": 57,
+    "LOP3.LUT": 55,
     "PRMT": 36,
-    "VIADD": 32,
+    "VIADD": 34,
     "FFMA": 32,
     "IMAD.IADD": 27,
     "SHF.R.S32.HI": 26,
     "LEA.HI": 24,
-    "IMAD.SHL.U32": 17,
+    "IMAD": 17,
     "F2FP.BF16.F32.PACK_AB": 16,
-    "IMAD": 15,
-    "NOP": 10,
+    "IMAD.SHL.U32": 15,
+    "NOP": 11,
     "IMAD.U32": 9
    }
   },
   "void byte_expand::tiles<(int)4, (int)0>(long long *, int *, unsigned short *, int)": {
    "regs": 40,
    "ops": {
-    "LOP3.LUT": 57,
+    "LOP3.LUT": 55,
     "PRMT": 36,
-    "VIADD": 32,
+    "VIADD": 34,
     "FFMA": 32,
     "IMAD.IADD": 27,
     "SHF.R.S32.HI": 26,
     "LEA.HI": 24,
-    "IMAD.SHL.U32": 17,
+    "IMAD": 17,
     "F2FP.BF16.F32.PACK_AB": 16,
-    "IMAD": 15,
-    "NOP": 10,
+    "IMAD.SHL.U32": 15,
+    "NOP": 11,
     "IMAD.U32": 9
    }
   },
   "void byte_expand::tiles<(int)1, (int)0>(long long *, int *, unsigned short *, int)": {
    "regs": 40,
    "ops": {
-    "LOP3.LUT": 57,
+    "LOP3.LUT": 55,
     "PRMT": 36,
+    "VIADD": 33,
     "FFMA": 32,
-    "VIADD": 31,
     "IMAD.IADD": 27,
     "SHF.R.S32.HI": 26,
     "LEA.HI": 24,
-    "IMAD.SHL.U32": 17,
+    "IMAD": 17,
     "F2FP.BF16.F32.PACK_AB": 16,
-    "IMAD": 15,
-    "NOP": 11,
+    "IMAD.SHL.U32": 15,
+    "NOP": 12,
     "IMAD.U32": 9
    }
   }
