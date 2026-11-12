@@ -1,0 +1,487 @@
+{
+ "experiment": "carry_window",
+ "question": "the carry's roles were each measured apart (`pool_fill`, `state_image`, `readout_role`); what does a window cost a CTA when they run TOGETHER, under one register file, one tensor pipe and one shared memory, and which role waits on which?",
+ "arch": "sm_90a",
+ "device": "NVIDIA H100 80GB HBM3",
+ "checks": [
+  {
+   "lab": "unchecked",
+   "variant": "the fold's side alone: producers and steps",
+   "reason": "an isolation: a side's roles or one of their accesses absent"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "the read side alone: the image, the readout and the drain",
+   "reason": "an isolation: a side's roles or one of their accesses absent"
+  },
+  {
+   "lab": "check",
+   "variant": "the carry: both sides",
+   "ok": true,
+   "detail": "0 of 4325376 state values and 0 of 8650752 output values differ"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "the card's clock",
+   "reason": "a rate read off the composed row's call, which that row checks"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "the carry: both sides, the producers' global loads taken out",
+   "reason": "an isolation: a side's roles or one of their accesses absent"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "the carry: both sides, the drains' global adds taken out",
+   "reason": "an isolation: a side's roles or one of their accesses absent"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "the carry: both sides, the image's stores taken out",
+   "reason": "an isolation: a side's roles or one of their accesses absent"
+  }
+ ],
+ "driver": "610.57.04",
+ "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
+ "git": {
+  "sha": "18aee859836d647ee80bb09aafb898ec47fc9ff9",
+  "dirty": false
+ },
+ "reps": 7,
+ "date": "2026-11-12T19:16:55+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "the fold's side alone: producers and steps",
+   "unit": "cycles a window a CTA",
+   "samples": [
+    5742.767164,
+    5755.063802,
+    5755.972775,
+    5760.060251,
+    5758.651278,
+    5718.822798,
+    5754.347656
+   ],
+   "median": 5755.063802,
+   "min": 5718.822798,
+   "max": 5760.060251,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the read side alone: the image, the readout and the drain",
+   "unit": "cycles a window a CTA",
+   "samples": [
+    7679.086529,
+    7682.031013,
+    7672.729877,
+    7671.50509,
+    7690.159564,
+    7676.062618,
+    7694.863281
+   ],
+   "median": 7679.086529,
+   "min": 7671.50509,
+   "max": 7694.863281,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the read side alone: the image, the readout and the drain: a fold warp waits on the readout's read",
+   "unit": "cycles a window a warp",
+   "samples": [
+    4036.986624,
+    4039.693788,
+    4039.307351,
+    4037.171653,
+    4038.401367,
+    4038.318137,
+    4038.301329
+   ],
+   "median": 4038.318137,
+   "min": 4036.986624,
+   "max": 4039.693788,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the read side alone: the image, the readout and the drain: a readout warp waits on the image",
+   "unit": "cycles a window a warp",
+   "samples": [
+    316.990589,
+    317.153912,
+    316.7587,
+    316.962654,
+    316.090584,
+    317.11337,
+    316.262459
+   ],
+   "median": 316.962654,
+   "min": 316.090584,
+   "max": 317.153912,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the read side alone: the image, the readout and the drain: a readout warp waits on the drain",
+   "unit": "cycles a window a warp",
+   "samples": [
+    790.63225,
+    782.845111,
+    777.921579,
+    784.812234,
+    774.444513,
+    786.93679,
+    796.851296
+   ],
+   "median": 784.812234,
+   "min": 774.444513,
+   "max": 796.851296,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the read side alone: the image, the readout and the drain: a readout warp in its steps",
+   "unit": "cycles a window a warp",
+   "samples": [
+    4198.684067,
+    4213.49494,
+    4211.426462,
+    4201.105676,
+    4214.160067,
+    4205.777462,
+    4206.064808
+   ],
+   "median": 4206.064808,
+   "min": 4198.684067,
+   "max": 4214.160067,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the read side alone: the image, the readout and the drain: a drain warp waits on the panel",
+   "unit": "cycles a window a warp",
+   "samples": [
+    2476.132635,
+    2478.088068,
+    2477.57197,
+    2474.642933,
+    2478.50947,
+    2475.091619,
+    2474.689986
+   ],
+   "median": 2476.132635,
+   "min": 2474.642933,
+   "max": 2478.50947,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the carry: both sides",
+   "unit": "cycles a window a CTA",
+   "samples": [
+    8830.234493,
+    8800.822088,
+    8835.587358,
+    8751.217211,
+    8732.885417,
+    8826.831676,
+    8803.333215
+   ],
+   "median": 8803.333215,
+   "min": 8732.885417,
+   "max": 8835.587358,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the card's clock: the composed call's span over its wall time",
+   "unit": "GHz",
+   "samples": [
+    1.781631,
+    1.77943,
+    1.781063,
+    1.77969,
+    1.782042
+   ],
+   "median": 1.781063,
+   "min": 1.77943,
+   "max": 1.782042,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the carry: both sides: a fold warp waits on the readout's read",
+   "unit": "cycles a window a warp",
+   "samples": [
+    441.621449,
+    450.549775,
+    446.790557,
+    448.638761,
+    475.806567,
+    457.645404,
+    457.033662
+   ],
+   "median": 450.549775,
+   "min": 441.621449,
+   "max": 475.806567,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "the carry: both sides: a fold warp waits on its producer",
+   "unit": "cycles a window a warp",
+   "samples": [
+    3475.192398,
+    3420.840569,
+    3403.656294,
+    3421.758538,
+    3458.802705,
+    3429.928533,
+    3445.660275
+   ],
+   "median": 3429.928533,
+   "min": 3403.656294,
+   "max": 3475.192398,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the carry: both sides: a readout warp waits on the image",
+   "unit": "cycles a window a warp",
+   "samples": [
+    1823.357718,
+    1815.777669,
+    1812.934718,
+    1817.856268,
+    1819.917022,
+    1815.683594,
+    1829.051166
+   ],
+   "median": 1817.856268,
+   "min": 1812.934718,
+   "max": 1829.051166,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the carry: both sides: a readout warp waits on the drain",
+   "unit": "cycles a window a warp",
+   "samples": [
+    360.134618,
+    358.025331,
+    359.685073,
+    365.89968,
+    365.786547,
+    351.360381,
+    367.164802
+   ],
+   "median": 360.134618,
+   "min": 351.360381,
+   "max": 367.164802,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the carry: both sides: a readout warp in its steps",
+   "unit": "cycles a window a warp",
+   "samples": [
+    3033.981593,
+    3024.660097,
+    3013.191791,
+    3018.157167,
+    3025.896366,
+    2999.74636,
+    3022.643762
+   ],
+   "median": 3022.643762,
+   "min": 2999.74636,
+   "max": 3033.981593,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the carry: both sides: a drain warp waits on the panel",
+   "unit": "cycles a window a warp",
+   "samples": [
+    3098.977569,
+    3090.376835,
+    3096.586529,
+    3065.608014,
+    3089.340613,
+    3069.432351,
+    3104.062086
+   ],
+   "median": 3090.376835,
+   "min": 3065.608014,
+   "max": 3104.062086,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the carry: both sides, the producers' global loads taken out",
+   "unit": "cycles a window a CTA",
+   "samples": [
+    7934.66572,
+    7926.304924,
+    7930.807647,
+    7927.151989,
+    7921.611506,
+    7934.097893,
+    7935.426136
+   ],
+   "median": 7930.807647,
+   "min": 7921.611506,
+   "max": 7935.426136,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the carry: both sides, the drains' global adds taken out",
+   "unit": "cycles a window a CTA",
+   "samples": [
+    7488.801018,
+    7559.185251,
+    7591.815459,
+    7430.832031,
+    7458.01089,
+    7434.404119,
+    7458.741477
+   ],
+   "median": 7458.741477,
+   "min": 7430.832031,
+   "max": 7591.815459,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the carry: both sides, the image's stores taken out",
+   "unit": "cycles a window a CTA",
+   "samples": [
+    8105.905421,
+    7992.248816,
+    8028.284446,
+    7978.502959,
+    7986.462831,
+    8064.506984,
+    8006.665009
+   ],
+   "median": 8006.665009,
+   "min": 7978.502959,
+   "max": 8105.905421,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void carry_window::window<(int)19>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 248,
+    "STG.E": 140,
+    "VIADD": 116,
+    "SHF.R.U32.HI": 116,
+    "LEA": 67,
+    "R2UR": 64,
+    "IMAD.MOV.U32": 58,
+    "IMAD.SHL.U32": 54,
+    "IADD3": 54,
+    "LEA.HI.X": 53,
+    "IMAD": 50,
+    "FMUL": 48
+   }
+  },
+  "void carry_window::window<(int)11>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "SHF.R.U32.HI": 245,
+    "LOP3.LUT": 192,
+    "STG.E": 141,
+    "STS.U16": 128,
+    "VIADD": 116,
+    "R2UR": 64,
+    "IMAD.MOV.U32": 57,
+    "IMAD.IADD": 54,
+    "IMAD": 54,
+    "FMUL": 48,
+    "BRA": 42,
+    "LDS": 32
+   }
+  },
+  "void carry_window::window<(int)7>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "SHF.R.U32.HI": 228,
+    "LOP3.LUT": 211,
+    "STG.E": 140,
+    "STS.U16": 128,
+    "VIADD": 116,
+    "IMAD.MOV.U32": 112,
+    "R2UR": 64,
+    "IMAD": 57,
+    "IMAD.SHL.U32": 53,
+    "IADD3": 53,
+    "LEA": 47,
+    "BRA": 41
+   }
+  },
+  "void carry_window::window<(int)3>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 251,
+    "SHF.R.U32.HI": 245,
+    "STG.E": 140,
+    "STS.U16": 128,
+    "VIADD": 116,
+    "LEA": 64,
+    "R2UR": 64,
+    "IMAD.MOV.U32": 56,
+    "IADD3": 55,
+    "IMAD.SHL.U32": 54,
+    "IMAD": 53,
+    "LEA.HI.X": 53
+   }
+  },
+  "void carry_window::window<(int)2>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "STG.E": 144,
+    "STS.U16": 128,
+    "LOP3.LUT": 113,
+    "VIADD": 54,
+    "IMAD.SHL.U32": 52,
+    "IADD3": 50,
+    "LEA": 42,
+    "IMAD.X": 41,
+    "SHF.R.U32.HI": 40,
+    "LEA.HI.X": 37,
+    "LDS": 32,
+    "SHF.L.U64.HI": 32
+   }
+  },
+  "void carry_window::window<(int)1>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 144,
+    "STG.E": 140,
+    "SHF.R.U32.HI": 89,
+    "VIADD": 67,
+    "R2UR": 64,
+    "IMAD.MOV.U32": 52,
+    "IMAD": 39,
+    "FMUL": 32,
+    "LDG.E.128": 27,
+    "LEA": 24,
+    "BRA": 23,
+    "IMAD.IADD": 21
+   }
+  }
+ },
+ "counters": {},
+ "counters_exception": {
+  "host": "vast.ai rented box, NVIDIA H100 80GB HBM3: a box with a driver and no toolkit",
+  "instead": "the kernels' own clocks and the SASS's static counts"
+ }
+}
