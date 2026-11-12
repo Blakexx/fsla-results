@@ -63,16 +63,52 @@
    "variant": "plain stores into one line an instruction, 32 lanes, 4 warps",
    "ok": true,
    "detail": "0 of 17301504 words differ"
+  },
+  {
+   "lab": "check",
+   "variant": "32-bit integer adds into one line an instruction, 32 lanes, 1 warp",
+   "ok": true,
+   "detail": "0 of 17301504 words differ"
+  },
+  {
+   "lab": "check",
+   "variant": "32-bit integer adds into one line an instruction, 32 lanes, 4 warps",
+   "ok": true,
+   "detail": "0 of 17301504 words differ"
+  },
+  {
+   "lab": "check",
+   "variant": "fp32 adds into one line an instruction, 32 lanes, 1 warp",
+   "ok": true,
+   "detail": "0 of 17301504 words differ"
+  },
+  {
+   "lab": "check",
+   "variant": "fp32 adds into one line an instruction, 32 lanes, 4 warps",
+   "ok": true,
+   "detail": "0 of 17301504 words differ"
+  },
+  {
+   "lab": "check",
+   "variant": "64-bit integer adds, two lines an instruction, 32 lanes, 1 warp",
+   "ok": true,
+   "detail": "0 of 17301504 words differ"
+  },
+  {
+   "lab": "check",
+   "variant": "64-bit integer adds, two lines an instruction, 32 lanes, 4 warps",
+   "ok": true,
+   "detail": "0 of 17301504 words differ"
   }
  ],
  "driver": "595.91.07",
  "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
  "git": {
-  "sha": "f89cc6b3e930e94a902dcfd7ee10aad5a9515b09",
+  "sha": "78cbf76f666847aa3515457036aaf7cbe0ed9bd2",
   "dirty": false
  },
  "reps": 7,
- "date": "2026-11-12T09:34:26+00:00",
+ "date": "2026-11-12T09:43:33+00:00",
  "utilization_before": 0,
  "inputs": {},
  "results": [
@@ -81,17 +117,17 @@
    "name": "f16 adds into one line an instruction, 32 lanes, 1 warp",
    "unit": "cycles an instruction of each warp, a CTA",
    "samples": [
-    12.186615,
-    12.19658,
-    12.195015,
-    12.220909,
-    12.204137,
-    12.196618,
-    12.20044
+    12.568674,
+    12.248572,
+    12.552701,
+    12.264983,
+    12.571729,
+    12.256203,
+    12.563636
    ],
-   "median": 12.196618,
-   "min": 12.186615,
-   "max": 12.220909,
+   "median": 12.552701,
+   "min": 12.248572,
+   "max": 12.571729,
    "unstable": false
   },
   {
@@ -99,17 +135,17 @@
    "name": "f16 adds into one line an instruction, 32 lanes, 2 warps",
    "unit": "cycles an instruction of each warp, a CTA",
    "samples": [
-    21.706307,
-    21.552602,
-    21.708157,
-    21.567543,
-    21.700096,
-    21.572913,
-    21.712319
+    21.935427,
+    22.044917,
+    21.921179,
+    22.059983,
+    21.939396,
+    22.051211,
+    21.918957
    ],
-   "median": 21.700096,
-   "min": 21.552602,
-   "max": 21.712319,
+   "median": 21.939396,
+   "min": 21.918957,
+   "max": 22.059983,
    "unstable": false
   },
   {
@@ -117,17 +153,17 @@
    "name": "f16 adds into one line an instruction, 32 lanes, 4 warps",
    "unit": "cycles an instruction of each warp, a CTA",
    "samples": [
-    41.140037,
-    41.283206,
-    41.139334,
-    41.278583,
-    41.119499,
-    41.262366,
-    41.106068
+    41.355889,
+    41.068275,
+    41.343602,
+    41.088505,
+    41.345466,
+    41.094186,
+    41.362609
    ],
-   "median": 41.140037,
-   "min": 41.106068,
-   "max": 41.283206,
+   "median": 41.343602,
+   "min": 41.068275,
+   "max": 41.362609,
    "unstable": false
   },
   {
@@ -135,17 +171,17 @@
    "name": "f16 adds into one line an instruction, 32 lanes, 8 warps",
    "unit": "cycles an instruction of each warp, a CTA",
    "samples": [
-    79.604126,
-    79.741988,
-    79.582909,
-    79.746375,
-    79.590788,
-    79.584445,
-    79.624438
+    80.56983,
+    80.436451,
+    80.575284,
+    80.481519,
+    80.637881,
+    80.522513,
+    80.622447
    ],
-   "median": 79.604126,
-   "min": 79.582909,
-   "max": 79.746375,
+   "median": 80.56983,
+   "min": 80.436451,
+   "max": 80.637881,
    "unstable": false
   },
   {
@@ -153,17 +189,17 @@
    "name": "f16 adds into one line an instruction, 16 lanes, 1 warp",
    "unit": "cycles an instruction of each warp, a CTA",
    "samples": [
-    8.19309,
-    8.186457,
-    8.195193,
-    8.200411,
-    8.191455,
-    8.199407,
-    8.190189
+    8.21327,
+    8.362076,
+    8.205753,
+    8.382693,
+    8.204528,
+    8.373961,
+    8.207113
    ],
-   "median": 8.19309,
-   "min": 8.186457,
-   "max": 8.200411,
+   "median": 8.21327,
+   "min": 8.204528,
+   "max": 8.382693,
    "unstable": false
   },
   {
@@ -177,10 +213,10 @@
     7.817167,
     7.817167,
     7.817167,
-    7.817066
+    7.817065
    ],
    "median": 7.817167,
-   "min": 7.817066,
+   "min": 7.817065,
    "max": 7.817167,
    "unstable": false
   },
@@ -189,17 +225,17 @@
    "name": "f16 adds, a lane a line of its own, 32 lanes, 1 warp",
    "unit": "cycles an instruction of each warp, a CTA",
    "samples": [
-    86.261287,
-    86.849516,
-    85.842094,
-    86.636825,
-    86.294517,
-    86.356955,
-    86.078658
+    86.46824,
+    86.771285,
+    86.616406,
+    86.247498,
+    86.408562,
+    86.483513,
+    86.602044
    ],
-   "median": 86.294517,
-   "min": 85.842094,
-   "max": 86.849516,
+   "median": 86.483513,
+   "min": 86.247498,
+   "max": 86.771285,
    "unstable": false
   },
   {
@@ -207,17 +243,17 @@
    "name": "f16 adds, a lane a line of its own, 32 lanes, 4 warps",
    "unit": "cycles an instruction of each warp, a CTA",
    "samples": [
-    378.2083,
-    377.864884,
-    379.037078,
-    377.702466,
-    377.961294,
-    368.058684,
-    334.100189
+    378.03007,
+    379.226909,
+    377.921981,
+    376.568243,
+    365.999789,
+    360.282148,
+    359.667929
    ],
-   "median": 377.864884,
-   "min": 334.100189,
-   "max": 379.037078,
+   "median": 376.568243,
+   "min": 359.667929,
+   "max": 379.226909,
    "unstable": true
   },
   {
@@ -231,10 +267,10 @@
     1.820097,
     1.820097,
     1.820097,
-    1.819996
+    1.819995
    ],
    "median": 1.820097,
-   "min": 1.819996,
+   "min": 1.819995,
    "max": 1.820097,
    "unstable": false
   },
@@ -243,21 +279,231 @@
    "name": "plain stores into one line an instruction, 32 lanes, 4 warps",
    "unit": "cycles an instruction of each warp, a CTA",
    "samples": [
-    1.822305,
-    1.822516,
-    1.82284,
-    1.822595,
-    1.822599,
-    1.822251,
-    1.82338
+    1.822271,
+    1.822544,
+    1.822868,
+    1.822597,
+    1.82246,
+    1.822254,
+    1.823389
    ],
-   "median": 1.822595,
-   "min": 1.822251,
-   "max": 1.82338,
+   "median": 1.822544,
+   "min": 1.822254,
+   "max": 1.823389,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32-bit integer adds into one line an instruction, 32 lanes, 1 warp",
+   "unit": "cycles an instruction of each warp, a CTA",
+   "samples": [
+    11.898121,
+    11.756045,
+    11.906581,
+    11.766286,
+    11.884739,
+    11.762772,
+    11.887788
+   ],
+   "median": 11.884739,
+   "min": 11.756045,
+   "max": 11.906581,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32-bit integer adds into one line an instruction, 32 lanes, 4 warps",
+   "unit": "cycles an instruction of each warp, a CTA",
+   "samples": [
+    40.549029,
+    40.696526,
+    40.508707,
+    40.662826,
+    40.514497,
+    40.706593,
+    40.502561
+   ],
+   "median": 40.549029,
+   "min": 40.502561,
+   "max": 40.706593,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp32 adds into one line an instruction, 32 lanes, 1 warp",
+   "unit": "cycles an instruction of each warp, a CTA",
+   "samples": [
+    12.227644,
+    12.202829,
+    12.219314,
+    12.206577,
+    12.236022,
+    12.210987,
+    12.216284
+   ],
+   "median": 12.216284,
+   "min": 12.202829,
+   "max": 12.236022,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "fp32 adds into one line an instruction, 32 lanes, 4 warps",
+   "unit": "cycles an instruction of each warp, a CTA",
+   "samples": [
+    39.889647,
+    40.170971,
+    39.885114,
+    40.184591,
+    39.874451,
+    40.190698,
+    39.88092
+   ],
+   "median": 39.889647,
+   "min": 39.874451,
+   "max": 40.190698,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "64-bit integer adds, two lines an instruction, 32 lanes, 1 warp",
+   "unit": "cycles an instruction of each warp, a CTA",
+   "samples": [
+    22.271728,
+    21.707663,
+    22.28979,
+    21.612758,
+    22.181603,
+    21.610484,
+    22.203206
+   ],
+   "median": 22.181603,
+   "min": 21.610484,
+   "max": 22.28979,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "64-bit integer adds, two lines an instruction, 32 lanes, 4 warps",
+   "unit": "cycles an instruction of each warp, a CTA",
+   "samples": [
+    78.663882,
+    78.543954,
+    78.66628,
+    77.97554,
+    78.652046,
+    78.542842,
+    78.647219
+   ],
+   "median": 78.647219,
+   "min": 77.97554,
+   "max": 78.66628,
    "unstable": false
   }
  ],
  "kernels": {
+  "void add_rate::add<(int)4, (int)32, (int)5>(long long *, unsigned int *, int)": {
+   "regs": 12,
+   "ops": {
+    "REDG.E.ADD.64.STRONG.GPU": 16,
+    "NOP": 8,
+    "IMAD.MOV.U32": 4,
+    "S2R": 3,
+    "BRA": 3,
+    "IMAD.SHL.U32": 3,
+    "LDC": 2,
+    "ULDC.64": 2,
+    "CS2R": 2,
+    "SHF.R.U32.HI": 2,
+    "LOP3.LUT": 2,
+    "EXIT": 2
+   }
+  },
+  "void add_rate::add<(int)1, (int)32, (int)5>(long long *, unsigned int *, int)": {
+   "regs": 12,
+   "ops": {
+    "REDG.E.ADD.64.STRONG.GPU": 16,
+    "NOP": 10,
+    "IMAD.MOV.U32": 4,
+    "BRA": 3,
+    "IMAD.SHL.U32": 3,
+    "S2R": 2,
+    "ULDC.64": 2,
+    "CS2R": 2,
+    "ULDC": 2,
+    "LOP3.LUT": 2,
+    "EXIT": 2,
+    "STG.E.64": 2
+   }
+  },
+  "void add_rate::add<(int)4, (int)32, (int)4>(long long *, unsigned int *, int)": {
+   "regs": 13,
+   "ops": {
+    "REDG.E.ADD.F32.FTZ.RN.STRONG.GPU": 16,
+    "NOP": 11,
+    "BRA": 3,
+    "LDC": 2,
+    "S2R": 2,
+    "ULDC.64": 2,
+    "LOP3.LUT": 2,
+    "CS2R": 2,
+    "IMAD.MOV.U32": 2,
+    "IMAD.SHL.U32": 2,
+    "EXIT": 2,
+    "STG.E.64": 2
+   }
+  },
+  "void add_rate::add<(int)1, (int)32, (int)4>(long long *, unsigned int *, int)": {
+   "regs": 13,
+   "ops": {
+    "REDG.E.ADD.F32.FTZ.RN.STRONG.GPU": 16,
+    "NOP": 11,
+    "BRA": 3,
+    "LDC": 2,
+    "S2R": 2,
+    "ULDC.64": 2,
+    "LOP3.LUT": 2,
+    "CS2R": 2,
+    "IMAD.MOV.U32": 2,
+    "IMAD.SHL.U32": 2,
+    "EXIT": 2,
+    "STG.E.64": 2
+   }
+  },
+  "void add_rate::add<(int)4, (int)32, (int)3>(long long *, unsigned int *, int)": {
+   "regs": 13,
+   "ops": {
+    "REDG.E.ADD.STRONG.GPU": 16,
+    "NOP": 11,
+    "BRA": 3,
+    "LDC": 2,
+    "S2R": 2,
+    "ULDC.64": 2,
+    "LOP3.LUT": 2,
+    "CS2R": 2,
+    "IMAD.MOV.U32": 2,
+    "IMAD.SHL.U32": 2,
+    "EXIT": 2,
+    "STG.E.64": 2
+   }
+  },
+  "void add_rate::add<(int)1, (int)32, (int)3>(long long *, unsigned int *, int)": {
+   "regs": 13,
+   "ops": {
+    "REDG.E.ADD.STRONG.GPU": 16,
+    "NOP": 11,
+    "BRA": 3,
+    "LDC": 2,
+    "S2R": 2,
+    "ULDC.64": 2,
+    "LOP3.LUT": 2,
+    "CS2R": 2,
+    "IMAD.MOV.U32": 2,
+    "IMAD.SHL.U32": 2,
+    "EXIT": 2,
+    "STG.E.64": 2
+   }
+  },
   "void add_rate::add<(int)4, (int)32, (int)2>(long long *, unsigned int *, int)": {
    "regs": 12,
    "ops": {
