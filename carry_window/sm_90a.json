@@ -1,0 +1,148 @@
+{
+ "experiment": "carry_window",
+ "question": "the carry's roles were each measured apart (`pool_fill`, `state_image`, `readout_role`); what does a window cost a CTA when they run TOGETHER, under one register file, one tensor pipe and one shared memory?",
+ "arch": "sm_90a",
+ "device": "NVIDIA H100 80GB HBM3",
+ "checks": [
+  {
+   "lab": "unchecked",
+   "variant": "the fold's side alone: producers and steps",
+   "reason": "an isolation: one side's roles with the other's absent"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "the read side alone: the image, the readout and the drain",
+   "reason": "an isolation: one side's roles with the other's absent"
+  },
+  {
+   "lab": "check",
+   "variant": "the carry: both sides",
+   "ok": true,
+   "detail": "0 of 4325376 state values and 0 of 8650752 output values differ"
+  }
+ ],
+ "driver": "595.91.07",
+ "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
+ "git": {
+  "sha": "69bd2992877adea55c1370e01e056eaa64965153",
+  "dirty": false
+ },
+ "reps": 7,
+ "date": "2026-11-12T08:47:42+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "the fold's side alone: producers and steps",
+   "unit": "cycles a window a CTA",
+   "samples": [
+    4275.882102,
+    4319.188565,
+    4249.013021,
+    4323.47964,
+    4256.360677,
+    4286.730114,
+    4232.640033
+   ],
+   "median": 4275.882102,
+   "min": 4232.640033,
+   "max": 4323.47964,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the read side alone: the image, the readout and the drain",
+   "unit": "cycles a window a CTA",
+   "samples": [
+    6674.533499,
+    6685.512547,
+    6677.677675,
+    6660.617661,
+    6667.910275,
+    6670.789299,
+    6672.006155
+   ],
+   "median": 6672.006155,
+   "min": 6660.617661,
+   "max": 6685.512547,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the carry: both sides",
+   "unit": "cycles a window a CTA",
+   "samples": [
+    9217.464015,
+    9212.647609,
+    9223.012666,
+    9222.835938,
+    9217.936671,
+    9228.424716,
+    9230.175071
+   ],
+   "median": 9222.835938,
+   "min": 9212.647609,
+   "max": 9230.175071,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void carry_window::window<(int)3>(long long *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 365,
+    "SHF.R.U32.HI": 335,
+    "VIADD": 162,
+    "STS.U16": 129,
+    "FMUL": 128,
+    "STG.E": 128,
+    "LEA": 103,
+    "LEA.HI.X": 97,
+    "STS.128": 96,
+    "LDG.E.128": 90,
+    "IMAD": 68,
+    "I2F.U8": 64
+   }
+  },
+  "void carry_window::window<(int)2>(long long *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "STS.U16": 129,
+    "STG.E": 128,
+    "LOP3.LUT": 53,
+    "VIADD": 42,
+    "IMAD.SHL.U32": 41,
+    "LEA": 36,
+    "IADD3": 35,
+    "STS": 33,
+    "IMAD.X": 33,
+    "LEA.HI.X": 33,
+    "UMOV": 32,
+    "LDS.64": 32
+   }
+  },
+  "void carry_window::window<(int)1>(long long *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 323,
+    "SHF.R.U32.HI": 205,
+    "VIADD": 128,
+    "FMUL": 128,
+    "STG.E": 128,
+    "STS.128": 96,
+    "LDG.E.128": 90,
+    "LEA": 70,
+    "LEA.HI.X": 65,
+    "I2F.U8": 64,
+    "I2FP.F32.U32": 64,
+    "F2FP.BF16.F32.PACK_AB": 64
+   }
+  }
+ },
+ "counters": {},
+ "counters_exception": {
+  "host": "vast.ai rented box, NVIDIA H100 80GB HBM3: a box with a driver and no toolkit",
+  "instead": "the kernels' own clocks and the SASS's static counts"
+ }
+}
