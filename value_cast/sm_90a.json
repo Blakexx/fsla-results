@@ -1,0 +1,109 @@
+{
+ "experiment": "value_cast",
+ "question": "the CTAs of a cluster all want the same tile of values; what does a kilobyte cost a CTA when ONE multicast tensor copy lands it in all eight, beside every CTA issuing its own copy of it?",
+ "arch": "sm_90a",
+ "device": "NVIDIA H100 80GB HBM3",
+ "checks": [
+  {
+   "lab": "check",
+   "variant": "every CTA its own copy",
+   "ok": true,
+   "detail": "0 of 2097152 landed bytes differ"
+  },
+  {
+   "lab": "check",
+   "variant": "one multicast copy a cluster",
+   "ok": true,
+   "detail": "0 of 2097152 landed bytes differ"
+  }
+ ],
+ "driver": "615.71.09",
+ "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
+ "git": {
+  "sha": "864c6e3f0061a469dbd444bf83fbf17e115cb415",
+  "dirty": false
+ },
+ "reps": 7,
+ "date": "2026-11-12T06:02:15+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "every CTA its own copy",
+   "unit": "cycles a kilobyte a CTA",
+   "samples": [
+    38.291396,
+    38.276881,
+    38.264371,
+    38.28399,
+    38.26677,
+    38.308797,
+    38.306663
+   ],
+   "median": 38.28399,
+   "min": 38.264371,
+   "max": 38.308797,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "one multicast copy a cluster",
+   "unit": "cycles a kilobyte a CTA",
+   "samples": [
+    137.316525,
+    137.365218,
+    137.350203,
+    136.780096,
+    137.477775,
+    137.606698,
+    137.458305
+   ],
+   "median": 137.365218,
+   "min": 136.780096,
+   "max": 137.606698,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void value_cast::cast<(int)1>(CUtensorMap_st, long long *, int *, unsigned char *, int)": {
+   "regs": 20,
+   "ops": {
+    "BRA": 11,
+    "NOP": 9,
+    "UMOV": 8,
+    "IMAD.U32": 8,
+    "LOP3.LUT": 7,
+    "IMAD.MOV.U32": 6,
+    "VIADD": 6,
+    "VOTEU.ALL": 5,
+    "ULEA": 5,
+    "PLOP3.LUT": 5,
+    "R2UR": 5,
+    "UIADD3": 4
+   }
+  },
+  "void value_cast::cast<(int)0>(CUtensorMap_st, long long *, int *, unsigned char *, int)": {
+   "regs": 20,
+   "ops": {
+    "NOP": 16,
+    "BRA": 11,
+    "UMOV": 7,
+    "IMAD.U32": 7,
+    "IMAD.MOV.U32": 6,
+    "VIADD": 6,
+    "LOP3.LUT": 6,
+    "ULEA": 5,
+    "PLOP3.LUT": 5,
+    "R2UR": 5,
+    "VOTEU.ALL": 4,
+    "S2UR": 4
+   }
+  }
+ },
+ "counters": {},
+ "counters_exception": {
+  "host": "vast.ai rented box, NVIDIA H100 80GB HBM3: a box with a driver and no toolkit",
+  "instead": "the kernels' own clocks and the SASS's static counts"
+ }
+}
