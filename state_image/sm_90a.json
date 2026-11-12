@@ -1,0 +1,148 @@
+{
+ "experiment": "state_image",
+ "question": "where a box's two sides are sparse on different levels, the fold keeps its state in registers along one axis (16 accumulators of 16 leaves) and the readout reads it along the other; what does it cost a window to store the state to shared memory as 16 tiles the readout's steps take as their A operand -- a value a 2-byte store, or a pair a 4-byte store after one shuffle -- and to read them?",
+ "arch": "sm_90a",
+ "device": "NVIDIA H100 80GB HBM3",
+ "checks": [
+  {
+   "lab": "unchecked",
+   "variant": "a value a 2-byte store, the image alone",
+   "reason": "an isolation: the image is stored and no step reads it"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "a pair a 4-byte store after a shuffle, the image alone",
+   "reason": "an isolation: the image is stored and no step reads it"
+  },
+  {
+   "lab": "check",
+   "variant": "a value a 2-byte store, and the 16 steps that read it",
+   "ok": true,
+   "detail": "0 of 270336 readout values differ from the exact ones"
+  }
+ ],
+ "driver": "615.71.09",
+ "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
+ "git": {
+  "sha": "8c03d7d96be687cc811de5705474461c314835e3",
+  "dirty": false
+ },
+ "reps": 7,
+ "date": "2026-11-12T02:46:35+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "a value a 2-byte store, the image alone",
+   "unit": "cycles a window a CTA of two boxes",
+   "samples": [
+    1103.154963,
+    1101.725897,
+    1101.728427,
+    1103.267578,
+    1103.112971,
+    1101.727939,
+    1101.724802
+   ],
+   "median": 1101.728427,
+   "min": 1101.724802,
+   "max": 1103.267578,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a pair a 4-byte store after a shuffle, the image alone",
+   "unit": "cycles a window a CTA of two boxes",
+   "samples": [
+    1203.411414,
+    1203.759544,
+    1203.348174,
+    1203.470363,
+    1204.275465,
+    1203.759544,
+    1204.011674
+   ],
+   "median": 1203.759544,
+   "min": 1203.348174,
+   "max": 1204.275465,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a value a 2-byte store, and the 16 steps that read it",
+   "unit": "cycles a window a CTA of two boxes",
+   "samples": [
+    2217.555472,
+    2216.140995,
+    2217.568271,
+    2216.139397,
+    2217.55414,
+    2216.13774,
+    2217.569898
+   ],
+   "median": 2217.55414,
+   "min": 2216.13774,
+   "max": 2217.569898,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void state_image::image<(int)2>(long long *, float *, int)": {
+   "regs": 255,
+   "ops": {
+    "SHF.R.U32.HI": 259,
+    "VIADD": 153,
+    "IMAD": 139,
+    "STS.U16": 129,
+    "IMAD.HI": 128,
+    "I2FP.F32.S32": 128,
+    "LEA.HI.SX32": 127,
+    "FADD": 127,
+    "IMAD.MOV.U32": 104,
+    "IADD3": 89,
+    "MOV": 51,
+    "IMAD.IADD": 40
+   }
+  },
+  "void state_image::image<(int)1>(long long *, float *, int)": {
+   "regs": 255,
+   "ops": {
+    "FSEL": 192,
+    "VIADD": 187,
+    "IMAD": 136,
+    "SHF.R.U32.HI": 132,
+    "IMAD.MOV.U32": 129,
+    "IMAD.HI": 128,
+    "I2FP.F32.S32": 128,
+    "LEA.HI.SX32": 127,
+    "FADD": 127,
+    "SHFL.BFLY": 64,
+    "PRMT": 64,
+    "STS": 64
+   }
+  },
+  "void state_image::image<(int)0>(long long *, float *, int)": {
+   "regs": 255,
+   "ops": {
+    "SHF.R.U32.HI": 258,
+    "VIADD": 151,
+    "IMAD": 138,
+    "STS.U16": 129,
+    "IMAD.HI": 128,
+    "I2FP.F32.S32": 128,
+    "LEA.HI.SX32": 127,
+    "FADD": 127,
+    "IMAD.MOV.U32": 103,
+    "IADD3": 92,
+    "IMAD.IADD": 37,
+    "MOV": 31
+   }
+  }
+ },
+ "counters": {},
+ "counters_exception": {
+  "host": "vast.ai rented box, NVIDIA H100 80GB HBM3: a box with a driver and no toolkit",
+  "instead": "the kernels' own clocks and the SASS's static counts"
+ }
+}
