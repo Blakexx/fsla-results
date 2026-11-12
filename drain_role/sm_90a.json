@@ -1,0 +1,313 @@
+{
+ "experiment": "drain_role",
+ "question": "a CTA's two warpgroups each hold a token's partial; what does a token cost when a DRAIN ROLE of warps pulls both from shared memory, adds them, and issues ONE add of f16 pairs to global memory -- beside an f16 line added straight from registers -- and do value loads on the same path add to it?",
+ "arch": "sm_90a",
+ "device": "NVIDIA H100 80GB HBM3",
+ "checks": [
+  {
+   "lab": "check",
+   "variant": "an f16 line from registers, 4 warps",
+   "ok": true,
+   "detail": "0 of 540672 sums differ from the exact ones"
+  },
+  {
+   "lab": "check",
+   "variant": "the drain role, 1 drain warp, the CTA's own rows",
+   "ok": true,
+   "detail": "0 of 540672 sums differ from the exact ones"
+  },
+  {
+   "lab": "check",
+   "variant": "the drain role, 2 drain warps, the CTA's own rows",
+   "ok": true,
+   "detail": "0 of 540672 sums differ from the exact ones"
+  },
+  {
+   "lab": "check",
+   "variant": "the drain role, 4 drain warps, the CTA's own rows",
+   "ok": true,
+   "detail": "0 of 540672 sums differ from the exact ones"
+  },
+  {
+   "lab": "check",
+   "variant": "the drain role, 2 drain warps, rows spread over 1,024",
+   "ok": true,
+   "detail": "0 of 65536 sums differ from the exact ones"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "the loads alone, 32 KB a chunk",
+   "reason": "an isolation: the loads land and nothing reads them but one word"
+  },
+  {
+   "lab": "check",
+   "variant": "the drain role, 2 drain warps, the CTA's own rows, beside the loads",
+   "ok": true,
+   "detail": "0 of 540672 sums differ from the exact ones"
+  }
+ ],
+ "driver": "615.71.09",
+ "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
+ "git": {
+  "sha": "627e96c0750cb1fa8ae4d5eecca746492216e62d",
+  "dirty": false
+ },
+ "reps": 7,
+ "date": "2026-11-12T02:36:08+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "an f16 line from registers, 4 warps",
+   "unit": "cycles a token a CTA",
+   "samples": [
+    9.877773,
+    9.883504,
+    9.877055,
+    9.873733,
+    9.888705,
+    9.878498,
+    9.888945
+   ],
+   "median": 9.878498,
+   "min": 9.873733,
+   "max": 9.888945,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the drain role, 1 drain warp, the CTA's own rows",
+   "unit": "cycles a token a CTA",
+   "samples": [
+    33.390636,
+    33.387444,
+    33.391712,
+    33.414125,
+    33.391665,
+    33.388044,
+    33.390618
+   ],
+   "median": 33.390636,
+   "min": 33.387444,
+   "max": 33.414125,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the drain role, 2 drain warps, the CTA's own rows",
+   "unit": "cycles a token a CTA",
+   "samples": [
+    20.47186,
+    20.46631,
+    20.474748,
+    20.469633,
+    20.472157,
+    20.47034,
+    20.473019
+   ],
+   "median": 20.47186,
+   "min": 20.46631,
+   "max": 20.474748,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the drain role, 4 drain warps, the CTA's own rows",
+   "unit": "cycles a token a CTA",
+   "samples": [
+    11.679881,
+    11.698282,
+    11.671392,
+    11.673821,
+    11.676782,
+    11.689422,
+    11.681348
+   ],
+   "median": 11.679881,
+   "min": 11.671392,
+   "max": 11.698282,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the drain role, 2 drain warps, rows spread over 1,024",
+   "unit": "cycles a token a CTA",
+   "samples": [
+    20.996735,
+    20.993397,
+    20.996577,
+    20.993767,
+    20.992371,
+    20.987811,
+    20.993841
+   ],
+   "median": 20.993767,
+   "min": 20.987811,
+   "max": 20.996735,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the loads alone, 32 KB a chunk",
+   "unit": "cycles a token a CTA",
+   "samples": [
+    10.5249,
+    10.487932,
+    10.57937,
+    10.635709,
+    10.504973,
+    10.702703,
+    10.503303
+   ],
+   "median": 10.5249,
+   "min": 10.487932,
+   "max": 10.702703,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the drain role, 2 drain warps, the CTA's own rows, beside the loads",
+   "unit": "cycles a token a CTA",
+   "samples": [
+    24.139292,
+    24.207301,
+    24.15556,
+    24.22968,
+    24.185514,
+    24.270158,
+    24.187126
+   ],
+   "median": 24.187126,
+   "min": 24.139292,
+   "max": 24.270158,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void drain_role::role<(int)2, (int)3>(long long *, int *, const unsigned int *, unsigned int *, int)": {
+   "regs": 96,
+   "ops": {
+    "LDS.64": 48,
+    "LOP3.LUT": 36,
+    "VIADD": 33,
+    "FADD": 32,
+    "STS": 32,
+    "IMAD": 26,
+    "LEA": 23,
+    "BRA": 22,
+    "IMAD.WIDE.U32": 18,
+    "F2FP.F16.F32.PACK_AB": 16,
+    "LEA.HI.X": 16,
+    "REDG.E.ADD.F16": 16
+   }
+  },
+  "void drain_role::role<(int)2, (int)2>(long long *, int *, const unsigned int *, unsigned int *, int)": {
+   "regs": 18,
+   "ops": {
+    "BRA": 14,
+    "LOP3.LUT": 10,
+    "R2UR": 10,
+    "NOP": 9,
+    "BSSY": 8,
+    "BSYNC": 8,
+    "UMOV": 6,
+    "USHF.L.U32": 6,
+    "SYNCS.EXCH.64": 6,
+    "IMAD.SHL.U32": 6,
+    "S2R": 5,
+    "LDC.64": 4
+   }
+  },
+  "void drain_role::role<(int)2, (int)5>(long long *, int *, const unsigned int *, unsigned int *, int)": {
+   "regs": 72,
+   "ops": {
+    "LDS.64": 48,
+    "LOP3.LUT": 46,
+    "VIADD": 40,
+    "FADD": 32,
+    "STS": 32,
+    "IMAD": 25,
+    "SHF.R.U32.HI": 20,
+    "LEA": 19,
+    "F2FP.F16.F32.PACK_AB": 16,
+    "LEA.HI.X": 16,
+    "REDG.E.ADD.F16": 16,
+    "NOP": 15
+   }
+  },
+  "void drain_role::role<(int)4, (int)1>(long long *, int *, const unsigned int *, unsigned int *, int)": {
+   "regs": 86,
+   "ops": {
+    "LDS.64": 32,
+    "FADD": 32,
+    "STS": 32,
+    "LOP3.LUT": 27,
+    "LEA": 19,
+    "NOP": 17,
+    "IMAD.WIDE.U32": 17,
+    "VIADD": 17,
+    "LEA.HI.X": 16,
+    "F2FP.F16.F32.PACK_AB": 16,
+    "REDG.E.ADD.F16": 16,
+    "BRA": 13
+   }
+  },
+  "void drain_role::role<(int)2, (int)1>(long long *, int *, const unsigned int *, unsigned int *, int)": {
+   "regs": 96,
+   "ops": {
+    "LDS.64": 48,
+    "FADD": 32,
+    "STS": 32,
+    "LOP3.LUT": 30,
+    "VIADD": 29,
+    "LEA": 23,
+    "IMAD": 21,
+    "IMAD.WIDE.U32": 17,
+    "F2FP.F16.F32.PACK_AB": 16,
+    "LEA.HI.X": 16,
+    "REDG.E.ADD.F16": 16,
+    "BRA": 14
+   }
+  },
+  "void drain_role::role<(int)1, (int)1>(long long *, int *, const unsigned int *, unsigned int *, int)": {
+   "regs": 92,
+   "ops": {
+    "LDS.64": 48,
+    "FADD": 32,
+    "STS": 32,
+    "LOP3.LUT": 30,
+    "VIADD": 30,
+    "LEA": 23,
+    "IMAD": 20,
+    "NOP": 19,
+    "IMAD.WIDE.U32": 17,
+    "F2FP.F16.F32.PACK_AB": 16,
+    "LEA.HI.X": 16,
+    "REDG.E.ADD.F16": 16
+   }
+  },
+  "drain_role::direct(long long *, unsigned int *, int)": {
+   "regs": 58,
+   "ops": {
+    "VIADD": 63,
+    "SHF.R.S32.HI": 50,
+    "LEA.HI": 48,
+    "IMAD": 33,
+    "IMAD.HI": 32,
+    "I2FP.F32.S32": 32,
+    "LOP3.LUT": 17,
+    "IMAD.SHL.U32": 17,
+    "IMAD.IADD": 16,
+    "F2FP.F16.F32.PACK_AB": 16,
+    "REDG.E.ADD.F16": 16,
+    "NOP": 9
+   }
+  }
+ },
+ "counters": {},
+ "counters_exception": {
+  "host": "vast.ai rented box, NVIDIA H100 80GB HBM3: a box with a driver and no toolkit",
+  "instead": "the kernels' own clocks and the SASS's static counts"
+ }
+}
