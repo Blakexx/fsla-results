@@ -1,0 +1,150 @@
+{
+ "experiment": "panel_merge",
+ "question": "a launch's fold groups each leave a panel of f16 pairs, a row a token; what does a token cost the card to MERGE them into the fp32 output -- a group's row widened, scaled by the group's power of two, the groups summed in fp32 and added into the token's output row -- by the groups a launch holds?",
+ "arch": "sm_90a",
+ "device": "NVIDIA H100 80GB HBM3",
+ "checks": [
+  {
+   "lab": "check",
+   "variant": "2 groups' panels merged",
+   "ok": true,
+   "detail": "0 of 16760832 output values differ from the exact ones"
+  },
+  {
+   "lab": "check",
+   "variant": "8 groups' panels merged",
+   "ok": true,
+   "detail": "0 of 16760832 output values differ from the exact ones"
+  },
+  {
+   "lab": "check",
+   "variant": "16 groups' panels merged",
+   "ok": true,
+   "detail": "0 of 16760832 output values differ from the exact ones"
+  }
+ ],
+ "driver": "610.57.04",
+ "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
+ "git": {
+  "sha": "db42c477ac6e406d481a57af9f047da875df0b2a",
+  "dirty": false
+ },
+ "reps": 7,
+ "date": "2026-11-12T03:17:51+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "2 groups' panels merged",
+   "unit": "SM-cycles a token",
+   "samples": [
+    161.619272,
+    161.428557,
+    161.230213,
+    161.795905,
+    162.022479,
+    161.635466,
+    160.787879
+   ],
+   "median": 161.619272,
+   "min": 160.787879,
+   "max": 162.022479,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "8 groups' panels merged",
+   "unit": "SM-cycles a token",
+   "samples": [
+    212.943671,
+    213.287317,
+    212.841925,
+    213.27944,
+    213.235937,
+    213.252883,
+    213.140656
+   ],
+   "median": 213.235937,
+   "min": 212.841925,
+   "max": 213.287317,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "16 groups' panels merged",
+   "unit": "SM-cycles a token",
+   "samples": [
+    288.941758,
+    288.590485,
+    289.22665,
+    288.135852,
+    288.349447,
+    288.381995,
+    289.306005
+   ],
+   "median": 288.590485,
+   "min": 288.135852,
+   "max": 289.306005,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void panel_merge::merge<(int)16>(long long *, const unsigned int *, float *, int, int)": {
+   "regs": 64,
+   "ops": {
+    "LDG.E": 72,
+    "HADD2.F32": 64,
+    "IMAD.WIDE": 40,
+    "FFMA": 40,
+    "IADD3": 33,
+    "IADD3.X": 32,
+    "FADD": 24,
+    "LEA": 13,
+    "LOP3.LUT": 11,
+    "LEA.HI.X": 9,
+    "NOP": 9,
+    "SHF.R.S32.HI": 4
+   }
+  },
+  "void panel_merge::merge<(int)8>(long long *, const unsigned int *, float *, int, int)": {
+   "regs": 44,
+   "ops": {
+    "LDG.E": 40,
+    "HADD2.F32": 32,
+    "IMAD.WIDE": 24,
+    "FFMA": 20,
+    "IADD3": 17,
+    "IADD3.X": 16,
+    "LEA": 13,
+    "FADD": 12,
+    "LOP3.LUT": 11,
+    "LEA.HI.X": 9,
+    "NOP": 9,
+    "SHF.R.S32.HI": 4
+   }
+  },
+  "void panel_merge::merge<(int)2>(long long *, const unsigned int *, float *, int, int)": {
+   "regs": 36,
+   "ops": {
+    "LDG.E": 16,
+    "LOP3.LUT": 15,
+    "NOP": 15,
+    "LEA": 13,
+    "LEA.HI.X": 13,
+    "IMAD.WIDE": 10,
+    "HADD2.F32": 8,
+    "IMAD.SHL.U32": 6,
+    "IMAD": 6,
+    "IADD3": 6,
+    "SHF.R.S32.HI": 4,
+    "VIMNMX": 4
+   }
+  }
+ },
+ "counters": {},
+ "counters_exception": {
+  "host": "vast.ai rented box, NVIDIA H100 80GB HBM3: a box with a driver and no toolkit",
+  "instead": "the kernels' own clocks and the SASS's static counts"
+ }
+}
