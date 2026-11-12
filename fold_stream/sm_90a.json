@@ -1,0 +1,195 @@
+{
+ "experiment": "fold_stream",
+ "question": "a box every token writes sparsely (4 of its 256 leaves) is folded from one pass over the tokens with no list and no look back; what does a token cost a CTA, and how much of the producer's work hides under the fold's?",
+ "arch": "sm_90a",
+ "device": "NVIDIA H100 80GB HBM3",
+ "checks": [
+  {
+   "lab": "unchecked",
+   "variant": "the fold alone",
+   "reason": "an isolation: the steps run on tiles no token was written to"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "the producer alone, a table of 65536 tokens",
+   "reason": "an isolation: the tiles are written and no step reads them"
+  },
+  {
+   "lab": "check",
+   "variant": "the producer and the fold together, a table of 65536 tokens",
+   "ok": true,
+   "detail": "0 of 2162688 state values differ from the exact ones after 4096 tokens"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "the producer alone, a table of 1048576 tokens",
+   "reason": "an isolation: the tiles are written and no step reads them"
+  },
+  {
+   "lab": "check",
+   "variant": "the producer and the fold together, a table of 1048576 tokens",
+   "ok": true,
+   "detail": "0 of 2162688 state values differ from the exact ones after 4096 tokens"
+  }
+ ],
+ "driver": "615.71.09",
+ "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
+ "git": {
+  "sha": "342fc132915434df0a10eb11bc9511c8793aee80",
+  "dirty": false
+ },
+ "reps": 7,
+ "date": "2026-11-12T00:40:19+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "the fold alone",
+   "unit": "cycles a token a CTA",
+   "samples": [
+    9.098108,
+    9.098033,
+    9.488904,
+    9.097911,
+    9.10002,
+    9.233038,
+    9.09795
+   ],
+   "median": 9.098108,
+   "min": 9.097911,
+   "max": 9.488904,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the producer alone, a table of 65536 tokens",
+   "unit": "cycles a token a CTA",
+   "samples": [
+    550.878976,
+    550.851198,
+    550.855637,
+    550.851472,
+    550.829644,
+    550.842546,
+    550.819112
+   ],
+   "median": 550.851198,
+   "min": 550.819112,
+   "max": 550.878976,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the producer and the fold together, a table of 65536 tokens",
+   "unit": "cycles a token a CTA",
+   "samples": [
+    557.3179,
+    557.28206,
+    557.836755,
+    557.856627,
+    557.808708,
+    557.850928,
+    557.801009
+   ],
+   "median": 557.808708,
+   "min": 557.28206,
+   "max": 557.856627,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the producer alone, a table of 1048576 tokens",
+   "unit": "cycles a token a CTA",
+   "samples": [
+    595.701579,
+    595.702415,
+    595.669705,
+    595.707026,
+    595.695052,
+    595.718226,
+    595.699089
+   ],
+   "median": 595.701579,
+   "min": 595.669705,
+   "max": 595.718226,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the producer and the fold together, a table of 1048576 tokens",
+   "unit": "cycles a token a CTA",
+   "samples": [
+    599.431193,
+    599.422284,
+    599.468301,
+    599.466471,
+    599.469716,
+    599.472667,
+    599.457415
+   ],
+   "median": 599.466471,
+   "min": 599.422284,
+   "max": 599.472667,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void fold_stream::fold<(int)2>(long long *, int *, const unsigned int *, float *, int)": {
+   "regs": 245,
+   "ops": {
+    "LOP3.LUT": 245,
+    "SHF.R.U32.HI": 165,
+    "IMAD": 156,
+    "VIADD": 145,
+    "IMAD.IADD": 129,
+    "STG.E": 129,
+    "UMOV": 119,
+    "STS": 100,
+    "CS2R": 82,
+    "IMAD.MOV.U32": 75,
+    "IADD3": 66,
+    "R2UR": 64
+   }
+  },
+  "void fold_stream::fold<(int)0>(long long *, int *, const unsigned int *, float *, int)": {
+   "regs": 40,
+   "ops": {
+    "LOP3.LUT": 147,
+    "STG.E": 129,
+    "IMAD": 124,
+    "VIADD": 112,
+    "SHF.R.U32.HI": 101,
+    "STS": 100,
+    "IADD3": 66,
+    "IMAD.IADD": 64,
+    "BRA": 45,
+    "IMAD.MOV.U32": 40,
+    "IMAD.SHL.U32": 40,
+    "BSSY": 36
+   }
+  },
+  "void fold_stream::fold<(int)1>(long long *, int *, const unsigned int *, float *, int)": {
+   "regs": 244,
+   "ops": {
+    "STG.E": 129,
+    "UMOV": 123,
+    "LOP3.LUT": 103,
+    "CS2R": 79,
+    "SHF.R.U32.HI": 65,
+    "IMAD.IADD": 65,
+    "R2UR": 64,
+    "ULOP3.LUT": 64,
+    "IMAD.MOV.U32": 47,
+    "VIADD": 39,
+    "IMAD": 36,
+    "ISETP.GT.U32.AND": 34
+   }
+  }
+ },
+ "counters": {},
+ "counters_exception": {
+  "host": "vast.ai rented box, NVIDIA H100 80GB HBM3: a box with a driver and no toolkit",
+  "instead": "the kernels' own clocks and the SASS's static counts"
+ }
+}
