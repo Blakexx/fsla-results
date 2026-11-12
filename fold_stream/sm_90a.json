@@ -1,33 +1,72 @@
 {
  "experiment": "fold_stream",
- "question": "a box every token writes sparsely (4 of its 256 leaves) is folded from one pass over the tokens with no list and no look back; what does a token cost a CTA, and how much of the producer's work hides under the fold's?",
+ "question": "a box every token writes sparsely (4 of its 256 leaves) is folded from one pass over the tokens with no list and no look back; what does a token cost a CTA by the step's width -- 64 leaves a step in four groups, or all 256 in one -- and with one producer warp or four?",
  "arch": "sm_90a",
  "device": "NVIDIA H100 80GB HBM3",
  "checks": [
   {
    "lab": "unchecked",
-   "variant": "the fold alone",
+   "variant": "the fold alone, steps of 64 leaves, 4 producers",
    "reason": "an isolation: the steps run on tiles no token was written to"
   },
   {
    "lab": "unchecked",
-   "variant": "the producer alone, a table of 65536 tokens",
+   "variant": "the producers alone, steps of 64 leaves, 4 producers, a table of 65536 tokens",
    "reason": "an isolation: the tiles are written and no step reads them"
   },
   {
    "lab": "check",
-   "variant": "the producer and the fold together, a table of 65536 tokens",
+   "variant": "the producers and the fold together, steps of 64 leaves, 4 producers, a table of 65536 tokens",
+   "ok": true,
+   "detail": "0 of 2162688 state values differ from the exact ones after 4096 tokens"
+  },
+  {
+   "lab": "check",
+   "variant": "the producers and the fold together, steps of 64 leaves, 4 producers, a table of 1048576 tokens",
    "ok": true,
    "detail": "0 of 2162688 state values differ from the exact ones after 4096 tokens"
   },
   {
    "lab": "unchecked",
-   "variant": "the producer alone, a table of 1048576 tokens",
+   "variant": "the fold alone, steps of 256 leaves, 1 producer",
+   "reason": "an isolation: the steps run on tiles no token was written to"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "the producers alone, steps of 256 leaves, 1 producer, a table of 65536 tokens",
    "reason": "an isolation: the tiles are written and no step reads them"
   },
   {
    "lab": "check",
-   "variant": "the producer and the fold together, a table of 1048576 tokens",
+   "variant": "the producers and the fold together, steps of 256 leaves, 1 producer, a table of 65536 tokens",
+   "ok": true,
+   "detail": "0 of 2162688 state values differ from the exact ones after 4096 tokens"
+  },
+  {
+   "lab": "check",
+   "variant": "the producers and the fold together, steps of 256 leaves, 1 producer, a table of 1048576 tokens",
+   "ok": true,
+   "detail": "0 of 2162688 state values differ from the exact ones after 4096 tokens"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "the fold alone, steps of 256 leaves, 4 producers",
+   "reason": "an isolation: the steps run on tiles no token was written to"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "the producers alone, steps of 256 leaves, 4 producers, a table of 65536 tokens",
+   "reason": "an isolation: the tiles are written and no step reads them"
+  },
+  {
+   "lab": "check",
+   "variant": "the producers and the fold together, steps of 256 leaves, 4 producers, a table of 65536 tokens",
+   "ok": true,
+   "detail": "0 of 2162688 state values differ from the exact ones after 4096 tokens"
+  },
+  {
+   "lab": "check",
+   "variant": "the producers and the fold together, steps of 256 leaves, 4 producers, a table of 1048576 tokens",
    "ok": true,
    "detail": "0 of 2162688 state values differ from the exact ones after 4096 tokens"
   }
@@ -35,155 +74,383 @@
  "driver": "615.71.09",
  "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
  "git": {
-  "sha": "342fc132915434df0a10eb11bc9511c8793aee80",
+  "sha": "9eed68e9ff5a088bc6e21b2e6c6cca1e956c03be",
   "dirty": false
  },
  "reps": 7,
- "date": "2026-11-12T00:40:19+00:00",
+ "date": "2026-11-12T00:57:21+00:00",
  "utilization_before": 0,
  "inputs": {},
  "results": [
   {
    "lab": "result",
-   "name": "the fold alone",
+   "name": "the fold alone, steps of 64 leaves, 4 producers",
    "unit": "cycles a token a CTA",
    "samples": [
-    9.098108,
-    9.098033,
-    9.488904,
-    9.097911,
-    9.10002,
-    9.233038,
-    9.09795
+    11.892768,
+    11.838057,
+    11.80556,
+    11.842316,
+    11.879991,
+    11.832679,
+    11.824202
    ],
-   "median": 9.098108,
-   "min": 9.097911,
-   "max": 9.488904,
+   "median": 11.838057,
+   "min": 11.80556,
+   "max": 11.892768,
    "unstable": false
   },
   {
    "lab": "result",
-   "name": "the producer alone, a table of 65536 tokens",
+   "name": "the producers alone, steps of 64 leaves, 4 producers, a table of 65536 tokens",
    "unit": "cycles a token a CTA",
    "samples": [
-    550.878976,
-    550.851198,
-    550.855637,
-    550.851472,
-    550.829644,
-    550.842546,
-    550.819112
+    205.64077,
+    205.64334,
+    205.638746,
+    205.639129,
+    205.644617,
+    205.642567,
+    205.643855
    ],
-   "median": 550.851198,
-   "min": 550.819112,
-   "max": 550.878976,
+   "median": 205.642567,
+   "min": 205.638746,
+   "max": 205.644617,
    "unstable": false
   },
   {
    "lab": "result",
-   "name": "the producer and the fold together, a table of 65536 tokens",
+   "name": "the producers and the fold together, steps of 64 leaves, 4 producers, a table of 65536 tokens",
    "unit": "cycles a token a CTA",
    "samples": [
-    557.3179,
-    557.28206,
-    557.836755,
-    557.856627,
-    557.808708,
-    557.850928,
-    557.801009
+    211.76817,
+    211.770051,
+    211.76817,
+    211.769545,
+    211.770711,
+    211.770411,
+    211.767138
    ],
-   "median": 557.808708,
-   "min": 557.28206,
-   "max": 557.856627,
+   "median": 211.769545,
+   "min": 211.767138,
+   "max": 211.770711,
    "unstable": false
   },
   {
    "lab": "result",
-   "name": "the producer alone, a table of 1048576 tokens",
+   "name": "the producers and the fold together, steps of 64 leaves, 4 producers, a table of 1048576 tokens",
    "unit": "cycles a token a CTA",
    "samples": [
-    595.701579,
-    595.702415,
-    595.669705,
-    595.707026,
-    595.695052,
-    595.718226,
-    595.699089
+    211.792453,
+    211.793221,
+    211.793266,
+    211.792618,
+    211.792115,
+    211.792738,
+    211.792823
    ],
-   "median": 595.701579,
-   "min": 595.669705,
-   "max": 595.718226,
+   "median": 211.792738,
+   "min": 211.792115,
+   "max": 211.793266,
    "unstable": false
   },
   {
    "lab": "result",
-   "name": "the producer and the fold together, a table of 1048576 tokens",
+   "name": "the fold alone, steps of 256 leaves, 1 producer",
    "unit": "cycles a token a CTA",
    "samples": [
-    599.431193,
-    599.422284,
-    599.468301,
-    599.466471,
-    599.469716,
-    599.472667,
-    599.457415
+    11.537965,
+    11.537889,
+    11.537952,
+    11.537933,
+    11.538024,
+    11.537955,
+    11.538107
    ],
-   "median": 599.466471,
-   "min": 599.422284,
-   "max": 599.472667,
+   "median": 11.537955,
+   "min": 11.537889,
+   "max": 11.538107,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the producers alone, steps of 256 leaves, 1 producer, a table of 65536 tokens",
+   "unit": "cycles a token a CTA",
+   "samples": [
+    83.655123,
+    83.656643,
+    83.656562,
+    83.654552,
+    83.654922,
+    83.654661,
+    83.655345
+   ],
+   "median": 83.655123,
+   "min": 83.654552,
+   "max": 83.656643,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the producers and the fold together, steps of 256 leaves, 1 producer, a table of 65536 tokens",
+   "unit": "cycles a token a CTA",
+   "samples": [
+    93.429902,
+    93.439852,
+    93.542871,
+    93.665379,
+    93.627291,
+    93.576839,
+    93.599165
+   ],
+   "median": 93.576839,
+   "min": 93.429902,
+   "max": 93.665379,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the producers and the fold together, steps of 256 leaves, 1 producer, a table of 1048576 tokens",
+   "unit": "cycles a token a CTA",
+   "samples": [
+    116.049074,
+    116.044935,
+    116.048342,
+    116.040746,
+    116.036406,
+    115.981556,
+    116.039847
+   ],
+   "median": 116.040746,
+   "min": 115.981556,
+   "max": 116.049074,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the fold alone, steps of 256 leaves, 4 producers",
+   "unit": "cycles a token a CTA",
+   "samples": [
+    11.531216,
+    11.550202,
+    11.544419,
+    11.543904,
+    11.540403,
+    11.549355,
+    11.538498
+   ],
+   "median": 11.543904,
+   "min": 11.531216,
+   "max": 11.550202,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the producers alone, steps of 256 leaves, 4 producers, a table of 65536 tokens",
+   "unit": "cycles a token a CTA",
+   "samples": [
+    25.86443,
+    25.880086,
+    25.919923,
+    25.892973,
+    25.913407,
+    25.887141,
+    25.886816
+   ],
+   "median": 25.887141,
+   "min": 25.86443,
+   "max": 25.919923,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the producers and the fold together, steps of 256 leaves, 4 producers, a table of 65536 tokens",
+   "unit": "cycles a token a CTA",
+   "samples": [
+    32.051534,
+    32.037672,
+    32.041427,
+    32.039245,
+    32.042915,
+    32.030634,
+    32.03681
+   ],
+   "median": 32.039245,
+   "min": 32.030634,
+   "max": 32.051534,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the producers and the fold together, steps of 256 leaves, 4 producers, a table of 1048576 tokens",
+   "unit": "cycles a token a CTA",
+   "samples": [
+    36.146922,
+    35.570463,
+    36.172577,
+    35.887232,
+    36.195228,
+    36.15445,
+    35.555637
+   ],
+   "median": 36.146922,
+   "min": 35.555637,
+   "max": 36.195228,
    "unstable": false
   }
  ],
  "kernels": {
-  "void fold_stream::fold<(int)2>(long long *, int *, const unsigned int *, float *, int)": {
-   "regs": 245,
-   "ops": {
-    "LOP3.LUT": 245,
-    "SHF.R.U32.HI": 165,
-    "IMAD": 156,
-    "VIADD": 145,
-    "IMAD.IADD": 129,
-    "STG.E": 129,
-    "UMOV": 119,
-    "STS": 100,
-    "CS2R": 82,
-    "IMAD.MOV.U32": 75,
-    "IADD3": 66,
-    "R2UR": 64
-   }
-  },
-  "void fold_stream::fold<(int)0>(long long *, int *, const unsigned int *, float *, int)": {
-   "regs": 40,
-   "ops": {
-    "LOP3.LUT": 147,
-    "STG.E": 129,
-    "IMAD": 124,
-    "VIADD": 112,
-    "SHF.R.U32.HI": 101,
-    "STS": 100,
-    "IADD3": 66,
-    "IMAD.IADD": 64,
-    "BRA": 45,
-    "IMAD.MOV.U32": 40,
-    "IMAD.SHL.U32": 40,
-    "BSSY": 36
-   }
-  },
-  "void fold_stream::fold<(int)1>(long long *, int *, const unsigned int *, float *, int)": {
-   "regs": 244,
+  "void fold_stream::fold<(int)2, (int)256, (int)4>(long long *, int *, const unsigned int *, float *, int)": {
+   "regs": 154,
    "ops": {
     "STG.E": 129,
-    "UMOV": 123,
-    "LOP3.LUT": 103,
-    "CS2R": 79,
-    "SHF.R.U32.HI": 65,
-    "IMAD.IADD": 65,
-    "R2UR": 64,
-    "ULOP3.LUT": 64,
-    "IMAD.MOV.U32": 47,
+    "LOP3.LUT": 83,
+    "CS2R": 67,
+    "IMAD": 59,
+    "IMAD.SHL.U32": 39,
     "VIADD": 39,
-    "IMAD": 36,
-    "ISETP.GT.U32.AND": 34
+    "IMAD.IADD": 36,
+    "SHF.R.U32.HI": 28,
+    "STS": 25,
+    "IADD3": 24,
+    "IMAD.MOV.U32": 22,
+    "LEA": 21
+   }
+  },
+  "void fold_stream::fold<(int)0, (int)256, (int)4>(long long *, int *, const unsigned int *, float *, int)": {
+   "regs": 80,
+   "ops": {
+    "STG.E": 129,
+    "LOP3.LUT": 81,
+    "IMAD": 58,
+    "IMAD.SHL.U32": 39,
+    "VIADD": 39,
+    "IMAD.IADD": 36,
+    "SHF.R.U32.HI": 28,
+    "STS": 25,
+    "IADD3": 24,
+    "IMAD.MOV.U32": 21,
+    "LEA": 21,
+    "SHF.R.S32.HI": 19
+   }
+  },
+  "void fold_stream::fold<(int)1, (int)256, (int)4>(long long *, int *, const unsigned int *, float *, int)": {
+   "regs": 154,
+   "ops": {
+    "STG.E": 129,
+    "CS2R": 67,
+    "ULOP3.LUT": 16,
+    "NOP": 15,
+    "BRA": 13,
+    "UMOV": 11,
+    "UIADD3": 9,
+    "USHF.R.U32.HI": 9,
+    "LOP3.LUT": 8,
+    "S2R": 6,
+    "LDC": 5,
+    "IMAD": 5
+   }
+  },
+  "void fold_stream::fold<(int)2, (int)256, (int)1>(long long *, int *, const unsigned int *, float *, int)": {
+   "regs": 154,
+   "ops": {
+    "STG.E": 129,
+    "LOP3.LUT": 84,
+    "CS2R": 67,
+    "IMAD": 60,
+    "VIADD": 48,
+    "IMAD.SHL.U32": 39,
+    "IMAD.IADD": 35,
+    "SHF.R.U32.HI": 28,
+    "STS": 25,
+    "IADD3": 24,
+    "IMAD.MOV.U32": 22,
+    "LEA": 21
+   }
+  },
+  "void fold_stream::fold<(int)0, (int)256, (int)1>(long long *, int *, const unsigned int *, float *, int)": {
+   "regs": 88,
+   "ops": {
+    "STG.E": 129,
+    "LOP3.LUT": 82,
+    "IMAD": 59,
+    "VIADD": 48,
+    "IMAD.SHL.U32": 39,
+    "IMAD.IADD": 35,
+    "SHF.R.U32.HI": 28,
+    "STS": 25,
+    "IADD3": 24,
+    "IMAD.MOV.U32": 21,
+    "LEA": 21,
+    "SHF.R.S32.HI": 19
+   }
+  },
+  "void fold_stream::fold<(int)1, (int)256, (int)1>(long long *, int *, const unsigned int *, float *, int)": {
+   "regs": 154,
+   "ops": {
+    "STG.E": 129,
+    "CS2R": 67,
+    "ULOP3.LUT": 16,
+    "BRA": 12,
+    "UMOV": 10,
+    "USHF.R.U32.HI": 9,
+    "NOP": 9,
+    "UIADD3": 8,
+    "LOP3.LUT": 8,
+    "S2R": 6,
+    "LDC": 5,
+    "IMAD": 5
+   }
+  },
+  "void fold_stream::fold<(int)2, (int)64, (int)4>(long long *, int *, const unsigned int *, float *, int)": {
+   "regs": 154,
+   "ops": {
+    "LOP3.LUT": 136,
+    "STG.E": 129,
+    "SHF.R.S32.HI": 87,
+    "VIADD": 83,
+    "CS2R": 67,
+    "UMOV": 64,
+    "ULOP3.LUT": 64,
+    "IMAD.MOV.U32": 56,
+    "SHF.R.U32.HI": 51,
+    "IMAD": 48,
+    "LEA.HI": 42,
+    "UIADD3": 33
+   }
+  },
+  "void fold_stream::fold<(int)0, (int)64, (int)4>(long long *, int *, const unsigned int *, float *, int)": {
+   "regs": 95,
+   "ops": {
+    "LOP3.LUT": 134,
+    "STG.E": 129,
+    "SHF.R.S32.HI": 87,
+    "VIADD": 83,
+    "IMAD.MOV.U32": 55,
+    "SHF.R.U32.HI": 51,
+    "IMAD": 47,
+    "LEA.HI": 42,
+    "ISETP.NE.AND": 32,
+    "ISETP.NE.OR": 32,
+    "I2FP.F32.S32": 32,
+    "IADD3": 29
+   }
+  },
+  "void fold_stream::fold<(int)1, (int)64, (int)4>(long long *, int *, const unsigned int *, float *, int)": {
+   "regs": 154,
+   "ops": {
+    "STG.E": 129,
+    "CS2R": 67,
+    "ULOP3.LUT": 64,
+    "UMOV": 56,
+    "UIADD3": 33,
+    "USHF.R.U32.HI": 33,
+    "HGMMA.64": 16,
+    "NOP": 14,
+    "BRA": 13,
+    "LOP3.LUT": 8,
+    "S2R": 6,
+    "LDC": 5
    }
   }
  },
