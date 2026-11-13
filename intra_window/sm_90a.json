@@ -1,0 +1,145 @@
+{
+ "experiment": "intra_window",
+ "question": "what does the intra cost a window on hopper as a kernel of its own, on real rows -- every pair of a window's 1,024 tokens whose writer is not after its reader, exact against the host -- and so what is its share of a call beside the carry's?",
+ "arch": "sm_90a",
+ "device": "NVIDIA H100 80GB HBM3",
+ "checks": [
+  {
+   "lab": "check",
+   "variant": "a window of 1,024 tokens, two levels of 256 digits, 64 channels and the den, the rows token-major: tensor copies a block",
+   "ok": true,
+   "detail": "0 of 524288 output values and 0 of 8192 den sums differ"
+  },
+  {
+   "lab": "check",
+   "variant": "a window of 1,024 tokens, two levels of 256 digits, 64 channels and the den, the rows tile-major: a tile's level one copy",
+   "ok": true,
+   "detail": "0 of 524288 output values and 0 of 8192 den sums differ"
+  }
+ ],
+ "driver": "580.173.02",
+ "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
+ "git": {
+  "sha": "4f56ae4a8294f562ce16df001c7c385ecf19f046",
+  "dirty": false
+ },
+ "reps": 7,
+ "date": "2026-11-13T20:15:23+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "a window of 1,024 tokens, two levels of 256 digits, 64 channels and the den, the rows token-major: tensor copies a block",
+   "unit": "SM-cycles a window",
+   "samples": [
+    430972.542969,
+    429768.054688,
+    431191.570312,
+    429099.296875,
+    431412.476562,
+    428430.671875,
+    431346.066406
+   ],
+   "median": 430972.542969,
+   "min": 428430.671875,
+   "max": 431412.476562,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a window of 1,024 tokens, two levels of 256 digits, 64 channels and the den, the rows token-major: tensor copies a block: a token",
+   "unit": "SM-cycles a token",
+   "samples": [
+    420.871624,
+    419.695366,
+    421.085518,
+    419.042282,
+    421.301247,
+    418.389328,
+    421.236393
+   ],
+   "median": 420.871624,
+   "min": 418.389328,
+   "max": 421.301247,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a window of 1,024 tokens, two levels of 256 digits, 64 channels and the den, the rows tile-major: a tile's level one copy",
+   "unit": "SM-cycles a window",
+   "samples": [
+    177505.472656,
+    177533.667969,
+    177541.507812,
+    177551.507812,
+    177549.371094,
+    177546.84375,
+    177545.488281
+   ],
+   "median": 177545.488281,
+   "min": 177505.472656,
+   "max": 177551.507812,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a window of 1,024 tokens, two levels of 256 digits, 64 channels and the den, the rows tile-major: a tile's level one copy: a token",
+   "unit": "SM-cycles a token",
+   "samples": [
+    173.345188,
+    173.372723,
+    173.380379,
+    173.390144,
+    173.388058,
+    173.38559,
+    173.384266
+   ],
+   "median": 173.384266,
+   "min": 173.345188,
+   "max": 173.390144,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void intra_window::window<(int)1>(CUtensorMap_st, CUtensorMap_st, CUtensorMap_st, intra_window::Tiled, long long *, unsigned int *, float *, int)": {
+   "regs": 126,
+   "ops": {
+    "I2FP.F32.S32": 64,
+    "LOP3.LUT": 59,
+    "R2UR": 53,
+    "IMAD.MOV.U32": 44,
+    "SEL": 34,
+    "FMUL": 32,
+    "FSEL": 32,
+    "BRA": 23,
+    "IADD3": 20,
+    "ISETP.GT.AND": 19,
+    "IMAD.X": 19,
+    "IGMMA.64": 16
+   }
+  },
+  "void intra_window::window<(int)0>(CUtensorMap_st, CUtensorMap_st, CUtensorMap_st, intra_window::Tiled, long long *, unsigned int *, float *, int)": {
+   "regs": 126,
+   "ops": {
+    "I2FP.F32.S32": 64,
+    "LOP3.LUT": 62,
+    "R2UR": 60,
+    "IMAD.MOV.U32": 48,
+    "SEL": 35,
+    "FMUL": 32,
+    "FSEL": 32,
+    "BRA": 22,
+    "IADD3": 22,
+    "IMAD.X": 20,
+    "ISETP.GT.AND": 19,
+    "IGMMA.64": 16
+   }
+  }
+ },
+ "counters": {},
+ "counters_exception": {
+  "host": "vast.ai rented box, NVIDIA H100 80GB HBM3: a box with a driver and no toolkit",
+  "instead": "the kernels' own clocks and the SASS's static counts"
+ }
+}
