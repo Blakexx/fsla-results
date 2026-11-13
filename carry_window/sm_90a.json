@@ -291,24 +291,42 @@
   },
   {
    "lab": "unchecked",
-   "variant": "the fold's side alone: producers and steps, the den's fold half: two more steps a slot",
+   "variant": "the fold's side alone: producers and steps, the den: two more steps a slot, the readout's steps 72 columns and an fp32 a token",
    "reason": "an isolation: a side's roles or one of their accesses absent"
   },
   {
    "lab": "check",
-   "variant": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the den's fold half: two more steps a slot",
+   "variant": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the den: two more steps a slot, the readout's steps 72 columns and an fp32 a token",
    "ok": true,
-   "detail": "0 of 4460544 state values and 0 of 8650752 output values differ"
+   "detail": "0 of 4460544 state values and 0 of 8650752 output values differ, 0 of 135168 den sums"
+  },
+  {
+   "lab": "check",
+   "variant": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the tables 16 replicas the cache cannot hold, the den: two more steps a slot, the readout's steps 72 columns and an fp32 a token",
+   "ok": true,
+   "detail": "0 of 4460544 state values and 0 of 8650752 output values differ, 0 of 135168 den sums"
+  },
+  {
+   "lab": "check",
+   "variant": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the image's tiles 154 lines apart",
+   "ok": true,
+   "detail": "0 of 4325376 state values and 0 of 8650752 output values differ"
+  },
+  {
+   "lab": "check",
+   "variant": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the image's tiles 161 lines apart, the den: two more steps a slot, the readout's steps 72 columns and an fp32 a token",
+   "ok": true,
+   "detail": "0 of 4460544 state values and 0 of 8650752 output values differ, 0 of 135168 den sums"
   }
  ],
- "driver": "595.91.07",
+ "driver": "580.173.02",
  "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
  "git": {
-  "sha": "0e5ab58084dbe98f1c4e76274ed84e747e8cd31e",
+  "sha": "9e68b596114e40c36bb4ee907b02f2a41c6430e4",
   "dirty": false
  },
  "reps": 7,
- "date": "2026-11-13T05:33:08+00:00",
+ "date": "2026-11-13T08:10:16+00:00",
  "utilization_before": 0,
  "inputs": {},
  "results": [
@@ -317,17 +335,17 @@
    "name": "the fold's side alone: producers and steps",
    "unit": "cycles a window a CTA",
    "samples": [
-    5078.775923,
-    5023.036222,
-    5063.276278,
-    5056.696023,
-    5041.165956,
-    5061.257576,
-    5059.941643
+    5081.348958,
+    5088.0509,
+    5085.717448,
+    5084.716027,
+    5084.155421,
+    5089.254498,
+    5086.241004
    ],
-   "median": 5059.941643,
-   "min": 5023.036222,
-   "max": 5078.775923,
+   "median": 5085.717448,
+   "min": 5081.348958,
+   "max": 5089.254498,
    "unstable": false
   },
   {
@@ -335,17 +353,17 @@
    "name": "the read side alone: the image, the readout and the drain",
    "unit": "cycles a window a CTA",
    "samples": [
-    5559.82706,
-    5558.875592,
-    5557.856179,
-    5559.22455,
-    5558.818774,
-    5559.227983,
-    5560.27178
+    5565.040128,
+    5564.714134,
+    5565.279711,
+    5564.413352,
+    5564.371094,
+    5563.128906,
+    5564.031013
    ],
-   "median": 5559.22455,
-   "min": 5557.856179,
-   "max": 5560.27178,
+   "median": 5564.413352,
+   "min": 5563.128906,
+   "max": 5565.279711,
    "unstable": false
   },
   {
@@ -353,17 +371,17 @@
    "name": "the read side alone: the image, the readout and the drain: a fold warp waits on the readout's read",
    "unit": "cycles a window a warp",
    "samples": [
-    4182.892356,
-    4181.743682,
-    4183.203939,
-    4182.939764,
-    4183.839148,
-    4182.556123,
-    4184.134677
+    4182.283943,
+    4183.136985,
+    4182.311701,
+    4183.154252,
+    4182.707298,
+    4181.790261,
+    4182.783277
    ],
-   "median": 4182.939764,
-   "min": 4181.743682,
-   "max": 4184.134677,
+   "median": 4182.707298,
+   "min": 4181.790261,
+   "max": 4183.154252,
    "unstable": false
   },
   {
@@ -371,17 +389,17 @@
    "name": "the read side alone: the image, the readout and the drain: a readout warp waits on the image",
    "unit": "cycles a window a warp",
    "samples": [
-    290.759884,
-    291.014234,
-    291.038707,
-    290.58573,
-    291.20493,
-    290.922733,
-    290.904208
+    290.865027,
+    290.865086,
+    290.556463,
+    290.88006,
+    290.910807,
+    290.573804,
+    290.800189
    ],
-   "median": 290.922733,
-   "min": 290.58573,
-   "max": 291.20493,
+   "median": 290.865027,
+   "min": 290.556463,
+   "max": 290.910807,
    "unstable": false
   },
   {
@@ -389,17 +407,17 @@
    "name": "the read side alone: the image, the readout and the drain: a readout warp waits on the drain",
    "unit": "cycles a window a warp",
    "samples": [
-    286.795336,
-    286.810991,
-    286.712269,
-    286.755623,
-    286.75293,
-    286.631866,
-    286.840968
+    286.788411,
+    286.898319,
+    286.54649,
+    286.811168,
+    286.597005,
+    286.602214,
+    286.589992
    ],
-   "median": 286.755623,
-   "min": 286.631866,
-   "max": 286.840968,
+   "median": 286.602214,
+   "min": 286.54649,
+   "max": 286.898319,
    "unstable": false
   },
   {
@@ -407,17 +425,17 @@
    "name": "the read side alone: the image, the readout and the drain: a readout warp forming its steps' A",
    "unit": "cycles a window a warp",
    "samples": [
-    1101.775065,
-    1101.810044,
-    1102.60319,
-    1102.079013,
-    1100.77616,
-    1101.824692,
-    1103.462447
+    1104.780569,
+    1104.915394,
+    1105.004587,
+    1105.516187,
+    1103.60177,
+    1102.916903,
+    1104.134026
    ],
-   "median": 1101.824692,
-   "min": 1100.77616,
-   "max": 1103.462447,
+   "median": 1104.780569,
+   "min": 1102.916903,
+   "max": 1105.516187,
    "unstable": false
   },
   {
@@ -425,17 +443,17 @@
    "name": "the read side alone: the image, the readout and the drain: a readout warp in its steps",
    "unit": "cycles a window a warp",
    "samples": [
-    2578.15989,
-    2577.146958,
-    2578.669448,
-    2581.095674,
-    2581.55883,
-    2579.985677,
-    2581.232866
+    2581.318093,
+    2581.211707,
+    2583.331499,
+    2579.25728,
+    2582.404889,
+    2582.142134,
+    2582.274828
    ],
-   "median": 2579.985677,
-   "min": 2577.146958,
-   "max": 2581.55883,
+   "median": 2582.142134,
+   "min": 2579.25728,
+   "max": 2583.331499,
    "unstable": false
   },
   {
@@ -443,17 +461,17 @@
    "name": "the read side alone: the image, the readout and the drain: a drain warp waits on the panel",
    "unit": "cycles a window a warp",
    "samples": [
-    2048.669922,
-    2045.273911,
-    2046.677557,
-    2049.928681,
-    2052.156723,
-    2050.038885,
-    2049.812618
+    2047.513198,
+    2047.880978,
+    2052.403232,
+    2045.440282,
+    2052.085819,
+    2049.895537,
+    2052.1904
    ],
-   "median": 2049.812618,
-   "min": 2045.273911,
-   "max": 2052.156723,
+   "median": 2049.895537,
+   "min": 2045.440282,
+   "max": 2052.403232,
    "unstable": false
   },
   {
@@ -461,17 +479,17 @@
    "name": "the carry: both sides",
    "unit": "cycles a window a CTA",
    "samples": [
-    7018.741004,
-    7011.765743,
-    7017.380327,
-    7015.888139,
-    7012.432173,
-    7022.723722,
-    7015.217685
+    7099.397846,
+    7095.53705,
+    7102.263494,
+    7100.296993,
+    7100.073982,
+    7097.009706,
+    7100.373224
    ],
-   "median": 7015.888139,
-   "min": 7011.765743,
-   "max": 7022.723722,
+   "median": 7100.073982,
+   "min": 7095.53705,
+   "max": 7102.263494,
    "unstable": false
   },
   {
@@ -479,67 +497,67 @@
    "name": "the carry: both sides: the card's clock, the long call's span over its wall time",
    "unit": "GHz",
    "samples": [
-    1.560695,
-    1.498461,
-    1.345546,
-    1.307758,
-    1.277805
+    1.793902,
+    1.798381,
+    1.797236,
+    1.786496,
+    1.793252
    ],
-   "median": 1.345546,
-   "min": 1.277805,
-   "max": 1.560695,
-   "unstable": true
+   "median": 1.793902,
+   "min": 1.786496,
+   "max": 1.798381,
+   "unstable": false
   },
   {
    "lab": "result",
    "name": "the carry: both sides: the long call by wall time, scaled to 65,536 tokens",
    "unit": "milliseconds",
    "samples": [
-    0.288262,
-    0.299795,
-    0.332453,
-    0.342226,
-    0.350109
+    0.253353,
+    0.252554,
+    0.252718,
+    0.254387,
+    0.253372
    ],
-   "median": 0.332453,
-   "min": 0.288262,
-   "max": 0.350109,
-   "unstable": true
+   "median": 0.253353,
+   "min": 0.252554,
+   "max": 0.254387,
+   "unstable": false
   },
   {
    "lab": "result",
    "name": "the carry: both sides: a fold warp waits on the readout's read",
    "unit": "cycles a window a warp",
    "samples": [
-    365.005667,
-    380.841116,
-    370.201734,
-    370.742853,
-    392.546668,
-    380.727421,
-    372.365545
+    358.563639,
+    370.137296,
+    364.131792,
+    359.239864,
+    361.100364,
+    366.345674,
+    364.085804
    ],
-   "median": 372.365545,
-   "min": 365.005667,
-   "max": 392.546668,
-   "unstable": true
+   "median": 364.085804,
+   "min": 358.563639,
+   "max": 370.137296,
+   "unstable": false
   },
   {
    "lab": "result",
    "name": "the carry: both sides: a fold warp waits on its producer",
    "unit": "cycles a window a warp",
    "samples": [
-    4572.687293,
-    4534.561065,
-    4551.246242,
-    4545.139293,
-    4521.654415,
-    4542.880623,
-    4544.213778
+    4667.572517,
+    4650.439216,
+    4672.277388,
+    4667.171697,
+    4657.566243,
+    4652.744496,
+    4659.234982
    ],
-   "median": 4544.213778,
-   "min": 4521.654415,
-   "max": 4572.687293,
+   "median": 4659.234982,
+   "min": 4650.439216,
+   "max": 4672.277388,
    "unstable": false
   },
   {
@@ -547,17 +565,17 @@
    "name": "the carry: both sides: a readout warp waits on the image",
    "unit": "cycles a window a warp",
    "samples": [
-    1775.312086,
-    1759.501894,
-    1773.570786,
-    1774.326438,
-    1759.431286,
-    1775.720792,
-    1767.831469
+    1850.59813,
+    1839.078746,
+    1845.819218,
+    1851.417821,
+    1849.949396,
+    1845.790187,
+    1851.029031
    ],
-   "median": 1773.570786,
-   "min": 1759.431286,
-   "max": 1775.720792,
+   "median": 1849.949396,
+   "min": 1839.078746,
+   "max": 1851.417821,
    "unstable": false
   },
   {
@@ -565,17 +583,17 @@
    "name": "the carry: both sides: a readout warp waits on the drain",
    "unit": "cycles a window a warp",
    "samples": [
-    334.23763,
-    334.80744,
-    334.921046,
-    334.17445,
-    334.224846,
-    334.142134,
-    333.908351
+    330.096265,
+    330.256451,
+    330.29143,
+    329.928297,
+    329.700906,
+    330.431019,
+    330.056315
    ],
-   "median": 334.224846,
-   "min": 333.908351,
-   "max": 334.921046,
+   "median": 330.096265,
+   "min": 329.700906,
+   "max": 330.431019,
    "unstable": false
   },
   {
@@ -583,17 +601,17 @@
    "name": "the carry: both sides: a readout warp forming its steps' A",
    "unit": "cycles a window a warp",
    "samples": [
-    1387.467389,
-    1390.810162,
-    1392.467685,
-    1389.422378,
-    1391.261423,
-    1392.046964,
-    1392.0952
+    1394.343129,
+    1397.050604,
+    1395.744969,
+    1393.746035,
+    1397.284328,
+    1396.092241,
+    1395.678415
    ],
-   "median": 1391.261423,
-   "min": 1387.467389,
-   "max": 1392.467685,
+   "median": 1395.744969,
+   "min": 1393.746035,
+   "max": 1397.284328,
    "unstable": false
   },
   {
@@ -601,17 +619,17 @@
    "name": "the carry: both sides: a readout warp in its steps",
    "unit": "cycles a window a warp",
    "samples": [
-    2189.44185,
-    2189.009115,
-    2187.237334,
-    2186.535985,
-    2189.633345,
-    2188.321052,
-    2189.457002
+    2193.044537,
+    2193.772017,
+    2193.923355,
+    2190.320579,
+    2193.256925,
+    2189.549598,
+    2191.804155
    ],
-   "median": 2189.009115,
-   "min": 2186.535985,
-   "max": 2189.633345,
+   "median": 2193.044537,
+   "min": 2189.549598,
+   "max": 2193.923355,
    "unstable": false
   },
   {
@@ -619,17 +637,17 @@
    "name": "the carry: both sides: a drain warp waits on the panel",
    "unit": "cycles a window a warp",
    "samples": [
-    3003.829605,
-    2992.752841,
-    3010.827474,
-    3003.828894,
-    2987.814867,
-    3014.298177,
-    2999.711825
+    3118.255563,
+    3105.326705,
+    3108.595821,
+    3113.963778,
+    3116.653527,
+    3109.179865,
+    3117.841087
    ],
-   "median": 3003.828894,
-   "min": 2987.814867,
-   "max": 3014.298177,
+   "median": 3113.963778,
+   "min": 3105.326705,
+   "max": 3118.255563,
    "unstable": false
   },
   {
@@ -637,17 +655,17 @@
    "name": "the carry: both sides, the producers' global loads taken out",
    "unit": "cycles a window a CTA",
    "samples": [
-    6429.753788,
-    6427.989583,
-    6428.437973,
-    6427.289891,
-    6427.962003,
-    6430.007931,
-    6427.981061
+    6444.102391,
+    6447.180753,
+    6442.953717,
+    6444.812027,
+    6444.118963,
+    6443.863755,
+    6443.291548
    ],
-   "median": 6427.989583,
-   "min": 6427.289891,
-   "max": 6430.007931,
+   "median": 6444.102391,
+   "min": 6442.953717,
+   "max": 6447.180753,
    "unstable": false
   },
   {
@@ -655,17 +673,17 @@
    "name": "the carry: both sides, the drains' global adds taken out",
    "unit": "cycles a window a CTA",
    "samples": [
-    6589.35831,
-    6587.131984,
-    6590.064394,
-    6593.086411,
-    6587.013613,
-    6592.281013,
-    6588.014086
+    6768.997396,
+    6767.549598,
+    6766.130327,
+    6766.239228,
+    6770.686553,
+    6767.359848,
+    6769.045573
    ],
-   "median": 6589.35831,
-   "min": 6587.013613,
-   "max": 6593.086411,
+   "median": 6767.549598,
+   "min": 6766.130327,
+   "max": 6770.686553,
    "unstable": false
   },
   {
@@ -673,17 +691,17 @@
    "name": "the carry: both sides, the image's stores taken out",
    "unit": "cycles a window a CTA",
    "samples": [
-    6519.91276,
-    6517.312855,
-    6513.396307,
-    6512.554569,
-    6518.898082,
-    6517.036458,
-    6513.923059
+    6734.294508,
+    6732.426255,
+    6728.711766,
+    6731.367898,
+    6732.167377,
+    6730.296875,
+    6728.281013
    ],
-   "median": 6517.036458,
-   "min": 6512.554569,
-   "max": 6519.91276,
+   "median": 6731.367898,
+   "min": 6728.281013,
+   "max": 6734.294508,
    "unstable": false
   },
   {
@@ -691,17 +709,17 @@
    "name": "the read side alone: the image, the readout and the drain, no fold warp running",
    "unit": "cycles a window a CTA",
    "samples": [
-    4206.129735,
-    4208.394295,
-    4208.838423,
-    4208.628906,
-    4208.516927,
-    4207.563092,
-    4207.613518
+    4380.370502,
+    4367.211529,
+    4379.456084,
+    4376.880682,
+    4397.95928,
+    4378.622041,
+    4372.745739
    ],
-   "median": 4208.394295,
-   "min": 4206.129735,
-   "max": 4208.838423,
+   "median": 4378.622041,
+   "min": 4367.211529,
+   "max": 4397.95928,
    "unstable": false
   },
   {
@@ -709,17 +727,17 @@
    "name": "the read side alone: the image, the readout and the drain, no fold warp running: a readout warp waits on the drain",
    "unit": "cycles a window a warp",
    "samples": [
-    259.614406,
-    259.507369,
-    259.419685,
-    259.47313,
-    259.456795,
-    259.519827,
-    259.464281
+    245.74997,
+    246.222656,
+    245.892371,
+    245.913204,
+    245.215169,
+    245.762133,
+    246.028172
    ],
-   "median": 259.47313,
-   "min": 259.419685,
-   "max": 259.614406,
+   "median": 245.892371,
+   "min": 245.215169,
+   "max": 246.222656,
    "unstable": false
   },
   {
@@ -727,17 +745,17 @@
    "name": "the read side alone: the image, the readout and the drain, no fold warp running: a readout warp forming its steps' A",
    "unit": "cycles a window a warp",
    "samples": [
-    1078.668975,
-    1081.254202,
-    1082.162228,
-    1081.01018,
-    1081.16785,
-    1080.780717,
-    1080.083777
+    1264.847331,
+    1255.157108,
+    1264.346739,
+    1263.281931,
+    1279.492661,
+    1264.03563,
+    1258.80596
    ],
-   "median": 1081.01018,
-   "min": 1078.668975,
-   "max": 1082.162228,
+   "median": 1264.03563,
+   "min": 1255.157108,
+   "max": 1279.492661,
    "unstable": false
   },
   {
@@ -745,17 +763,17 @@
    "name": "the read side alone: the image, the readout and the drain, no fold warp running: a readout warp in its steps",
    "unit": "cycles a window a warp",
    "samples": [
-    2190.348071,
-    2190.200639,
-    2189.923799,
-    2190.672644,
-    2190.536281,
-    2190.022875,
-    2190.600763
+    2204.177882,
+    2200.933002,
+    2203.635357,
+    2202.617276,
+    2207.479433,
+    2203.752367,
+    2203.264205
    ],
-   "median": 2190.348071,
-   "min": 2189.923799,
-   "max": 2190.672644,
+   "median": 2203.635357,
+   "min": 2200.933002,
+   "max": 2207.479433,
    "unstable": false
   },
   {
@@ -763,17 +781,17 @@
    "name": "the read side alone: the image, the readout and the drain, no fold warp running: a drain warp waits on the panel",
    "unit": "cycles a window a warp",
    "samples": [
-    699.700225,
-    700.464134,
-    701.012311,
-    701.137902,
-    700.741832,
-    699.431581,
-    700.688092
+    830.182351,
+    814.794685,
+    828.750355,
+    824.847479,
+    847.915542,
+    826.483902,
+    820.118845
    ],
-   "median": 700.688092,
-   "min": 699.431581,
-   "max": 701.137902,
+   "median": 826.483902,
+   "min": 814.794685,
+   "max": 847.915542,
    "unstable": false
   },
   {
@@ -781,17 +799,17 @@
    "name": "the read side alone: the image, the readout and the drain, every wait suspended",
    "unit": "cycles a window a CTA",
    "samples": [
-    5245.445194,
-    5245.190341,
-    5245.550781,
-    5245.520715,
-    5245.400805,
-    5245.701349,
-    5245.339725
+    5268.680279,
+    5268.345999,
+    5268.553622,
+    5269.086529,
+    5268.432292,
+    5267.438684,
+    5269.016809
    ],
-   "median": 5245.445194,
-   "min": 5245.190341,
-   "max": 5245.701349,
+   "median": 5268.553622,
+   "min": 5267.438684,
+   "max": 5269.086529,
    "unstable": false
   },
   {
@@ -799,17 +817,17 @@
    "name": "the read side alone: the image, the readout and the drain, every wait suspended: a fold warp waits on the readout's read",
    "unit": "cycles a window a warp",
    "samples": [
-    3628.643673,
-    3629.214799,
-    3629.876628,
-    3629.656043,
-    3629.013036,
-    3629.67735,
-    3630.002693
+    3643.974402,
+    3645.951024,
+    3645.256052,
+    3644.143688,
+    3644.853279,
+    3643.554125,
+    3646.062041
    ],
-   "median": 3629.656043,
-   "min": 3628.643673,
-   "max": 3630.002693,
+   "median": 3644.853279,
+   "min": 3643.554125,
+   "max": 3646.062041,
    "unstable": false
   },
   {
@@ -817,17 +835,17 @@
    "name": "the read side alone: the image, the readout and the drain, every wait suspended: a readout warp waits on the image",
    "unit": "cycles a window a warp",
    "samples": [
-    255.157641,
-    254.891631,
-    254.644916,
-    254.887577,
-    254.722656,
-    254.972124,
-    254.772698
+    261.290927,
+    261.430457,
+    261.28927,
+    261.222923,
+    261.358103,
+    261.391986,
+    261.415365
    ],
-   "median": 254.887577,
-   "min": 254.644916,
-   "max": 255.157641,
+   "median": 261.358103,
+   "min": 261.222923,
+   "max": 261.430457,
    "unstable": false
   },
   {
@@ -835,17 +853,17 @@
    "name": "the read side alone: the image, the readout and the drain, every wait suspended: a readout warp waits on the drain",
    "unit": "cycles a window a warp",
    "samples": [
-    254.778468,
-    254.754972,
-    254.841531,
-    254.844638,
-    254.818507,
-    254.869081,
-    254.77323
+    249.242513,
+    248.863252,
+    249.141927,
+    249.145241,
+    248.913826,
+    249.019472,
+    248.778705
    ],
-   "median": 254.818507,
-   "min": 254.754972,
-   "max": 254.869081,
+   "median": 249.019472,
+   "min": 248.778705,
+   "max": 249.242513,
    "unstable": false
   },
   {
@@ -853,17 +871,17 @@
    "name": "the read side alone: the image, the readout and the drain, every wait suspended: a readout warp forming its steps' A",
    "unit": "cycles a window a warp",
    "samples": [
-    1099.394827,
-    1099.219253,
-    1099.171875,
-    1099.323213,
-    1099.279208,
-    1099.081854,
-    1099.299627
+    1101.980942,
+    1102.239317,
+    1101.790631,
+    1101.207534,
+    1101.727983,
+    1102.277758,
+    1101.931463
    ],
-   "median": 1099.279208,
-   "min": 1099.081854,
-   "max": 1099.394827,
+   "median": 1101.931463,
+   "min": 1101.207534,
+   "max": 1102.277758,
    "unstable": false
   },
   {
@@ -871,17 +889,17 @@
    "name": "the read side alone: the image, the readout and the drain, every wait suspended: a readout warp in its steps",
    "unit": "cycles a window a warp",
    "samples": [
-    1868.009825,
-    1869.419123,
-    1869.027314,
-    1869.224018,
-    1868.127634,
-    1869.48035,
-    1870.01021
+    1977.573213,
+    1985.31031,
+    1982.346236,
+    1980.241507,
+    1981.672496,
+    1978.579279,
+    1986.232363
    ],
-   "median": 1869.224018,
-   "min": 1868.009825,
-   "max": 1870.01021,
+   "median": 1981.672496,
+   "min": 1977.573213,
+   "max": 1986.232363,
    "unstable": false
   },
   {
@@ -889,17 +907,17 @@
    "name": "the read side alone: the image, the readout and the drain, every wait suspended: a drain warp waits on the panel",
    "unit": "cycles a window a warp",
    "samples": [
-    1843.220821,
-    1842.820017,
-    1843.004616,
-    1843.51018,
-    1843.839785,
-    1842.875888,
-    1842.628788
+    1802.184659,
+    1799.692116,
+    1800.862808,
+    1802.562678,
+    1800.612571,
+    1800.494081,
+    1799.650568
    ],
-   "median": 1843.004616,
-   "min": 1842.628788,
-   "max": 1843.839785,
+   "median": 1800.612571,
+   "min": 1799.650568,
+   "max": 1802.562678,
    "unstable": false
   },
   {
@@ -907,17 +925,17 @@
    "name": "the carry: both sides, every wait suspended",
    "unit": "cycles a window a CTA",
    "samples": [
-    6821.135653,
-    6808.42661,
-    6818.256392,
-    6813.687027,
-    6816.788826,
-    6823.09955,
-    6812.814276
+    6906.323982,
+    6899.33795,
+    6899.687145,
+    6905.760535,
+    6900.59742,
+    6898.397609,
+    6905.09008
    ],
-   "median": 6816.788826,
-   "min": 6808.42661,
-   "max": 6823.09955,
+   "median": 6900.59742,
+   "min": 6898.397609,
+   "max": 6906.323982,
    "unstable": false
   },
   {
@@ -925,35 +943,35 @@
    "name": "the carry: both sides, every wait suspended: a fold warp waits on the readout's read",
    "unit": "cycles a window a warp",
    "samples": [
-    327.544315,
-    347.711781,
-    328.975468,
-    338.379794,
-    328.129469,
-    338.099624,
-    327.303489
+    329.562234,
+    326.034979,
+    334.103146,
+    327.128803,
+    325.972316,
+    327.923251,
+    342.189557
    ],
-   "median": 328.975468,
-   "min": 327.303489,
-   "max": 347.711781,
-   "unstable": true
+   "median": 327.923251,
+   "min": 325.972316,
+   "max": 342.189557,
+   "unstable": false
   },
   {
    "lab": "result",
    "name": "the carry: both sides, every wait suspended: a fold warp waits on its producer",
    "unit": "cycles a window a warp",
    "samples": [
-    4570.153143,
-    4522.656857,
-    4563.162627,
-    4543.665956,
-    4564.024769,
-    4558.118564,
-    4554.068108
+    4663.281679,
+    4658.694513,
+    4633.653246,
+    4650.131629,
+    4645.531354,
+    4657.580256,
+    4642.28634
    ],
-   "median": 4558.118564,
-   "min": 4522.656857,
-   "max": 4570.153143,
+   "median": 4650.131629,
+   "min": 4633.653246,
+   "max": 4663.281679,
    "unstable": false
   },
   {
@@ -961,17 +979,17 @@
    "name": "the carry: both sides, every wait suspended: a readout warp waits on the image",
    "unit": "cycles a window a warp",
    "samples": [
-    1800.789033,
-    1767.877545,
-    1788.440371,
-    1783.37133,
-    1790.370561,
-    1788.362038,
-    1790.879705
+    1856.415365,
+    1855.576142,
+    1850.827444,
+    1855.132102,
+    1853.637784,
+    1850.451557,
+    1845.470407
    ],
-   "median": 1788.440371,
-   "min": 1767.877545,
-   "max": 1800.789033,
+   "median": 1853.637784,
+   "min": 1845.470407,
+   "max": 1856.415365,
    "unstable": false
   },
   {
@@ -979,17 +997,17 @@
    "name": "the carry: both sides, every wait suspended: a readout warp waits on the drain",
    "unit": "cycles a window a warp",
    "samples": [
-    269.342063,
-    270.233014,
-    269.650894,
-    269.789536,
-    269.812322,
-    269.680664,
-    270.000977
+    266.235529,
+    266.298207,
+    266.21366,
+    266.182499,
+    266.244081,
+    266.220526,
+    266.322384
    ],
-   "median": 269.789536,
-   "min": 269.342063,
-   "max": 270.233014,
+   "median": 266.235529,
+   "min": 266.182499,
+   "max": 266.322384,
    "unstable": false
   },
   {
@@ -997,17 +1015,17 @@
    "name": "the carry: both sides, every wait suspended: a readout warp forming its steps' A",
    "unit": "cycles a window a warp",
    "samples": [
-    1360.788323,
-    1366.049657,
-    1363.793768,
-    1364.886689,
-    1364.236476,
-    1367.427853,
-    1361.351829
+    1398.681493,
+    1395.535571,
+    1400.67078,
+    1400.870265,
+    1398.945017,
+    1399.231564,
+    1400.850911
    ],
-   "median": 1364.236476,
-   "min": 1360.788323,
-   "max": 1367.427853,
+   "median": 1399.231564,
+   "min": 1395.535571,
+   "max": 1400.870265,
    "unstable": false
   },
   {
@@ -1015,17 +1033,17 @@
    "name": "the carry: both sides, every wait suspended: a readout warp in its steps",
    "unit": "cycles a window a warp",
    "samples": [
-    2144.180753,
-    2146.545425,
-    2147.048088,
-    2146.098071,
-    2144.914684,
-    2146.737837,
-    2144.118046
+    2153.931522,
+    2151.455966,
+    2149.957949,
+    2151.550071,
+    2151.540039,
+    2150.399266,
+    2153.933712
    ],
-   "median": 2146.098071,
-   "min": 2144.118046,
-   "max": 2147.048088,
+   "median": 2151.540039,
+   "min": 2149.957949,
+   "max": 2153.933712,
    "unstable": false
   },
   {
@@ -1033,17 +1051,17 @@
    "name": "the carry: both sides, every wait suspended: a drain warp waits on the panel",
    "unit": "cycles a window a warp",
    "samples": [
-    3073.865945,
-    3033.460227,
-    3060.815874,
-    3052.487038,
-    3055.536281,
-    3064.362808,
-    3054.130149
+    3184.00071,
+    3180.196733,
+    3180.116181,
+    3187.437914,
+    3183.120265,
+    3174.769058,
+    3179.949988
    ],
-   "median": 3055.536281,
-   "min": 3033.460227,
-   "max": 3073.865945,
+   "median": 3180.196733,
+   "min": 3174.769058,
+   "max": 3187.437914,
    "unstable": false
   },
   {
@@ -1051,17 +1069,17 @@
    "name": "the carry: both sides, the readout draining its own rows and four producers",
    "unit": "cycles a window a CTA",
    "samples": [
-    7334.483073,
-    7324.064039,
-    7327.586648,
-    7329.508168,
-    7331.100379,
-    7331.395597,
-    7327.680753
+    7573.401397,
+    7577.251539,
+    7578.125592,
+    7576.681463,
+    7575.878078,
+    7575.81617,
+    7576.583925
    ],
-   "median": 7329.508168,
-   "min": 7324.064039,
-   "max": 7334.483073,
+   "median": 7576.583925,
+   "min": 7573.401397,
+   "max": 7578.125592,
    "unstable": false
   },
   {
@@ -1069,17 +1087,17 @@
    "name": "the carry: both sides, the readout draining its own rows and four producers: a fold warp waits on the readout's read",
    "unit": "cycles a window a warp",
    "samples": [
-    3616.013701,
-    3614.313876,
-    3615.651693,
-    3619.975024,
-    3615.341974,
-    3618.972168,
-    3616.560044
+    3701.193271,
+    3706.424716,
+    3704.784698,
+    3705.08286,
+    3705.092344,
+    3703.652906,
+    3704.604714
    ],
-   "median": 3616.013701,
-   "min": 3614.313876,
-   "max": 3619.975024,
+   "median": 3704.784698,
+   "min": 3701.193271,
+   "max": 3706.424716,
    "unstable": false
   },
   {
@@ -1087,17 +1105,17 @@
    "name": "the carry: both sides, the readout draining its own rows and four producers: a fold warp waits on its producer",
    "unit": "cycles a window a warp",
    "samples": [
-    434.825092,
-    435.226193,
-    433.249349,
-    430.395434,
-    433.352362,
-    433.033395,
-    432.466205
+    423.209961,
+    421.991167,
+    420.928385,
+    421.718528,
+    420.155703,
+    422.730276,
+    419.761393
    ],
-   "median": 433.249349,
-   "min": 430.395434,
-   "max": 435.226193,
+   "median": 421.718528,
+   "min": 419.761393,
+   "max": 423.209961,
    "unstable": false
   },
   {
@@ -1105,17 +1123,17 @@
    "name": "the carry: both sides, the readout draining its own rows and four producers: a readout warp waits on the image",
    "unit": "cycles a window a warp",
    "samples": [
-    300.002338,
-    301.039802,
-    300.846325,
-    300.631895,
-    300.727243,
-    300.792998,
-    300.562411
+    300.749793,
+    299.226207,
+    300.411606,
+    300.8038,
+    300.036843,
+    299.913944,
+    299.985322
    ],
-   "median": 300.727243,
-   "min": 300.002338,
-   "max": 301.039802,
+   "median": 300.036843,
+   "min": 299.226207,
+   "max": 300.8038,
    "unstable": false
   },
   {
@@ -1123,17 +1141,17 @@
    "name": "the carry: both sides, the readout draining its own rows and four producers: a readout warp draining its own rows",
    "unit": "cycles a window a warp",
    "samples": [
-    2745.977717,
-    2736.596354,
-    2737.872485,
-    2739.208748,
-    2741.726947,
-    2742.057055,
-    2737.773852
+    2815.779593,
+    2817.179776,
+    2818.193448,
+    2815.176403,
+    2814.094756,
+    2815.246567,
+    2818.73621
    ],
-   "median": 2739.208748,
-   "min": 2736.596354,
-   "max": 2745.977717,
+   "median": 2815.779593,
+   "min": 2814.094756,
+   "max": 2818.73621,
    "unstable": false
   },
   {
@@ -1141,17 +1159,17 @@
    "name": "the carry: both sides, the readout draining its own rows and four producers: a readout warp forming its steps' A",
    "unit": "cycles a window a warp",
    "samples": [
-    1173.886364,
-    1173.03563,
-    1173.866181,
-    1173.5182,
-    1173.978368,
-    1173.141394,
-    1174.741359
+    1133.701705,
+    1134.43966,
+    1134.489317,
+    1133.523497,
+    1135.709162,
+    1134.535363,
+    1135.308298
    ],
-   "median": 1173.866181,
-   "min": 1173.03563,
-   "max": 1174.741359,
+   "median": 1134.489317,
+   "min": 1133.523497,
+   "max": 1135.709162,
    "unstable": false
   },
   {
@@ -1159,17 +1177,17 @@
    "name": "the carry: both sides, the readout draining its own rows and four producers: a readout warp in its steps",
    "unit": "cycles a window a warp",
    "samples": [
-    1964.129942,
-    1961.473485,
-    1962.291785,
-    1963.50944,
-    1961.16137,
-    1964.798177,
-    1960.759322
+    1980.031783,
+    1980.929036,
+    1978.25944,
+    1980.602243,
+    1979.011452,
+    1979.643496,
+    1978.107659
    ],
-   "median": 1962.291785,
-   "min": 1960.759322,
-   "max": 1964.798177,
+   "median": 1979.643496,
+   "min": 1978.107659,
+   "max": 1980.929036,
    "unstable": false
   },
   {
@@ -1177,17 +1195,17 @@
    "name": "the fold's side alone: producers and steps, the readout draining its own rows and four producers",
    "unit": "cycles a window a CTA",
    "samples": [
-    3048.984257,
-    3046.71804,
-    3042.509351,
-    3045.981771,
-    3042.090317,
-    3046.210227,
-    3042.775687
+    3097.014441,
+    3096.455611,
+    3096.204072,
+    3096.971828,
+    3095.175781,
+    3097.092211,
+    3097.475616
    ],
-   "median": 3045.981771,
-   "min": 3042.090317,
-   "max": 3048.984257,
+   "median": 3096.971828,
+   "min": 3095.175781,
+   "max": 3097.475616,
    "unstable": false
   },
   {
@@ -1195,17 +1213,17 @@
    "name": "the read side alone: the image, the readout and the drain, the readout draining its own rows and four producers",
    "unit": "cycles a window a CTA",
    "samples": [
-    5379.299006,
-    5378.352036,
-    5379.635535,
-    5379.099195,
-    5379.420928,
-    5379.299124,
-    5379.150213
+    5377.554332,
+    5377.257457,
+    5377.474669,
+    5377.313565,
+    5377.807884,
+    5377.09955,
+    5376.906368
    ],
-   "median": 5379.299006,
-   "min": 5378.352036,
-   "max": 5379.635535,
+   "median": 5377.313565,
+   "min": 5376.906368,
+   "max": 5377.807884,
    "unstable": false
   },
   {
@@ -1213,17 +1231,17 @@
    "name": "the read side alone: the image, the readout and the drain, the readout draining its own rows and four producers: a fold warp waits on the readout's read",
    "unit": "cycles a window a warp",
    "samples": [
-    3788.517918,
-    3787.543516,
-    3788.655643,
-    3786.917125,
-    3788.109005,
-    3788.187382,
-    3788.988178
+    3787.167821,
+    3786.790513,
+    3787.329279,
+    3787.720156,
+    3786.76345,
+    3786.865412,
+    3786.897624
    ],
-   "median": 3788.187382,
-   "min": 3786.917125,
-   "max": 3788.988178,
+   "median": 3786.897624,
+   "min": 3786.76345,
+   "max": 3787.720156,
    "unstable": false
   },
   {
@@ -1231,17 +1249,17 @@
    "name": "the read side alone: the image, the readout and the drain, the readout draining its own rows and four producers: a readout warp waits on the image",
    "unit": "cycles a window a warp",
    "samples": [
-    242.296697,
-    242.331262,
-    242.323153,
-    242.375266,
-    242.278794,
-    242.237956,
-    242.260949
+    242.297437,
+    242.284742,
+    242.306581,
+    242.240974,
+    242.338867,
+    242.267223,
+    242.340288
    ],
-   "median": 242.296697,
-   "min": 242.237956,
-   "max": 242.375266,
+   "median": 242.297437,
+   "min": 242.240974,
+   "max": 242.340288,
    "unstable": false
   },
   {
@@ -1249,17 +1267,17 @@
    "name": "the read side alone: the image, the readout and the drain, the readout draining its own rows and four producers: a readout warp draining its own rows",
    "unit": "cycles a window a warp",
    "samples": [
-    2115.32993,
-    2114.358014,
-    2115.042554,
-    2115.180368,
-    2115.203273,
-    2114.943034,
-    2114.532108
+    2115.442264,
+    2115.318862,
+    2115.467063,
+    2115.168087,
+    2115.358043,
+    2115.035452,
+    2114.723455
    ],
-   "median": 2115.042554,
-   "min": 2114.358014,
-   "max": 2115.32993,
+   "median": 2115.318862,
+   "min": 2114.723455,
+   "max": 2115.467063,
    "unstable": false
   },
   {
@@ -1267,17 +1285,17 @@
    "name": "the read side alone: the image, the readout and the drain, the readout draining its own rows and four producers: a readout warp forming its steps' A",
    "unit": "cycles a window a warp",
    "samples": [
-    803.273467,
-    803.321467,
-    803.305901,
-    803.306729,
-    803.295839,
-    803.345526,
-    803.260624
+    802.966797,
+    802.956795,
+    802.962151,
+    802.979107,
+    802.952681,
+    802.923917,
+    802.978782
    ],
-   "median": 803.305901,
-   "min": 803.260624,
-   "max": 803.345526,
+   "median": 802.962151,
+   "min": 802.923917,
+   "max": 802.979107,
    "unstable": false
   },
   {
@@ -1285,17 +1303,17 @@
    "name": "the read side alone: the image, the readout and the drain, the readout draining its own rows and four producers: a readout warp in its steps",
    "unit": "cycles a window a warp",
    "samples": [
-    1452.592507,
-    1452.251213,
-    1452.841057,
-    1452.258049,
-    1452.675219,
-    1452.719223,
-    1453.053208
+    1451.94262,
+    1451.879498,
+    1451.980913,
+    1452.054125,
+    1452.208748,
+    1451.966767,
+    1451.907582
    ],
-   "median": 1452.675219,
-   "min": 1452.251213,
-   "max": 1453.053208,
+   "median": 1451.966767,
+   "min": 1451.879498,
+   "max": 1452.208748,
    "unstable": false
   },
   {
@@ -1303,17 +1321,17 @@
    "name": "the carry: both sides, the readout's A in two sets and two batches a producer",
    "unit": "cycles a window a CTA",
    "samples": [
-    6913.97822,
-    6921.032197,
-    6919.707741,
-    6909.55303,
-    6915.23473,
-    6909.660156,
-    6911.051018
+    6961.060724,
+    6969.06901,
+    6970.986269,
+    6961.01527,
+    6977.14169,
+    6975.378788,
+    6961.634351
    ],
-   "median": 6913.97822,
-   "min": 6909.55303,
-   "max": 6921.032197,
+   "median": 6969.06901,
+   "min": 6961.01527,
+   "max": 6977.14169,
    "unstable": false
   },
   {
@@ -1321,17 +1339,17 @@
    "name": "the carry: both sides, the readout's A in two sets and two batches a producer: a fold warp waits on the readout's read",
    "unit": "cycles a window a warp",
    "samples": [
-    563.507147,
-    577.001657,
-    580.606578,
-    537.04214,
-    589.154238,
-    545.482422,
-    560.485041
+    536.722212,
+    544.843987,
+    537.997026,
+    508.116714,
+    557.774858,
+    550.972641,
+    577.582534
    ],
-   "median": 563.507147,
-   "min": 537.04214,
-   "max": 589.154238,
+   "median": 544.843987,
+   "min": 508.116714,
+   "max": 577.582534,
    "unstable": true
   },
   {
@@ -1339,17 +1357,17 @@
    "name": "the carry: both sides, the readout's A in two sets and two batches a producer: a fold warp waits on its producer",
    "unit": "cycles a window a warp",
    "samples": [
-    3887.734345,
-    3857.464577,
-    3858.491388,
-    3893.667303,
-    3848.398497,
-    3888.897994,
-    3862.957179
+    3809.051299,
+    3800.601592,
+    3817.678001,
+    3843.917259,
+    3809.398941,
+    3804.916874,
+    3789.673207
    ],
-   "median": 3862.957179,
-   "min": 3848.398497,
-   "max": 3893.667303,
+   "median": 3809.051299,
+   "min": 3789.673207,
+   "max": 3843.917259,
    "unstable": false
   },
   {
@@ -1357,17 +1375,17 @@
    "name": "the carry: both sides, the readout's A in two sets and two batches a producer: a readout warp waits on the image",
    "unit": "cycles a window a warp",
    "samples": [
-    698.484079,
-    685.393673,
-    683.989495,
-    681.535423,
-    684.267992,
-    688.397165,
-    680.958304
+    552.406901,
+    554.356682,
+    556.408558,
+    556.604847,
+    543.981919,
+    552.796609,
+    556.462979
    ],
-   "median": 684.267992,
-   "min": 680.958304,
-   "max": 698.484079,
+   "median": 554.356682,
+   "min": 543.981919,
+   "max": 556.604847,
    "unstable": false
   },
   {
@@ -1375,17 +1393,17 @@
    "name": "the carry: both sides, the readout's A in two sets and two batches a producer: a readout warp waits on the drain",
    "unit": "cycles a window a warp",
    "samples": [
-    328.089696,
-    328.45419,
-    327.748284,
-    327.474876,
-    328.830848,
-    328.045277,
-    327.65918
+    326.051521,
+    325.358398,
+    325.81031,
+    326.286813,
+    325.746626,
+    325.475379,
+    326.579131
    ],
-   "median": 328.045277,
-   "min": 327.474876,
-   "max": 328.830848,
+   "median": 325.81031,
+   "min": 325.358398,
+   "max": 326.579131,
    "unstable": false
   },
   {
@@ -1393,17 +1411,17 @@
    "name": "the carry: both sides, the readout's A in two sets and two batches a producer: a readout warp in its steps",
    "unit": "cycles a window a warp",
    "samples": [
-    4365.108813,
-    4371.85754,
-    4374.085642,
-    4376.317531,
-    4372.014116,
-    4369.104433,
-    4374.776811
+    4470.306433,
+    4469.012163,
+    4470.484908,
+    4467.801225,
+    4481.780865,
+    4474.778379,
+    4462.331913
    ],
-   "median": 4372.014116,
-   "min": 4365.108813,
-   "max": 4376.317531,
+   "median": 4470.306433,
+   "min": 4462.331913,
+   "max": 4481.780865,
    "unstable": false
   },
   {
@@ -1411,17 +1429,17 @@
    "name": "the carry: both sides, the readout's A in two sets and two batches a producer: a drain warp waits on the panel",
    "unit": "cycles a window a warp",
    "samples": [
-    2532.472183,
-    2523.959399,
-    2530.456735,
-    2516.983073,
-    2531.009233,
-    2527.139323,
-    2515.940104
+    2372.060133,
+    2384.473307,
+    2383.657907,
+    2369.971828,
+    2389.41933,
+    2394.424242,
+    2391.39974
    ],
-   "median": 2527.139323,
-   "min": 2515.940104,
-   "max": 2532.472183,
+   "median": 2384.473307,
+   "min": 2369.971828,
+   "max": 2394.424242,
    "unstable": false
   },
   {
@@ -1429,17 +1447,17 @@
    "name": "the fold's side alone: producers and steps, the readout's A in two sets and two batches a producer",
    "unit": "cycles a window a CTA",
    "samples": [
-    4629.235795,
-    4581.83795,
-    4577.278054,
-    4584.711766,
-    4578.990767,
-    4586.622277,
-    4586.090909
+    4673.825639,
+    4670.257221,
+    4673.033736,
+    4659.508404,
+    4672.894058,
+    4668.47893,
+    4666.106416
    ],
-   "median": 4584.711766,
-   "min": 4577.278054,
-   "max": 4629.235795,
+   "median": 4670.257221,
+   "min": 4659.508404,
+   "max": 4673.825639,
    "unstable": false
   },
   {
@@ -1447,17 +1465,17 @@
    "name": "the read side alone: the image, the readout and the drain, the readout's A in two sets and two batches a producer",
    "unit": "cycles a window a CTA",
    "samples": [
-    5759.398793,
-    5760.22017,
-    5761.077296,
-    5760.734375,
-    5760.569484,
-    5760.813447,
-    5760.724195
+    5764.526397,
+    5765.279119,
+    5765.040246,
+    5765.48473,
+    5765.835109,
+    5765.19768,
+    5766.059186
    ],
-   "median": 5760.724195,
-   "min": 5759.398793,
-   "max": 5761.077296,
+   "median": 5765.279119,
+   "min": 5764.526397,
+   "max": 5766.059186,
    "unstable": false
   },
   {
@@ -1465,17 +1483,17 @@
    "name": "the read side alone: the image, the readout and the drain, the readout's A in two sets and two batches a producer: a fold warp waits on the readout's read",
    "unit": "cycles a window a warp",
    "samples": [
-    4243.634529,
-    4244.917111,
-    4245.351296,
-    4244.670647,
-    4245.297778,
-    4246.965628,
-    4245.83249
+    4242.407685,
+    4243.620576,
+    4242.596443,
+    4243.795573,
+    4242.987837,
+    4242.736461,
+    4243.484952
    ],
-   "median": 4245.297778,
-   "min": 4243.634529,
-   "max": 4246.965628,
+   "median": 4242.987837,
+   "min": 4242.407685,
+   "max": 4243.795573,
    "unstable": false
   },
   {
@@ -1483,17 +1501,17 @@
    "name": "the read side alone: the image, the readout and the drain, the readout's A in two sets and two batches a producer: a readout warp waits on the image",
    "unit": "cycles a window a warp",
    "samples": [
-    289.22387,
-    289.329161,
-    289.351296,
-    289.240856,
-    289.384499,
-    289.309659,
-    289.166252
+    289.795159,
+    289.479995,
+    289.810813,
+    289.887902,
+    289.609168,
+    289.706055,
+    289.654208
    ],
-   "median": 289.309659,
-   "min": 289.166252,
-   "max": 289.384499,
+   "median": 289.706055,
+   "min": 289.479995,
+   "max": 289.887902,
    "unstable": false
   },
   {
@@ -1501,17 +1519,17 @@
    "name": "the read side alone: the image, the readout and the drain, the readout's A in two sets and two batches a producer: a readout warp waits on the drain",
    "unit": "cycles a window a warp",
    "samples": [
-    299.204368,
-    299.210079,
-    299.131984,
-    299.098899,
-    299.184304,
-    299.256718,
-    299.174568
+    299.556078,
+    299.566288,
+    299.413263,
+    299.405066,
+    299.459014,
+    299.431996,
+    299.324959
    ],
-   "median": 299.184304,
-   "min": 299.098899,
-   "max": 299.256718,
+   "median": 299.431996,
+   "min": 299.324959,
+   "max": 299.566288,
    "unstable": false
   },
   {
@@ -1519,17 +1537,17 @@
    "name": "the read side alone: the image, the readout and the drain, the readout's A in two sets and two batches a producer: a readout warp in its steps",
    "unit": "cycles a window a warp",
    "samples": [
-    3403.576645,
-    3404.793679,
-    3405.035482,
-    3404.897786,
-    3404.96878,
-    3406.085819,
-    3405.786902
+    3401.84449,
+    3403.352509,
+    3402.285511,
+    3403.220792,
+    3403.463482,
+    3402.736713,
+    3403.413471
    ],
-   "median": 3404.96878,
-   "min": 3403.576645,
-   "max": 3406.085819,
+   "median": 3403.220792,
+   "min": 3401.84449,
+   "max": 3403.463482,
    "unstable": false
   },
   {
@@ -1537,17 +1555,17 @@
    "name": "the read side alone: the image, the readout and the drain, the readout's A in two sets and two batches a producer: a drain warp waits on the panel",
    "unit": "cycles a window a warp",
    "samples": [
-    2382.872337,
-    2383.603634,
-    2384.812559,
-    2384.715613,
-    2384.606238,
-    2384.050426,
-    2383.589725
+    2385.785926,
+    2386.273378,
+    2385.90258,
+    2387.176669,
+    2387.240767,
+    2386.846354,
+    2386.858369
    ],
-   "median": 2384.050426,
-   "min": 2382.872337,
-   "max": 2384.812559,
+   "median": 2386.846354,
+   "min": 2385.785926,
+   "max": 2387.240767,
    "unstable": false
   },
   {
@@ -1555,17 +1573,17 @@
    "name": "the carry: both sides, five warpgroups: four producers and four drain warps",
    "unit": "cycles a window a CTA",
    "samples": [
-    7658.260298,
-    7638.057884,
-    7662.066525,
-    7652.299598,
-    7657.077652,
-    7648.394768,
-    7649.316761
+    7850.444247,
+    7844.775213,
+    7843.064276,
+    7847.044626,
+    7847.370739,
+    7847.516927,
+    7847.116004
    ],
-   "median": 7652.299598,
-   "min": 7638.057884,
-   "max": 7662.066525,
+   "median": 7847.116004,
+   "min": 7843.064276,
+   "max": 7850.444247,
    "unstable": false
   },
   {
@@ -1573,35 +1591,35 @@
    "name": "the carry: both sides, five warpgroups: four producers and four drain warps: a fold warp waits on the readout's read",
    "unit": "cycles a window a warp",
    "samples": [
-    425.338201,
-    413.64718,
-    413.60575,
-    417.734345,
-    406.798266,
-    413.576009,
-    423.491951
+    415.731179,
+    400.052157,
+    397.406886,
+    415.622056,
+    402.817294,
+    421.457357,
+    401.719741
    ],
-   "median": 413.64718,
-   "min": 406.798266,
-   "max": 425.338201,
-   "unstable": false
+   "median": 402.817294,
+   "min": 397.406886,
+   "max": 421.457357,
+   "unstable": true
   },
   {
    "lab": "result",
    "name": "the carry: both sides, five warpgroups: four producers and four drain warps: a fold warp waits on its producer",
    "unit": "cycles a window a warp",
    "samples": [
-    5177.498076,
-    5145.056374,
-    5197.260639,
-    5176.786503,
-    5181.047275,
-    5175.347952,
-    5170.017119
+    5379.583777,
+    5398.408499,
+    5381.586899,
+    5386.082889,
+    5370.644147,
+    5362.376021,
+    5372.820076
    ],
-   "median": 5176.786503,
-   "min": 5145.056374,
-   "max": 5197.260639,
+   "median": 5379.583777,
+   "min": 5362.376021,
+   "max": 5398.408499,
    "unstable": false
   },
   {
@@ -1609,17 +1627,17 @@
    "name": "the carry: both sides, five warpgroups: four producers and four drain warps: a readout warp waits on the image",
    "unit": "cycles a window a warp",
    "samples": [
-    2101.67442,
-    2068.973011,
-    2100.936346,
-    2086.569277,
-    2102.4077,
-    2090.249171,
-    2088.11118
+    2258.167495,
+    2254.092152,
+    2261.590761,
+    2251.750444,
+    2259.681493,
+    2251.954338,
+    2257.650746
    ],
-   "median": 2090.249171,
-   "min": 2068.973011,
-   "max": 2102.4077,
+   "median": 2257.650746,
+   "min": 2251.750444,
+   "max": 2261.590761,
    "unstable": false
   },
   {
@@ -1627,17 +1645,17 @@
    "name": "the carry: both sides, five warpgroups: four producers and four drain warps: a readout warp waits on the drain",
    "unit": "cycles a window a warp",
    "samples": [
-    328.668679,
-    328.310458,
-    328.129942,
-    328.25435,
-    328.176403,
-    328.417584,
-    328.304599
+    326.906191,
+    326.402758,
+    326.651722,
+    326.831528,
+    326.700462,
+    326.77036,
+    326.617158
    ],
-   "median": 328.304599,
-   "min": 328.129942,
-   "max": 328.668679,
+   "median": 326.700462,
+   "min": 326.402758,
+   "max": 326.906191,
    "unstable": false
   },
   {
@@ -1645,17 +1663,17 @@
    "name": "the carry: both sides, five warpgroups: four producers and four drain warps: a readout warp in its steps",
    "unit": "cycles a window a warp",
    "samples": [
-    3891.75725,
-    3890.545898,
-    3889.421905,
-    3889.841767,
-    3886.293472,
-    3886.725142,
-    3887.040927
+    3921.269502,
+    3924.775065,
+    3918.74494,
+    3922.204634,
+    3923.985914,
+    3924.724432,
+    3928.098396
    ],
-   "median": 3889.421905,
-   "min": 3886.293472,
-   "max": 3891.75725,
+   "median": 3923.985914,
+   "min": 3918.74494,
+   "max": 3928.098396,
    "unstable": false
   },
   {
@@ -1663,17 +1681,17 @@
    "name": "the fold's side alone: producers and steps, five warpgroups: four producers and four drain warps",
    "unit": "cycles a window a CTA",
    "samples": [
-    5969.883996,
-    5937.878551,
-    5951.389915,
-    5933.727628,
-    5948.331795,
-    5941.71946,
-    5919.126065
+    5946.797822,
+    5951.880327,
+    5947.394413,
+    5944.011127,
+    5942.910393,
+    5940.539654,
+    5953.033736
    ],
-   "median": 5941.71946,
-   "min": 5919.126065,
-   "max": 5969.883996,
+   "median": 5946.797822,
+   "min": 5940.539654,
+   "max": 5953.033736,
    "unstable": false
   },
   {
@@ -1681,17 +1699,17 @@
    "name": "the read side alone: the image, the readout and the drain, five warpgroups: four producers and four drain warps",
    "unit": "cycles a window a CTA",
    "samples": [
-    5040.812263,
-    5039.73035,
-    5038.43099,
-    5037.82919,
-    5039.470289,
-    5039.673059,
-    5039.584872
+    5043.912642,
+    5043.708925,
+    5044.408499,
+    5044.102746,
+    5043.31108,
+    5043.918087,
+    5043.237808
    ],
-   "median": 5039.584872,
-   "min": 5037.82919,
-   "max": 5040.812263,
+   "median": 5043.912642,
+   "min": 5043.237808,
+   "max": 5044.408499,
    "unstable": false
   },
   {
@@ -1699,17 +1717,17 @@
    "name": "the read side alone: the image, the readout and the drain, five warpgroups: four producers and four drain warps: a fold warp waits on the readout's read",
    "unit": "cycles a window a warp",
    "samples": [
-    3471.317028,
-    3470.873742,
-    3470.204146,
-    3471.522061,
-    3471.448109,
-    3470.719653,
-    3471.639959
+    3468.098085,
+    3468.158159,
+    3468.204827,
+    3466.393732,
+    3469.034964,
+    3469.391025,
+    3468.547112
    ],
-   "median": 3471.317028,
-   "min": 3470.204146,
-   "max": 3471.639959,
+   "median": 3468.204827,
+   "min": 3466.393732,
+   "max": 3469.391025,
    "unstable": false
   },
   {
@@ -1717,17 +1735,17 @@
    "name": "the read side alone: the image, the readout and the drain, five warpgroups: four producers and four drain warps: a readout warp waits on the image",
    "unit": "cycles a window a warp",
    "samples": [
-    272.545159,
-    272.747988,
-    272.883493,
-    272.860736,
-    272.725083,
-    272.876953,
-    272.69913
+    272.570697,
+    272.493963,
+    272.652551,
+    272.333304,
+    272.361062,
+    272.540039,
+    272.403883
    ],
-   "median": 272.747988,
-   "min": 272.545159,
-   "max": 272.883493,
+   "median": 272.493963,
+   "min": 272.333304,
+   "max": 272.652551,
    "unstable": false
   },
   {
@@ -1735,17 +1753,17 @@
    "name": "the read side alone: the image, the readout and the drain, five warpgroups: four producers and four drain warps: a readout warp waits on the drain",
    "unit": "cycles a window a warp",
    "samples": [
-    320.531428,
-    320.637133,
-    320.601622,
-    320.508168,
-    320.59159,
-    320.459783,
-    320.702563
+    320.300219,
+    320.4586,
+    320.373432,
+    320.361299,
+    320.378699,
+    320.450402,
+    320.289358
    ],
-   "median": 320.59159,
-   "min": 320.459783,
-   "max": 320.702563,
+   "median": 320.373432,
+   "min": 320.289358,
+   "max": 320.4586,
    "unstable": false
   },
   {
@@ -1753,17 +1771,17 @@
    "name": "the read side alone: the image, the readout and the drain, five warpgroups: four producers and four drain warps: a readout warp in its steps",
    "unit": "cycles a window a warp",
    "samples": [
-    2665.979699,
-    2665.097893,
-    2664.445549,
-    2665.295958,
-    2664.999201,
-    2664.557824,
-    2664.836825
+    2663.32851,
+    2663.118223,
+    2663.57996,
+    2662.653409,
+    2664.100763,
+    2664.222242,
+    2663.865412
    ],
-   "median": 2664.999201,
-   "min": 2664.445549,
-   "max": 2665.979699,
+   "median": 2663.57996,
+   "min": 2662.653409,
+   "max": 2664.222242,
    "unstable": false
   },
   {
@@ -1771,17 +1789,17 @@
    "name": "the carry: both sides, the long waits asleep at named barriers",
    "unit": "cycles a window a CTA",
    "samples": [
-    6843.556345,
-    6837.441998,
-    6847.285275,
-    6831.106534,
-    6851.218158,
-    6844.025331,
-    6850.490767
+    6981.420218,
+    6986.699455,
+    6976.827533,
+    6984.621804,
+    6979.730942,
+    6977.291193,
+    6975.910511
    ],
-   "median": 6844.025331,
-   "min": 6831.106534,
-   "max": 6851.218158,
+   "median": 6979.730942,
+   "min": 6975.910511,
+   "max": 6986.699455,
    "unstable": false
   },
   {
@@ -1789,17 +1807,17 @@
    "name": "the carry: both sides, the long waits asleep at named barriers: a fold warp waits on the readout's read",
    "unit": "cycles a window a warp",
    "samples": [
-    8.190622,
-    8.214577,
-    8.191199,
-    8.214548,
-    8.18932,
-    8.196837,
-    8.192516
+    8.250533,
+    8.231312,
+    8.245162,
+    8.235574,
+    8.240634,
+    8.230883,
+    8.25219
    ],
-   "median": 8.192516,
-   "min": 8.18932,
-   "max": 8.214577,
+   "median": 8.240634,
+   "min": 8.230883,
+   "max": 8.25219,
    "unstable": false
   },
   {
@@ -1807,17 +1825,17 @@
    "name": "the carry: both sides, the long waits asleep at named barriers: a fold warp waits on its producer",
    "unit": "cycles a window a warp",
    "samples": [
-    29.703998,
-    29.592936,
-    29.608398,
-    29.51527,
-    29.547689,
-    29.687322,
-    29.592137
+    24.200891,
+    24.183372,
+    24.194839,
+    24.253847,
+    24.20567,
+    24.209709,
+    24.200447
    ],
-   "median": 29.592936,
-   "min": 29.51527,
-   "max": 29.703998,
+   "median": 24.200891,
+   "min": 24.183372,
+   "max": 24.253847,
    "unstable": false
   },
   {
@@ -1825,17 +1843,17 @@
    "name": "the carry: both sides, the long waits asleep at named barriers: a readout warp waits on the image",
    "unit": "cycles a window a warp",
    "samples": [
-    115.193892,
-    115.360914,
-    115.260002,
-    115.280392,
-    115.459073,
-    115.316347,
-    115.692649
+    114.631688,
+    114.7057,
+    114.849165,
+    114.652906,
+    114.530984,
+    114.913915,
+    114.622277
    ],
-   "median": 115.316347,
-   "min": 115.193892,
-   "max": 115.692649,
+   "median": 114.652906,
+   "min": 114.530984,
+   "max": 114.913915,
    "unstable": false
   },
   {
@@ -1843,17 +1861,17 @@
    "name": "the carry: both sides, the long waits asleep at named barriers: a readout warp waits on the drain",
    "unit": "cycles a window a warp",
    "samples": [
-    273.227154,
-    274.051225,
-    273.583511,
-    273.777936,
-    273.440637,
-    273.478782,
-    273.563625
+    273.309718,
+    272.990057,
+    273.035097,
+    273.439039,
+    272.968691,
+    273.328184,
+    273.450965
    ],
-   "median": 273.563625,
-   "min": 273.227154,
-   "max": 274.051225,
+   "median": 273.309718,
+   "min": 272.968691,
+   "max": 273.450965,
    "unstable": false
   },
   {
@@ -1861,17 +1879,17 @@
    "name": "the carry: both sides, the long waits asleep at named barriers: a readout warp forming its steps' A",
    "unit": "cycles a window a warp",
    "samples": [
-    3214.681286,
-    3202.394738,
-    3215.122573,
-    3196.974935,
-    3220.896603,
-    3212.298325,
-    3220.232688
+    3251.824367,
+    3258.226326,
+    3248.031783,
+    3253.775687,
+    3251.458215,
+    3249.206439,
+    3242.223958
    ],
-   "median": 3214.681286,
-   "min": 3196.974935,
-   "max": 3220.896603,
+   "median": 3251.458215,
+   "min": 3242.223958,
+   "max": 3258.226326,
    "unstable": false
   },
   {
@@ -1879,17 +1897,17 @@
    "name": "the carry: both sides, the long waits asleep at named barriers: a readout warp in its steps",
    "unit": "cycles a window a warp",
    "samples": [
-    2154.092596,
-    2154.935636,
-    2153.532167,
-    2155.991093,
-    2151.959073,
-    2154.155096,
-    2151.053297
+    2226.773053,
+    2225.122366,
+    2227.075018,
+    2228.353042,
+    2225.29146,
+    2227.237749,
+    2231.666903
    ],
-   "median": 2154.092596,
-   "min": 2151.053297,
-   "max": 2155.991093,
+   "median": 2227.075018,
+   "min": 2225.122366,
+   "max": 2231.666903,
    "unstable": false
   },
   {
@@ -1897,17 +1915,17 @@
    "name": "the carry: both sides, the long waits asleep at named barriers: a drain warp waits on the panel",
    "unit": "cycles a window a warp",
    "samples": [
-    3308.302379,
-    3297.127308,
-    3316.766276,
-    3291.294034,
-    3321.419744,
-    3309.310192,
-    3320.713897
+    3286.052971,
+    3296.226207,
+    3279.858724,
+    3289.712003,
+    3282.591738,
+    3276.642223,
+    3280.923295
    ],
-   "median": 3309.310192,
-   "min": 3291.294034,
-   "max": 3321.419744,
+   "median": 3282.591738,
+   "min": 3276.642223,
+   "max": 3296.226207,
    "unstable": false
   },
   {
@@ -1915,17 +1933,17 @@
    "name": "the fold's side alone: producers and steps, the long waits asleep at named barriers",
    "unit": "cycles a window a CTA",
    "samples": [
-    5071.817116,
-    5060.418205,
-    5066.049242,
-    5068.123935,
-    5069.46366,
-    5061.834872,
-    5060.194366
+    5062.680279,
+    5061.865294,
+    5069.485085,
+    5066.221117,
+    5064.44697,
+    5073.638021,
+    5061.185369
    ],
-   "median": 5066.049242,
-   "min": 5060.194366,
-   "max": 5071.817116,
+   "median": 5064.44697,
+   "min": 5061.185369,
+   "max": 5073.638021,
    "unstable": false
   },
   {
@@ -1933,17 +1951,17 @@
    "name": "the read side alone: the image, the readout and the drain, the long waits asleep at named barriers",
    "unit": "cycles a window a CTA",
    "samples": [
-    5056.570194,
-    5056.424361,
-    5056.356297,
-    5054.410275,
-    5056.462358,
-    5055.641572,
-    5054.124882
+    5061.977509,
+    5061.464489,
+    5061.84233,
+    5062.089134,
+    5060.988518,
+    5061.142992,
+    5061.12133
    ],
-   "median": 5056.356297,
-   "min": 5054.124882,
-   "max": 5056.570194,
+   "median": 5061.464489,
+   "min": 5060.988518,
+   "max": 5062.089134,
    "unstable": false
   },
   {
@@ -1951,17 +1969,17 @@
    "name": "the read side alone: the image, the readout and the drain, the long waits asleep at named barriers: a fold warp waits on the readout's read",
    "unit": "cycles a window a warp",
    "samples": [
-    7.9615,
-    7.965214,
-    7.960242,
-    7.965628,
-    7.964119,
-    7.962891,
-    7.966383
+    7.963556,
+    7.966042,
+    7.966486,
+    7.965228,
+    7.968114,
+    7.965258,
+    7.964785
    ],
-   "median": 7.964119,
-   "min": 7.960242,
-   "max": 7.966383,
+   "median": 7.965258,
+   "min": 7.963556,
+   "max": 7.968114,
    "unstable": false
   },
   {
@@ -1969,17 +1987,17 @@
    "name": "the read side alone: the image, the readout and the drain, the long waits asleep at named barriers: a readout warp waits on the image",
    "unit": "cycles a window a warp",
    "samples": [
-    121.868519,
-    121.931138,
-    121.898112,
-    122.361654,
-    122.081262,
-    121.864998,
-    122.064719
+    121.439009,
+    121.710642,
+    121.83792,
+    121.701083,
+    121.809393,
+    121.852835,
+    121.541193
    ],
-   "median": 121.931138,
-   "min": 121.864998,
-   "max": 122.361654,
+   "median": 121.710642,
+   "min": 121.439009,
+   "max": 121.852835,
    "unstable": false
   },
   {
@@ -1987,17 +2005,17 @@
    "name": "the read side alone: the image, the readout and the drain, the long waits asleep at named barriers: a readout warp waits on the drain",
    "unit": "cycles a window a warp",
    "samples": [
-    280.030747,
-    279.950994,
-    280.053356,
-    279.976059,
-    279.926639,
-    279.969756,
-    279.892164
+    280.022491,
+    280.110115,
+    280.178445,
+    280.029741,
+    280.128581,
+    280.198213,
+    280.146899
    ],
-   "median": 279.969756,
-   "min": 279.892164,
-   "max": 280.053356,
+   "median": 280.128581,
+   "min": 280.022491,
+   "max": 280.198213,
    "unstable": false
   },
   {
@@ -2005,17 +2023,17 @@
    "name": "the read side alone: the image, the readout and the drain, the long waits asleep at named barriers: a readout warp forming its steps' A",
    "unit": "cycles a window a warp",
    "samples": [
-    1353.130593,
-    1354.255652,
-    1352.844105,
-    1354.002427,
-    1353.937796,
-    1353.395153,
-    1352.641572
+    1352.764441,
+    1353.313447,
+    1354.006658,
+    1353.904208,
+    1354.280214,
+    1354.332949,
+    1353.396129
    ],
-   "median": 1353.395153,
-   "min": 1352.641572,
-   "max": 1354.255652,
+   "median": 1353.904208,
+   "min": 1352.764441,
+   "max": 1354.332949,
    "unstable": false
   },
   {
@@ -2023,17 +2041,17 @@
    "name": "the read side alone: the image, the readout and the drain, the long waits asleep at named barriers: a readout warp in its steps",
    "unit": "cycles a window a warp",
    "samples": [
-    1876.466738,
-    1876.62497,
-    1876.666164,
-    1875.898911,
-    1876.392696,
-    1876.505504,
-    1876.282907
+    1877.258345,
+    1876.863104,
+    1876.504084,
+    1876.692028,
+    1876.571319,
+    1876.731593,
+    1876.7711
    ],
-   "median": 1876.466738,
-   "min": 1875.898911,
-   "max": 1876.666164,
+   "median": 1876.731593,
+   "min": 1876.504084,
+   "max": 1877.258345,
    "unstable": false
   },
   {
@@ -2041,17 +2059,17 @@
    "name": "the read side alone: the image, the readout and the drain, the long waits asleep at named barriers: a drain warp waits on the panel",
    "unit": "cycles a window a warp",
    "samples": [
-    1562.507398,
-    1563.211707,
-    1563.676906,
-    1560.577356,
-    1563.280007,
-    1562.441584,
-    1560.191821
+    1568.633641,
+    1567.849254,
+    1568.473544,
+    1568.481948,
+    1566.69117,
+    1567.21005,
+    1567.258049
    ],
-   "median": 1562.507398,
-   "min": 1560.191821,
-   "max": 1563.676906,
+   "median": 1567.849254,
+   "min": 1566.69117,
+   "max": 1568.633641,
    "unstable": false
   },
   {
@@ -2059,17 +2077,17 @@
    "name": "the fold's side alone: producers and steps, the producers' global loads taken out",
    "unit": "cycles a window a CTA",
    "samples": [
-    2439.554569,
-    2439.71224,
-    2440.04143,
-    2438.946378,
-    2440.781487,
-    2438.780066,
-    2439.817472
+    2438.204072,
+    2439.176847,
+    2438.783854,
+    2438.283144,
+    2437.46224,
+    2440.553149,
+    2439.068655
    ],
-   "median": 2439.71224,
-   "min": 2438.780066,
-   "max": 2440.781487,
+   "median": 2438.783854,
+   "min": 2437.46224,
+   "max": 2440.553149,
    "unstable": false
   },
   {
@@ -2077,17 +2095,17 @@
    "name": "the fold's side alone: producers and steps, the producers' coefficient arithmetic taken out",
    "unit": "cycles a window a CTA",
    "samples": [
-    4694.417495,
-    4638.533617,
-    4656.920691,
-    4660.485322,
-    4656.318063,
-    4658.616122,
-    4654.791548
+    4675.464252,
+    4673.307884,
+    4674.531487,
+    4674.389323,
+    4673.697798,
+    4677.629972,
+    4675.68312
    ],
-   "median": 4656.920691,
-   "min": 4638.533617,
-   "max": 4694.417495,
+   "median": 4674.531487,
+   "min": 4673.307884,
+   "max": 4677.629972,
    "unstable": false
   },
   {
@@ -2095,17 +2113,17 @@
    "name": "the fold's side alone: producers and steps, the producers' global loads taken out, the producers' coefficient arithmetic taken out",
    "unit": "cycles a window a CTA",
    "samples": [
-    2338.016335,
-    2337.981652,
-    2337.941643,
-    2338.624053,
-    2338.204545,
-    2338.068774,
-    2338.279119
+    2337.93241,
+    2338.747988,
+    2338.477983,
+    2338.422704,
+    2338.278883,
+    2338.029001,
+    2338.090791
    ],
-   "median": 2338.068774,
-   "min": 2337.941643,
-   "max": 2338.624053,
+   "median": 2338.278883,
+   "min": 2337.93241,
+   "max": 2338.747988,
    "unstable": false
   },
   {
@@ -2113,17 +2131,17 @@
    "name": "the read side alone: the image, the readout and the drain, the readout's byte loads taken out",
    "unit": "cycles a window a CTA",
    "samples": [
-    5001.966383,
-    5000.65045,
-    5001.875355,
-    5002.787524,
-    5002.667259,
-    5001.14607,
-    5001.509825
+    5002.798059,
+    5002.50071,
+    5002.058239,
+    5002.468277,
+    5002.866004,
+    5001.48473,
+    5002.454901
    ],
-   "median": 5001.875355,
-   "min": 5000.65045,
-   "max": 5002.787524,
+   "median": 5002.468277,
+   "min": 5001.48473,
+   "max": 5002.866004,
    "unstable": false
   },
   {
@@ -2131,17 +2149,17 @@
    "name": "the read side alone: the image, the readout and the drain, the readout's byte loads taken out: a fold warp waits on the readout's read",
    "unit": "cycles a window a warp",
    "samples": [
-    3800.907404,
-    3799.031975,
-    3800.474432,
-    3801.768348,
-    3801.469771,
-    3800.065666,
-    3799.045099
+    3802.138879,
+    3801.515877,
+    3801.748328,
+    3801.736446,
+    3801.852243,
+    3800.549124,
+    3802.299479
    ],
-   "median": 3800.474432,
-   "min": 3799.031975,
-   "max": 3801.768348,
+   "median": 3801.748328,
+   "min": 3800.549124,
+   "max": 3802.299479,
    "unstable": false
   },
   {
@@ -2149,17 +2167,17 @@
    "name": "the read side alone: the image, the readout and the drain, the readout's byte loads taken out: a readout warp waits on the image",
    "unit": "cycles a window a warp",
    "samples": [
-    323.507102,
-    323.575758,
-    323.596916,
-    323.311997,
-    323.27181,
-    323.522994,
-    323.430694
+    323.194691,
+    323.29581,
+    323.252515,
+    323.397372,
+    323.251924,
+    323.182558,
+    323.330108
    ],
-   "median": 323.507102,
-   "min": 323.27181,
-   "max": 323.596916,
+   "median": 323.252515,
+   "min": 323.182558,
+   "max": 323.397372,
    "unstable": false
   },
   {
@@ -2167,17 +2185,17 @@
    "name": "the read side alone: the image, the readout and the drain, the readout's byte loads taken out: a readout warp waits on the drain",
    "unit": "cycles a window a warp",
    "samples": [
-    273.061109,
-    272.697384,
-    272.811731,
-    273.262044,
-    273.167732,
-    273.034653,
-    273.003166
+    272.9135,
+    272.950698,
+    272.868046,
+    272.78486,
+    272.89826,
+    272.986091,
+    273.088926
    ],
-   "median": 273.034653,
-   "min": 272.697384,
-   "max": 273.262044,
+   "median": 272.9135,
+   "min": 272.78486,
+   "max": 273.088926,
    "unstable": false
   },
   {
@@ -2185,17 +2203,17 @@
    "name": "the read side alone: the image, the readout and the drain, the readout's byte loads taken out: a readout warp forming its steps' A",
    "unit": "cycles a window a warp",
    "samples": [
-    1108.117661,
-    1108.253018,
-    1107.602302,
-    1108.195046,
-    1108.107333,
-    1108.426048,
-    1108.549568
+    1108.183416,
+    1108.41936,
+    1108.397994,
+    1108.278261,
+    1108.217537,
+    1108.454516,
+    1108.379143
    ],
-   "median": 1108.195046,
-   "min": 1107.602302,
-   "max": 1108.549568,
+   "median": 1108.379143,
+   "min": 1108.183416,
+   "max": 1108.454516,
    "unstable": false
   },
   {
@@ -2203,17 +2221,17 @@
    "name": "the read side alone: the image, the readout and the drain, the readout's byte loads taken out: a readout warp in its steps",
    "unit": "cycles a window a warp",
    "samples": [
-    2127.424627,
-    2127.469963,
-    2129.669034,
-    2127.1395,
-    2128.28273,
-    2126.239938,
-    2126.233428
+    2128.990234,
+    2128.775746,
+    2127.994703,
+    2130.257398,
+    2129.631777,
+    2128.306937,
+    2127.966915
    ],
-   "median": 2127.424627,
-   "min": 2126.233428,
-   "max": 2129.669034,
+   "median": 2128.775746,
+   "min": 2127.966915,
+   "max": 2130.257398,
    "unstable": false
   },
   {
@@ -2221,17 +2239,17 @@
    "name": "the read side alone: the image, the readout and the drain, the readout's byte loads taken out: a drain warp waits on the panel",
    "unit": "cycles a window a warp",
    "samples": [
-    1512.104048,
-    1511.961174,
-    1515.664003,
-    1513.150095,
-    1514.582327,
-    1512.190992,
-    1512.394768
+    1514.882872,
+    1514.28415,
+    1513.759115,
+    1516.091915,
+    1516.176432,
+    1513.582209,
+    1514.014678
    ],
-   "median": 1512.394768,
-   "min": 1511.961174,
-   "max": 1515.664003,
+   "median": 1514.28415,
+   "min": 1513.582209,
+   "max": 1516.176432,
    "unstable": false
   },
   {
@@ -2239,17 +2257,17 @@
    "name": "the read side alone: the image, the readout and the drain, no fold warp running, the readout's byte loads taken out",
    "unit": "cycles a window a CTA",
    "samples": [
-    4048.76669,
-    4049.261127,
-    4049.007339,
-    4048.883759,
-    4049.124763,
-    4048.710938,
-    4048.958333
+    4049.296993,
+    4049.049953,
+    4049.523319,
+    4049.06392,
+    4049.117543,
+    4049.4942,
+    4049.176728
    ],
-   "median": 4048.958333,
-   "min": 4048.710938,
-   "max": 4049.261127,
+   "median": 4049.176728,
+   "min": 4049.049953,
+   "max": 4049.523319,
    "unstable": false
   },
   {
@@ -2257,17 +2275,17 @@
    "name": "the read side alone: the image, the readout and the drain, no fold warp running, the readout's byte loads taken out: a readout warp waits on the drain",
    "unit": "cycles a window a warp",
    "samples": [
-    267.90696,
-    268.051018,
-    268.313832,
-    267.957209,
-    267.838394,
-    268.215021,
-    268.150095
+    267.243993,
+    267.420484,
+    266.791844,
+    268.056641,
+    267.720111,
+    267.571023,
+    268.417791
    ],
-   "median": 268.051018,
-   "min": 267.838394,
-   "max": 268.313832,
+   "median": 267.571023,
+   "min": 266.791844,
+   "max": 268.417791,
    "unstable": false
   },
   {
@@ -2275,17 +2293,17 @@
    "name": "the read side alone: the image, the readout and the drain, no fold warp running, the readout's byte loads taken out: a readout warp forming its steps' A",
    "unit": "cycles a window a warp",
    "samples": [
-    1021.120472,
-    1021.883937,
-    1020.880741,
-    1020.775657,
-    1021.242188,
-    1020.445431,
-    1021.238548
+    1022.042051,
+    1021.76311,
+    1022.447414,
+    1021.236476,
+    1021.622751,
+    1021.97236,
+    1021.911754
    ],
-   "median": 1021.120472,
-   "min": 1020.445431,
-   "max": 1021.883937,
+   "median": 1021.911754,
+   "min": 1021.236476,
+   "max": 1022.447414,
    "unstable": false
   },
   {
@@ -2293,17 +2311,17 @@
    "name": "the read side alone: the image, the readout and the drain, no fold warp running, the readout's byte loads taken out: a readout warp in its steps",
    "unit": "cycles a window a warp",
    "samples": [
-    2081.56031,
-    2081.425604,
-    2081.758819,
-    2081.947621,
-    2081.977746,
-    2081.741359,
-    2081.44842
+    2082.210198,
+    2081.939216,
+    2082.309777,
+    2081.671786,
+    2081.655806,
+    2081.995798,
+    2080.918324
    ],
-   "median": 2081.741359,
-   "min": 2081.425604,
-   "max": 2081.977746,
+   "median": 2081.939216,
+   "min": 2080.918324,
+   "max": 2082.309777,
    "unstable": false
   },
   {
@@ -2311,17 +2329,17 @@
    "name": "the read side alone: the image, the readout and the drain, no fold warp running, the readout's byte loads taken out: a drain warp waits on the panel",
    "unit": "cycles a window a warp",
    "samples": [
-    666.157315,
-    667.739169,
-    669.308949,
-    668.138376,
-    668.330315,
-    667.689927,
-    667.597479
+    669.163175,
+    668.327356,
+    667.434777,
+    667.413648,
+    666.740885,
+    668.7471,
+    667.585109
    ],
-   "median": 667.739169,
-   "min": 666.157315,
-   "max": 669.308949,
+   "median": 667.585109,
+   "min": 666.740885,
+   "max": 669.163175,
    "unstable": false
   },
   {
@@ -2329,17 +2347,17 @@
    "name": "the carry: both sides, the readout's byte loads taken out",
    "unit": "cycles a window a CTA",
    "samples": [
-    6728.872869,
-    6720.301728,
-    6725.427912,
-    6727.519295,
-    6727.208452,
-    6727.349787,
-    6720.803622
+    6791.453717,
+    6793.777107,
+    6792.592921,
+    6797.104403,
+    6787.362334,
+    6791.570312,
+    6791.388139
    ],
-   "median": 6727.208452,
-   "min": 6720.301728,
-   "max": 6728.872869,
+   "median": 6791.570312,
+   "min": 6787.362334,
+   "max": 6797.104403,
    "unstable": false
   },
   {
@@ -2347,17 +2365,17 @@
    "name": "the carry: both sides, the readout's byte loads taken out: a fold warp waits on the readout's read",
    "unit": "cycles a window a warp",
    "samples": [
-    353.697103,
-    352.704486,
-    352.409786,
-    353.447384,
-    352.950388,
-    352.933401,
-    352.665365
+    353.429998,
+    352.565696,
+    353.214296,
+    352.859863,
+    352.599772,
+    352.673059,
+    355.245147
    ],
-   "median": 352.933401,
-   "min": 352.409786,
-   "max": 353.697103,
+   "median": 352.859863,
+   "min": 352.565696,
+   "max": 355.245147,
    "unstable": false
   },
   {
@@ -2365,17 +2383,17 @@
    "name": "the carry: both sides, the readout's byte loads taken out: a fold warp waits on its producer",
    "unit": "cycles a window a warp",
    "samples": [
-    4258.429658,
-    4228.584473,
-    4250.112142,
-    4247.299923,
-    4252.446378,
-    4258.585849,
-    4237.464918
+    4365.749305,
+    4370.187308,
+    4359.138302,
+    4365.605735,
+    4345.135298,
+    4346.680842,
+    4341.762592
    ],
-   "median": 4250.112142,
-   "min": 4228.584473,
-   "max": 4258.585849,
+   "median": 4359.138302,
+   "min": 4341.762592,
+   "max": 4370.187308,
    "unstable": false
   },
   {
@@ -2383,17 +2401,17 @@
    "name": "the carry: both sides, the readout's byte loads taken out: a readout warp waits on the image",
    "unit": "cycles a window a warp",
    "samples": [
-    2023.368933,
-    2014.859908,
-    2020.831291,
-    2020.757073,
-    2021.416815,
-    2022.888494,
-    2016.202681
+    2098.455729,
+    2103.877219,
+    2096.530865,
+    2104.8539,
+    2095.266454,
+    2097.023645,
+    2093.000296
    ],
-   "median": 2020.831291,
-   "min": 2014.859908,
-   "max": 2023.368933,
+   "median": 2097.023645,
+   "min": 2093.000296,
+   "max": 2104.8539,
    "unstable": false
   },
   {
@@ -2401,17 +2419,17 @@
    "name": "the carry: both sides, the readout's byte loads taken out: a readout warp waits on the drain",
    "unit": "cycles a window a warp",
    "samples": [
-    344.329161,
-    344.787553,
-    344.163116,
-    344.642578,
-    344.556493,
-    344.410008,
-    344.654563
+    345.030629,
+    344.63882,
+    344.817057,
+    344.256954,
+    344.900006,
+    345.108576,
+    345.492247
    ],
-   "median": 344.556493,
-   "min": 344.163116,
-   "max": 344.787553,
+   "median": 344.900006,
+   "min": 344.256954,
+   "max": 345.492247,
    "unstable": false
   },
   {
@@ -2419,17 +2437,17 @@
    "name": "the carry: both sides, the readout's byte loads taken out: a readout warp forming its steps' A",
    "unit": "cycles a window a warp",
    "samples": [
-    1349.626805,
-    1354.752663,
-    1351.551255,
-    1352.293679,
-    1350.908943,
-    1351.926995,
-    1351.091619
+    1343.607955,
+    1342.773733,
+    1345.679569,
+    1345.140595,
+    1343.385239,
+    1345.140181,
+    1346.495561
    ],
-   "median": 1351.551255,
-   "min": 1349.626805,
-   "max": 1354.752663,
+   "median": 1345.140181,
+   "min": 1342.773733,
+   "max": 1346.495561,
    "unstable": false
   },
   {
@@ -2437,17 +2455,17 @@
    "name": "the carry: both sides, the readout's byte loads taken out: a readout warp in its steps",
    "unit": "cycles a window a warp",
    "samples": [
-    1761.449988,
-    1759.659979,
-    1761.293886,
-    1761.880149,
-    1760.464163,
-    1760.010772,
-    1759.241181
+    1762.000681,
+    1760.857244,
+    1762.057173,
+    1760.680427,
+    1762.521129,
+    1761.892371,
+    1763.019946
    ],
-   "median": 1760.464163,
-   "min": 1759.241181,
-   "max": 1761.880149,
+   "median": 1762.000681,
+   "min": 1760.680427,
+   "max": 1763.019946,
    "unstable": false
   },
   {
@@ -2455,17 +2473,17 @@
    "name": "the carry: both sides, the readout's byte loads taken out: a drain warp waits on the panel",
    "unit": "cycles a window a warp",
    "samples": [
-    2864.845348,
-    2859.599669,
-    2861.625296,
-    2867.220703,
-    2866.911162,
-    2856.441288,
-    2860.967981
+    2951.578303,
+    2953.298,
+    2950.024148,
+    2957.560665,
+    2959.019886,
+    2961.785097,
+    2962.002427
    ],
-   "median": 2861.625296,
-   "min": 2856.441288,
-   "max": 2867.220703,
+   "median": 2957.560665,
+   "min": 2950.024148,
+   "max": 2962.002427,
    "unstable": false
   },
   {
@@ -2473,17 +2491,17 @@
    "name": "the carry: both sides, the drains' global adds taken out, the readout's byte loads taken out",
    "unit": "cycles a window a CTA",
    "samples": [
-    6543.064986,
-    6531.476681,
-    6533.390152,
-    6534.293797,
-    6538.849905,
-    6533.125473,
-    6538.154711
+    6567.435014,
+    6571.8125,
+    6567.523793,
+    6566.696141,
+    6566.739465,
+    6567.403409,
+    6570.170336
    ],
-   "median": 6534.293797,
-   "min": 6531.476681,
-   "max": 6543.064986,
+   "median": 6567.435014,
+   "min": 6566.696141,
+   "max": 6571.8125,
    "unstable": false
   },
   {
@@ -2491,17 +2509,17 @@
    "name": "the carry: both sides, the readout's bytes one wide load a warp",
    "unit": "cycles a window a CTA",
    "samples": [
-    6961.691051,
-    6954.631629,
-    6954.873343,
-    6956.942827,
-    6953.750592,
-    6953.308357,
-    6955.584044
+    7061.312145,
+    7058.526634,
+    7060.125829,
+    7052.742661,
+    7060.927083,
+    7058.265507,
+    7052.787169
    ],
-   "median": 6954.873343,
-   "min": 6953.308357,
-   "max": 6961.691051,
+   "median": 7058.526634,
+   "min": 7052.742661,
+   "max": 7061.312145,
    "unstable": false
   },
   {
@@ -2509,17 +2527,17 @@
    "name": "the carry: both sides, the readout's bytes one wide load a warp: a fold warp waits on the readout's read",
    "unit": "cycles a window a warp",
    "samples": [
-    344.789654,
-    344.94879,
-    346.664743,
-    344.811479,
-    346.499867,
-    348.633271,
-    346.029504
+    348.767904,
+    346.106652,
+    347.336322,
+    348.232437,
+    348.774858,
+    346.441806,
+    344.732437
    ],
-   "median": 346.029504,
-   "min": 344.789654,
-   "max": 348.633271,
+   "median": 347.336322,
+   "min": 344.732437,
+   "max": 348.774858,
    "unstable": false
   },
   {
@@ -2527,17 +2545,17 @@
    "name": "the carry: both sides, the readout's bytes one wide load a warp: a fold warp waits on its producer",
    "unit": "cycles a window a warp",
    "samples": [
-    4573.105114,
-    4543.806019,
-    4554.20382,
-    4556.526974,
-    4555.129173,
-    4544.3899,
-    4557.438062
+    4690.764397,
+    4686.675382,
+    4692.624763,
+    4685.131496,
+    4695.418501,
+    4693.203835,
+    4692.278246
    ],
-   "median": 4555.129173,
-   "min": 4543.806019,
-   "max": 4573.105114,
+   "median": 4692.278246,
+   "min": 4685.131496,
+   "max": 4695.418501,
    "unstable": false
   },
   {
@@ -2545,17 +2563,17 @@
    "name": "the carry: both sides, the readout's bytes one wide load a warp: a readout warp waits on the image",
    "unit": "cycles a window a warp",
    "samples": [
-    2143.15409,
-    2137.518821,
-    2139.015507,
-    2142.184511,
-    2135.284772,
-    2133.794892,
-    2141.549923
+    2224.880593,
+    2222.104966,
+    2227.017282,
+    2218.816406,
+    2224.865027,
+    2225.595259,
+    2221.520389
    ],
-   "median": 2139.015507,
-   "min": 2133.794892,
-   "max": 2143.15409,
+   "median": 2224.865027,
+   "min": 2218.816406,
+   "max": 2227.017282,
    "unstable": false
   },
   {
@@ -2563,17 +2581,17 @@
    "name": "the carry: both sides, the readout's bytes one wide load a warp: a readout warp waits on the drain",
    "unit": "cycles a window a warp",
    "samples": [
-    314.945194,
-    314.633404,
-    314.695875,
-    314.419833,
-    314.593336,
-    314.851119,
-    314.021692
+    314.348574,
+    314.26959,
+    313.902107,
+    314.396307,
+    314.124674,
+    314.139826,
+    314.669448
    ],
-   "median": 314.633404,
-   "min": 314.021692,
-   "max": 314.945194,
+   "median": 314.26959,
+   "min": 313.902107,
+   "max": 314.669448,
    "unstable": false
   },
   {
@@ -2581,17 +2599,17 @@
    "name": "the carry: both sides, the readout's bytes one wide load a warp: a readout warp forming its steps' A",
    "unit": "cycles a window a warp",
    "samples": [
-    1616.496686,
-    1621.25506,
-    1619.490767,
-    1617.463068,
-    1619.075077,
-    1621.851119,
-    1618.267075
+    1606.021129,
+    1605.865885,
+    1604.017223,
+    1608.208156,
+    1606.487689,
+    1605.700432,
+    1606.49926
    ],
-   "median": 1619.075077,
-   "min": 1616.496686,
-   "max": 1621.851119,
+   "median": 1606.021129,
+   "min": 1604.017223,
+   "max": 1608.208156,
    "unstable": false
   },
   {
@@ -2599,17 +2617,17 @@
    "name": "the carry: both sides, the readout's bytes one wide load a warp: a readout warp in its steps",
    "unit": "cycles a window a warp",
    "samples": [
-    1867.516572,
-    1865.74275,
-    1865.969223,
-    1864.670691,
-    1866.880356,
-    1866.047437,
-    1863.394857
+    1873.643348,
+    1871.940785,
+    1872.719194,
+    1870.946407,
+    1872.771484,
+    1870.201172,
+    1872.690104
    ],
-   "median": 1865.969223,
-   "min": 1863.394857,
-   "max": 1867.516572,
+   "median": 1872.690104,
+   "min": 1870.201172,
+   "max": 1873.643348,
    "unstable": false
   },
   {
@@ -2617,17 +2635,17 @@
    "name": "the carry: both sides, the readout's bytes one wide load a warp: a drain warp waits on the panel",
    "unit": "cycles a window a warp",
    "samples": [
-    3056.515388,
-    3051.023556,
-    3046.161044,
-    3056.742779,
-    3045.402699,
-    3046.801787,
-    3053.65915
+    3177.874112,
+    3175.397431,
+    3173.862098,
+    3160.297053,
+    3170.862334,
+    3168.429865,
+    3165.656309
    ],
-   "median": 3051.023556,
-   "min": 3045.402699,
-   "max": 3056.742779,
+   "median": 3170.862334,
+   "min": 3160.297053,
+   "max": 3177.874112,
    "unstable": false
   },
   {
@@ -2635,17 +2653,17 @@
    "name": "the read side alone: the image, the readout and the drain, the readout's bytes one wide load a warp",
    "unit": "cycles a window a CTA",
    "samples": [
-    5047.563329,
-    5041.448509,
-    5041.267401,
-    5044.384351,
-    5041.843868,
-    5044.139205,
-    5044.545691
+    5046.803385,
+    5046.198509,
+    5044.991004,
+    5044.581795,
+    5045.407552,
+    5046.176491,
+    5046.345881
    ],
-   "median": 5044.139205,
-   "min": 5041.267401,
-   "max": 5047.563329,
+   "median": 5046.176491,
+   "min": 5044.581795,
+   "max": 5046.803385,
    "unstable": false
   },
   {
@@ -2653,17 +2671,17 @@
    "name": "the read side alone: the image, the readout and the drain, the readout's bytes one wide load a warp: a fold warp waits on the readout's read",
    "unit": "cycles a window a warp",
    "samples": [
-    3707.537109,
-    3708.063728,
-    3707.146987,
-    3707.438018,
-    3708.876924,
-    3707.693182,
-    3708.69586
+    3707.769457,
+    3707.874231,
+    3706.851888,
+    3707.05414,
+    3705.855765,
+    3707.3572,
+    3707.801003
    ],
-   "median": 3707.693182,
-   "min": 3707.146987,
-   "max": 3708.876924,
+   "median": 3707.3572,
+   "min": 3705.855765,
+   "max": 3707.874231,
    "unstable": false
   },
   {
@@ -2671,17 +2689,17 @@
    "name": "the read side alone: the image, the readout and the drain, the readout's bytes one wide load a warp: a readout warp waits on the image",
    "unit": "cycles a window a warp",
    "samples": [
-    268.103486,
-    268.94768,
-    268.332416,
-    268.332653,
-    268.647047,
-    268.556966,
-    268.529741
+    268.706439,
+    268.774355,
+    268.459487,
+    268.769798,
+    268.272638,
+    268.536902,
+    268.533262
    ],
-   "median": 268.529741,
-   "min": 268.103486,
-   "max": 268.94768,
+   "median": 268.536902,
+   "min": 268.272638,
+   "max": 268.774355,
    "unstable": false
   },
   {
@@ -2689,17 +2707,17 @@
    "name": "the read side alone: the image, the readout and the drain, the readout's bytes one wide load a warp: a readout warp waits on the drain",
    "unit": "cycles a window a warp",
    "samples": [
-    241.904208,
-    241.987098,
-    241.876213,
-    241.94549,
-    242.158588,
-    241.784476,
-    241.943448
+    241.972479,
+    242.036754,
+    241.853042,
+    242.0058,
+    241.849491,
+    241.890803,
+    242.031842
    ],
-   "median": 241.943448,
-   "min": 241.784476,
-   "max": 242.158588,
+   "median": 241.972479,
+   "min": 241.849491,
+   "max": 242.036754,
    "unstable": false
   },
   {
@@ -2707,17 +2725,17 @@
    "name": "the read side alone: the image, the readout and the drain, the readout's bytes one wide load a warp: a readout warp forming its steps' A",
    "unit": "cycles a window a warp",
    "samples": [
-    1491.243578,
-    1489.239287,
-    1487.084872,
-    1488.619318,
-    1487.648526,
-    1489.229581,
-    1488.917288
+    1492.28779,
+    1491.579427,
+    1492.348011,
+    1491.70638,
+    1491.545455,
+    1492.565134,
+    1491.766039
    ],
-   "median": 1488.917288,
-   "min": 1487.084872,
-   "max": 1491.243578,
+   "median": 1491.766039,
+   "min": 1491.545455,
+   "max": 1492.565134,
    "unstable": false
   },
   {
@@ -2725,17 +2743,17 @@
    "name": "the read side alone: the image, the readout and the drain, the readout's bytes one wide load a warp: a readout warp in its steps",
    "unit": "cycles a window a warp",
    "samples": [
-    2122.868993,
-    2122.479906,
-    2121.532552,
-    2122.517726,
-    2123.65406,
-    2123.004557,
-    2122.65335
+    2122.866803,
+    2123.293738,
+    2123.138938,
+    2122.592478,
+    2121.68679,
+    2123.243667,
+    2122.54285
    ],
-   "median": 2122.65335,
-   "min": 2121.532552,
-   "max": 2123.65406,
+   "median": 2122.866803,
+   "min": 2121.68679,
+   "max": 2123.293738,
    "unstable": false
   },
   {
@@ -2743,17 +2761,17 @@
    "name": "the read side alone: the image, the readout and the drain, the readout's bytes one wide load a warp: a drain warp waits on the panel",
    "unit": "cycles a window a warp",
    "samples": [
-    1414.550781,
-    1408.431641,
-    1406.674065,
-    1410.124882,
-    1409.370147,
-    1410.558594,
-    1411.247751
+    1414.688802,
+    1414.965791,
+    1413.674479,
+    1413.219756,
+    1411.568182,
+    1414.67223,
+    1414.117188
    ],
-   "median": 1410.124882,
-   "min": 1406.674065,
-   "max": 1414.550781,
+   "median": 1414.117188,
+   "min": 1411.568182,
+   "max": 1414.965791,
    "unstable": false
   },
   {
@@ -2761,17 +2779,17 @@
    "name": "the read side alone: the image, the readout and the drain, no fold warp running, the readout's bytes one wide load a warp",
    "unit": "cycles a window a CTA",
    "samples": [
-    4237.733428,
-    4202.944366,
-    4189.996212,
-    4185.966974,
-    4199.839607,
-    4181.756866,
-    4208.637074
+    4213.227391,
+    4222.696023,
+    4216.013849,
+    4208.174598,
+    4219.487453,
+    4224.683712,
+    4209.045691
    ],
-   "median": 4199.839607,
-   "min": 4181.756866,
-   "max": 4237.733428,
+   "median": 4216.013849,
+   "min": 4208.174598,
+   "max": 4224.683712,
    "unstable": false
   },
   {
@@ -2779,17 +2797,17 @@
    "name": "the read side alone: the image, the readout and the drain, no fold warp running, the readout's bytes one wide load a warp: a readout warp waits on the drain",
    "unit": "cycles a window a warp",
    "samples": [
-    227.403498,
-    229.118105,
-    228.368993,
-    228.723633,
-    228.492306,
-    230.330344,
-    228.744673
+    228.608931,
+    227.708274,
+    228.971798,
+    228.742661,
+    228.836174,
+    228.070786,
+    228.499734
    ],
-   "median": 228.723633,
-   "min": 227.403498,
-   "max": 230.330344,
+   "median": 228.608931,
+   "min": 227.708274,
+   "max": 228.971798,
    "unstable": false
   },
   {
@@ -2797,17 +2815,17 @@
    "name": "the read side alone: the image, the readout and the drain, no fold warp running, the readout's bytes one wide load a warp: a readout warp forming its steps' A",
    "unit": "cycles a window a warp",
    "samples": [
-    1359.238932,
-    1319.810754,
-    1307.143851,
-    1302.33428,
-    1316.087979,
-    1295.625355,
-    1324.902758
+    1332.604374,
+    1341.180782,
+    1334.195342,
+    1325.05306,
+    1340.351148,
+    1342.503995,
+    1327.110115
    ],
-   "median": 1316.087979,
-   "min": 1295.625355,
-   "max": 1359.238932,
+   "median": 1334.195342,
+   "min": 1325.05306,
+   "max": 1342.503995,
    "unstable": false
   },
   {
@@ -2815,17 +2833,17 @@
    "name": "the read side alone: the image, the readout and the drain, no fold warp running, the readout's bytes one wide load a warp: a readout warp in its steps",
    "unit": "cycles a window a warp",
    "samples": [
-    1962.493608,
-    1948.106564,
-    1947.089518,
-    1942.617217,
-    1947.997988,
-    1943.03853,
-    1954.464814
+    1960.136926,
+    1960.890388,
+    1958.819218,
+    1960.605291,
+    1955.946733,
+    1960.738991,
+    1956.99707
    ],
-   "median": 1947.997988,
-   "min": 1942.617217,
-   "max": 1962.493608,
+   "median": 1960.136926,
+   "min": 1955.946733,
+   "max": 1960.890388,
    "unstable": false
   },
   {
@@ -2833,35 +2851,35 @@
    "name": "the read side alone: the image, the readout and the drain, no fold warp running, the readout's bytes one wide load a warp: a drain warp waits on the panel",
    "unit": "cycles a window a warp",
    "samples": [
-    721.354167,
-    687.936198,
-    670.24929,
-    668.690874,
-    681.56688,
-    662.092921,
-    694.437855
+    692.431345,
+    706.001776,
+    699.210819,
+    689.176255,
+    701.780125,
+    708.567472,
+    688.892637
    ],
-   "median": 681.56688,
-   "min": 662.092921,
-   "max": 721.354167,
-   "unstable": true
+   "median": 699.210819,
+   "min": 688.892637,
+   "max": 708.567472,
+   "unstable": false
   },
   {
    "lab": "result",
    "name": "the carry: both sides, the long waits asleep at named barriers, the readout's bytes one wide load a warp",
    "unit": "cycles a window a CTA",
    "samples": [
-    6979.96508,
-    6950.799598,
-    6960.829782,
-    6971.001894,
-    6967.046165,
-    6961.810369,
-    6971.999645
+    7096.97313,
+    7098.78776,
+    7098.772846,
+    7097.255208,
+    7100.690341,
+    7097.481416,
+    7103.200521
    ],
-   "median": 6967.046165,
-   "min": 6950.799598,
-   "max": 6979.96508,
+   "median": 7098.772846,
+   "min": 7096.97313,
+   "max": 7103.200521,
    "unstable": false
   },
   {
@@ -2869,17 +2887,17 @@
    "name": "the carry: both sides, the long waits asleep at named barriers, the readout's bytes one wide load a warp: a fold warp waits on the readout's read",
    "unit": "cycles a window a warp",
    "samples": [
-    8.52579,
-    8.543279,
-    8.542732,
-    8.540808,
-    8.537065,
-    8.536014,
-    8.543827
+    8.414403,
+    8.415187,
+    8.429998,
+    8.412672,
+    8.425071,
+    8.424612,
+    8.429717
    ],
-   "median": 8.540808,
-   "min": 8.52579,
-   "max": 8.543827,
+   "median": 8.424612,
+   "min": 8.412672,
+   "max": 8.429998,
    "unstable": false
   },
   {
@@ -2887,17 +2905,17 @@
    "name": "the carry: both sides, the long waits asleep at named barriers, the readout's bytes one wide load a warp: a fold warp waits on its producer",
    "unit": "cycles a window a warp",
    "samples": [
-    27.377145,
-    27.526367,
-    27.410911,
-    27.429318,
-    27.513775,
-    27.418324,
-    27.296475
+    25.824914,
+    25.713024,
+    25.902033,
+    25.651781,
+    25.977746,
+    25.824382,
+    25.845999
    ],
-   "median": 27.418324,
-   "min": 27.296475,
-   "max": 27.526367,
+   "median": 25.824914,
+   "min": 25.651781,
+   "max": 25.977746,
    "unstable": false
   },
   {
@@ -2905,17 +2923,17 @@
    "name": "the carry: both sides, the long waits asleep at named barriers, the readout's bytes one wide load a warp: a readout warp waits on the image",
    "unit": "cycles a window a warp",
    "samples": [
-    303.105173,
-    298.084843,
-    297.932588,
-    299.375917,
-    301.437914,
-    298.026604,
-    301.22819
+    318.977657,
+    317.973426,
+    318.118164,
+    317.024089,
+    315.456676,
+    316.854433,
+    317.795898
    ],
-   "median": 299.375917,
-   "min": 297.932588,
-   "max": 303.105173,
+   "median": 317.795898,
+   "min": 315.456676,
+   "max": 318.977657,
    "unstable": false
   },
   {
@@ -2923,17 +2941,17 @@
    "name": "the carry: both sides, the long waits asleep at named barriers, the readout's bytes one wide load a warp: a readout warp waits on the drain",
    "unit": "cycles a window a warp",
    "samples": [
-    265.098366,
-    264.659979,
-    265.259973,
-    265.18821,
-    264.984819,
-    264.971709,
-    265.189335
+    259.241181,
+    259.445046,
+    259.243815,
+    259.905362,
+    259.346473,
+    259.582564,
+    259.230143
    ],
-   "median": 265.098366,
-   "min": 264.659979,
-   "max": 265.259973,
+   "median": 259.346473,
+   "min": 259.230143,
+   "max": 259.905362,
    "unstable": false
   },
   {
@@ -2941,17 +2959,17 @@
    "name": "the carry: both sides, the long waits asleep at named barriers, the readout's bytes one wide load a warp: a readout warp forming its steps' A",
    "unit": "cycles a window a warp",
    "samples": [
-    3720.367188,
-    3688.952,
-    3699.588867,
-    3711.247425,
-    3707.349018,
-    3700.882517,
-    3713.76305
+    3816.46804,
+    3817.881925,
+    3819.13956,
+    3815.634499,
+    3817.583511,
+    3817.057676,
+    3820.468454
    ],
-   "median": 3707.349018,
-   "min": 3688.952,
-   "max": 3720.367188,
+   "median": 3817.583511,
+   "min": 3815.634499,
+   "max": 3820.468454,
    "unstable": false
   },
   {
@@ -2959,17 +2977,17 @@
    "name": "the carry: both sides, the long waits asleep at named barriers, the readout's bytes one wide load a warp: a readout warp in its steps",
    "unit": "cycles a window a warp",
    "samples": [
-    1690.858191,
-    1697.001036,
-    1697.237009,
-    1692.853161,
-    1692.516897,
-    1695.55815,
-    1690.53705
+    1673.537938,
+    1674.111624,
+    1674.375799,
+    1676.227687,
+    1679.143673,
+    1675.202119,
+    1674.697739
    ],
-   "median": 1692.853161,
-   "min": 1690.53705,
-   "max": 1697.237009,
+   "median": 1674.697739,
+   "min": 1673.537938,
+   "max": 1679.143673,
    "unstable": false
   },
   {
@@ -2977,17 +2995,17 @@
    "name": "the carry: both sides, the long waits asleep at named barriers, the readout's bytes one wide load a warp: a drain warp waits on the panel",
    "unit": "cycles a window a warp",
    "samples": [
-    3391.933712,
-    3345.736091,
-    3361.627308,
-    3376.856416,
-    3375.268703,
-    3367.406664,
-    3380.952829
+    3376.033854,
+    3377.09446,
+    3374.49491,
+    3367.995088,
+    3363.862571,
+    3367.472538,
+    3370.188151
    ],
-   "median": 3375.268703,
-   "min": 3345.736091,
-   "max": 3391.933712,
+   "median": 3370.188151,
+   "min": 3363.862571,
+   "max": 3377.09446,
    "unstable": false
   },
   {
@@ -2995,17 +3013,17 @@
    "name": "the read side alone: the image, the readout and the drain, the image's stores taken out",
    "unit": "cycles a window a CTA",
    "samples": [
-    4992.273319,
-    4992.835346,
-    4992.556463,
-    4992.122633,
-    4992.180871,
-    4992.37571,
-    4992.500237
+    4994.258523,
+    4994.072088,
+    4992.448509,
+    4993.8009,
+    4994.905066,
+    4994.154001,
+    4993.94259
    ],
-   "median": 4992.37571,
-   "min": 4992.122633,
-   "max": 4992.835346,
+   "median": 4994.072088,
+   "min": 4992.448509,
+   "max": 4994.905066,
    "unstable": false
   },
   {
@@ -3013,17 +3031,17 @@
    "name": "the read side alone: the image, the readout and the drain, the fold's fence behind its image taken out",
    "unit": "cycles a window a CTA",
    "samples": [
-    5482.530066,
-    5482.009588,
-    5482.176018,
-    5480.596709,
-    5481.729995,
-    5481.900687,
-    5481.84304
+    5505.173532,
+    5504.594934,
+    5506.482599,
+    5505.860914,
+    5506.320549,
+    5506.233191,
+    5505.067353
    ],
-   "median": 5481.900687,
-   "min": 5480.596709,
-   "max": 5482.530066,
+   "median": 5505.860914,
+   "min": 5504.594934,
+   "max": 5506.482599,
    "unstable": false
   },
   {
@@ -3031,17 +3049,17 @@
    "name": "the read side alone: the image, the readout and the drain, the fold's fence behind its image taken out: a fold warp waits on the readout's read",
    "unit": "cycles a window a warp",
    "samples": [
-    4945.216723,
-    4944.624941,
-    4944.760831,
-    4943.349313,
-    4944.354181,
-    4944.946126,
-    4944.291622
+    4967.544093,
+    4967.70129,
+    4969.056552,
+    4967.83064,
+    4968.521618,
+    4969.344949,
+    4967.650435
    ],
-   "median": 4944.624941,
-   "min": 4943.349313,
-   "max": 4945.216723,
+   "median": 4967.83064,
+   "min": 4967.544093,
+   "max": 4969.344949,
    "unstable": false
   },
   {
@@ -3049,17 +3067,17 @@
    "name": "the read side alone: the image, the readout and the drain, the fold's fence behind its image taken out: a readout warp waits on the image",
    "unit": "cycles a window a warp",
    "samples": [
-    300.351888,
-    300.474195,
-    300.419508,
-    300.554273,
-    300.833925,
-    300.712565,
-    300.262163
+    304.98908,
+    304.765684,
+    305.12281,
+    305.377279,
+    304.981357,
+    305.239199,
+    304.946733
    ],
-   "median": 300.474195,
-   "min": 300.262163,
-   "max": 300.833925,
+   "median": 304.98908,
+   "min": 304.765684,
+   "max": 305.377279,
    "unstable": false
   },
   {
@@ -3067,17 +3085,17 @@
    "name": "the read side alone: the image, the readout and the drain, the fold's fence behind its image taken out: a readout warp waits on the drain",
    "unit": "cycles a window a warp",
    "samples": [
-    287.392371,
-    287.566584,
-    287.507132,
-    287.629764,
-    287.491211,
-    287.665779,
-    287.512163
+    287.719697,
+    287.528054,
+    287.825018,
+    287.840998,
+    287.658026,
+    287.829279,
+    287.613488
    ],
-   "median": 287.512163,
-   "min": 287.392371,
-   "max": 287.665779,
+   "median": 287.719697,
+   "min": 287.528054,
+   "max": 287.840998,
    "unstable": false
   },
   {
@@ -3085,17 +3103,17 @@
    "name": "the read side alone: the image, the readout and the drain, the fold's fence behind its image taken out: a readout warp forming its steps' A",
    "unit": "cycles a window a warp",
    "samples": [
-    1077.713157,
-    1077.090939,
-    1076.447058,
-    1076.912612,
-    1078.407227,
-    1078.191969,
-    1076.854463
+    1079.352539,
+    1078.451054,
+    1078.107244,
+    1078.135032,
+    1077.925041,
+    1079.923236,
+    1077.66427
    ],
-   "median": 1077.090939,
-   "min": 1076.447058,
-   "max": 1078.407227,
+   "median": 1078.135032,
+   "min": 1077.66427,
+   "max": 1079.923236,
    "unstable": false
   },
   {
@@ -3103,17 +3121,17 @@
    "name": "the read side alone: the image, the readout and the drain, the fold's fence behind its image taken out: a readout warp in its steps",
    "unit": "cycles a window a warp",
    "samples": [
-    2484.893288,
-    2484.959695,
-    2486.408884,
-    2483.723041,
-    2483.30448,
-    2484.020745,
-    2483.727776
+    2489.01962,
+    2488.968099,
+    2492.859049,
+    2488.484553,
+    2491.052646,
+    2489.428741,
+    2491.377871
    ],
-   "median": 2484.020745,
-   "min": 2483.30448,
-   "max": 2486.408884,
+   "median": 2489.428741,
+   "min": 2488.484553,
+   "max": 2492.859049,
    "unstable": false
   },
   {
@@ -3121,17 +3139,17 @@
    "name": "the read side alone: the image, the readout and the drain, the fold's fence behind its image taken out: a drain warp waits on the panel",
    "unit": "cycles a window a warp",
    "samples": [
-    1929.659979,
-    1930.736861,
-    1935.941465,
-    1930.310665,
-    1928.665069,
-    1928.336056,
-    1931.001302
+    1942.568478,
+    1941.98402,
+    1947.555279,
+    1942.560073,
+    1945.186494,
+    1941.115649,
+    1947.156546
    ],
-   "median": 1930.310665,
-   "min": 1928.336056,
-   "max": 1935.941465,
+   "median": 1942.568478,
+   "min": 1941.115649,
+   "max": 1947.555279,
    "unstable": false
   },
   {
@@ -3139,17 +3157,17 @@
    "name": "the read side alone: the image, the readout and the drain, the image's stores taken out, the fold's fence behind its image taken out",
    "unit": "cycles a window a CTA",
    "samples": [
-    4982.203835,
-    4981.304332,
-    4982.115649,
-    4981.935133,
-    4981.327415,
-    4980.926136,
-    4981.206084
+    4983.870384,
+    4983.173769,
+    4981.902344,
+    4983.133404,
+    4981.483546,
+    4984.064749,
+    4983.282434
    ],
-   "median": 4981.327415,
-   "min": 4980.926136,
-   "max": 4982.203835,
+   "median": 4983.173769,
+   "min": 4981.483546,
+   "max": 4984.064749,
    "unstable": false
   },
   {
@@ -3157,17 +3175,17 @@
    "name": "the carry: both sides, the fold's fence behind its image taken out",
    "unit": "cycles a window a CTA",
    "samples": [
-    6917.914536,
-    6911.391572,
-    6919.585109,
-    6904.861032,
-    6913.858073,
-    6912.515743,
-    6908.623224
+    7009.448745,
+    7009.377841,
+    7017.947798,
+    7011.679214,
+    7015.974313,
+    7012.333452,
+    7011.2384
    ],
-   "median": 6912.515743,
-   "min": 6904.861032,
-   "max": 6919.585109,
+   "median": 7011.679214,
+   "min": 7009.377841,
+   "max": 7017.947798,
    "unstable": false
   },
   {
@@ -3175,17 +3193,17 @@
    "name": "the carry: both sides, the fold's fence behind its image taken out: a fold warp waits on the readout's read",
    "unit": "cycles a window a warp",
    "samples": [
-    493.68167,
-    495.24349,
-    492.251687,
-    491.931803,
-    492.8721,
-    491.657952,
-    483.533677
+    474.188299,
+    486.182898,
+    480.997958,
+    483.818182,
+    493.852672,
+    486.936272,
+    486.331809
    ],
-   "median": 492.251687,
-   "min": 483.533677,
-   "max": 495.24349,
+   "median": 486.182898,
+   "min": 474.188299,
+   "max": 493.852672,
    "unstable": false
   },
   {
@@ -3193,17 +3211,17 @@
    "name": "the carry: both sides, the fold's fence behind its image taken out: a fold warp waits on its producer",
    "unit": "cycles a window a warp",
    "samples": [
-    4935.568818,
-    4914.14064,
-    4930.643022,
-    4909.352258,
-    4926.559023,
-    4925.133242,
-    4927.635136
+    5073.783543,
+    5053.366803,
+    5073.861387,
+    5065.23112,
+    5055.916755,
+    5065.398334,
+    5054.56065
    ],
-   "median": 4926.559023,
-   "min": 4909.352258,
-   "max": 4935.568818,
+   "median": 5065.23112,
+   "min": 5053.366803,
+   "max": 5073.861387,
    "unstable": false
   },
   {
@@ -3211,17 +3229,17 @@
    "name": "the carry: both sides, the fold's fence behind its image taken out: a readout warp waits on the image",
    "unit": "cycles a window a warp",
    "samples": [
-    1679.916785,
-    1670.099787,
-    1686.866004,
-    1673.010298,
-    1686.370679,
-    1683.067501,
-    1683.411665
+    1780.078125,
+    1763.748432,
+    1776.909831,
+    1778.309629,
+    1777.88009,
+    1766.90483,
+    1764.856771
    ],
-   "median": 1683.067501,
-   "min": 1670.099787,
-   "max": 1686.866004,
+   "median": 1776.909831,
+   "min": 1763.748432,
+   "max": 1780.078125,
    "unstable": false
   },
   {
@@ -3229,17 +3247,17 @@
    "name": "the carry: both sides, the fold's fence behind its image taken out: a readout warp waits on the drain",
    "unit": "cycles a window a warp",
    "samples": [
-    334.624438,
-    335.325343,
-    334.499734,
-    334.621597,
-    334.540927,
-    334.784387,
-    334.597064
+    330.164092,
+    331.035452,
+    330.869377,
+    330.611151,
+    330.192531,
+    330.904622,
+    330.742691
    ],
-   "median": 334.621597,
-   "min": 334.499734,
-   "max": 335.325343,
+   "median": 330.742691,
+   "min": 330.164092,
+   "max": 331.035452,
    "unstable": false
   },
   {
@@ -3247,17 +3265,17 @@
    "name": "the carry: both sides, the fold's fence behind its image taken out: a readout warp forming its steps' A",
    "unit": "cycles a window a warp",
    "samples": [
-    1424.005741,
-    1428.877723,
-    1427.162109,
-    1425.77906,
-    1423.160955,
-    1422.869792,
-    1422.753877
+    1428.073213,
+    1434.038974,
+    1429.815578,
+    1427.757073,
+    1428.615589,
+    1431.376983,
+    1432.815371
    ],
-   "median": 1424.005741,
-   "min": 1422.753877,
-   "max": 1428.877723,
+   "median": 1429.815578,
+   "min": 1427.757073,
+   "max": 1434.038974,
    "unstable": false
   },
   {
@@ -3265,17 +3283,17 @@
    "name": "the carry: both sides, the fold's fence behind its image taken out: a readout warp in its steps",
    "unit": "cycles a window a warp",
    "samples": [
-    2169.456942,
-    2166.150775,
-    2165.939719,
-    2166.397491,
-    2165.149029,
-    2165.897402,
-    2165.835346
+    2169.070105,
+    2172.512991,
+    2171.571822,
+    2169.686287,
+    2169.772816,
+    2171.596976,
+    2172.354936
    ],
-   "median": 2165.939719,
-   "min": 2165.149029,
-   "max": 2169.456942,
+   "median": 2171.571822,
+   "min": 2169.070105,
+   "max": 2172.512991,
    "unstable": false
   },
   {
@@ -3283,17 +3301,17 @@
    "name": "the carry: both sides, the fold's fence behind its image taken out: a drain warp waits on the panel",
    "unit": "cycles a window a warp",
    "samples": [
-    2932.02468,
-    2923.771011,
-    2939.366122,
-    2918.887666,
-    2925.326941,
-    2919.571023,
-    2922.836884
+    3060.439157,
+    3051.444957,
+    3067.975675,
+    3062.437382,
+    3068.832564,
+    3054.945194,
+    3061.473662
    ],
-   "median": 2923.771011,
-   "min": 2918.887666,
-   "max": 2939.366122,
+   "median": 3061.473662,
+   "min": 3051.444957,
+   "max": 3068.832564,
    "unstable": false
   },
   {
@@ -3301,17 +3319,17 @@
    "name": "the read side alone: the image, the readout and the drain, no fold warp running, the fold warps parked at a named barrier",
    "unit": "cycles a window a CTA",
    "samples": [
-    4419.153646,
-    4342.706676,
-    4348.486151,
-    4358.264205,
-    4353.934777,
-    4344.405066,
-    4357.012429
+    4368.300189,
+    4373.498343,
+    4378.170336,
+    4374.588423,
+    4405.272846,
+    4370.343277,
+    4376.476562
    ],
-   "median": 4353.934777,
-   "min": 4342.706676,
-   "max": 4419.153646,
+   "median": 4374.588423,
+   "min": 4368.300189,
+   "max": 4405.272846,
    "unstable": false
   },
   {
@@ -3319,17 +3337,17 @@
    "name": "the read side alone: the image, the readout and the drain, no fold warp running, the fold warps parked at a named barrier: a readout warp waits on the drain",
    "unit": "cycles a window a warp",
    "samples": [
-    245.242661,
-    248.437234,
-    247.887991,
-    247.436908,
-    247.650598,
-    248.343602,
-    247.776959
+    246.095762,
+    246.005652,
+    245.696437,
+    245.856416,
+    245.158469,
+    246.142016,
+    245.910985
    ],
-   "median": 247.776959,
-   "min": 245.242661,
-   "max": 248.437234,
+   "median": 245.910985,
+   "min": 245.158469,
+   "max": 246.142016,
    "unstable": false
   },
   {
@@ -3337,35 +3355,35 @@
    "name": "the read side alone: the image, the readout and the drain, no fold warp running, the fold warps parked at a named barrier: a readout warp forming its steps' A",
    "unit": "cycles a window a warp",
    "samples": [
-    1296.902788,
-    1226.125355,
-    1231.704161,
-    1240.633434,
-    1237.328687,
-    1229.129972,
-    1239.309925
+    1254.774414,
+    1260.259943,
+    1263.053089,
+    1261.16859,
+    1287.054599,
+    1256.979906,
+    1260.813092
    ],
-   "median": 1237.328687,
-   "min": 1226.125355,
-   "max": 1296.902788,
-   "unstable": true
+   "median": 1260.813092,
+   "min": 1254.774414,
+   "max": 1287.054599,
+   "unstable": false
   },
   {
    "lab": "result",
    "name": "the read side alone: the image, the readout and the drain, no fold warp running, the fold warps parked at a named barrier: a readout warp in its steps",
    "unit": "cycles a window a warp",
    "samples": [
-    2207.876568,
-    2201.456203,
-    2202.077148,
-    2203.691081,
-    2202.791016,
-    2200.205463,
-    2202.91205
+    2202.794537,
+    2201.960079,
+    2204.811109,
+    2202.89388,
+    2205.804747,
+    2202.251657,
+    2204.795099
    ],
-   "median": 2202.791016,
-   "min": 2200.205463,
-   "max": 2207.876568,
+   "median": 2202.89388,
+   "min": 2201.960079,
+   "max": 2205.804747,
    "unstable": false
   },
   {
@@ -3373,17 +3391,17 @@
    "name": "the read side alone: the image, the readout and the drain, no fold warp running, the fold warps parked at a named barrier: a drain warp waits on the panel",
    "unit": "cycles a window a warp",
    "samples": [
-    875.511186,
-    793.926136,
-    799.562441,
-    809.19916,
-    803.873639,
-    794.376598,
-    808.085346
+    815.872277,
+    821.509411,
+    826.147491,
+    822.41424,
+    857.448331,
+    818.618371,
+    824.926906
    ],
-   "median": 803.873639,
-   "min": 793.926136,
-   "max": 875.511186,
+   "median": 822.41424,
+   "min": 815.872277,
+   "max": 857.448331,
    "unstable": true
   },
   {
@@ -3391,17 +3409,17 @@
    "name": "the read side alone: the image, the readout and the drain, no fold warp running, the fold warps spinning at a polled barrier",
    "unit": "cycles a window a CTA",
    "samples": [
-    4513.720407,
-    4489.663234,
-    4498.59742,
-    4491.289773,
-    4492.121567,
-    4505.00947,
-    4502.419981
+    4504.692353,
+    4511.4884,
+    4509.02036,
+    4507.027225,
+    4508.131274,
+    4510.749882,
+    4503.666903
    ],
-   "median": 4498.59742,
-   "min": 4489.663234,
-   "max": 4513.720407,
+   "median": 4508.131274,
+   "min": 4503.666903,
+   "max": 4511.4884,
    "unstable": false
   },
   {
@@ -3409,17 +3427,17 @@
    "name": "the read side alone: the image, the readout and the drain, no fold warp running, the fold warps spinning at a polled barrier: a readout warp waits on the drain",
    "unit": "cycles a window a warp",
    "samples": [
-    290.809511,
-    294.477835,
-    293.082386,
-    293.983103,
-    293.678563,
-    292.703628,
-    292.681108
+    291.833126,
+    290.458718,
+    290.958511,
+    291.268643,
+    291.341708,
+    291.10754,
+    291.520685
    ],
-   "median": 293.082386,
-   "min": 290.809511,
-   "max": 294.477835,
+   "median": 291.268643,
+   "min": 290.458718,
+   "max": 291.833126,
    "unstable": false
   },
   {
@@ -3427,17 +3445,17 @@
    "name": "the read side alone: the image, the readout and the drain, no fold warp running, the fold warps spinning at a polled barrier: a readout warp forming its steps' A",
    "unit": "cycles a window a warp",
    "samples": [
-    1234.658825,
-    1206.444277,
-    1213.541637,
-    1209.503581,
-    1210.332534,
-    1221.237393,
-    1219.552202
+    1229.830936,
+    1235.940844,
+    1233.955019,
+    1232.423591,
+    1232.415868,
+    1234.4731,
+    1228.624379
    ],
-   "median": 1213.541637,
-   "min": 1206.444277,
-   "max": 1234.658825,
+   "median": 1232.423591,
+   "min": 1228.624379,
+   "max": 1235.940844,
    "unstable": false
   },
   {
@@ -3445,17 +3463,17 @@
    "name": "the read side alone: the image, the readout and the drain, no fold warp running, the fold warps spinning at a polled barrier: a readout warp in its steps",
    "unit": "cycles a window a warp",
    "samples": [
-    2291.263317,
-    2290.677734,
-    2294.326054,
-    2289.774621,
-    2289.82123,
-    2292.467655,
-    2292.343928
+    2285.98621,
+    2288.317235,
+    2287.406043,
+    2286.539092,
+    2287.519738,
+    2288.32848,
+    2286.497485
    ],
-   "median": 2291.263317,
-   "min": 2289.774621,
-   "max": 2294.326054,
+   "median": 2287.406043,
+   "min": 2285.98621,
+   "max": 2288.32848,
    "unstable": false
   },
   {
@@ -3463,17 +3481,17 @@
    "name": "the read side alone: the image, the readout and the drain, no fold warp running, the fold warps spinning at a polled barrier: a drain warp waits on the panel",
    "unit": "cycles a window a warp",
    "samples": [
-    862.243608,
-    846.179273,
-    854.50728,
-    846.864879,
-    849.211411,
-    860.546757,
-    856.595999
+    855.177912,
+    858.733724,
+    856.827947,
+    856.132931,
+    856.470466,
+    858.528468,
+    852.985677
    ],
-   "median": 854.50728,
-   "min": 846.179273,
-   "max": 862.243608,
+   "median": 856.470466,
+   "min": 852.985677,
+   "max": 858.733724,
    "unstable": false
   },
   {
@@ -3481,17 +3499,17 @@
    "name": "the carry: both sides, the fold's state stored out in every call",
    "unit": "cycles a window a CTA",
    "samples": [
-    8274.553149,
-    8025.943419,
-    8319.444366,
-    8267.481179,
-    8131.849195,
-    8141.82848,
-    8133.441406
+    8170.854522,
+    8147.988755,
+    8103.524503,
+    8221.194366,
+    8201.206203,
+    8147.678267,
+    8186.866714
    ],
-   "median": 8141.82848,
-   "min": 8025.943419,
-   "max": 8319.444366,
+   "median": 8170.854522,
+   "min": 8103.524503,
+   "max": 8221.194366,
    "unstable": false
   },
   {
@@ -3499,17 +3517,17 @@
    "name": "the carry: both sides, the fold's state stored out in every call: a fold warp waits on the readout's read",
    "unit": "cycles a window a warp",
    "samples": [
-    445.901781,
-    464.208718,
-    455.124201,
-    425.221606,
-    434.173103,
-    445.177557,
-    499.587432
+    407.437441,
+    432.886882,
+    431.691673,
+    427.639426,
+    406.084517,
+    473.941125,
+    493.407256
    ],
-   "median": 445.901781,
-   "min": 425.221606,
-   "max": 499.587432,
+   "median": 431.691673,
+   "min": 406.084517,
+   "max": 493.407256,
    "unstable": true
   },
   {
@@ -3517,17 +3535,17 @@
    "name": "the carry: both sides, the fold's state stored out in every call: a fold warp waits on its producer",
    "unit": "cycles a window a warp",
    "samples": [
-    5004.152181,
-    4947.727095,
-    4999.326749,
-    5051.178977,
-    4979.235115,
-    4968.001746,
-    4910.064157
+    5139.620753,
+    5102.558919,
+    5111.680738,
+    5178.291119,
+    5128.201675,
+    5084.112216,
+    5078.453199
    ],
-   "median": 4979.235115,
-   "min": 4910.064157,
-   "max": 5051.178977,
+   "median": 5111.680738,
+   "min": 5078.453199,
+   "max": 5178.291119,
    "unstable": false
   },
   {
@@ -3535,17 +3553,17 @@
    "name": "the carry: both sides, the fold's state stored out in every call: a readout warp waits on the image",
    "unit": "cycles a window a warp",
    "samples": [
-    2044.183061,
-    2008.292554,
-    1998.310458,
-    2032.418413,
-    2027.109227,
-    2018.080522,
-    2000.790661
+    2064.493194,
+    2060.859345,
+    2060.544004,
+    2068.805043,
+    2063.76669,
+    2062.041489,
+    2064.065755
    ],
-   "median": 2018.080522,
-   "min": 1998.310458,
-   "max": 2044.183061,
+   "median": 2063.76669,
+   "min": 2060.544004,
+   "max": 2068.805043,
    "unstable": false
   },
   {
@@ -3553,35 +3571,35 @@
    "name": "the carry: both sides, the fold's state stored out in every call: a readout warp waits on the drain",
    "unit": "cycles a window a warp",
    "samples": [
-    351.006392,
-    363.513554,
-    352.133316,
-    348.387281,
-    352.031102,
-    354.031102,
-    361.814542
+    333.939808,
+    335.151693,
+    331.507043,
+    334.141454,
+    340.232037,
+    349.725408,
+    347.82271
    ],
-   "median": 352.133316,
-   "min": 348.387281,
-   "max": 363.513554,
-   "unstable": false
+   "median": 335.151693,
+   "min": 331.507043,
+   "max": 349.725408,
+   "unstable": true
   },
   {
    "lab": "result",
    "name": "the carry: both sides, the fold's state stored out in every call: a readout warp forming its steps' A",
    "unit": "cycles a window a warp",
    "samples": [
-    1399.317797,
-    1395.08718,
-    1399.023526,
-    1401.381806,
-    1399.226562,
-    1397.035127,
-    1392.368164
+    1410.242898,
+    1402.178977,
+    1404.681078,
+    1402.752101,
+    1404.13444,
+    1401.405481,
+    1397.83431
    ],
-   "median": 1399.023526,
-   "min": 1392.368164,
-   "max": 1401.381806,
+   "median": 1402.752101,
+   "min": 1397.83431,
+   "max": 1410.242898,
    "unstable": false
   },
   {
@@ -3589,17 +3607,17 @@
    "name": "the carry: both sides, the fold's state stored out in every call: a readout warp in its steps",
    "unit": "cycles a window a warp",
    "samples": [
-    2245.694395,
-    2270.262103,
-    2259.896484,
-    2265.45857,
-    2249.397135,
-    2268.478368,
-    2296.018851
+    2267.083748,
+    2262.474491,
+    2241.975438,
+    2274.125888,
+    2254.981268,
+    2260.688565,
+    2274.594194
    ],
-   "median": 2265.45857,
-   "min": 2245.694395,
-   "max": 2296.018851,
+   "median": 2262.474491,
+   "min": 2241.975438,
+   "max": 2274.594194,
    "unstable": false
   },
   {
@@ -3607,17 +3625,17 @@
    "name": "the carry: both sides, the fold's state stored out in every call: a drain warp waits on the panel",
    "unit": "cycles a window a warp",
    "samples": [
-    3349.373935,
-    3305.796046,
-    3290.90335,
-    3348.505859,
-    3316.948686,
-    3323.417081,
-    3335.645241
+    3414.646129,
+    3412.141039,
+    3396.411281,
+    3437.048177,
+    3412.325521,
+    3420.789477,
+    3425.200343
    ],
-   "median": 3323.417081,
-   "min": 3290.90335,
-   "max": 3349.373935,
+   "median": 3414.646129,
+   "min": 3396.411281,
+   "max": 3437.048177,
    "unstable": false
   },
   {
@@ -3625,17 +3643,17 @@
    "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer",
    "unit": "cycles a window a CTA",
    "samples": [
-    6754.41063,
-    6755.045691,
-    6745.790956,
-    6745.159564,
-    6752.573153,
-    6753.658973,
-    6752.98911
+    6778.111506,
+    6764.262784,
+    6759.997751,
+    6763.510062,
+    6763.604995,
+    6765.820076,
+    6768.639915
    ],
-   "median": 6752.98911,
-   "min": 6745.159564,
-   "max": 6755.045691,
+   "median": 6764.262784,
+   "min": 6759.997751,
+   "max": 6778.111506,
    "unstable": false
   },
   {
@@ -3643,49 +3661,49 @@
    "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer: the card's clock, the long call's span over its wall time",
    "unit": "GHz",
    "samples": [
-    1.555222,
-    1.524494,
-    1.369894,
-    1.326683,
-    1.320684
+    1.7862,
+    1.784944,
+    1.786039,
+    1.78575,
+    1.786412
    ],
-   "median": 1.369894,
-   "min": 1.320684,
-   "max": 1.555222,
-   "unstable": true
+   "median": 1.786039,
+   "min": 1.784944,
+   "max": 1.786412,
+   "unstable": false
   },
   {
    "lab": "result",
    "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer: the long call by wall time, scaled to 65,536 tokens",
    "unit": "milliseconds",
    "samples": [
-    0.277023,
-    0.282294,
-    0.312957,
-    0.323247,
-    0.32506
+    0.244333,
+    0.244569,
+    0.244301,
+    0.244389,
+    0.244269
    ],
-   "median": 0.312957,
-   "min": 0.277023,
-   "max": 0.32506,
-   "unstable": true
+   "median": 0.244333,
+   "min": 0.244269,
+   "max": 0.244569,
+   "unstable": false
   },
   {
    "lab": "result",
    "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer: a fold warp waits on the readout's read",
    "unit": "cycles a window a warp",
    "samples": [
-    658.754927,
-    680.678149,
-    638.829649,
-    642.638065,
-    660.707327,
-    634.686908,
-    666.010343
+    602.403927,
+    591.492839,
+    537.971132,
+    581.578998,
+    548.452933,
+    527.091767,
+    569.821363
    ],
-   "median": 658.754927,
-   "min": 634.686908,
-   "max": 680.678149,
+   "median": 569.821363,
+   "min": 527.091767,
+   "max": 602.403927,
    "unstable": true
   },
   {
@@ -3693,17 +3711,17 @@
    "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer: a fold warp waits on its producer",
    "unit": "cycles a window a warp",
    "samples": [
-    3801.366773,
-    3766.728427,
-    3810.443108,
-    3788.94475,
-    3794.347316,
-    3816.60282,
-    3777.742365
+    3762.664048,
+    3754.613858,
+    3796.608487,
+    3764.566939,
+    3792.557854,
+    3809.941658,
+    3772.849239
    ],
-   "median": 3794.347316,
-   "min": 3766.728427,
-   "max": 3816.60282,
+   "median": 3772.849239,
+   "min": 3754.613858,
+   "max": 3809.941658,
    "unstable": false
   },
   {
@@ -3711,17 +3729,17 @@
    "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer: a readout warp waits on the image",
    "unit": "cycles a window a warp",
    "samples": [
-    743.268288,
-    743.871952,
-    733.357747,
-    735.391957,
-    743.739051,
-    746.183535,
-    738.635535
+    616.149947,
+    601.010357,
+    608.318626,
+    610.409712,
+    611.783736,
+    609.109316,
+    597.929066
    ],
-   "median": 743.268288,
-   "min": 733.357747,
-   "max": 746.183535,
+   "median": 609.109316,
+   "min": 597.929066,
+   "max": 616.149947,
    "unstable": false
   },
   {
@@ -3729,17 +3747,17 @@
    "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer: a readout warp waits on the drain",
    "unit": "cycles a window a warp",
    "samples": [
-    273.911665,
-    274.568685,
-    274.034032,
-    274.171046,
-    274.185961,
-    274.016217,
-    274.445845
+    275.005475,
+    274.621538,
+    275.065045,
+    275.167288,
+    274.512311,
+    275.280629,
+    274.601059
    ],
-   "median": 274.171046,
-   "min": 273.911665,
-   "max": 274.568685,
+   "median": 275.005475,
+   "min": 274.512311,
+   "max": 275.280629,
    "unstable": false
   },
   {
@@ -3747,17 +3765,17 @@
    "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer: a readout warp in its steps",
    "unit": "cycles a window a warp",
    "samples": [
-    4286.971029,
-    4273.407463,
-    4292.440992,
-    4286.175752,
-    4280.789122,
-    4283.643643,
-    4282.232096
+    4399.902758,
+    4412.530658,
+    4415.595585,
+    4405.758345,
+    4411.55812,
+    4419.819454,
+    4420.913944
    ],
-   "median": 4283.643643,
-   "min": 4273.407463,
-   "max": 4292.440992,
+   "median": 4412.530658,
+   "min": 4399.902758,
+   "max": 4420.913944,
    "unstable": false
   },
   {
@@ -3765,17 +3783,17 @@
    "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer: a drain warp waits on the panel",
    "unit": "cycles a window a warp",
    "samples": [
-    2570.777344,
-    2565.683771,
-    2558.885653,
-    2550.083333,
-    2567.504557,
-    2563.484316,
-    2564.57049
+    2438.090376,
+    2426.542673,
+    2408.783499,
+    2423.834931,
+    2415.881155,
+    2408.180575,
+    2424.657375
    ],
-   "median": 2564.57049,
-   "min": 2550.083333,
-   "max": 2570.777344,
+   "median": 2423.834931,
+   "min": 2408.180575,
+   "max": 2438.090376,
    "unstable": false
   },
   {
@@ -3783,17 +3801,17 @@
    "name": "the carry: both sides, every wait suspended, the readout's bytes one wide load a warp",
    "unit": "cycles a window a CTA",
    "samples": [
-    6762.222301,
-    6745.187737,
-    6752.397372,
-    6758.735322,
-    6754.290128,
-    6749.539654,
-    6753.708452
+    6879.508286,
+    6885.877959,
+    6884.900805,
+    6873.89974,
+    6888.746212,
+    6869.256037,
+    6874.293087
    ],
-   "median": 6753.708452,
-   "min": 6745.187737,
-   "max": 6762.222301,
+   "median": 6879.508286,
+   "min": 6869.256037,
+   "max": 6888.746212,
    "unstable": false
   },
   {
@@ -3801,17 +3819,17 @@
    "name": "the carry: both sides, every wait suspended, the readout's bytes one wide load a warp: a fold warp waits on the readout's read",
    "unit": "cycles a window a warp",
    "samples": [
-    306.209828,
-    308.845821,
-    305.670292,
-    307.181093,
-    307.145523,
-    306.405185,
-    305.961174
+    307.325491,
+    307.529415,
+    307.478175,
+    311.68167,
+    309.619496,
+    306.180812,
+    305.595496
    ],
-   "median": 306.405185,
-   "min": 305.670292,
-   "max": 308.845821,
+   "median": 307.478175,
+   "min": 305.595496,
+   "max": 311.68167,
    "unstable": false
   },
   {
@@ -3819,17 +3837,17 @@
    "name": "the carry: both sides, every wait suspended, the readout's bytes one wide load a warp: a fold warp waits on its producer",
    "unit": "cycles a window a warp",
    "samples": [
-    4544.313713,
-    4511.283233,
-    4527.429909,
-    4533.317294,
-    4531.529193,
-    4540.11991,
-    4541.082327
+    4641.369895,
+    4641.41572,
+    4639.785704,
+    4631.884425,
+    4647.264574,
+    4645.792732,
+    4643.549553
    ],
-   "median": 4533.317294,
-   "min": 4511.283233,
-   "max": 4544.313713,
+   "median": 4641.41572,
+   "min": 4631.884425,
+   "max": 4647.264574,
    "unstable": false
   },
   {
@@ -3837,17 +3855,17 @@
    "name": "the carry: both sides, every wait suspended, the readout's bytes one wide load a warp: a readout warp waits on the image",
    "unit": "cycles a window a warp",
    "samples": [
-    2114.651574,
-    2085.143673,
-    2105.112216,
-    2104.657167,
-    2102.436938,
-    2093.622189,
-    2103.136896
+    2215.5625,
+    2218.091915,
+    2219.762932,
+    2207.894709,
+    2226.534742,
+    2208.287228,
+    2215.084872
    ],
-   "median": 2103.136896,
-   "min": 2085.143673,
-   "max": 2114.651574,
+   "median": 2215.5625,
+   "min": 2207.894709,
+   "max": 2226.534742,
    "unstable": false
   },
   {
@@ -3855,17 +3873,17 @@
    "name": "the carry: both sides, every wait suspended, the readout's bytes one wide load a warp: a readout warp waits on the drain",
    "unit": "cycles a window a warp",
    "samples": [
-    256.953954,
-    256.957594,
-    256.925663,
-    256.610263,
-    256.821526,
-    256.535896,
-    256.486417
+    255.942531,
+    255.633612,
+    255.965909,
+    255.93244,
+    255.591235,
+    256.070756,
+    255.444425
    ],
-   "median": 256.821526,
-   "min": 256.486417,
-   "max": 256.957594,
+   "median": 255.93244,
+   "min": 255.444425,
+   "max": 256.070756,
    "unstable": false
   },
   {
@@ -3873,17 +3891,17 @@
    "name": "the carry: both sides, every wait suspended, the readout's bytes one wide load a warp: a readout warp forming its steps' A",
    "unit": "cycles a window a warp",
    "samples": [
-    1560.787346,
-    1567.651929,
-    1563.600379,
-    1563.064601,
-    1564.915927,
-    1564.199959,
-    1563.019354
+    1560.058653,
+    1561.320017,
+    1561.09887,
+    1558.985884,
+    1557.958629,
+    1557.486417,
+    1559.122366
    ],
-   "median": 1563.600379,
-   "min": 1560.787346,
-   "max": 1567.651929,
+   "median": 1559.122366,
+   "min": 1557.486417,
+   "max": 1561.320017,
    "unstable": false
   },
   {
@@ -3891,17 +3909,17 @@
    "name": "the carry: both sides, every wait suspended, the readout's bytes one wide load a warp: a readout warp in its steps",
    "unit": "cycles a window a warp",
    "samples": [
-    1799.796993,
-    1802.168679,
-    1796.809038,
-    1801.026722,
-    1798.074929,
-    1801.754942,
-    1799.780333
+    1803.883671,
+    1806.815814,
+    1804.01456,
+    1803.98834,
+    1802.802794,
+    1804.572295,
+    1800.697147
    ],
-   "median": 1799.796993,
-   "min": 1796.809038,
-   "max": 1802.168679,
+   "median": 1803.98834,
+   "min": 1800.697147,
+   "max": 1806.815814,
    "unstable": false
   },
   {
@@ -3909,17 +3927,17 @@
    "name": "the carry: both sides, every wait suspended, the readout's bytes one wide load a warp: a drain warp waits on the panel",
    "unit": "cycles a window a warp",
    "samples": [
-    3051.361032,
-    3002.300604,
-    3030.650568,
-    3037.11263,
-    3026.538826,
-    3008.742898,
-    3027.034801
+    3191.411873,
+    3196.684422,
+    3199.175604,
+    3190.048769,
+    3204.209695,
+    3171.632694,
+    3189.943419
    ],
-   "median": 3027.034801,
-   "min": 3002.300604,
-   "max": 3051.361032,
+   "median": 3191.411873,
+   "min": 3171.632694,
+   "max": 3204.209695,
    "unstable": false
   },
   {
@@ -3927,17 +3945,17 @@
    "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the readout's bytes one wide load a warp",
    "unit": "cycles a window a CTA",
    "samples": [
-    6875.206203,
-    6867.418324,
-    6869.348366,
-    6864.444602,
-    6873.909446,
-    6871.781013,
-    6869.493726
+    6861.560133,
+    6852.611742,
+    6857.572562,
+    6861.37358,
+    6859.646544,
+    6860.444957,
+    6849.929214
    ],
-   "median": 6869.493726,
-   "min": 6864.444602,
-   "max": 6875.206203,
+   "median": 6859.646544,
+   "min": 6849.929214,
+   "max": 6861.560133,
    "unstable": false
   },
   {
@@ -3945,17 +3963,17 @@
    "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the readout's bytes one wide load a warp: a fold warp waits on the readout's read",
    "unit": "cycles a window a warp",
    "samples": [
-    752.264101,
-    642.963275,
-    677.700388,
-    670.486876,
-    651.631451,
-    679.138435,
-    617.113622
+    723.10504,
+    608.409727,
+    683.807188,
+    635.2769,
+    654.370975,
+    655.198583,
+    703.102465
    ],
-   "median": 670.486876,
-   "min": 617.113622,
-   "max": 752.264101,
+   "median": 655.198583,
+   "min": 608.409727,
+   "max": 723.10504,
    "unstable": true
   },
   {
@@ -3963,17 +3981,17 @@
    "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the readout's bytes one wide load a warp: a fold warp waits on its producer",
    "unit": "cycles a window a warp",
    "samples": [
-    3837.181818,
-    3953.714903,
-    3918.878921,
-    3906.09881,
-    3945.326497,
-    3909.452015,
-    3990.639116
+    3770.873091,
+    3894.644295,
+    3813.629572,
+    3869.363104,
+    3849.250178,
+    3847.582446,
+    3770.469712
    ],
-   "median": 3918.878921,
-   "min": 3837.181818,
-   "max": 3990.639116,
+   "median": 3847.582446,
+   "min": 3770.469712,
+   "max": 3894.644295,
    "unstable": false
   },
   {
@@ -3981,17 +3999,17 @@
    "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the readout's bytes one wide load a warp: a readout warp waits on the image",
    "unit": "cycles a window a warp",
    "samples": [
-    960.714637,
-    974.950758,
-    974.667111,
-    971.584961,
-    986.047674,
-    976.022934,
-    979.1991
+    830.881333,
+    841.030806,
+    830.625917,
+    837.585198,
+    840.70493,
+    841.134055,
+    815.423118
    ],
-   "median": 974.950758,
-   "min": 960.714637,
-   "max": 986.047674,
+   "median": 837.585198,
+   "min": 815.423118,
+   "max": 841.134055,
    "unstable": false
   },
   {
@@ -3999,17 +4017,17 @@
    "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the readout's bytes one wide load a warp: a readout warp waits on the drain",
    "unit": "cycles a window a warp",
    "samples": [
-    262.126213,
-    262.30232,
-    262.424686,
-    262.377486,
-    262.528587,
-    262.229847,
-    262.251894
+    262.072088,
+    262.016365,
+    261.904001,
+    261.758819,
+    261.489228,
+    261.939808,
+    262.436257
    ],
-   "median": 262.30232,
-   "min": 262.126213,
-   "max": 262.528587,
+   "median": 261.939808,
+   "min": 261.489228,
+   "max": 262.436257,
    "unstable": false
   },
   {
@@ -4017,17 +4035,17 @@
    "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the readout's bytes one wide load a warp: a readout warp in its steps",
    "unit": "cycles a window a warp",
    "samples": [
-    3922.467034,
-    3935.320372,
-    3928.928711,
-    3926.577799,
-    3927.116477,
-    3924.15187,
-    3938.393229
+    4003.952888,
+    4024.799627,
+    4013.938654,
+    4021.907996,
+    4012.410452,
+    4014.218395,
+    4017.586115
    ],
-   "median": 3927.116477,
-   "min": 3922.467034,
-   "max": 3938.393229,
+   "median": 4014.218395,
+   "min": 4003.952888,
+   "max": 4024.799627,
    "unstable": false
   },
   {
@@ -4035,17 +4053,17 @@
    "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the readout's bytes one wide load a warp: a drain warp waits on the panel",
    "unit": "cycles a window a warp",
    "samples": [
-    2771.503551,
-    2740.36192,
-    2758.040779,
-    2748.166252,
-    2749.443182,
-    2762.419389,
-    2745.292673
+    2680.398438,
+    2640.540838,
+    2671.102391,
+    2660.361328,
+    2666.845526,
+    2655.896366,
+    2655.80522
    ],
-   "median": 2749.443182,
-   "min": 2740.36192,
-   "max": 2771.503551,
+   "median": 2660.361328,
+   "min": 2640.540838,
+   "max": 2680.398438,
    "unstable": false
   },
   {
@@ -4053,17 +4071,17 @@
    "name": "the carry: both sides, the readout's A in two sets and two batches a producer, the long waits asleep at named barriers, the readout's bytes one wide load a warp",
    "unit": "cycles a window a CTA",
    "samples": [
-    7097.505563,
-    7085.499882,
-    7086.74633,
-    7085.206321,
-    7090.857718,
-    7087.872277,
-    7094.946259
+    7016.914418,
+    7026.10393,
+    7029.053149,
+    7027.946259,
+    7021.52758,
+    7018.815696,
+    7027.819366
    ],
-   "median": 7087.872277,
-   "min": 7085.206321,
-   "max": 7097.505563,
+   "median": 7026.10393,
+   "min": 7016.914418,
+   "max": 7029.053149,
    "unstable": false
   },
   {
@@ -4071,17 +4089,17 @@
    "name": "the carry: both sides, the readout's A in two sets and two batches a producer, the long waits asleep at named barriers, the readout's bytes one wide load a warp: a fold warp waits on the readout's read",
    "unit": "cycles a window a warp",
    "samples": [
-    765.628714,
-    757.948227,
-    817.34699,
-    829.016779,
-    760.096117,
-    769.461929,
-    763.614332
+    1205.587343,
+    1266.028957,
+    1235.702563,
+    1232.269842,
+    1201.868105,
+    1231.679747,
+    1223.20055
    ],
-   "median": 765.628714,
-   "min": 757.948227,
-   "max": 829.016779,
+   "median": 1231.679747,
+   "min": 1201.868105,
+   "max": 1266.028957,
    "unstable": true
   },
   {
@@ -4089,17 +4107,17 @@
    "name": "the carry: both sides, the readout's A in two sets and two batches a producer, the long waits asleep at named barriers, the readout's bytes one wide load a warp: a fold warp waits on its producer",
    "unit": "cycles a window a warp",
    "samples": [
-    3723.853945,
-    3713.52329,
-    3651.311509,
-    3645.240146,
-    3707.176329,
-    3701.308564,
-    3719.348648
+    3059.045247,
+    3018.748728,
+    3042.882576,
+    3047.605927,
+    3061.366803,
+    3037.18204,
+    3054.384618
    ],
-   "median": 3707.176329,
-   "min": 3645.240146,
-   "max": 3723.853945,
+   "median": 3047.605927,
+   "min": 3018.748728,
+   "max": 3061.366803,
    "unstable": false
   },
   {
@@ -4107,17 +4125,17 @@
    "name": "the carry: both sides, the readout's A in two sets and two batches a producer, the long waits asleep at named barriers, the readout's bytes one wide load a warp: a readout warp waits on the image",
    "unit": "cycles a window a warp",
    "samples": [
-    1482.620206,
-    1460.946644,
-    1459.216974,
-    1454.058801,
-    1470.327178,
-    1456.121271,
-    1475.225379
+    1104.463749,
+    1120.156753,
+    1111.892578,
+    1111.550426,
+    1106.589193,
+    1103.22023,
+    1109.742335
    ],
-   "median": 1460.946644,
-   "min": 1454.058801,
-   "max": 1482.620206,
+   "median": 1109.742335,
+   "min": 1103.22023,
+   "max": 1120.156753,
    "unstable": false
   },
   {
@@ -4125,17 +4143,17 @@
    "name": "the carry: both sides, the readout's A in two sets and two batches a producer, the long waits asleep at named barriers, the readout's bytes one wide load a warp: a readout warp waits on the drain",
    "unit": "cycles a window a warp",
    "samples": [
-    272.813713,
-    273.38447,
-    273.335671,
-    272.924982,
-    273.222982,
-    274.07703,
-    273.254735
+    274.10029,
+    272.649592,
+    273.160215,
+    273.523082,
+    273.393969,
+    273.724905,
+    273.189779
    ],
-   "median": 273.254735,
-   "min": 272.813713,
-   "max": 274.07703,
+   "median": 273.393969,
+   "min": 272.649592,
+   "max": 274.10029,
    "unstable": false
   },
   {
@@ -4143,17 +4161,17 @@
    "name": "the carry: both sides, the readout's A in two sets and two batches a producer, the long waits asleep at named barriers, the readout's bytes one wide load a warp: a readout warp in its steps",
    "unit": "cycles a window a warp",
    "samples": [
-    3971.674154,
-    3971.933475,
-    3976.609967,
-    3981.428001,
-    3972.8009,
-    3983.613192,
-    3973.482747
+    4073.604019,
+    4063.981357,
+    4072.239228,
+    4070.560576,
+    4080.989761,
+    4077.988045,
+    4075.904741
    ],
-   "median": 3973.482747,
-   "min": 3971.674154,
-   "max": 3983.613192,
+   "median": 4073.604019,
+   "min": 4063.981357,
+   "max": 4080.989761,
    "unstable": false
   },
   {
@@ -4161,17 +4179,17 @@
    "name": "the carry: both sides, the readout's A in two sets and two batches a producer, the long waits asleep at named barriers, the readout's bytes one wide load a warp: a drain warp waits on the panel",
    "unit": "cycles a window a warp",
    "samples": [
-    3034.619318,
-    3007.692353,
-    3010.77474,
-    3008.472715,
-    3014.879557,
-    3008.731297,
-    3020.645478
+    2799.509588,
+    2824.424361,
+    2821.32706,
+    2815.4288,
+    2797.477569,
+    2806.767637,
+    2814.338246
    ],
-   "median": 3010.77474,
-   "min": 3007.692353,
-   "max": 3034.619318,
+   "median": 2814.338246,
+   "min": 2797.477569,
+   "max": 2824.424361,
    "unstable": false
   },
   {
@@ -4179,17 +4197,17 @@
    "name": "the carry: both sides, the tables 16 replicas the cache cannot hold",
    "unit": "cycles a window a CTA",
    "samples": [
-    14920.141335,
-    14943.560843,
-    15101.398201,
-    15071.573627,
-    15076.865057,
-    15070.791312,
-    15100.582978
+    17795.709872,
+    17787.258641,
+    17780.260298,
+    17776.758168,
+    17798.031368,
+    17774.805871,
+    17762.328717
    ],
-   "median": 15071.573627,
-   "min": 14920.141335,
-   "max": 15101.398201,
+   "median": 17780.260298,
+   "min": 17762.328717,
+   "max": 17798.031368,
    "unstable": false
   },
   {
@@ -4197,49 +4215,49 @@
    "name": "the carry: both sides, the tables 16 replicas the cache cannot hold: the card's clock, the long call's span over its wall time",
    "unit": "GHz",
    "samples": [
-    1.483983,
-    1.265498,
-    1.197432,
-    1.144547,
-    1.148705
+    1.800112,
+    1.795751,
+    1.829832,
+    1.841947,
+    1.849995
    ],
-   "median": 1.197432,
-   "min": 1.144547,
-   "max": 1.483983,
-   "unstable": true
+   "median": 1.829832,
+   "min": 1.795751,
+   "max": 1.849995,
+   "unstable": false
   },
   {
    "lab": "result",
    "name": "the carry: both sides, the tables 16 replicas the cache cannot hold: the long call by wall time, scaled to 65,536 tokens",
    "unit": "milliseconds",
    "samples": [
-    0.585911,
-    0.620875,
-    0.634577,
-    0.647984,
-    0.646284
+    0.592767,
+    0.597438,
+    0.591611,
+    0.594728,
+    0.595107
    ],
-   "median": 0.634577,
-   "min": 0.585911,
-   "max": 0.647984,
-   "unstable": true
+   "median": 0.594728,
+   "min": 0.591611,
+   "max": 0.597438,
+   "unstable": false
   },
   {
    "lab": "result",
    "name": "the carry: both sides, the tables 16 replicas the cache cannot hold: a fold warp waits on the readout's read",
    "unit": "cycles a window a warp",
    "samples": [
-    552.730942,
-    516.684437,
-    621.287879,
-    574.553533,
-    541.291016,
-    629.845555,
-    617.493845
+    1724.974861,
+    1879.65585,
+    1667.896588,
+    1613.716664,
+    1735.41316,
+    1631.636852,
+    1682.736032
    ],
-   "median": 574.553533,
-   "min": 516.684437,
-   "max": 629.845555,
+   "median": 1682.736032,
+   "min": 1613.716664,
+   "max": 1879.65585,
    "unstable": true
   },
   {
@@ -4247,17 +4265,17 @@
    "name": "the carry: both sides, the tables 16 replicas the cache cannot hold: a fold warp waits on its producer",
    "unit": "cycles a window a warp",
    "samples": [
-    12820.374541,
-    12885.684526,
-    12930.793916,
-    12950.907241,
-    12993.257206,
-    12884.791386,
-    12936.879454
+    14159.558268,
+    13985.197044,
+    14218.512015,
+    14291.102583,
+    14160.379217,
+    14265.948612,
+    14193.88555
    ],
-   "median": 12930.793916,
-   "min": 12820.374541,
-   "max": 12993.257206,
+   "median": 14193.88555,
+   "min": 13985.197044,
+   "max": 14291.102583,
    "unstable": false
   },
   {
@@ -4265,17 +4283,17 @@
    "name": "the carry: both sides, the tables 16 replicas the cache cannot hold: a readout warp waits on the image",
    "unit": "cycles a window a warp",
    "samples": [
-    7726.723189,
-    7731.009411,
-    7843.964045,
-    7787.987364,
-    7838.682943,
-    7787.624112,
-    7824.971029
+    9058.480646,
+    9064.872248,
+    9058.629853,
+    9102.251391,
+    9064.755593,
+    9042.434422,
+    9044.062411
    ],
-   "median": 7787.987364,
-   "min": 7726.723189,
-   "max": 7843.964045,
+   "median": 9058.629853,
+   "min": 9042.434422,
+   "max": 9102.251391,
    "unstable": false
   },
   {
@@ -4283,17 +4301,17 @@
    "name": "the carry: both sides, the tables 16 replicas the cache cannot hold: a readout warp waits on the drain",
    "unit": "cycles a window a warp",
    "samples": [
-    298.658973,
-    298.171431,
-    298.668087,
-    298.059363,
-    298.441051,
-    298.824071,
-    298.750148
+    294.186198,
+    294.625148,
+    293.957949,
+    293.867247,
+    293.978427,
+    293.941229,
+    293.602125
    ],
-   "median": 298.658973,
-   "min": 298.059363,
-   "max": 298.824071,
+   "median": 293.957949,
+   "min": 293.602125,
+   "max": 294.625148,
    "unstable": false
   },
   {
@@ -4301,17 +4319,17 @@
    "name": "the carry: both sides, the tables 16 replicas the cache cannot hold: a readout warp forming its steps' A",
    "unit": "cycles a window a warp",
    "samples": [
-    3083.008227,
-    3109.842152,
-    3136.358132,
-    3160.320579,
-    3129.250089,
-    3149.852302,
-    3151.552054
+    3258.873372,
+    3251.596532,
+    3251.97091,
+    3244.01305,
+    3256.100823,
+    3258.686316,
+    3251.858043
    ],
-   "median": 3136.358132,
-   "min": 3083.008227,
-   "max": 3160.320579,
+   "median": 3251.97091,
+   "min": 3244.01305,
+   "max": 3258.873372,
    "unstable": false
   },
   {
@@ -4319,17 +4337,17 @@
    "name": "the carry: both sides, the tables 16 replicas the cache cannot hold: a readout warp in its steps",
    "unit": "cycles a window a warp",
    "samples": [
-    2674.404238,
-    2670.79652,
-    2679.887666,
-    2691.572621,
-    2672.612778,
-    2691.65844,
-    2683.778942
+    2924.349935,
+    2920.727243,
+    2928.132783,
+    2910.512991,
+    2926.348248,
+    2926.572118,
+    2925.662612
    ],
-   "median": 2679.887666,
-   "min": 2670.79652,
-   "max": 2691.65844,
+   "median": 2925.662612,
+   "min": 2910.512991,
+   "max": 2928.132783,
    "unstable": false
   },
   {
@@ -4337,17 +4355,17 @@
    "name": "the carry: both sides, the tables 16 replicas the cache cannot hold: a drain warp waits on the panel",
    "unit": "cycles a window a warp",
    "samples": [
-    12273.9913,
-    12294.896248,
-    12458.118963,
-    12437.876006,
-    12430.564216,
-    12423.414536,
-    12459.336707
+    13350.063447,
+    13369.765921,
+    13352.67732,
+    13364.631629,
+    13372.671402,
+    13347.677202,
+    13355.587003
    ],
-   "median": 12430.564216,
-   "min": 12273.9913,
-   "max": 12459.336707,
+   "median": 13355.587003,
+   "min": 13347.677202,
+   "max": 13372.671402,
    "unstable": false
   },
   {
@@ -4355,49 +4373,49 @@
    "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the tables 16 replicas the cache cannot hold",
    "unit": "cycles a window a CTA",
    "samples": [
-    11011.210464,
-    11592.404356,
-    11494.36411,
-    11530.534091,
-    11474.081913,
-    11487.658617,
-    11534.700166
+    16384.676136,
+    16373.058239,
+    16384.127249,
+    16365.923651,
+    16359.666193,
+    16372.030658,
+    16369.91205
    ],
-   "median": 11494.36411,
-   "min": 11011.210464,
-   "max": 11592.404356,
-   "unstable": true
+   "median": 16372.030658,
+   "min": 16359.666193,
+   "max": 16384.676136,
+   "unstable": false
   },
   {
    "lab": "result",
    "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the tables 16 replicas the cache cannot hold: the card's clock, the long call's span over its wall time",
    "unit": "GHz",
    "samples": [
-    1.239242,
-    1.122824,
-    1.021113,
-    1.027745,
-    1.05501
+    1.747016,
+    1.772965,
+    1.767983,
+    1.782131,
+    1.783494
    ],
-   "median": 1.05501,
-   "min": 1.021113,
-   "max": 1.239242,
-   "unstable": true
+   "median": 1.772965,
+   "min": 1.747016,
+   "max": 1.783494,
+   "unstable": false
   },
   {
    "lab": "result",
    "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the tables 16 replicas the cache cannot hold: the long call by wall time, scaled to 65,536 tokens",
    "unit": "milliseconds",
    "samples": [
-    0.519928,
-    0.55221,
-    0.590603,
-    0.586095,
-    0.580904
+    0.521206,
+    0.51376,
+    0.52714,
+    0.521302,
+    0.499593
    ],
-   "median": 0.580904,
-   "min": 0.519928,
-   "max": 0.590603,
+   "median": 0.521206,
+   "min": 0.499593,
+   "max": 0.52714,
    "unstable": true
   },
   {
@@ -4405,17 +4423,17 @@
    "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the tables 16 replicas the cache cannot hold: a fold warp waits on the readout's read",
    "unit": "cycles a window a warp",
    "samples": [
-    513.118223,
-    598.268126,
-    552.940459,
-    553.476326,
-    492.546535,
-    520.98001,
-    535.755652
+    991.495813,
+    1206.441924,
+    1033.652018,
+    1163.030555,
+    1184.7322,
+    1125.395981,
+    1341.682913
    ],
-   "median": 535.755652,
-   "min": 492.546535,
-   "max": 598.268126,
+   "median": 1163.030555,
+   "min": 991.495813,
+   "max": 1341.682913,
    "unstable": true
   },
   {
@@ -4423,35 +4441,35 @@
    "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the tables 16 replicas the cache cannot hold: a fold warp waits on its producer",
    "unit": "cycles a window a warp",
    "samples": [
-    8603.074248,
-    9079.488474,
-    9048.257605,
-    9071.235159,
-    9088.979759,
-    9073.389323,
-    9101.282419
+    12436.074426,
+    12158.455049,
+    12387.677424,
+    12214.770256,
+    12179.505815,
+    12268.810547,
+    12024.45641
    ],
-   "median": 9073.389323,
-   "min": 8603.074248,
-   "max": 9101.282419,
-   "unstable": true
+   "median": 12214.770256,
+   "min": 12024.45641,
+   "max": 12436.074426,
+   "unstable": false
   },
   {
    "lab": "result",
    "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the tables 16 replicas the cache cannot hold: a readout warp waits on the image",
    "unit": "cycles a window a warp",
    "samples": [
-    3072.350763,
-    3167.948449,
-    3170.097183,
-    3164.616507,
-    3156.183742,
-    3144.435991,
-    3186.910127
+    3408.656309,
+    3405.88592,
+    3412.713246,
+    3420.881155,
+    3413.518614,
+    3417.739228,
+    3424.305694
    ],
-   "median": 3164.616507,
-   "min": 3072.350763,
-   "max": 3186.910127,
+   "median": 3413.518614,
+   "min": 3405.88592,
+   "max": 3424.305694,
    "unstable": false
   },
   {
@@ -4459,17 +4477,17 @@
    "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the tables 16 replicas the cache cannot hold: a readout warp waits on the drain",
    "unit": "cycles a window a warp",
    "samples": [
-    249.686938,
-    247.992335,
-    248.044123,
-    248.007724,
-    248.206025,
-    248.110943,
-    248.159239
+    246.497514,
+    247.204279,
+    246.956025,
+    246.605321,
+    246.508464,
+    246.607392,
+    246.856386
    ],
-   "median": 248.110943,
-   "min": 247.992335,
-   "max": 249.686938,
+   "median": 246.607392,
+   "min": 246.497514,
+   "max": 247.204279,
    "unstable": false
   },
   {
@@ -4477,216 +4495,645 @@
    "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the tables 16 replicas the cache cannot hold: a readout warp in its steps",
    "unit": "cycles a window a warp",
    "samples": [
-    5933.42732,
-    6325.24926,
-    6261.24349,
-    6280.254794,
-    6260.409949,
-    6272.47748,
-    6276.917791
+    9393.371212,
+    9371.405185,
+    9400.42152,
+    9347.137429,
+    9355.946023,
+    9362.759411,
+    9347.273615
    ],
-   "median": 6272.47748,
-   "min": 5933.42732,
-   "max": 6325.24926,
-   "unstable": true
+   "median": 9362.759411,
+   "min": 9347.137429,
+   "max": 9400.42152,
+   "unstable": false
   },
   {
    "lab": "result",
    "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the tables 16 replicas the cache cannot hold: a drain warp waits on the panel",
    "unit": "cycles a window a warp",
    "samples": [
-    8268.966974,
-    8797.501776,
-    8734.678918,
-    8755.98834,
-    8714.295159,
-    8729.852332,
-    8772.501953
+    10799.264678,
+    10753.184482,
+    10816.718454,
+    10777.282611,
+    10765.042436,
+    10796.159032,
+    10771.238163
    ],
-   "median": 8734.678918,
-   "min": 8268.966974,
-   "max": 8797.501776,
-   "unstable": true
+   "median": 10777.282611,
+   "min": 10753.184482,
+   "max": 10816.718454,
+   "unstable": false
   },
   {
    "lab": "result",
    "name": "the fold's side alone: producers and steps, the tables 16 replicas the cache cannot hold",
    "unit": "cycles a window a CTA",
    "samples": [
-    8962.23473,
-    8960.460464,
-    8961.04652,
-    8962.274503,
-    8941.794271,
-    8962.272372,
-    8964.229285
+    11886.985677,
+    11886.179806,
+    11895.102509,
+    11902.684422,
+    11882.903883,
+    11886.073272,
+    11881.74053
    ],
-   "median": 8962.23473,
-   "min": 8941.794271,
-   "max": 8964.229285,
+   "median": 11886.179806,
+   "min": 11881.74053,
+   "max": 11902.684422,
    "unstable": false
   },
   {
    "lab": "result",
-   "name": "the fold's side alone: producers and steps, the den's fold half: two more steps a slot",
+   "name": "the fold's side alone: producers and steps, the den: two more steps a slot, the readout's steps 72 columns and an fp32 a token",
    "unit": "cycles a window a CTA",
    "samples": [
-    5237.793797,
-    5247.877723,
-    5242.188092,
-    5245.248698,
-    5251.192116,
-    5248.467211,
-    5254.546993
+    5374.905303,
+    5372.169626,
+    5369.541667,
+    5374.789418,
+    5373.496804,
+    5368.018703,
+    5370.634706
    ],
-   "median": 5247.877723,
-   "min": 5237.793797,
-   "max": 5254.546993,
+   "median": 5372.169626,
+   "min": 5368.018703,
+   "max": 5374.905303,
    "unstable": false
   },
   {
    "lab": "result",
-   "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the den's fold half: two more steps a slot",
+   "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the den: two more steps a slot, the readout's steps 72 columns and an fp32 a token",
    "unit": "cycles a window a CTA",
    "samples": [
-    6748.248461,
-    6752.569129,
-    6738.199455,
-    6748.589134,
-    6770.1817,
-    6750.157197,
-    6748.211411
+    7079.548532,
+    7075.400095,
+    7076.198272,
+    7082.285985,
+    7071.585227,
+    7078.992069,
+    7081.268821
    ],
-   "median": 6748.589134,
-   "min": 6738.199455,
-   "max": 6770.1817,
+   "median": 7078.992069,
+   "min": 7071.585227,
+   "max": 7082.285985,
    "unstable": false
   },
   {
    "lab": "result",
-   "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the den's fold half: two more steps a slot: a fold warp waits on the readout's read",
+   "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the den: two more steps a slot, the readout's steps 72 columns and an fp32 a token: a fold warp waits on the readout's read",
    "unit": "cycles a window a warp",
    "samples": [
-    493.69003,
-    490.989287,
-    453.983532,
-    521.090095,
-    518.710849,
-    528.833467,
-    480.569336
+    402.381836,
+    386.950254,
+    401.309511,
+    401.890581,
+    385.911887,
+    393.183372,
+    391.470703
    ],
-   "median": 493.69003,
-   "min": 453.983532,
-   "max": 528.833467,
+   "median": 393.183372,
+   "min": 385.911887,
+   "max": 402.381836,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the den: two more steps a slot, the readout's steps 72 columns and an fp32 a token: a fold warp waits on its producer",
+   "unit": "cycles a window a warp",
+   "samples": [
+    2998.315844,
+    3009.093277,
+    2995.54143,
+    2986.349136,
+    3010.950432,
+    3013.242883,
+    3012.459532
+   ],
+   "median": 3009.093277,
+   "min": 2986.349136,
+   "max": 3013.242883,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the den: two more steps a slot, the readout's steps 72 columns and an fp32 a token: a readout warp waits on the image",
+   "unit": "cycles a window a warp",
+   "samples": [
+    474.349757,
+    469.859257,
+    458.444809,
+    467.530066,
+    468.938891,
+    470.240027,
+    468.80229
+   ],
+   "median": 468.938891,
+   "min": 458.444809,
+   "max": 474.349757,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the den: two more steps a slot, the readout's steps 72 columns and an fp32 a token: a readout warp waits on the drain",
+   "unit": "cycles a window a warp",
+   "samples": [
+    268.709606,
+    269.30741,
+    268.582741,
+    269.418442,
+    269.137163,
+    268.701941,
+    268.657079
+   ],
+   "median": 268.709606,
+   "min": 268.582741,
+   "max": 269.418442,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the den: two more steps a slot, the readout's steps 72 columns and an fp32 a token: a readout warp in its steps",
+   "unit": "cycles a window a warp",
+   "samples": [
+    4186.273911,
+    4189.35171,
+    4191.87139,
+    4190.611358,
+    4190.769827,
+    4188.43389,
+    4191.408913
+   ],
+   "median": 4190.611358,
+   "min": 4186.273911,
+   "max": 4191.87139,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the den: two more steps a slot, the readout's steps 72 columns and an fp32 a token: a drain warp waits on the panel",
+   "unit": "cycles a window a warp",
+   "samples": [
+    2558.355114,
+    2543.467921,
+    2557.17371,
+    2555.221295,
+    2542.825876,
+    2553.003018,
+    2559.619081
+   ],
+   "median": 2555.221295,
+   "min": 2542.825876,
+   "max": 2559.619081,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the tables 16 replicas the cache cannot hold, the den: two more steps a slot, the readout's steps 72 columns and an fp32 a token",
+   "unit": "cycles a window a CTA",
+   "samples": [
+    16496.775568,
+    16456.536813,
+    16458.387074,
+    16463.336293,
+    16443.026278,
+    16460.484257,
+    16494.439394
+   ],
+   "median": 16460.484257,
+   "min": 16443.026278,
+   "max": 16496.775568,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the tables 16 replicas the cache cannot hold, the den: two more steps a slot, the readout's steps 72 columns and an fp32 a token: a fold warp waits on the readout's read",
+   "unit": "cycles a window a warp",
+   "samples": [
+    1344.140137,
+    1304.012799,
+    1202.068478,
+    1164.024015,
+    1181.599491,
+    1138.63228,
+    1179.003004
+   ],
+   "median": 1181.599491,
+   "min": 1138.63228,
+   "max": 1344.140137,
    "unstable": true
   },
   {
    "lab": "result",
-   "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the den's fold half: two more steps a slot: a fold warp waits on its producer",
+   "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the tables 16 replicas the cache cannot hold, the den: two more steps a slot, the readout's steps 72 columns and an fp32 a token: a fold warp waits on its producer",
    "unit": "cycles a window a warp",
    "samples": [
-    3582.943256,
-    3574.322118,
-    3596.280022,
-    3549.595733,
-    3587.022239,
-    3550.643939,
-    3596.122351
+    10752.322132,
+    10756.303533,
+    10946.487467,
+    10984.094815,
+    10916.740797,
+    11006.054184,
+    10974.367439
    ],
-   "median": 3582.943256,
-   "min": 3549.595733,
-   "max": 3596.280022,
+   "median": 10946.487467,
+   "min": 10752.322132,
+   "max": 11006.054184,
    "unstable": false
   },
   {
    "lab": "result",
-   "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the den's fold half: two more steps a slot: a readout warp waits on the image",
+   "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the tables 16 replicas the cache cannot hold, the den: two more steps a slot, the readout's steps 72 columns and an fp32 a token: a readout warp waits on the image",
    "unit": "cycles a window a warp",
    "samples": [
-    714.206706,
-    729.353723,
-    710.688832,
-    716.413648,
-    750.695845,
-    715.622781,
-    713.641335
+    3698.040424,
+    3680.979818,
+    3700.212713,
+    3694.93022,
+    3694.79578,
+    3696.524296,
+    3676.701823
    ],
-   "median": 715.622781,
-   "min": 710.688832,
-   "max": 750.695845,
+   "median": 3694.93022,
+   "min": 3676.701823,
+   "max": 3700.212713,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the tables 16 replicas the cache cannot hold, the den: two more steps a slot, the readout's steps 72 columns and an fp32 a token: a readout warp waits on the drain",
+   "unit": "cycles a window a warp",
+   "samples": [
+    239.980558,
+    240.059955,
+    240.35899,
+    239.765536,
+    239.991477,
+    240.451409,
+    239.95567
+   ],
+   "median": 239.991477,
+   "min": 239.765536,
+   "max": 240.451409,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the tables 16 replicas the cache cannot hold, the den: two more steps a slot, the readout's steps 72 columns and an fp32 a token: a readout warp in its steps",
+   "unit": "cycles a window a warp",
+   "samples": [
+    6406.104847,
+    6389.8009,
+    6384.566969,
+    6395.21366,
+    6381.076409,
+    6390.977687,
+    6393.807262
+   ],
+   "median": 6390.977687,
+   "min": 6381.076409,
+   "max": 6406.104847,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the tables 16 replicas the cache cannot hold, the den: two more steps a slot, the readout's steps 72 columns and an fp32 a token: a drain warp waits on the panel",
+   "unit": "cycles a window a warp",
+   "samples": [
+    11928.108191,
+    11926.526219,
+    11890.212121,
+    11921.867898,
+    11914.690933,
+    11922.979048,
+    11977.767696
+   ],
+   "median": 11922.979048,
+   "min": 11890.212121,
+   "max": 11977.767696,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the image's tiles 154 lines apart",
+   "unit": "cycles a window a CTA",
+   "samples": [
+    7127.111861,
+    7122.493371,
+    7123.697443,
+    7122.751184,
+    7121.644058,
+    7120.983546,
+    7120.201586
+   ],
+   "median": 7122.493371,
+   "min": 7120.201586,
+   "max": 7127.111861,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the image's tiles 154 lines apart: a fold warp waits on the readout's read",
+   "unit": "cycles a window a warp",
+   "samples": [
+    610.154445,
+    590.335627,
+    593.063003,
+    602.480143,
+    568.988636,
+    576.702622,
+    556.12645
+   ],
+   "median": 590.335627,
+   "min": 556.12645,
+   "max": 610.154445,
    "unstable": true
   },
   {
    "lab": "result",
-   "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the den's fold half: two more steps a slot: a readout warp waits on the drain",
+   "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the image's tiles 154 lines apart: a fold warp waits on its producer",
    "unit": "cycles a window a warp",
    "samples": [
-    272.352805,
-    271.682854,
-    272.068951,
-    272.273793,
-    272.139974,
-    272.477598,
-    272.213394
+    3770.339178,
+    3773.535837,
+    3788.236106,
+    3765.50327,
+    3789.596724,
+    3787.467108,
+    3811.842374
    ],
-   "median": 272.213394,
-   "min": 271.682854,
-   "max": 272.477598,
+   "median": 3787.467108,
+   "min": 3765.50327,
+   "max": 3811.842374,
    "unstable": false
   },
   {
    "lab": "result",
-   "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the den's fold half: two more steps a slot: a readout warp in its steps",
+   "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the image's tiles 154 lines apart: a readout warp waits on the image",
    "unit": "cycles a window a warp",
    "samples": [
-    4377.647816,
-    4353.160334,
-    4379.615826,
-    4363.412968,
-    4347.080996,
-    4360.450195,
-    4371.603279
+    791.481238,
+    805.758345,
+    800.567353,
+    791.67439,
+    796.819277,
+    794.017756,
+    802.930516
    ],
-   "median": 4363.412968,
-   "min": 4347.080996,
-   "max": 4379.615826,
+   "median": 796.819277,
+   "min": 791.481238,
+   "max": 805.758345,
    "unstable": false
   },
   {
    "lab": "result",
-   "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the den's fold half: two more steps a slot: a drain warp waits on the panel",
+   "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the image's tiles 154 lines apart: a readout warp waits on the drain",
    "unit": "cycles a window a warp",
    "samples": [
-    2609.345644,
-    2597.525154,
-    2580.668561,
-    2601.454368,
-    2637.126835,
-    2610.649917,
-    2603.356001
+    273.622781,
+    273.7413,
+    273.340051,
+    273.71002,
+    273.64024,
+    273.64974,
+    273.53273
    ],
-   "median": 2603.356001,
-   "min": 2580.668561,
-   "max": 2637.126835,
+   "median": 273.64024,
+   "min": 273.340051,
+   "max": 273.7413,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the image's tiles 154 lines apart: a readout warp in its steps",
+   "unit": "cycles a window a warp",
+   "samples": [
+    4382.007132,
+    4374.50873,
+    4378.464785,
+    4378.185665,
+    4384.794863,
+    4382.929184,
+    4383.210346
+   ],
+   "median": 4382.007132,
+   "min": 4374.50873,
+   "max": 4384.794863,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the image's tiles 154 lines apart: a drain warp waits on the panel",
+   "unit": "cycles a window a warp",
+   "samples": [
+    2550.702592,
+    2532.263494,
+    2537.989879,
+    2539.15844,
+    2516.042673,
+    2526.224609,
+    2524.54504
+   ],
+   "median": 2532.263494,
+   "min": 2516.042673,
+   "max": 2550.702592,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the image's tiles 161 lines apart, the den: two more steps a slot, the readout's steps 72 columns and an fp32 a token",
+   "unit": "cycles a window a CTA",
+   "samples": [
+    7069.022727,
+    7087.939394,
+    7078.392756,
+    7095.773201,
+    7078.297467,
+    7070.177794,
+    7091.870028
+   ],
+   "median": 7078.392756,
+   "min": 7069.022727,
+   "max": 7095.773201,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the image's tiles 161 lines apart, the den: two more steps a slot, the readout's steps 72 columns and an fp32 a token: a fold warp waits on the readout's read",
+   "unit": "cycles a window a warp",
+   "samples": [
+    389.322354,
+    405.591457,
+    388.985559,
+    434.723662,
+    392.706469,
+    398.975897,
+    422.451497
+   ],
+   "median": 398.975897,
+   "min": 388.985559,
+   "max": 434.723662,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the image's tiles 161 lines apart, the den: two more steps a slot, the readout's steps 72 columns and an fp32 a token: a fold warp waits on its producer",
+   "unit": "cycles a window a warp",
+   "samples": [
+    3008.163249,
+    2993.074559,
+    3019.269339,
+    2972.111225,
+    3008.764486,
+    2986.386408,
+    2979.908913
+   ],
+   "median": 2993.074559,
+   "min": 2972.111225,
+   "max": 3019.269339,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the image's tiles 161 lines apart, the den: two more steps a slot, the readout's steps 72 columns and an fp32 a token: a readout warp waits on the image",
+   "unit": "cycles a window a warp",
+   "samples": [
+    464.623047,
+    465.081795,
+    480.911873,
+    458.936553,
+    460.418679,
+    467.561405,
+    459.701941
+   ],
+   "median": 464.623047,
+   "min": 458.936553,
+   "max": 480.911873,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the image's tiles 161 lines apart, the den: two more steps a slot, the readout's steps 72 columns and an fp32 a token: a readout warp waits on the drain",
+   "unit": "cycles a window a warp",
+   "samples": [
+    269.099018,
+    268.026574,
+    268.828776,
+    267.889323,
+    268.641483,
+    269.380238,
+    267.84887
+   ],
+   "median": 268.641483,
+   "min": 267.84887,
+   "max": 269.380238,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the image's tiles 161 lines apart, the den: two more steps a slot, the readout's steps 72 columns and an fp32 a token: a readout warp in its steps",
+   "unit": "cycles a window a warp",
+   "samples": [
+    4189.729433,
+    4194.625444,
+    4181.226089,
+    4192.055605,
+    4193.474402,
+    4189.549893,
+    4195.113873
+   ],
+   "median": 4192.055605,
+   "min": 4181.226089,
+   "max": 4195.113873,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the carry: both sides, every wait suspended, the readout's A in two sets and two batches a producer, the image's tiles 161 lines apart, the den: two more steps a slot, the readout's steps 72 columns and an fp32 a token: a drain warp waits on the panel",
+   "unit": "cycles a window a warp",
+   "samples": [
+    2548.249527,
+    2559.589607,
+    2549.334339,
+    2570.860677,
+    2565.694188,
+    2548.697562,
+    2565.632931
+   ],
+   "median": 2559.589607,
+   "min": 2548.249527,
+   "max": 2570.860677,
    "unstable": false
   }
  ],
  "kernels": {
-  "void carry_window::window<(int)524579>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+  "void carry_window::window<(int)1573155>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
    "regs": 128,
    "ops": {
-    "LOP3.LUT": 354,
-    "VIADD": 166,
-    "SHF.R.U32.HI": 166,
+    "LOP3.LUT": 371,
+    "SHF.R.U32.HI": 174,
+    "VIADD": 167,
     "STG.E": 144,
+    "IADD3": 95,
+    "LEA": 82,
+    "FMUL": 80,
+    "IMAD": 74,
+    "R2UR": 72,
+    "IMAD.SHL.U32": 71,
+    "IMAD.MOV.U32": 70,
+    "BRA": 69
+   }
+  },
+  "void carry_window::window<(int)1048867>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 349,
+    "SHF.R.U32.HI": 164,
+    "VIADD": 160,
+    "STG.E": 140,
     "IADD3": 93,
-    "LEA": 80,
+    "IMAD.MOV.U32": 83,
+    "FMUL": 80,
+    "LEA": 79,
+    "LEA.HI.X": 69,
+    "IMAD.SHL.U32": 65,
+    "IMAD": 65,
+    "PRMT": 64
+   }
+  },
+  "void carry_window::window<(int)786723>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 433,
+    "SHF.R.U32.HI": 229,
+    "VIADD": 209,
+    "STG.E": 144,
+    "IMAD.SHL.U32": 123,
+    "IADD3": 89,
+    "IMAD": 87,
+    "LEA": 81,
     "FMUL": 80,
     "IMAD.MOV.U32": 73,
     "R2UR": 72,
-    "LEA.HI.X": 68,
-    "BRA": 65,
-    "IMAD.SHL.U32": 65
+    "BRA": 69
+   }
+  },
+  "void carry_window::window<(int)524579>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 371,
+    "SHF.R.U32.HI": 174,
+    "VIADD": 167,
+    "STG.E": 144,
+    "IADD3": 95,
+    "LEA": 81,
+    "FMUL": 80,
+    "IMAD": 75,
+    "R2UR": 72,
+    "IMAD.SHL.U32": 71,
+    "IMAD.MOV.U32": 70,
+    "BRA": 69
    }
   },
   "void carry_window::window<(int)524289>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
@@ -4732,10 +5179,10 @@
     "STG.E": 140,
     "IMAD.SHL.U32": 117,
     "IMAD.MOV.U32": 82,
-    "LEA": 80,
     "IADD3": 80,
     "FMUL": 80,
-    "IMAD": 75,
+    "LEA": 79,
+    "IMAD": 76,
     "LEA.HI.X": 69,
     "PRMT": 64
    }
@@ -4752,7 +5199,7 @@
     "R2UR": 64,
     "LEA": 63,
     "IMAD.MOV.U32": 60,
-    "IMAD": 58,
+    "IMAD": 59,
     "IADD3": 54,
     "LEA.HI.X": 53
    }
@@ -4767,9 +5214,9 @@
     "IADD3": 85,
     "FMUL": 80,
     "IMAD.MOV.U32": 77,
-    "LEA": 76,
+    "LEA": 75,
     "IMAD.SHL.U32": 69,
-    "IMAD": 67,
+    "IMAD": 68,
     "LEA.HI.X": 65,
     "PRMT": 64
    }
@@ -4784,9 +5231,9 @@
     "IADD3": 87,
     "FMUL": 80,
     "IMAD.MOV.U32": 79,
-    "LEA": 77,
+    "LEA": 76,
     "IMAD.SHL.U32": 68,
-    "IMAD": 65,
+    "IMAD": 66,
     "LEA.HI.X": 65,
     "PRMT": 64
    }
@@ -4805,7 +5252,7 @@
     "LEA": 61,
     "IMAD.SHL.U32": 61,
     "IADD3": 58,
-    "IMAD": 56
+    "IMAD": 57
    }
   },
   "void carry_window::window<(int)291>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
@@ -4821,7 +5268,7 @@
     "LEA": 79,
     "LEA.HI.X": 69,
     "IMAD.SHL.U32": 65,
-    "IMAD": 64,
+    "IMAD": 65,
     "PRMT": 64
    }
   },
@@ -4838,8 +5285,8 @@
     "IMAD.MOV.U32": 57,
     "IADD3": 57,
     "IMAD.SHL.U32": 54,
-    "LEA.HI.X": 53,
-    "IMAD": 52
+    "IMAD": 53,
+    "LEA.HI.X": 53
    }
   },
   "void carry_window::window<(int)65602>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
@@ -4889,8 +5336,8 @@
     "IMAD.MOV.U32": 57,
     "IADD3": 57,
     "IMAD.SHL.U32": 54,
-    "LEA.HI.X": 53,
-    "IMAD": 52
+    "IMAD": 53,
+    "LEA.HI.X": 53
    }
   },
   "void carry_window::window<(int)16402>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
@@ -4919,7 +5366,7 @@
     "VIADD": 54,
     "IMAD.SHL.U32": 52,
     "IADD3": 50,
-    "LEA": 43,
+    "LEA": 42,
     "IMAD.X": 41,
     "LEA.HI.X": 37,
     "LDS": 32,
@@ -4954,10 +5401,10 @@
     "PRMT": 64,
     "R2UR": 64,
     "IMAD.SHL.U32": 62,
-    "LEA": 58,
+    "LEA": 59,
+    "IMAD.MOV.U32": 59,
     "IADD3": 58,
-    "IMAD.MOV.U32": 57,
-    "IMAD": 57,
+    "IMAD": 56,
     "LEA.HI.X": 49
    }
   },
@@ -4988,7 +5435,7 @@
     "IADD3": 51,
     "VIADD": 47,
     "IMAD.X": 43,
-    "LEA": 41,
+    "LEA": 40,
     "LDS": 40,
     "LEA.HI.X": 33,
     "SHF.L.U64.HI": 32,
@@ -5008,7 +5455,7 @@
     "LEA": 61,
     "IMAD.SHL.U32": 61,
     "IADD3": 58,
-    "IMAD": 56,
+    "IMAD": 57,
     "LEA.HI.X": 49
    }
   },
@@ -5022,8 +5469,8 @@
     "PRMT": 64,
     "R2UR": 64,
     "IMAD.MOV.U32": 62,
-    "IMAD": 54,
-    "IMAD.IADD": 50,
+    "IMAD": 55,
+    "IMAD.IADD": 51,
     "FMUL": 48,
     "BRA": 42,
     "STS.128": 36
@@ -5042,7 +5489,7 @@
     "LEA": 59,
     "IADD3": 57,
     "IMAD.SHL.U32": 54,
-    "IMAD": 52,
+    "IMAD": 53,
     "LEA.HI.X": 49
    }
   },
@@ -5073,7 +5520,7 @@
     "IMAD.SHL.U32": 52,
     "IADD3": 50,
     "IMAD.X": 41,
-    "LEA": 39,
+    "LEA": 38,
     "LEA.HI.X": 33,
     "LDS": 32,
     "SHF.L.U64.HI": 32,
@@ -5140,7 +5587,7 @@
     "VIADD": 54,
     "IMAD.SHL.U32": 51,
     "IADD3": 50,
-    "LEA": 43,
+    "LEA": 42,
     "IMAD.X": 41,
     "LEA.HI.X": 37,
     "LDS": 32,
@@ -5174,12 +5621,12 @@
     "SHF.R.U32.HI": 114,
     "PRMT": 64,
     "R2UR": 64,
-    "LEA": 61,
+    "LEA": 62,
+    "IMAD.MOV.U32": 58,
     "IADD3": 57,
-    "IMAD.MOV.U32": 56,
     "IMAD.SHL.U32": 55,
-    "IMAD": 53,
-    "LEA.HI.X": 53
+    "LEA.HI.X": 53,
+    "IMAD": 52
    }
   },
   "void carry_window::window<(int)514>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
@@ -5195,7 +5642,7 @@
     "ULOP3.LUT": 28,
     "UMOV": 22,
     "SYNCS.EXCH.64": 21,
-    "IMAD": 17,
+    "IMAD": 18,
     "STS": 17
    }
   },
@@ -5223,7 +5670,7 @@
     "STG.E": 136,
     "SHF.R.U32.HI": 124,
     "VIADD": 94,
-    "IMAD": 85,
+    "IMAD": 86,
     "PRMT": 64,
     "R2UR": 64,
     "IMAD.MOV.U32": 58,
@@ -5242,7 +5689,7 @@
     "VIADD": 54,
     "IMAD.SHL.U32": 52,
     "IADD3": 49,
-    "LEA": 43,
+    "LEA": 42,
     "IMAD.X": 41,
     "LEA.HI.X": 37,
     "LDS": 32,
@@ -5280,7 +5727,7 @@
     "LEA": 79,
     "LEA.HI.X": 69,
     "IMAD.SHL.U32": 65,
-    "IMAD": 64,
+    "IMAD": 65,
     "PRMT": 64
    }
   },
@@ -5293,7 +5740,7 @@
     "VIADD": 56,
     "IMAD.SHL.U32": 54,
     "IADD3": 51,
-    "LEA": 46,
+    "LEA": 45,
     "IMAD.X": 42,
     "LDS": 40,
     "REDG.E.ADD.F16": 40,
@@ -5331,7 +5778,7 @@
     "PRMT": 64,
     "R2UR": 64,
     "IMAD.SHL.U32": 61,
-    "IMAD": 54,
+    "IMAD": 55,
     "LEA.HI.X": 54
    }
   },
@@ -5349,7 +5796,7 @@
     "IMAD.MOV.U32": 57,
     "IADD3": 57,
     "IMAD.SHL.U32": 54,
-    "LEA.HI.X": 53
+    "IMAD": 53
    }
   },
   "void carry_window::window<(int)34>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
@@ -5361,8 +5808,8 @@
     "VIADD": 54,
     "IMAD.SHL.U32": 52,
     "IADD3": 50,
-    "LEA": 43,
     "BRA": 42,
+    "LEA": 42,
     "IMAD.X": 41,
     "LEA.HI.X": 37,
     "LDS": 32,
@@ -5413,8 +5860,8 @@
     "PRMT": 64,
     "R2UR": 64,
     "IMAD.MOV.U32": 58,
-    "IMAD": 54,
-    "IMAD.IADD": 50,
+    "IMAD": 55,
+    "IMAD.IADD": 51,
     "FMUL": 48,
     "BRA": 42,
     "STS.128": 36
@@ -5432,7 +5879,7 @@
     "R2UR": 64,
     "IADD3": 56,
     "IMAD.SHL.U32": 54,
-    "IMAD": 50,
+    "IMAD": 51,
     "LEA": 46,
     "BRA": 41
    }
@@ -5450,8 +5897,8 @@
     "IMAD.MOV.U32": 57,
     "IADD3": 57,
     "IMAD.SHL.U32": 54,
-    "LEA.HI.X": 53,
-    "IMAD": 52
+    "IMAD": 53,
+    "LEA.HI.X": 53
    }
   },
   "void carry_window::window<(int)2>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
@@ -5463,7 +5910,7 @@
     "VIADD": 54,
     "IMAD.SHL.U32": 52,
     "IADD3": 50,
-    "LEA": 43,
+    "LEA": 42,
     "IMAD.X": 41,
     "LEA.HI.X": 37,
     "LDS": 32,
