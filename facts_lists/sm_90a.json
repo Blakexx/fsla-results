@@ -1,0 +1,191 @@
+{
+ "experiment": "facts_lists",
+ "question": "what does the facts pass cost a token on hopper when a sparse level's liveness is a MASK it is handed -- a bit a digit a token -- and not a test of the rows' values, and what does the value test it replaces cost beside it?",
+ "arch": "sm_90a",
+ "device": "NVIDIA H100 80GB HBM3",
+ "checks": [
+  {
+   "lab": "check",
+   "variant": "the mask as handed, a window's counts",
+   "ok": true,
+   "detail": "0 of 33792 counts differ"
+  },
+  {
+   "lab": "check",
+   "variant": "the mask as handed, a window's lists",
+   "ok": true,
+   "detail": "0 of 33792 counts and 0 of 585728 entries differ"
+  },
+  {
+   "lab": "check",
+   "variant": "a value test of the rows, a window's counts",
+   "ok": true,
+   "detail": "0 of 33792 counts differ"
+  },
+  {
+   "lab": "check",
+   "variant": "a value test of the rows, a window's lists",
+   "ok": true,
+   "detail": "0 of 33792 counts and 0 of 585728 entries differ"
+  }
+ ],
+ "driver": "580.173.02",
+ "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
+ "git": {
+  "sha": "5d4897762e51508aa380b2617b8e8a7f52e4c356",
+  "dirty": false
+ },
+ "reps": 7,
+ "date": "2026-11-13T21:53:24+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "the mask as handed, a window's counts",
+   "unit": "SM-cycles a token",
+   "samples": [
+    4.818075,
+    4.817241,
+    4.819541,
+    4.819459,
+    4.819979,
+    4.819755,
+    4.819726
+   ],
+   "median": 4.819541,
+   "min": 4.817241,
+   "max": 4.819979,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the mask as handed, a window's lists",
+   "unit": "SM-cycles a token",
+   "samples": [
+    23.181998,
+    23.150573,
+    23.159792,
+    23.158851,
+    23.145013,
+    23.163918,
+    23.151889
+   ],
+   "median": 23.158851,
+   "min": 23.145013,
+   "max": 23.181998,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a value test of the rows, a window's counts",
+   "unit": "SM-cycles a token",
+   "samples": [
+    21.032282,
+    21.033111,
+    21.029995,
+    21.029427,
+    21.02928,
+    21.034893,
+    21.027917
+   ],
+   "median": 21.029995,
+   "min": 21.027917,
+   "max": 21.034893,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a value test of the rows, a window's lists",
+   "unit": "SM-cycles a token",
+   "samples": [
+    49.718415,
+    50.672646,
+    49.820478,
+    49.158987,
+    49.768543,
+    49.523512,
+    48.98639
+   ],
+   "median": 49.718415,
+   "min": 48.98639,
+   "max": 50.672646,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void facts_lists::window<(int)1, (int)1>(long long *, const unsigned int *, const uint4 *, const unsigned char *, const unsigned int *, unsigned short *, unsigned int *, int)": {
+   "regs": 64,
+   "ops": {
+    "LOP3.LUT": 291,
+    "SHF.R.U32.HI": 120,
+    "IMAD": 102,
+    "VIADD": 94,
+    "BRA": 42,
+    "IMAD.SHL.U32": 42,
+    "IMAD.MOV.U32": 30,
+    "IMAD.IADD": 28,
+    "BSSY": 20,
+    "BSYNC": 20,
+    "LDS": 20,
+    "IADD3": 17
+   }
+  },
+  "void facts_lists::window<(int)1, (int)0>(long long *, const unsigned int *, const uint4 *, const unsigned char *, const unsigned int *, unsigned short *, unsigned int *, int)": {
+   "regs": 63,
+   "ops": {
+    "LOP3.LUT": 218,
+    "SHF.R.U32.HI": 112,
+    "VIADD": 76,
+    "IMAD": 74,
+    "BRA": 23,
+    "IMAD.SHL.U32": 17,
+    "LDG.E.128": 16,
+    "LEA": 14,
+    "S2R": 12,
+    "BSSY": 10,
+    "BSYNC": 10,
+    "IMAD.MOV.U32": 10
+   }
+  },
+  "void facts_lists::window<(int)0, (int)1>(long long *, const unsigned int *, const uint4 *, const unsigned char *, const unsigned int *, unsigned short *, unsigned int *, int)": {
+   "regs": 40,
+   "ops": {
+    "LOP3.LUT": 76,
+    "BRA": 42,
+    "IMAD": 37,
+    "VIADD": 36,
+    "IMAD.IADD": 27,
+    "IMAD.MOV.U32": 21,
+    "BSSY": 20,
+    "BSYNC": 20,
+    "LDS": 20,
+    "IADD3": 19,
+    "IMAD.SHL.U32": 18,
+    "BREV": 16
+   }
+  },
+  "void facts_lists::window<(int)0, (int)0>(long long *, const unsigned int *, const uint4 *, const unsigned char *, const unsigned int *, unsigned short *, unsigned int *, int)": {
+   "regs": 32,
+   "ops": {
+    "BRA": 23,
+    "LOP3.LUT": 18,
+    "LEA": 14,
+    "S2R": 12,
+    "VIADD": 12,
+    "BSSY": 10,
+    "BSYNC": 10,
+    "IMAD.IADD": 10,
+    "IMAD": 10,
+    "NOP": 10,
+    "ISETP.NE.AND": 9,
+    "MOV": 8
+   }
+  }
+ },
+ "counters": {},
+ "counters_exception": {
+  "host": "vast.ai rented box, NVIDIA H100 80GB HBM3: a box with a driver and no toolkit",
+  "instead": "the kernels' own clocks and the SASS's static counts"
+ }
+}
