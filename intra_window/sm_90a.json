@@ -15,16 +15,22 @@
    "variant": "a window of 1,024 tokens, two levels of 256 digits, 64 channels and the den, the rows tile-major: a tile's level one copy",
    "ok": true,
    "detail": "0 of 524288 output values and 0 of 8192 den sums differ"
+  },
+  {
+   "lab": "check",
+   "variant": "a window of 1,024 tokens, two levels of 256 digits, 64 channels and the den, the levels tile-major, the values token-major",
+   "ok": true,
+   "detail": "0 of 524288 output values and 0 of 8192 den sums differ"
   }
  ],
- "driver": "580.173.02",
+ "driver": "595.91.07",
  "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
  "git": {
-  "sha": "4f56ae4a8294f562ce16df001c7c385ecf19f046",
+  "sha": "3e13195f9e50ba0b8b864a3abfb869d39b4e675c",
   "dirty": false
  },
  "reps": 7,
- "date": "2026-11-13T20:15:23+00:00",
+ "date": "2026-11-13T20:29:26+00:00",
  "utilization_before": 0,
  "inputs": {},
  "results": [
@@ -33,17 +39,17 @@
    "name": "a window of 1,024 tokens, two levels of 256 digits, 64 channels and the den, the rows token-major: tensor copies a block",
    "unit": "SM-cycles a window",
    "samples": [
-    430972.542969,
-    429768.054688,
-    431191.570312,
-    429099.296875,
-    431412.476562,
-    428430.671875,
-    431346.066406
+    427411.914062,
+    427658.785156,
+    429098.996094,
+    429142.984375,
+    429269.238281,
+    429195.039062,
+    428642.148438
    ],
-   "median": 430972.542969,
-   "min": 428430.671875,
-   "max": 431412.476562,
+   "median": 429098.996094,
+   "min": 427411.914062,
+   "max": 429269.238281,
    "unstable": false
   },
   {
@@ -51,17 +57,17 @@
    "name": "a window of 1,024 tokens, two levels of 256 digits, 64 channels and the den, the rows token-major: tensor copies a block: a token",
    "unit": "SM-cycles a token",
    "samples": [
-    420.871624,
-    419.695366,
-    421.085518,
-    419.042282,
-    421.301247,
-    418.389328,
-    421.236393
+    417.394447,
+    417.635532,
+    419.041988,
+    419.084946,
+    419.208241,
+    419.13578,
+    418.595848
    ],
-   "median": 420.871624,
-   "min": 418.389328,
-   "max": 421.301247,
+   "median": 419.041988,
+   "min": 417.394447,
+   "max": 419.208241,
    "unstable": false
   },
   {
@@ -69,17 +75,17 @@
    "name": "a window of 1,024 tokens, two levels of 256 digits, 64 channels and the den, the rows tile-major: a tile's level one copy",
    "unit": "SM-cycles a window",
    "samples": [
-    177505.472656,
-    177533.667969,
-    177541.507812,
-    177551.507812,
-    177549.371094,
-    177546.84375,
-    177545.488281
+    177475.925781,
+    177486.0,
+    177523.085938,
+    177494.765625,
+    177511.515625,
+    177500.027344,
+    177498.445312
    ],
-   "median": 177545.488281,
-   "min": 177505.472656,
-   "max": 177551.507812,
+   "median": 177498.445312,
+   "min": 177475.925781,
+   "max": 177523.085938,
    "unstable": false
   },
   {
@@ -87,21 +93,74 @@
    "name": "a window of 1,024 tokens, two levels of 256 digits, 64 channels and the den, the rows tile-major: a tile's level one copy: a token",
    "unit": "SM-cycles a token",
    "samples": [
-    173.345188,
-    173.372723,
-    173.380379,
-    173.390144,
-    173.388058,
-    173.38559,
-    173.384266
+    173.316334,
+    173.326172,
+    173.362389,
+    173.334732,
+    173.351089,
+    173.33987,
+    173.338326
    ],
-   "median": 173.384266,
-   "min": 173.345188,
-   "max": 173.390144,
+   "median": 173.338326,
+   "min": 173.316334,
+   "max": 173.362389,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a window of 1,024 tokens, two levels of 256 digits, 64 channels and the den, the levels tile-major, the values token-major",
+   "unit": "SM-cycles a window",
+   "samples": [
+    183617.816406,
+    183377.449219,
+    183538.230469,
+    183616.027344,
+    183550.429688,
+    183454.59375,
+    183285.953125
+   ],
+   "median": 183538.230469,
+   "min": 183285.953125,
+   "max": 183617.816406,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a window of 1,024 tokens, two levels of 256 digits, 64 channels and the den, the levels tile-major, the values token-major: a token",
+   "unit": "SM-cycles a token",
+   "samples": [
+    179.314274,
+    179.07954,
+    179.236553,
+    179.312527,
+    179.248466,
+    179.154877,
+    178.990189
+   ],
+   "median": 179.236553,
+   "min": 178.990189,
+   "max": 179.314274,
    "unstable": false
   }
  ],
  "kernels": {
+  "void intra_window::window<(int)2>(CUtensorMap_st, CUtensorMap_st, CUtensorMap_st, intra_window::Tiled, long long *, unsigned int *, float *, int)": {
+   "regs": 126,
+   "ops": {
+    "I2FP.F32.S32": 64,
+    "LOP3.LUT": 59,
+    "R2UR": 55,
+    "IMAD.MOV.U32": 42,
+    "SEL": 34,
+    "FMUL": 32,
+    "FSEL": 32,
+    "BRA": 23,
+    "IADD3": 21,
+    "IMAD.X": 20,
+    "ISETP.GT.AND": 19,
+    "IGMMA.64": 16
+   }
+  },
   "void intra_window::window<(int)1>(CUtensorMap_st, CUtensorMap_st, CUtensorMap_st, intra_window::Tiled, long long *, unsigned int *, float *, int)": {
    "regs": 126,
    "ops": {
