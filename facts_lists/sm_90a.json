@@ -70,6 +70,22 @@
   },
   {
    "lab": "check",
+   "variant": "4 to 5 live digits a token, the mask as handed, a window's data gathered into its digits' steps",
+   "ok": true,
+   "detail": "0 of 33792 counts and 0 of 14643200 arranged lines differ"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the mask as handed, a window's data gathered into its digits' steps, the tables in cache",
+   "reason": "the row above checks this kernel's first round; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the mask as handed, a window's data gathered into its digits' steps, the tables once-read",
+   "reason": "the row above checks this kernel's first round; this one is its time"
+  },
+  {
+   "lab": "check",
    "variant": "32 live digits a token, the mask as handed, a window's counts",
    "ok": true,
    "detail": "0 of 33792 counts differ"
@@ -131,16 +147,32 @@
    "lab": "unchecked",
    "variant": "32 live digits a token, a value test of the rows, a window's lists, the tables once-read",
    "reason": "the row above checks this kernel's first round; this one is its time"
+  },
+  {
+   "lab": "check",
+   "variant": "32 live digits a token, the mask as handed, a window's data gathered into its digits' steps",
+   "ok": true,
+   "detail": "0 of 33792 counts and 0 of 108134400 arranged lines differ"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the mask as handed, a window's data gathered into its digits' steps, the tables in cache",
+   "reason": "the row above checks this kernel's first round; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the mask as handed, a window's data gathered into its digits' steps, the tables once-read",
+   "reason": "the row above checks this kernel's first round; this one is its time"
   }
  ],
  "driver": "595.91.07",
  "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
  "git": {
-  "sha": "f93be08e85749b15cbf22603708eb359680e1dd9",
+  "sha": "1b43da74cac9c5eab28970348a68cadda25762a8",
   "dirty": false
  },
  "reps": 7,
- "date": "2026-11-13T23:04:30+00:00",
+ "date": "2026-11-14T05:21:53+00:00",
  "utilization_before": 0,
  "inputs": {},
  "results": [
@@ -149,17 +181,17 @@
    "name": "4 to 5 live digits a token, the mask as handed, a window's counts, the tables in cache",
    "unit": "SM-cycles a token",
    "samples": [
-    5.03826,
-    5.04119,
-    5.044053,
-    5.042799,
-    5.0439,
-    5.044132,
-    5.042062
+    5.102962,
+    5.097262,
+    5.107116,
+    5.106885,
+    5.109144,
+    5.105925,
+    5.10683
    ],
-   "median": 5.042799,
-   "min": 5.03826,
-   "max": 5.044132,
+   "median": 5.10683,
+   "min": 5.097262,
+   "max": 5.109144,
    "unstable": false
   },
   {
@@ -167,35 +199,35 @@
    "name": "4 to 5 live digits a token, the mask as handed, a window's counts, the tables once-read",
    "unit": "SM-cycles a token",
    "samples": [
-    6.166595,
-    6.123894,
-    6.116057,
-    6.093658,
-    6.143701,
-    6.140065,
-    6.101306
+    5.98152,
+    5.434302,
+    5.466525,
+    5.444961,
+    5.470572,
+    5.444223,
+    5.471285
    ],
-   "median": 6.123894,
-   "min": 6.093658,
-   "max": 6.166595,
-   "unstable": false
+   "median": 5.466525,
+   "min": 5.434302,
+   "max": 5.98152,
+   "unstable": true
   },
   {
    "lab": "result",
    "name": "4 to 5 live digits a token, the mask as handed, a window's lists, the tables in cache",
    "unit": "SM-cycles a token",
    "samples": [
-    8.232366,
-    8.247536,
-    8.245832,
-    8.245692,
-    8.249627,
-    8.241008,
-    8.247354
+    8.355913,
+    8.336413,
+    8.354531,
+    8.359301,
+    8.3473,
+    8.346337,
+    8.355885
    ],
-   "median": 8.245832,
-   "min": 8.232366,
-   "max": 8.249627,
+   "median": 8.354531,
+   "min": 8.336413,
+   "max": 8.359301,
    "unstable": false
   },
   {
@@ -203,17 +235,17 @@
    "name": "4 to 5 live digits a token, the mask as handed, a window's lists, the tables once-read",
    "unit": "SM-cycles a token",
    "samples": [
-    9.690796,
-    9.807028,
-    9.860192,
-    9.890079,
-    9.73988,
-    9.917578,
-    9.930629
+    9.474584,
+    9.665512,
+    9.807895,
+    9.732939,
+    9.754107,
+    9.680925,
+    9.750053
    ],
-   "median": 9.860192,
-   "min": 9.690796,
-   "max": 9.930629,
+   "median": 9.732939,
+   "min": 9.474584,
+   "max": 9.807895,
    "unstable": false
   },
   {
@@ -221,17 +253,17 @@
    "name": "4 to 5 live digits a token, a value test of the rows, a window's counts, the tables in cache",
    "unit": "SM-cycles a token",
    "samples": [
-    10.693826,
-    10.957929,
-    10.90161,
-    10.931278,
-    11.032291,
-    11.026486,
-    11.026339
+    11.17525,
+    11.354347,
+    11.282984,
+    11.67509,
+    11.407045,
+    11.472309,
+    11.544239
    ],
-   "median": 10.957929,
-   "min": 10.693826,
-   "max": 11.032291,
+   "median": 11.407045,
+   "min": 11.17525,
+   "max": 11.67509,
    "unstable": false
   },
   {
@@ -239,17 +271,17 @@
    "name": "4 to 5 live digits a token, a value test of the rows, a window's counts, the tables once-read",
    "unit": "SM-cycles a token",
    "samples": [
-    19.656543,
-    19.138476,
-    19.366168,
-    19.272021,
-    19.210959,
-    19.472868,
-    19.484527
+    20.21373,
+    21.124604,
+    20.818593,
+    20.614924,
+    20.825661,
+    20.804151,
+    20.815063
    ],
-   "median": 19.366168,
-   "min": 19.138476,
-   "max": 19.656543,
+   "median": 20.815063,
+   "min": 20.21373,
+   "max": 21.124604,
    "unstable": false
   },
   {
@@ -257,17 +289,17 @@
    "name": "4 to 5 live digits a token, a value test of the rows, a window's lists, the tables in cache",
    "unit": "SM-cycles a token",
    "samples": [
-    14.002217,
-    14.114753,
-    14.06709,
-    14.064985,
-    14.053696,
-    14.090718,
-    14.043265
+    14.298833,
+    14.525594,
+    14.500633,
+    14.534782,
+    14.479162,
+    14.494566,
+    14.502524
    ],
-   "median": 14.064985,
-   "min": 14.002217,
-   "max": 14.114753,
+   "median": 14.500633,
+   "min": 14.298833,
+   "max": 14.534782,
    "unstable": false
   },
   {
@@ -275,17 +307,53 @@
    "name": "4 to 5 live digits a token, a value test of the rows, a window's lists, the tables once-read",
    "unit": "SM-cycles a token",
    "samples": [
-    20.450875,
-    20.237521,
-    20.588221,
-    20.632801,
-    20.675549,
-    20.500113,
-    20.320655
+    22.84174,
+    23.102986,
+    23.076131,
+    22.978618,
+    22.89845,
+    22.943448,
+    23.027598
    ],
-   "median": 20.500113,
-   "min": 20.237521,
-   "max": 20.675549,
+   "median": 22.978618,
+   "min": 22.84174,
+   "max": 23.102986,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the mask as handed, a window's data gathered into its digits' steps, the tables in cache",
+   "unit": "SM-cycles a token",
+   "samples": [
+    1586.6426,
+    1582.493905,
+    1592.92231,
+    1589.172976,
+    1594.783478,
+    1604.162454,
+    1599.476663
+   ],
+   "median": 1592.92231,
+   "min": 1582.493905,
+   "max": 1604.162454,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the mask as handed, a window's data gathered into its digits' steps, the tables once-read",
+   "unit": "SM-cycles a token",
+   "samples": [
+    1576.906037,
+    1576.597455,
+    1589.00945,
+    1585.882143,
+    1561.62771,
+    1573.298737,
+    1559.278732
+   ],
+   "median": 1576.597455,
+   "min": 1559.278732,
+   "max": 1589.00945,
    "unstable": false
   },
   {
@@ -293,17 +361,17 @@
    "name": "32 live digits a token, the mask as handed, a window's counts, the tables in cache",
    "unit": "SM-cycles a token",
    "samples": [
-    9.456646,
-    9.45772,
-    9.460615,
-    9.462689,
-    9.462507,
-    9.461686,
-    9.459535
+    9.522015,
+    9.511854,
+    9.524653,
+    9.523659,
+    9.524999,
+    9.523008,
+    9.524659
    ],
-   "median": 9.460615,
-   "min": 9.456646,
-   "max": 9.462689,
+   "median": 9.523659,
+   "min": 9.511854,
+   "max": 9.524999,
    "unstable": false
   },
   {
@@ -311,35 +379,35 @@
    "name": "32 live digits a token, the mask as handed, a window's counts, the tables once-read",
    "unit": "SM-cycles a token",
    "samples": [
-    10.500126,
-    10.456805,
-    10.478848,
-    10.446615,
-    10.453075,
-    10.456638,
-    10.503949
+    10.636142,
+    9.851588,
+    9.863285,
+    9.837735,
+    9.878104,
+    9.898219,
+    9.8894
    ],
-   "median": 10.456805,
-   "min": 10.446615,
-   "max": 10.503949,
-   "unstable": false
+   "median": 9.878104,
+   "min": 9.837735,
+   "max": 10.636142,
+   "unstable": true
   },
   {
    "lab": "result",
    "name": "32 live digits a token, the mask as handed, a window's lists, the tables in cache",
    "unit": "SM-cycles a token",
    "samples": [
-    43.667293,
-    43.447011,
-    43.534274,
-    43.236007,
-    43.538581,
-    43.499813,
-    43.338667
+    44.605668,
+    43.697669,
+    45.090167,
+    44.845914,
+    44.512228,
+    44.260261,
+    44.568387
    ],
-   "median": 43.499813,
-   "min": 43.236007,
-   "max": 43.667293,
+   "median": 44.568387,
+   "min": 43.697669,
+   "max": 45.090167,
    "unstable": false
   },
   {
@@ -347,17 +415,17 @@
    "name": "32 live digits a token, the mask as handed, a window's lists, the tables once-read",
    "unit": "SM-cycles a token",
    "samples": [
-    45.763492,
-    46.367628,
-    45.413445,
-    45.667307,
-    45.489218,
-    45.670352,
-    44.879124
+    47.176024,
+    47.412737,
+    47.138239,
+    46.964069,
+    46.907115,
+    46.693402,
+    47.240386
    ],
-   "median": 45.667307,
-   "min": 44.879124,
-   "max": 46.367628,
+   "median": 47.138239,
+   "min": 46.693402,
+   "max": 47.412737,
    "unstable": false
   },
   {
@@ -365,17 +433,17 @@
    "name": "32 live digits a token, a value test of the rows, a window's counts, the tables in cache",
    "unit": "SM-cycles a token",
    "samples": [
-    15.065071,
-    15.077379,
-    15.121879,
-    15.113356,
-    15.155677,
-    15.129458,
-    15.166209
+    15.288966,
+    15.461665,
+    15.51257,
+    15.544159,
+    15.544614,
+    15.57767,
+    15.547595
    ],
-   "median": 15.121879,
-   "min": 15.065071,
-   "max": 15.166209,
+   "median": 15.544159,
+   "min": 15.288966,
+   "max": 15.57767,
    "unstable": false
   },
   {
@@ -383,17 +451,17 @@
    "name": "32 live digits a token, a value test of the rows, a window's counts, the tables once-read",
    "unit": "SM-cycles a token",
    "samples": [
-    18.288232,
-    18.632757,
-    18.55109,
-    18.577991,
-    18.649839,
-    18.497528,
-    18.583251
+    20.873288,
+    21.895656,
+    21.574275,
+    21.523671,
+    21.558819,
+    21.596834,
+    21.46105
    ],
-   "median": 18.577991,
-   "min": 18.288232,
-   "max": 18.649839,
+   "median": 21.558819,
+   "min": 20.873288,
+   "max": 21.895656,
    "unstable": false
   },
   {
@@ -401,17 +469,17 @@
    "name": "32 live digits a token, a value test of the rows, a window's lists, the tables in cache",
    "unit": "SM-cycles a token",
    "samples": [
-    46.997258,
-    46.754328,
-    47.106355,
-    47.174183,
-    47.005452,
-    47.466252,
-    47.679348
+    49.532514,
+    49.581947,
+    49.616855,
+    49.34197,
+    49.407305,
+    49.56151,
+    50.135142
    ],
-   "median": 47.106355,
-   "min": 46.754328,
-   "max": 47.679348,
+   "median": 49.56151,
+   "min": 49.34197,
+   "max": 50.135142,
    "unstable": false
   },
   {
@@ -419,22 +487,75 @@
    "name": "32 live digits a token, a value test of the rows, a window's lists, the tables once-read",
    "unit": "SM-cycles a token",
    "samples": [
-    46.526035,
-    46.330073,
-    46.967726,
-    46.292357,
-    46.207962,
-    46.837979,
-    46.417629
+    51.566678,
+    50.778366,
+    51.47695,
+    50.9996,
+    50.279209,
+    50.856987,
+    50.860641
    ],
-   "median": 46.417629,
-   "min": 46.207962,
-   "max": 46.967726,
+   "median": 50.860641,
+   "min": 50.279209,
+   "max": 51.566678,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the mask as handed, a window's data gathered into its digits' steps, the tables in cache",
+   "unit": "SM-cycles a token",
+   "samples": [
+    6957.350622,
+    6225.085197,
+    5741.135265,
+    5742.511603,
+    5746.041048,
+    5775.259724,
+    5728.634931
+   ],
+   "median": 5746.041048,
+   "min": 5728.634931,
+   "max": 6957.350622,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the mask as handed, a window's data gathered into its digits' steps, the tables once-read",
+   "unit": "SM-cycles a token",
+   "samples": [
+    5606.83062,
+    5680.766465,
+    5658.250029,
+    5689.920625,
+    5709.796405,
+    5700.919693,
+    5738.459001
+   ],
+   "median": 5689.920625,
+   "min": 5606.83062,
+   "max": 5738.459001,
    "unstable": false
   }
  ],
  "kernels": {
-  "void facts_lists::window<(int)1, (int)1>(long long *, const uint4 *, const uint4 *, const unsigned int *, unsigned short *, unsigned short *, int, int)": {
+  "void facts_lists::window<(int)0, (int)2>(long long *, const uint4 *, const uint4 *, const unsigned int *, unsigned short *, unsigned short *, int, int, const uint4 *, const uint4 *, uint4 *, int)": {
+   "regs": 62,
+   "ops": {
+    "LDG.E.128": 194,
+    "STG.E.128": 192,
+    "LOP3.LUT": 111,
+    "IMAD.IADD": 64,
+    "LEA": 53,
+    "IMAD.MOV.U32": 51,
+    "BRA": 40,
+    "IMAD": 39,
+    "VIADD": 28,
+    "IADD3": 28,
+    "IMAD.SHL.U32": 27,
+    "IMAD.WIDE.U32": 25
+   }
+  },
+  "void facts_lists::window<(int)1, (int)1>(long long *, const uint4 *, const uint4 *, const unsigned int *, unsigned short *, unsigned short *, int, int, const uint4 *, const uint4 *, uint4 *, int)": {
    "regs": 64,
    "ops": {
     "LOP3.LUT": 287,
@@ -451,7 +572,7 @@
     "LDS": 17
    }
   },
-  "void facts_lists::window<(int)1, (int)0>(long long *, const uint4 *, const uint4 *, const unsigned int *, unsigned short *, unsigned short *, int, int)": {
+  "void facts_lists::window<(int)1, (int)0>(long long *, const uint4 *, const uint4 *, const unsigned int *, unsigned short *, unsigned short *, int, int, const uint4 *, const uint4 *, uint4 *, int)": {
    "regs": 62,
    "ops": {
     "LOP3.LUT": 220,
@@ -468,7 +589,7 @@
     "BSSY": 10
    }
   },
-  "void facts_lists::window<(int)0, (int)1>(long long *, const uint4 *, const uint4 *, const unsigned int *, unsigned short *, unsigned short *, int, int)": {
+  "void facts_lists::window<(int)0, (int)1>(long long *, const uint4 *, const uint4 *, const unsigned int *, unsigned short *, unsigned short *, int, int, const uint4 *, const uint4 *, uint4 *, int)": {
    "regs": 32,
    "ops": {
     "LOP3.LUT": 91,
@@ -485,7 +606,7 @@
     "BREV": 16
    }
   },
-  "void facts_lists::window<(int)0, (int)0>(long long *, const uint4 *, const uint4 *, const unsigned int *, unsigned short *, unsigned short *, int, int)": {
+  "void facts_lists::window<(int)0, (int)0>(long long *, const uint4 *, const uint4 *, const unsigned int *, unsigned short *, unsigned short *, int, int, const uint4 *, const uint4 *, uint4 *, int)": {
    "regs": 32,
    "ops": {
     "BRA": 23,
