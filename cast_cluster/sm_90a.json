@@ -1,0 +1,1011 @@
+{
+ "experiment": "cast_cluster",
+ "question": "`value_cast` found a multicast copy 3.6 times a CTA's own, in clusters of 8 with a cluster-wide barrier every 8 KB. Does a multicast pay in a SMALL cluster, a slot-sized tile and a hand-off that stops no thread but the issuer's -- and on tiles the cache has not seen, where a cluster's CTAs each asking for the same tile ask global memory for it?",
+ "arch": "sm_90a",
+ "device": "NVIDIA H100 80GB HBM3",
+ "checks": [
+  {
+   "lab": "check",
+   "variant": "clusters of 2, every CTA its own copy, tiles the cache holds, 2 in flight",
+   "ok": true,
+   "detail": "0 of 5406720 landed bytes differ"
+  },
+  {
+   "lab": "check",
+   "variant": "clusters of 2, one multicast copy a cluster, tiles the cache holds, 2 in flight",
+   "ok": true,
+   "detail": "0 of 5406720 landed bytes differ"
+  },
+  {
+   "lab": "check",
+   "variant": "clusters of 2, every CTA its own copy, a fresh tile a chunk, 2 in flight",
+   "ok": true,
+   "detail": "0 of 5406720 landed bytes differ"
+  },
+  {
+   "lab": "check",
+   "variant": "clusters of 2, one multicast copy a cluster, a fresh tile a chunk, 2 in flight",
+   "ok": true,
+   "detail": "0 of 5406720 landed bytes differ"
+  },
+  {
+   "lab": "check",
+   "variant": "clusters of 2, every CTA its own copy, tiles the cache holds, 4 in flight",
+   "ok": true,
+   "detail": "0 of 5406720 landed bytes differ"
+  },
+  {
+   "lab": "check",
+   "variant": "clusters of 2, one multicast copy a cluster, tiles the cache holds, 4 in flight",
+   "ok": true,
+   "detail": "0 of 5406720 landed bytes differ"
+  },
+  {
+   "lab": "check",
+   "variant": "clusters of 2, every CTA its own copy, a fresh tile a chunk, 4 in flight",
+   "ok": true,
+   "detail": "0 of 5406720 landed bytes differ"
+  },
+  {
+   "lab": "check",
+   "variant": "clusters of 2, one multicast copy a cluster, a fresh tile a chunk, 4 in flight",
+   "ok": true,
+   "detail": "0 of 5406720 landed bytes differ"
+  },
+  {
+   "lab": "check",
+   "variant": "clusters of 4, every CTA its own copy, tiles the cache holds, 2 in flight",
+   "ok": true,
+   "detail": "0 of 5406720 landed bytes differ"
+  },
+  {
+   "lab": "check",
+   "variant": "clusters of 4, one multicast copy a cluster, tiles the cache holds, 2 in flight",
+   "ok": true,
+   "detail": "0 of 5406720 landed bytes differ"
+  },
+  {
+   "lab": "check",
+   "variant": "clusters of 4, every CTA its own copy, a fresh tile a chunk, 2 in flight",
+   "ok": true,
+   "detail": "0 of 5406720 landed bytes differ"
+  },
+  {
+   "lab": "check",
+   "variant": "clusters of 4, one multicast copy a cluster, a fresh tile a chunk, 2 in flight",
+   "ok": true,
+   "detail": "0 of 5406720 landed bytes differ"
+  },
+  {
+   "lab": "check",
+   "variant": "clusters of 4, every CTA its own copy, tiles the cache holds, 4 in flight",
+   "ok": true,
+   "detail": "0 of 5406720 landed bytes differ"
+  },
+  {
+   "lab": "check",
+   "variant": "clusters of 4, one multicast copy a cluster, tiles the cache holds, 4 in flight",
+   "ok": true,
+   "detail": "0 of 5406720 landed bytes differ"
+  },
+  {
+   "lab": "check",
+   "variant": "clusters of 4, every CTA its own copy, a fresh tile a chunk, 4 in flight",
+   "ok": true,
+   "detail": "0 of 5406720 landed bytes differ"
+  },
+  {
+   "lab": "check",
+   "variant": "clusters of 4, one multicast copy a cluster, a fresh tile a chunk, 4 in flight",
+   "ok": true,
+   "detail": "0 of 5406720 landed bytes differ"
+  },
+  {
+   "lab": "check",
+   "variant": "clusters of 8, every CTA its own copy, tiles the cache holds, 2 in flight",
+   "ok": true,
+   "detail": "0 of 5242880 landed bytes differ"
+  },
+  {
+   "lab": "check",
+   "variant": "clusters of 8, one multicast copy a cluster, tiles the cache holds, 2 in flight",
+   "ok": true,
+   "detail": "0 of 5242880 landed bytes differ"
+  },
+  {
+   "lab": "check",
+   "variant": "clusters of 8, every CTA its own copy, a fresh tile a chunk, 2 in flight",
+   "ok": true,
+   "detail": "0 of 5242880 landed bytes differ"
+  },
+  {
+   "lab": "check",
+   "variant": "clusters of 8, one multicast copy a cluster, a fresh tile a chunk, 2 in flight",
+   "ok": true,
+   "detail": "0 of 5242880 landed bytes differ"
+  },
+  {
+   "lab": "check",
+   "variant": "clusters of 8, every CTA its own copy, tiles the cache holds, 4 in flight",
+   "ok": true,
+   "detail": "0 of 5242880 landed bytes differ"
+  },
+  {
+   "lab": "check",
+   "variant": "clusters of 8, one multicast copy a cluster, tiles the cache holds, 4 in flight",
+   "ok": true,
+   "detail": "0 of 5242880 landed bytes differ"
+  },
+  {
+   "lab": "check",
+   "variant": "clusters of 8, every CTA its own copy, a fresh tile a chunk, 4 in flight",
+   "ok": true,
+   "detail": "0 of 5242880 landed bytes differ"
+  },
+  {
+   "lab": "check",
+   "variant": "clusters of 8, one multicast copy a cluster, a fresh tile a chunk, 4 in flight",
+   "ok": true,
+   "detail": "0 of 5242880 landed bytes differ"
+  }
+ ],
+ "driver": "595.91.07",
+ "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
+ "git": {
+  "sha": "46954a3b51cbb85290354d6f191ca12fd3a1a48b",
+  "dirty": false
+ },
+ "reps": 7,
+ "date": "2026-11-14T05:15:06+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "clusters of 2, every CTA its own copy, tiles the cache holds, 2 in flight",
+   "unit": "cycles a kilobyte a CTA",
+   "samples": [
+    16.852819,
+    16.996114,
+    16.879292,
+    16.790128,
+    17.126706,
+    16.874649,
+    16.809977
+   ],
+   "median": 16.874649,
+   "min": 16.790128,
+   "max": 17.126706,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "clusters of 2, one multicast copy a cluster, tiles the cache holds, 2 in flight",
+   "unit": "cycles a kilobyte a CTA",
+   "samples": [
+    67.707605,
+    68.001716,
+    67.45526,
+    67.875956,
+    67.600203,
+    67.821159,
+    67.999171
+   ],
+   "median": 67.821159,
+   "min": 67.45526,
+   "max": 68.001716,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "clusters of 2, every CTA its own copy, a fresh tile a chunk, 2 in flight",
+   "unit": "cycles a kilobyte a CTA",
+   "samples": [
+    45.87607,
+    47.253883,
+    47.917365,
+    47.423202,
+    47.742159,
+    47.554886,
+    47.766211
+   ],
+   "median": 47.554886,
+   "min": 45.87607,
+   "max": 47.917365,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "clusters of 2, one multicast copy a cluster, a fresh tile a chunk, 2 in flight",
+   "unit": "cycles a kilobyte a CTA",
+   "samples": [
+    86.732879,
+    86.137374,
+    86.672877,
+    86.540251,
+    86.383711,
+    86.435945,
+    86.578806
+   ],
+   "median": 86.540251,
+   "min": 86.137374,
+   "max": 86.732879,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "clusters of 2, every CTA its own copy, tiles the cache holds, 4 in flight",
+   "unit": "cycles a kilobyte a CTA",
+   "samples": [
+    13.675972,
+    13.69028,
+    13.710386,
+    13.68878,
+    13.697665,
+    13.693885,
+    13.698566
+   ],
+   "median": 13.693885,
+   "min": 13.675972,
+   "max": 13.710386,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "clusters of 2, one multicast copy a cluster, tiles the cache holds, 4 in flight",
+   "unit": "cycles a kilobyte a CTA",
+   "samples": [
+    67.996834,
+    68.051894,
+    67.786808,
+    68.11615,
+    67.829978,
+    67.516754,
+    67.864736
+   ],
+   "median": 67.864736,
+   "min": 67.516754,
+   "max": 68.11615,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "clusters of 2, every CTA its own copy, a fresh tile a chunk, 4 in flight",
+   "unit": "cycles a kilobyte a CTA",
+   "samples": [
+    33.334798,
+    34.228094,
+    34.501833,
+    34.285645,
+    34.974765,
+    34.898969,
+    34.671804
+   ],
+   "median": 34.501833,
+   "min": 33.334798,
+   "max": 34.974765,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "clusters of 2, one multicast copy a cluster, a fresh tile a chunk, 4 in flight",
+   "unit": "cycles a kilobyte a CTA",
+   "samples": [
+    86.741357,
+    86.560806,
+    86.789623,
+    86.74247,
+    86.746856,
+    86.710431,
+    86.984215
+   ],
+   "median": 86.74247,
+   "min": 86.560806,
+   "max": 86.984215,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "clusters of 4, every CTA its own copy, tiles the cache holds, 2 in flight",
+   "unit": "cycles a kilobyte a CTA",
+   "samples": [
+    18.418756,
+    19.324092,
+    19.290456,
+    19.128801,
+    19.421319,
+    19.1281,
+    19.336575
+   ],
+   "median": 19.290456,
+   "min": 18.418756,
+   "max": 19.421319,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "clusters of 4, one multicast copy a cluster, tiles the cache holds, 2 in flight",
+   "unit": "cycles a kilobyte a CTA",
+   "samples": [
+    67.654886,
+    67.602069,
+    67.692469,
+    67.611992,
+    67.712729,
+    67.630528,
+    67.612172
+   ],
+   "median": 67.630528,
+   "min": 67.602069,
+   "max": 67.712729,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "clusters of 4, every CTA its own copy, a fresh tile a chunk, 2 in flight",
+   "unit": "cycles a kilobyte a CTA",
+   "samples": [
+    35.531922,
+    36.803495,
+    36.73422,
+    36.900348,
+    36.725342,
+    36.979936,
+    36.930056
+   ],
+   "median": 36.803495,
+   "min": 35.531922,
+   "max": 36.979936,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "clusters of 4, one multicast copy a cluster, a fresh tile a chunk, 2 in flight",
+   "unit": "cycles a kilobyte a CTA",
+   "samples": [
+    82.68642,
+    82.875001,
+    82.705632,
+    82.771912,
+    82.780091,
+    82.634132,
+    82.976648
+   ],
+   "median": 82.771912,
+   "min": 82.634132,
+   "max": 82.976648,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "clusters of 4, every CTA its own copy, tiles the cache holds, 4 in flight",
+   "unit": "cycles a kilobyte a CTA",
+   "samples": [
+    15.299513,
+    15.722579,
+    16.025929,
+    15.545725,
+    15.616246,
+    15.778952,
+    15.714839
+   ],
+   "median": 15.714839,
+   "min": 15.299513,
+   "max": 16.025929,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "clusters of 4, one multicast copy a cluster, tiles the cache holds, 4 in flight",
+   "unit": "cycles a kilobyte a CTA",
+   "samples": [
+    67.768464,
+    67.765234,
+    67.762392,
+    67.780895,
+    67.727725,
+    67.83857,
+    67.759837
+   ],
+   "median": 67.765234,
+   "min": 67.727725,
+   "max": 67.83857,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "clusters of 4, every CTA its own copy, a fresh tile a chunk, 4 in flight",
+   "unit": "cycles a kilobyte a CTA",
+   "samples": [
+    20.542266,
+    24.506568,
+    23.531889,
+    24.217307,
+    23.782659,
+    23.843259,
+    24.020984
+   ],
+   "median": 23.843259,
+   "min": 20.542266,
+   "max": 24.506568,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "clusters of 4, one multicast copy a cluster, a fresh tile a chunk, 4 in flight",
+   "unit": "cycles a kilobyte a CTA",
+   "samples": [
+    83.13047,
+    82.876844,
+    82.83051,
+    82.733314,
+    82.705629,
+    83.045009,
+    83.045432
+   ],
+   "median": 82.876844,
+   "min": 82.705629,
+   "max": 83.13047,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "clusters of 8, every CTA its own copy, tiles the cache holds, 2 in flight",
+   "unit": "cycles a kilobyte a CTA",
+   "samples": [
+    17.469394,
+    18.179552,
+    18.235857,
+    17.263075,
+    17.318697,
+    17.200778,
+    17.882893
+   ],
+   "median": 17.469394,
+   "min": 17.200778,
+   "max": 18.235857,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "clusters of 8, one multicast copy a cluster, tiles the cache holds, 2 in flight",
+   "unit": "cycles a kilobyte a CTA",
+   "samples": [
+    66.718059,
+    66.725169,
+    66.732176,
+    66.726302,
+    66.697015,
+    66.716141,
+    66.70833
+   ],
+   "median": 66.718059,
+   "min": 66.697015,
+   "max": 66.732176,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "clusters of 8, every CTA its own copy, a fresh tile a chunk, 2 in flight",
+   "unit": "cycles a kilobyte a CTA",
+   "samples": [
+    32.948303,
+    33.349916,
+    33.393497,
+    33.271161,
+    33.481209,
+    33.638089,
+    33.374541
+   ],
+   "median": 33.374541,
+   "min": 32.948303,
+   "max": 33.638089,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "clusters of 8, one multicast copy a cluster, a fresh tile a chunk, 2 in flight",
+   "unit": "cycles a kilobyte a CTA",
+   "samples": [
+    80.839922,
+    80.533891,
+    80.421037,
+    80.584329,
+    80.490623,
+    80.401508,
+    80.297433
+   ],
+   "median": 80.490623,
+   "min": 80.297433,
+   "max": 80.839922,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "clusters of 8, every CTA its own copy, tiles the cache holds, 4 in flight",
+   "unit": "cycles a kilobyte a CTA",
+   "samples": [
+    14.753508,
+    14.851886,
+    14.685608,
+    14.573065,
+    14.597585,
+    14.93311,
+    14.593358
+   ],
+   "median": 14.685608,
+   "min": 14.573065,
+   "max": 14.93311,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "clusters of 8, one multicast copy a cluster, tiles the cache holds, 4 in flight",
+   "unit": "cycles a kilobyte a CTA",
+   "samples": [
+    66.887573,
+    66.870393,
+    66.867572,
+    66.783566,
+    66.86273,
+    66.877925,
+    66.803989
+   ],
+   "median": 66.867572,
+   "min": 66.783566,
+   "max": 66.887573,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "clusters of 8, every CTA its own copy, a fresh tile a chunk, 4 in flight",
+   "unit": "cycles a kilobyte a CTA",
+   "samples": [
+    17.060944,
+    19.627705,
+    19.363962,
+    19.746292,
+    19.558101,
+    19.536212,
+    19.65835
+   ],
+   "median": 19.558101,
+   "min": 17.060944,
+   "max": 19.746292,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "clusters of 8, one multicast copy a cluster, a fresh tile a chunk, 4 in flight",
+   "unit": "cycles a kilobyte a CTA",
+   "samples": [
+    80.92231,
+    80.768707,
+    80.906688,
+    80.788466,
+    80.857129,
+    80.553709,
+    80.751527
+   ],
+   "median": 80.788466,
+   "min": 80.553709,
+   "max": 80.92231,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void cast_cluster::cast<(int)8, (int)1, (int)1, (int)4>(CUtensorMap_st, long long *, int *, unsigned char *, int)": {
+   "regs": 22,
+   "ops": {
+    "BRA": 29,
+    "NOP": 16,
+    "LOP3.LUT": 16,
+    "USHF.L.U32": 12,
+    "R2UR": 11,
+    "SYNCS.PHASECHK.TRANS64.TRYWAIT": 10,
+    "VIADD": 9,
+    "BSSY": 8,
+    "UIADD3": 8,
+    "SYNCS.EXCH.64": 8,
+    "BSYNC": 8,
+    "SHF.R.U32.HI": 7
+   }
+  },
+  "void cast_cluster::cast<(int)8, (int)0, (int)1, (int)4>(CUtensorMap_st, long long *, int *, unsigned char *, int)": {
+   "regs": 18,
+   "ops": {
+    "BRA": 27,
+    "NOP": 16,
+    "USHF.L.U32": 14,
+    "UIADD3": 11,
+    "SYNCS.PHASECHK.TRANS64.TRYWAIT": 10,
+    "LOP3.LUT": 10,
+    "SYNCS.EXCH.64": 8,
+    "VIADD": 7,
+    "IMAD.MOV.U32": 6,
+    "SHF.R.S32.HI": 6,
+    "UMOV": 5,
+    "IMAD.U32": 5
+   }
+  },
+  "void cast_cluster::cast<(int)8, (int)1, (int)0, (int)4>(CUtensorMap_st, long long *, int *, unsigned char *, int)": {
+   "regs": 22,
+   "ops": {
+    "BRA": 29,
+    "LOP3.LUT": 15,
+    "USHF.L.U32": 12,
+    "R2UR": 11,
+    "SYNCS.PHASECHK.TRANS64.TRYWAIT": 10,
+    "VIADD": 10,
+    "NOP": 9,
+    "BSSY": 8,
+    "UIADD3": 8,
+    "SYNCS.EXCH.64": 8,
+    "BSYNC": 8,
+    "IMAD.MOV.U32": 7
+   }
+  },
+  "void cast_cluster::cast<(int)8, (int)0, (int)0, (int)4>(CUtensorMap_st, long long *, int *, unsigned char *, int)": {
+   "regs": 20,
+   "ops": {
+    "BRA": 27,
+    "USHF.L.U32": 13,
+    "UIADD3": 11,
+    "NOP": 10,
+    "SYNCS.PHASECHK.TRANS64.TRYWAIT": 10,
+    "LOP3.LUT": 10,
+    "SYNCS.EXCH.64": 8,
+    "VIADD": 7,
+    "UMOV": 6,
+    "IMAD.MOV.U32": 6,
+    "SHF.R.S32.HI": 6,
+    "IMAD.U32": 5
+   }
+  },
+  "void cast_cluster::cast<(int)8, (int)1, (int)1, (int)2>(CUtensorMap_st, long long *, int *, unsigned char *, int)": {
+   "regs": 22,
+   "ops": {
+    "BRA": 21,
+    "NOP": 13,
+    "LOP3.LUT": 12,
+    "R2UR": 11,
+    "VIADD": 7,
+    "BSSY": 6,
+    "USHF.L.U32": 6,
+    "BSYNC": 6,
+    "IMAD.MOV.U32": 6,
+    "IMAD": 6,
+    "SYNCS.PHASECHK.TRANS64.TRYWAIT": 6,
+    "UMOV": 5
+   }
+  },
+  "void cast_cluster::cast<(int)8, (int)0, (int)1, (int)2>(CUtensorMap_st, long long *, int *, unsigned char *, int)": {
+   "regs": 18,
+   "ops": {
+    "BRA": 19,
+    "NOP": 16,
+    "UIADD3": 8,
+    "USHF.L.U32": 8,
+    "SYNCS.PHASECHK.TRANS64.TRYWAIT": 6,
+    "LOP3.LUT": 6,
+    "UMOV": 5,
+    "IMAD.MOV.U32": 5,
+    "IMAD.U32": 5,
+    "ULOP3.LUT": 5,
+    "VIADD": 5,
+    "SYNCS.EXCH.64": 4
+   }
+  },
+  "void cast_cluster::cast<(int)8, (int)1, (int)0, (int)2>(CUtensorMap_st, long long *, int *, unsigned char *, int)": {
+   "regs": 22,
+   "ops": {
+    "BRA": 21,
+    "NOP": 14,
+    "LOP3.LUT": 11,
+    "R2UR": 11,
+    "VIADD": 8,
+    "IMAD.MOV.U32": 7,
+    "BSSY": 6,
+    "USHF.L.U32": 6,
+    "BSYNC": 6,
+    "IMAD": 6,
+    "SYNCS.PHASECHK.TRANS64.TRYWAIT": 6,
+    "UMOV": 5
+   }
+  },
+  "void cast_cluster::cast<(int)8, (int)0, (int)0, (int)2>(CUtensorMap_st, long long *, int *, unsigned char *, int)": {
+   "regs": 20,
+   "ops": {
+    "BRA": 19,
+    "NOP": 10,
+    "UIADD3": 8,
+    "USHF.L.U32": 7,
+    "UMOV": 6,
+    "SYNCS.PHASECHK.TRANS64.TRYWAIT": 6,
+    "LOP3.LUT": 6,
+    "IMAD.MOV.U32": 5,
+    "IMAD.U32": 5,
+    "VIADD": 5,
+    "SYNCS.EXCH.64": 4,
+    "IMAD": 4
+   }
+  },
+  "void cast_cluster::cast<(int)4, (int)1, (int)1, (int)4>(CUtensorMap_st, long long *, int *, unsigned char *, int)": {
+   "regs": 22,
+   "ops": {
+    "BRA": 29,
+    "NOP": 16,
+    "LOP3.LUT": 16,
+    "USHF.L.U32": 12,
+    "R2UR": 11,
+    "SYNCS.PHASECHK.TRANS64.TRYWAIT": 10,
+    "VIADD": 9,
+    "BSSY": 8,
+    "UIADD3": 8,
+    "SYNCS.EXCH.64": 8,
+    "BSYNC": 8,
+    "SHF.R.U32.HI": 7
+   }
+  },
+  "void cast_cluster::cast<(int)4, (int)0, (int)1, (int)4>(CUtensorMap_st, long long *, int *, unsigned char *, int)": {
+   "regs": 18,
+   "ops": {
+    "BRA": 27,
+    "NOP": 16,
+    "USHF.L.U32": 14,
+    "UIADD3": 11,
+    "SYNCS.PHASECHK.TRANS64.TRYWAIT": 10,
+    "LOP3.LUT": 10,
+    "SYNCS.EXCH.64": 8,
+    "VIADD": 7,
+    "IMAD.MOV.U32": 6,
+    "SHF.R.S32.HI": 6,
+    "UMOV": 5,
+    "IMAD.U32": 5
+   }
+  },
+  "void cast_cluster::cast<(int)4, (int)1, (int)0, (int)4>(CUtensorMap_st, long long *, int *, unsigned char *, int)": {
+   "regs": 22,
+   "ops": {
+    "BRA": 29,
+    "LOP3.LUT": 15,
+    "USHF.L.U32": 12,
+    "R2UR": 11,
+    "SYNCS.PHASECHK.TRANS64.TRYWAIT": 10,
+    "VIADD": 10,
+    "NOP": 9,
+    "BSSY": 8,
+    "UIADD3": 8,
+    "SYNCS.EXCH.64": 8,
+    "BSYNC": 8,
+    "IMAD.MOV.U32": 7
+   }
+  },
+  "void cast_cluster::cast<(int)4, (int)0, (int)0, (int)4>(CUtensorMap_st, long long *, int *, unsigned char *, int)": {
+   "regs": 20,
+   "ops": {
+    "BRA": 27,
+    "USHF.L.U32": 13,
+    "UIADD3": 11,
+    "NOP": 10,
+    "SYNCS.PHASECHK.TRANS64.TRYWAIT": 10,
+    "LOP3.LUT": 10,
+    "SYNCS.EXCH.64": 8,
+    "VIADD": 7,
+    "UMOV": 6,
+    "IMAD.MOV.U32": 6,
+    "SHF.R.S32.HI": 6,
+    "IMAD.U32": 5
+   }
+  },
+  "void cast_cluster::cast<(int)4, (int)1, (int)1, (int)2>(CUtensorMap_st, long long *, int *, unsigned char *, int)": {
+   "regs": 22,
+   "ops": {
+    "BRA": 21,
+    "NOP": 13,
+    "LOP3.LUT": 12,
+    "R2UR": 11,
+    "VIADD": 7,
+    "BSSY": 6,
+    "USHF.L.U32": 6,
+    "BSYNC": 6,
+    "IMAD.MOV.U32": 6,
+    "IMAD": 6,
+    "SYNCS.PHASECHK.TRANS64.TRYWAIT": 6,
+    "UMOV": 5
+   }
+  },
+  "void cast_cluster::cast<(int)4, (int)0, (int)1, (int)2>(CUtensorMap_st, long long *, int *, unsigned char *, int)": {
+   "regs": 18,
+   "ops": {
+    "BRA": 19,
+    "NOP": 16,
+    "UIADD3": 8,
+    "USHF.L.U32": 8,
+    "SYNCS.PHASECHK.TRANS64.TRYWAIT": 6,
+    "LOP3.LUT": 6,
+    "UMOV": 5,
+    "IMAD.MOV.U32": 5,
+    "IMAD.U32": 5,
+    "ULOP3.LUT": 5,
+    "VIADD": 5,
+    "SYNCS.EXCH.64": 4
+   }
+  },
+  "void cast_cluster::cast<(int)4, (int)1, (int)0, (int)2>(CUtensorMap_st, long long *, int *, unsigned char *, int)": {
+   "regs": 22,
+   "ops": {
+    "BRA": 21,
+    "NOP": 14,
+    "LOP3.LUT": 11,
+    "R2UR": 11,
+    "VIADD": 8,
+    "IMAD.MOV.U32": 7,
+    "BSSY": 6,
+    "USHF.L.U32": 6,
+    "BSYNC": 6,
+    "IMAD": 6,
+    "SYNCS.PHASECHK.TRANS64.TRYWAIT": 6,
+    "UMOV": 5
+   }
+  },
+  "void cast_cluster::cast<(int)4, (int)0, (int)0, (int)2>(CUtensorMap_st, long long *, int *, unsigned char *, int)": {
+   "regs": 20,
+   "ops": {
+    "BRA": 19,
+    "NOP": 10,
+    "UIADD3": 8,
+    "USHF.L.U32": 7,
+    "UMOV": 6,
+    "SYNCS.PHASECHK.TRANS64.TRYWAIT": 6,
+    "LOP3.LUT": 6,
+    "IMAD.MOV.U32": 5,
+    "IMAD.U32": 5,
+    "VIADD": 5,
+    "SYNCS.EXCH.64": 4,
+    "IMAD": 4
+   }
+  },
+  "void cast_cluster::cast<(int)2, (int)1, (int)1, (int)4>(CUtensorMap_st, long long *, int *, unsigned char *, int)": {
+   "regs": 22,
+   "ops": {
+    "BRA": 29,
+    "NOP": 16,
+    "LOP3.LUT": 16,
+    "USHF.L.U32": 12,
+    "R2UR": 11,
+    "SYNCS.PHASECHK.TRANS64.TRYWAIT": 10,
+    "VIADD": 9,
+    "BSSY": 8,
+    "UIADD3": 8,
+    "SYNCS.EXCH.64": 8,
+    "BSYNC": 8,
+    "SHF.R.U32.HI": 7
+   }
+  },
+  "void cast_cluster::cast<(int)2, (int)0, (int)1, (int)4>(CUtensorMap_st, long long *, int *, unsigned char *, int)": {
+   "regs": 18,
+   "ops": {
+    "BRA": 27,
+    "NOP": 16,
+    "USHF.L.U32": 14,
+    "UIADD3": 11,
+    "SYNCS.PHASECHK.TRANS64.TRYWAIT": 10,
+    "LOP3.LUT": 10,
+    "SYNCS.EXCH.64": 8,
+    "VIADD": 7,
+    "IMAD.MOV.U32": 6,
+    "SHF.R.S32.HI": 6,
+    "UMOV": 5,
+    "IMAD.U32": 5
+   }
+  },
+  "void cast_cluster::cast<(int)2, (int)1, (int)0, (int)4>(CUtensorMap_st, long long *, int *, unsigned char *, int)": {
+   "regs": 22,
+   "ops": {
+    "BRA": 29,
+    "LOP3.LUT": 15,
+    "USHF.L.U32": 12,
+    "R2UR": 11,
+    "SYNCS.PHASECHK.TRANS64.TRYWAIT": 10,
+    "VIADD": 10,
+    "NOP": 9,
+    "BSSY": 8,
+    "UIADD3": 8,
+    "SYNCS.EXCH.64": 8,
+    "BSYNC": 8,
+    "IMAD.MOV.U32": 7
+   }
+  },
+  "void cast_cluster::cast<(int)2, (int)0, (int)0, (int)4>(CUtensorMap_st, long long *, int *, unsigned char *, int)": {
+   "regs": 20,
+   "ops": {
+    "BRA": 27,
+    "USHF.L.U32": 13,
+    "UIADD3": 11,
+    "NOP": 10,
+    "SYNCS.PHASECHK.TRANS64.TRYWAIT": 10,
+    "LOP3.LUT": 10,
+    "SYNCS.EXCH.64": 8,
+    "VIADD": 7,
+    "UMOV": 6,
+    "IMAD.MOV.U32": 6,
+    "SHF.R.S32.HI": 6,
+    "IMAD.U32": 5
+   }
+  },
+  "void cast_cluster::cast<(int)2, (int)1, (int)1, (int)2>(CUtensorMap_st, long long *, int *, unsigned char *, int)": {
+   "regs": 22,
+   "ops": {
+    "BRA": 21,
+    "NOP": 13,
+    "LOP3.LUT": 12,
+    "R2UR": 11,
+    "VIADD": 7,
+    "BSSY": 6,
+    "USHF.L.U32": 6,
+    "BSYNC": 6,
+    "IMAD.MOV.U32": 6,
+    "IMAD": 6,
+    "SYNCS.PHASECHK.TRANS64.TRYWAIT": 6,
+    "UMOV": 5
+   }
+  },
+  "void cast_cluster::cast<(int)2, (int)0, (int)1, (int)2>(CUtensorMap_st, long long *, int *, unsigned char *, int)": {
+   "regs": 18,
+   "ops": {
+    "BRA": 19,
+    "NOP": 16,
+    "UIADD3": 8,
+    "USHF.L.U32": 8,
+    "SYNCS.PHASECHK.TRANS64.TRYWAIT": 6,
+    "LOP3.LUT": 6,
+    "UMOV": 5,
+    "IMAD.MOV.U32": 5,
+    "IMAD.U32": 5,
+    "ULOP3.LUT": 5,
+    "VIADD": 5,
+    "SYNCS.EXCH.64": 4
+   }
+  },
+  "void cast_cluster::cast<(int)2, (int)1, (int)0, (int)2>(CUtensorMap_st, long long *, int *, unsigned char *, int)": {
+   "regs": 22,
+   "ops": {
+    "BRA": 21,
+    "NOP": 14,
+    "LOP3.LUT": 11,
+    "R2UR": 11,
+    "VIADD": 8,
+    "IMAD.MOV.U32": 7,
+    "BSSY": 6,
+    "USHF.L.U32": 6,
+    "BSYNC": 6,
+    "IMAD": 6,
+    "SYNCS.PHASECHK.TRANS64.TRYWAIT": 6,
+    "UMOV": 5
+   }
+  },
+  "void cast_cluster::cast<(int)2, (int)0, (int)0, (int)2>(CUtensorMap_st, long long *, int *, unsigned char *, int)": {
+   "regs": 20,
+   "ops": {
+    "BRA": 19,
+    "NOP": 10,
+    "UIADD3": 8,
+    "USHF.L.U32": 7,
+    "UMOV": 6,
+    "SYNCS.PHASECHK.TRANS64.TRYWAIT": 6,
+    "LOP3.LUT": 6,
+    "IMAD.MOV.U32": 5,
+    "IMAD.U32": 5,
+    "VIADD": 5,
+    "SYNCS.EXCH.64": 4,
+    "IMAD": 4
+   }
+  }
+ },
+ "counters": {},
+ "counters_exception": {
+  "host": "vast.ai rented box, NVIDIA H100 80GB HBM3: a box with a driver and no toolkit",
+  "instead": "the kernels' own clocks and the SASS's static counts"
+ }
+}
