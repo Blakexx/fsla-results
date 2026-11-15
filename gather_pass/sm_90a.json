@@ -2,13 +2,13 @@
  "experiment": "gather_pass",
  "question": "`facts_lists` moved a live (token, digit) pair's lines to its place in its digit's steps by its token's thread, a load and a store of global memory a line, and it cost twice the carry's window. What does the same re-arrangement cost when every byte crosses global memory in a BULK COPY and a line is moved in SHARED memory -- and what is the floor, the same copies with no line moved?",
  "arch": "sm_90a",
- "device": "NVIDIA H100 80GB HBM3",
+ "device": "NVIDIA H100 PCIe",
  "checks": [
   {
    "lab": "check",
    "variant": "4 to 5 live digits a token, the block stream's tables, values and sparse bytes, its lists made from the mask, 512 threads",
    "ok": true,
-   "detail": "0 of 6367680 words, bytes, lines, pads, steps and plans differ"
+   "detail": "0 of 5499360 words, bytes, lines, pads, steps and plans differ"
   },
   {
    "lab": "unchecked",
@@ -18,6 +18,22 @@
   {
    "lab": "unchecked",
    "variant": "4 to 5 live digits a token, the block stream's tables, values and sparse bytes, its lists made from the mask, 512 threads, a quarter of the multiprocessors, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "check",
+   "variant": "4 to 5 live digits a token, the block stream's coefficients in the step's format, every dense block's, its lists made from the mask, 512 threads",
+   "ok": true,
+   "detail": "0 of 28075008 coefficient lines differ"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the block stream's coefficients in the step's format, every dense block's, its lists made from the mask, 512 threads, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the block stream's coefficients in the step's format, every dense block's, its lists made from the mask, 512 threads, a quarter of the multiprocessors, a fresh window a round",
    "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
   },
   {
@@ -34,7 +50,7 @@
    "lab": "check",
    "variant": "4 to 5 live digits a token, the values plane, 256 threads, its lines moved",
    "ok": true,
-   "detail": "0 of 5701696 arranged lines differ"
+   "detail": "0 of 4924192 arranged lines differ"
   },
   {
    "lab": "unchecked",
@@ -60,7 +76,7 @@
    "lab": "check",
    "variant": "4 to 5 live digits a token, the values plane, 512 threads, its lines moved",
    "ok": true,
-   "detail": "0 of 5701696 arranged lines differ"
+   "detail": "0 of 4924192 arranged lines differ"
   },
   {
    "lab": "unchecked",
@@ -86,7 +102,7 @@
    "lab": "check",
    "variant": "4 to 5 live digits a token, the values plane, 1024 threads, its lines moved",
    "ok": true,
-   "detail": "0 of 5701696 arranged lines differ"
+   "detail": "0 of 4924192 arranged lines differ"
   },
   {
    "lab": "unchecked",
@@ -132,7 +148,7 @@
    "lab": "check",
    "variant": "4 to 5 live digits a token, the dense plane, 256 threads, its lines moved",
    "ok": true,
-   "detail": "0 of 16253952 arranged lines differ"
+   "detail": "0 of 14037504 arranged lines differ"
   },
   {
    "lab": "unchecked",
@@ -158,7 +174,7 @@
    "lab": "check",
    "variant": "4 to 5 live digits a token, the dense plane, 512 threads, its lines moved",
    "ok": true,
-   "detail": "0 of 16253952 arranged lines differ"
+   "detail": "0 of 14037504 arranged lines differ"
   },
   {
    "lab": "unchecked",
@@ -184,7 +200,7 @@
    "lab": "check",
    "variant": "4 to 5 live digits a token, the dense plane, 1024 threads, its lines moved",
    "ok": true,
-   "detail": "0 of 16253952 arranged lines differ"
+   "detail": "0 of 14037504 arranged lines differ"
   },
   {
    "lab": "unchecked",
@@ -230,7 +246,7 @@
    "lab": "check",
    "variant": "4 to 5 live digits a token, the dense plane, 512 threads, its lines moved, six buffers out",
    "ok": true,
-   "detail": "0 of 16253952 arranged lines differ"
+   "detail": "0 of 14037504 arranged lines differ"
   },
   {
    "lab": "unchecked",
@@ -276,7 +292,7 @@
    "lab": "check",
    "variant": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved",
    "ok": true,
-   "detail": "0 of 5292672 arranged lines differ"
+   "detail": "0 of 4570944 arranged lines differ"
   },
   {
    "lab": "unchecked",
@@ -322,7 +338,7 @@
    "lab": "check",
    "variant": "4 to 5 live digits a token, the stream's dense lines, 512 threads, its lines moved",
    "ok": true,
-   "detail": "0 of 9709568 arranged lines differ"
+   "detail": "0 of 8385536 arranged lines differ"
   },
   {
    "lab": "unchecked",
@@ -528,7 +544,7 @@
    "lab": "check",
    "variant": "32 live digits a token, the values plane, 256 threads, its lines moved",
    "ok": true,
-   "detail": "0 of 39084672 arranged lines differ"
+   "detail": "0 of 33754944 arranged lines differ"
   },
   {
    "lab": "unchecked",
@@ -554,7 +570,7 @@
    "lab": "check",
    "variant": "32 live digits a token, the values plane, 512 threads, its lines moved",
    "ok": true,
-   "detail": "0 of 39084672 arranged lines differ"
+   "detail": "0 of 33754944 arranged lines differ"
   },
   {
    "lab": "unchecked",
@@ -580,7 +596,7 @@
    "lab": "check",
    "variant": "32 live digits a token, the values plane, 1024 threads, its lines moved",
    "ok": true,
-   "detail": "0 of 39084672 arranged lines differ"
+   "detail": "0 of 33754944 arranged lines differ"
   },
   {
    "lab": "unchecked",
@@ -626,7 +642,7 @@
    "lab": "check",
    "variant": "32 live digits a token, the dense plane, 256 threads, its lines moved",
    "ok": true,
-   "detail": "0 of 71706624 arranged lines differ"
+   "detail": "0 of 61928448 arranged lines differ"
   },
   {
    "lab": "unchecked",
@@ -652,7 +668,7 @@
    "lab": "check",
    "variant": "32 live digits a token, the dense plane, 512 threads, its lines moved",
    "ok": true,
-   "detail": "0 of 71706624 arranged lines differ"
+   "detail": "0 of 61928448 arranged lines differ"
   },
   {
    "lab": "unchecked",
@@ -678,7 +694,7 @@
    "lab": "check",
    "variant": "32 live digits a token, the dense plane, 1024 threads, its lines moved",
    "ok": true,
-   "detail": "0 of 71706624 arranged lines differ"
+   "detail": "0 of 61928448 arranged lines differ"
   },
   {
    "lab": "unchecked",
@@ -724,7 +740,7 @@
    "lab": "check",
    "variant": "32 live digits a token, the dense plane, 512 threads, its lines moved, six buffers out",
    "ok": true,
-   "detail": "0 of 71706624 arranged lines differ"
+   "detail": "0 of 61928448 arranged lines differ"
   },
   {
    "lab": "unchecked",
@@ -770,7 +786,7 @@
    "lab": "check",
    "variant": "32 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved",
    "ok": true,
-   "detail": "0 of 17740800 arranged lines differ"
+   "detail": "0 of 15321600 arranged lines differ"
   },
   {
    "lab": "unchecked",
@@ -816,7 +832,7 @@
    "lab": "check",
    "variant": "32 live digits a token, the stream's dense lines, 512 threads, its lines moved",
    "ok": true,
-   "detail": "0 of 31899648 arranged lines differ"
+   "detail": "0 of 27549696 arranged lines differ"
   },
   {
    "lab": "unchecked",
@@ -1009,14 +1025,14 @@
    "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
   }
  ],
- "driver": "615.71.09",
+ "driver": "580.196.07",
  "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
  "git": {
-  "sha": "f929338832fe16786ecd7b2b41d5b6f642c71961",
+  "sha": "ab7a58308c5036223dfca0e44cdbfd298089c187",
   "dirty": false
  },
  "reps": 7,
- "date": "2026-11-14T22:59:51+00:00",
+ "date": "2026-11-15T03:39:30+00:00",
  "utilization_before": 0,
  "inputs": {},
  "results": [
@@ -1025,17 +1041,17 @@
    "name": "4 to 5 live digits a token, the block stream's tables, values and sparse bytes, its lists made from the mask, 512 threads, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    155.030552,
-    154.878914,
-    154.917356,
-    154.941146,
-    154.989593,
-    155.574543,
-    154.875533
+    157.939499,
+    158.07454,
+    157.254991,
+    158.075362,
+    158.182931,
+    158.157934,
+    157.771113
    ],
-   "median": 154.941146,
-   "min": 154.875533,
-   "max": 155.574543,
+   "median": 158.07454,
+   "min": 157.254991,
+   "max": 158.182931,
    "unstable": false
   },
   {
@@ -1043,17 +1059,53 @@
    "name": "4 to 5 live digits a token, the block stream's tables, values and sparse bytes, its lists made from the mask, 512 threads, a quarter of the multiprocessors, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    147.615667,
-    147.437966,
-    147.474162,
-    147.615708,
-    147.388357,
-    147.637226,
-    147.377549
+    146.919298,
+    147.166369,
+    147.12871,
+    147.219936,
+    147.102312,
+    147.3045,
+    147.013075
    ],
-   "median": 147.474162,
-   "min": 147.377549,
-   "max": 147.637226,
+   "median": 147.12871,
+   "min": 146.919298,
+   "max": 147.3045,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the block stream's coefficients in the step's format, every dense block's, its lists made from the mask, 512 threads, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    717.150024,
+    716.224387,
+    716.741555,
+    716.14288,
+    716.509909,
+    717.857127,
+    716.353923
+   ],
+   "median": 716.509909,
+   "min": 716.14288,
+   "max": 717.857127,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the block stream's coefficients in the step's format, every dense block's, its lists made from the mask, 512 threads, a quarter of the multiprocessors, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    694.616311,
+    694.597089,
+    694.608124,
+    694.651389,
+    694.59457,
+    694.660937,
+    694.639579
+   ],
+   "median": 694.616311,
+   "min": 694.59457,
+   "max": 694.660937,
    "unstable": false
   },
   {
@@ -1061,17 +1113,17 @@
    "name": "4 to 5 live digits a token, the values plane, 256 threads, a flat stream of its copies, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    140.725941,
-    140.678764,
-    140.748168,
-    140.86655,
-    140.580662,
-    140.779369,
-    140.685039
+    163.242232,
+    162.353367,
+    161.77278,
+    162.55076,
+    162.182131,
+    163.122846,
+    162.435425
    ],
-   "median": 140.725941,
-   "min": 140.580662,
-   "max": 140.86655,
+   "median": 162.435425,
+   "min": 161.77278,
+   "max": 163.242232,
    "unstable": false
   },
   {
@@ -1079,17 +1131,17 @@
    "name": "4 to 5 live digits a token, the values plane, 256 threads, a flat stream of its copies, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    140.8464,
-    140.832298,
-    141.116523,
-    141.002486,
-    140.76875,
-    140.781775,
-    140.703136
+    162.734936,
+    162.011087,
+    162.414116,
+    163.101168,
+    162.403364,
+    162.422415,
+    163.052173
    ],
-   "median": 140.832298,
-   "min": 140.703136,
-   "max": 141.116523,
+   "median": 162.422415,
+   "min": 162.011087,
+   "max": 163.101168,
    "unstable": false
   },
   {
@@ -1097,17 +1149,17 @@
    "name": "4 to 5 live digits a token, the values plane, 256 threads, its lines moved, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    159.519968,
-    159.539702,
-    159.388593,
-    159.637693,
-    159.728777,
-    159.911515,
-    159.597492
+    172.449642,
+    171.668709,
+    172.686098,
+    172.219134,
+    172.998568,
+    172.923393,
+    172.367148
    ],
-   "median": 159.597492,
-   "min": 159.388593,
-   "max": 159.911515,
+   "median": 172.449642,
+   "min": 171.668709,
+   "max": 172.998568,
    "unstable": false
   },
   {
@@ -1115,17 +1167,17 @@
    "name": "4 to 5 live digits a token, the values plane, 256 threads, its lines moved, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    159.68422,
-    159.36515,
-    159.635224,
-    159.746118,
-    159.555631,
-    159.877124,
-    159.831881
+    173.362366,
+    172.570674,
+    172.823653,
+    173.591268,
+    172.360007,
+    173.17767,
+    172.81613
    ],
-   "median": 159.68422,
-   "min": 159.36515,
-   "max": 159.877124,
+   "median": 172.823653,
+   "min": 172.360007,
+   "max": 173.591268,
    "unstable": false
   },
   {
@@ -1133,17 +1185,17 @@
    "name": "4 to 5 live digits a token, the values plane, 512 threads, a flat stream of its copies, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    141.60077,
-    141.881713,
-    141.773107,
-    141.791994,
-    141.895105,
-    141.602794,
-    141.938031
+    163.248216,
+    162.780251,
+    162.13607,
+    162.282182,
+    162.355304,
+    162.349459,
+    162.594731
    ],
-   "median": 141.791994,
-   "min": 141.60077,
-   "max": 141.938031,
+   "median": 162.355304,
+   "min": 162.13607,
+   "max": 163.248216,
    "unstable": false
   },
   {
@@ -1151,17 +1203,17 @@
    "name": "4 to 5 live digits a token, the values plane, 512 threads, a flat stream of its copies, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    141.707977,
-    141.950645,
-    141.989797,
-    141.898605,
-    141.926467,
-    141.964785,
-    141.646059
+    163.115207,
+    162.865849,
+    162.620602,
+    162.566826,
+    162.499411,
+    162.539606,
+    163.654468
    ],
-   "median": 141.926467,
-   "min": 141.646059,
-   "max": 141.989797,
+   "median": 162.620602,
+   "min": 162.499411,
+   "max": 163.654468,
    "unstable": false
   },
   {
@@ -1169,17 +1221,17 @@
    "name": "4 to 5 live digits a token, the values plane, 512 threads, its lines moved, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    159.43726,
-    159.385076,
-    159.238576,
-    158.763086,
-    159.186726,
-    159.317244,
-    159.543463
+    171.74595,
+    170.864976,
+    171.814075,
+    172.212961,
+    173.252839,
+    172.078379,
+    172.338187
    ],
-   "median": 159.317244,
-   "min": 158.763086,
-   "max": 159.543463,
+   "median": 172.078379,
+   "min": 170.864976,
+   "max": 173.252839,
    "unstable": false
   },
   {
@@ -1187,17 +1239,17 @@
    "name": "4 to 5 live digits a token, the values plane, 512 threads, its lines moved, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    159.571579,
-    159.390405,
-    159.236766,
-    159.315412,
-    159.288493,
-    159.476304,
-    159.137189
+    173.237962,
+    172.834227,
+    172.085171,
+    172.242449,
+    172.672024,
+    171.957784,
+    172.677804
    ],
-   "median": 159.315412,
-   "min": 159.137189,
-   "max": 159.571579,
+   "median": 172.672024,
+   "min": 171.957784,
+   "max": 173.237962,
    "unstable": false
   },
   {
@@ -1205,17 +1257,17 @@
    "name": "4 to 5 live digits a token, the values plane, 1024 threads, a flat stream of its copies, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    145.034235,
-    145.399569,
-    145.429305,
-    145.30254,
-    145.118602,
-    145.18067,
-    145.447082
+    165.900171,
+    163.202727,
+    164.399071,
+    163.45363,
+    164.87779,
+    164.276151,
+    165.283722
    ],
-   "median": 145.30254,
-   "min": 145.034235,
-   "max": 145.447082,
+   "median": 164.399071,
+   "min": 163.202727,
+   "max": 165.900171,
    "unstable": false
   },
   {
@@ -1223,17 +1275,17 @@
    "name": "4 to 5 live digits a token, the values plane, 1024 threads, a flat stream of its copies, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    145.479855,
-    145.438199,
-    145.594685,
-    145.435908,
-    145.434033,
-    145.473783,
-    145.344985
+    165.574436,
+    164.298929,
+    164.271866,
+    164.567819,
+    164.837484,
+    164.912954,
+    164.590893
    ],
-   "median": 145.438199,
-   "min": 145.344985,
-   "max": 145.594685,
+   "median": 164.590893,
+   "min": 164.271866,
+   "max": 165.574436,
    "unstable": false
   },
   {
@@ -1241,17 +1293,17 @@
    "name": "4 to 5 live digits a token, the values plane, 1024 threads, its lines moved, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    169.828903,
-    169.84192,
-    169.65023,
-    169.585427,
-    169.436694,
-    169.715902,
-    169.680169
+    177.751437,
+    177.470916,
+    177.539888,
+    177.631716,
+    177.776945,
+    177.680488,
+    178.034045
    ],
-   "median": 169.680169,
-   "min": 169.436694,
-   "max": 169.84192,
+   "median": 177.680488,
+   "min": 177.470916,
+   "max": 178.034045,
    "unstable": false
   },
   {
@@ -1259,17 +1311,17 @@
    "name": "4 to 5 live digits a token, the values plane, 1024 threads, its lines moved, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    169.612767,
-    169.525918,
-    169.944137,
-    169.397699,
-    169.4736,
-    169.407601,
-    170.028726
+    178.182551,
+    178.105961,
+    178.038225,
+    177.898133,
+    177.804699,
+    177.842183,
+    178.000404
    ],
-   "median": 169.525918,
-   "min": 169.397699,
-   "max": 170.028726,
+   "median": 178.000404,
+   "min": 177.804699,
+   "max": 178.182551,
    "unstable": false
   },
   {
@@ -1277,17 +1329,17 @@
    "name": "4 to 5 live digits a token, the values plane, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    81.689723,
-    81.603423,
-    81.693611,
-    81.480702,
-    81.602724,
-    81.533188,
-    81.662624
+    78.005659,
+    77.936816,
+    78.004438,
+    77.949092,
+    77.957868,
+    77.99738,
+    77.916181
    ],
-   "median": 81.603423,
-   "min": 81.480702,
-   "max": 81.693611,
+   "median": 77.957868,
+   "min": 77.916181,
+   "max": 78.005659,
    "unstable": false
   },
   {
@@ -1295,17 +1347,17 @@
    "name": "4 to 5 live digits a token, the values plane, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    84.073091,
-    83.961085,
-    84.056126,
-    84.052664,
-    84.185003,
-    84.002989,
-    84.006462
+    83.444842,
+    83.41449,
+    83.315085,
+    83.331604,
+    83.433228,
+    83.544791,
+    83.448024
    ],
-   "median": 84.052664,
-   "min": 83.961085,
-   "max": 84.185003,
+   "median": 83.433228,
+   "min": 83.315085,
+   "max": 83.544791,
    "unstable": false
   },
   {
@@ -1313,17 +1365,17 @@
    "name": "4 to 5 live digits a token, the values plane, 512 threads, its lines moved, a quarter of the multiprocessors, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    129.101004,
-    129.150461,
-    129.15804,
-    129.456184,
-    129.148497,
-    129.211219,
-    129.151818
+    128.820448,
+    128.889845,
+    128.99796,
+    128.87694,
+    128.856755,
+    128.862863,
+    128.907227
    ],
-   "median": 129.151818,
-   "min": 129.101004,
-   "max": 129.456184,
+   "median": 128.87694,
+   "min": 128.820448,
+   "max": 128.99796,
    "unstable": false
   },
   {
@@ -1331,17 +1383,17 @@
    "name": "4 to 5 live digits a token, the values plane, 512 threads, its lines moved, a quarter of the multiprocessors, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    130.185166,
-    129.795947,
-    130.19556,
-    129.931189,
-    129.803674,
-    129.825314,
-    130.1162
+    129.641257,
+    129.809422,
+    130.162576,
+    129.796753,
+    130.058358,
+    129.59671,
+    129.795258
    ],
-   "median": 129.931189,
-   "min": 129.795947,
-   "max": 130.19556,
+   "median": 129.796753,
+   "min": 129.59671,
+   "max": 130.162576,
    "unstable": false
   },
   {
@@ -1349,35 +1401,35 @@
    "name": "4 to 5 live digits a token, the dense plane, 256 threads, a flat stream of its copies, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    191.296482,
-    192.638697,
-    192.961446,
-    192.401577,
-    192.754087,
-    192.066649,
-    191.501478
+    216.023143,
+    217.002759,
+    220.789933,
+    219.489428,
+    225.23338,
+    227.347943,
+    216.639569
    ],
-   "median": 192.401577,
-   "min": 191.296482,
-   "max": 192.961446,
-   "unstable": false
+   "median": 219.489428,
+   "min": 216.023143,
+   "max": 227.347943,
+   "unstable": true
   },
   {
    "lab": "result",
    "name": "4 to 5 live digits a token, the dense plane, 256 threads, a flat stream of its copies, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    194.201698,
-    193.197742,
-    193.793845,
-    193.311751,
-    193.477076,
-    194.13289,
-    193.590382
+    222.736692,
+    228.400442,
+    229.829155,
+    230.042775,
+    231.315607,
+    230.118107,
+    231.135311
    ],
-   "median": 193.590382,
-   "min": 193.197742,
-   "max": 194.201698,
+   "median": 230.042775,
+   "min": 222.736692,
+   "max": 231.315607,
    "unstable": false
   },
   {
@@ -1385,125 +1437,125 @@
    "name": "4 to 5 live digits a token, the dense plane, 256 threads, its lines moved, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    196.333322,
-    196.313934,
-    196.097382,
-    195.980801,
-    195.368835,
-    196.022848,
-    195.790071
+    209.356045,
+    213.490121,
+    231.237493,
+    227.53,
+    225.650618,
+    225.108742,
+    218.809252
    ],
-   "median": 196.022848,
-   "min": 195.368835,
-   "max": 196.333322,
-   "unstable": false
+   "median": 225.108742,
+   "min": 209.356045,
+   "max": 231.237493,
+   "unstable": true
   },
   {
    "lab": "result",
    "name": "4 to 5 live digits a token, the dense plane, 256 threads, its lines moved, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    197.578555,
-    197.556546,
-    197.334344,
-    197.174672,
-    196.980195,
-    197.177046,
-    195.406661
+    236.36219,
+    227.844762,
+    220.367389,
+    228.309139,
+    220.896887,
+    230.12768,
+    221.962009
    ],
-   "median": 197.177046,
-   "min": 195.406661,
-   "max": 197.578555,
-   "unstable": false
+   "median": 227.844762,
+   "min": 220.367389,
+   "max": 236.36219,
+   "unstable": true
   },
   {
    "lab": "result",
    "name": "4 to 5 live digits a token, the dense plane, 512 threads, a flat stream of its copies, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    193.339713,
-    191.325021,
-    189.697666,
-    190.69464,
-    193.610862,
-    190.954477,
-    193.067109
+    212.0575,
+    214.918811,
+    211.051107,
+    228.340886,
+    230.883905,
+    224.499963,
+    222.438376
    ],
-   "median": 191.325021,
-   "min": 189.697666,
-   "max": 193.610862,
-   "unstable": false
+   "median": 222.438376,
+   "min": 211.051107,
+   "max": 230.883905,
+   "unstable": true
   },
   {
    "lab": "result",
    "name": "4 to 5 live digits a token, the dense plane, 512 threads, a flat stream of its copies, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    194.103316,
-    194.09687,
-    194.736097,
-    192.930122,
-    194.671472,
-    192.416691,
-    193.616107
+    230.662929,
+    225.060645,
+    217.136613,
+    219.681705,
+    231.088606,
+    223.188383,
+    231.705619
    ],
-   "median": 194.09687,
-   "min": 192.416691,
-   "max": 194.736097,
-   "unstable": false
+   "median": 225.060645,
+   "min": 217.136613,
+   "max": 231.705619,
+   "unstable": true
   },
   {
    "lab": "result",
    "name": "4 to 5 live digits a token, the dense plane, 512 threads, its lines moved, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    196.542817,
-    196.197938,
-    196.671691,
-    196.172175,
-    196.070816,
-    195.247122,
-    195.933995
+    222.923827,
+    232.502822,
+    217.850688,
+    217.414006,
+    234.46902,
+    222.075166,
+    215.295399
    ],
-   "median": 196.172175,
-   "min": 195.247122,
-   "max": 196.671691,
-   "unstable": false
+   "median": 222.075166,
+   "min": 215.295399,
+   "max": 234.46902,
+   "unstable": true
   },
   {
    "lab": "result",
    "name": "4 to 5 live digits a token, the dense plane, 512 threads, its lines moved, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    197.438393,
-    197.75325,
-    197.512615,
-    196.831881,
-    197.237665,
-    197.634812,
-    197.843172
+    233.632629,
+    227.487647,
+    225.218106,
+    210.130738,
+    234.443517,
+    234.420248,
+    233.404856
    ],
-   "median": 197.512615,
-   "min": 196.831881,
-   "max": 197.843172,
-   "unstable": false
+   "median": 233.404856,
+   "min": 210.130738,
+   "max": 234.443517,
+   "unstable": true
   },
   {
    "lab": "result",
    "name": "4 to 5 live digits a token, the dense plane, 1024 threads, a flat stream of its copies, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    193.523843,
-    191.838486,
-    193.803934,
-    193.523714,
-    193.083643,
-    194.116368,
-    193.319881
+    214.407246,
+    216.087279,
+    220.74522,
+    217.103855,
+    220.658287,
+    212.19438,
+    221.545246
    ],
-   "median": 193.523714,
-   "min": 191.838486,
-   "max": 194.116368,
+   "median": 217.103855,
+   "min": 212.19438,
+   "max": 221.545246,
    "unstable": false
   },
   {
@@ -1511,71 +1563,71 @@
    "name": "4 to 5 live digits a token, the dense plane, 1024 threads, a flat stream of its copies, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    194.221289,
-    194.937127,
-    195.031779,
-    194.838037,
-    193.283401,
-    194.114933,
-    195.257683
+    222.068049,
+    221.757597,
+    225.44435,
+    210.627321,
+    231.374311,
+    219.252754,
+    226.642623
    ],
-   "median": 194.838037,
-   "min": 193.283401,
-   "max": 195.257683,
-   "unstable": false
+   "median": 222.068049,
+   "min": 210.627321,
+   "max": 231.374311,
+   "unstable": true
   },
   {
    "lab": "result",
    "name": "4 to 5 live digits a token, the dense plane, 1024 threads, its lines moved, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    197.615034,
-    198.089476,
-    197.476699,
-    197.856263,
-    197.377709,
-    197.322919,
-    197.600132
+    225.624086,
+    221.761476,
+    228.004745,
+    233.424087,
+    224.090425,
+    226.256842,
+    225.916237
    ],
-   "median": 197.600132,
-   "min": 197.322919,
-   "max": 198.089476,
-   "unstable": false
+   "median": 225.916237,
+   "min": 221.761476,
+   "max": 233.424087,
+   "unstable": true
   },
   {
    "lab": "result",
    "name": "4 to 5 live digits a token, the dense plane, 1024 threads, its lines moved, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    198.44932,
-    198.546612,
-    199.02034,
-    199.127082,
-    199.308061,
-    198.554297,
-    198.441512
+    229.212486,
+    234.514579,
+    231.664036,
+    234.728824,
+    225.114794,
+    221.301941,
+    230.56117
    ],
-   "median": 198.554297,
-   "min": 198.441512,
-   "max": 199.308061,
-   "unstable": false
+   "median": 230.56117,
+   "min": 221.301941,
+   "max": 234.728824,
+   "unstable": true
   },
   {
    "lab": "result",
    "name": "4 to 5 live digits a token, the dense plane, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    89.018991,
-    88.890074,
-    89.414543,
-    89.230794,
-    88.996046,
-    88.878977,
-    89.167081
+    85.891645,
+    85.638737,
+    85.947811,
+    85.633628,
+    85.992885,
+    85.841483,
+    85.677307
    ],
-   "median": 89.018991,
-   "min": 88.878977,
-   "max": 89.414543,
+   "median": 85.841483,
+   "min": 85.633628,
+   "max": 85.992885,
    "unstable": false
   },
   {
@@ -1583,17 +1635,17 @@
    "name": "4 to 5 live digits a token, the dense plane, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    89.2918,
-    89.418431,
-    89.636193,
-    89.069931,
-    89.236924,
-    89.235707,
-    89.254143
+    86.657859,
+    86.886605,
+    86.69911,
+    86.668134,
+    86.927455,
+    86.817801,
+    86.739602
    ],
-   "median": 89.254143,
-   "min": 89.069931,
-   "max": 89.636193,
+   "median": 86.739602,
+   "min": 86.657859,
+   "max": 86.927455,
    "unstable": false
   },
   {
@@ -1601,17 +1653,17 @@
    "name": "4 to 5 live digits a token, the dense plane, 512 threads, its lines moved, a quarter of the multiprocessors, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    110.954268,
-    110.681537,
-    110.820031,
-    110.93329,
-    110.539162,
-    110.659465,
-    110.604355
+    109.865727,
+    109.902113,
+    109.894553,
+    109.840873,
+    109.885236,
+    109.851706,
+    109.852779
    ],
-   "median": 110.681537,
-   "min": 110.539162,
-   "max": 110.954268,
+   "median": 109.865727,
+   "min": 109.840873,
+   "max": 109.902113,
    "unstable": false
   },
   {
@@ -1619,17 +1671,17 @@
    "name": "4 to 5 live digits a token, the dense plane, 512 threads, its lines moved, a quarter of the multiprocessors, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    110.98156,
-    110.728634,
-    110.747529,
-    110.852791,
-    110.859419,
-    110.847149,
-    111.057739
+    110.083963,
+    110.183581,
+    110.090607,
+    110.124765,
+    110.122925,
+    110.137172,
+    110.173357
    ],
-   "median": 110.852791,
-   "min": 110.728634,
-   "max": 111.057739,
+   "median": 110.124765,
+   "min": 110.083963,
+   "max": 110.183581,
    "unstable": false
   },
   {
@@ -1637,53 +1689,53 @@
    "name": "4 to 5 live digits a token, the dense plane, 512 threads, a flat stream of its copies, six buffers out, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    196.861598,
-    196.45894,
-    197.544078,
-    196.338655,
-    196.6961,
-    196.77624,
-    197.368853
+    223.71544,
+    214.013835,
+    230.946198,
+    225.103528,
+    220.952824,
+    212.141185,
+    223.688835
    ],
-   "median": 196.77624,
-   "min": 196.338655,
-   "max": 197.544078,
-   "unstable": false
+   "median": 223.688835,
+   "min": 212.141185,
+   "max": 230.946198,
+   "unstable": true
   },
   {
    "lab": "result",
    "name": "4 to 5 live digits a token, the dense plane, 512 threads, a flat stream of its copies, six buffers out, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    200.187859,
-    200.06845,
-    200.17598,
-    200.427771,
-    200.200037,
-    199.698138,
-    200.513804
+    217.181809,
+    223.646831,
+    233.568242,
+    236.098234,
+    222.512356,
+    230.406043,
+    237.497242
    ],
-   "median": 200.187859,
-   "min": 199.698138,
-   "max": 200.513804,
-   "unstable": false
+   "median": 230.406043,
+   "min": 217.181809,
+   "max": 237.497242,
+   "unstable": true
   },
   {
    "lab": "result",
    "name": "4 to 5 live digits a token, the dense plane, 512 threads, its lines moved, six buffers out, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    202.613242,
-    203.00127,
-    202.959701,
-    202.7904,
-    202.626515,
-    202.97537,
-    202.867965
+    230.566632,
+    236.721092,
+    234.006454,
+    226.797861,
+    227.739699,
+    230.60224,
+    235.931581
    ],
-   "median": 202.867965,
-   "min": 202.613242,
-   "max": 203.00127,
+   "median": 230.60224,
+   "min": 226.797861,
+   "max": 236.721092,
    "unstable": false
   },
   {
@@ -1691,17 +1743,17 @@
    "name": "4 to 5 live digits a token, the dense plane, 512 threads, its lines moved, six buffers out, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    206.124018,
-    206.056594,
-    205.751887,
-    205.612703,
-    206.164194,
-    205.600382,
-    205.931158
+    232.904966,
+    239.387321,
+    239.733061,
+    238.214152,
+    238.222016,
+    236.316162,
+    239.921227
    ],
-   "median": 205.931158,
-   "min": 205.600382,
-   "max": 206.164194,
+   "median": 238.222016,
+   "min": 232.904966,
+   "max": 239.921227,
    "unstable": false
   },
   {
@@ -1709,17 +1761,17 @@
    "name": "4 to 5 live digits a token, the dense plane, 512 threads, a flat stream of its copies, six buffers out, a quarter of the multiprocessors, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    99.910637,
-    99.825125,
-    99.940888,
-    100.028638,
-    99.864946,
-    100.015533,
-    99.804425
+    96.470097,
+    96.683677,
+    96.776803,
+    96.653368,
+    96.746194,
+    96.792276,
+    96.541739
    ],
-   "median": 99.910637,
-   "min": 99.804425,
-   "max": 100.028638,
+   "median": 96.683677,
+   "min": 96.470097,
+   "max": 96.792276,
    "unstable": false
   },
   {
@@ -1727,17 +1779,17 @@
    "name": "4 to 5 live digits a token, the dense plane, 512 threads, a flat stream of its copies, six buffers out, a quarter of the multiprocessors, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    101.875551,
-    101.866278,
-    101.854326,
-    102.077348,
-    102.049942,
-    101.875758,
-    102.034487
+    99.021497,
+    99.006208,
+    99.018284,
+    99.113094,
+    98.932055,
+    99.04446,
+    99.058149
    ],
-   "median": 101.875758,
-   "min": 101.854326,
-   "max": 102.077348,
+   "median": 99.021497,
+   "min": 98.932055,
+   "max": 99.113094,
    "unstable": false
   },
   {
@@ -1745,17 +1797,17 @@
    "name": "4 to 5 live digits a token, the dense plane, 512 threads, its lines moved, six buffers out, a quarter of the multiprocessors, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    138.724872,
-    138.897065,
-    138.800729,
-    138.939043,
-    138.793527,
-    138.809611,
-    138.805327
+    137.592569,
+    137.622628,
+    137.535797,
+    137.596723,
+    137.639535,
+    137.775809,
+    137.609052
    ],
-   "median": 138.805327,
-   "min": 138.724872,
-   "max": 138.939043,
+   "median": 137.609052,
+   "min": 137.535797,
+   "max": 137.775809,
    "unstable": false
   },
   {
@@ -1763,17 +1815,17 @@
    "name": "4 to 5 live digits a token, the dense plane, 512 threads, its lines moved, six buffers out, a quarter of the multiprocessors, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    139.788959,
-    139.586966,
-    139.751905,
-    139.668879,
-    139.836278,
-    139.566332,
-    139.631492
+    138.867397,
+    138.840363,
+    138.764596,
+    138.659725,
+    139.000693,
+    138.760563,
+    138.930917
    ],
-   "median": 139.668879,
-   "min": 139.566332,
-   "max": 139.836278,
+   "median": 138.840363,
+   "min": 138.659725,
+   "max": 139.000693,
    "unstable": false
   },
   {
@@ -1781,17 +1833,17 @@
    "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    101.427444,
-    101.69664,
-    101.56446,
-    101.357118,
-    101.829829,
-    101.652235,
-    101.46683
+    119.274612,
+    117.102453,
+    117.759245,
+    117.757514,
+    117.759641,
+    117.853628,
+    117.92168
    ],
-   "median": 101.56446,
-   "min": 101.357118,
-   "max": 101.829829,
+   "median": 117.759641,
+   "min": 117.102453,
+   "max": 119.274612,
    "unstable": false
   },
   {
@@ -1799,17 +1851,17 @@
    "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    101.797235,
-    101.605385,
-    101.531988,
-    101.672291,
-    101.833732,
-    101.623289,
-    102.21151
+    118.698198,
+    118.50516,
+    117.540522,
+    118.240248,
+    118.194386,
+    117.871593,
+    117.838723
    ],
-   "median": 101.672291,
-   "min": 101.531988,
-   "max": 102.21151,
+   "median": 118.194386,
+   "min": 117.540522,
+   "max": 118.698198,
    "unstable": false
   },
   {
@@ -1817,17 +1869,17 @@
    "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    112.025156,
-    111.95952,
-    111.841022,
-    111.42299,
-    111.863545,
-    111.408938,
-    110.825895
+    121.237488,
+    120.441498,
+    121.760061,
+    122.214808,
+    121.180976,
+    121.974037,
+    121.360111
    ],
-   "median": 111.841022,
-   "min": 110.825895,
-   "max": 112.025156,
+   "median": 121.360111,
+   "min": 120.441498,
+   "max": 122.214808,
    "unstable": false
   },
   {
@@ -1835,17 +1887,17 @@
    "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    111.388444,
-    111.58021,
-    111.614324,
-    110.892806,
-    111.378351,
-    110.730994,
-    111.391643
+    122.457438,
+    121.892046,
+    121.208748,
+    122.040523,
+    121.771726,
+    121.770521,
+    121.681551
    ],
-   "median": 111.388444,
-   "min": 110.730994,
-   "max": 111.614324,
+   "median": 121.771726,
+   "min": 121.208748,
+   "max": 122.457438,
    "unstable": false
   },
   {
@@ -1853,17 +1905,17 @@
    "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    57.152507,
-    57.051284,
-    57.133001,
-    57.09776,
-    57.069909,
-    57.083855,
-    57.112297
+    55.702999,
+    55.712123,
+    55.702746,
+    55.725037,
+    55.72838,
+    55.705266,
+    55.712067
    ],
-   "median": 57.09776,
-   "min": 57.051284,
-   "max": 57.152507,
+   "median": 55.712067,
+   "min": 55.702746,
+   "max": 55.72838,
    "unstable": false
   },
   {
@@ -1871,17 +1923,17 @@
    "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    60.120605,
-    60.255179,
-    60.305964,
-    60.20537,
-    60.03732,
-    60.105709,
-    60.196367
+    59.691511,
+    59.663077,
+    59.62585,
+    59.793932,
+    59.613081,
+    59.747136,
+    59.562653
    ],
-   "median": 60.196367,
-   "min": 60.03732,
-   "max": 60.305964,
+   "median": 59.663077,
+   "min": 59.562653,
+   "max": 59.793932,
    "unstable": false
   },
   {
@@ -1889,17 +1941,17 @@
    "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, a quarter of the multiprocessors, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    81.214992,
-    81.275146,
-    81.289591,
-    81.190038,
-    81.32433,
-    81.297249,
-    81.251032
+    80.226794,
+    80.240884,
+    80.23526,
+    80.227434,
+    80.242706,
+    80.241403,
+    80.237069
    ],
-   "median": 81.275146,
-   "min": 81.190038,
-   "max": 81.32433,
+   "median": 80.237069,
+   "min": 80.226794,
+   "max": 80.242706,
    "unstable": false
   },
   {
@@ -1907,17 +1959,17 @@
    "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, a quarter of the multiprocessors, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    83.139038,
-    82.92439,
-    83.202189,
-    83.10299,
-    83.403187,
-    83.077959,
-    83.11293
+    83.142216,
+    83.098698,
+    83.024636,
+    83.061938,
+    83.092372,
+    82.996643,
+    83.006461
    ],
-   "median": 83.11293,
-   "min": 82.92439,
-   "max": 83.403187,
+   "median": 83.061938,
+   "min": 82.996643,
+   "max": 83.142216,
    "unstable": false
   },
   {
@@ -1925,53 +1977,53 @@
    "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    126.037535,
-    125.762682,
-    125.714268,
-    126.056841,
-    125.971693,
-    126.097469,
-    125.857847
+    137.615213,
+    143.533574,
+    149.047615,
+    142.714297,
+    140.045569,
+    150.443027,
+    144.052806
    ],
-   "median": 125.971693,
-   "min": 125.714268,
-   "max": 126.097469,
-   "unstable": false
+   "median": 143.533574,
+   "min": 137.615213,
+   "max": 150.443027,
+   "unstable": true
   },
   {
    "lab": "result",
    "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    127.006029,
-    126.928411,
-    126.837282,
-    127.031749,
-    126.903568,
-    127.285387,
-    126.829246
+    150.014798,
+    144.879943,
+    146.2075,
+    149.647042,
+    146.93738,
+    149.867219,
+    138.323607
    ],
-   "median": 126.928411,
-   "min": 126.829246,
-   "max": 127.285387,
-   "unstable": false
+   "median": 146.93738,
+   "min": 138.323607,
+   "max": 150.014798,
+   "unstable": true
   },
   {
    "lab": "result",
    "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, its lines moved, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    130.440289,
-    130.452259,
-    130.680782,
-    130.76117,
-    130.781684,
-    130.427357,
-    130.396219
+    151.039033,
+    148.980106,
+    149.527578,
+    150.245483,
+    153.325951,
+    151.429262,
+    149.982041
    ],
-   "median": 130.452259,
-   "min": 130.396219,
-   "max": 130.781684,
+   "median": 150.245483,
+   "min": 148.980106,
+   "max": 153.325951,
    "unstable": false
   },
   {
@@ -1979,35 +2031,35 @@
    "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, its lines moved, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    131.728285,
-    131.666651,
-    131.484049,
-    131.436263,
-    131.656935,
-    131.920383,
-    131.849019
+    154.251186,
+    154.202388,
+    152.326195,
+    150.148082,
+    146.318037,
+    152.441085,
+    148.825276
    ],
-   "median": 131.666651,
-   "min": 131.436263,
-   "max": 131.920383,
-   "unstable": false
+   "median": 152.326195,
+   "min": 146.318037,
+   "max": 154.251186,
+   "unstable": true
   },
   {
    "lab": "result",
    "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    60.750747,
-    60.516627,
-    60.630242,
-    60.799905,
-    60.496911,
-    60.822491,
-    60.557543
+    57.233324,
+    57.254473,
+    57.296692,
+    57.156873,
+    57.2004,
+    57.272927,
+    57.266148
    ],
-   "median": 60.630242,
-   "min": 60.496911,
-   "max": 60.822491,
+   "median": 57.254473,
+   "min": 57.156873,
+   "max": 57.296692,
    "unstable": false
   },
   {
@@ -2015,17 +2067,17 @@
    "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    62.303459,
-    62.357011,
-    62.280011,
-    62.395356,
-    62.357144,
-    62.490393,
-    62.187467
+    59.881718,
+    59.735726,
+    59.974125,
+    59.850516,
+    59.88402,
+    59.888838,
+    59.84072
    ],
-   "median": 62.357011,
-   "min": 62.187467,
-   "max": 62.490393,
+   "median": 59.881718,
+   "min": 59.735726,
+   "max": 59.974125,
    "unstable": false
   },
   {
@@ -2033,17 +2085,17 @@
    "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, its lines moved, a quarter of the multiprocessors, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    82.892719,
-    83.070017,
-    82.935292,
-    83.122803,
-    82.946896,
-    82.856445,
-    82.970733
+    81.820055,
+    81.825108,
+    81.86908,
+    81.883702,
+    81.830641,
+    81.812526,
+    81.843628
    ],
-   "median": 82.946896,
-   "min": 82.856445,
-   "max": 83.122803,
+   "median": 81.830641,
+   "min": 81.812526,
+   "max": 81.883702,
    "unstable": false
   },
   {
@@ -2051,17 +2103,17 @@
    "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, its lines moved, a quarter of the multiprocessors, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    83.647479,
-    83.627641,
-    83.598496,
-    83.739114,
-    83.970293,
-    83.924409,
-    83.669633
+    82.864663,
+    82.915471,
+    82.886937,
+    82.856236,
+    82.8928,
+    82.885154,
+    82.875022
    ],
-   "median": 83.669633,
-   "min": 83.598496,
-   "max": 83.970293,
+   "median": 82.885154,
+   "min": 82.856236,
+   "max": 82.915471,
    "unstable": false
   },
   {
@@ -2069,17 +2121,17 @@
    "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 16 multiprocessors, its plane a ring, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    55.659409,
-    55.649559,
-    55.658623,
-    55.65406,
-    55.6586,
-    55.662079,
-    55.666489
+    55.512764,
+    55.51088,
+    55.518196,
+    55.506332,
+    55.51162,
+    55.517067,
+    55.511932
    ],
-   "median": 55.658623,
-   "min": 55.649559,
-   "max": 55.666489,
+   "median": 55.511932,
+   "min": 55.506332,
+   "max": 55.518196,
    "unstable": false
   },
   {
@@ -2087,17 +2139,17 @@
    "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 16 multiprocessors, its plane a ring, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    56.929474,
-    56.852028,
-    56.873085,
-    56.88073,
-    56.916183,
-    56.850861,
-    56.883263
+    56.738319,
+    56.760475,
+    56.738747,
+    56.763443,
+    56.745598,
+    56.74617,
+    56.761017
    ],
-   "median": 56.88073,
-   "min": 56.850861,
-   "max": 56.929474,
+   "median": 56.74617,
+   "min": 56.738319,
+   "max": 56.763443,
    "unstable": false
   },
   {
@@ -2105,17 +2157,17 @@
    "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 16 multiprocessors, its plane a ring, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    80.252441,
-    80.265282,
-    80.27494,
-    80.264206,
-    80.275429,
-    80.280319,
-    80.25721
+    80.1353,
+    80.141792,
+    80.135559,
+    80.162903,
+    80.143196,
+    80.150246,
+    80.14846
    ],
-   "median": 80.265282,
-   "min": 80.252441,
-   "max": 80.280319,
+   "median": 80.143196,
+   "min": 80.1353,
+   "max": 80.162903,
    "unstable": false
   },
   {
@@ -2123,17 +2175,17 @@
    "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 16 multiprocessors, its plane a ring, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    81.205376,
-    81.098473,
-    81.165291,
-    81.146629,
-    81.126915,
-    81.172028,
-    81.125542
+    81.008362,
+    80.998497,
+    81.035622,
+    81.016464,
+    81.025047,
+    80.976913,
+    81.02803
    ],
-   "median": 81.146629,
-   "min": 81.098473,
-   "max": 81.205376,
+   "median": 81.016464,
+   "min": 80.976913,
+   "max": 81.035622,
    "unstable": false
   },
   {
@@ -2141,17 +2193,17 @@
    "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 16 multiprocessors, its plane a ring, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    55.270119,
-    55.225533,
-    55.257057,
-    55.241089,
-    55.267403,
-    55.244934,
-    55.254364
+    55.270332,
+    55.25164,
+    55.273026,
+    55.257034,
+    55.270233,
+    55.277222,
+    55.279312
    ],
-   "median": 55.254364,
-   "min": 55.225533,
-   "max": 55.270119,
+   "median": 55.270332,
+   "min": 55.25164,
+   "max": 55.279312,
    "unstable": false
   },
   {
@@ -2159,17 +2211,17 @@
    "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 16 multiprocessors, its plane a ring, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    56.063728,
-    56.017303,
-    56.022751,
-    56.1203,
-    56.046989,
-    56.035652,
-    55.977242
+    55.784744,
+    55.81189,
+    55.815147,
+    55.758759,
+    55.759895,
+    55.828102,
+    55.807007
    ],
-   "median": 56.035652,
-   "min": 55.977242,
-   "max": 56.1203,
+   "median": 55.807007,
+   "min": 55.758759,
+   "max": 55.828102,
    "unstable": false
   },
   {
@@ -2177,17 +2229,17 @@
    "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, its lines moved, 16 multiprocessors, its plane a ring, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    80.931763,
-    80.930229,
-    80.923981,
-    80.942619,
-    80.931068,
-    80.927994,
-    80.925819
+    81.275238,
+    81.317757,
+    81.30143,
+    81.266685,
+    81.272858,
+    81.27652,
+    81.284981
    ],
-   "median": 80.930229,
-   "min": 80.923981,
-   "max": 80.942619,
+   "median": 81.27652,
+   "min": 81.266685,
+   "max": 81.317757,
    "unstable": false
   },
   {
@@ -2195,17 +2247,17 @@
    "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, its lines moved, 16 multiprocessors, its plane a ring, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    81.695969,
-    81.657364,
-    81.64444,
-    81.66864,
-    81.69928,
-    81.667679,
-    81.77253
+    81.653481,
+    81.693321,
+    81.661415,
+    81.672714,
+    81.674438,
+    81.67807,
+    81.711563
    ],
-   "median": 81.66864,
-   "min": 81.64444,
-   "max": 81.77253,
+   "median": 81.674438,
+   "min": 81.653481,
+   "max": 81.711563,
    "unstable": false
   },
   {
@@ -2213,17 +2265,17 @@
    "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 16 multiprocessors, a new region a round, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    55.666412,
-    55.659081,
-    55.657211,
-    55.654343,
-    55.670372,
-    55.659233,
-    55.699287
+    55.530317,
+    55.535182,
+    55.534712,
+    55.527597,
+    55.531189,
+    55.526986,
+    55.52771
    ],
-   "median": 55.659233,
-   "min": 55.654343,
-   "max": 55.699287,
+   "median": 55.530317,
+   "min": 55.526986,
+   "max": 55.535182,
    "unstable": false
   },
   {
@@ -2231,17 +2283,17 @@
    "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 16 multiprocessors, a new region a round, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    58.044022,
-    58.069832,
-    58.022369,
-    58.058586,
-    57.959335,
-    58.045097,
-    58.062683
+    58.580017,
+    58.597377,
+    58.68818,
+    58.655596,
+    58.603533,
+    58.56032,
+    58.634766
    ],
-   "median": 58.045097,
-   "min": 57.959335,
-   "max": 58.069832,
+   "median": 58.603533,
+   "min": 58.56032,
+   "max": 58.68818,
    "unstable": false
   },
   {
@@ -2249,17 +2301,17 @@
    "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 16 multiprocessors, a new region a round, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    80.27224,
-    80.276077,
-    80.286774,
-    80.272369,
-    80.279144,
-    80.283432,
-    80.306808
+    80.16313,
+    80.17177,
+    80.190186,
+    80.160645,
+    80.172921,
+    80.178388,
+    80.174177
    ],
-   "median": 80.279144,
-   "min": 80.27224,
-   "max": 80.306808,
+   "median": 80.172921,
+   "min": 80.160645,
+   "max": 80.190186,
    "unstable": false
   },
   {
@@ -2267,17 +2319,17 @@
    "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 16 multiprocessors, a new region a round, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    81.566521,
-    81.624908,
-    81.656319,
-    81.630966,
-    81.566193,
-    81.612167,
-    81.587418
+    81.904428,
+    81.897775,
+    81.980861,
+    81.89161,
+    81.872219,
+    81.87956,
+    81.888027
    ],
-   "median": 81.612167,
-   "min": 81.566193,
-   "max": 81.656319,
+   "median": 81.89161,
+   "min": 81.872219,
+   "max": 81.980861,
    "unstable": false
   },
   {
@@ -2285,17 +2337,17 @@
    "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 16 multiprocessors, a new region a round, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    55.454849,
-    55.433136,
-    55.396706,
-    55.420471,
-    55.465134,
-    55.424522,
-    55.419083
+    55.274074,
+    55.273586,
+    55.276568,
+    55.265616,
+    55.269775,
+    55.275364,
+    55.279419
    ],
-   "median": 55.424522,
-   "min": 55.396706,
-   "max": 55.465134,
+   "median": 55.274074,
+   "min": 55.265616,
+   "max": 55.279419,
    "unstable": false
   },
   {
@@ -2303,17 +2355,17 @@
    "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 16 multiprocessors, a new region a round, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    56.845299,
-    56.999016,
-    56.89621,
-    56.983856,
-    57.020348,
-    56.901573,
-    57.057831
+    56.87725,
+    56.798558,
+    56.794939,
+    56.622716,
+    56.785592,
+    56.805873,
+    56.857422
    ],
-   "median": 56.983856,
-   "min": 56.845299,
-   "max": 57.057831,
+   "median": 56.798558,
+   "min": 56.622716,
+   "max": 56.87725,
    "unstable": false
   },
   {
@@ -2321,17 +2373,17 @@
    "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, its lines moved, 16 multiprocessors, a new region a round, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    80.989655,
-    80.980278,
-    80.997459,
-    80.976196,
-    80.998428,
-    80.999969,
-    81.015747
+    81.090445,
+    81.100342,
+    81.088867,
+    81.092233,
+    81.103795,
+    81.074873,
+    81.100839
    ],
-   "median": 80.997459,
-   "min": 80.976196,
-   "max": 81.015747,
+   "median": 81.092233,
+   "min": 81.074873,
+   "max": 81.103795,
    "unstable": false
   },
   {
@@ -2339,17 +2391,17 @@
    "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, its lines moved, 16 multiprocessors, a new region a round, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    82.092056,
-    82.027946,
-    82.046768,
-    81.987511,
-    81.973663,
-    82.006157,
-    82.055916
+    82.050136,
+    81.995815,
+    82.004787,
+    81.981419,
+    82.025391,
+    81.994856,
+    82.063372
    ],
-   "median": 82.027946,
-   "min": 81.973663,
-   "max": 82.092056,
+   "median": 82.004787,
+   "min": 81.981419,
+   "max": 82.063372,
    "unstable": false
   },
   {
@@ -2357,17 +2409,17 @@
    "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 8 multiprocessors, its plane a ring, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    55.518173,
-    55.543259,
-    55.522659,
-    55.518814,
-    55.521133,
-    55.522476,
-    55.508621
+    55.521164,
+    55.516678,
+    55.493515,
+    55.514771,
+    55.518921,
+    55.51297,
+    55.514557
    ],
-   "median": 55.521133,
-   "min": 55.508621,
-   "max": 55.543259,
+   "median": 55.514771,
+   "min": 55.493515,
+   "max": 55.521164,
    "unstable": false
   },
   {
@@ -2375,17 +2427,17 @@
    "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 8 multiprocessors, its plane a ring, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    56.009735,
-    55.971771,
-    56.011932,
-    55.997147,
-    56.010162,
-    56.025238,
-    56.03186
+    55.679474,
+    55.621994,
+    55.624268,
+    55.615631,
+    55.642426,
+    55.634476,
+    55.621262
    ],
-   "median": 56.010162,
-   "min": 55.971771,
-   "max": 56.03186,
+   "median": 55.624268,
+   "min": 55.615631,
+   "max": 55.679474,
    "unstable": false
   },
   {
@@ -2393,17 +2445,17 @@
    "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 8 multiprocessors, its plane a ring, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    80.172562,
-    80.168274,
-    80.150787,
-    80.161438,
-    80.138046,
-    80.142853,
-    80.150131
+    80.140717,
+    80.14888,
+    80.149796,
+    80.129822,
+    80.152374,
+    80.137451,
+    80.146133
    ],
-   "median": 80.150787,
-   "min": 80.138046,
-   "max": 80.172562,
+   "median": 80.146133,
+   "min": 80.129822,
+   "max": 80.152374,
    "unstable": false
   },
   {
@@ -2411,17 +2463,17 @@
    "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 8 multiprocessors, its plane a ring, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    80.565872,
-    80.559677,
-    80.562851,
-    80.657166,
-    80.591843,
-    80.576614,
-    80.577621
+    80.204102,
+    80.204544,
+    80.207413,
+    80.215179,
+    80.220642,
+    80.212036,
+    80.236603
    ],
-   "median": 80.576614,
-   "min": 80.559677,
-   "max": 80.657166,
+   "median": 80.212036,
+   "min": 80.204102,
+   "max": 80.236603,
    "unstable": false
   },
   {
@@ -2429,17 +2481,17 @@
    "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 8 multiprocessors, its plane a ring, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    55.214905,
-    55.203842,
-    55.20369,
-    55.195969,
-    55.202057,
-    55.203262,
-    55.209076
+    55.177292,
+    55.165909,
+    55.176682,
+    55.167953,
+    55.174042,
+    55.167313,
+    55.174973
    ],
-   "median": 55.20369,
-   "min": 55.195969,
-   "max": 55.214905,
+   "median": 55.174042,
+   "min": 55.165909,
+   "max": 55.177292,
    "unstable": false
   },
   {
@@ -2447,17 +2499,17 @@
    "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 8 multiprocessors, its plane a ring, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    55.212372,
-    55.224762,
-    55.215454,
-    55.228683,
-    55.230835,
-    55.216629,
-    55.237305
+    55.231934,
+    55.231903,
+    55.22644,
+    55.233505,
+    55.235138,
+    55.222778,
+    55.225479
    ],
-   "median": 55.224762,
-   "min": 55.212372,
-   "max": 55.237305,
+   "median": 55.231903,
+   "min": 55.222778,
+   "max": 55.235138,
    "unstable": false
   },
   {
@@ -2465,17 +2517,17 @@
    "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, its lines moved, 8 multiprocessors, its plane a ring, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    80.888641,
-    80.905426,
-    80.904526,
-    80.868713,
-    80.89827,
-    80.892456,
-    80.902191
+    80.897003,
+    80.871628,
+    80.863022,
+    80.877823,
+    80.888947,
+    80.861069,
+    80.872391
    ],
-   "median": 80.89827,
-   "min": 80.868713,
-   "max": 80.905426,
+   "median": 80.872391,
+   "min": 80.861069,
+   "max": 80.897003,
    "unstable": false
   },
   {
@@ -2483,17 +2535,17 @@
    "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, its lines moved, 8 multiprocessors, its plane a ring, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    81.04512,
-    81.048645,
-    81.048157,
-    81.047745,
-    81.044617,
-    81.074478,
-    81.051346
+    81.15657,
+    81.140869,
+    81.173752,
+    81.171021,
+    81.169327,
+    81.145325,
+    81.160965
    ],
-   "median": 81.048157,
-   "min": 81.044617,
-   "max": 81.074478,
+   "median": 81.160965,
+   "min": 81.140869,
+   "max": 81.173752,
    "unstable": false
   },
   {
@@ -2501,17 +2553,17 @@
    "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 8 multiprocessors, a new region a round, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    55.5233,
-    55.530121,
-    55.527481,
-    55.519073,
-    55.524643,
-    55.537216,
-    55.534317
+    55.513199,
+    55.509384,
+    55.517654,
+    55.518539,
+    55.5215,
+    55.510574,
+    55.511383
    ],
-   "median": 55.527481,
-   "min": 55.519073,
-   "max": 55.537216,
+   "median": 55.513199,
+   "min": 55.509384,
+   "max": 55.5215,
    "unstable": false
   },
   {
@@ -2519,17 +2571,17 @@
    "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 8 multiprocessors, a new region a round, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    56.96077,
-    56.926468,
-    56.910141,
-    56.89444,
-    56.933304,
-    56.899094,
-    56.938538
+    56.858124,
+    56.775726,
+    56.885864,
+    56.847794,
+    56.79422,
+    56.820511,
+    56.846359
    ],
-   "median": 56.926468,
-   "min": 56.89444,
-   "max": 56.96077,
+   "median": 56.846359,
+   "min": 56.775726,
+   "max": 56.885864,
    "unstable": false
   },
   {
@@ -2537,17 +2589,17 @@
    "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 8 multiprocessors, a new region a round, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    80.152512,
-    80.154434,
-    80.151016,
-    80.159668,
-    80.152405,
-    80.165375,
-    80.15036
+    80.185471,
+    80.144119,
+    80.144669,
+    80.146042,
+    80.143036,
+    80.138962,
+    80.168304
    ],
-   "median": 80.152512,
-   "min": 80.15036,
-   "max": 80.165375,
+   "median": 80.144669,
+   "min": 80.138962,
+   "max": 80.185471,
    "unstable": false
   },
   {
@@ -2555,17 +2607,17 @@
    "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 8 multiprocessors, a new region a round, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    81.096664,
-    81.056946,
-    81.005768,
-    81.009384,
-    81.065247,
-    81.069168,
-    81.119003
+    80.911743,
+    80.915466,
+    80.885452,
+    80.869308,
+    80.853668,
+    80.918518,
+    80.917862
    ],
-   "median": 81.065247,
-   "min": 81.005768,
-   "max": 81.119003,
+   "median": 80.911743,
+   "min": 80.853668,
+   "max": 80.918518,
    "unstable": false
   },
   {
@@ -2573,17 +2625,17 @@
    "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 8 multiprocessors, a new region a round, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    55.226532,
-    55.212555,
-    55.222748,
-    55.217026,
-    55.234985,
-    55.198471,
-    55.234421
+    55.174408,
+    55.165207,
+    55.175262,
+    55.170609,
+    55.17981,
+    55.166931,
+    55.179184
    ],
-   "median": 55.222748,
-   "min": 55.198471,
-   "max": 55.234985,
+   "median": 55.174408,
+   "min": 55.165207,
+   "max": 55.17981,
    "unstable": false
   },
   {
@@ -2591,17 +2643,17 @@
    "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 8 multiprocessors, a new region a round, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    56.051468,
-    56.139465,
-    56.117737,
-    56.01207,
-    56.014694,
-    55.930771,
-    56.024902
+    55.619888,
+    55.673416,
+    55.60582,
+    55.629135,
+    55.585892,
+    55.576889,
+    55.625046
    ],
-   "median": 56.024902,
-   "min": 55.930771,
-   "max": 56.139465,
+   "median": 55.619888,
+   "min": 55.576889,
+   "max": 55.673416,
    "unstable": false
   },
   {
@@ -2609,17 +2661,17 @@
    "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, its lines moved, 8 multiprocessors, a new region a round, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    80.906815,
-    80.902496,
-    80.913315,
-    80.876358,
-    80.929855,
-    80.891815,
-    80.901581
+    80.907837,
+    80.885986,
+    80.867432,
+    80.855545,
+    80.88681,
+    80.900803,
+    80.876114
    ],
-   "median": 80.902496,
-   "min": 80.876358,
-   "max": 80.929855,
+   "median": 80.885986,
+   "min": 80.855545,
+   "max": 80.907837,
    "unstable": false
   },
   {
@@ -2627,17 +2679,17 @@
    "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, its lines moved, 8 multiprocessors, a new region a round, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    81.724457,
-    81.824478,
-    81.71286,
-    81.696655,
-    81.713593,
-    81.670685,
-    81.682983
+    81.599442,
+    81.637772,
+    81.61412,
+    81.662903,
+    81.608139,
+    81.602142,
+    81.606659
    ],
-   "median": 81.71286,
-   "min": 81.670685,
-   "max": 81.824478,
+   "median": 81.608139,
+   "min": 81.599442,
+   "max": 81.662903,
    "unstable": false
   },
   {
@@ -2645,17 +2697,17 @@
    "name": "32 live digits a token, the values plane, 256 threads, a flat stream of its copies, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    486.821945,
-    486.495777,
-    486.811735,
-    486.772626,
-    486.549585,
-    486.666484,
-    486.376589
+    552.60051,
+    552.26487,
+    554.569008,
+    553.166307,
+    552.130009,
+    553.810518,
+    552.535203
    ],
-   "median": 486.666484,
-   "min": 486.376589,
-   "max": 486.821945,
+   "median": 552.60051,
+   "min": 552.130009,
+   "max": 554.569008,
    "unstable": false
   },
   {
@@ -2663,17 +2715,17 @@
    "name": "32 live digits a token, the values plane, 256 threads, a flat stream of its copies, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    486.972518,
-    486.960558,
-    487.071792,
-    487.267101,
-    487.178569,
-    486.95147,
-    486.986791
+    552.059219,
+    552.809557,
+    553.372962,
+    554.06393,
+    553.064698,
+    553.335884,
+    552.786954
    ],
-   "median": 486.986791,
-   "min": 486.95147,
-   "max": 487.267101,
+   "median": 553.064698,
+   "min": 552.059219,
+   "max": 554.06393,
    "unstable": false
   },
   {
@@ -2681,17 +2733,17 @@
    "name": "32 live digits a token, the values plane, 256 threads, its lines moved, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    608.066344,
-    607.874506,
-    607.647964,
-    607.95963,
-    607.976411,
-    607.796941,
-    607.942378
+    622.49562,
+    622.518601,
+    622.911167,
+    622.836914,
+    622.521188,
+    622.640661,
+    623.328416
    ],
-   "median": 607.942378,
-   "min": 607.647964,
-   "max": 608.066344,
+   "median": 622.640661,
+   "min": 622.49562,
+   "max": 623.328416,
    "unstable": false
   },
   {
@@ -2699,17 +2751,17 @@
    "name": "32 live digits a token, the values plane, 256 threads, its lines moved, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    608.231646,
-    608.042999,
-    608.072,
-    608.006105,
-    608.037752,
-    608.130172,
-    608.310982
+    622.848623,
+    622.775645,
+    622.778001,
+    622.810547,
+    622.865281,
+    622.726644,
+    622.717234
    ],
-   "median": 608.072,
-   "min": 608.006105,
-   "max": 608.310982,
+   "median": 622.778001,
+   "min": 622.717234,
+   "max": 622.865281,
    "unstable": false
   },
   {
@@ -2717,17 +2769,17 @@
    "name": "32 live digits a token, the values plane, 512 threads, a flat stream of its copies, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    491.231866,
-    491.588715,
-    491.757022,
-    491.397603,
-    491.962677,
-    491.605331,
-    492.108275
+    556.70853,
+    556.014109,
+    557.354783,
+    556.911261,
+    556.936773,
+    557.017502,
+    552.291877
    ],
-   "median": 491.605331,
-   "min": 491.231866,
-   "max": 492.108275,
+   "median": 556.911261,
+   "min": 552.291877,
+   "max": 557.354783,
    "unstable": false
   },
   {
@@ -2735,17 +2787,17 @@
    "name": "32 live digits a token, the values plane, 512 threads, a flat stream of its copies, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    492.165046,
-    491.706969,
-    491.979797,
-    491.771614,
-    491.436141,
-    491.664571,
-    491.447817
+    556.441489,
+    556.72088,
+    555.296987,
+    555.505791,
+    555.11685,
+    555.028668,
+    554.893031
    ],
-   "median": 491.706969,
-   "min": 491.436141,
-   "max": 492.165046,
+   "median": 555.296987,
+   "min": 554.893031,
+   "max": 556.72088,
    "unstable": false
   },
   {
@@ -2753,17 +2805,17 @@
    "name": "32 live digits a token, the values plane, 512 threads, its lines moved, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    611.900965,
-    611.639933,
-    611.908121,
-    611.716074,
-    611.883809,
-    611.844436,
-    612.126581
+    624.845541,
+    625.390985,
+    624.798741,
+    625.288958,
+    624.830869,
+    624.642386,
+    626.232392
    ],
-   "median": 611.883809,
-   "min": 611.639933,
-   "max": 612.126581,
+   "median": 624.845541,
+   "min": 624.642386,
+   "max": 626.232392,
    "unstable": false
   },
   {
@@ -2771,17 +2823,17 @@
    "name": "32 live digits a token, the values plane, 512 threads, its lines moved, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    612.568753,
-    611.705265,
-    612.04125,
-    611.75681,
-    612.323878,
-    611.9672,
-    612.413896
+    625.628217,
+    624.870538,
+    625.249612,
+    625.145194,
+    625.172458,
+    625.424286,
+    625.537544
    ],
-   "median": 612.04125,
-   "min": 611.705265,
-   "max": 612.568753,
+   "median": 625.249612,
+   "min": 624.870538,
+   "max": 625.628217,
    "unstable": false
   },
   {
@@ -2789,17 +2841,17 @@
    "name": "32 live digits a token, the values plane, 1024 threads, a flat stream of its copies, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    506.872107,
-    507.24178,
-    506.623512,
-    507.370195,
-    507.7837,
-    507.33582,
-    506.835642
+    563.385805,
+    563.514593,
+    562.679102,
+    564.289448,
+    563.830275,
+    564.428181,
+    563.725805
    ],
-   "median": 507.24178,
-   "min": 506.623512,
-   "max": 507.7837,
+   "median": 563.725805,
+   "min": 562.679102,
+   "max": 564.428181,
    "unstable": false
   },
   {
@@ -2807,17 +2859,17 @@
    "name": "32 live digits a token, the values plane, 1024 threads, a flat stream of its copies, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    507.570211,
-    507.704013,
-    507.421827,
-    507.226993,
-    508.173467,
-    507.322665,
-    507.326644
+    563.913714,
+    563.852619,
+    564.048571,
+    563.219733,
+    563.256251,
+    564.830247,
+    564.267118
    ],
-   "median": 507.421827,
-   "min": 507.226993,
-   "max": 508.173467,
+   "median": 563.913714,
+   "min": 563.219733,
+   "max": 564.830247,
    "unstable": false
   },
   {
@@ -2825,17 +2877,17 @@
    "name": "32 live digits a token, the values plane, 1024 threads, its lines moved, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    686.000603,
-    686.375083,
-    686.609531,
-    686.157884,
-    686.386274,
-    686.826531,
-    686.130111
+    687.036648,
+    686.7942,
+    687.14528,
+    687.357832,
+    687.224958,
+    687.029353,
+    686.891483
    ],
-   "median": 686.375083,
-   "min": 686.000603,
-   "max": 686.826531,
+   "median": 687.036648,
+   "min": 686.7942,
+   "max": 687.357832,
    "unstable": false
   },
   {
@@ -2843,17 +2895,17 @@
    "name": "32 live digits a token, the values plane, 1024 threads, its lines moved, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    686.878419,
-    686.58693,
-    686.568668,
-    686.559095,
-    686.584339,
-    686.825089,
-    686.619789
+    687.393293,
+    687.143175,
+    687.032929,
+    687.05171,
+    686.886858,
+    687.282637,
+    686.882958
    ],
-   "median": 686.58693,
-   "min": 686.559095,
-   "max": 686.878419,
+   "median": 687.05171,
+   "min": 686.882958,
+   "max": 687.393293,
    "unstable": false
   },
   {
@@ -2861,17 +2913,17 @@
    "name": "32 live digits a token, the values plane, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    297.683886,
-    297.648112,
-    297.606438,
-    297.656831,
-    297.757635,
-    297.819665,
-    297.921128
+    295.911469,
+    295.96136,
+    295.897736,
+    296.047472,
+    295.881827,
+    296.152039,
+    295.919155
    ],
-   "median": 297.683886,
-   "min": 297.606438,
-   "max": 297.921128,
+   "median": 295.919155,
+   "min": 295.881827,
+   "max": 296.152039,
    "unstable": false
   },
   {
@@ -2879,17 +2931,17 @@
    "name": "32 live digits a token, the values plane, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    297.60002,
-    297.326949,
-    297.590384,
-    297.432332,
-    297.498291,
-    297.715846,
-    297.559863
+    296.282144,
+    296.086709,
+    295.879957,
+    295.716012,
+    296.08745,
+    296.113552,
+    295.944977
    ],
-   "median": 297.559863,
-   "min": 297.326949,
-   "max": 297.715846,
+   "median": 296.086709,
+   "min": 295.716012,
+   "max": 296.282144,
    "unstable": false
   },
   {
@@ -2897,17 +2949,17 @@
    "name": "32 live digits a token, the values plane, 512 threads, its lines moved, a quarter of the multiprocessors, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    579.906568,
-    579.352051,
-    579.485969,
-    579.63501,
-    579.191432,
-    579.580311,
-    579.522872
+    578.320147,
+    578.348519,
+    578.275691,
+    578.32152,
+    578.333793,
+    578.355059,
+    578.30249
    ],
-   "median": 579.522872,
-   "min": 579.191432,
-   "max": 579.906568,
+   "median": 578.32152,
+   "min": 578.275691,
+   "max": 578.355059,
    "unstable": false
   },
   {
@@ -2915,17 +2967,17 @@
    "name": "32 live digits a token, the values plane, 512 threads, its lines moved, a quarter of the multiprocessors, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    579.427065,
-    579.696333,
-    579.174697,
-    579.445627,
-    579.467441,
-    579.526578,
-    579.343635
+    578.34957,
+    578.248295,
+    578.247332,
+    578.300646,
+    578.249795,
+    578.323177,
+    578.273512
    ],
-   "median": 579.445627,
-   "min": 579.174697,
-   "max": 579.696333,
+   "median": 578.273512,
+   "min": 578.247332,
+   "max": 578.34957,
    "unstable": false
   },
   {
@@ -2933,17 +2985,17 @@
    "name": "32 live digits a token, the dense plane, 256 threads, a flat stream of its copies, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    853.633218,
-    852.146097,
-    851.807931,
-    853.118885,
-    853.798098,
-    853.461561,
-    852.811507
+    1019.657656,
+    1020.611573,
+    1018.796248,
+    1015.26205,
+    1018.236268,
+    1020.204087,
+    1011.666854
    ],
-   "median": 853.118885,
-   "min": 851.807931,
-   "max": 853.798098,
+   "median": 1018.796248,
+   "min": 1011.666854,
+   "max": 1020.611573,
    "unstable": false
   },
   {
@@ -2951,17 +3003,17 @@
    "name": "32 live digits a token, the dense plane, 256 threads, a flat stream of its copies, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    855.784005,
-    855.425009,
-    857.636899,
-    855.902482,
-    856.80061,
-    856.914281,
-    856.886362
+    1017.934593,
+    1017.467745,
+    1016.27966,
+    1020.479183,
+    1018.415007,
+    1019.632863,
+    1014.904196
    ],
-   "median": 856.80061,
-   "min": 855.425009,
-   "max": 857.636899,
+   "median": 1017.934593,
+   "min": 1014.904196,
+   "max": 1020.479183,
    "unstable": false
   },
   {
@@ -2969,17 +3021,17 @@
    "name": "32 live digits a token, the dense plane, 256 threads, its lines moved, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    873.122069,
-    873.355644,
-    872.598265,
-    873.232525,
-    870.915951,
-    872.85681,
-    868.961814
+    1032.631995,
+    1032.491242,
+    1031.31633,
+    1030.690476,
+    1033.336714,
+    1034.539515,
+    1034.519326
    ],
-   "median": 872.85681,
-   "min": 868.961814,
-   "max": 873.355644,
+   "median": 1032.631995,
+   "min": 1030.690476,
+   "max": 1034.539515,
    "unstable": false
   },
   {
@@ -2987,17 +3039,17 @@
    "name": "32 live digits a token, the dense plane, 256 threads, its lines moved, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    873.588931,
-    870.049696,
-    872.222894,
-    873.092477,
-    871.547087,
-    871.242884,
-    872.993639
+    1033.30085,
+    1036.796199,
+    1032.818642,
+    1033.487522,
+    1035.433181,
+    1032.945793,
+    1034.626568
    ],
-   "median": 872.222894,
-   "min": 870.049696,
-   "max": 873.588931,
+   "median": 1033.487522,
+   "min": 1032.818642,
+   "max": 1036.796199,
    "unstable": false
   },
   {
@@ -3005,17 +3057,17 @@
    "name": "32 live digits a token, the dense plane, 512 threads, a flat stream of its copies, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    853.760362,
-    854.962849,
-    854.211914,
-    854.028927,
-    853.723214,
-    854.27211,
-    854.933389
+    1020.160983,
+    1021.418075,
+    1020.84859,
+    1012.293856,
+    1016.435943,
+    1019.638141,
+    1018.011833
    ],
-   "median": 854.211914,
-   "min": 853.723214,
-   "max": 854.962849,
+   "median": 1019.638141,
+   "min": 1012.293856,
+   "max": 1021.418075,
    "unstable": false
   },
   {
@@ -3023,17 +3075,17 @@
    "name": "32 live digits a token, the dense plane, 512 threads, a flat stream of its copies, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    856.191806,
-    857.844449,
-    857.934951,
-    855.729298,
-    857.192228,
-    858.212374,
-    857.98108
+    1019.987651,
+    1021.074747,
+    1021.293372,
+    1015.566164,
+    1022.121623,
+    1018.276295,
+    1022.544048
    ],
-   "median": 857.844449,
-   "min": 855.729298,
-   "max": 858.212374,
+   "median": 1021.074747,
+   "min": 1015.566164,
+   "max": 1022.544048,
    "unstable": false
   },
   {
@@ -3041,17 +3093,17 @@
    "name": "32 live digits a token, the dense plane, 512 threads, its lines moved, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    872.539236,
-    871.566305,
-    872.603978,
-    873.339602,
-    873.063241,
-    872.351875,
-    872.552645
+    1029.077947,
+    1036.070397,
+    1033.16743,
+    1033.739134,
+    1030.177127,
+    1034.885454,
+    1031.195384
    ],
-   "median": 872.552645,
-   "min": 871.566305,
-   "max": 873.339602,
+   "median": 1033.16743,
+   "min": 1029.077947,
+   "max": 1036.070397,
    "unstable": false
   },
   {
@@ -3059,17 +3111,17 @@
    "name": "32 live digits a token, the dense plane, 512 threads, its lines moved, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    875.01424,
-    873.595475,
-    874.576233,
-    873.906464,
-    874.368909,
-    873.857188,
-    870.179713
+    1036.737066,
+    1034.138054,
+    1035.046951,
+    1032.084494,
+    1034.668286,
+    1033.932686,
+    1036.925328
    ],
-   "median": 873.906464,
-   "min": 870.179713,
-   "max": 875.01424,
+   "median": 1034.668286,
+   "min": 1032.084494,
+   "max": 1036.925328,
    "unstable": false
   },
   {
@@ -3077,17 +3129,17 @@
    "name": "32 live digits a token, the dense plane, 1024 threads, a flat stream of its copies, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    858.965853,
-    859.10411,
-    857.788508,
-    859.347334,
-    857.919707,
-    860.641405,
-    857.283677
+    1024.970531,
+    1021.820941,
+    1022.235118,
+    1020.706943,
+    1019.787113,
+    1024.795115,
+    1024.952433
    ],
-   "median": 858.965853,
-   "min": 857.283677,
-   "max": 860.641405,
+   "median": 1022.235118,
+   "min": 1019.787113,
+   "max": 1024.970531,
    "unstable": false
   },
   {
@@ -3095,17 +3147,17 @@
    "name": "32 live digits a token, the dense plane, 1024 threads, a flat stream of its copies, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    860.866738,
-    859.902076,
-    860.510162,
-    861.08157,
-    861.003183,
-    860.036337,
-    861.256325
+    1022.915792,
+    1022.60384,
+    1022.13812,
+    1026.222851,
+    1023.287313,
+    1021.622515,
+    1024.66046
    ],
-   "median": 860.866738,
-   "min": 859.902076,
-   "max": 861.256325,
+   "median": 1022.915792,
+   "min": 1021.622515,
+   "max": 1026.222851,
    "unstable": false
   },
   {
@@ -3113,17 +3165,17 @@
    "name": "32 live digits a token, the dense plane, 1024 threads, its lines moved, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    879.108508,
-    879.815341,
-    880.938502,
-    879.982209,
-    879.798516,
-    880.478531,
-    877.224623
+    1037.594286,
+    1034.212164,
+    1039.129808,
+    1040.690924,
+    1038.277569,
+    1037.899685,
+    1041.130759
    ],
-   "median": 879.815341,
-   "min": 877.224623,
-   "max": 880.938502,
+   "median": 1038.277569,
+   "min": 1034.212164,
+   "max": 1041.130759,
    "unstable": false
   },
   {
@@ -3131,17 +3183,17 @@
    "name": "32 live digits a token, the dense plane, 1024 threads, its lines moved, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    879.51542,
-    880.772798,
-    880.10125,
-    880.338687,
-    880.633532,
-    879.936042,
-    881.312616
+    1041.785601,
+    1040.605188,
+    1038.820563,
+    1043.561491,
+    1038.798489,
+    1043.752929,
+    1040.209886
    ],
-   "median": 880.338687,
-   "min": 879.51542,
-   "max": 881.312616,
+   "median": 1040.605188,
+   "min": 1038.798489,
+   "max": 1043.752929,
    "unstable": false
   },
   {
@@ -3149,17 +3201,17 @@
    "name": "32 live digits a token, the dense plane, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    327.65949,
-    327.470067,
-    327.611199,
-    327.638202,
-    327.474805,
-    328.056744,
-    327.503829
+    312.990526,
+    312.991808,
+    312.990265,
+    312.996107,
+    312.968881,
+    312.997341,
+    313.0194
    ],
-   "median": 327.611199,
-   "min": 327.470067,
-   "max": 328.056744,
+   "median": 312.991808,
+   "min": 312.968881,
+   "max": 313.0194,
    "unstable": false
   },
   {
@@ -3167,17 +3219,17 @@
    "name": "32 live digits a token, the dense plane, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    329.577348,
-    330.852661,
-    329.661455,
-    329.821374,
-    329.688277,
-    329.971957,
-    330.210168
+    315.490627,
+    315.576996,
+    315.955257,
+    315.739716,
+    315.60444,
+    315.580017,
+    315.62813
    ],
-   "median": 329.821374,
-   "min": 329.577348,
-   "max": 330.852661,
+   "median": 315.60444,
+   "min": 315.490627,
+   "max": 315.955257,
    "unstable": false
   },
   {
@@ -3185,17 +3237,17 @@
    "name": "32 live digits a token, the dense plane, 512 threads, its lines moved, a quarter of the multiprocessors, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    423.312474,
-    423.775598,
-    423.722608,
-    423.642819,
-    423.947329,
-    424.143329,
-    423.607655
+    417.06795,
+    416.944118,
+    416.762172,
+    416.984266,
+    416.601667,
+    416.826194,
+    416.777963
    ],
-   "median": 423.722608,
-   "min": 423.312474,
-   "max": 424.143329,
+   "median": 416.826194,
+   "min": 416.601667,
+   "max": 417.06795,
    "unstable": false
   },
   {
@@ -3203,17 +3255,17 @@
    "name": "32 live digits a token, the dense plane, 512 threads, its lines moved, a quarter of the multiprocessors, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    427.478638,
-    427.336884,
-    427.648807,
-    427.769128,
-    427.28749,
-    427.39816,
-    427.35009
+    420.029563,
+    420.269265,
+    420.017892,
+    420.010084,
+    419.987592,
+    419.949132,
+    420.054125
    ],
-   "median": 427.39816,
-   "min": 427.28749,
-   "max": 427.769128,
+   "median": 420.017892,
+   "min": 419.949132,
+   "max": 420.269265,
    "unstable": false
   },
   {
@@ -3221,17 +3273,17 @@
    "name": "32 live digits a token, the dense plane, 512 threads, a flat stream of its copies, six buffers out, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    897.131923,
-    897.390286,
-    897.056452,
-    896.991965,
-    896.674467,
-    897.020909,
-    896.056668
+    1051.307696,
+    1053.160902,
+    1056.752453,
+    1050.339591,
+    1053.84599,
+    1058.079301,
+    1057.477733
    ],
-   "median": 897.020909,
-   "min": 896.056668,
-   "max": 897.390286,
+   "median": 1053.84599,
+   "min": 1050.339591,
+   "max": 1058.079301,
    "unstable": false
   },
   {
@@ -3239,17 +3291,17 @@
    "name": "32 live digits a token, the dense plane, 512 threads, a flat stream of its copies, six buffers out, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    897.358601,
-    897.994206,
-    898.18387,
-    897.602308,
-    898.33451,
-    898.342804,
-    897.851072
+    1051.749702,
+    1051.00154,
+    1055.527723,
+    1055.79443,
+    1058.23021,
+    1054.315317,
+    1056.801353
    ],
-   "median": 897.994206,
-   "min": 897.358601,
-   "max": 898.342804,
+   "median": 1055.527723,
+   "min": 1051.00154,
+   "max": 1058.23021,
    "unstable": false
   },
   {
@@ -3257,17 +3309,17 @@
    "name": "32 live digits a token, the dense plane, 512 threads, its lines moved, six buffers out, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    949.415052,
-    949.506355,
-    949.582327,
-    949.361289,
-    949.091306,
-    949.565093,
-    949.1673
+    1079.980185,
+    1080.474181,
+    1082.513892,
+    1083.086032,
+    1083.480868,
+    1084.31365,
+    1082.808706
    ],
-   "median": 949.415052,
-   "min": 949.091306,
-   "max": 949.582327,
+   "median": 1082.808706,
+   "min": 1079.980185,
+   "max": 1084.31365,
    "unstable": false
   },
   {
@@ -3275,17 +3327,17 @@
    "name": "32 live digits a token, the dense plane, 512 threads, its lines moved, six buffers out, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    950.200231,
-    949.347273,
-    949.969425,
-    949.593166,
-    950.475187,
-    949.622646,
-    950.008083
+    1084.614727,
+    1082.956782,
+    1077.077041,
+    1083.623275,
+    1083.261471,
+    1083.775842,
+    1083.274968
    ],
-   "median": 949.969425,
-   "min": 949.347273,
-   "max": 950.475187,
+   "median": 1083.274968,
+   "min": 1077.077041,
+   "max": 1084.614727,
    "unstable": false
   },
   {
@@ -3293,17 +3345,17 @@
    "name": "32 live digits a token, the dense plane, 512 threads, a flat stream of its copies, six buffers out, a quarter of the multiprocessors, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    348.324234,
-    349.551817,
-    348.436549,
-    348.06311,
-    347.246767,
-    348.19893,
-    348.263613
+    323.009059,
+    322.874991,
+    323.362728,
+    324.425049,
+    322.863913,
+    323.877821,
+    323.098567
    ],
-   "median": 348.263613,
-   "min": 347.246767,
-   "max": 349.551817,
+   "median": 323.098567,
+   "min": 322.863913,
+   "max": 324.425049,
    "unstable": false
   },
   {
@@ -3311,17 +3363,17 @@
    "name": "32 live digits a token, the dense plane, 512 threads, a flat stream of its copies, six buffers out, a quarter of the multiprocessors, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    356.424746,
-    356.501106,
-    358.111946,
-    356.687319,
-    356.484135,
-    357.184774,
-    357.852887
+    332.566559,
+    332.484026,
+    330.932521,
+    332.373954,
+    332.198844,
+    331.629198,
+    331.085706
    ],
-   "median": 356.687319,
-   "min": 356.424746,
-   "max": 358.111946,
+   "median": 332.198844,
+   "min": 330.932521,
+   "max": 332.566559,
    "unstable": false
   },
   {
@@ -3329,17 +3381,17 @@
    "name": "32 live digits a token, the dense plane, 512 threads, its lines moved, six buffers out, a quarter of the multiprocessors, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    524.87082,
-    525.229085,
-    525.179399,
-    525.139064,
-    525.136759,
-    524.738681,
-    524.775735
+    520.274105,
+    520.142373,
+    520.157854,
+    519.939571,
+    520.149174,
+    520.083483,
+    520.154894
    ],
-   "median": 525.136759,
-   "min": 524.738681,
-   "max": 525.229085,
+   "median": 520.149174,
+   "min": 519.939571,
+   "max": 520.274105,
    "unstable": false
   },
   {
@@ -3347,17 +3399,17 @@
    "name": "32 live digits a token, the dense plane, 512 threads, its lines moved, six buffers out, a quarter of the multiprocessors, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    528.957309,
-    528.900997,
-    528.562474,
-    529.049091,
-    529.075465,
-    528.858983,
-    528.952892
+    523.413949,
+    523.433376,
+    523.366534,
+    523.40407,
+    523.359453,
+    523.407493,
+    523.413199
    ],
-   "median": 528.952892,
-   "min": 528.562474,
-   "max": 529.075465,
+   "median": 523.407493,
+   "min": 523.359453,
+   "max": 523.433376,
    "unstable": false
   },
   {
@@ -3365,17 +3417,17 @@
    "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    245.355933,
-    245.125684,
-    245.064752,
-    245.036051,
-    245.166303,
-    244.529728,
-    244.859951
+    283.398478,
+    282.103361,
+    281.747624,
+    283.196229,
+    283.393244,
+    280.64215,
+    280.942482
    ],
-   "median": 245.064752,
-   "min": 244.529728,
-   "max": 245.355933,
+   "median": 282.103361,
+   "min": 280.64215,
+   "max": 283.398478,
    "unstable": false
   },
   {
@@ -3383,17 +3435,17 @@
    "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    245.06577,
-    245.915,
-    245.260447,
-    245.859969,
-    245.3174,
-    245.0226,
-    245.19886
+    281.81338,
+    283.306486,
+    283.485543,
+    282.713746,
+    281.112024,
+    282.313538,
+    282.116127
    ],
-   "median": 245.260447,
-   "min": 245.0226,
-   "max": 245.915,
+   "median": 282.313538,
+   "min": 281.112024,
+   "max": 283.485543,
    "unstable": false
   },
   {
@@ -3401,17 +3453,17 @@
    "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    261.299284,
-    261.285243,
-    261.258489,
-    261.196012,
-    261.127141,
-    261.43135,
-    261.188128
+    291.467187,
+    290.186187,
+    289.927505,
+    291.39391,
+    290.434924,
+    290.127311,
+    291.096149
    ],
-   "median": 261.258489,
-   "min": 261.127141,
-   "max": 261.43135,
+   "median": 290.434924,
+   "min": 289.927505,
+   "max": 291.467187,
    "unstable": false
   },
   {
@@ -3419,17 +3471,17 @@
    "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    261.435047,
-    261.456857,
-    261.797335,
-    261.587892,
-    261.570854,
-    261.614393,
-    261.762085
+    291.236275,
+    291.326927,
+    290.448579,
+    291.149669,
+    289.808491,
+    290.504169,
+    290.977454
    ],
-   "median": 261.587892,
-   "min": 261.435047,
-   "max": 261.797335,
+   "median": 290.977454,
+   "min": 289.808491,
+   "max": 291.326927,
    "unstable": false
   },
   {
@@ -3437,17 +3489,17 @@
    "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    142.736842,
-    142.841712,
-    143.032952,
-    142.694595,
-    142.852495,
-    142.794874,
-    142.967385
+    141.215938,
+    141.452698,
+    141.209773,
+    141.42031,
+    141.349997,
+    141.317993,
+    141.212167
    ],
-   "median": 142.841712,
-   "min": 142.694595,
-   "max": 143.032952,
+   "median": 141.317993,
+   "min": 141.209773,
+   "max": 141.452698,
    "unstable": false
   },
   {
@@ -3455,17 +3507,17 @@
    "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    142.896555,
-    142.699193,
-    142.874719,
-    142.860688,
-    142.485285,
-    142.635298,
-    142.644576
+    141.222329,
+    141.581587,
+    141.279633,
+    141.313481,
+    141.349644,
+    141.283683,
+    141.370645
    ],
-   "median": 142.699193,
-   "min": 142.485285,
-   "max": 142.896555,
+   "median": 141.313481,
+   "min": 141.222329,
+   "max": 141.581587,
    "unstable": false
   },
   {
@@ -3473,17 +3525,17 @@
    "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, a quarter of the multiprocessors, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    193.757587,
-    193.752538,
-    193.635742,
-    193.764371,
-    193.887621,
-    193.687785,
-    193.840569
+    193.610931,
+    193.802612,
+    193.496255,
+    193.816899,
+    193.712564,
+    193.670776,
+    193.73928
    ],
-   "median": 193.757587,
-   "min": 193.635742,
-   "max": 193.887621,
+   "median": 193.712564,
+   "min": 193.496255,
+   "max": 193.816899,
    "unstable": false
   },
   {
@@ -3491,17 +3543,17 @@
    "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, a quarter of the multiprocessors, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    194.007187,
-    193.855306,
-    193.568777,
-    193.643399,
-    193.952171,
-    194.1009,
-    193.988873
+    193.713784,
+    193.643768,
+    193.750724,
+    193.602809,
+    193.906451,
+    193.484113,
+    193.550454
    ],
-   "median": 193.952171,
-   "min": 193.568777,
-   "max": 194.1009,
+   "median": 193.643768,
+   "min": 193.484113,
+   "max": 193.906451,
    "unstable": false
   },
   {
@@ -3509,17 +3561,17 @@
    "name": "32 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    372.822843,
-    371.304966,
-    372.709391,
-    371.661332,
-    371.055709,
-    371.237543,
-    372.136385
+    424.831314,
+    431.865574,
+    427.687419,
+    428.568798,
+    428.777544,
+    424.509925,
+    429.707572
    ],
-   "median": 371.661332,
-   "min": 371.055709,
-   "max": 372.822843,
+   "median": 428.568798,
+   "min": 424.509925,
+   "max": 431.865574,
    "unstable": false
   },
   {
@@ -3527,17 +3579,17 @@
    "name": "32 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    375.311424,
-    374.337586,
-    375.211069,
-    374.439064,
-    375.338667,
-    374.784563,
-    374.145453
+    436.031974,
+    435.443056,
+    437.770228,
+    433.299697,
+    431.146637,
+    438.794803,
+    436.220969
    ],
-   "median": 374.784563,
-   "min": 374.145453,
-   "max": 375.338667,
+   "median": 436.031974,
+   "min": 431.146637,
+   "max": 438.794803,
    "unstable": false
   },
   {
@@ -3545,17 +3597,17 @@
    "name": "32 live digits a token, the stream's dense lines, 512 threads, its lines moved, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    375.810264,
-    375.673738,
-    374.09355,
-    373.778437,
-    374.659314,
-    375.404196,
-    374.202448
+    427.962444,
+    429.604747,
+    430.325791,
+    431.992044,
+    429.989582,
+    432.273229,
+    432.404459
    ],
-   "median": 374.659314,
-   "min": 373.778437,
-   "max": 375.810264,
+   "median": 430.325791,
+   "min": 427.962444,
+   "max": 432.404459,
    "unstable": false
   },
   {
@@ -3563,17 +3615,17 @@
    "name": "32 live digits a token, the stream's dense lines, 512 threads, its lines moved, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    377.101119,
-    377.104437,
-    378.496811,
-    377.803993,
-    378.071599,
-    378.107328,
-    377.740146
+    438.184416,
+    441.150784,
+    440.551216,
+    432.511567,
+    440.016224,
+    440.976503,
+    436.854697
    ],
-   "median": 377.803993,
-   "min": 377.101119,
-   "max": 378.496811,
+   "median": 440.016224,
+   "min": 432.511567,
+   "max": 441.150784,
    "unstable": false
   },
   {
@@ -3581,17 +3633,17 @@
    "name": "32 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    147.289251,
-    147.309163,
-    147.310406,
-    147.573875,
-    147.557484,
-    147.619821,
-    147.53135
+    143.545362,
+    143.460554,
+    143.497127,
+    143.592272,
+    143.455091,
+    143.586748,
+    143.492497
    ],
-   "median": 147.53135,
-   "min": 147.289251,
-   "max": 147.619821,
+   "median": 143.497127,
+   "min": 143.455091,
+   "max": 143.592272,
    "unstable": false
   },
   {
@@ -3599,17 +3651,17 @@
    "name": "32 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    148.249416,
-    148.423614,
-    148.237575,
-    148.216434,
-    148.449822,
-    148.433046,
-    148.406087
+    144.311244,
+    144.151027,
+    144.221161,
+    144.291892,
+    144.165819,
+    144.276363,
+    144.255402
    ],
-   "median": 148.406087,
-   "min": 148.216434,
-   "max": 148.449822,
+   "median": 144.255402,
+   "min": 144.151027,
+   "max": 144.311244,
    "unstable": false
   },
   {
@@ -3617,17 +3669,17 @@
    "name": "32 live digits a token, the stream's dense lines, 512 threads, its lines moved, a quarter of the multiprocessors, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    174.029955,
-    174.030181,
-    174.143621,
-    174.090965,
-    173.884581,
-    173.8902,
-    174.025812
+    171.960397,
+    172.012857,
+    172.000645,
+    172.021314,
+    172.048832,
+    172.074023,
+    172.004412
    ],
-   "median": 174.029955,
-   "min": 173.884581,
-   "max": 174.143621,
+   "median": 172.012857,
+   "min": 171.960397,
+   "max": 172.074023,
    "unstable": false
   },
   {
@@ -3635,17 +3687,17 @@
    "name": "32 live digits a token, the stream's dense lines, 512 threads, its lines moved, a quarter of the multiprocessors, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    175.35191,
-    175.868564,
-    175.278834,
-    175.187015,
-    175.254583,
-    175.239324,
-    175.468288
+    172.931523,
+    173.064017,
+    172.98574,
+    173.016785,
+    173.051195,
+    173.071538,
+    173.157222
    ],
-   "median": 175.278834,
-   "min": 175.187015,
-   "max": 175.868564,
+   "median": 173.051195,
+   "min": 172.931523,
+   "max": 173.157222,
    "unstable": false
   },
   {
@@ -3653,17 +3705,17 @@
    "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 16 multiprocessors, its plane a ring, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    127.930359,
-    127.803986,
-    127.755074,
-    127.770874,
-    127.898506,
-    127.795731,
-    127.822998
+    125.528381,
+    125.37027,
+    125.417007,
+    125.476524,
+    125.480759,
+    125.483803,
+    125.476433
    ],
-   "median": 127.803986,
-   "min": 127.755074,
-   "max": 127.930359,
+   "median": 125.476524,
+   "min": 125.37027,
+   "max": 125.528381,
    "unstable": false
   },
   {
@@ -3671,17 +3723,17 @@
    "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 16 multiprocessors, its plane a ring, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    133.371353,
-    133.474884,
-    133.439713,
-    133.479179,
-    133.38884,
-    133.474327,
-    133.408051
+    133.010399,
+    133.037277,
+    133.1567,
+    132.966927,
+    133.2882,
+    133.516647,
+    133.416588
    ],
-   "median": 133.439713,
-   "min": 133.371353,
-   "max": 133.479179,
+   "median": 133.1567,
+   "min": 132.966927,
+   "max": 133.516647,
    "unstable": false
   },
   {
@@ -3689,17 +3741,17 @@
    "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 16 multiprocessors, its plane a ring, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    191.363228,
-    191.365868,
-    191.449829,
-    191.375572,
-    191.338585,
-    191.42939,
-    191.349625
+    191.077126,
+    191.118904,
+    191.099792,
+    191.128441,
+    191.078346,
+    191.025635,
+    191.073242
    ],
-   "median": 191.365868,
-   "min": 191.338585,
-   "max": 191.449829,
+   "median": 191.078346,
+   "min": 191.025635,
+   "max": 191.128441,
    "unstable": false
   },
   {
@@ -3707,17 +3759,17 @@
    "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 16 multiprocessors, its plane a ring, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    191.979088,
-    191.93718,
-    191.935219,
-    191.84845,
-    191.966629,
-    191.970863,
-    191.908257
+    191.6325,
+    191.528687,
+    191.511101,
+    191.610741,
+    191.505768,
+    191.559586,
+    191.550644
    ],
-   "median": 191.93718,
-   "min": 191.84845,
-   "max": 191.979088,
+   "median": 191.550644,
+   "min": 191.505768,
+   "max": 191.6325,
    "unstable": false
   },
   {
@@ -3725,17 +3777,17 @@
    "name": "32 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 16 multiprocessors, its plane a ring, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    143.484993,
-    143.44133,
-    143.52375,
-    143.462975,
-    143.597786,
-    143.414795,
-    143.460777
+    142.670326,
+    142.6343,
+    142.654633,
+    142.639908,
+    142.655396,
+    142.636566,
+    142.640472
    ],
-   "median": 143.462975,
-   "min": 143.414795,
-   "max": 143.597786,
+   "median": 142.640472,
+   "min": 142.6343,
+   "max": 142.670326,
    "unstable": false
   },
   {
@@ -3743,17 +3795,17 @@
    "name": "32 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 16 multiprocessors, its plane a ring, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    143.888451,
-    143.941162,
-    143.878517,
-    143.768463,
-    143.759911,
-    143.664246,
-    143.767075
+    142.840805,
+    142.836792,
+    142.83773,
+    142.811211,
+    142.803177,
+    142.819099,
+    142.854576
    ],
-   "median": 143.768463,
-   "min": 143.664246,
-   "max": 143.941162,
+   "median": 142.836792,
+   "min": 142.803177,
+   "max": 142.854576,
    "unstable": false
   },
   {
@@ -3761,17 +3813,17 @@
    "name": "32 live digits a token, the stream's dense lines, 512 threads, its lines moved, 16 multiprocessors, its plane a ring, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    171.952621,
-    172.005058,
-    172.045097,
-    172.031525,
-    172.04937,
-    171.951721,
-    171.989624
+    171.441803,
+    171.480812,
+    171.475327,
+    171.388695,
+    171.420242,
+    171.448616,
+    171.426422
    ],
-   "median": 172.005058,
-   "min": 171.951721,
-   "max": 172.04937,
+   "median": 171.441803,
+   "min": 171.388695,
+   "max": 171.480812,
    "unstable": false
   },
   {
@@ -3779,17 +3831,17 @@
    "name": "32 live digits a token, the stream's dense lines, 512 threads, its lines moved, 16 multiprocessors, its plane a ring, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    172.770493,
-    172.813217,
-    172.73172,
-    172.750107,
-    172.830627,
-    172.812286,
-    172.754662
+    172.184288,
+    172.124481,
+    172.148331,
+    172.150856,
+    172.178711,
+    172.071175,
+    172.106522
    ],
-   "median": 172.770493,
-   "min": 172.73172,
-   "max": 172.830627,
+   "median": 172.148331,
+   "min": 172.071175,
+   "max": 172.184288,
    "unstable": false
   },
   {
@@ -3797,17 +3849,17 @@
    "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 16 multiprocessors, a new region a round, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    129.186768,
-    129.278816,
-    129.445641,
-    129.274147,
-    129.392303,
-    129.282578,
-    129.291344
+    128.90584,
+    128.800711,
+    128.841997,
+    129.016654,
+    128.903809,
+    128.966117,
+    128.776838
    ],
-   "median": 129.282578,
-   "min": 129.186768,
-   "max": 129.445641,
+   "median": 128.903809,
+   "min": 128.776838,
+   "max": 129.016654,
    "unstable": false
   },
   {
@@ -3815,17 +3867,17 @@
    "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 16 multiprocessors, a new region a round, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    133.574577,
-    133.368111,
-    133.620613,
-    133.344856,
-    133.469322,
-    133.485069,
-    133.647614
+    133.592494,
+    133.295183,
+    133.365609,
+    133.422965,
+    133.115051,
+    133.359802,
+    133.275173
    ],
-   "median": 133.485069,
-   "min": 133.344856,
-   "max": 133.647614,
+   "median": 133.359802,
+   "min": 133.115051,
+   "max": 133.592494,
    "unstable": false
   },
   {
@@ -3833,17 +3885,17 @@
    "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 16 multiprocessors, a new region a round, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    191.451385,
-    191.438423,
-    191.49073,
-    191.456009,
-    191.451569,
-    191.421288,
-    191.386375
+    191.035383,
+    191.013654,
+    191.035095,
+    191.009644,
+    191.010062,
+    190.989833,
+    190.939078
    ],
-   "median": 191.451385,
-   "min": 191.386375,
-   "max": 191.49073,
+   "median": 191.010062,
+   "min": 190.939078,
+   "max": 191.035383,
    "unstable": false
   },
   {
@@ -3851,17 +3903,17 @@
    "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 16 multiprocessors, a new region a round, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    191.880859,
-    191.926102,
-    191.938995,
-    191.89653,
-    191.926331,
-    191.896126,
-    191.736153
+    191.597342,
+    191.5271,
+    191.631426,
+    191.772661,
+    191.51661,
+    191.645403,
+    191.624573
    ],
-   "median": 191.89653,
-   "min": 191.736153,
-   "max": 191.938995,
+   "median": 191.624573,
+   "min": 191.51661,
+   "max": 191.772661,
    "unstable": false
   },
   {
@@ -3869,17 +3921,17 @@
    "name": "32 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 16 multiprocessors, a new region a round, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    143.451958,
-    143.462357,
-    143.59655,
-    143.854256,
-    143.981804,
-    143.999466,
-    143.462761
+    142.709324,
+    142.692139,
+    142.692008,
+    142.682329,
+    142.679792,
+    142.66667,
+    142.686741
    ],
-   "median": 143.59655,
-   "min": 143.451958,
-   "max": 143.999466,
+   "median": 142.686741,
+   "min": 142.66667,
+   "max": 142.709324,
    "unstable": false
   },
   {
@@ -3887,17 +3939,17 @@
    "name": "32 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 16 multiprocessors, a new region a round, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    143.931328,
-    143.746162,
-    143.891014,
-    143.936989,
-    143.776138,
-    143.706459,
-    143.765984
+    142.844884,
+    142.87459,
+    142.835127,
+    142.879804,
+    142.829808,
+    142.864232,
+    142.832415
    ],
-   "median": 143.776138,
-   "min": 143.706459,
-   "max": 143.936989,
+   "median": 142.844884,
+   "min": 142.829808,
+   "max": 142.879804,
    "unstable": false
   },
   {
@@ -3905,17 +3957,17 @@
    "name": "32 live digits a token, the stream's dense lines, 512 threads, its lines moved, 16 multiprocessors, a new region a round, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    172.030922,
-    172.0261,
-    171.984039,
-    172.061417,
-    172.022964,
-    171.960007,
-    172.042358
+    171.435338,
+    171.460606,
+    171.465942,
+    171.441616,
+    171.432251,
+    171.411342,
+    171.477722
    ],
-   "median": 172.0261,
-   "min": 171.960007,
-   "max": 172.061417,
+   "median": 171.441616,
+   "min": 171.411342,
+   "max": 171.477722,
    "unstable": false
   },
   {
@@ -3923,17 +3975,17 @@
    "name": "32 live digits a token, the stream's dense lines, 512 threads, its lines moved, 16 multiprocessors, a new region a round, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    172.877769,
-    172.764801,
-    172.841568,
-    172.820351,
-    172.823349,
-    172.724464,
-    172.708954
+    172.167262,
+    172.197745,
+    172.237531,
+    172.197518,
+    172.25245,
+    172.21759,
+    172.149833
    ],
-   "median": 172.820351,
-   "min": 172.708954,
-   "max": 172.877769,
+   "median": 172.197745,
+   "min": 172.149833,
+   "max": 172.25245,
    "unstable": false
   },
   {
@@ -3941,17 +3993,17 @@
    "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 8 multiprocessors, its plane a ring, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    119.53183,
-    119.493027,
-    119.463318,
-    119.41626,
-    119.503159,
-    119.516403,
-    119.443039
+    117.749405,
+    117.725067,
+    117.762131,
+    117.747177,
+    117.746887,
+    117.738495,
+    117.747971
    ],
-   "median": 119.493027,
-   "min": 119.41626,
-   "max": 119.53183,
+   "median": 117.747177,
+   "min": 117.725067,
+   "max": 117.762131,
    "unstable": false
   },
   {
@@ -3959,17 +4011,17 @@
    "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 8 multiprocessors, its plane a ring, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    123.694595,
-    123.683105,
-    123.716751,
-    123.725937,
-    123.794006,
-    123.682007,
-    123.762665
+    125.620346,
+    125.475174,
+    125.482132,
+    125.437332,
+    125.45932,
+    125.392838,
+    125.337509
    ],
-   "median": 123.716751,
-   "min": 123.682007,
-   "max": 123.794006,
+   "median": 125.45932,
+   "min": 125.337509,
+   "max": 125.620346,
    "unstable": false
   },
   {
@@ -3977,17 +4029,17 @@
    "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 8 multiprocessors, its plane a ring, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    190.377762,
-    190.428162,
-    190.383255,
-    190.41243,
-    190.388107,
-    190.403137,
-    190.438889
+    190.321487,
+    190.347031,
+    190.358643,
+    190.360916,
+    190.313141,
+    190.375061,
+    190.33989
    ],
-   "median": 190.403137,
-   "min": 190.377762,
-   "max": 190.438889,
+   "median": 190.347031,
+   "min": 190.313141,
+   "max": 190.375061,
    "unstable": false
   },
   {
@@ -3995,17 +4047,17 @@
    "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 8 multiprocessors, its plane a ring, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    190.944275,
-    190.913773,
-    190.972351,
-    190.974548,
-    190.930481,
-    190.946335,
-    190.950424
+    190.658188,
+    190.716965,
+    190.694397,
+    190.701492,
+    190.687027,
+    190.67189,
+    190.709366
    ],
-   "median": 190.946335,
-   "min": 190.913773,
-   "max": 190.974548,
+   "median": 190.694397,
+   "min": 190.658188,
+   "max": 190.716965,
    "unstable": false
   },
   {
@@ -4013,17 +4065,17 @@
    "name": "32 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 8 multiprocessors, its plane a ring, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    143.944382,
-    143.890533,
-    143.954773,
-    143.911453,
-    143.968338,
-    143.921799,
-    143.933487
+    142.557892,
+    142.533447,
+    142.551132,
+    142.555847,
+    142.544006,
+    142.557037,
+    142.543503
    ],
-   "median": 143.933487,
-   "min": 143.890533,
-   "max": 143.968338,
+   "median": 142.551132,
+   "min": 142.533447,
+   "max": 142.557892,
    "unstable": false
   },
   {
@@ -4031,17 +4083,17 @@
    "name": "32 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 8 multiprocessors, its plane a ring, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    144.463654,
-    144.373352,
-    144.128738,
-    144.121445,
-    144.246262,
-    144.408401,
-    144.490723
+    142.576172,
+    142.611923,
+    142.573395,
+    142.585587,
+    142.582123,
+    142.578339,
+    142.581009
    ],
-   "median": 144.373352,
-   "min": 144.121445,
-   "max": 144.490723,
+   "median": 142.581009,
+   "min": 142.573395,
+   "max": 142.611923,
    "unstable": false
   },
   {
@@ -4049,17 +4101,17 @@
    "name": "32 live digits a token, the stream's dense lines, 512 threads, its lines moved, 8 multiprocessors, its plane a ring, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    171.834488,
-    171.763641,
-    171.760864,
-    171.824341,
-    171.7659,
-    171.749146,
-    171.704178
+    171.158447,
+    171.140244,
+    171.133774,
+    171.103516,
+    171.176254,
+    171.091293,
+    171.106003
    ],
-   "median": 171.763641,
-   "min": 171.704178,
-   "max": 171.834488,
+   "median": 171.133774,
+   "min": 171.091293,
+   "max": 171.176254,
    "unstable": false
   },
   {
@@ -4067,17 +4119,17 @@
    "name": "32 live digits a token, the stream's dense lines, 512 threads, its lines moved, 8 multiprocessors, its plane a ring, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    172.632477,
-    172.78096,
-    172.47139,
-    172.63002,
-    172.608337,
-    172.601944,
-    172.625458
+    171.731461,
+    171.704285,
+    171.663193,
+    171.767426,
+    171.702545,
+    171.743896,
+    171.753586
    ],
-   "median": 172.625458,
-   "min": 172.47139,
-   "max": 172.78096,
+   "median": 171.731461,
+   "min": 171.663193,
+   "max": 171.767426,
    "unstable": false
   },
   {
@@ -4085,17 +4137,17 @@
    "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 8 multiprocessors, a new region a round, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    120.316635,
-    120.380325,
-    120.336365,
-    120.324371,
-    120.287827,
-    120.262909,
-    120.386414
+    117.933411,
+    117.912064,
+    117.923721,
+    117.941284,
+    117.947754,
+    117.937057,
+    117.923325
    ],
-   "median": 120.324371,
-   "min": 120.262909,
-   "max": 120.386414,
+   "median": 117.933411,
+   "min": 117.912064,
+   "max": 117.947754,
    "unstable": false
   },
   {
@@ -4103,17 +4155,17 @@
    "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 8 multiprocessors, a new region a round, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    131.626831,
-    131.737808,
-    131.596802,
-    131.651382,
-    131.73526,
-    131.861893,
-    131.881058
+    130.270081,
+    130.396072,
+    130.322479,
+    130.479752,
+    130.31723,
+    130.234482,
+    130.289474
    ],
-   "median": 131.73526,
-   "min": 131.596802,
-   "max": 131.881058,
+   "median": 130.31723,
+   "min": 130.234482,
+   "max": 130.479752,
    "unstable": false
   },
   {
@@ -4121,17 +4173,17 @@
    "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 8 multiprocessors, a new region a round, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    190.470566,
-    190.4841,
-    190.477158,
-    190.480804,
-    190.509216,
-    190.480331,
-    190.494583
+    190.346436,
+    190.338425,
+    190.35408,
+    190.357559,
+    190.356232,
+    190.383774,
+    190.348083
    ],
-   "median": 190.480804,
-   "min": 190.470566,
-   "max": 190.509216,
+   "median": 190.35408,
+   "min": 190.338425,
+   "max": 190.383774,
    "unstable": false
   },
   {
@@ -4139,17 +4191,17 @@
    "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 8 multiprocessors, a new region a round, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    191.617188,
-    191.597061,
-    191.659592,
-    191.63562,
-    191.654144,
-    191.532516,
-    191.579376
+    191.075012,
+    191.099518,
+    191.092972,
+    191.086044,
+    191.045578,
+    191.036011,
+    191.071243
    ],
-   "median": 191.617188,
-   "min": 191.532516,
-   "max": 191.659592,
+   "median": 191.075012,
+   "min": 191.036011,
+   "max": 191.099518,
    "unstable": false
   },
   {
@@ -4157,17 +4209,17 @@
    "name": "32 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 8 multiprocessors, a new region a round, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    144.035416,
-    144.196075,
-    143.928421,
-    144.669662,
-    144.428833,
-    143.900757,
-    144.004578
+    142.549026,
+    142.546219,
+    142.582687,
+    142.531906,
+    142.557129,
+    142.54834,
+    142.559906
    ],
-   "median": 144.035416,
-   "min": 143.900757,
-   "max": 144.669662,
+   "median": 142.549026,
+   "min": 142.531906,
+   "max": 142.582687,
    "unstable": false
   },
   {
@@ -4175,17 +4227,17 @@
    "name": "32 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 8 multiprocessors, a new region a round, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    144.250885,
-    144.47789,
-    144.378372,
-    144.254745,
-    144.541382,
-    144.771454,
-    144.70372
+    142.592743,
+    142.613861,
+    142.604019,
+    142.625046,
+    142.622406,
+    142.625458,
+    142.608932
    ],
-   "median": 144.47789,
-   "min": 144.250885,
-   "max": 144.771454,
+   "median": 142.613861,
+   "min": 142.592743,
+   "max": 142.625458,
    "unstable": false
   },
   {
@@ -4193,17 +4245,17 @@
    "name": "32 live digits a token, the stream's dense lines, 512 threads, its lines moved, 8 multiprocessors, a new region a round, its rounds the same windows",
    "unit": "SM-cycles a token",
    "samples": [
-    171.803452,
-    171.823624,
-    171.774261,
-    171.805206,
-    171.790222,
-    171.797775,
-    171.865768
+    171.124329,
+    171.117203,
+    171.131012,
+    171.114151,
+    171.113571,
+    171.148834,
+    171.109467
    ],
-   "median": 171.803452,
-   "min": 171.774261,
-   "max": 171.865768,
+   "median": 171.117203,
+   "min": 171.109467,
+   "max": 171.148834,
    "unstable": false
   },
   {
@@ -4211,21 +4263,38 @@
    "name": "32 live digits a token, the stream's dense lines, 512 threads, its lines moved, 8 multiprocessors, a new region a round, a fresh window a round",
    "unit": "SM-cycles a token",
    "samples": [
-    172.981064,
-    172.951447,
-    172.964249,
-    172.889008,
-    172.894394,
-    172.947815,
-    172.810944
+    171.848343,
+    171.864471,
+    171.806946,
+    171.830872,
+    171.892975,
+    171.832367,
+    171.873383
    ],
-   "median": 172.947815,
-   "min": 172.810944,
-   "max": 172.981064,
+   "median": 171.848343,
+   "min": 171.806946,
+   "max": 171.892975,
    "unstable": false
   }
  ],
  "kernels": {
+  "void gather_pass::coefs::plane<(int)512>(long long *, const uint4 *, const uint4 *, const unsigned int *, uint4 *, int, int, int)": {
+   "regs": 25,
+   "ops": {
+    "PLOP3.LUT": 203,
+    "UIADD3": 142,
+    "UMOV": 110,
+    "ELECT": 66,
+    "UBLKCP.S.G": 66,
+    "BRA.U.ANY": 66,
+    "UIADD3.X": 60,
+    "BRA": 26,
+    "LOP3.LUT": 23,
+    "VIADD": 17,
+    "LDS": 15,
+    "ULOP3.LUT": 14
+   }
+  },
   "void gather_pass::blocks::plane<(int)512>(long long *, const uint4 *, const uint4 *, const unsigned int *, uint4 *, unsigned int *, int, int, int)": {
    "regs": 38,
    "ops": {
@@ -4518,7 +4587,7 @@
  },
  "counters": {},
  "counters_exception": {
-  "host": "vast.ai rented box, NVIDIA H100 80GB HBM3: a box with a driver and no toolkit",
+  "host": "Hyperstack spot VM, NVIDIA H100 PCIe: its counters not yet read there",
   "instead": "the kernels' own clocks and the SASS's static counts"
  }
 }
