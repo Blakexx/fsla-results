@@ -279,16 +279,66 @@
    "lab": "unchecked",
    "variant": "held operands, beside 4 warps of global loads: the co-runners' rate",
    "reason": "the co-runners' instructions count themselves: the row checks the fold"
+  },
+  {
+   "lab": "check",
+   "variant": "operands held a step each, beside nothing",
+   "ok": true,
+   "detail": "0 of 33792 extremes differ from the exact sum"
+  },
+  {
+   "lab": "check",
+   "variant": "operands held a step each, beside 4 warps of shared loads",
+   "ok": true,
+   "detail": "0 of 33792 extremes differ from the exact sum"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "operands held a step each, beside 4 warps of shared loads: the co-runners' rate",
+   "reason": "the co-runners' instructions count themselves: the row checks the fold"
+  },
+  {
+   "lab": "check",
+   "variant": "operands held a step each, beside 4 warps of shared stores",
+   "ok": true,
+   "detail": "0 of 33792 extremes differ from the exact sum"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "operands held a step each, beside 4 warps of shared stores: the co-runners' rate",
+   "reason": "the co-runners' instructions count themselves: the row checks the fold"
+  },
+  {
+   "lab": "check",
+   "variant": "operands held a step each, beside 2 warps of global adds",
+   "ok": true,
+   "detail": "0 of 33792 extremes differ from the exact sum"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "operands held a step each, beside 2 warps of global adds: the co-runners' rate",
+   "reason": "the co-runners' instructions count themselves: the row checks the fold"
+  },
+  {
+   "lab": "check",
+   "variant": "operands held a step each, beside 4 warps of global adds",
+   "ok": true,
+   "detail": "0 of 33792 extremes differ from the exact sum"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "operands held a step each, beside 4 warps of global adds: the co-runners' rate",
+   "reason": "the co-runners' instructions count themselves: the row checks the fold"
   }
  ],
  "driver": "580.173.02",
  "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
  "git": {
-  "sha": "fb9058bedb136349058defb6776c9099ccb16186",
+  "sha": "ff7a954d547e68f9dbc577cf55cd365dcd3a2a3b",
   "dirty": false
  },
  "reps": 7,
- "date": "2026-11-16T07:43:47+00:00",
+ "date": "2026-11-16T08:02:52+00:00",
  "utilization_before": 0,
  "inputs": {},
  "results": [
@@ -297,17 +347,17 @@
    "name": "loaded operands, beside nothing",
    "unit": "cycles a step",
    "samples": [
-    34.015324,
-    34.009641,
-    34.041818,
-    34.005859,
-    34.031415,
-    34.027158,
-    34.01154
+    33.998317,
+    34.022462,
+    34.043278,
+    34.02294,
+    34.028149,
+    34.009203,
+    34.005894
    ],
-   "median": 34.015324,
-   "min": 34.005859,
-   "max": 34.041818,
+   "median": 34.022462,
+   "min": 33.998317,
+   "max": 34.043278,
    "unstable": false
   },
   {
@@ -315,17 +365,17 @@
    "name": "loaded operands, beside 1 warp of shared loads",
    "unit": "cycles a step",
    "samples": [
-    37.685299,
-    37.724302,
-    37.742511,
-    37.758104,
-    37.773694,
-    37.765901,
-    37.74512
+    37.591655,
+    37.604653,
+    37.609854,
+    37.612473,
+    37.620267,
+    37.620266,
+    37.617683
    ],
-   "median": 37.74512,
-   "min": 37.685299,
-   "max": 37.773694,
+   "median": 37.612473,
+   "min": 37.591655,
+   "max": 37.620267,
    "unstable": false
   },
   {
@@ -333,17 +383,17 @@
    "name": "loaded operands, beside 1 warp of shared loads: the co-runners' rate",
    "unit": "instructions a hundred cycles a CTA",
    "samples": [
-    2.655633,
-    2.65289,
-    2.651611,
-    2.650514,
-    2.649419,
-    2.649966,
-    2.651426
+    2.662233,
+    2.661318,
+    2.660953,
+    2.660769,
+    2.66022,
+    2.66022,
+    2.660402
    ],
-   "median": 2.651426,
-   "min": 2.649419,
-   "max": 2.655633,
+   "median": 2.660769,
+   "min": 2.66022,
+   "max": 2.662233,
    "unstable": false
   },
   {
@@ -351,17 +401,17 @@
    "name": "loaded operands, beside 2 warps of shared loads",
    "unit": "cycles a step",
    "samples": [
-    39.115228,
-    39.168307,
-    39.155042,
-    39.148843,
-    39.137253,
-    39.137907,
-    39.134451
+    39.225181,
+    39.150447,
+    39.232215,
+    39.251066,
+    39.229431,
+    39.121148,
+    39.244588
    ],
-   "median": 39.137907,
-   "min": 39.115228,
-   "max": 39.168307,
+   "median": 39.229431,
+   "min": 39.121148,
+   "max": 39.251066,
    "unstable": false
   },
   {
@@ -369,17 +419,17 @@
    "name": "loaded operands, beside 2 warps of shared loads: the co-runners' rate",
    "unit": "instructions a hundred cycles a CTA",
    "samples": [
-    5.117227,
-    5.110377,
-    5.112125,
-    5.11288,
-    5.114423,
-    5.114318,
-    5.114749
+    5.102997,
+    5.112687,
+    5.10205,
+    5.09959,
+    5.102413,
+    5.116488,
+    5.100481
    ],
-   "median": 5.114318,
-   "min": 5.110377,
-   "max": 5.117227,
+   "median": 5.102413,
+   "min": 5.09959,
+   "max": 5.116488,
    "unstable": false
   },
   {
@@ -387,17 +437,17 @@
    "name": "loaded operands, beside 4 warps of shared loads",
    "unit": "cycles a step",
    "samples": [
-    44.254561,
-    44.160141,
-    44.160787,
-    44.12982,
-    44.255265,
-    44.163176,
-    44.145857
+    44.147696,
+    44.172079,
+    44.158699,
+    44.147083,
+    44.14144,
+    44.17205,
+    44.140203
    ],
-   "median": 44.160787,
-   "min": 44.12982,
-   "max": 44.255265,
+   "median": 44.147696,
+   "min": 44.140203,
+   "max": 44.172079,
    "unstable": false
   },
   {
@@ -405,17 +455,17 @@
    "name": "loaded operands, beside 4 warps of shared loads: the co-runners' rate",
    "unit": "instructions a hundred cycles a CTA",
    "samples": [
-    8.581139,
-    8.575794,
-    8.566587,
-    8.558702,
-    8.587016,
-    8.577906,
-    8.562586
+    8.580293,
+    8.569655,
+    8.57406,
+    8.562525,
+    8.579002,
+    8.571148,
+    8.56652
    ],
-   "median": 8.575794,
-   "min": 8.558702,
-   "max": 8.587016,
+   "median": 8.571148,
+   "min": 8.562525,
+   "max": 8.580293,
    "unstable": false
   },
   {
@@ -423,17 +473,17 @@
    "name": "loaded operands, beside 1 warp of shared stores",
    "unit": "cycles a step",
    "samples": [
-    40.305966,
-    40.223502,
-    40.278505,
-    40.241819,
-    40.299859,
-    40.244889,
-    40.305961
+    40.273508,
+    40.197098,
+    40.28254,
+    40.221579,
+    40.255106,
+    40.215497,
+    40.239759
    ],
-   "median": 40.278505,
-   "min": 40.223502,
-   "max": 40.305966,
+   "median": 40.239759,
+   "min": 40.197098,
+   "max": 40.28254,
    "unstable": false
   },
   {
@@ -441,17 +491,17 @@
    "name": "loaded operands, beside 1 warp of shared stores: the co-runners' rate",
    "unit": "instructions a hundred cycles a CTA",
    "samples": [
-    3.123645,
-    3.086508,
-    3.111263,
-    3.094768,
-    3.120898,
-    3.096139,
-    3.123646
+    3.108546,
+    3.074188,
+    3.112679,
+    3.085192,
+    3.100304,
+    3.082435,
+    3.093434
    ],
-   "median": 3.111263,
-   "min": 3.086508,
-   "max": 3.123646,
+   "median": 3.093434,
+   "min": 3.074188,
+   "max": 3.112679,
    "unstable": false
   },
   {
@@ -459,53 +509,53 @@
    "name": "loaded operands, beside 2 warps of shared stores",
    "unit": "cycles a step",
    "samples": [
-    42.05943,
-    44.867828,
-    45.172255,
-    44.723809,
-    43.031737,
-    45.250009,
-    45.155958
+    43.411819,
+    44.820293,
+    44.701881,
+    44.254818,
+    43.344485,
+    44.506494,
+    44.474072
    ],
-   "median": 44.867828,
-   "min": 42.05943,
-   "max": 45.250009,
-   "unstable": true
+   "median": 44.474072,
+   "min": 43.344485,
+   "max": 44.820293,
+   "unstable": false
   },
   {
    "lab": "result",
    "name": "loaded operands, beside 2 warps of shared stores: the co-runners' rate",
    "unit": "instructions a hundred cycles a CTA",
    "samples": [
-    6.086618,
-    6.453739,
-    6.641767,
-    6.477415,
-    6.334307,
-    6.567919,
-    6.600128
+    5.847511,
+    6.092053,
+    6.117446,
+    6.041478,
+    5.843941,
+    6.08242,
+    6.029431
    ],
-   "median": 6.477415,
-   "min": 6.086618,
-   "max": 6.641767,
-   "unstable": true
+   "median": 6.041478,
+   "min": 5.843941,
+   "max": 6.117446,
+   "unstable": false
   },
   {
    "lab": "result",
    "name": "loaded operands, beside 4 warps of shared stores",
    "unit": "cycles a step",
    "samples": [
-    46.481213,
-    46.428741,
-    47.041733,
-    47.066224,
-    46.478151,
-    46.360442,
-    47.04099
+    46.720407,
+    46.841017,
+    47.163052,
+    47.094789,
+    46.762398,
+    46.727963,
+    47.133612
    ],
-   "median": 46.481213,
-   "min": 46.360442,
-   "max": 47.066224,
+   "median": 46.841017,
+   "min": 46.720407,
+   "max": 47.163052,
    "unstable": false
   },
   {
@@ -513,17 +563,17 @@
    "name": "loaded operands, beside 4 warps of shared stores: the co-runners' rate",
    "unit": "instructions a hundred cycles a CTA",
    "samples": [
-    8.880736,
-    8.802942,
-    9.03636,
-    9.057077,
-    8.899164,
-    8.786196,
-    9.035036
+    8.978856,
+    8.984023,
+    9.11205,
+    8.957317,
+    8.997517,
+    8.930301,
+    9.115535
    ],
-   "median": 8.899164,
-   "min": 8.786196,
-   "max": 9.057077,
+   "median": 8.984023,
+   "min": 8.930301,
+   "max": 9.115535,
    "unstable": false
   },
   {
@@ -531,17 +581,17 @@
    "name": "loaded operands, beside 1 warp of global adds",
    "unit": "cycles a step",
    "samples": [
-    38.025801,
-    38.005988,
-    38.028062,
-    38.011883,
-    38.004591,
-    38.007619,
-    38.02806
+    37.162226,
+    37.179302,
+    37.019404,
+    37.183943,
+    37.149975,
+    37.15994,
+    37.011186
    ],
-   "median": 38.011883,
-   "min": 38.004591,
-   "max": 38.028062,
+   "median": 37.15994,
+   "min": 37.011186,
+   "max": 37.183943,
    "unstable": false
   },
   {
@@ -549,17 +599,17 @@
    "name": "loaded operands, beside 1 warp of global adds: the co-runners' rate",
    "unit": "instructions a hundred cycles a CTA",
    "samples": [
-    7.974967,
-    7.978105,
-    7.973792,
-    7.977204,
-    7.978596,
-    7.976983,
-    7.973913
+    8.109025,
+    8.105289,
+    8.142297,
+    8.103499,
+    8.111796,
+    8.109063,
+    8.14502
    ],
-   "median": 7.976983,
-   "min": 7.973792,
-   "max": 7.978596,
+   "median": 8.109063,
+   "min": 8.103499,
+   "max": 8.14502,
    "unstable": false
   },
   {
@@ -567,17 +617,17 @@
    "name": "loaded operands, beside 2 warps of global adds",
    "unit": "cycles a step",
    "samples": [
-    55.558697,
-    55.556344,
-    55.564778,
-    55.565646,
-    55.555899,
-    55.568134,
-    55.562693
+    57.160676,
+    57.154987,
+    57.154735,
+    57.151422,
+    57.16316,
+    57.149565,
+    57.141897
    ],
-   "median": 55.562693,
-   "min": 55.555899,
-   "max": 55.568134,
+   "median": 57.154735,
+   "min": 57.141897,
+   "max": 57.16316,
    "unstable": false
   },
   {
@@ -585,17 +635,17 @@
    "name": "loaded operands, beside 2 warps of global adds: the co-runners' rate",
    "unit": "instructions a hundred cycles a CTA",
    "samples": [
-    9.74952,
-    9.751584,
-    9.74839,
-    9.746543,
-    9.748632,
-    9.747453,
-    9.749264
+    9.232308,
+    9.234507,
+    9.234507,
+    9.234386,
+    9.234185,
+    9.236118,
+    9.235447
    ],
-   "median": 9.748632,
-   "min": 9.746543,
-   "max": 9.751584,
+   "median": 9.234507,
+   "min": 9.232308,
+   "max": 9.236118,
    "unstable": false
   },
   {
@@ -603,17 +653,17 @@
    "name": "loaded operands, beside 4 warps of global adds",
    "unit": "cycles a step",
    "samples": [
-    77.030349,
-    77.049821,
-    77.024626,
-    77.043173,
-    77.036161,
-    77.038541,
-    77.040797
+    79.762562,
+    79.772219,
+    79.758631,
+    79.717908,
+    79.748359,
+    79.723747,
+    79.76786
    ],
-   "median": 77.038541,
-   "min": 77.024626,
-   "max": 77.049821,
+   "median": 79.758631,
+   "min": 79.717908,
+   "max": 79.772219,
    "unstable": false
   },
   {
@@ -621,17 +671,17 @@
    "name": "loaded operands, beside 4 warps of global adds: the co-runners' rate",
    "unit": "instructions a hundred cycles a CTA",
    "samples": [
-    10.761133,
-    10.756827,
-    10.76741,
-    10.761202,
-    10.764487,
-    10.758234,
-    10.762762
+    10.452141,
+    10.449622,
+    10.449309,
+    10.456123,
+    10.455363,
+    10.454709,
+    10.451181
    ],
-   "median": 10.761202,
-   "min": 10.756827,
-   "max": 10.76741,
+   "median": 10.452141,
+   "min": 10.449309,
+   "max": 10.456123,
    "unstable": false
   },
   {
@@ -639,17 +689,17 @@
    "name": "loaded operands, beside 1 warp of global loads",
    "unit": "cycles a step",
    "samples": [
-    35.181103,
-    35.181112,
-    35.181129,
-    35.181157,
-    35.181129,
-    35.181132,
-    35.181095
+    35.181473,
+    35.181459,
+    35.181492,
+    35.181487,
+    35.181466,
+    35.181443,
+    35.181448
    ],
-   "median": 35.181129,
-   "min": 35.181095,
-   "max": 35.181157,
+   "median": 35.181466,
+   "min": 35.181443,
+   "max": 35.181492,
    "unstable": false
   },
   {
@@ -657,17 +707,17 @@
    "name": "loaded operands, beside 1 warp of global loads: the co-runners' rate",
    "unit": "instructions a hundred cycles a CTA",
    "samples": [
-    6.249113,
-    6.249109,
-    6.24911,
-    6.249103,
-    6.249107,
-    6.249109,
-    6.249116
+    6.249083,
+    6.249084,
+    6.249079,
+    6.249084,
+    6.24908,
+    6.249082,
+    6.249086
    ],
-   "median": 6.249109,
-   "min": 6.249103,
-   "max": 6.249116,
+   "median": 6.249083,
+   "min": 6.249079,
+   "max": 6.249086,
    "unstable": false
   },
   {
@@ -675,17 +725,17 @@
    "name": "loaded operands, beside 2 warps of global loads",
    "unit": "cycles a step",
    "samples": [
-    34.758196,
-    34.762296,
-    34.760239,
-    34.758163,
-    34.755303,
-    34.764777,
-    34.761847
+    34.754641,
+    34.754399,
+    34.756604,
+    34.756781,
+    34.753371,
+    34.758378,
+    34.758958
    ],
-   "median": 34.760239,
-   "min": 34.755303,
-   "max": 34.764777,
+   "median": 34.756604,
+   "min": 34.753371,
+   "max": 34.758958,
    "unstable": false
   },
   {
@@ -693,17 +743,17 @@
    "name": "loaded operands, beside 2 warps of global loads: the co-runners' rate",
    "unit": "instructions a hundred cycles a CTA",
    "samples": [
-    12.490519,
-    12.495473,
-    12.492966,
-    12.490454,
-    12.486942,
-    12.498528,
-    12.494949
+    12.492174,
+    12.490844,
+    12.501579,
+    12.502931,
+    12.485489,
+    12.510954,
+    12.513702
    ],
-   "median": 12.492966,
-   "min": 12.486942,
-   "max": 12.498528,
+   "median": 12.501579,
+   "min": 12.485489,
+   "max": 12.513702,
    "unstable": false
   },
   {
@@ -711,17 +761,17 @@
    "name": "loaded operands, beside 4 warps of global loads",
    "unit": "cycles a step",
    "samples": [
-    34.884284,
-    34.884543,
-    34.884143,
-    34.884224,
-    34.884461,
-    34.884199,
-    34.884275
+    34.916707,
+    34.91682,
+    34.916755,
+    34.916879,
+    34.916794,
+    34.917008,
+    34.917082
    ],
-   "median": 34.884275,
-   "min": 34.884143,
-   "max": 34.884543,
+   "median": 34.91682,
+   "min": 34.916707,
+   "max": 34.917082,
    "unstable": false
   },
   {
@@ -729,17 +779,17 @@
    "name": "loaded operands, beside 4 warps of global loads: the co-runners' rate",
    "unit": "instructions a hundred cycles a CTA",
    "samples": [
-    24.349103,
-    24.34894,
-    24.349229,
-    24.349632,
-    24.348795,
-    24.348796,
-    24.348277
+    24.352588,
+    24.352682,
+    24.352903,
+    24.35337,
+    24.35354,
+    24.353308,
+    24.35371
    ],
-   "median": 24.34894,
-   "min": 24.348277,
-   "max": 24.349632,
+   "median": 24.353308,
+   "min": 24.352588,
+   "max": 24.35371,
    "unstable": false
   },
   {
@@ -747,17 +797,17 @@
    "name": "held operands, beside nothing",
    "unit": "cycles a step",
    "samples": [
-    23.194564,
-    23.194555,
-    23.194549,
-    23.194548,
-    23.194559,
-    23.194555,
-    23.194552
+    23.194599,
+    23.194589,
+    23.194597,
+    23.194585,
+    23.194596,
+    23.194592,
+    23.194593
    ],
-   "median": 23.194555,
-   "min": 23.194548,
-   "max": 23.194564,
+   "median": 23.194593,
+   "min": 23.194585,
+   "max": 23.194599,
    "unstable": false
   },
   {
@@ -765,17 +815,17 @@
    "name": "held operands, beside 1 warp of shared loads",
    "unit": "cycles a step",
    "samples": [
-    24.694467,
-    24.694476,
-    24.694463,
-    24.694473,
-    24.694456,
-    24.694476,
-    24.69447
+    24.694486,
+    24.694494,
+    24.694493,
+    24.694497,
+    24.694484,
+    24.694493,
+    24.694486
    ],
-   "median": 24.69447,
-   "min": 24.694456,
-   "max": 24.694476,
+   "median": 24.694493,
+   "min": 24.694484,
+   "max": 24.694497,
    "unstable": false
   },
   {
@@ -783,17 +833,17 @@
    "name": "held operands, beside 1 warp of shared loads: the co-runners' rate",
    "unit": "instructions a hundred cycles a CTA",
    "samples": [
-    2.028265,
-    2.028265,
-    2.028266,
-    2.028265,
-    2.028266,
-    2.028265,
-    2.028265
+    2.028262,
+    2.028262,
+    2.028262,
+    2.028261,
+    2.028262,
+    2.028262,
+    2.028262
    ],
-   "median": 2.028265,
-   "min": 2.028265,
-   "max": 2.028266,
+   "median": 2.028262,
+   "min": 2.028261,
+   "max": 2.028262,
    "unstable": false
   },
   {
@@ -801,17 +851,17 @@
    "name": "held operands, beside 2 warps of shared loads",
    "unit": "cycles a step",
    "samples": [
-    24.972777,
-    24.96728,
-    24.972885,
-    24.970985,
-    24.970973,
-    24.970023,
-    24.971485
+    24.97642,
+    24.976179,
+    24.978704,
+    24.980202,
+    24.977407,
+    24.976961,
+    24.976058
    ],
-   "median": 24.970985,
-   "min": 24.96728,
-   "max": 24.972885,
+   "median": 24.976961,
+   "min": 24.976058,
+   "max": 24.980202,
    "unstable": false
   },
   {
@@ -819,17 +869,17 @@
    "name": "held operands, beside 2 warps of shared loads: the co-runners' rate",
    "unit": "instructions a hundred cycles a CTA",
    "samples": [
-    4.010413,
-    4.011206,
-    4.010481,
-    4.01069,
-    4.010677,
-    4.010818,
-    4.010622
+    4.010351,
+    4.010343,
+    4.01004,
+    4.00982,
+    4.010233,
+    4.010192,
+    4.010427
    ],
-   "median": 4.010677,
-   "min": 4.010413,
-   "max": 4.011206,
+   "median": 4.010233,
+   "min": 4.00982,
+   "max": 4.010427,
    "unstable": false
   },
   {
@@ -837,17 +887,17 @@
    "name": "held operands, beside 4 warps of shared loads",
    "unit": "cycles a step",
    "samples": [
-    25.053357,
-    25.056402,
-    25.062342,
-    25.05365,
-    25.061602,
-    25.055924,
-    25.058503
+    25.06163,
+    25.059432,
+    25.061327,
+    25.063527,
+    25.063251,
+    25.059583,
+    25.058664
    ],
-   "median": 25.056402,
-   "min": 25.053357,
-   "max": 25.062342,
+   "median": 25.061327,
+   "min": 25.058664,
+   "max": 25.063527,
    "unstable": false
   },
   {
@@ -855,17 +905,17 @@
    "name": "held operands, beside 4 warps of shared loads: the co-runners' rate",
    "unit": "instructions a hundred cycles a CTA",
    "samples": [
-    4.178323,
-    4.189158,
-    4.193146,
-    4.183933,
-    4.196149,
-    4.188091,
-    4.187237
+    4.200814,
+    4.190411,
+    4.194608,
+    4.197034,
+    4.191277,
+    4.191451,
+    4.189441
    ],
-   "median": 4.188091,
-   "min": 4.178323,
-   "max": 4.196149,
+   "median": 4.191451,
+   "min": 4.189441,
+   "max": 4.200814,
    "unstable": false
   },
   {
@@ -873,17 +923,17 @@
    "name": "held operands, beside 1 warp of shared stores",
    "unit": "cycles a step",
    "samples": [
-    24.509185,
-    24.509223,
-    24.509145,
-    24.509289,
-    24.509231,
-    24.509281,
-    24.509244
+    24.508951,
+    24.508846,
+    24.509058,
+    24.508977,
+    24.508939,
+    24.508883,
+    24.509003
    ],
-   "median": 24.509231,
-   "min": 24.509145,
-   "max": 24.509289,
+   "median": 24.508951,
+   "min": 24.508846,
+   "max": 24.509058,
    "unstable": false
   },
   {
@@ -891,17 +941,17 @@
    "name": "held operands, beside 1 warp of shared stores: the co-runners' rate",
    "unit": "instructions a hundred cycles a CTA",
    "samples": [
-    2.045114,
-    2.045158,
-    2.045093,
-    2.045189,
-    2.045146,
-    2.045188,
-    2.045144
+    2.044293,
+    2.044292,
+    2.044291,
+    2.044293,
+    2.044294,
+    2.044292,
+    2.044293
    ],
-   "median": 2.045146,
-   "min": 2.045093,
-   "max": 2.045189,
+   "median": 2.044293,
+   "min": 2.044291,
+   "max": 2.044294,
    "unstable": false
   },
   {
@@ -909,17 +959,17 @@
    "name": "held operands, beside 2 warps of shared stores",
    "unit": "cycles a step",
    "samples": [
-    24.804994,
-    24.806147,
-    24.806627,
-    24.805405,
-    24.806867,
-    24.806966,
-    24.808156
+    24.808217,
+    24.807488,
+    24.806938,
+    24.807046,
+    24.80655,
+    24.805985,
+    24.806083
    ],
-   "median": 24.806627,
-   "min": 24.804994,
-   "max": 24.808156,
+   "median": 24.806938,
+   "min": 24.805985,
+   "max": 24.808217,
    "unstable": false
   },
   {
@@ -927,17 +977,17 @@
    "name": "held operands, beside 2 warps of shared stores: the co-runners' rate",
    "unit": "instructions a hundred cycles a CTA",
    "samples": [
-    3.058713,
-    3.099048,
-    3.078752,
-    3.05867,
-    3.129463,
-    3.149791,
-    3.190031
+    3.432361,
+    3.402184,
+    3.381908,
+    3.381949,
+    3.361739,
+    3.341497,
+    3.341608
    ],
-   "median": 3.099048,
-   "min": 3.05867,
-   "max": 3.190031,
+   "median": 3.381908,
+   "min": 3.341497,
+   "max": 3.432361,
    "unstable": false
   },
   {
@@ -945,17 +995,17 @@
    "name": "held operands, beside 4 warps of shared stores",
    "unit": "cycles a step",
    "samples": [
-    24.953351,
-    24.958988,
-    24.958196,
-    24.95729,
-    24.959837,
-    24.956856,
-    24.953893
+    24.975182,
+    24.962545,
+    24.969822,
+    24.966862,
+    24.963736,
+    24.959306,
+    24.959873
    ],
-   "median": 24.95729,
-   "min": 24.953351,
-   "max": 24.959837,
+   "median": 24.963736,
+   "min": 24.959306,
+   "max": 24.975182,
    "unstable": false
   },
   {
@@ -963,17 +1013,17 @@
    "name": "held operands, beside 4 warps of shared stores: the co-runners' rate",
    "unit": "instructions a hundred cycles a CTA",
    "samples": [
-    4.039398,
-    4.00746,
-    4.023024,
-    4.01895,
-    4.043133,
-    4.007355,
-    4.027196
+    4.123296,
+    4.07424,
+    4.078363,
+    4.089727,
+    4.06838,
+    4.046759,
+    4.06396
    ],
-   "median": 4.023024,
-   "min": 4.007355,
-   "max": 4.043133,
+   "median": 4.07424,
+   "min": 4.046759,
+   "max": 4.123296,
    "unstable": false
   },
   {
@@ -981,17 +1031,17 @@
    "name": "held operands, beside 1 warp of global adds",
    "unit": "cycles a step",
    "samples": [
-    24.76461,
-    24.765082,
-    24.763895,
-    24.764586,
-    24.764979,
-    24.764565,
-    24.765118
+    24.77883,
+    24.778456,
+    24.777445,
+    24.778109,
+    24.778855,
+    24.778534,
+    24.776968
    ],
-   "median": 24.76461,
-   "min": 24.763895,
-   "max": 24.765118,
+   "median": 24.778456,
+   "min": 24.776968,
+   "max": 24.778855,
    "unstable": false
   },
   {
@@ -999,17 +1049,17 @@
    "name": "held operands, beside 1 warp of global adds: the co-runners' rate",
    "unit": "instructions a hundred cycles a CTA",
    "samples": [
-    8.254721,
-    8.249589,
-    8.250018,
-    8.250877,
-    8.253258,
-    8.252314,
-    8.253549
+    8.675862,
+    8.682639,
+    8.676251,
+    8.674152,
+    8.684454,
+    8.682202,
+    8.672866
    ],
-   "median": 8.252314,
-   "min": 8.249589,
-   "max": 8.254721,
+   "median": 8.676251,
+   "min": 8.672866,
+   "max": 8.684454,
    "unstable": false
   },
   {
@@ -1017,17 +1067,17 @@
    "name": "held operands, beside 2 warps of global adds",
    "unit": "cycles a step",
    "samples": [
-    24.98865,
-    24.990096,
-    24.992374,
-    24.9893,
-    24.989094,
-    24.992418,
-    24.989513
+    24.985686,
+    24.986723,
+    24.98734,
+    24.98596,
+    24.987052,
+    24.987432,
+    24.988546
    ],
-   "median": 24.989513,
-   "min": 24.98865,
-   "max": 24.992418,
+   "median": 24.987052,
+   "min": 24.985686,
+   "max": 24.988546,
    "unstable": false
   },
   {
@@ -1035,17 +1085,17 @@
    "name": "held operands, beside 2 warps of global adds: the co-runners' rate",
    "unit": "instructions a hundred cycles a CTA",
    "samples": [
-    9.228891,
-    9.234608,
-    9.228762,
-    9.219551,
-    9.22147,
-    9.235419,
-    9.224654
+    8.989644,
+    8.995891,
+    8.991675,
+    8.99476,
+    8.99279,
+    8.993749,
+    8.994483
    ],
-   "median": 9.228762,
-   "min": 9.219551,
-   "max": 9.235419,
+   "median": 8.993749,
+   "min": 8.989644,
+   "max": 8.995891,
    "unstable": false
   },
   {
@@ -1053,17 +1103,17 @@
    "name": "held operands, beside 4 warps of global adds",
    "unit": "cycles a step",
    "samples": [
-    24.995221,
-    24.994949,
-    24.995407,
-    24.995474,
-    24.995632,
-    24.994517,
-    24.995191
+    24.965845,
+    24.965718,
+    24.966264,
+    24.966302,
+    24.96683,
+    24.966299,
+    24.966114
    ],
-   "median": 24.995221,
-   "min": 24.994517,
-   "max": 24.995632,
+   "median": 24.966264,
+   "min": 24.965718,
+   "max": 24.96683,
    "unstable": false
   },
   {
@@ -1071,17 +1121,17 @@
    "name": "held operands, beside 4 warps of global adds: the co-runners' rate",
    "unit": "instructions a hundred cycles a CTA",
    "samples": [
-    9.846529,
-    9.845618,
-    9.8446,
-    9.844678,
-    9.846219,
-    9.845628,
-    9.845578
+    9.473307,
+    9.476359,
+    9.478097,
+    9.482596,
+    9.483046,
+    9.478583,
+    9.473732
    ],
-   "median": 9.845618,
-   "min": 9.8446,
-   "max": 9.846529,
+   "median": 9.478097,
+   "min": 9.473307,
+   "max": 9.483046,
    "unstable": false
   },
   {
@@ -1089,17 +1139,17 @@
    "name": "held operands, beside 1 warp of global loads",
    "unit": "cycles a step",
    "samples": [
-    24.32177,
-    24.321779,
-    24.321755,
-    24.321774,
-    24.32178,
-    24.321777,
-    24.321751
+    24.321735,
+    24.321724,
+    24.321722,
+    24.321728,
+    24.321726,
+    24.32173,
+    24.321723
    ],
-   "median": 24.321774,
-   "min": 24.321751,
-   "max": 24.32178,
+   "median": 24.321726,
+   "min": 24.321722,
+   "max": 24.321735,
    "unstable": false
   },
   {
@@ -1107,17 +1157,17 @@
    "name": "held operands, beside 1 warp of global loads: the co-runners' rate",
    "unit": "instructions a hundred cycles a CTA",
    "samples": [
-    6.160122,
-    6.16012,
+    6.160123,
     6.160126,
-    6.160121,
-    6.16012,
-    6.16012,
-    6.160127
+    6.160125,
+    6.160123,
+    6.160125,
+    6.160124,
+    6.160124
    ],
-   "median": 6.160121,
-   "min": 6.16012,
-   "max": 6.160127,
+   "median": 6.160124,
+   "min": 6.160123,
+   "max": 6.160126,
    "unstable": false
   },
   {
@@ -1125,17 +1175,17 @@
    "name": "held operands, beside 2 warps of global loads",
    "unit": "cycles a step",
    "samples": [
-    24.410075,
-    24.40689,
-    24.410797,
-    24.410779,
-    24.407615,
-    24.40794,
-    24.410069
+    24.411865,
+    24.407978,
+    24.413636,
+    24.410832,
+    24.41256,
+    24.41149,
+    24.411512
    ],
-   "median": 24.410069,
-   "min": 24.40689,
-   "max": 24.410797,
+   "median": 24.411512,
+   "min": 24.407978,
+   "max": 24.413636,
    "unstable": false
   },
   {
@@ -1143,17 +1193,17 @@
    "name": "held operands, beside 2 warps of global loads: the co-runners' rate",
    "unit": "instructions a hundred cycles a CTA",
    "samples": [
-    12.275656,
-    12.277232,
-    12.275376,
-    12.27537,
-    12.276818,
-    12.27661,
-    12.275643
+    12.274747,
+    12.276652,
+    12.27405,
+    12.275291,
+    12.274466,
+    12.274928,
+    12.274943
    ],
-   "median": 12.275656,
-   "min": 12.27537,
-   "max": 12.277232,
+   "median": 12.274928,
+   "min": 12.27405,
+   "max": 12.276652,
    "unstable": false
   },
   {
@@ -1161,17 +1211,17 @@
    "name": "held operands, beside 4 warps of global loads",
    "unit": "cycles a step",
    "samples": [
-    24.515584,
-    24.487434,
-    24.498341,
-    24.473893,
-    24.508518,
-    24.487899,
-    24.496209
+    24.49955,
+    24.492372,
+    24.499017,
+    24.484224,
+    24.49814,
+    24.496372,
+    24.487704
    ],
-   "median": 24.496209,
-   "min": 24.473893,
-   "max": 24.515584,
+   "median": 24.496372,
+   "min": 24.484224,
+   "max": 24.49955,
    "unstable": false
   },
   {
@@ -1179,21 +1229,268 @@
    "name": "held operands, beside 4 warps of global loads: the co-runners' rate",
    "unit": "instructions a hundred cycles a CTA",
    "samples": [
-    24.424264,
-    24.451557,
-    24.440766,
-    24.465397,
-    24.431231,
-    24.451073,
-    24.442822
+    24.439952,
+    24.446632,
+    24.439938,
+    24.455198,
+    24.441459,
+    24.442556,
+    24.451356
    ],
-   "median": 24.442822,
-   "min": 24.424264,
-   "max": 24.465397,
+   "median": 24.442556,
+   "min": 24.439938,
+   "max": 24.455198,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "operands held a step each, beside nothing",
+   "unit": "cycles a step",
+   "samples": [
+    24.755687,
+    24.755679,
+    24.755701,
+    24.755667,
+    24.75568,
+    24.755697,
+    24.755695
+   ],
+   "median": 24.755687,
+   "min": 24.755667,
+   "max": 24.755701,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "operands held a step each, beside 4 warps of shared loads",
+   "unit": "cycles a step",
+   "samples": [
+    27.529199,
+    27.527769,
+    27.526335,
+    27.528087,
+    27.528822,
+    27.527681,
+    27.526953
+   ],
+   "median": 27.527769,
+   "min": 27.526335,
+   "max": 27.529199,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "operands held a step each, beside 4 warps of shared loads: the co-runners' rate",
+   "unit": "instructions a hundred cycles a CTA",
+   "samples": [
+    5.648662,
+    5.644335,
+    5.667394,
+    5.659163,
+    5.662223,
+    5.640111,
+    5.66214
+   ],
+   "median": 5.659163,
+   "min": 5.640111,
+   "max": 5.667394,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "operands held a step each, beside 4 warps of shared stores",
+   "unit": "cycles a step",
+   "samples": [
+    27.32532,
+    27.343657,
+    27.33322,
+    27.340664,
+    27.331183,
+    27.334305,
+    27.3242
+   ],
+   "median": 27.33322,
+   "min": 27.3242,
+   "max": 27.343657,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "operands held a step each, beside 4 warps of shared stores: the co-runners' rate",
+   "unit": "instructions a hundred cycles a CTA",
+   "samples": [
+    5.362133,
+    5.446273,
+    5.383044,
+    5.43464,
+    5.376668,
+    5.39587,
+    5.368674
+   ],
+   "median": 5.383044,
+   "min": 5.362133,
+   "max": 5.446273,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "operands held a step each, beside 2 warps of global adds",
+   "unit": "cycles a step",
+   "samples": [
+    27.372593,
+    27.372417,
+    27.372643,
+    27.372804,
+    27.372275,
+    27.371817,
+    27.372681
+   ],
+   "median": 27.372593,
+   "min": 27.371817,
+   "max": 27.372804,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "operands held a step each, beside 2 warps of global adds: the co-runners' rate",
+   "unit": "instructions a hundred cycles a CTA",
+   "samples": [
+    8.843819,
+    8.843211,
+    8.83979,
+    8.841213,
+    8.843723,
+    8.843298,
+    8.845322
+   ],
+   "median": 8.843298,
+   "min": 8.83979,
+   "max": 8.845322,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "operands held a step each, beside 4 warps of global adds",
+   "unit": "cycles a step",
+   "samples": [
+    27.320841,
+    27.321928,
+    27.321925,
+    27.320923,
+    27.321882,
+    27.320997,
+    27.32107
+   ],
+   "median": 27.32107,
+   "min": 27.320841,
+   "max": 27.321928,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "operands held a step each, beside 4 warps of global adds: the co-runners' rate",
+   "unit": "instructions a hundred cycles a CTA",
+   "samples": [
+    9.48039,
+    9.479161,
+    9.477902,
+    9.479317,
+    9.482704,
+    9.475928,
+    9.479565
+   ],
+   "median": 9.479317,
+   "min": 9.475928,
+   "max": 9.482704,
    "unstable": false
   }
  ],
  "kernels": {
+  "void step_queue::queue<(int)2, (int)3, (int)4>(long long *, float *, unsigned int *, int)": {
+   "regs": 203,
+   "ops": {
+    "FMNMX": 254,
+    "CS2R": 68,
+    "IMAD.MOV.U32": 64,
+    "R2UR": 64,
+    "LDS": 32,
+    "LEA.HI.SX32": 32,
+    "REDG.E.ADD.F16": 16,
+    "HGMMA.64": 16,
+    "LEA": 10,
+    "BRA": 10,
+    "NOP": 8,
+    "S2R": 6
+   }
+  },
+  "void step_queue::queue<(int)2, (int)3, (int)2>(long long *, float *, unsigned int *, int)": {
+   "regs": 203,
+   "ops": {
+    "FMNMX": 254,
+    "CS2R": 68,
+    "IMAD.MOV.U32": 64,
+    "R2UR": 64,
+    "LDS": 32,
+    "LEA.HI.SX32": 32,
+    "REDG.E.ADD.F16": 16,
+    "HGMMA.64": 16,
+    "LEA": 10,
+    "BRA": 10,
+    "NOP": 8,
+    "S2R": 6
+   }
+  },
+  "void step_queue::queue<(int)2, (int)2, (int)4>(long long *, float *, unsigned int *, int)": {
+   "regs": 203,
+   "ops": {
+    "FMNMX": 254,
+    "IMAD.MOV.U32": 90,
+    "CS2R": 70,
+    "R2UR": 64,
+    "LDS": 32,
+    "LEA.HI.SX32": 32,
+    "STS.128": 17,
+    "HGMMA.64": 16,
+    "BRA": 10,
+    "NOP": 9,
+    "LEA": 8,
+    "S2R": 6
+   }
+  },
+  "void step_queue::queue<(int)2, (int)1, (int)4>(long long *, float *, unsigned int *, int)": {
+   "regs": 203,
+   "ops": {
+    "FMNMX": 254,
+    "CS2R": 68,
+    "IMAD.MOV.U32": 66,
+    "R2UR": 64,
+    "LOP3.LUT": 34,
+    "LDS": 32,
+    "LEA.HI.SX32": 32,
+    "LDS.128": 17,
+    "HGMMA.64": 16,
+    "NOP": 11,
+    "BRA": 10,
+    "LEA": 8
+   }
+  },
+  "void step_queue::queue<(int)2, (int)0, (int)1>(long long *, float *, unsigned int *, int)": {
+   "regs": 197,
+   "ops": {
+    "FMNMX": 254,
+    "CS2R": 66,
+    "R2UR": 64,
+    "IMAD.MOV.U32": 60,
+    "LEA.HI.SX32": 32,
+    "LDS": 30,
+    "HGMMA.64": 16,
+    "NOP": 15,
+    "BRA": 6,
+    "S2R": 4,
+    "ULOP3.LUT": 4,
+    "LDC": 3
+   }
+  },
   "void step_queue::queue<(int)1, (int)4, (int)4>(long long *, float *, unsigned int *, int)": {
    "regs": 154,
    "ops": {
@@ -1201,13 +1498,13 @@
     "CS2R": 70,
     "R2UR": 64,
     "LOP3.LUT": 49,
-    "LEA": 24,
-    "LEA.HI.X": 18,
+    "LEA": 25,
+    "LEA.HI.X": 19,
     "VIADD": 17,
+    "IMAD.MOV.U32": 16,
     "LDG.E.128": 16,
     "HGMMA.64": 16,
-    "IMAD.MOV.U32": 15,
-    "NOP": 11,
+    "NOP": 15,
     "BRA": 10
    }
   },
@@ -1218,13 +1515,13 @@
     "CS2R": 70,
     "R2UR": 64,
     "LOP3.LUT": 49,
-    "LEA": 24,
-    "LEA.HI.X": 18,
+    "LEA": 25,
+    "LEA.HI.X": 19,
     "VIADD": 17,
+    "IMAD.MOV.U32": 16,
     "LDG.E.128": 16,
     "HGMMA.64": 16,
-    "IMAD.MOV.U32": 15,
-    "NOP": 11,
+    "NOP": 15,
     "BRA": 10
    }
   },
@@ -1235,13 +1532,13 @@
     "CS2R": 70,
     "R2UR": 64,
     "LOP3.LUT": 49,
-    "LEA": 24,
-    "LEA.HI.X": 18,
+    "LEA": 25,
+    "LEA.HI.X": 19,
     "VIADD": 17,
+    "IMAD.MOV.U32": 16,
     "LDG.E.128": 16,
     "HGMMA.64": 16,
-    "IMAD.MOV.U32": 15,
-    "NOP": 11,
+    "NOP": 15,
     "BRA": 10
    }
   },
@@ -1251,15 +1548,15 @@
     "FMNMX": 254,
     "CS2R": 68,
     "R2UR": 64,
-    "IMAD.MOV.U32": 17,
+    "IMAD.MOV.U32": 18,
     "REDG.E.ADD.F16": 16,
     "HGMMA.64": 16,
+    "NOP": 12,
+    "LEA": 10,
     "BRA": 10,
-    "LEA": 9,
-    "NOP": 8,
     "S2R": 6,
-    "ISETP.NE.AND": 4,
-    "MOV": 4
+    "LDC": 4,
+    "ISETP.NE.AND": 4
    }
   },
   "void step_queue::queue<(int)1, (int)3, (int)2>(long long *, float *, unsigned int *, int)": {
@@ -1268,15 +1565,15 @@
     "FMNMX": 254,
     "CS2R": 68,
     "R2UR": 64,
-    "IMAD.MOV.U32": 17,
+    "IMAD.MOV.U32": 18,
     "REDG.E.ADD.F16": 16,
     "HGMMA.64": 16,
+    "NOP": 12,
+    "LEA": 10,
     "BRA": 10,
-    "LEA": 9,
-    "NOP": 8,
     "S2R": 6,
-    "ISETP.NE.AND": 4,
-    "MOV": 4
+    "LDC": 4,
+    "ISETP.NE.AND": 4
    }
   },
   "void step_queue::queue<(int)1, (int)3, (int)1>(long long *, float *, unsigned int *, int)": {
@@ -1285,15 +1582,15 @@
     "FMNMX": 254,
     "CS2R": 68,
     "R2UR": 64,
-    "IMAD.MOV.U32": 17,
+    "IMAD.MOV.U32": 18,
     "REDG.E.ADD.F16": 16,
     "HGMMA.64": 16,
+    "NOP": 12,
+    "LEA": 10,
     "BRA": 10,
-    "LEA": 9,
-    "NOP": 8,
     "S2R": 6,
-    "ISETP.NE.AND": 4,
-    "MOV": 4
+    "LDC": 4,
+    "ISETP.NE.AND": 4
    }
   },
   "void step_queue::queue<(int)1, (int)2, (int)4>(long long *, float *, unsigned int *, int)": {
@@ -1302,15 +1599,15 @@
     "FMNMX": 254,
     "CS2R": 70,
     "R2UR": 64,
-    "IMAD.MOV.U32": 43,
+    "IMAD.MOV.U32": 44,
     "STS.128": 17,
     "HGMMA.64": 16,
+    "NOP": 13,
     "BRA": 10,
-    "NOP": 9,
-    "LEA": 7,
+    "LEA": 8,
     "S2R": 6,
     "IMAD": 5,
-    "ISETP.NE.AND": 4
+    "LDC": 4
    }
   },
   "void step_queue::queue<(int)1, (int)2, (int)2>(long long *, float *, unsigned int *, int)": {
@@ -1319,15 +1616,15 @@
     "FMNMX": 254,
     "CS2R": 70,
     "R2UR": 64,
-    "IMAD.MOV.U32": 43,
+    "IMAD.MOV.U32": 44,
     "STS.128": 17,
     "HGMMA.64": 16,
+    "NOP": 13,
     "BRA": 10,
-    "NOP": 9,
-    "LEA": 7,
+    "LEA": 8,
     "S2R": 6,
     "IMAD": 5,
-    "ISETP.NE.AND": 4
+    "LDC": 4
    }
   },
   "void step_queue::queue<(int)1, (int)2, (int)1>(long long *, float *, unsigned int *, int)": {
@@ -1336,15 +1633,15 @@
     "FMNMX": 254,
     "CS2R": 70,
     "R2UR": 64,
-    "IMAD.MOV.U32": 43,
+    "IMAD.MOV.U32": 44,
     "STS.128": 17,
     "HGMMA.64": 16,
+    "NOP": 13,
     "BRA": 10,
-    "NOP": 9,
-    "LEA": 7,
+    "LEA": 8,
     "S2R": 6,
     "IMAD": 5,
-    "ISETP.NE.AND": 4
+    "LDC": 4
    }
   },
   "void step_queue::queue<(int)1, (int)1, (int)4>(long long *, float *, unsigned int *, int)": {
@@ -1354,12 +1651,12 @@
     "CS2R": 68,
     "R2UR": 64,
     "LOP3.LUT": 34,
-    "IMAD.MOV.U32": 19,
+    "IMAD.MOV.U32": 20,
     "LDS.128": 17,
     "HGMMA.64": 16,
-    "NOP": 11,
+    "NOP": 15,
     "BRA": 10,
-    "LEA": 7,
+    "LEA": 8,
     "S2R": 6,
     "IMAD": 5
    }
@@ -1371,12 +1668,12 @@
     "CS2R": 68,
     "R2UR": 64,
     "LOP3.LUT": 34,
-    "IMAD.MOV.U32": 19,
+    "IMAD.MOV.U32": 20,
     "LDS.128": 17,
     "HGMMA.64": 16,
-    "NOP": 11,
+    "NOP": 15,
     "BRA": 10,
-    "LEA": 7,
+    "LEA": 8,
     "S2R": 6,
     "IMAD": 5
    }
@@ -1388,12 +1685,12 @@
     "CS2R": 68,
     "R2UR": 64,
     "LOP3.LUT": 34,
-    "IMAD.MOV.U32": 19,
+    "IMAD.MOV.U32": 20,
     "LDS.128": 17,
     "HGMMA.64": 16,
-    "NOP": 11,
+    "NOP": 15,
     "BRA": 10,
-    "LEA": 7,
+    "LEA": 8,
     "S2R": 6,
     "IMAD": 5
    }
@@ -1423,13 +1720,13 @@
     "R2UR": 64,
     "LOP3.LUT": 49,
     "UMOV": 44,
-    "LEA": 23,
-    "LEA.HI.X": 18,
+    "LEA": 24,
+    "LEA.HI.X": 19,
     "VIADD": 17,
+    "IMAD.MOV.U32": 16,
     "LDG.E.128": 16,
     "LDS.128": 16,
-    "HGMMA.64": 16,
-    "IMAD.MOV.U32": 15
+    "HGMMA.64": 16
    }
   },
   "void step_queue::queue<(int)0, (int)4, (int)2>(long long *, float *, unsigned int *, int)": {
@@ -1440,13 +1737,13 @@
     "R2UR": 64,
     "LOP3.LUT": 49,
     "UMOV": 44,
-    "LEA": 23,
-    "LEA.HI.X": 18,
+    "LEA": 24,
+    "LEA.HI.X": 19,
     "VIADD": 17,
+    "IMAD.MOV.U32": 16,
     "LDG.E.128": 16,
     "LDS.128": 16,
-    "HGMMA.64": 16,
-    "IMAD.MOV.U32": 15
+    "HGMMA.64": 16
    }
   },
   "void step_queue::queue<(int)0, (int)4, (int)1>(long long *, float *, unsigned int *, int)": {
@@ -1457,13 +1754,13 @@
     "R2UR": 64,
     "LOP3.LUT": 49,
     "UMOV": 44,
-    "LEA": 23,
-    "LEA.HI.X": 18,
+    "LEA": 24,
+    "LEA.HI.X": 19,
     "VIADD": 17,
+    "IMAD.MOV.U32": 16,
     "LDG.E.128": 16,
     "LDS.128": 16,
-    "HGMMA.64": 16,
-    "IMAD.MOV.U32": 15
+    "HGMMA.64": 16
    }
   },
   "void step_queue::queue<(int)0, (int)3, (int)4>(long long *, float *, unsigned int *, int)": {
@@ -1476,10 +1773,10 @@
     "REDG.E.ADD.F16": 16,
     "LDS.128": 16,
     "HGMMA.64": 16,
-    "NOP": 14,
-    "IMAD.MOV.U32": 13,
+    "IMAD.MOV.U32": 14,
     "BRA": 11,
-    "LEA": 8,
+    "NOP": 10,
+    "LEA": 9,
     "S2R": 5
    }
   },
@@ -1493,10 +1790,10 @@
     "REDG.E.ADD.F16": 16,
     "LDS.128": 16,
     "HGMMA.64": 16,
-    "NOP": 14,
-    "IMAD.MOV.U32": 13,
+    "IMAD.MOV.U32": 14,
     "BRA": 11,
-    "LEA": 8,
+    "NOP": 10,
+    "LEA": 9,
     "S2R": 5
    }
   },
@@ -1510,10 +1807,10 @@
     "REDG.E.ADD.F16": 16,
     "LDS.128": 16,
     "HGMMA.64": 16,
-    "NOP": 14,
-    "IMAD.MOV.U32": 13,
+    "IMAD.MOV.U32": 14,
     "BRA": 11,
-    "LEA": 8,
+    "NOP": 10,
+    "LEA": 9,
     "S2R": 5
    }
   },
@@ -1524,13 +1821,13 @@
     "CS2R": 70,
     "R2UR": 64,
     "UMOV": 44,
-    "IMAD.MOV.U32": 39,
+    "IMAD.MOV.U32": 40,
     "STS.128": 17,
     "LDS.128": 16,
     "HGMMA.64": 16,
-    "NOP": 15,
     "BRA": 11,
-    "LEA": 6,
+    "NOP": 11,
+    "LEA": 7,
     "S2R": 5
    }
   },
@@ -1541,13 +1838,13 @@
     "CS2R": 70,
     "R2UR": 64,
     "UMOV": 44,
-    "IMAD.MOV.U32": 39,
+    "IMAD.MOV.U32": 40,
     "STS.128": 17,
     "LDS.128": 16,
     "HGMMA.64": 16,
-    "NOP": 15,
     "BRA": 11,
-    "LEA": 6,
+    "NOP": 11,
+    "LEA": 7,
     "S2R": 5
    }
   },
@@ -1558,13 +1855,13 @@
     "CS2R": 70,
     "R2UR": 64,
     "UMOV": 44,
-    "IMAD.MOV.U32": 39,
+    "IMAD.MOV.U32": 40,
     "STS.128": 17,
     "LDS.128": 16,
     "HGMMA.64": 16,
-    "NOP": 15,
     "BRA": 11,
-    "LEA": 6,
+    "NOP": 11,
+    "LEA": 7,
     "S2R": 5
    }
   },
@@ -1578,10 +1875,10 @@
     "LOP3.LUT": 34,
     "LDS.128": 32,
     "HGMMA.64": 16,
+    "NOP": 15,
+    "IMAD.MOV.U32": 12,
     "BRA": 11,
-    "IMAD.MOV.U32": 11,
-    "NOP": 11,
-    "LEA": 6,
+    "LEA": 7,
     "S2R": 5
    }
   },
@@ -1595,10 +1892,10 @@
     "LOP3.LUT": 34,
     "LDS.128": 32,
     "HGMMA.64": 16,
+    "NOP": 15,
+    "IMAD.MOV.U32": 12,
     "BRA": 11,
-    "IMAD.MOV.U32": 11,
-    "NOP": 11,
-    "LEA": 6,
+    "LEA": 7,
     "S2R": 5
    }
   },
@@ -1612,10 +1909,10 @@
     "LOP3.LUT": 34,
     "LDS.128": 32,
     "HGMMA.64": 16,
+    "NOP": 15,
+    "IMAD.MOV.U32": 12,
     "BRA": 11,
-    "IMAD.MOV.U32": 11,
-    "NOP": 11,
-    "LEA": 6,
+    "LEA": 7,
     "S2R": 5
    }
   },
