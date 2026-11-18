@@ -1,0 +1,1298 @@
+{
+ "experiment": "stamp_cost",
+ "question": "what does one timeline stamp (the SM clock's low word beside an event's id, written by a warp) cost the warp that takes it -- in cycles, in registers and in issued instructions -- and which form of it costs least?",
+ "arch": "sm_90a",
+ "device": "NVIDIA H100 80GB HBM3",
+ "checks": [
+  {
+   "lab": "check",
+   "variant": "a wgmma step, plain",
+   "ok": true,
+   "detail": "0 of 557568 values differ from the host's at 8 steps; 0 of 0 stamps read back out of order or misnamed"
+  },
+  {
+   "lab": "check",
+   "variant": "a wgmma step, the lab's trace, one stamp a step",
+   "ok": true,
+   "detail": "0 of 557568 values differ from the host's at 8 steps; 0 of 0 stamps read back out of order or misnamed"
+  },
+  {
+   "lab": "check",
+   "variant": "a wgmma step, the lab's trace, two stamps a step",
+   "ok": true,
+   "detail": "0 of 557568 values differ from the host's at 8 steps; 0 of 0 stamps read back out of order or misnamed"
+  },
+  {
+   "lab": "check",
+   "variant": "a wgmma step, a ring, one lane, its predicate held, one stamp a step",
+   "ok": true,
+   "detail": "0 of 557568 values differ from the host's at 8 steps; 0 of 4224 stamps read back out of order or misnamed"
+  },
+  {
+   "lab": "check",
+   "variant": "a wgmma step, a ring, one lane, its predicate held, two stamps a step",
+   "ok": true,
+   "detail": "0 of 557568 values differ from the host's at 8 steps; 0 of 8448 stamps read back out of order or misnamed"
+  },
+  {
+   "lab": "check",
+   "variant": "a wgmma step, a ring, one lane, its predicate in the offset, one stamp a step",
+   "ok": true,
+   "detail": "0 of 557568 values differ from the host's at 8 steps; 0 of 4224 stamps read back out of order or misnamed"
+  },
+  {
+   "lab": "check",
+   "variant": "a wgmma step, a ring, one lane, its predicate in the offset, two stamps a step",
+   "ok": true,
+   "detail": "0 of 557568 values differ from the host's at 8 steps; 0 of 8448 stamps read back out of order or misnamed"
+  },
+  {
+   "lab": "check",
+   "variant": "a wgmma step, a ring, every lane to one entry, no wrap, one stamp a step",
+   "ok": true,
+   "detail": "0 of 557568 values differ from the host's at 8 steps; 0 of 4224 stamps read back out of order or misnamed"
+  },
+  {
+   "lab": "check",
+   "variant": "a wgmma step, a ring, every lane to one entry, no wrap, two stamps a step",
+   "ok": true,
+   "detail": "0 of 557568 values differ from the host's at 8 steps; 0 of 8448 stamps read back out of order or misnamed"
+  },
+  {
+   "lab": "check",
+   "variant": "a chained step, plain",
+   "ok": true,
+   "detail": "0 of 557568 values differ from the host's at 8 steps; 0 of 0 stamps read back out of order or misnamed"
+  },
+  {
+   "lab": "check",
+   "variant": "a chained step, the lab's trace, one stamp a step",
+   "ok": true,
+   "detail": "0 of 557568 values differ from the host's at 8 steps; 0 of 0 stamps read back out of order or misnamed"
+  },
+  {
+   "lab": "check",
+   "variant": "a chained step, the lab's trace, two stamps a step",
+   "ok": true,
+   "detail": "0 of 557568 values differ from the host's at 8 steps; 0 of 0 stamps read back out of order or misnamed"
+  },
+  {
+   "lab": "check",
+   "variant": "a chained step, a ring, one lane, its predicate held, one stamp a step",
+   "ok": true,
+   "detail": "0 of 557568 values differ from the host's at 8 steps; 0 of 4224 stamps read back out of order or misnamed"
+  },
+  {
+   "lab": "check",
+   "variant": "a chained step, a ring, one lane, its predicate held, two stamps a step",
+   "ok": true,
+   "detail": "0 of 557568 values differ from the host's at 8 steps; 0 of 8448 stamps read back out of order or misnamed"
+  },
+  {
+   "lab": "check",
+   "variant": "a chained step, a ring, one lane, its predicate in the offset, one stamp a step",
+   "ok": true,
+   "detail": "0 of 557568 values differ from the host's at 8 steps; 0 of 4224 stamps read back out of order or misnamed"
+  },
+  {
+   "lab": "check",
+   "variant": "a chained step, a ring, one lane, its predicate in the offset, two stamps a step",
+   "ok": true,
+   "detail": "0 of 557568 values differ from the host's at 8 steps; 0 of 8448 stamps read back out of order or misnamed"
+  },
+  {
+   "lab": "check",
+   "variant": "a chained step, a ring, every lane to one entry, no wrap, one stamp a step",
+   "ok": true,
+   "detail": "0 of 557568 values differ from the host's at 8 steps; 0 of 4224 stamps read back out of order or misnamed"
+  },
+  {
+   "lab": "check",
+   "variant": "a chained step, a ring, every lane to one entry, no wrap, two stamps a step",
+   "ok": true,
+   "detail": "0 of 557568 values differ from the host's at 8 steps; 0 of 8448 stamps read back out of order or misnamed"
+  },
+  {
+   "lab": "check",
+   "variant": "a chained step, the ring store alone, one stamp a step",
+   "ok": true,
+   "detail": "0 of 557568 values differ from the host's at 8 steps; 0 of 4224 stamps read back out of order or misnamed"
+  },
+  {
+   "lab": "check",
+   "variant": "a chained step, the ring store alone, two stamps a step",
+   "ok": true,
+   "detail": "0 of 557568 values differ from the host's at 8 steps; 0 of 8448 stamps read back out of order or misnamed"
+  },
+  {
+   "lab": "check",
+   "variant": "an independent step, plain",
+   "ok": true,
+   "detail": "0 of 557568 values differ from the host's at 8 steps; 0 of 0 stamps read back out of order or misnamed"
+  },
+  {
+   "lab": "check",
+   "variant": "an independent step, the lab's trace, one stamp a step",
+   "ok": true,
+   "detail": "0 of 557568 values differ from the host's at 8 steps; 0 of 0 stamps read back out of order or misnamed"
+  },
+  {
+   "lab": "check",
+   "variant": "an independent step, the lab's trace, two stamps a step",
+   "ok": true,
+   "detail": "0 of 557568 values differ from the host's at 8 steps; 0 of 0 stamps read back out of order or misnamed"
+  },
+  {
+   "lab": "check",
+   "variant": "an independent step, a ring, one lane, its predicate held, one stamp a step",
+   "ok": true,
+   "detail": "0 of 557568 values differ from the host's at 8 steps; 0 of 4224 stamps read back out of order or misnamed"
+  },
+  {
+   "lab": "check",
+   "variant": "an independent step, a ring, one lane, its predicate held, two stamps a step",
+   "ok": true,
+   "detail": "0 of 557568 values differ from the host's at 8 steps; 0 of 8448 stamps read back out of order or misnamed"
+  },
+  {
+   "lab": "check",
+   "variant": "an independent step, a ring, one lane, its predicate in the offset, one stamp a step",
+   "ok": true,
+   "detail": "0 of 557568 values differ from the host's at 8 steps; 0 of 4224 stamps read back out of order or misnamed"
+  },
+  {
+   "lab": "check",
+   "variant": "an independent step, a ring, one lane, its predicate in the offset, two stamps a step",
+   "ok": true,
+   "detail": "0 of 557568 values differ from the host's at 8 steps; 0 of 8448 stamps read back out of order or misnamed"
+  },
+  {
+   "lab": "check",
+   "variant": "an independent step, a ring, every lane to one entry, no wrap, one stamp a step",
+   "ok": true,
+   "detail": "0 of 557568 values differ from the host's at 8 steps; 0 of 4224 stamps read back out of order or misnamed"
+  },
+  {
+   "lab": "check",
+   "variant": "an independent step, a ring, every lane to one entry, no wrap, two stamps a step",
+   "ok": true,
+   "detail": "0 of 557568 values differ from the host's at 8 steps; 0 of 8448 stamps read back out of order or misnamed"
+  },
+  {
+   "lab": "check",
+   "variant": "an independent step, the ring store alone, one stamp a step",
+   "ok": true,
+   "detail": "0 of 557568 values differ from the host's at 8 steps; 0 of 4224 stamps read back out of order or misnamed"
+  },
+  {
+   "lab": "check",
+   "variant": "an independent step, the ring store alone, two stamps a step",
+   "ok": true,
+   "detail": "0 of 557568 values differ from the host's at 8 steps; 0 of 8448 stamps read back out of order or misnamed"
+  }
+ ],
+ "driver": "580.173.02",
+ "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
+ "git": {
+  "sha": "7531906adf13c4671dbc1476befc50a8a628c7f3",
+  "dirty": false
+ },
+ "reps": 7,
+ "date": "2026-11-18T05:13:22+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "a wgmma step, plain",
+   "unit": "cycles a step",
+   "samples": [
+    96.268111,
+    96.268836,
+    96.268451,
+    96.268096,
+    96.268377,
+    96.268688,
+    96.268274
+   ],
+   "median": 96.268377,
+   "min": 96.268096,
+   "max": 96.268836,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a wgmma step, the lab's trace, one stamp a step",
+   "unit": "cycles a step",
+   "samples": [
+    113.298547,
+    113.29902,
+    113.298828,
+    113.298606,
+    113.298429,
+    113.298739,
+    113.298443
+   ],
+   "median": 113.298606,
+   "min": 113.298429,
+   "max": 113.29902,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a wgmma step, the lab's trace, two stamps a step",
+   "unit": "cycles a step",
+   "samples": [
+    146.621138,
+    146.621316,
+    146.621508,
+    146.620635,
+    146.620827,
+    146.621404,
+    146.620842
+   ],
+   "median": 146.621138,
+   "min": 146.620635,
+   "max": 146.621508,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a wgmma step, a ring, one lane, its predicate held, one stamp a step",
+   "unit": "cycles a step",
+   "samples": [
+    97.273674,
+    97.274015,
+    97.273926,
+    97.273748,
+    97.273867,
+    97.273867,
+    97.274029
+   ],
+   "median": 97.273867,
+   "min": 97.273674,
+   "max": 97.274029,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a wgmma step, a ring, one lane, its predicate held, two stamps a step",
+   "unit": "cycles a step",
+   "samples": [
+    107.267874,
+    107.267859,
+    107.2682,
+    107.267815,
+    107.2678,
+    107.268214,
+    107.268348
+   ],
+   "median": 107.267874,
+   "min": 107.2678,
+   "max": 107.268348,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a wgmma step, a ring, one lane, its predicate in the offset, one stamp a step",
+   "unit": "cycles a step",
+   "samples": [
+    109.273719,
+    109.273659,
+    109.273719,
+    109.273778,
+    109.273822,
+    109.273645,
+    109.273985
+   ],
+   "median": 109.273719,
+   "min": 109.273645,
+   "max": 109.273985,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a wgmma step, a ring, one lane, its predicate in the offset, two stamps a step",
+   "unit": "cycles a step",
+   "samples": [
+    130.2678,
+    130.267918,
+    130.268111,
+    130.268155,
+    130.26783,
+    130.267756,
+    130.2678
+   ],
+   "median": 130.26783,
+   "min": 130.267756,
+   "max": 130.268155,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a wgmma step, a ring, every lane to one entry, no wrap, one stamp a step",
+   "unit": "cycles a step",
+   "samples": [
+    96.272846,
+    96.273171,
+    96.27323,
+    96.273127,
+    96.272594,
+    96.27289,
+    96.273053
+   ],
+   "median": 96.273053,
+   "min": 96.272594,
+   "max": 96.27323,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a wgmma step, a ring, every lane to one entry, no wrap, two stamps a step",
+   "unit": "cycles a step",
+   "samples": [
+    128.27215,
+    128.272476,
+    128.272224,
+    128.272372,
+    128.272032,
+    128.272239,
+    128.272387
+   ],
+   "median": 128.272239,
+   "min": 128.272032,
+   "max": 128.272476,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a chained step, plain",
+   "unit": "cycles a step",
+   "samples": [
+    190.598914,
+    190.638376,
+    190.609449,
+    190.593854,
+    190.631451,
+    190.64169,
+    190.602761
+   ],
+   "median": 190.609449,
+   "min": 190.593854,
+   "max": 190.64169,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a chained step, the lab's trace, one stamp a step",
+   "unit": "cycles a step",
+   "samples": [
+    218.905199,
+    218.817353,
+    219.233369,
+    218.837092,
+    218.891261,
+    218.758612,
+    218.965746
+   ],
+   "median": 218.891261,
+   "min": 218.758612,
+   "max": 219.233369,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a chained step, the lab's trace, two stamps a step",
+   "unit": "cycles a step",
+   "samples": [
+    250.051003,
+    249.998387,
+    250.061671,
+    249.939231,
+    250.07194,
+    249.821333,
+    249.955433
+   ],
+   "median": 249.998387,
+   "min": 249.821333,
+   "max": 250.07194,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a chained step, a ring, one lane, its predicate held, one stamp a step",
+   "unit": "cycles a step",
+   "samples": [
+    199.886615,
+    199.834073,
+    199.958141,
+    199.877619,
+    199.896129,
+    199.939424,
+    199.971384
+   ],
+   "median": 199.896129,
+   "min": 199.834073,
+   "max": 199.971384,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a chained step, a ring, one lane, its predicate held, two stamps a step",
+   "unit": "cycles a step",
+   "samples": [
+    207.261127,
+    207.229759,
+    207.262488,
+    207.256821,
+    207.216205,
+    207.25796,
+    207.225349
+   ],
+   "median": 207.256821,
+   "min": 207.216205,
+   "max": 207.262488,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a chained step, a ring, one lane, its predicate in the offset, one stamp a step",
+   "unit": "cycles a step",
+   "samples": [
+    210.604877,
+    210.782138,
+    210.86334,
+    210.55815,
+    210.621035,
+    210.863829,
+    210.75617
+   ],
+   "median": 210.75617,
+   "min": 210.55815,
+   "max": 210.863829,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a chained step, a ring, one lane, its predicate in the offset, two stamps a step",
+   "unit": "cycles a step",
+   "samples": [
+    233.795543,
+    234.093099,
+    233.898334,
+    233.911074,
+    233.978308,
+    233.814172,
+    234.028749
+   ],
+   "median": 233.911074,
+   "min": 233.795543,
+   "max": 234.093099,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a chained step, a ring, every lane to one entry, no wrap, one stamp a step",
+   "unit": "cycles a step",
+   "samples": [
+    198.973751,
+    199.608265,
+    199.197636,
+    199.230114,
+    199.517504,
+    199.345674,
+    199.139604
+   ],
+   "median": 199.230114,
+   "min": 198.973751,
+   "max": 199.608265,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a chained step, a ring, every lane to one entry, no wrap, two stamps a step",
+   "unit": "cycles a step",
+   "samples": [
+    228.000074,
+    227.997899,
+    227.965021,
+    227.942338,
+    227.932262,
+    227.978915,
+    227.951601
+   ],
+   "median": 227.965021,
+   "min": 227.932262,
+   "max": 228.000074,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a chained step, the ring store alone, one stamp a step",
+   "unit": "cycles a step",
+   "samples": [
+    199.112719,
+    199.061435,
+    199.101252,
+    199.158617,
+    199.078954,
+    199.069735,
+    199.10541
+   ],
+   "median": 199.101252,
+   "min": 199.061435,
+   "max": 199.158617,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a chained step, the ring store alone, two stamps a step",
+   "unit": "cycles a step",
+   "samples": [
+    196.261038,
+    196.269472,
+    196.339903,
+    196.318389,
+    196.259618,
+    196.372544,
+    196.293176
+   ],
+   "median": 196.293176,
+   "min": 196.259618,
+   "max": 196.372544,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "an independent step, plain",
+   "unit": "cycles a step",
+   "samples": [
+    29.252575,
+    29.252767,
+    29.252974,
+    29.252649,
+    29.252471,
+    29.253004,
+    29.253048
+   ],
+   "median": 29.252767,
+   "min": 29.252471,
+   "max": 29.253048,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "an independent step, the lab's trace, one stamp a step",
+   "unit": "cycles a step",
+   "samples": [
+    71.402477,
+    71.404045,
+    71.402211,
+    71.402832,
+    71.40264,
+    71.403468,
+    71.403158
+   ],
+   "median": 71.402832,
+   "min": 71.402211,
+   "max": 71.404045,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "an independent step, the lab's trace, two stamps a step",
+   "unit": "cycles a step",
+   "samples": [
+    87.346221,
+    87.344815,
+    87.34628,
+    87.347479,
+    87.345259,
+    87.346547,
+    87.345688
+   ],
+   "median": 87.346221,
+   "min": 87.344815,
+   "max": 87.347479,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "an independent step, a ring, one lane, its predicate held, one stamp a step",
+   "unit": "cycles a step",
+   "samples": [
+    46.24852,
+    46.248742,
+    46.248787,
+    46.248801,
+    46.24858,
+    46.248801,
+    46.248772
+   ],
+   "median": 46.248772,
+   "min": 46.24852,
+   "max": 46.248801,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "an independent step, a ring, one lane, its predicate held, two stamps a step",
+   "unit": "cycles a step",
+   "samples": [
+    48.264353,
+    48.26453,
+    48.264264,
+    48.264264,
+    48.264293,
+    48.264456,
+    48.264678
+   ],
+   "median": 48.264353,
+   "min": 48.264264,
+   "max": 48.264678,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "an independent step, a ring, one lane, its predicate in the offset, one stamp a step",
+   "unit": "cycles a step",
+   "samples": [
+    44.260787,
+    44.26055,
+    44.260062,
+    44.26052,
+    44.260328,
+    44.260579,
+    44.260727
+   ],
+   "median": 44.26055,
+   "min": 44.260062,
+   "max": 44.260787,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "an independent step, a ring, one lane, its predicate in the offset, two stamps a step",
+   "unit": "cycles a step",
+   "samples": [
+    69.375651,
+    69.375947,
+    69.375607,
+    69.375562,
+    69.375459,
+    69.375725,
+    69.375695
+   ],
+   "median": 69.375651,
+   "min": 69.375459,
+   "max": 69.375947,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "an independent step, a ring, every lane to one entry, no wrap, one stamp a step",
+   "unit": "cycles a step",
+   "samples": [
+    37.256451,
+    37.25657,
+    37.256555,
+    37.256318,
+    37.256422,
+    37.256644,
+    37.256895
+   ],
+   "median": 37.256555,
+   "min": 37.256318,
+   "max": 37.256895,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "an independent step, a ring, every lane to one entry, no wrap, two stamps a step",
+   "unit": "cycles a step",
+   "samples": [
+    72.254321,
+    72.254454,
+    72.254735,
+    72.254513,
+    72.254469,
+    72.254898,
+    72.254587
+   ],
+   "median": 72.254513,
+   "min": 72.254321,
+   "max": 72.254898,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "an independent step, the ring store alone, one stamp a step",
+   "unit": "cycles a step",
+   "samples": [
+    46.246819,
+    46.247056,
+    46.246967,
+    46.246612,
+    46.247115,
+    46.247085,
+    46.246863
+   ],
+   "median": 46.246967,
+   "min": 46.246612,
+   "max": 46.247115,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "an independent step, the ring store alone, two stamps a step",
+   "unit": "cycles a step",
+   "samples": [
+    46.25839,
+    46.258759,
+    46.258538,
+    46.258833,
+    46.258345,
+    46.258848,
+    46.258789
+   ],
+   "median": 46.258759,
+   "min": 46.258345,
+   "max": 46.258848,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void stamp_cost::cost<(int)6, (int)2, (int)2>(long long *, unsigned int *, unsigned long long *, unsigned int *, int)": {
+   "regs": 25,
+   "ops": {
+    "STG.E": 34,
+    "IMAD": 18,
+    "LOP3.LUT": 17,
+    "VIADD": 13,
+    "BRA": 12,
+    "IMAD.IADD": 12,
+    "IMAD.MOV.U32": 11,
+    "SHF.R.S32.HI": 11,
+    "LEA.HI": 9,
+    "S2R": 8,
+    "NOP": 8,
+    "LDC": 6
+   }
+  },
+  "void stamp_cost::cost<(int)6, (int)1, (int)2>(long long *, unsigned int *, unsigned long long *, unsigned int *, int)": {
+   "regs": 24,
+   "ops": {
+    "STG.E": 34,
+    "IMAD": 18,
+    "LOP3.LUT": 16,
+    "NOP": 13,
+    "BRA": 12,
+    "IMAD.IADD": 12,
+    "VIADD": 12,
+    "SHF.R.S32.HI": 11,
+    "IMAD.MOV.U32": 9,
+    "LEA.HI": 9,
+    "S2R": 8,
+    "LDC": 6
+   }
+  },
+  "void stamp_cost::cost<(int)7, (int)2, (int)2>(long long *, unsigned int *, unsigned long long *, unsigned int *, int)": {
+   "regs": 24,
+   "ops": {
+    "STG.E": 34,
+    "IMAD": 18,
+    "LOP3.LUT": 13,
+    "VIADD": 13,
+    "BRA": 12,
+    "IMAD.IADD": 12,
+    "SHF.R.S32.HI": 11,
+    "IMAD.MOV.U32": 10,
+    "NOP": 10,
+    "LEA.HI": 9,
+    "LEA": 7,
+    "S2R": 6
+   }
+  },
+  "void stamp_cost::cost<(int)7, (int)1, (int)2>(long long *, unsigned int *, unsigned long long *, unsigned int *, int)": {
+   "regs": 24,
+   "ops": {
+    "STG.E": 34,
+    "IMAD": 18,
+    "LOP3.LUT": 13,
+    "VIADD": 13,
+    "BRA": 12,
+    "IMAD.IADD": 12,
+    "NOP": 12,
+    "SHF.R.S32.HI": 11,
+    "IMAD.MOV.U32": 9,
+    "LEA.HI": 9,
+    "LEA": 7,
+    "S2R": 6
+   }
+  },
+  "void stamp_cost::cost<(int)3, (int)2, (int)2>(long long *, unsigned int *, unsigned long long *, unsigned int *, int)": {
+   "regs": 24,
+   "ops": {
+    "STG.E": 34,
+    "LOP3.LUT": 20,
+    "IMAD": 18,
+    "VIADD": 13,
+    "BRA": 12,
+    "IMAD.IADD": 12,
+    "NOP": 12,
+    "SHF.R.S32.HI": 11,
+    "IMAD.MOV.U32": 9,
+    "LEA.HI": 9,
+    "S2R": 8,
+    "LDC": 6
+   }
+  },
+  "void stamp_cost::cost<(int)3, (int)1, (int)2>(long long *, unsigned int *, unsigned long long *, unsigned int *, int)": {
+   "regs": 24,
+   "ops": {
+    "STG.E": 34,
+    "LOP3.LUT": 18,
+    "IMAD": 18,
+    "BRA": 12,
+    "IMAD.IADD": 12,
+    "VIADD": 12,
+    "SHF.R.S32.HI": 11,
+    "NOP": 10,
+    "LEA.HI": 9,
+    "S2R": 8,
+    "IMAD.MOV.U32": 8,
+    "LDC": 6
+   }
+  },
+  "void stamp_cost::cost<(int)2, (int)2, (int)2>(long long *, unsigned int *, unsigned long long *, unsigned int *, int)": {
+   "regs": 24,
+   "ops": {
+    "STG.E": 34,
+    "IMAD": 18,
+    "LOP3.LUT": 17,
+    "VIADD": 13,
+    "BRA": 12,
+    "IMAD.IADD": 12,
+    "SHF.R.S32.HI": 11,
+    "IMAD.MOV.U32": 9,
+    "LEA.HI": 9,
+    "S2R": 8,
+    "NOP": 8,
+    "LDC": 6
+   }
+  },
+  "void stamp_cost::cost<(int)2, (int)1, (int)2>(long long *, unsigned int *, unsigned long long *, unsigned int *, int)": {
+   "regs": 24,
+   "ops": {
+    "STG.E": 34,
+    "IMAD": 18,
+    "LOP3.LUT": 16,
+    "NOP": 13,
+    "BRA": 12,
+    "IMAD.IADD": 12,
+    "VIADD": 12,
+    "SHF.R.S32.HI": 11,
+    "LEA.HI": 9,
+    "S2R": 8,
+    "IMAD.MOV.U32": 8,
+    "LDC": 6
+   }
+  },
+  "void stamp_cost::cost<(int)1, (int)2, (int)2>(long long *, unsigned int *, unsigned long long *, unsigned int *, int)": {
+   "regs": 30,
+   "ops": {
+    "STG.E": 34,
+    "LOP3.LUT": 22,
+    "IMAD.MOV.U32": 22,
+    "IMAD": 19,
+    "VIADD": 13,
+    "SHF.R.S32.HI": 12,
+    "IMAD.IADD": 12,
+    "NOP": 12,
+    "BRA": 11,
+    "LEA.HI": 9,
+    "LEA": 8,
+    "IADD3": 7
+   }
+  },
+  "void stamp_cost::cost<(int)1, (int)1, (int)2>(long long *, unsigned int *, unsigned long long *, unsigned int *, int)": {
+   "regs": 30,
+   "ops": {
+    "STG.E": 34,
+    "IMAD.MOV.U32": 22,
+    "LOP3.LUT": 21,
+    "IMAD": 19,
+    "SHF.R.S32.HI": 12,
+    "IMAD.IADD": 12,
+    "VIADD": 12,
+    "BRA": 11,
+    "NOP": 11,
+    "LEA.HI": 9,
+    "LEA": 8,
+    "ISETP.GE.AND": 8
+   }
+  },
+  "void stamp_cost::cost<(int)0, (int)0, (int)2>(long long *, unsigned int *, unsigned long long *, unsigned int *, int)": {
+   "regs": 24,
+   "ops": {
+    "STG.E": 34,
+    "IMAD": 18,
+    "LOP3.LUT": 13,
+    "BRA": 12,
+    "IMAD.IADD": 12,
+    "SHF.R.S32.HI": 11,
+    "VIADD": 11,
+    "NOP": 11,
+    "LEA.HI": 9,
+    "IMAD.MOV.U32": 8,
+    "S2R": 6,
+    "LEA": 6
+   }
+  },
+  "void stamp_cost::cost<(int)6, (int)2, (int)1>(long long *, unsigned int *, unsigned long long *, unsigned int *, int)": {
+   "regs": 18,
+   "ops": {
+    "STG.E": 34,
+    "LOP3.LUT": 17,
+    "IMAD": 14,
+    "BRA": 12,
+    "IMAD.IADD": 12,
+    "SHF.R.S32.HI": 11,
+    "SHF.R.U32.HI": 10,
+    "VIADD": 10,
+    "IMAD.MOV.U32": 9,
+    "LEA.HI": 9,
+    "NOP": 9,
+    "S2R": 8
+   }
+  },
+  "void stamp_cost::cost<(int)6, (int)1, (int)1>(long long *, unsigned int *, unsigned long long *, unsigned int *, int)": {
+   "regs": 18,
+   "ops": {
+    "STG.E": 34,
+    "LOP3.LUT": 16,
+    "IMAD": 14,
+    "NOP": 14,
+    "BRA": 12,
+    "IMAD.IADD": 12,
+    "SHF.R.S32.HI": 11,
+    "SHF.R.U32.HI": 10,
+    "LEA.HI": 9,
+    "VIADD": 9,
+    "S2R": 8,
+    "IMAD.MOV.U32": 7
+   }
+  },
+  "void stamp_cost::cost<(int)7, (int)2, (int)1>(long long *, unsigned int *, unsigned long long *, unsigned int *, int)": {
+   "regs": 18,
+   "ops": {
+    "STG.E": 34,
+    "IMAD": 14,
+    "LOP3.LUT": 13,
+    "BRA": 12,
+    "IMAD.IADD": 12,
+    "SHF.R.S32.HI": 11,
+    "SHF.R.U32.HI": 10,
+    "VIADD": 10,
+    "NOP": 10,
+    "LEA.HI": 9,
+    "IMAD.MOV.U32": 8,
+    "LEA": 7
+   }
+  },
+  "void stamp_cost::cost<(int)7, (int)1, (int)1>(long long *, unsigned int *, unsigned long long *, unsigned int *, int)": {
+   "regs": 18,
+   "ops": {
+    "STG.E": 34,
+    "IMAD": 14,
+    "LOP3.LUT": 13,
+    "NOP": 13,
+    "BRA": 12,
+    "IMAD.IADD": 12,
+    "SHF.R.S32.HI": 11,
+    "SHF.R.U32.HI": 10,
+    "VIADD": 10,
+    "LEA.HI": 9,
+    "IMAD.MOV.U32": 7,
+    "LEA": 7
+   }
+  },
+  "void stamp_cost::cost<(int)3, (int)2, (int)1>(long long *, unsigned int *, unsigned long long *, unsigned int *, int)": {
+   "regs": 18,
+   "ops": {
+    "STG.E": 34,
+    "LOP3.LUT": 20,
+    "IMAD": 14,
+    "NOP": 13,
+    "BRA": 12,
+    "IMAD.IADD": 12,
+    "SHF.R.S32.HI": 11,
+    "SHF.R.U32.HI": 10,
+    "VIADD": 10,
+    "LEA.HI": 9,
+    "S2R": 8,
+    "IMAD.MOV.U32": 7
+   }
+  },
+  "void stamp_cost::cost<(int)3, (int)1, (int)1>(long long *, unsigned int *, unsigned long long *, unsigned int *, int)": {
+   "regs": 18,
+   "ops": {
+    "STG.E": 34,
+    "LOP3.LUT": 18,
+    "IMAD": 14,
+    "BRA": 12,
+    "IMAD.IADD": 12,
+    "SHF.R.S32.HI": 11,
+    "NOP": 11,
+    "SHF.R.U32.HI": 10,
+    "LEA.HI": 9,
+    "VIADD": 9,
+    "S2R": 8,
+    "LDC": 6
+   }
+  },
+  "void stamp_cost::cost<(int)2, (int)2, (int)1>(long long *, unsigned int *, unsigned long long *, unsigned int *, int)": {
+   "regs": 18,
+   "ops": {
+    "STG.E": 34,
+    "LOP3.LUT": 17,
+    "IMAD": 14,
+    "BRA": 12,
+    "IMAD.IADD": 12,
+    "SHF.R.S32.HI": 11,
+    "SHF.R.U32.HI": 10,
+    "VIADD": 10,
+    "LEA.HI": 9,
+    "NOP": 9,
+    "S2R": 8,
+    "IMAD.MOV.U32": 7
+   }
+  },
+  "void stamp_cost::cost<(int)2, (int)1, (int)1>(long long *, unsigned int *, unsigned long long *, unsigned int *, int)": {
+   "regs": 18,
+   "ops": {
+    "STG.E": 34,
+    "LOP3.LUT": 16,
+    "IMAD": 14,
+    "NOP": 14,
+    "BRA": 12,
+    "IMAD.IADD": 12,
+    "SHF.R.S32.HI": 11,
+    "SHF.R.U32.HI": 10,
+    "LEA.HI": 9,
+    "VIADD": 9,
+    "S2R": 8,
+    "LDC": 6
+   }
+  },
+  "void stamp_cost::cost<(int)1, (int)2, (int)1>(long long *, unsigned int *, unsigned long long *, unsigned int *, int)": {
+   "regs": 28,
+   "ops": {
+    "STG.E": 34,
+    "LOP3.LUT": 22,
+    "IMAD.MOV.U32": 19,
+    "IMAD": 15,
+    "NOP": 14,
+    "SHF.R.S32.HI": 12,
+    "IMAD.IADD": 12,
+    "BRA": 11,
+    "VIADD": 10,
+    "LEA.HI": 9,
+    "SHF.R.U32.HI": 9,
+    "LEA": 8
+   }
+  },
+  "void stamp_cost::cost<(int)1, (int)1, (int)1>(long long *, unsigned int *, unsigned long long *, unsigned int *, int)": {
+   "regs": 28,
+   "ops": {
+    "STG.E": 34,
+    "LOP3.LUT": 21,
+    "IMAD.MOV.U32": 19,
+    "IMAD": 15,
+    "NOP": 13,
+    "SHF.R.S32.HI": 12,
+    "IMAD.IADD": 12,
+    "BRA": 11,
+    "LEA.HI": 9,
+    "SHF.R.U32.HI": 9,
+    "VIADD": 9,
+    "LEA": 8
+   }
+  },
+  "void stamp_cost::cost<(int)0, (int)0, (int)1>(long long *, unsigned int *, unsigned long long *, unsigned int *, int)": {
+   "regs": 20,
+   "ops": {
+    "STG.E": 34,
+    "IMAD": 14,
+    "LOP3.LUT": 13,
+    "BRA": 12,
+    "IMAD.IADD": 12,
+    "NOP": 12,
+    "SHF.R.S32.HI": 11,
+    "LEA.HI": 9,
+    "SHF.R.U32.HI": 9,
+    "VIADD": 8,
+    "S2R": 6,
+    "IMAD.MOV.U32": 6
+   }
+  },
+  "void stamp_cost::cost<(int)7, (int)2, (int)0>(long long *, unsigned int *, unsigned long long *, unsigned int *, int)": {
+   "regs": 62,
+   "ops": {
+    "STG.E": 34,
+    "IMAD.IADD": 28,
+    "LEA.HI": 22,
+    "LOP3.LUT": 18,
+    "IMAD": 18,
+    "CS2R": 18,
+    "SHF.R.U32.HI": 15,
+    "VIADD": 15,
+    "BRA": 12,
+    "SHF.R.S32.HI": 11,
+    "NOP": 11,
+    "I2FP.F32.S32": 10
+   }
+  },
+  "void stamp_cost::cost<(int)7, (int)1, (int)0>(long long *, unsigned int *, unsigned long long *, unsigned int *, int)": {
+   "regs": 62,
+   "ops": {
+    "STG.E": 34,
+    "IMAD.IADD": 28,
+    "LEA.HI": 22,
+    "LOP3.LUT": 18,
+    "IMAD": 18,
+    "CS2R": 18,
+    "SHF.R.U32.HI": 15,
+    "VIADD": 15,
+    "NOP": 14,
+    "BRA": 12,
+    "SHF.R.S32.HI": 11,
+    "I2FP.F32.S32": 10
+   }
+  },
+  "void stamp_cost::cost<(int)3, (int)2, (int)0>(long long *, unsigned int *, unsigned long long *, unsigned int *, int)": {
+   "regs": 62,
+   "ops": {
+    "STG.E": 34,
+    "IMAD.IADD": 28,
+    "LOP3.LUT": 25,
+    "LEA.HI": 22,
+    "IMAD": 18,
+    "CS2R": 18,
+    "SHF.R.U32.HI": 15,
+    "VIADD": 15,
+    "NOP": 15,
+    "BRA": 12,
+    "SHF.R.S32.HI": 11,
+    "I2FP.F32.S32": 10
+   }
+  },
+  "void stamp_cost::cost<(int)3, (int)1, (int)0>(long long *, unsigned int *, unsigned long long *, unsigned int *, int)": {
+   "regs": 62,
+   "ops": {
+    "STG.E": 34,
+    "IMAD.IADD": 28,
+    "LOP3.LUT": 23,
+    "LEA.HI": 22,
+    "IMAD": 18,
+    "CS2R": 18,
+    "SHF.R.U32.HI": 15,
+    "VIADD": 14,
+    "NOP": 13,
+    "BRA": 12,
+    "SHF.R.S32.HI": 11,
+    "I2FP.F32.S32": 10
+   }
+  },
+  "void stamp_cost::cost<(int)2, (int)2, (int)0>(long long *, unsigned int *, unsigned long long *, unsigned int *, int)": {
+   "regs": 62,
+   "ops": {
+    "STG.E": 34,
+    "IMAD.IADD": 28,
+    "LOP3.LUT": 22,
+    "LEA.HI": 22,
+    "IMAD": 18,
+    "CS2R": 18,
+    "SHF.R.U32.HI": 15,
+    "VIADD": 15,
+    "BRA": 12,
+    "SHF.R.S32.HI": 11,
+    "NOP": 11,
+    "I2FP.F32.S32": 10
+   }
+  },
+  "void stamp_cost::cost<(int)2, (int)1, (int)0>(long long *, unsigned int *, unsigned long long *, unsigned int *, int)": {
+   "regs": 62,
+   "ops": {
+    "STG.E": 34,
+    "IMAD.IADD": 28,
+    "LEA.HI": 22,
+    "LOP3.LUT": 21,
+    "IMAD": 18,
+    "CS2R": 18,
+    "SHF.R.U32.HI": 15,
+    "VIADD": 14,
+    "BRA": 12,
+    "SHF.R.S32.HI": 11,
+    "I2FP.F32.S32": 10,
+    "IMAD.WIDE.U32": 10
+   }
+  },
+  "void stamp_cost::cost<(int)1, (int)2, (int)0>(long long *, unsigned int *, unsigned long long *, unsigned int *, int)": {
+   "regs": 62,
+   "ops": {
+    "STG.E": 34,
+    "IMAD.IADD": 28,
+    "LOP3.LUT": 27,
+    "LEA.HI": 22,
+    "CS2R": 21,
+    "IMAD.MOV.U32": 20,
+    "IMAD": 19,
+    "SHF.R.U32.HI": 15,
+    "VIADD": 15,
+    "BRA": 12,
+    "SHF.R.S32.HI": 12,
+    "IMAD.WIDE.U32": 11
+   }
+  },
+  "void stamp_cost::cost<(int)1, (int)1, (int)0>(long long *, unsigned int *, unsigned long long *, unsigned int *, int)": {
+   "regs": 62,
+   "ops": {
+    "STG.E": 34,
+    "IMAD.IADD": 28,
+    "LOP3.LUT": 26,
+    "LEA.HI": 22,
+    "CS2R": 21,
+    "IMAD.MOV.U32": 20,
+    "IMAD": 19,
+    "SHF.R.U32.HI": 14,
+    "VIADD": 14,
+    "BRA": 12,
+    "SHF.R.S32.HI": 12,
+    "IMAD.WIDE.U32": 11
+   }
+  },
+  "void stamp_cost::cost<(int)0, (int)0, (int)0>(long long *, unsigned int *, unsigned long long *, unsigned int *, int)": {
+   "regs": 62,
+   "ops": {
+    "STG.E": 34,
+    "IMAD.IADD": 28,
+    "LEA.HI": 22,
+    "LOP3.LUT": 18,
+    "IMAD": 18,
+    "CS2R": 18,
+    "SHF.R.U32.HI": 14,
+    "VIADD": 13,
+    "NOP": 13,
+    "BRA": 12,
+    "SHF.R.S32.HI": 11,
+    "I2FP.F32.S32": 10
+   }
+  }
+ },
+ "counters": {},
+ "counters_exception": {
+  "host": "Nebius preemptible VM, NVIDIA H100 80GB HBM3: its counters not yet read there",
+  "instead": "the kernels' own clocks and the SASS's static counts"
+ }
+}
