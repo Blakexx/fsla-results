@@ -1,0 +1,412 @@
+{
+ "experiment": "clock_time",
+ "question": "is the SM's cycle counter a faithful clock -- does it advance at one rate against the GPU's nanosecond timer whatever a warp is waiting on -- or does it run slow where an SM's warps wait on memory?",
+ "arch": "sm_90a",
+ "device": "NVIDIA H100 80GB HBM3",
+ "checks": [
+  {
+   "lab": "check",
+   "variant": "eight independent integer operations a step",
+   "ok": true,
+   "detail": "0 warps read a clock that did not advance; the launch's rate 1979.988787 cycles a microsecond (a GPU clock is 500 to 4,000)"
+  },
+  {
+   "lab": "check",
+   "variant": "a chain of four shared loads a step",
+   "ok": true,
+   "detail": "0 warps read a clock that did not advance; the launch's rate 1980.004638 cycles a microsecond (a GPU clock is 500 to 4,000)"
+  },
+  {
+   "lab": "check",
+   "variant": "a chain of four scattered loads of a 64 MB table a step",
+   "ok": true,
+   "detail": "0 warps read a clock that did not advance; the launch's rate 1979.999952 cycles a microsecond (a GPU clock is 500 to 4,000)"
+  },
+  {
+   "lab": "check",
+   "variant": "a store to global memory a step",
+   "ok": true,
+   "detail": "0 warps read a clock that did not advance; the launch's rate 1979.995313 cycles a microsecond (a GPU clock is 500 to 4,000)"
+  },
+  {
+   "lab": "check",
+   "variant": "one wgmma a step, its commit and wait",
+   "ok": true,
+   "detail": "0 warps read a clock that did not advance; the launch's rate 1796.077967 cycles a microsecond (a GPU clock is 500 to 4,000)"
+  }
+ ],
+ "driver": "580.173.02",
+ "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
+ "git": {
+  "sha": "fbba665cd716bf39d01c2732fc54b6264148d49d",
+  "dirty": false
+ },
+ "reps": 7,
+ "date": "2026-11-18T07:38:42+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "eight independent integer operations a step: the cycle counter's rate",
+   "unit": "cycles a microsecond",
+   "samples": [
+    1980.001647,
+    1980.001211,
+    1979.998823,
+    1980.00095,
+    1979.999228,
+    1980.0011,
+    1980.000134
+   ],
+   "median": 1980.00095,
+   "min": 1979.998823,
+   "max": 1980.001647,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "eight independent integer operations a step: a step by the cycle counter",
+   "unit": "cycles a step",
+   "samples": [
+    29.000552,
+    29.000552,
+    29.000553,
+    29.000553,
+    29.000552,
+    29.000551,
+    29.000555
+   ],
+   "median": 29.000552,
+   "min": 29.000551,
+   "max": 29.000555,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "eight independent integer operations a step: a step by the nanosecond timer",
+   "unit": "nanoseconds a step",
+   "samples": [
+    14.646753,
+    14.646743,
+    14.646757,
+    14.646749,
+    14.646747,
+    14.64676,
+    14.64675
+   ],
+   "median": 14.64675,
+   "min": 14.646743,
+   "max": 14.64676,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a chain of four shared loads a step: the cycle counter's rate",
+   "unit": "cycles a microsecond",
+   "samples": [
+    1979.998605,
+    1980.003766,
+    1980.000009,
+    1980.002386,
+    1979.999574,
+    1980.004247,
+    1980.004177
+   ],
+   "median": 1980.002386,
+   "min": 1979.998605,
+   "max": 1980.004247,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a chain of four shared loads a step: a step by the cycle counter",
+   "unit": "cycles a step",
+   "samples": [
+    188.198303,
+    188.197922,
+    188.198079,
+    188.198503,
+    188.198505,
+    188.198211,
+    188.19828
+   ],
+   "median": 188.19828,
+   "min": 188.197922,
+   "max": 188.198505,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a chain of four shared loads a step: a step by the nanosecond timer",
+   "unit": "nanoseconds a step",
+   "samples": [
+    95.049605,
+    95.049385,
+    95.049668,
+    95.049477,
+    95.049739,
+    95.049677,
+    95.049453
+   ],
+   "median": 95.049605,
+   "min": 95.049385,
+   "max": 95.049739,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a chain of four scattered loads of a 64 MB table a step: the cycle counter's rate",
+   "unit": "cycles a microsecond",
+   "samples": [
+    1980.000148,
+    1980.000806,
+    1980.000771,
+    1980.000322,
+    1979.999939,
+    1979.999835,
+    1980.000133
+   ],
+   "median": 1980.000148,
+   "min": 1979.999835,
+   "max": 1980.000806,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a chain of four scattered loads of a 64 MB table a step: a step by the cycle counter",
+   "unit": "cycles a step",
+   "samples": [
+    4779.123647,
+    4778.982048,
+    4779.140816,
+    4779.016562,
+    4778.898682,
+    4775.093058,
+    4774.496863
+   ],
+   "median": 4778.982048,
+   "min": 4774.496863,
+   "max": 4779.140816,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a chain of four scattered loads of a 64 MB table a step: a step by the nanosecond timer",
+   "unit": "nanoseconds a step",
+   "samples": [
+    2411.542566,
+    2411.533212,
+    2411.248869,
+    2411.402232,
+    2411.448848,
+    2411.740253,
+    2411.398636
+   ],
+   "median": 2411.448848,
+   "min": 2411.248869,
+   "max": 2411.740253,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a store to global memory a step: the cycle counter's rate",
+   "unit": "cycles a microsecond",
+   "samples": [
+    1979.995169,
+    1979.995253,
+    1979.995159,
+    1979.995228,
+    1979.995124,
+    1979.995117,
+    1979.99545
+   ],
+   "median": 1979.995169,
+   "min": 1979.995117,
+   "max": 1979.99545,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a store to global memory a step: a step by the cycle counter",
+   "unit": "cycles a step",
+   "samples": [
+    532.360628,
+    532.544237,
+    531.397711,
+    532.327043,
+    532.087525,
+    531.120829,
+    532.282284
+   ],
+   "median": 532.282284,
+   "min": 531.120829,
+   "max": 532.544237,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a store to global memory a step: a step by the nanosecond timer",
+   "unit": "nanoseconds a step",
+   "samples": [
+    268.047147,
+    268.194657,
+    267.982187,
+    267.651449,
+    269.027518,
+    268.421011,
+    268.7346
+   ],
+   "median": 268.194657,
+   "min": 267.651449,
+   "max": 269.027518,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "one wgmma a step, its commit and wait: the cycle counter's rate",
+   "unit": "cycles a microsecond",
+   "samples": [
+    1799.374638,
+    1798.983109,
+    1799.196743,
+    1814.17223,
+    1827.783473,
+    1827.986294,
+    1828.716666
+   ],
+   "median": 1814.17223,
+   "min": 1798.983109,
+   "max": 1828.716666,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "one wgmma a step, its commit and wait: a step by the cycle counter",
+   "unit": "cycles a step",
+   "samples": [
+    96.002449,
+    96.002458,
+    96.00246,
+    96.002453,
+    96.002456,
+    96.002449,
+    96.002462
+   ],
+   "median": 96.002456,
+   "min": 96.002449,
+   "max": 96.002462,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "one wgmma a step, its commit and wait: a step by the nanosecond timer",
+   "unit": "nanoseconds a step",
+   "samples": [
+    52.510468,
+    52.502772,
+    52.501994,
+    52.495593,
+    52.506409,
+    52.510345,
+    52.507611
+   ],
+   "median": 52.506409,
+   "min": 52.495593,
+   "max": 52.510468,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void clock_time::rate<(int)4>(unsigned long long *, unsigned int *, const unsigned int *, unsigned int *, int)": {
+   "regs": 62,
+   "ops": {
+    "LOP3.LUT": 38,
+    "CS2R": 36,
+    "IMAD.IADD": 26,
+    "LEA.HI": 22,
+    "VIADD": 19,
+    "IMAD": 17,
+    "NOP": 15,
+    "SHF.R.U32.HI": 14,
+    "SHF.R.S32.HI": 10,
+    "I2FP.F32.S32": 10,
+    "IMAD.WIDE.U32": 10,
+    "BRA": 9
+   }
+  },
+  "void clock_time::rate<(int)3>(unsigned long long *, unsigned int *, const unsigned int *, unsigned int *, int)": {
+   "regs": 28,
+   "ops": {
+    "LOP3.LUT": 13,
+    "SHF.R.S32.HI": 10,
+    "IMAD.IADD": 10,
+    "IMAD": 10,
+    "VIADD": 10,
+    "NOP": 10,
+    "BRA": 9,
+    "LEA.HI": 9,
+    "IMAD.MOV.U32": 7,
+    "SHF.R.U32.HI": 5,
+    "ISETP.GE.AND": 5,
+    "LDC": 4
+   }
+  },
+  "void clock_time::rate<(int)2>(unsigned long long *, unsigned int *, const unsigned int *, unsigned int *, int)": {
+   "regs": 26,
+   "ops": {
+    "LOP3.LUT": 17,
+    "NOP": 15,
+    "VIADD": 14,
+    "IMAD": 13,
+    "SHF.R.S32.HI": 10,
+    "IMAD.IADD": 10,
+    "BRA": 9,
+    "LEA.HI": 9,
+    "SHF.R.U32.HI": 9,
+    "IADD3": 6,
+    "IMAD.MOV.U32": 5,
+    "ISETP.GE.AND": 5
+   }
+  },
+  "void clock_time::rate<(int)1>(unsigned long long *, unsigned int *, const unsigned int *, unsigned int *, int)": {
+   "regs": 26,
+   "ops": {
+    "LOP3.LUT": 17,
+    "VIADD": 14,
+    "IMAD": 13,
+    "NOP": 13,
+    "SHF.R.S32.HI": 10,
+    "IMAD.IADD": 10,
+    "BRA": 9,
+    "LEA.HI": 9,
+    "SHF.R.U32.HI": 9,
+    "IMAD.MOV.U32": 5,
+    "ISETP.GE.AND": 5,
+    "LDC": 4
+   }
+  },
+  "void clock_time::rate<(int)0>(unsigned long long *, unsigned int *, const unsigned int *, unsigned int *, int)": {
+   "regs": 26,
+   "ops": {
+    "IMAD": 17,
+    "LOP3.LUT": 13,
+    "NOP": 11,
+    "SHF.R.S32.HI": 10,
+    "IMAD.IADD": 10,
+    "VIADD": 10,
+    "BRA": 9,
+    "LEA.HI": 9,
+    "IMAD.MOV.U32": 6,
+    "SHF.R.U32.HI": 5,
+    "ISETP.GE.AND": 5,
+    "LDC": 4
+   }
+  }
+ },
+ "counters": {},
+ "counters_exception": {
+  "host": "Nebius preemptible VM, NVIDIA H100 80GB HBM3: its counters not yet read there",
+  "instead": "the kernels' own clocks and the SASS's static counts"
+ }
+}
