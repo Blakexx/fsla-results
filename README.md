@@ -1,9 +1,9 @@
-# rola-results
+# fsla-results
 
-The interface every rola tool stores its measurements through (`rola_results`), and, by default, the records themselves.
+The interface every fsla tool stores its measurements through (`fsla_results`), and, by default, the records themselves.
 
 ```python
-from rola_results import Store, checkout
+from fsla_results import Store, checkout
 
 store = Store("mqar/local")                        # the tool's own location
 semantics = {"bench": "mqar", "config": "local", "cell": "d1-n256", "local": checkouts}
@@ -12,7 +12,7 @@ store.put(semantics, error="RuntimeError: ...")    # a failure is a sample too
 record = store.get(key(semantics))                  # Store.complete(record), store.output(record)
 ```
 
-- **A location** names who stores: `rola/sass`, `timing/session`, `mqar/<config>`.
+- **A location** names who stores: `fsla/sass`, `timing/session`, `mqar/<config>`.
 - **A record** is everything kept under one key: the semantics the tool handed over and every sample.
 - **The key** is sha256 over the semantics, so a repeat lands on the same record and a changed input on a new one.
 - **A sample** is one execution: its output (JSON, or a file moved in) or its error, when, how long, its provenance
@@ -43,13 +43,13 @@ view in `views/`, run after every index:
 
 | view | from | one row per |
 |---|---|---|
-| `timing_members` | `timing/session` (rola-devtools' `measure_timing`, through a store target) | member of a stored session: the run, the session, its registration (`owner`), the label and arm read from it, the cell, the LEVEL it prices (`kernel`, `op`, `layer`), whether it ran and why not, device, torch, the owner's commit and diff, the session's rounds, reps and clock reads |
+| `timing_members` | `timing/session` (fsla-devtools' `measure_timing`, through a store target) | member of a stored session: the run, the session, its registration (`owner`), the label and arm read from it, the cell, the LEVEL it prices (`kernel`, `op`, `layer`), whether it ran and why not, device, torch, the owner's commit and diff, the session's rounds, reps and clock reads |
 | `timing_samples` | `timing_members` | timed call, in the order taken: its member's label, arm and cell, its round, rep and position in the rep's random order, and its milliseconds |
-| `memory_rows` | `timing/memory` (rola-devtools' `measure_memory`) | timing entry alone on a central cell: peak allocated and reserved bytes, what was allocated before the build and after the calls, bytes held outside the caching allocator (a paged state) and the totals with them, label, arm, commit |
-| `instrument_cells` | `rola/<instrument>` (a rola checkout's instrument targets) | cell of an instrument run: the run, whether the tool ran on it, and its exit and error when it could not |
-| `instrument_metrics` | `rola/<instrument>` | every NUMBER an instrument recorded, one row each, in long form: the run, the cell (NULL for the whole-binary `sass` and `registers`), a dotted `metric` (`phase.fold`, `counter.dram__bytes_read.sum`, `census.FoldStream.hmma_per_unit`, `timeline.tensor_mean_full`, `roofline.fraction`, `registers.<region>.peak`, `sass.<cubin>.<function>.hmma`) and its value -- so a reading across runs is a join, never a parser per tool (`bazel run //:results -- instruments --baseline RUN`) |
-| `diff_cells` | `rola/<name>` and `diff/<surface>` (rola-devtools' diff targets) | cell and quantity of a stored diff: the claim (`expect`) and whether the diff as a whole `held`, the cell's status (a side that could not produce it, and why), and the quantity's verdict under the strategy with its worst slot (`ratio`, `at`, `bound_by`) |
-| `null_gates` | `timing/null` (rola-devtools' `measure_null_gate`) | cell of a null gate: the run, whether the entry's two workers agree (the per-rep ratios' interquartile range holds one), the ratio's median and quartiles |
+| `memory_rows` | `timing/memory` (fsla-devtools' `measure_memory`) | timing entry alone on a central cell: peak allocated and reserved bytes, what was allocated before the build and after the calls, bytes held outside the caching allocator (a paged state) and the totals with them, label, arm, commit |
+| `instrument_cells` | `fsla/<instrument>` (a fsla checkout's instrument targets) | cell of an instrument run: the run, whether the tool ran on it, and its exit and error when it could not |
+| `instrument_metrics` | `fsla/<instrument>` | every NUMBER an instrument recorded, one row each, in long form: the run, the cell (NULL for the whole-binary `sass` and `registers`), a dotted `metric` (`phase.fold`, `counter.dram__bytes_read.sum`, `census.FoldStream.hmma_per_unit`, `timeline.tensor_mean_full`, `roofline.fraction`, `registers.<region>.peak`, `sass.<cubin>.<function>.hmma`) and its value -- so a reading across runs is a join, never a parser per tool (`bazel run //:results -- instruments --baseline RUN`) |
+| `diff_cells` | `fsla/<name>` and `diff/<surface>` (fsla-devtools' diff targets) | cell and quantity of a stored diff: the claim (`expect`) and whether the diff as a whole `held`, the cell's status (a side that could not produce it, and why), and the quantity's verdict under the strategy with its worst slot (`ratio`, `at`, `bound_by`) |
+| `null_gates` | `timing/null` (fsla-devtools' `measure_null_gate`) | cell of a null gate: the run, whether the entry's two workers agree (the per-rep ratios' interquartile range holds one), the ratio's median and quartiles |
 | `cells` | fleet and local grids | stored grid cell: bench, config, cell, image or local checkouts, row |
 
 A session stores raw samples and no ratio: which label is the reference is the reader's, in a query.
@@ -70,13 +70,13 @@ WHERE a.label = 'tip' AND b.label = 'master' AND a.cell = 'flagship-dense' AND a
 **The verdict** is a query, never a stored row. `verdict --reference LABEL` pairs, in every stored session, each other
 label's member with the reference label's member of the same arm on the same cell, and judges the pair within its
 session. A pair whose members price different LEVELS is refused rather than reported -- a kernel's launch and a layer's
-whole call are different quantities, and a comparison between two libraries is a comparison of their layers. Otherwise: per round each member's median, their ratio and difference (`rola_devtools.verdict.session`). A unit is the
-arm, the cell, the two labels and the code each ran (commit and diff); rola-devtools' `rola_devtools.verdict.classify`
+whole call are different quantities, and a comparison between two libraries is a comparison of their layers. Otherwise: per round each member's median, their ratio and difference (`fsla_devtools.verdict.session`). A unit is the
+arm, the cell, the two labels and the code each ran (commit and diff); fsla-devtools' `fsla_devtools.verdict.classify`
 reads a unit's sessions oldest first and judges the newest: a regression needs the session's median ratio over one plus
 three sigmas of its own per-round ratio spread, a significant paired test, and a second session at the same code over its
 own limit; anything less says what it is. Host drift between sessions moves both members of a pair and cancels.
 
-The rola tree names this checkout as `store.root` in its dev config, and each rola checkout's venv
+The fsla tree names this checkout as `store.root` in its dev config, and each fsla checkout's venv
 (`bazel run //:dev_env` there) imports the package from it. Here, the command line is a run target, in the checkout,
 on this workspace's environment:
 
@@ -84,15 +84,15 @@ on this workspace's environment:
     bazel run //:results -- show [LOCATION]
     bazel run //:results -- commit -m MESSAGE  commits records/ only; the library goes through its gated commits
 
-The gate is `bazel test //:gate`: ruff with rola's rule set and the contract tests on the library (the verdict's need
-rola-devtools, which the environment carries), and `check` on the records. The commit hook (`.githooks/pre-commit` ->
-`bazel/bazel --commit-gate`, rola-devtools' commit gate) runs it on the commit as git will write it, a records commit
-included. Bazel is rola's pinned bazelisk (a rola checkout's `python3 tools/bootstrap.py` links it), run through this
-checkout's front door (`bazel/bazel`), which runs rola-devtools' from the machine's rola-devtools checkout.
+The gate is `bazel test //:gate`: ruff with fsla's rule set and the contract tests on the library (the verdict's need
+fsla-devtools, which the environment carries), and `check` on the records. The commit hook (`.githooks/pre-commit` ->
+`bazel/bazel --commit-gate`, fsla-devtools' commit gate) runs it on the commit as git will write it, a records commit
+included. Bazel is fsla's pinned bazelisk (a fsla checkout's `python3 tools/bootstrap.py` links it), run through this
+checkout's front door (`bazel/bazel`), which runs fsla-devtools' from the machine's fsla-devtools checkout.
 
 ## Publishing
 
-This repository is developed in the private `rola-results-dev` and published to the public `rola-results`: a push
+This repository is developed in the private `fsla-results-dev` and published to the public `fsla-results`: a push
 to `master` runs `.github/workflows/mirror.yml`, which publishes the declared files as one snapshot commit
-(`.github/mirror/declarations.json`; the export is [rola-devtools](https://github.com/Blakexx/rola-devtools)'). A record carries no machine path, so every record ships as
+(`.github/mirror/declarations.json`; the export is [fsla-devtools](https://github.com/Blakexx/fsla-devtools)'). A record carries no machine path, so every record ships as
 stored.

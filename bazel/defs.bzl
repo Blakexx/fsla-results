@@ -1,9 +1,9 @@
-"""rola-results' wrappers of rola-devtools' generic rules: each handed this workspace's environment (`results_env`) and
+"""fsla-results' wrappers of fsla-devtools' generic rules: each handed this workspace's environment (`results_env`) and
 tracked tree."""
 
 load("@results_env//:flags.bzl", "VENV")
 load("@results_tree//:tree.bzl", "TRACKED")
-load("@rola_devtools//bazel:rules.bzl", _tool_run = "tool_run", _tree_part = "tree_part", _tree_test = "tree_test")
+load("@fsla_devtools//bazel:rules.bzl", _tool_run = "tool_run", _tree_part = "tree_part", _tree_test = "tree_test")
 
 def tree_test(**kwargs):
     """A check over the tree's tracked files, the environment's tools on PATH."""

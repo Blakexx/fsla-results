@@ -1,4 +1,4 @@
--- Every row of every stored memory pass (rola-devtools' `measure_memory`, stored at `timing/memory`): one timing entry
+-- Every row of every stored memory pass (fsla-devtools' `measure_memory`, stored at `timing/memory`): one timing entry
 -- alone on a central cell, its peak allocated and reserved device bytes over its calls as the caching allocator counts
 -- them, what stayed allocated, and the bytes it holds outside that allocator (a paged state mapped through the driver,
 -- whose value after the calls is its peak). `peak_bytes` and `peak_reserved_total_bytes` add them in: the entry's whole

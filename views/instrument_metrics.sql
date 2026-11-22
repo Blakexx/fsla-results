@@ -1,4 +1,4 @@
--- EVERY NUMBER AN INSTRUMENT RECORDED, one row each: the long form of the instrument outputs (`rola/<instrument>`), so
+-- EVERY NUMBER AN INSTRUMENT RECORDED, one row each: the long form of the instrument outputs (`fsla/<instrument>`), so
 -- a reading across runs -- this build's phase times against a baseline's, a kernel's HMMA count before and after -- is
 -- a self-join on (instrument, cell, metric) and never a parser per tool. `cell` is NULL for the whole-binary
 -- instruments (`sass`, `registers`), whose outputs are keyed by the binary and not by a cell. `metric` is dotted:
@@ -8,7 +8,7 @@ CREATE VIEW instrument_metrics AS
 WITH inst AS (
   SELECT s.location, substr(s.location, instr(s.location, '/') + 1) AS instrument, s.key, s.n, s.utc,
          json_extract(s.provenance, '$.run') AS run, s.output
-  FROM samples s WHERE s.ok AND s.location LIKE 'rola/%' AND json_valid(s.output)
+  FROM samples s WHERE s.ok AND s.location LIKE 'fsla/%' AND json_valid(s.output)
 )
 SELECT inst.location, inst.instrument, inst.key, inst.n, inst.utc, inst.run, c.key AS cell, 'phase.' || p.key AS metric, p.value AS value
   FROM inst, json_each(inst.output) c, json_each(c.value, '$.per_phase') p WHERE instrument = 'phases'
