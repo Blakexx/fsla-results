@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""fsla-results' front door stub: bazelisk runs `bazel/bazel` (this file, the wrapper `.bazeliskrc` names) in place of the
+"""fsla-results's front door stub: bazelisk runs `bazel/bazel` (this file, the wrapper `.bazeliskrc` names) in place of the
 Bazel it downloaded, and it runs fsla-devtools' front door (`fsla_devtools.graph.front_door`) for this checkout, from
 the machine's fsla-devtools checkout -- `workspace.devtools` in the dev config's workspace section, else the sibling
-`fsla-devtools` beside this checkout (a worktree's beside its worktrees folder). Standard library only: it runs before
+`fsla-devtools` beside this checkout (a worktree's beside its worktrees folder). `--tripwire ARGS` runs fsla_devtools.tripwire (the hooks'). Standard library only: it runs before
 any environment exists."""
 from __future__ import annotations
 
@@ -27,4 +27,8 @@ sys.path.insert(0, str(devtools()))
 from fsla_devtools.graph import front_door  # noqa: E402 -- the path insert above must precede it
 
 if __name__ == "__main__":
+    if sys.argv[1:2] == ["--tripwire"]:  # the hooks' content checks (fsla_devtools.tripwire), from the same checkout
+        from fsla_devtools import tripwire  # noqa: E402
+
+        sys.exit(tripwire.main(sys.argv[2:]))
     sys.exit(front_door.main(sys.argv[1:], ROOT))

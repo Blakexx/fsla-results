@@ -3,4 +3,6 @@
 # `bazel test //:gate` on the commit as git will write it (`fsla_devtools.graph.front_door`'s `commit_gate`, every FSLA
 # repository's), through this workspace's front door.
 set -euo pipefail
-exec "$(git rev-parse --show-toplevel)/bazel/bazel" --commit-gate
+root="$(git rev-parse --show-toplevel)"
+"$root/bazel/bazel" --tripwire --staged
+exec "$root/bazel/bazel" --commit-gate

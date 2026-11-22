@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# THE MIRROR'S CONTENT CHECKS, BEFORE A PUSH: every commit the push would add to the remote (the pushed ref's commits not
+# already on any ref of the remote) is read patch by patch by fsla_devtools.tripwire (through the front door), so what the
+# mirror would refuse never leaves the machine. `core.hooksPath` points a checkout here, as for the commit gate.
+set -euo pipefail
+root="$(git rev-parse --show-toplevel)"
+zero="0000000000000000000000000000000000000000"
+status=0
+while read -r _ local_sha _ remote_sha; do
+  [ "$local_sha" = "$zero" ] && continue
+  if [ "$remote_sha" = "$zero" ]; then
+    revisions=("$local_sha" --not "--remotes=$1")
+  else
+    revisions=("$remote_sha..$local_sha")
+  fi
+  "$root/bazel/bazel" --tripwire --range "${revisions[@]}" || status=1
+done
+exit "$status"
