@@ -19,14 +19,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Install the mirror tool
-        run: pip install "fsla-devtools @ git+https://github.com/Blakexx/fsla-devtools@3318da1c25ecf4f46389b204a23e93ec3a4eb23a"
+        run: pip install "rola-devtools @ git+https://github.com/Blakexx/fsla-devtools@3318da1c25ecf4f46389b204a23e93ec3a4eb23a"
       - name: Export and tripwire
-        run: python3 -m fsla_devtools.mirror /tmp/export
+        run: python3 -m rola_devtools.mirror /tmp/export
       - name: Commit the export as a snapshot on the public mirror
         env:
           MIRROR_KEY: ${{ secrets.MIRROR_KEY }}
         run: |
-          PUBLIC="$(python3 -m fsla_devtools.mirror --public)"
+          PUBLIC="$(python3 -m rola_devtools.mirror --public)"
           SOURCE="${GITHUB_REPOSITORY#*/}@${GITHUB_SHA::12}"
           mkdir -p ~/.ssh && echo "$MIRROR_KEY" > ~/.ssh/id_ed25519 && chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan github.com >> ~/.ssh/known_hosts 2>/dev/null
