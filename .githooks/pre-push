@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# THE MIRROR'S CONTENT CHECKS, BEFORE A PUSH: every commit the push would add to the remote (the pushed ref's commits not
-# already on any ref of the remote) is read patch by patch by fsla_devtools.tripwire (through the front door), so what the
-# mirror would refuse never leaves the machine. `core.hooksPath` points a checkout here, as for the commit gate.
+# THE CONTENT CHECKS, BEFORE A PUSH: every commit the push would add to the remote (the pushed ref's commits not
+# already on any ref of the remote) is read patch by patch by fsla_devtools.tripwire (through the front door), so nothing that must not be public
+# ever leaves the machine. `core.hooksPath` points a checkout here, as for the commit gate.
 set -euo pipefail
 root="$(git rev-parse --show-toplevel)"
 zero="0000000000000000000000000000000000000000"

@@ -92,5 +92,5 @@ checkout's front door (`bazel/bazel`), which runs fsla-devtools' from the machin
 
 ## Publishing
 
-This repository is developed in public. A record carries no machine path, so every record ships as
-stored.
+This repository is developed in public, with its whole history. A record carries no machine path, so every record is
+stored as written.
