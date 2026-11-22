@@ -1,0 +1,166 @@
+{
+ "format": 1,
+ "key": "1a369093f9aabd7936d3d349",
+ "location": "timing/session",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "1a369093f9aabd7936d3d349.0.out.json",
+   "provenance": {
+    "checkouts": {
+     "bench/flash": {
+      "branch": "master",
+      "checkout": "rola-bench",
+      "diff_sha256": null,
+      "git_sha": "b19daec166bb551825197ba73dd919b81e4f8682"
+     },
+     "rebuild/carry_forward": {
+      "branch": "carry-k5",
+      "checkout": "rebuild",
+      "diff_sha256": "0a92ff09887b259a0e7138042cf8aa6bd5efb479ad5011300753f47482417d62",
+      "git_sha": "d917fda336d0330e1ac447b5fa3e1dad3c638512"
+     },
+     "s2a-base/carry_forward": {
+      "branch": null,
+      "checkout": "s2a-base",
+      "diff_sha256": null,
+      "git_sha": "d917fda336d0330e1ac447b5fa3e1dad3c638512"
+     }
+    },
+    "host": "DESKTOP-MKIUJID",
+    "run": "20261103T204736Z-798226"
+   },
+   "run": "20261103T204736Z-798226",
+   "summary": {
+    "members": [
+     {
+      "cell": "flagship-alt-k16",
+      "error": null,
+      "id": "m0",
+      "owner": "rebuild/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-alt-k4",
+      "error": null,
+      "id": "m1",
+      "owner": "rebuild/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-cohort-k16",
+      "error": null,
+      "id": "m2",
+      "owner": "rebuild/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-cohort-k4",
+      "error": null,
+      "id": "m3",
+      "owner": "rebuild/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-dense",
+      "error": null,
+      "id": "m4",
+      "owner": "rebuild/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-alt-k16",
+      "error": null,
+      "id": "m5",
+      "owner": "s2a-base/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-alt-k4",
+      "error": null,
+      "id": "m6",
+      "owner": "s2a-base/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-cohort-k16",
+      "error": null,
+      "id": "m7",
+      "owner": "s2a-base/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-cohort-k4",
+      "error": null,
+      "id": "m8",
+      "owner": "s2a-base/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-dense",
+      "error": null,
+      "id": "m9",
+      "owner": "s2a-base/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "qkv-L1024-dv64",
+      "error": null,
+      "id": "m10",
+      "owner": "bench/flash",
+      "status": "ok"
+     }
+    ],
+    "samples": 968
+   },
+   "utc": "2026-11-03T20:49:16Z",
+   "wall_s": null
+  }
+ ],
+ "semantics": {
+  "code": null,
+  "deps": {
+   "clock": {
+    "key": "5feedce03ec7e99da475839d",
+    "output": "1a64931bdccb48537fa826946bf77cb59ddbd0ee10025a86d9ad5f49c20f2566"
+   },
+   "r0": {
+    "key": "c0cc8438250fe04df1b64965",
+    "output": "ddbe3f2b718359442a98d62aa170e7943b26ccba9e16029e177d3b4cd6626021"
+   },
+   "r1": {
+    "key": "864448229d732017e0efa387",
+    "output": "ddbe3f2b718359442a98d62aa170e7943b26ccba9e16029e177d3b4cd6626021"
+   },
+   "r2": {
+    "key": "3c28fbfdea91b19c2fa041f1",
+    "output": "5bf46a17271e2e0d4c4e932c7975fec9d21894582e4e1238770f5cbc3a478c9c"
+   },
+   "server": {
+    "key": "80f4ef1870d9ac980315bd6d",
+    "output": "b68df153ac199d71a83eb8ed44361ee25857c308ec050670e1a4008cc6730a92"
+   }
+  },
+  "executor": "rola_devtools.timing.executors:measure",
+  "params": {
+   "cells": [
+    "flagship-dense",
+    "flagship-alt-k4",
+    "flagship-alt-k16",
+    "flagship-cohort-k4",
+    "flagship-cohort-k16",
+    "flagship-both-k4",
+    "flagship-paged",
+    "flagship-struct50",
+    "flagship-struct25",
+    "qkv-L1024-dv64"
+   ],
+   "claim": "",
+   "reps": 11,
+   "rounds": 8,
+   "seed": 0,
+   "warmup": 10
+  }
+ }
+}

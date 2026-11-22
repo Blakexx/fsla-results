@@ -1,0 +1,92 @@
+{
+ "cold_start_seconds": 411.7,
+ "image": "rola-devbox:a94bd4aa548e",
+ "steps": [
+  {
+   "ok": true,
+   "seconds": 4.0,
+   "step": "clone the checkouts",
+   "tail": [
+    "  git switch -",
+    "",
+    "Turn off this advice by setting config variable advice.detachedHead to false"
+   ]
+  },
+  {
+   "ok": true,
+   "seconds": 0.9,
+   "step": "bootstrap",
+   "tail": [
+    "installed bazelisk 1.30.0 -> /root/.local/share/rola/tools/bazelisk-1.30.0/bazelisk",
+    "linked /root/.local/bin/bazel -> /root/.local/share/rola/tools/bazelisk-1.30.0/bazelisk",
+    "bootstrap: `bazel` is the pinned bazelisk; next, bazel run //:init"
+   ]
+  },
+  {
+   "ok": true,
+   "seconds": 402.6,
+   "step": "init",
+   "tail": [
+    "INFO: Elapsed time: 147.597s, Critical Path: 0.02s",
+    "INFO: 6 processes: 6 internal.",
+    "INFO: Build completed successfully, 6 total actions"
+   ]
+  },
+  {
+   "ok": true,
+   "seconds": 4.2,
+   "step": "dev_env",
+   "tail": [
+    "INFO: Build completed successfully, 6 total actions",
+    "Using CPython 3.11.13 interpreter at: /root/.cache/rola/build/bazel/store/python/cpython-3.11.13-linux-x86_64-gnu/bin/python3.11",
+    "Creating virtual environment at: /workspace/venv-rola"
+   ]
+  },
+  {
+   "ok": true,
+   "seconds": 0.4,
+   "step": "check",
+   "tail": [
+    "INFO: Elapsed time: 0.130s, Critical Path: 0.00s",
+    "INFO: 6 processes: 6 internal.",
+    "INFO: Build completed successfully, 6 total actions"
+   ]
+  },
+  {
+   "ok": true,
+   "seconds": 187.8,
+   "step": "the commit gate",
+   "tail": [
+    "INFO: Elapsed time: 7.644s, Critical Path: 7.22s",
+    "INFO: 31 processes: 150 action cache hit, 1 internal, 4 local, 56 processwrapper-sandbox.",
+    "INFO: Build completed successfully, 31 total actions"
+   ]
+  },
+  {
+   "ok": true,
+   "seconds": 1.8,
+   "step": "GPU, torch and its flash backend",
+   "tail": [
+    "NVIDIA GeForce RTX 3080 Ti 2.14.0+cu130"
+   ]
+  },
+  {
+   "ok": true,
+   "seconds": 0.1,
+   "step": "a host-held lock is held here",
+   "tail": [
+    "held by the host: one lock governs both"
+   ]
+  },
+  {
+   "ok": true,
+   "seconds": 130.1,
+   "step": "the library builds and imports",
+   "tail": [
+    "INFO: Elapsed time: 127.626s, Critical Path: 54.09s",
+    "INFO: 32 processes: 9 internal, 1 local, 22 processwrapper-sandbox.",
+    "INFO: Build completed successfully, 32 total actions"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,130 @@
+{
+ "format": 1,
+ "key": "beab3f24d13585819a62d4ff",
+ "location": "timing/session",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "beab3f24d13585819a62d4ff.0.out.json",
+   "provenance": {
+    "checkouts": {
+     "bench/flash@T=0,h=256x4": {
+      "branch": "master",
+      "checkout": "rola-bench",
+      "diff_sha256": "60e387e6ef69d36325bb8d38868ac841e769d6327fc0cbc3857546f7e453ba74",
+      "git_sha": "888e1c27be0e20b6d81049644f4f8adf4cb993ae"
+     },
+     "rebuild/layer_prefill@layer=nl64k-alt-h4-g4": {
+      "branch": "carry-k5",
+      "checkout": "rebuild",
+      "diff_sha256": "a667d3b68e2b33ada9ed9aee4f718cef7d2243b4acfe133d5b2d579dc9e71d03",
+      "git_sha": "96db3c3b5993089897ef1bc11badc23d383b98ea"
+     }
+    },
+    "host": "DESKTOP-MKIUJID",
+    "run": "20261102T180234Z-0efb61"
+   },
+   "run": "20261102T180234Z-0efb61",
+   "summary": {
+    "members": [
+     {
+      "cell": "layer-B1-T65536-H4-h256-dv64-bf16-s11",
+      "error": null,
+      "id": "m0",
+      "owner": "rebuild/layer_prefill@layer=nl64k-alt-h4-g4",
+      "status": "ok"
+     },
+     {
+      "cell": "qkv-L65536-dv64-h4",
+      "error": null,
+      "id": "m1",
+      "owner": "bench/flash@T=0,h=256x4",
+      "status": "ok"
+     }
+    ],
+    "samples": 176
+   },
+   "utc": "2026-11-02T18:03:03Z",
+   "wall_s": null
+  },
+  {
+   "n": 1,
+   "ok": true,
+   "output": "beab3f24d13585819a62d4ff.1.out.json",
+   "provenance": {
+    "checkouts": {
+     "bench/flash@T=0,h=256x4": {
+      "branch": "master",
+      "checkout": "rola-bench",
+      "diff_sha256": null,
+      "git_sha": "94a0b8d7b359ead20c8b640976975c84d55f0242"
+     },
+     "rebuild/layer_prefill@layer=nl64k-alt-h4-g4": {
+      "branch": "carry-k5",
+      "checkout": "rebuild",
+      "diff_sha256": "f12b02ef83cd52e5d30e20cb3fbebec27c2dca66b8da4c8a331f3e88b7be9adc",
+      "git_sha": "1667cc104ead3e8bab7c06fed5a715d31ce5ad8c"
+     }
+    },
+    "host": "DESKTOP-MKIUJID",
+    "run": "20261102T182520Z-d7d098"
+   },
+   "run": "20261102T182520Z-d7d098",
+   "summary": {
+    "members": [
+     {
+      "cell": "layer-B1-T65536-H4-h256-dv64-bf16-s11",
+      "error": null,
+      "id": "m0",
+      "owner": "rebuild/layer_prefill@layer=nl64k-alt-h4-g4",
+      "status": "ok"
+     },
+     {
+      "cell": "qkv-L65536-dv64-h4",
+      "error": null,
+      "id": "m1",
+      "owner": "bench/flash@T=0,h=256x4",
+      "status": "ok"
+     }
+    ],
+    "samples": 176
+   },
+   "utc": "2026-11-02T18:25:42Z",
+   "wall_s": null
+  }
+ ],
+ "semantics": {
+  "code": null,
+  "deps": {
+   "clock": {
+    "key": "4bd2cc2fe7353a7b54a5bed4",
+    "output": "1a64931bdccb48537fa826946bf77cb59ddbd0ee10025a86d9ad5f49c20f2566"
+   },
+   "r0": {
+    "key": "459488159f5453923ee7d7ec",
+    "output": "807caf37795c99e3d2eaf277d15da2259f20b968b944bb825f4610c2efa4b36a"
+   },
+   "r1": {
+    "key": "e6c6f40872d5eeca5380e2de",
+    "output": "f40deff4dbc6e3b01c44def7aa140850ced34f904ec8fdcddbd77c6e3681ce8e"
+   },
+   "server": {
+    "key": "80f4ef1870d9ac980315bd6d",
+    "output": "b68df153ac199d71a83eb8ed44361ee25857c308ec050670e1a4008cc6730a92"
+   }
+  },
+  "executor": "rola_devtools.timing.executors:measure",
+  "params": {
+   "cells": [
+    "layer-B1-T65536-H4-h256-dv64-bf16-s11",
+    "qkv-L65536-dv64-h4"
+   ],
+   "claim": "",
+   "reps": 11,
+   "rounds": 8,
+   "seed": 0,
+   "warmup": 10
+  }
+ }
+}

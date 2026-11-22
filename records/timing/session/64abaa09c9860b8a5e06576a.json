@@ -1,0 +1,141 @@
+{
+ "format": 1,
+ "key": "64abaa09c9860b8a5e06576a",
+ "location": "timing/session",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "64abaa09c9860b8a5e06576a.0.out.json",
+   "provenance": {
+    "checkouts": {
+     "bench/flash": {
+      "branch": "master",
+      "checkout": "rola-bench",
+      "diff_sha256": "3b556fd80ac489fe0b7ca3d10b826f47c097e2547521b7139b832bcf7512d638",
+      "git_sha": "6096a108e09c593e81681cdd7c95eaaac1640085"
+     },
+     "rebuild/den_pass": {
+      "branch": "carry-k5",
+      "checkout": "rebuild",
+      "diff_sha256": "a5862ecbcff48f7213b9c9a270a0a4b4d166a80cea8c0304ab101b9ed3810964",
+      "git_sha": "92a90619e76ac79f21d76896c16506adf34de08a"
+     },
+     "rebuild/intra_forward": {
+      "branch": "carry-k5",
+      "checkout": "rebuild",
+      "diff_sha256": "a5862ecbcff48f7213b9c9a270a0a4b4d166a80cea8c0304ab101b9ed3810964",
+      "git_sha": "92a90619e76ac79f21d76896c16506adf34de08a"
+     },
+     "rebuild/prefill": {
+      "branch": "carry-k5",
+      "checkout": "rebuild",
+      "diff_sha256": "a5862ecbcff48f7213b9c9a270a0a4b4d166a80cea8c0304ab101b9ed3810964",
+      "git_sha": "92a90619e76ac79f21d76896c16506adf34de08a"
+     }
+    },
+    "host": "DESKTOP-MKIUJID",
+    "run": "20261101T213646Z-902071"
+   },
+   "run": "20261101T213646Z-902071",
+   "summary": {
+    "members": [
+     {
+      "cell": "nl64k-alt-k4-h4",
+      "error": null,
+      "id": "m0",
+      "owner": "rebuild/den_pass",
+      "status": "ok"
+     },
+     {
+      "cell": "nl64k-dense-h4",
+      "error": null,
+      "id": "m1",
+      "owner": "rebuild/den_pass",
+      "status": "ok"
+     },
+     {
+      "cell": "nl64k-alt-k4-h4",
+      "error": null,
+      "id": "m2",
+      "owner": "rebuild/intra_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "nl64k-dense-h4",
+      "error": null,
+      "id": "m3",
+      "owner": "rebuild/intra_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "nl64k-alt-k4-h4",
+      "error": null,
+      "id": "m4",
+      "owner": "rebuild/prefill",
+      "status": "ok"
+     },
+     {
+      "cell": "nl64k-dense-h4",
+      "error": null,
+      "id": "m5",
+      "owner": "rebuild/prefill",
+      "status": "ok"
+     },
+     {
+      "cell": "qkv-L65536-dv64-h4",
+      "error": null,
+      "id": "m6",
+      "owner": "bench/flash",
+      "status": "ok"
+     }
+    ],
+    "samples": 616
+   },
+   "utc": "2026-11-01T21:38:44Z",
+   "wall_s": null
+  }
+ ],
+ "semantics": {
+  "code": null,
+  "deps": {
+   "clock": {
+    "key": "094484bb9e17a82e77a80307",
+    "output": "1a64931bdccb48537fa826946bf77cb59ddbd0ee10025a86d9ad5f49c20f2566"
+   },
+   "r0": {
+    "key": "88764137fd75a4b68eac342b",
+    "output": "3bcc27a7bf5d372d240ceca69f5aeb80199f048f01de134cb4dc64ab4bace984"
+   },
+   "r1": {
+    "key": "d840f26015ae4d3701726415",
+    "output": "53851decda37c5f7ae85e368c721e5a45412e5866f53961d736a0654efe05936"
+   },
+   "r2": {
+    "key": "a7ceb9ee4f916b07e417129b",
+    "output": "efb3b68eb63cbe0d74a49fad7031ff894a7858ccc19cfe421c48adb62da448c4"
+   },
+   "r3": {
+    "key": "c3916180280d7fdabd64f609",
+    "output": "ce6e3678db974811d818137071a338c2d0c0da712d101b934243e3c6d18cc804"
+   },
+   "server": {
+    "key": "80f4ef1870d9ac980315bd6d",
+    "output": "b68df153ac199d71a83eb8ed44361ee25857c308ec050670e1a4008cc6730a92"
+   }
+  },
+  "executor": "rola_devtools.timing.executors:measure",
+  "params": {
+   "cells": [
+    "nl64k-dense-h4",
+    "nl64k-alt-k4-h4",
+    "qkv-L65536-dv64-h4"
+   ],
+   "claim": "",
+   "reps": 11,
+   "rounds": 8,
+   "seed": 0,
+   "warmup": 10
+  }
+ }
+}

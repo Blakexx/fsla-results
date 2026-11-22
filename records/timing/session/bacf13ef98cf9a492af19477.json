@@ -1,0 +1,117 @@
+{
+ "format": 1,
+ "key": "bacf13ef98cf9a492af19477",
+ "location": "timing/session",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "bacf13ef98cf9a492af19477.0.out.json",
+   "provenance": {
+    "checkouts": {
+     "bench/flash": {
+      "branch": null,
+      "checkout": "rola-bench",
+      "diff_sha256": null,
+      "git_sha": null
+     },
+     "rola-ref/prefill": {
+      "branch": null,
+      "checkout": "rola-ref",
+      "diff_sha256": null,
+      "git_sha": null
+     },
+     "rola/prefill": {
+      "branch": "master",
+      "checkout": "rola",
+      "diff_sha256": null,
+      "git_sha": "00579a070388ffe92efdbb7f7c27d8503ae711f6"
+     }
+    },
+    "host": "d7c229c8cf18",
+    "run": "20261106T093214Z-fbe499"
+   },
+   "run": "20261106T093214Z-fbe499",
+   "summary": {
+    "members": [
+     {
+      "cell": "nl64k-alt-k4-h4",
+      "error": null,
+      "id": "m0",
+      "owner": "rola/prefill",
+      "status": "ok"
+     },
+     {
+      "cell": "nl64k-dense-h4",
+      "error": null,
+      "id": "m1",
+      "owner": "rola/prefill",
+      "status": "ok"
+     },
+     {
+      "cell": "nl64k-alt-k4-h4",
+      "error": null,
+      "id": "m2",
+      "owner": "rola-ref/prefill",
+      "status": "ok"
+     },
+     {
+      "cell": "nl64k-dense-h4",
+      "error": null,
+      "id": "m3",
+      "owner": "rola-ref/prefill",
+      "status": "ok"
+     },
+     {
+      "cell": "qkv-L65536-dv64-h4",
+      "error": null,
+      "id": "m4",
+      "owner": "bench/flash",
+      "status": "ok"
+     }
+    ],
+    "samples": 440
+   },
+   "utc": "2026-11-06T09:36:37Z",
+   "wall_s": null
+  }
+ ],
+ "semantics": {
+  "code": null,
+  "deps": {
+   "clock": {
+    "key": "628247343efb4c58d371a90e",
+    "output": "1a64931bdccb48537fa826946bf77cb59ddbd0ee10025a86d9ad5f49c20f2566"
+   },
+   "r0": {
+    "key": "449e2ad9b87c9df798aa3de5",
+    "output": "2824158a4ea695d82f45c54c3a077dacf70fcd44e225d43aa0b24aa03bd933e6"
+   },
+   "r1": {
+    "key": "227647c29e4562ef9faff6f3",
+    "output": "2824158a4ea695d82f45c54c3a077dacf70fcd44e225d43aa0b24aa03bd933e6"
+   },
+   "r2": {
+    "key": "3c28fbfdea91b19c2fa041f1",
+    "output": "5bf46a17271e2e0d4c4e932c7975fec9d21894582e4e1238770f5cbc3a478c9c"
+   },
+   "server": {
+    "key": "80f4ef1870d9ac980315bd6d",
+    "output": "b68df153ac199d71a83eb8ed44361ee25857c308ec050670e1a4008cc6730a92"
+   }
+  },
+  "executor": "rola_devtools.timing.executors:measure",
+  "params": {
+   "cells": [
+    "nl64k-dense-h4",
+    "nl64k-alt-k4-h4",
+    "qkv-L65536-dv64-h4"
+   ],
+   "claim": "",
+   "reps": 11,
+   "rounds": 8,
+   "seed": 0,
+   "warmup": 10
+  }
+ }
+}

@@ -1,0 +1,85 @@
+{
+ "format": 1,
+ "key": "a00ae10ce41aae7231eb3121",
+ "location": "timing/session",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "a00ae10ce41aae7231eb3121.0.out.json",
+   "provenance": {
+    "checkouts": {
+     "carry-vc/layer_facts@layer=nl64k-alt-h4-g4": {
+      "branch": "carry-vc",
+      "checkout": "carry-vc",
+      "diff_sha256": "7556c7448667dfdb7ee1aceda516abe0bb68a0aac646a8d57415d0fca0d10f91",
+      "git_sha": "0c0f9988909dfdc9bf4ea6f17e0e8e806047f12a"
+     },
+     "gb-step1/layer_facts@layer=nl64k-alt-h4-g4": {
+      "branch": null,
+      "checkout": "gb-step1",
+      "diff_sha256": null,
+      "git_sha": "0c0f9988909dfdc9bf4ea6f17e0e8e806047f12a"
+     }
+    },
+    "host": "DESKTOP-MKIUJID",
+    "run": "20261107T062221Z-be591c"
+   },
+   "run": "20261107T062221Z-be591c",
+   "summary": {
+    "members": [
+     {
+      "cell": "layer-B1-T65536-H4-h256-dv64-bf16-s11",
+      "error": null,
+      "id": "m0",
+      "owner": "carry-vc/layer_facts@layer=nl64k-alt-h4-g4",
+      "status": "ok"
+     },
+     {
+      "cell": "layer-B1-T65536-H4-h256-dv64-bf16-s11",
+      "error": null,
+      "id": "m1",
+      "owner": "gb-step1/layer_facts@layer=nl64k-alt-h4-g4",
+      "status": "ok"
+     }
+    ],
+    "samples": 176
+   },
+   "utc": "2026-11-07T06:22:33Z",
+   "wall_s": null
+  }
+ ],
+ "semantics": {
+  "code": null,
+  "deps": {
+   "clock": {
+    "key": "b529d5592d443b0f865954ff",
+    "output": "1a64931bdccb48537fa826946bf77cb59ddbd0ee10025a86d9ad5f49c20f2566"
+   },
+   "r0": {
+    "key": "13311add66071de922af0174",
+    "output": "d5ef83c5e3dbfdbc5532e4c87570b7413ba67834ffe471e865b7eeb8063f3f0e"
+   },
+   "r1": {
+    "key": "ea73496d1aa55eb7b41153c1",
+    "output": "d5ef83c5e3dbfdbc5532e4c87570b7413ba67834ffe471e865b7eeb8063f3f0e"
+   },
+   "server": {
+    "key": "80f4ef1870d9ac980315bd6d",
+    "output": "b68df153ac199d71a83eb8ed44361ee25857c308ec050670e1a4008cc6730a92"
+   }
+  },
+  "executor": "rola_devtools.timing.executors:measure",
+  "params": {
+   "cells": [
+    "layer-B1-T65536-H4-h256-dv64-bf16-s11",
+    "qkv-L65536-dv64-h4"
+   ],
+   "claim": "",
+   "reps": 11,
+   "rounds": 8,
+   "seed": 0,
+   "warmup": 10
+  }
+ }
+}

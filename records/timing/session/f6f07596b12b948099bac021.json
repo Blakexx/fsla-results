@@ -1,0 +1,85 @@
+{
+ "format": 1,
+ "key": "f6f07596b12b948099bac021",
+ "location": "timing/session",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "f6f07596b12b948099bac021.0.out.json",
+   "provenance": {
+    "checkouts": {
+     "rola-ref/layer_intra@layer=nl64k-alt-h4-g16": {
+      "branch": null,
+      "checkout": "rola-ref",
+      "diff_sha256": null,
+      "git_sha": null
+     },
+     "rola/layer_intra@layer=nl64k-alt-h4-g16": {
+      "branch": "master",
+      "checkout": "rola",
+      "diff_sha256": null,
+      "git_sha": "b4a4f7a52d1a9ff56812117c5aa36ed562d317c1"
+     }
+    },
+    "host": "d29fb830342d",
+    "run": "20261106T083457Z-bb7662"
+   },
+   "run": "20261106T083457Z-bb7662",
+   "summary": {
+    "members": [
+     {
+      "cell": "layer-B1-T65536-H4-h256-dv64-bf16-s11",
+      "error": null,
+      "id": "m0",
+      "owner": "rola/layer_intra@layer=nl64k-alt-h4-g16",
+      "status": "ok"
+     },
+     {
+      "cell": "layer-B1-T65536-H4-h256-dv64-bf16-s11",
+      "error": null,
+      "id": "m1",
+      "owner": "rola-ref/layer_intra@layer=nl64k-alt-h4-g16",
+      "status": "ok"
+     }
+    ],
+    "samples": 176
+   },
+   "utc": "2026-11-06T08:39:14Z",
+   "wall_s": null
+  }
+ ],
+ "semantics": {
+  "code": null,
+  "deps": {
+   "clock": {
+    "key": "8ca9253d44ada79a85d64f44",
+    "output": "1a64931bdccb48537fa826946bf77cb59ddbd0ee10025a86d9ad5f49c20f2566"
+   },
+   "r0": {
+    "key": "f19a6038ff5b3c537aedb92e",
+    "output": "c284ee312c7e0639bd8b9e001d911797cc44d51801ffe6ba38f9135c6615a42b"
+   },
+   "r1": {
+    "key": "14eea591f7682e651465576d",
+    "output": "c284ee312c7e0639bd8b9e001d911797cc44d51801ffe6ba38f9135c6615a42b"
+   },
+   "server": {
+    "key": "80f4ef1870d9ac980315bd6d",
+    "output": "b68df153ac199d71a83eb8ed44361ee25857c308ec050670e1a4008cc6730a92"
+   }
+  },
+  "executor": "rola_devtools.timing.executors:measure",
+  "params": {
+   "cells": [
+    "layer-B1-T65536-H4-h256-dv64-bf16-s11",
+    "qkv-L65536-dv64-h4"
+   ],
+   "claim": "",
+   "reps": 11,
+   "rounds": 8,
+   "seed": 0,
+   "warmup": 10
+  }
+ }
+}

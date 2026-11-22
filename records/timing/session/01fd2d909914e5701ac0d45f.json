@@ -1,0 +1,85 @@
+{
+ "format": 1,
+ "key": "01fd2d909914e5701ac0d45f",
+ "location": "timing/session",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "01fd2d909914e5701ac0d45f.0.out.json",
+   "provenance": {
+    "checkouts": {
+     "carry-vc/layer_facts@layer=nl64k-alt-h4": {
+      "branch": "carry-vc",
+      "checkout": "carry-vc",
+      "diff_sha256": "7556c7448667dfdb7ee1aceda516abe0bb68a0aac646a8d57415d0fca0d10f91",
+      "git_sha": "0c0f9988909dfdc9bf4ea6f17e0e8e806047f12a"
+     },
+     "gb-step1/layer_facts@layer=nl64k-alt-h4": {
+      "branch": null,
+      "checkout": "gb-step1",
+      "diff_sha256": null,
+      "git_sha": "0c0f9988909dfdc9bf4ea6f17e0e8e806047f12a"
+     }
+    },
+    "host": "DESKTOP-MKIUJID",
+    "run": "20261107T062221Z-be591c"
+   },
+   "run": "20261107T062221Z-be591c",
+   "summary": {
+    "members": [
+     {
+      "cell": "layer-B1-T65536-H4-h256-dv64-bf16-s11",
+      "error": null,
+      "id": "m0",
+      "owner": "carry-vc/layer_facts@layer=nl64k-alt-h4",
+      "status": "ok"
+     },
+     {
+      "cell": "layer-B1-T65536-H4-h256-dv64-bf16-s11",
+      "error": null,
+      "id": "m1",
+      "owner": "gb-step1/layer_facts@layer=nl64k-alt-h4",
+      "status": "ok"
+     }
+    ],
+    "samples": 176
+   },
+   "utc": "2026-11-07T06:22:32Z",
+   "wall_s": null
+  }
+ ],
+ "semantics": {
+  "code": null,
+  "deps": {
+   "clock": {
+    "key": "b529d5592d443b0f865954ff",
+    "output": "1a64931bdccb48537fa826946bf77cb59ddbd0ee10025a86d9ad5f49c20f2566"
+   },
+   "r0": {
+    "key": "aa6fa47b49a4317a2fbcad8e",
+    "output": "b4966cc27c82e1fcbef9009240bc2f67a412d525d81e9eff6a46c675a670aca5"
+   },
+   "r1": {
+    "key": "67669efb663c7b519ff3253d",
+    "output": "b4966cc27c82e1fcbef9009240bc2f67a412d525d81e9eff6a46c675a670aca5"
+   },
+   "server": {
+    "key": "80f4ef1870d9ac980315bd6d",
+    "output": "b68df153ac199d71a83eb8ed44361ee25857c308ec050670e1a4008cc6730a92"
+   }
+  },
+  "executor": "rola_devtools.timing.executors:measure",
+  "params": {
+   "cells": [
+    "layer-B1-T65536-H4-h256-dv64-bf16-s11",
+    "qkv-L65536-dv64-h4"
+   ],
+   "claim": "",
+   "reps": 11,
+   "rounds": 8,
+   "seed": 0,
+   "warmup": 10
+  }
+ }
+}

@@ -1,0 +1,553 @@
+{
+ "bindings": {
+  "left": {
+   "checkout": "carry-vc",
+   "executor": "tests.oracle.sides:carry_kernel",
+   "file": "rola/__init__.py",
+   "module": "rola"
+  },
+  "right": {
+   "checkout": "dm-old",
+   "executor": "tests.oracle.sides:carry_kernel",
+   "file": "rola/__init__.py",
+   "module": "rola"
+  }
+ },
+ "cells": {
+  "corner-anti": {
+   "quantities": {
+    "num": {
+     "allowance": 0.0,
+     "at": [
+      0,
+      512,
+      0,
+      0
+     ],
+     "bound_by": "clause (0.0, 0.0)",
+     "error": 4.188212401726457e-09,
+     "failed": 15274,
+     "ratio": 1.7976931348623157e+308,
+     "same": false,
+     "slots": 65536,
+     "why": "outside the allowance"
+    }
+   },
+   "same": false,
+   "status": "ok"
+  },
+  "corner-cold-read": {
+   "quantities": {
+    "num": {
+     "allowance": 0.0,
+     "at": [
+      0,
+      512,
+      0,
+      1
+     ],
+     "bound_by": "clause (0.0, 0.0)",
+     "error": 1.653590623070314e-06,
+     "failed": 15012,
+     "ratio": 1.7976931348623157e+308,
+     "same": false,
+     "slots": 65536,
+     "why": "outside the allowance"
+    }
+   },
+   "same": false,
+   "status": "ok"
+  },
+  "corner-concentrated": {
+   "quantities": {
+    "num": {
+     "allowance": 0.0,
+     "at": [
+      0,
+      512,
+      0,
+      0
+     ],
+     "bound_by": "clause (0.0, 0.0)",
+     "error": 1.5456302493227145e-06,
+     "failed": 23683,
+     "ratio": 1.7976931348623157e+308,
+     "same": false,
+     "slots": 65536,
+     "why": "outside the allowance"
+    }
+   },
+   "same": false,
+   "status": "ok"
+  },
+  "corner-onehot": {
+   "left": "RuntimeError: carry_forward, csrc/rola/src/carry/carry.cu:174, the box holds 256 leaves x 64 channels; a CTA's state is 32768 values",
+   "right": "RuntimeError: carry_forward, csrc/rola/src/carry/carry.cu:174, the box holds 256 leaves x 64 channels; a CTA's state is 32768 values",
+   "status": "refused"
+  },
+  "corner-read-only": {
+   "quantities": {
+    "num": {
+     "allowance": 0.0,
+     "at": [
+      0,
+      512,
+      0,
+      2
+     ],
+     "bound_by": "clause (0.0, 0.0)",
+     "error": 4.747919007844041e-07,
+     "failed": 2317,
+     "ratio": 1.7976931348623157e+308,
+     "same": false,
+     "slots": 65536,
+     "why": "outside the allowance"
+    }
+   },
+   "same": false,
+   "status": "ok"
+  },
+  "corner-tied-k4": {
+   "quantities": {
+    "num": {
+     "allowance": 0.0,
+     "at": [
+      0,
+      512,
+      0,
+      4
+     ],
+     "bound_by": "clause (0.0, 0.0)",
+     "error": 3.828371272367875e-06,
+     "failed": 21896,
+     "ratio": 1.7976931348623157e+308,
+     "same": false,
+     "slots": 65536,
+     "why": "outside the allowance"
+    }
+   },
+   "same": false,
+   "status": "ok"
+  },
+  "corner-window-flip": {
+   "quantities": {
+    "num": {
+     "allowance": 0.0,
+     "at": [
+      0,
+      512,
+      0,
+      1
+     ],
+     "bound_by": "clause (0.0, 0.0)",
+     "error": 5.8185747441128616e-08,
+     "failed": 49113,
+     "ratio": 1.7976931348623157e+308,
+     "same": false,
+     "slots": 98304,
+     "why": "outside the allowance"
+    }
+   },
+   "same": false,
+   "status": "ok"
+  },
+  "flagship-alt-k4-L4096": {
+   "quantities": {
+    "num": {
+     "allowance": 0.0,
+     "at": [
+      0,
+      512,
+      0,
+      0
+     ],
+     "bound_by": "clause (0.0, 0.0)",
+     "error": 4.493562316308045e-08,
+     "failed": 137946,
+     "ratio": 1.7976931348623157e+308,
+     "same": false,
+     "slots": 262144,
+     "why": "outside the allowance"
+    }
+   },
+   "same": false,
+   "status": "ok"
+  },
+  "flagship-both-k4": {
+   "quantities": {
+    "num": {
+     "allowance": 0.0,
+     "at": [
+      0,
+      512,
+      0,
+      2
+     ],
+     "bound_by": "clause (0.0, 0.0)",
+     "error": 3.611422740051884e-06,
+     "failed": 20004,
+     "ratio": 1.7976931348623157e+308,
+     "same": false,
+     "slots": 65536,
+     "why": "outside the allowance"
+    }
+   },
+   "same": false,
+   "status": "ok"
+  },
+  "flagship-both-k4-L4096": {
+   "quantities": {
+    "num": {
+     "allowance": 0.0,
+     "at": [
+      0,
+      512,
+      0,
+      0
+     ],
+     "bound_by": "clause (0.0, 0.0)",
+     "error": 2.303777956494629e-07,
+     "failed": 143136,
+     "ratio": 1.7976931348623157e+308,
+     "same": false,
+     "slots": 262144,
+     "why": "outside the allowance"
+    }
+   },
+   "same": false,
+   "status": "ok"
+  },
+  "flagship-cohort-k4-L4096": {
+   "quantities": {
+    "num": {
+     "allowance": 0.0,
+     "at": [
+      0,
+      512,
+      0,
+      3
+     ],
+     "bound_by": "clause (0.0, 0.0)",
+     "error": 1.8533034216482234e-07,
+     "failed": 54270,
+     "ratio": 1.7976931348623157e+308,
+     "same": false,
+     "slots": 262144,
+     "why": "outside the allowance"
+    }
+   },
+   "same": false,
+   "status": "ok"
+  },
+  "flagship-dv128-alt-k4": {
+   "quantities": {
+    "num": {
+     "allowance": 0.0,
+     "at": [
+      0,
+      512,
+      0,
+      1
+     ],
+     "bound_by": "clause (0.0, 0.0)",
+     "error": 2.0424249950440451e-07,
+     "failed": 35302,
+     "ratio": 1.7976931348623157e+308,
+     "same": false,
+     "slots": 131072,
+     "why": "outside the allowance"
+    }
+   },
+   "same": false,
+   "status": "ok"
+  },
+  "flagship-dv32-alt-k4": {
+   "quantities": {
+    "num": {
+     "allowance": 0.0,
+     "at": [
+      0,
+      512,
+      0,
+      1
+     ],
+     "bound_by": "clause (0.0, 0.0)",
+     "error": 5.714272774443203e-07,
+     "failed": 10636,
+     "ratio": 1.7976931348623157e+308,
+     "same": false,
+     "slots": 32768,
+     "why": "outside the allowance"
+    }
+   },
+   "same": false,
+   "status": "ok"
+  },
+  "flagship-paged": {
+   "quantities": {
+    "num": {
+     "allowance": 0.0,
+     "at": [
+      0,
+      512,
+      0,
+      0
+     ],
+     "bound_by": "clause (0.0, 0.0)",
+     "error": 1.0229724501243775e-07,
+     "failed": 20650,
+     "ratio": 1.7976931348623157e+308,
+     "same": false,
+     "slots": 65536,
+     "why": "outside the allowance"
+    }
+   },
+   "same": false,
+   "status": "ok"
+  },
+  "flagship-partial-window": {
+   "quantities": {
+    "num": {
+     "allowance": 0.0,
+     "at": [
+      0,
+      512,
+      0,
+      2
+     ],
+     "bound_by": "clause (0.0, 0.0)",
+     "error": 4.445530276535358e-08,
+     "failed": 50880,
+     "ratio": 1.7976931348623157e+308,
+     "same": false,
+     "slots": 114688,
+     "why": "outside the allowance"
+    }
+   },
+   "same": false,
+   "status": "ok"
+  },
+  "flagship-read-k4": {
+   "quantities": {
+    "num": {
+     "allowance": 0.0,
+     "at": [
+      0,
+      512,
+      0,
+      1
+     ],
+     "bound_by": "clause (0.0, 0.0)",
+     "error": 1.9262681232880795e-07,
+     "failed": 18556,
+     "ratio": 1.7976931348623157e+308,
+     "same": false,
+     "slots": 65536,
+     "why": "outside the allowance"
+    }
+   },
+   "same": false,
+   "status": "ok"
+  },
+  "flagship-struct25": {
+   "quantities": {
+    "num": {
+     "allowance": 0.0,
+     "at": [
+      0,
+      512,
+      0,
+      0
+     ],
+     "bound_by": "clause (0.0, 0.0)",
+     "error": 7.257040809182519e-06,
+     "failed": 15393,
+     "ratio": 1.7976931348623157e+308,
+     "same": false,
+     "slots": 65536,
+     "why": "outside the allowance"
+    }
+   },
+   "same": false,
+   "status": "ok"
+  },
+  "flagship-struct50": {
+   "quantities": {
+    "num": {
+     "allowance": 0.0,
+     "at": [
+      0,
+      512,
+      0,
+      0
+     ],
+     "bound_by": "clause (0.0, 0.0)",
+     "error": 6.100162863731384e-08,
+     "failed": 22554,
+     "ratio": 1.7976931348623157e+308,
+     "same": false,
+     "slots": 65536,
+     "why": "outside the allowance"
+    }
+   },
+   "same": false,
+   "status": "ok"
+  },
+  "flagship-write-k4": {
+   "left": "ValueError: no built carry arm has the key (32, 1, 32, 2, 64, 1); this binary carries [(16, 1, 32, 1, 64, 0), (16, 2, 16, 2, 64, 1), (32, 1, 32, 1, 32, 0), (32, 1, 32, 1, 32, 1), (32, 1, 32, 1, 64, 1), (32, 2, 32, 1, 32, 1), (32, 2, 32, 1, 64, 1)]",
+   "right": "ValueError: no built carry arm has the key (32, 1, 32, 2, 64, 1); this binary carries [(16, 1, 32, 1, 64, 0), (16, 2, 16, 2, 64, 1), (32, 1, 32, 1, 32, 0), (32, 1, 32, 1, 32, 1), (32, 1, 32, 1, 64, 1), (32, 2, 32, 1, 32, 1), (32, 2, 32, 1, 64, 1)]",
+   "status": "refused"
+  },
+  "flat-small-carried": {
+   "quantities": {
+    "num": {
+     "failed": 0,
+     "same": true,
+     "slots": 8192,
+     "worst_ratio": 0.0
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "flat-small-dense": {
+   "quantities": {
+    "num": {
+     "failed": 0,
+     "same": true,
+     "slots": 16384,
+     "worst_ratio": 0.0
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "flat-small-idle-resident": {
+   "quantities": {
+    "num": {
+     "failed": 0,
+     "same": true,
+     "slots": 16384,
+     "worst_ratio": 0.0
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "flat-small-multiwindow": {
+   "quantities": {
+    "num": {
+     "allowance": 0.0,
+     "at": [
+      0,
+      512,
+      0,
+      0
+     ],
+     "bound_by": "clause (0.0, 0.0)",
+     "error": 3.39308205772864e-06,
+     "failed": 14894,
+     "ratio": 1.7976931348623157e+308,
+     "same": false,
+     "slots": 65536,
+     "why": "outside the allowance"
+    }
+   },
+   "same": false,
+   "status": "ok"
+  },
+  "flat-small-struct25": {
+   "quantities": {
+    "num": {
+     "failed": 0,
+     "same": true,
+     "slots": 16384,
+     "worst_ratio": 0.0
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "flat-small-struct50": {
+   "quantities": {
+    "num": {
+     "failed": 0,
+     "same": true,
+     "slots": 16384,
+     "worst_ratio": 0.0
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "identity-passthrough-dense": {
+   "left": "RuntimeError: carry_forward, csrc/rola/src/carry/carry.cu:174, the box holds 256 leaves x 64 channels; a CTA's state is 32768 values",
+   "right": "RuntimeError: carry_forward, csrc/rola/src/carry/carry.cu:174, the box holds 256 leaves x 64 channels; a CTA's state is 32768 values",
+   "status": "refused"
+  },
+  "identity-passthrough-paged": {
+   "left": "RuntimeError: carry_forward, csrc/rola/src/carry/carry.cu:174, the box holds 256 leaves x 64 channels; a CTA's state is 32768 values",
+   "right": "RuntimeError: carry_forward, csrc/rola/src/carry/carry.cu:174, the box holds 256 leaves x 64 channels; a CTA's state is 32768 values",
+   "status": "refused"
+  },
+  "one-box-multiwindow": {
+   "left": "RuntimeError: carry_forward, csrc/rola/src/carry/carry.cu:174, the box holds 256 leaves x 64 channels; a CTA's state is 32768 values",
+   "right": "RuntimeError: carry_forward, csrc/rola/src/carry/carry.cu:174, the box holds 256 leaves x 64 channels; a CTA's state is 32768 values",
+   "status": "refused"
+  },
+  "one-box-short": {
+   "left": "ValueError: no built carry arm has the key (16, 1, 16, 1, 64, 0); this binary carries [(16, 1, 32, 1, 64, 0), (16, 2, 16, 2, 64, 1), (32, 1, 32, 1, 32, 0), (32, 1, 32, 1, 32, 1), (32, 1, 32, 1, 64, 1), (32, 2, 32, 1, 32, 1), (32, 2, 32, 1, 64, 1)]",
+   "right": "ValueError: no built carry arm has the key (16, 1, 16, 1, 64, 0); this binary carries [(16, 1, 32, 1, 64, 0), (16, 2, 16, 2, 64, 1), (32, 1, 32, 1, 32, 0), (32, 1, 32, 1, 32, 1), (32, 1, 32, 1, 64, 1), (32, 2, 32, 1, 32, 1), (32, 2, 32, 1, 64, 1)]",
+   "status": "refused"
+  },
+  "one-box-tiny": {
+   "left": "RuntimeError: carry_forward, csrc/rola/src/carry/carry.cu:174, the box holds 256 leaves x 64 channels; a CTA's state is 32768 values",
+   "right": "RuntimeError: carry_forward, csrc/rola/src/carry/carry.cu:174, the box holds 256 leaves x 64 channels; a CTA's state is 32768 values",
+   "status": "refused"
+  },
+  "single-deposit": {
+   "left": "RuntimeError: carry_forward, csrc/rola/src/carry/carry.cu:174, the box holds 256 leaves x 64 channels; a CTA's state is 32768 values",
+   "right": "RuntimeError: carry_forward, csrc/rola/src/carry/carry.cu:174, the box holds 256 leaves x 64 channels; a CTA's state is 32768 values",
+   "status": "refused"
+  }
+ },
+ "compared": 23,
+ "detail": "this comparison compared 23 quantities and was declared to need 31: a gate that cannot run says so, it does not report a verdict over whatever survived",
+ "differing": [
+  "corner-anti",
+  "corner-cold-read",
+  "corner-concentrated",
+  "corner-read-only",
+  "corner-tied-k4",
+  "corner-window-flip",
+  "flagship-alt-k4-L4096",
+  "flagship-both-k4",
+  "flagship-both-k4-L4096",
+  "flagship-cohort-k4-L4096",
+  "flagship-dv128-alt-k4",
+  "flagship-dv32-alt-k4",
+  "flagship-paged",
+  "flagship-partial-window",
+  "flagship-read-k4",
+  "flagship-struct25",
+  "flagship-struct50",
+  "flat-small-multiwindow"
+ ],
+ "expect": "same",
+ "held": false,
+ "minimum": 31,
+ "quantities": 23,
+ "refused": [
+  "corner-onehot",
+  "flagship-write-k4",
+  "identity-passthrough-dense",
+  "identity-passthrough-paged",
+  "one-box-multiwindow",
+  "one-box-short",
+  "one-box-tiny",
+  "single-deposit"
+ ],
+ "status": "failed",
+ "strategy": "per-slot",
+ "unusable": []
+}

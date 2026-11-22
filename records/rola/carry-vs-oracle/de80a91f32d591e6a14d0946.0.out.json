@@ -1,0 +1,286 @@
+{
+ "bindings": {
+  "left": {
+   "checkout": "rebuild",
+   "executor": "tests.oracle.sides:carry_kernel",
+   "file": "rola/__init__.py",
+   "module": "rola"
+  },
+  "right": {
+   "checkout": "rebuild",
+   "executor": "tests.oracle.sides:carry_reference",
+   "file": "rola/__init__.py",
+   "module": "rola"
+  }
+ },
+ "cells": {
+  "corner-anti": {
+   "left": "NotImplementedError: corner-anti: the readout reference states one read list level at depth two; this carve's partials' scale is stated with its fold's reference",
+   "produced_by": [
+    "right"
+   ],
+   "status": "unusable"
+  },
+  "corner-cold-read": {
+   "left": "NotImplementedError: corner-cold-read: the readout reference states one read list level at depth two; this carve's partials' scale is stated with its fold's reference",
+   "produced_by": [
+    "right"
+   ],
+   "status": "unusable"
+  },
+  "corner-concentrated": {
+   "left": "NotImplementedError: corner-concentrated: the readout reference states one read list level at depth two; this carve's partials' scale is stated with its fold's reference",
+   "produced_by": [
+    "right"
+   ],
+   "status": "unusable"
+  },
+  "corner-onehot": {
+   "left": "ValueError: no built carry arm has the key (16, 2, 16, 2, 64, 0); this binary carries [(32, 1, 32, 1, 32, 0), (32, 2, 32, 2, 32, 0)]",
+   "produced_by": [
+    "right"
+   ],
+   "status": "unusable"
+  },
+  "corner-read-only": {
+   "left": "NotImplementedError: corner-read-only: the readout reference states one read list level at depth two; this carve's partials' scale is stated with its fold's reference",
+   "produced_by": [
+    "right"
+   ],
+   "status": "unusable"
+  },
+  "corner-tied-k4": {
+   "left": "NotImplementedError: corner-tied-k4: the readout reference states one read list level at depth two; this carve's partials' scale is stated with its fold's reference",
+   "produced_by": [
+    "right"
+   ],
+   "status": "unusable"
+  },
+  "corner-window-flip": {
+   "left": "NotImplementedError: corner-window-flip: the readout reference states one read list level at depth two; this carve's partials' scale is stated with its fold's reference",
+   "produced_by": [
+    "right"
+   ],
+   "status": "unusable"
+  },
+  "flagship-alt-k4-L4096": {
+   "quantities": {
+    "num": {
+     "failed": 0,
+     "same": true,
+     "slots": 262144,
+     "worst_ratio": 0.12967867012868622
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "flagship-both-k4": {
+   "left": "ValueError: no built carry arm has the key (32, 1, 32, 1, 32, 1); this binary carries [(32, 1, 32, 1, 32, 0), (32, 2, 32, 2, 32, 0)]",
+   "produced_by": [
+    "right"
+   ],
+   "status": "unusable"
+  },
+  "flagship-both-k4-L4096": {
+   "left": "ValueError: no built carry arm has the key (32, 1, 32, 1, 32, 1); this binary carries [(32, 1, 32, 1, 32, 0), (32, 2, 32, 2, 32, 0)]",
+   "produced_by": [
+    "right"
+   ],
+   "status": "unusable"
+  },
+  "flagship-cohort-k4-L4096": {
+   "quantities": {
+    "num": {
+     "failed": 0,
+     "same": true,
+     "slots": 262144,
+     "worst_ratio": 0.09023870857974596
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "flagship-dv128-alt-k4": {
+   "quantities": {
+    "num": {
+     "failed": 0,
+     "same": true,
+     "slots": 131072,
+     "worst_ratio": 0.05567116591282682
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "flagship-dv32-alt-k4": {
+   "quantities": {
+    "num": {
+     "failed": 0,
+     "same": true,
+     "slots": 32768,
+     "worst_ratio": 0.047597625012397914
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "flagship-paged": {
+   "quantities": {
+    "num": {
+     "failed": 0,
+     "same": true,
+     "slots": 65536,
+     "worst_ratio": 0.05780612164624735
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "flagship-partial-window": {
+   "quantities": {
+    "num": {
+     "failed": 0,
+     "same": true,
+     "slots": 114688,
+     "worst_ratio": 0.08178196517662492
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "flagship-struct25": {
+   "left": "NotImplementedError: flagship-struct25: the readout reference states one read list level at depth two; this carve's partials' scale is stated with its fold's reference",
+   "produced_by": [
+    "right"
+   ],
+   "status": "unusable"
+  },
+  "flagship-struct50": {
+   "left": "NotImplementedError: flagship-struct50: the readout reference states one read list level at depth two; this carve's partials' scale is stated with its fold's reference",
+   "produced_by": [
+    "right"
+   ],
+   "status": "unusable"
+  },
+  "flat-small-carried": {
+   "left": "RuntimeError: carry_forward, csrc/rola/src/carry/carry.cu:193, unit is the contiguous CUDA int8 [BH, windows x W] exponent bytes, got [1, 128]",
+   "produced_by": [
+    "right"
+   ],
+   "status": "unusable"
+  },
+  "flat-small-dense": {
+   "left": "RuntimeError: carry_forward, csrc/rola/src/carry/carry.cu:193, unit is the contiguous CUDA int8 [BH, windows x W] exponent bytes, got [1, 256]",
+   "produced_by": [
+    "right"
+   ],
+   "status": "unusable"
+  },
+  "flat-small-idle-resident": {
+   "left": "RuntimeError: carry_forward, csrc/rola/src/carry/carry.cu:193, unit is the contiguous CUDA int8 [BH, windows x W] exponent bytes, got [1, 256]",
+   "produced_by": [
+    "right"
+   ],
+   "status": "unusable"
+  },
+  "flat-small-multiwindow": {
+   "left": "NotImplementedError: flat-small-multiwindow: the readout reference states one read list level at depth two; this carve's partials' scale is stated with its fold's reference",
+   "produced_by": [
+    "right"
+   ],
+   "status": "unusable"
+  },
+  "flat-small-struct25": {
+   "left": "RuntimeError: carry_forward, csrc/rola/src/carry/carry.cu:193, unit is the contiguous CUDA int8 [BH, windows x W] exponent bytes, got [1, 256]",
+   "produced_by": [
+    "right"
+   ],
+   "status": "unusable"
+  },
+  "flat-small-struct50": {
+   "left": "RuntimeError: carry_forward, csrc/rola/src/carry/carry.cu:193, unit is the contiguous CUDA int8 [BH, windows x W] exponent bytes, got [1, 256]",
+   "produced_by": [
+    "right"
+   ],
+   "status": "unusable"
+  },
+  "identity-passthrough-dense": {
+   "left": "ValueError: no built carry arm has the key (16, 2, 16, 2, 64, 0); this binary carries [(32, 1, 32, 1, 32, 0), (32, 2, 32, 2, 32, 0)]",
+   "produced_by": [
+    "right"
+   ],
+   "status": "unusable"
+  },
+  "identity-passthrough-paged": {
+   "left": "ValueError: no built carry arm has the key (16, 2, 16, 2, 64, 0); this binary carries [(32, 1, 32, 1, 32, 0), (32, 2, 32, 2, 32, 0)]",
+   "produced_by": [
+    "right"
+   ],
+   "status": "unusable"
+  },
+  "one-box-multiwindow": {
+   "left": "ValueError: no built carry arm has the key (16, 2, 16, 2, 64, 0); this binary carries [(32, 1, 32, 1, 32, 0), (32, 2, 32, 2, 32, 0)]",
+   "produced_by": [
+    "right"
+   ],
+   "status": "unusable"
+  },
+  "one-box-short": {
+   "left": "ValueError: no built carry arm has the key (16, 1, 16, 1, 64, 0); this binary carries [(32, 1, 32, 1, 32, 0), (32, 2, 32, 2, 32, 0)]",
+   "produced_by": [
+    "right"
+   ],
+   "status": "unusable"
+  },
+  "one-box-tiny": {
+   "left": "ValueError: no built carry arm has the key (16, 2, 16, 2, 64, 0); this binary carries [(32, 1, 32, 1, 32, 0), (32, 2, 32, 2, 32, 0)]",
+   "produced_by": [
+    "right"
+   ],
+   "status": "unusable"
+  },
+  "single-deposit": {
+   "left": "ValueError: no built carry arm has the key (16, 2, 16, 2, 64, 0); this binary carries [(32, 1, 32, 1, 32, 0), (32, 2, 32, 2, 32, 0)]",
+   "produced_by": [
+    "right"
+   ],
+   "status": "unusable"
+  }
+ },
+ "compared": 6,
+ "detail": "23 of 29 cells produced no comparison (corner-anti, corner-cold-read, corner-concentrated, corner-onehot): a gate that goes green on a cell neither side produced is a gate that measured nothing",
+ "differing": [],
+ "expect": "same",
+ "held": false,
+ "minimum": 29,
+ "quantities": 6,
+ "refused": [],
+ "status": "failed",
+ "strategy": "per-slot",
+ "unusable": [
+  "corner-anti",
+  "corner-cold-read",
+  "corner-concentrated",
+  "corner-onehot",
+  "corner-read-only",
+  "corner-tied-k4",
+  "corner-window-flip",
+  "flagship-both-k4",
+  "flagship-both-k4-L4096",
+  "flagship-struct25",
+  "flagship-struct50",
+  "flat-small-carried",
+  "flat-small-dense",
+  "flat-small-idle-resident",
+  "flat-small-multiwindow",
+  "flat-small-struct25",
+  "flat-small-struct50",
+  "identity-passthrough-dense",
+  "identity-passthrough-paged",
+  "one-box-multiwindow",
+  "one-box-short",
+  "one-box-tiny",
+  "single-deposit"
+ ]
+}

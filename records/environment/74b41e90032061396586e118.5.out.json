@@ -1,0 +1,88 @@
+{
+ "cold_start_seconds": 404.6,
+ "image": "rola-devbox:a94bd4aa548e",
+ "steps": [
+  {
+   "ok": true,
+   "seconds": 3.1,
+   "step": "clone the checkouts",
+   "tail": []
+  },
+  {
+   "ok": true,
+   "seconds": 1.0,
+   "step": "bootstrap",
+   "tail": [
+    "installed bazelisk 1.30.0 -> /root/.local/share/rola/tools/bazelisk-1.30.0/bazelisk",
+    "linked /root/.local/bin/bazel -> /root/.local/share/rola/tools/bazelisk-1.30.0/bazelisk",
+    "bootstrap: `bazel` is the pinned bazelisk; next, bazel run //:init"
+   ]
+  },
+  {
+   "ok": true,
+   "seconds": 394.9,
+   "step": "init",
+   "tail": [
+    "ok   store.root is a rola-results checkout: /workspace/rola-results",
+    "ok   workspace.devtools is a rola-devtools checkout: /workspace/rola-devtools",
+    "dev check: 1 red"
+   ]
+  },
+  {
+   "ok": true,
+   "seconds": 5.6,
+   "step": "dev_env",
+   "tail": [
+    "INFO: Build completed successfully, 6 total actions",
+    "Using CPython 3.11.13 interpreter at: /root/.cache/rola/build/bazel/store/python/cpython-3.11.13-linux-x86_64-gnu/bin/python3.11",
+    "Creating virtual environment at: /workspace/venv-rola"
+   ]
+  },
+  {
+   "ok": true,
+   "seconds": 0.4,
+   "step": "check",
+   "tail": [
+    "INFO: Elapsed time: 0.151s, Critical Path: 0.00s",
+    "INFO: 6 processes: 6 internal.",
+    "INFO: Build completed successfully, 6 total actions"
+   ]
+  },
+  {
+   "ok": true,
+   "seconds": 191.1,
+   "step": "the commit gate",
+   "tail": [
+    "INFO: Elapsed time: 7.968s, Critical Path: 7.49s",
+    "INFO: 31 processes: 150 action cache hit, 1 internal, 4 local, 56 processwrapper-sandbox.",
+    "INFO: Build completed successfully, 31 total actions"
+   ]
+  },
+  {
+   "ok": true,
+   "seconds": 2.0,
+   "step": "GPU, torch and its flash backend",
+   "tail": [
+    "NVIDIA GeForce RTX 3080 Ti 2.14.0+cu130"
+   ]
+  },
+  {
+   "ok": true,
+   "seconds": 0.1,
+   "step": "a host-held lock is held here",
+   "tail": [
+    "held by the host: one lock governs both"
+   ]
+  },
+  {
+   "ok": true,
+   "seconds": 126.9,
+   "step": "the library builds and imports",
+   "tail": [
+    "INFO: Elapsed time: 124.510s, Critical Path: 54.41s",
+    "INFO: 33 processes: 10 internal, 1 local, 22 processwrapper-sandbox.",
+    "INFO: Build completed successfully, 33 total actions"
+   ]
+  }
+ ]
+}
