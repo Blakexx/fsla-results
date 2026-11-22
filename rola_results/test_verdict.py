@@ -13,6 +13,7 @@ from unittest import mock
 from . import index
 from . import store as store_module
 from .store import Store
+from .test_index import isolate_cache
 from .verdict import verdicts
 
 VIEWS = Path(__file__).resolve().parents[1] / "views"
@@ -49,6 +50,7 @@ class VerdictQuery(unittest.TestCase):
     def setUp(self) -> None:
         self.tmp = tempfile.TemporaryDirectory()
         self.addCleanup(self.tmp.cleanup)
+        isolate_cache(self, Path(self.tmp.name) / "cache")
         self.root = Path(self.tmp.name) / "records"
         shutil.copytree(VIEWS, Path(self.tmp.name) / "views")
         clock = (f"2026-09-15T00:{m:02d}:00Z" for m in itertools.count())

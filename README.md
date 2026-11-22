@@ -23,11 +23,14 @@ Nothing derived from two records (a ratio, a baseline) is stored: that is the re
     records/<location>/<key>.json            the record (format 1: key, location, format, semantics, samples)
     records/<location>/<key>.<n>.out.<ext>   sample n's output
     views/<name>.sql                         a query view over the index
-    index.sqlite                             the index, derived from records/ (never committed)
+
+The index is derived from `records/` and lives in the machine's cache, `results/<12 hex of the records path>/index.sqlite`
+under the dev config's `host.build_cache`: it survives between runs (the incremental rebuild is its point) and a wipe only
+costs the next `index` a full read.
 
 ## Queries
 
-    bazel run //:results -- index                  # bring index.sqlite up to date (derived; never committed)
+    bazel run //:results -- index                  # bring the index up to date (derived; a machine cache, never in the checkout)
     bazel run //:results -- sql "SELECT ..."       # any query; the index is brought up to date first
     bazel run //:results -- history LOCATION [--where PATH=VALUE]   # every sample of the matching records
     bazel run //:results -- latest LOCATION [--where PATH=VALUE]    # each matching record's newest good output

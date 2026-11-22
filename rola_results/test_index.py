@@ -7,14 +7,23 @@ import tempfile
 import time
 import unittest
 from pathlib import Path
+from unittest import mock
 
 from . import index
 from .store import Store, key
 
 
+def isolate_cache(case: unittest.TestCase, directory: Path) -> None:
+    """The machine's cache is not the test's: the database a temporary backend gets lands in `directory`."""
+    patcher = mock.patch.object(index, "cache_dir", lambda: Path(directory))
+    patcher.start()
+    case.addCleanup(patcher.stop)
+
+
 class IndexContract(unittest.TestCase):
     def setUp(self) -> None:
         self.tmp = tempfile.TemporaryDirectory()
+        isolate_cache(self, Path(self.tmp.name) / "cache")
         self.root = Path(self.tmp.name) / "records"
         self.views = Path(self.tmp.name) / "views"
         self.views.mkdir()

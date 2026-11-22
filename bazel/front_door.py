@@ -11,6 +11,7 @@ import os
 import sys
 from pathlib import Path
 
+sys.dont_write_bytecode = True  # the front door runs from the checkout: it leaves no bytecode there
 ROOT = Path(__file__).resolve().parents[1]
 SIBLINGS = (ROOT.parent if ROOT.parent.name == "worktrees" else ROOT).parent
 

@@ -9,6 +9,7 @@ from pathlib import Path
 
 from .dashboard import render
 from .store import Store
+from .test_index import isolate_cache
 from .test_verdict import plant
 
 VIEWS = Path(__file__).resolve().parents[1] / "views"
@@ -18,6 +19,7 @@ class Dashboard(unittest.TestCase):
     def setUp(self) -> None:
         self.tmp = tempfile.TemporaryDirectory()
         self.addCleanup(self.tmp.cleanup)
+        isolate_cache(self, Path(self.tmp.name) / "cache")
         self.root = Path(self.tmp.name) / "records"
         shutil.copytree(VIEWS, Path(self.tmp.name) / "views")
 

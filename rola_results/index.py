@@ -8,9 +8,15 @@ JSON, read with SQLite's JSON functions -- `json_extract(semantics, '$.cell')`, 
 know no tool's shape. A tool's shape is a VIEW: each `views/*.sql` beside the records is run after the tables are
 filled. The database is rebuilt incrementally: a record file whose size or modification time changed is read again, a
 vanished one dropped. It refuses a record of a format it does not know.
+
+WHERE IT LIVES: the checkout holds no derived file. The database is a CACHE of the machine, `results/<12 hex of the records
+directory's resolved path>/index.sqlite` under the dev config's `host.build_cache` (rola_devtools.config), one per records
+directory: it must survive between runs (the incremental rebuild is the point, and a full rebuild reads every record), and
+it is wipeable (the next index rebuilds it whole), which is what that directory is for.
 """
 from __future__ import annotations
 
+import hashlib
 import json
 import sqlite3
 from pathlib import Path
@@ -28,8 +34,15 @@ CREATE INDEX IF NOT EXISTS samples_by_location ON samples(location, utc);
 """
 
 
+def cache_dir() -> Path:
+    from rola_devtools.config import machine
+
+    return Path(machine("host.build_cache")) / "results"
+
+
 def default_db(root: Path) -> Path:
-    return Path(root).parent / "index.sqlite"
+    """The records directory's database, in the machine's cache (the module's docstring)."""
+    return cache_dir() / hashlib.sha256(str(Path(root).resolve()).encode()).hexdigest()[:12] / "index.sqlite"
 
 
 def default_views(root: Path) -> Path:
@@ -41,6 +54,7 @@ def build(root: Path | str = ROOT, db: Path | str | None = None, views: Path | s
     root = Path(root)
     db = Path(db) if db else default_db(root)
     views = Path(views) if views else default_views(root)
+    db.parent.mkdir(parents=True, exist_ok=True)
     con = sqlite3.connect(db)
     con.executescript(SCHEMA)
     known = {path: (mtime, size) for path, mtime, size in con.execute("SELECT path, mtime_ns, size FROM files")}
