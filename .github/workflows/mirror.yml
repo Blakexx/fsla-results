@@ -19,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Install the mirror tool
-        run: pip install "fsla-devtools @ git+https://github.com/Blakexx/fsla-devtools@ca72d7baa6a14cd942f1c9fb7e8d2fc247847384"
+        run: pip install "fsla-devtools @ git+https://github.com/Blakexx/fsla-devtools@7da5dde27158330ba07ccda5c962d2d04228425e"
       - name: Export and tripwire
         run: python3 -m fsla_devtools.mirror /tmp/export
       - name: Commit the export as a snapshot on the public mirror
