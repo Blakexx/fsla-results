@@ -47,7 +47,7 @@ view in `views/`, run after every index:
 | `timing_samples` | `timing_members` | timed call, in the order taken: its member's label, arm and cell, its round, rep and position in the rep's random order, and its milliseconds |
 | `memory_rows` | `timing/memory` (fsla-devtools' `measure_memory`) | timing entry alone on a central cell: peak allocated and reserved bytes, what was allocated before the build and after the calls, bytes held outside the caching allocator (a paged state) and the totals with them, label, arm, commit |
 | `instrument_cells` | `fsla/<instrument>` (a fsla checkout's instrument targets) | cell of an instrument run: the run, whether the tool ran on it, and its exit and error when it could not |
-| `instrument_metrics` | `fsla/<instrument>` | every NUMBER an instrument recorded, one row each, in long form: the run, the cell (NULL for the whole-binary `sass` and `registers`), a dotted `metric` (`phase.fold`, `counter.dram__bytes_read.sum`, `census.FoldStream.hmma_per_unit`, `timeline.tensor_mean_full`, `roofline.fraction`, `registers.<region>.peak`, `sass.<cubin>.<function>.hmma`) and its value -- so a reading across runs is a join, never a parser per tool (`bazel run //:results -- instruments --baseline RUN`) |
+| `instrument_metrics` | `fsla/<instrument>` | every NUMBER an instrument recorded, one row each, in long form: the run, the cell (NULL for the whole-binary `sass`), a dotted `metric` (`sass.<cubin>.<function>.hmma`, and one per number each declared instrument records) and its value -- so a reading across runs is a join, never a parser per tool (`bazel run //:results -- instruments --baseline RUN`) |
 | `diff_cells` | `fsla/<name>` and `diff/<surface>` (fsla-devtools' diff targets) | cell and quantity of a stored diff: the claim (`expect`) and whether the diff as a whole `held`, the cell's status (a side that could not produce it, and why), and the quantity's verdict under the strategy with its worst slot (`ratio`, `at`, `bound_by`) |
 | `null_gates` | `timing/null` (fsla-devtools' `measure_null_gate`) | cell of a null gate: the run, whether the entry's two workers agree (the per-rep ratios' interquartile range holds one), the ratio's median and quartiles |
 | `cells` | fleet and local grids | stored grid cell: bench, config, cell, image or local checkouts, row |
@@ -60,7 +60,7 @@ SELECT run, max(utc), count(DISTINCT session) FROM timing_members GROUP BY run O
 -- one session's members that could not run, and why
 SELECT session, label, arm, cell, error FROM timing_members WHERE run = ? AND status = 'failed';
 -- a label's arm on a cell over time: its mean call per stored session
-SELECT utc, git_sha, avg(ms) FROM timing_samples WHERE label = 'tip' AND arm = 'carry_forward' AND cell = 'nl64k-alt-k4'
+SELECT utc, git_sha, avg(ms) FROM timing_samples WHERE label = 'tip' AND arm = 'decode_step' AND cell = 'nl64k-alt-k4'
 GROUP BY location, key, n ORDER BY utc;
 -- two labels in one session, round by round
 SELECT a.round, avg(a.ms) / avg(b.ms) FROM timing_samples a JOIN timing_samples b USING (location, key, n, arm, cell, round)
@@ -92,7 +92,5 @@ checkout's front door (`bazel/bazel`), which runs fsla-devtools' from the machin
 
 ## Publishing
 
-This repository is developed in the private `fsla-results-dev` and published to the public `fsla-results`: a push
-to `master` runs `.github/workflows/mirror.yml`, which publishes the declared files as one snapshot commit
-(`.github/mirror/declarations.json`; the export is [fsla-devtools](https://github.com/Blakexx/fsla-devtools)'). A record carries no machine path, so every record ships as
+This repository is developed in public. A record carries no machine path, so every record ships as
 stored.
