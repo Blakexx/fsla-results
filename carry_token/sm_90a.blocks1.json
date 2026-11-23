@@ -248,16 +248,50 @@
    "variant": "the token-stream carry: both sides, an entry's dense line from a 2 GB table of the tokens",
    "ok": true,
    "detail": "0 of 32768 state values and 0 of 65536 output values differ"
+  },
+  {
+   "lab": "check",
+   "variant": "the token-stream carry: both sides, a token on all four digits of its group, groups of four, an entry's dense line from the tokens' table, loaded a window ahead",
+   "ok": true,
+   "detail": "0 of 32768 state values and 0 of 65536 output values differ"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "the token-stream carry: both sides, a token on all four digits of its group, groups of four, an entry's dense line from the tokens' table, loaded a window ahead, the read side idle, every warp's phases stamped",
+   "reason": "an isolation row: its kernel is not the carry's"
+  },
+  {
+   "lab": "check",
+   "variant": "the token-stream carry: both sides, a token on all four digits of its group, groups of four, an entry's dense line from a 2 GB table of the tokens, loaded a window ahead",
+   "ok": true,
+   "detail": "0 of 32768 state values and 0 of 65536 output values differ"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "the token-stream carry: both sides, a token on all four digits of its group, groups of four, an entry's dense line from a 2 GB table of the tokens, loaded a window ahead, the read side idle, every warp's phases stamped",
+   "reason": "an isolation row: its kernel is not the carry's"
+  },
+  {
+   "lab": "check",
+   "variant": "the token-stream carry: both sides, an entry's dense line from the tokens' table, loaded a window ahead",
+   "ok": true,
+   "detail": "0 of 32768 state values and 0 of 65536 output values differ"
+  },
+  {
+   "lab": "check",
+   "variant": "the token-stream carry: both sides, an entry's dense line from a 2 GB table of the tokens, loaded a window ahead",
+   "ok": true,
+   "detail": "0 of 32768 state values and 0 of 65536 output values differ"
   }
  ],
  "driver": "580.196.07",
  "toolkit": "Build cuda_13.5.r13.5/compiler.39125733_0",
  "git": {
-  "sha": "2f79cae53ef730c92897ceb6a0765761ac6598aa",
+  "sha": "1f5acda6965275943d429101a77a669869710ef4",
   "dirty": false
  },
  "reps": 7,
- "date": "2026-11-23T01:49:24+00:00",
+ "date": "2026-11-23T02:11:21+00:00",
  "utilization_before": 0,
  "inputs": {},
  "results": [
@@ -266,17 +300,17 @@
    "name": "the token-stream carry: both sides",
    "unit": "cycles a window a CTA",
    "samples": [
-    5450.8125,
-    5427.59375,
-    5512.953125,
-    5438.625,
-    5404.265625,
-    5466.125,
-    5442.453125
+    5424.765625,
+    5394.203125,
+    5415.0,
+    5438.703125,
+    5416.90625,
+    5359.296875,
+    5463.234375
    ],
-   "median": 5442.453125,
-   "min": 5404.265625,
-   "max": 5512.953125,
+   "median": 5416.90625,
+   "min": 5359.296875,
+   "max": 5463.234375,
    "unstable": false
   },
   {
@@ -284,15 +318,15 @@
    "name": "the token-stream carry: both sides: the card's clock, the long call's span over its wall time",
    "unit": "GHz",
    "samples": [
-    1.688216,
-    1.687949,
-    1.689639,
-    1.68769,
-    1.688134
+    1.69097,
+    1.69109,
+    1.690267,
+    1.6962,
+    1.699846
    ],
-   "median": 1.688134,
-   "min": 1.68769,
-   "max": 1.689639,
+   "median": 1.69109,
+   "min": 1.690267,
+   "max": 1.699846,
    "unstable": false
   },
   {
@@ -300,15 +334,15 @@
    "name": "the token-stream carry: both sides: the long call by wall time, scaled to 65,536 tokens",
    "unit": "milliseconds",
    "samples": [
-    26.492234,
-    26.504086,
-    26.399332,
-    26.4894,
-    26.492554
+    26.230444,
+    26.231098,
+    26.286776,
+    26.177428,
+    26.113082
    ],
-   "median": 26.492234,
-   "min": 26.399332,
-   "max": 26.504086,
+   "median": 26.230444,
+   "min": 26.113082,
+   "max": 26.286776,
    "unstable": false
   },
   {
@@ -316,17 +350,17 @@
    "name": "the token-stream carry: both sides, the launch's two edges stamped",
    "unit": "cycles a window a CTA",
    "samples": [
-    5253.84375,
-    5285.34375,
-    5289.21875,
-    5263.96875,
-    5306.140625,
-    5276.546875,
-    5287.515625
+    5268.859375,
+    5211.171875,
+    5268.875,
+    5205.328125,
+    5279.984375,
+    5270.6875,
+    5281.640625
    ],
-   "median": 5285.34375,
-   "min": 5253.84375,
-   "max": 5306.140625,
+   "median": 5268.875,
+   "min": 5205.328125,
+   "max": 5281.640625,
    "unstable": false
   },
   {
@@ -334,17 +368,17 @@
    "name": "the token-stream carry: both sides, every warp's phases stamped",
    "unit": "cycles a window a CTA",
    "samples": [
-    5718.453125,
-    5688.3125,
-    5643.359375,
-    5698.328125,
-    5719.859375,
-    5728.140625,
-    5719.171875
+    5625.0,
+    5713.171875,
+    5710.390625,
+    5752.234375,
+    5711.5625,
+    5691.8125,
+    5718.546875
    ],
-   "median": 5718.453125,
-   "min": 5643.359375,
-   "max": 5728.140625,
+   "median": 5711.5625,
+   "min": 5625.0,
+   "max": 5752.234375,
    "unstable": false
   },
   {
@@ -352,17 +386,17 @@
    "name": "the token-stream carry: both sides, every warp's phases stamped, the waits on the tile groups read stamped",
    "unit": "cycles a window a CTA",
    "samples": [
-    5910.375,
-    5916.15625,
-    5939.4375,
-    5959.984375,
-    5978.953125,
-    5980.75,
-    5902.984375
+    6029.375,
+    5938.765625,
+    5970.859375,
+    5955.25,
+    5974.0625,
+    5954.03125,
+    5855.90625
    ],
-   "median": 5939.4375,
-   "min": 5902.984375,
-   "max": 5980.75,
+   "median": 5955.25,
+   "min": 5855.90625,
+   "max": 6029.375,
    "unstable": false
   },
   {
@@ -370,17 +404,17 @@
    "name": "the token-stream carry: both sides, every warp's phases stamped, the waits on the tile groups published stamped",
    "unit": "cycles a window a CTA",
    "samples": [
-    5965.328125,
-    5957.3125,
-    5963.203125,
-    5963.03125,
-    5993.546875,
-    5968.796875,
-    5934.53125
+    5995.046875,
+    5971.3125,
+    5964.984375,
+    5977.359375,
+    5935.484375,
+    5985.796875,
+    5973.765625
    ],
-   "median": 5963.203125,
-   "min": 5934.53125,
-   "max": 5993.546875,
+   "median": 5973.765625,
+   "min": 5935.484375,
+   "max": 5995.046875,
    "unstable": false
   },
   {
@@ -388,17 +422,17 @@
    "name": "the token-stream carry: both sides, every warp's phases stamped, the waits on the panels filled stamped",
    "unit": "cycles a window a CTA",
    "samples": [
-    5695.765625,
-    5700.90625,
-    5720.96875,
-    5658.1875,
-    5731.421875,
-    5642.859375,
-    5724.671875
+    5680.78125,
+    5703.78125,
+    5779.203125,
+    5711.0625,
+    5709.84375,
+    5670.0,
+    5681.84375
    ],
-   "median": 5700.90625,
-   "min": 5642.859375,
-   "max": 5731.421875,
+   "median": 5703.78125,
+   "min": 5670.0,
+   "max": 5779.203125,
    "unstable": false
   },
   {
@@ -406,17 +440,17 @@
    "name": "the token-stream carry: both sides, every warp's phases stamped, the waits on the panels drained stamped",
    "unit": "cycles a window a CTA",
    "samples": [
-    5716.8125,
-    5735.328125,
-    5759.765625,
-    5637.34375,
-    5757.5,
-    5630.625,
-    5716.96875
+    5613.796875,
+    5704.34375,
+    5708.125,
+    5724.640625,
+    5667.78125,
+    5700.59375,
+    5669.46875
    ],
-   "median": 5716.96875,
-   "min": 5630.625,
-   "max": 5759.765625,
+   "median": 5700.59375,
+   "min": 5613.796875,
+   "max": 5724.640625,
    "unstable": false
   },
   {
@@ -424,17 +458,17 @@
    "name": "the token-stream carry: both sides, every warp's phases stamped, the fold's steps by eighths stamped",
    "unit": "cycles a window a CTA",
    "samples": [
-    6207.953125,
-    6261.296875,
-    6213.921875,
-    6226.671875,
-    6181.046875,
-    6124.25,
-    6090.671875
+    6208.59375,
+    6137.515625,
+    6073.015625,
+    6268.46875,
+    6283.03125,
+    6271.703125,
+    6255.515625
    ],
-   "median": 6207.953125,
-   "min": 6090.671875,
-   "max": 6261.296875,
+   "median": 6255.515625,
+   "min": 6073.015625,
+   "max": 6283.03125,
    "unstable": false
   },
   {
@@ -442,17 +476,17 @@
    "name": "the token-stream carry: both sides, every warp's phases stamped, the fold's fill by phases stamped",
    "unit": "cycles a window a CTA",
    "samples": [
-    5975.328125,
-    5912.5625,
-    5812.921875,
-    5978.46875,
-    5871.359375,
-    5986.15625,
-    5957.078125
+    6012.03125,
+    5995.703125,
+    5884.28125,
+    5862.703125,
+    5887.59375,
+    5892.8125,
+    5793.328125
    ],
-   "median": 5957.078125,
-   "min": 5812.921875,
-   "max": 5986.15625,
+   "median": 5887.59375,
+   "min": 5793.328125,
+   "max": 6012.03125,
    "unstable": false
   },
   {
@@ -460,17 +494,17 @@
    "name": "the token-stream carry: both sides, every warp's phases stamped, the waits on the packets landed stamped",
    "unit": "cycles a window a CTA",
    "samples": [
-    5797.109375,
-    5788.53125,
-    5795.453125,
-    5799.5625,
-    5874.875,
-    5772.421875,
-    5775.734375
+    5737.96875,
+    5718.515625,
+    5771.078125,
+    5778.984375,
+    5797.203125,
+    5764.796875,
+    5828.640625
    ],
-   "median": 5795.453125,
-   "min": 5772.421875,
-   "max": 5874.875,
+   "median": 5771.078125,
+   "min": 5718.515625,
+   "max": 5828.640625,
    "unstable": false
   },
   {
@@ -478,17 +512,17 @@
    "name": "the token-stream carry: both sides, every warp's timeline stamped",
    "unit": "cycles a window a CTA",
    "samples": [
-    6219.265625,
-    6158.109375,
-    6174.625,
-    6181.671875,
-    6215.265625,
-    6163.453125,
-    6157.546875
+    6144.390625,
+    6184.703125,
+    6182.96875,
+    6168.546875,
+    6140.0625,
+    6182.25,
+    6168.4375
    ],
-   "median": 6174.625,
-   "min": 6157.546875,
-   "max": 6219.265625,
+   "median": 6168.546875,
+   "min": 6140.0625,
+   "max": 6184.703125,
    "unstable": false
   },
   {
@@ -496,17 +530,17 @@
    "name": "the token-stream carry: both sides, the read side idle, every warp's phases stamped",
    "unit": "cycles a window a CTA",
    "samples": [
-    4076.546875,
-    4079.453125,
-    4070.96875,
-    4078.46875,
-    4081.1875,
-    4078.90625,
-    4078.109375
+    4030.171875,
+    4025.640625,
+    4032.125,
+    4035.125,
+    4024.71875,
+    4015.3125,
+    4017.234375
    ],
-   "median": 4078.46875,
-   "min": 4070.96875,
-   "max": 4081.1875,
+   "median": 4025.640625,
+   "min": 4015.3125,
+   "max": 4035.125,
    "unstable": false
   },
   {
@@ -514,17 +548,17 @@
    "name": "the token-stream carry: both sides, lists overlapping on shared tokens",
    "unit": "cycles a window a CTA",
    "samples": [
-    5429.59375,
-    5456.140625,
-    5467.6875,
-    5463.015625,
-    5510.59375,
-    5474.1875,
-    5448.21875
+    5392.78125,
+    5424.734375,
+    5428.171875,
+    5369.765625,
+    5453.359375,
+    5427.3125,
+    5397.78125
    ],
-   "median": 5463.015625,
-   "min": 5429.59375,
-   "max": 5510.59375,
+   "median": 5424.734375,
+   "min": 5369.765625,
+   "max": 5453.359375,
    "unstable": false
   },
   {
@@ -532,17 +566,17 @@
    "name": "the token-stream carry: both sides, lists overlapping on shared tokens, every warp's phases stamped",
    "unit": "cycles a window a CTA",
    "samples": [
-    5648.734375,
-    5664.640625,
-    5738.890625,
-    5738.4375,
-    5705.875,
-    5624.28125,
-    5678.3125
+    5734.203125,
+    5703.3125,
+    5722.453125,
+    5677.375,
+    5786.859375,
+    5648.953125,
+    5752.953125
    ],
-   "median": 5678.3125,
-   "min": 5624.28125,
-   "max": 5738.890625,
+   "median": 5722.453125,
+   "min": 5648.953125,
+   "max": 5786.859375,
    "unstable": false
   },
   {
@@ -550,17 +584,17 @@
    "name": "the token-stream carry: both sides, groups of four digits",
    "unit": "cycles a window a CTA",
    "samples": [
-    6206.046875,
-    6258.53125,
-    6264.6875,
-    6218.59375,
-    6219.6875,
-    6131.890625,
-    6241.078125
+    6251.53125,
+    6204.90625,
+    6211.796875,
+    6244.78125,
+    6234.140625,
+    6235.703125,
+    6183.65625
    ],
-   "median": 6219.6875,
-   "min": 6131.890625,
-   "max": 6264.6875,
+   "median": 6234.140625,
+   "min": 6183.65625,
+   "max": 6251.53125,
    "unstable": false
   },
   {
@@ -568,17 +602,17 @@
    "name": "the token-stream carry: both sides, registers 176 / 112 / 48",
    "unit": "cycles a window a CTA",
    "samples": [
-    5372.1875,
-    5349.53125,
-    5375.15625,
-    5379.765625,
-    5367.234375,
-    5347.8125,
-    5376.140625
+    5378.109375,
+    5362.421875,
+    5370.75,
+    5296.765625,
+    5352.46875,
+    5303.765625,
+    5328.046875
    ],
-   "median": 5372.1875,
-   "min": 5347.8125,
-   "max": 5379.765625,
+   "median": 5352.46875,
+   "min": 5296.765625,
+   "max": 5378.109375,
    "unstable": false
   },
   {
@@ -586,17 +620,17 @@
    "name": "the token-stream carry: both sides, a token on all four digits of its group, groups of four",
    "unit": "cycles a window a CTA",
    "samples": [
-    4269.390625,
-    4292.8125,
-    4246.546875,
-    4283.5625,
-    4280.078125,
-    4271.640625,
-    4252.671875
+    4253.234375,
+    4266.90625,
+    4250.421875,
+    4261.703125,
+    4286.890625,
+    4203.046875,
+    4278.90625
    ],
-   "median": 4271.640625,
-   "min": 4246.546875,
-   "max": 4292.8125,
+   "median": 4261.703125,
+   "min": 4203.046875,
+   "max": 4286.890625,
    "unstable": false
   },
   {
@@ -604,17 +638,17 @@
    "name": "the token-stream carry: both sides, a token on all four digits of its group, groups of four, the read side idle, every warp's phases stamped",
    "unit": "cycles a window a CTA",
    "samples": [
-    2646.1875,
-    2612.546875,
-    2658.21875,
-    2649.59375,
-    2630.359375,
-    2644.1875,
-    2639.96875
+    2647.1875,
+    2645.46875,
+    2665.828125,
+    2645.546875,
+    2624.84375,
+    2632.96875,
+    2646.765625
    ],
-   "median": 2644.1875,
-   "min": 2612.546875,
-   "max": 2658.21875,
+   "median": 2645.546875,
+   "min": 2624.84375,
+   "max": 2665.828125,
    "unstable": false
   },
   {
@@ -622,17 +656,17 @@
    "name": "the token-stream carry: both sides, a token on all four digits of its group, a list a digit",
    "unit": "cycles a window a CTA",
    "samples": [
-    5429.015625,
-    5421.109375,
-    5434.703125,
-    5439.828125,
-    5386.46875,
-    5394.0625,
-    5474.265625
+    5402.578125,
+    5330.015625,
+    5369.84375,
+    5370.71875,
+    5401.703125,
+    5381.09375,
+    5396.53125
    ],
-   "median": 5429.015625,
-   "min": 5386.46875,
-   "max": 5474.265625,
+   "median": 5381.09375,
+   "min": 5330.015625,
+   "max": 5402.578125,
    "unstable": false
   },
   {
@@ -640,17 +674,17 @@
    "name": "the token-stream carry: both sides, a token on all four digits of its group, a list a digit, the read side idle, every warp's phases stamped",
    "unit": "cycles a window a CTA",
    "samples": [
-    4071.203125,
-    4052.6875,
-    4067.421875,
-    4061.78125,
-    4080.21875,
-    4067.40625,
-    4070.90625
+    4010.15625,
+    4014.0,
+    3995.609375,
+    4004.390625,
+    4015.5625,
+    4014.671875,
+    4014.375
    ],
-   "median": 4067.421875,
-   "min": 4052.6875,
-   "max": 4080.21875,
+   "median": 4014.0,
+   "min": 3995.609375,
+   "max": 4015.5625,
    "unstable": false
   },
   {
@@ -658,17 +692,17 @@
    "name": "the token-stream carry: both sides, groups of four digits, the read side idle, every warp's phases stamped",
    "unit": "cycles a window a CTA",
    "samples": [
-    4078.71875,
-    4108.109375,
-    4084.515625,
-    4096.578125,
-    4089.8125,
-    4111.890625,
-    4095.765625
+    4169.703125,
+    4182.515625,
+    4133.046875,
+    4131.203125,
+    4160.65625,
+    4126.875,
+    4140.921875
    ],
-   "median": 4095.765625,
-   "min": 4078.71875,
-   "max": 4111.890625,
+   "median": 4140.921875,
+   "min": 4126.875,
+   "max": 4182.515625,
    "unstable": false
   },
   {
@@ -676,17 +710,17 @@
    "name": "the token-stream carry: both sides, a token on all 16 digits of its box, groups of four on one run of value lines",
    "unit": "cycles a window a CTA",
    "samples": [
-    4247.59375,
-    4252.140625,
-    4252.21875,
-    4216.890625,
-    4257.59375,
-    4274.6875,
-    4256.671875
+    4245.390625,
+    4304.359375,
+    4232.890625,
+    4270.265625,
+    4255.78125,
+    4281.21875,
+    4249.515625
    ],
-   "median": 4252.21875,
-   "min": 4216.890625,
-   "max": 4274.6875,
+   "median": 4255.78125,
+   "min": 4232.890625,
+   "max": 4304.359375,
    "unstable": false
   },
   {
@@ -694,17 +728,17 @@
    "name": "the token-stream carry: both sides, a token on all four digits of its group, a list a digit, the box's width word choosing its fold",
    "unit": "cycles a window a CTA",
    "samples": [
-    5304.53125,
-    5332.3125,
-    5259.03125,
-    5284.03125,
-    5311.90625,
-    5291.40625,
-    5283.1875
+    5281.1875,
+    5274.34375,
+    5305.125,
+    5261.140625,
+    5232.625,
+    5273.140625,
+    5269.453125
    ],
-   "median": 5291.40625,
-   "min": 5259.03125,
-   "max": 5332.3125,
+   "median": 5273.140625,
+   "min": 5232.625,
+   "max": 5305.125,
    "unstable": false
   },
   {
@@ -712,17 +746,17 @@
    "name": "the token-stream carry: both sides, a token on all four digits of its group, groups of four, the box's width word choosing its fold",
    "unit": "cycles a window a CTA",
    "samples": [
-    4214.8125,
-    4186.859375,
-    4251.40625,
-    4215.0,
-    4250.03125,
-    4234.375,
-    4246.484375
+    4229.671875,
+    4263.96875,
+    4228.921875,
+    4215.09375,
+    4228.78125,
+    4195.0,
+    4206.3125
    ],
-   "median": 4234.375,
-   "min": 4186.859375,
-   "max": 4251.40625,
+   "median": 4228.78125,
+   "min": 4195.0,
+   "max": 4263.96875,
    "unstable": false
   },
   {
@@ -730,17 +764,17 @@
    "name": "the token-stream carry: both sides, a token on all four digits of its group, groups of four, its tiles cleared",
    "unit": "cycles a window a CTA",
    "samples": [
-    4727.53125,
-    4687.390625,
-    4693.234375,
-    4719.75,
-    4703.296875,
-    4725.375,
-    4748.046875
+    4696.265625,
+    4715.140625,
+    4734.859375,
+    4678.765625,
+    4693.328125,
+    4703.75,
+    4718.65625
    ],
-   "median": 4719.75,
-   "min": 4687.390625,
-   "max": 4748.046875,
+   "median": 4703.75,
+   "min": 4678.765625,
+   "max": 4734.859375,
    "unstable": false
   },
   {
@@ -748,17 +782,17 @@
    "name": "the token-stream carry: both sides, a token on all four digits of its group, groups of four, its tiles cleared, the read side idle, every warp's phases stamped",
    "unit": "cycles a window a CTA",
    "samples": [
-    2867.953125,
-    2878.53125,
-    2856.453125,
-    2868.203125,
-    2868.1875,
-    2864.703125,
-    2865.65625
+    2846.640625,
+    2884.84375,
+    2859.1875,
+    2887.59375,
+    2863.15625,
+    2872.046875,
+    2891.171875
    ],
-   "median": 2867.953125,
-   "min": 2856.453125,
-   "max": 2878.53125,
+   "median": 2872.046875,
+   "min": 2846.640625,
+   "max": 2891.171875,
    "unstable": false
   },
   {
@@ -766,17 +800,17 @@
    "name": "the token-stream carry: both sides, a token on all four digits of its group, groups of four in a group's two tile places, its tiles cleared, a group's steps counted at run time",
    "unit": "cycles a window a CTA",
    "samples": [
-    4950.578125,
-    4969.65625,
-    4916.234375,
-    4963.875,
-    4942.6875,
-    4978.21875,
-    4961.75
+    4837.5625,
+    4969.703125,
+    4976.5625,
+    4981.328125,
+    4978.765625,
+    4936.890625,
+    5004.578125
    ],
-   "median": 4961.75,
-   "min": 4916.234375,
-   "max": 4978.21875,
+   "median": 4976.5625,
+   "min": 4837.5625,
+   "max": 5004.578125,
    "unstable": false
   },
   {
@@ -784,17 +818,17 @@
    "name": "the token-stream carry: both sides, a token on all four digits of its group, groups of four in a group's two tile places, its tiles cleared, a group's steps counted at run time, the read side idle, every warp's phases stamped",
    "unit": "cycles a window a CTA",
    "samples": [
-    2999.296875,
-    2992.640625,
-    2988.421875,
-    2994.390625,
-    2998.34375,
-    2986.03125,
-    2998.15625
+    2914.0,
+    2932.046875,
+    2925.140625,
+    2903.96875,
+    2918.46875,
+    2925.78125,
+    2918.828125
    ],
-   "median": 2994.390625,
-   "min": 2986.03125,
-   "max": 2999.296875,
+   "median": 2918.828125,
+   "min": 2903.96875,
+   "max": 2932.046875,
    "unstable": false
   },
   {
@@ -802,17 +836,17 @@
    "name": "the token-stream carry: both sides, a token on two digits of its group, groups of four, its tiles cleared, a group's steps counted at run time",
    "unit": "cycles a window a CTA",
    "samples": [
-    5187.890625,
-    5163.84375,
-    5138.46875,
-    5139.671875,
-    5136.1875,
-    5064.84375,
-    5137.546875
+    5150.734375,
+    5185.34375,
+    5147.359375,
+    5179.640625,
+    5141.359375,
+    5067.03125,
+    5149.75
    ],
-   "median": 5138.46875,
-   "min": 5064.84375,
-   "max": 5187.890625,
+   "median": 5149.75,
+   "min": 5067.03125,
+   "max": 5185.34375,
    "unstable": false
   },
   {
@@ -820,17 +854,17 @@
    "name": "the token-stream carry: both sides, a token on two digits of its group, groups of four, its tiles cleared, a group's steps counted at run time, the read side idle, every warp's phases stamped",
    "unit": "cycles a window a CTA",
    "samples": [
-    3180.328125,
-    3161.421875,
-    3157.359375,
-    3168.265625,
-    3175.5625,
-    3203.0625,
-    3158.65625
+    3131.75,
+    3115.03125,
+    3122.90625,
+    3119.46875,
+    3130.828125,
+    3127.296875,
+    3124.375
    ],
-   "median": 3168.265625,
-   "min": 3157.359375,
-   "max": 3203.0625,
+   "median": 3124.375,
+   "min": 3115.03125,
+   "max": 3131.75,
    "unstable": false
   },
   {
@@ -838,17 +872,17 @@
    "name": "the token-stream carry: both sides, a token on all four digits of its group, groups of four, its tiles cleared, a group's steps a voted loop on its count",
    "unit": "cycles a window a CTA",
    "samples": [
-    5047.796875,
-    4880.703125,
-    4933.703125,
-    4907.921875,
-    4889.65625,
-    5077.546875,
-    5052.171875
+    4941.171875,
+    5047.859375,
+    4968.875,
+    4993.515625,
+    4990.78125,
+    4981.203125,
+    4998.515625
    ],
-   "median": 4933.703125,
-   "min": 4880.703125,
-   "max": 5077.546875,
+   "median": 4990.78125,
+   "min": 4941.171875,
+   "max": 5047.859375,
    "unstable": false
   },
   {
@@ -856,17 +890,17 @@
    "name": "the token-stream carry: both sides, a token on all four digits of its group, groups of four, its tiles cleared, a group's steps a voted loop on its count, the read side idle, every warp's phases stamped",
    "unit": "cycles a window a CTA",
    "samples": [
-    3233.984375,
-    3238.265625,
-    3230.828125,
-    3248.578125,
-    3230.875,
-    3250.390625,
-    3239.03125
+    3196.859375,
+    3191.09375,
+    3200.421875,
+    3190.125,
+    3188.03125,
+    3195.703125,
+    3196.3125
    ],
-   "median": 3238.265625,
-   "min": 3230.828125,
-   "max": 3250.390625,
+   "median": 3195.703125,
+   "min": 3188.03125,
+   "max": 3200.421875,
    "unstable": false
   },
   {
@@ -874,17 +908,17 @@
    "name": "the token-stream carry: both sides, a token on two digits of its group, groups of four, its tiles cleared, a group's steps a voted loop on its count",
    "unit": "cycles a window a CTA",
    "samples": [
-    5500.515625,
-    5288.1875,
-    5291.328125,
-    5285.84375,
-    5470.734375,
-    5287.984375,
-    5486.8125
+    5226.03125,
+    5410.03125,
+    5419.125,
+    5462.390625,
+    5433.25,
+    5431.6875,
+    5241.09375
    ],
-   "median": 5291.328125,
-   "min": 5285.84375,
-   "max": 5500.515625,
+   "median": 5419.125,
+   "min": 5226.03125,
+   "max": 5462.390625,
    "unstable": false
   },
   {
@@ -892,17 +926,17 @@
    "name": "the token-stream carry: both sides, groups of four taking four, two, one and one steps, its tiles cleared, a group's steps a voted loop on its count",
    "unit": "cycles a window a CTA",
    "samples": [
-    5492.25,
-    5326.234375,
-    5477.171875,
-    5468.03125,
-    5531.625,
-    5467.296875,
-    5511.671875
+    5479.03125,
+    5443.15625,
+    5469.59375,
+    5457.90625,
+    5454.953125,
+    5457.71875,
+    5477.3125
    ],
-   "median": 5477.171875,
-   "min": 5326.234375,
-   "max": 5531.625,
+   "median": 5457.90625,
+   "min": 5443.15625,
+   "max": 5479.03125,
    "unstable": false
   },
   {
@@ -910,17 +944,17 @@
    "name": "the token-stream carry: both sides, groups of four taking four, two, one and one steps, its tiles cleared, a group's steps a voted loop on its count, the read side idle, every warp's phases stamped",
    "unit": "cycles a window a CTA",
    "samples": [
-    3718.046875,
-    3710.640625,
-    3729.703125,
-    3701.46875,
-    3740.4375,
-    3696.796875,
-    3722.75
+    3661.6875,
+    3650.125,
+    3656.390625,
+    3656.546875,
+    3647.21875,
+    3654.546875,
+    3654.75
    ],
-   "median": 3718.046875,
-   "min": 3696.796875,
-   "max": 3740.4375,
+   "median": 3654.75,
+   "min": 3647.21875,
+   "max": 3661.6875,
    "unstable": false
   },
   {
@@ -928,17 +962,17 @@
    "name": "the token-stream carry: both sides, a token on all four digits of its group, groups of four, an entry's dense line from the tokens' table",
    "unit": "cycles a window a CTA",
    "samples": [
-    4521.828125,
-    4570.078125,
-    4538.75,
-    4451.265625,
-    4543.5625,
-    4576.625,
-    4544.484375
+    4582.015625,
+    4597.5,
+    4524.578125,
+    4516.421875,
+    4470.453125,
+    4562.796875,
+    4503.296875
    ],
-   "median": 4543.5625,
-   "min": 4451.265625,
-   "max": 4576.625,
+   "median": 4524.578125,
+   "min": 4470.453125,
+   "max": 4597.5,
    "unstable": false
   },
   {
@@ -946,17 +980,17 @@
    "name": "the token-stream carry: both sides, a token on all four digits of its group, groups of four, an entry's dense line from the tokens' table, the read side idle, every warp's phases stamped",
    "unit": "cycles a window a CTA",
    "samples": [
-    2694.46875,
-    2880.8125,
-    2903.21875,
-    2582.8125,
-    2681.546875,
-    2766.1875,
-    2771.078125
+    2845.21875,
+    2600.9375,
+    2735.703125,
+    2810.53125,
+    2915.203125,
+    2600.59375,
+    2843.078125
    ],
-   "median": 2766.1875,
-   "min": 2582.8125,
-   "max": 2903.21875,
+   "median": 2810.53125,
+   "min": 2600.59375,
+   "max": 2915.203125,
    "unstable": true
   },
   {
@@ -964,17 +998,17 @@
    "name": "the token-stream carry: both sides, a token on all four digits of its group, groups of four, an entry's dense line from a 2 GB table of the tokens",
    "unit": "cycles a window a CTA",
    "samples": [
-    4655.796875,
-    4718.75,
-    4689.578125,
-    4733.34375,
-    4694.640625,
-    4660.578125,
-    4677.546875
+    4632.40625,
+    4646.6875,
+    4654.0625,
+    4692.0625,
+    4638.625,
+    4642.34375,
+    4760.90625
    ],
-   "median": 4689.578125,
-   "min": 4655.796875,
-   "max": 4733.34375,
+   "median": 4646.6875,
+   "min": 4632.40625,
+   "max": 4760.90625,
    "unstable": false
   },
   {
@@ -982,17 +1016,17 @@
    "name": "the token-stream carry: both sides, a token on all four digits of its group, groups of four, an entry's dense line from a 2 GB table of the tokens, the read side idle, every warp's phases stamped",
    "unit": "cycles a window a CTA",
    "samples": [
-    2481.203125,
-    2753.046875,
-    2882.53125,
-    2590.953125,
-    2538.4375,
-    2866.296875,
-    3071.265625
+    2515.671875,
+    2785.1875,
+    2893.203125,
+    2953.90625,
+    2900.921875,
+    2733.484375,
+    2975.84375
    ],
-   "median": 2753.046875,
-   "min": 2481.203125,
-   "max": 3071.265625,
+   "median": 2893.203125,
+   "min": 2515.671875,
+   "max": 2975.84375,
    "unstable": true
   },
   {
@@ -1000,17 +1034,17 @@
    "name": "the token-stream carry: both sides, an entry's dense line from the tokens' table",
    "unit": "cycles a window a CTA",
    "samples": [
-    5801.78125,
-    5766.265625,
-    5707.0625,
-    5716.375,
-    5714.890625,
-    5859.203125,
-    5783.15625
+    5811.84375,
+    5733.46875,
+    5811.4375,
+    5818.140625,
+    5798.5625,
+    5805.0625,
+    5781.8125
    ],
-   "median": 5766.265625,
-   "min": 5707.0625,
-   "max": 5859.203125,
+   "median": 5805.0625,
+   "min": 5733.46875,
+   "max": 5818.140625,
    "unstable": false
   },
   {
@@ -1018,21 +1052,231 @@
    "name": "the token-stream carry: both sides, an entry's dense line from a 2 GB table of the tokens",
    "unit": "cycles a window a CTA",
    "samples": [
-    6210.3125,
-    6161.5625,
-    6235.25,
-    6181.28125,
-    6167.375,
-    6176.4375,
-    6153.171875
+    6154.515625,
+    6191.109375,
+    6111.046875,
+    6110.796875,
+    6146.953125,
+    6230.59375,
+    6219.203125
    ],
-   "median": 6176.4375,
-   "min": 6153.171875,
-   "max": 6235.25,
+   "median": 6154.515625,
+   "min": 6110.796875,
+   "max": 6230.59375,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the token-stream carry: both sides, a token on all four digits of its group, groups of four, an entry's dense line from the tokens' table, loaded a window ahead",
+   "unit": "cycles a window a CTA",
+   "samples": [
+    4555.46875,
+    4549.203125,
+    4553.78125,
+    4602.21875,
+    4561.84375,
+    4542.21875,
+    4550.953125
+   ],
+   "median": 4553.78125,
+   "min": 4542.21875,
+   "max": 4602.21875,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the token-stream carry: both sides, a token on all four digits of its group, groups of four, an entry's dense line from the tokens' table, loaded a window ahead, the read side idle, every warp's phases stamped",
+   "unit": "cycles a window a CTA",
+   "samples": [
+    2859.84375,
+    2864.296875,
+    2856.390625,
+    2857.21875,
+    2857.921875,
+    2863.921875,
+    2858.921875
+   ],
+   "median": 2858.921875,
+   "min": 2856.390625,
+   "max": 2864.296875,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the token-stream carry: both sides, a token on all four digits of its group, groups of four, an entry's dense line from a 2 GB table of the tokens, loaded a window ahead",
+   "unit": "cycles a window a CTA",
+   "samples": [
+    4754.296875,
+    4778.46875,
+    4768.890625,
+    4726.78125,
+    4761.96875,
+    4685.0,
+    4734.0
+   ],
+   "median": 4754.296875,
+   "min": 4685.0,
+   "max": 4778.46875,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the token-stream carry: both sides, a token on all four digits of its group, groups of four, an entry's dense line from a 2 GB table of the tokens, loaded a window ahead, the read side idle, every warp's phases stamped",
+   "unit": "cycles a window a CTA",
+   "samples": [
+    2967.5625,
+    2976.15625,
+    2988.8125,
+    2970.828125,
+    2958.171875,
+    2963.5,
+    2963.859375
+   ],
+   "median": 2967.5625,
+   "min": 2958.171875,
+   "max": 2988.8125,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the token-stream carry: both sides, an entry's dense line from the tokens' table, loaded a window ahead",
+   "unit": "cycles a window a CTA",
+   "samples": [
+    6256.359375,
+    6261.15625,
+    6261.28125,
+    6068.484375,
+    6100.546875,
+    6278.859375,
+    6097.734375
+   ],
+   "median": 6256.359375,
+   "min": 6068.484375,
+   "max": 6278.859375,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the token-stream carry: both sides, an entry's dense line from a 2 GB table of the tokens, loaded a window ahead",
+   "unit": "cycles a window a CTA",
+   "samples": [
+    6450.1875,
+    6453.0625,
+    6452.9375,
+    6443.015625,
+    6454.515625,
+    6433.1875,
+    6462.78125
+   ],
+   "median": 6452.9375,
+   "min": 6433.1875,
+   "max": 6462.78125,
    "unstable": false
   }
  ],
  "kernels": {
+  "void carry_token::window<(int)0, (int)0, (int)14336>(long long *, const unsigned int *, const unsigned int *, const unsigned int *, float *, unsigned int *, unsigned long long *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 158,
+    "IMAD.MOV.U32": 157,
+    "R2UR": 156,
+    "STG.E": 128,
+    "UMOV": 124,
+    "SHF.R.U32.HI": 109,
+    "FMUL": 96,
+    "IADD3": 76,
+    "IMAD.X": 74,
+    "BRA": 66,
+    "PRMT": 65,
+    "HGMMA.64": 64
+   }
+  },
+  "void carry_token::window<(int)0, (int)0, (int)10240>(long long *, const unsigned int *, const unsigned int *, const unsigned int *, float *, unsigned int *, unsigned long long *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 158,
+    "IMAD.MOV.U32": 157,
+    "R2UR": 156,
+    "STG.E": 128,
+    "UMOV": 124,
+    "SHF.R.U32.HI": 109,
+    "FMUL": 96,
+    "IADD3": 76,
+    "IMAD.X": 74,
+    "BRA": 66,
+    "PRMT": 65,
+    "HGMMA.64": 64
+   }
+  },
+  "void carry_token::window<(int)2, (int)0, (int)14417>(long long *, const unsigned int *, const unsigned int *, const unsigned int *, float *, unsigned int *, unsigned long long *, int)": {
+   "regs": 128,
+   "ops": {
+    "STG.E": 128,
+    "PRMT": 64,
+    "LOP3.LUT": 47,
+    "SHF.R.U32.HI": 46,
+    "IMAD.MOV.U32": 43,
+    "R2UR": 32,
+    "FMUL": 32,
+    "IMAD": 29,
+    "I2FP.F32.U32": 26,
+    "IMAD.WIDE.U32": 23,
+    "VIADD": 22,
+    "BRA": 21
+   }
+  },
+  "void carry_token::window<(int)0, (int)0, (int)14416>(long long *, const unsigned int *, const unsigned int *, const unsigned int *, float *, unsigned int *, unsigned long long *, int)": {
+   "regs": 128,
+   "ops": {
+    "STG.E": 128,
+    "UMOV": 122,
+    "LOP3.LUT": 112,
+    "FMUL": 96,
+    "SHF.R.U32.HI": 89,
+    "BRA": 66,
+    "F2FP.F16.F32.PACK_AB": 64,
+    "PRMT": 64,
+    "I2FP.F32.U32": 58,
+    "UIADD3": 51,
+    "USHF.R.U32.HI": 49,
+    "F2FP.BF16.F32.PACK_AB": 48
+   }
+  },
+  "void carry_token::window<(int)2, (int)0, (int)10321>(long long *, const unsigned int *, const unsigned int *, const unsigned int *, float *, unsigned int *, unsigned long long *, int)": {
+   "regs": 128,
+   "ops": {
+    "STG.E": 128,
+    "PRMT": 64,
+    "LOP3.LUT": 47,
+    "SHF.R.U32.HI": 46,
+    "IMAD.MOV.U32": 43,
+    "R2UR": 32,
+    "FMUL": 32,
+    "IMAD": 29,
+    "I2FP.F32.U32": 26,
+    "IMAD.WIDE.U32": 23,
+    "VIADD": 22,
+    "BRA": 21
+   }
+  },
+  "void carry_token::window<(int)0, (int)0, (int)10320>(long long *, const unsigned int *, const unsigned int *, const unsigned int *, float *, unsigned int *, unsigned long long *, int)": {
+   "regs": 128,
+   "ops": {
+    "STG.E": 128,
+    "UMOV": 122,
+    "LOP3.LUT": 112,
+    "FMUL": 96,
+    "SHF.R.U32.HI": 89,
+    "BRA": 66,
+    "F2FP.F16.F32.PACK_AB": 64,
+    "PRMT": 64,
+    "I2FP.F32.U32": 58,
+    "UIADD3": 51,
+    "USHF.R.U32.HI": 49,
+    "F2FP.BF16.F32.PACK_AB": 48
+   }
+  },
   "void carry_token::window<(int)0, (int)0, (int)6144>(long long *, const unsigned int *, const unsigned int *, const unsigned int *, float *, unsigned int *, unsigned long long *, int)": {
    "regs": 128,
    "ops": {
@@ -1142,12 +1386,12 @@
     "PRMT": 64,
     "LOP3.LUT": 47,
     "SHF.R.U32.HI": 38,
-    "IMAD.MOV.U32": 35,
+    "IMAD.MOV.U32": 36,
     "IMAD": 33,
     "R2UR": 32,
     "FMUL": 32,
     "BRA": 29,
-    "VIADD": 25,
+    "VIADD": 26,
     "STS.128": 21,
     "UMOV": 18
    }
@@ -1181,16 +1425,16 @@
     "BRA": 33,
     "FMUL": 32,
     "IMAD": 29,
-    "VIADD": 27,
+    "VIADD": 28,
     "STS.128": 21,
-    "I2FP.F32.U32": 18
+    "NOP": 18
    }
   },
   "void carry_token::window<(int)0, (int)0, (int)848>(long long *, const unsigned int *, const unsigned int *, const unsigned int *, float *, unsigned int *, unsigned long long *, int)": {
    "regs": 128,
    "ops": {
-    "LOP3.LUT": 129,
     "STG.E": 128,
+    "LOP3.LUT": 127,
     "UMOV": 122,
     "FMUL": 96,
     "SHF.R.U32.HI": 88,
@@ -1198,7 +1442,7 @@
     "F2FP.F16.F32.PACK_AB": 64,
     "R2UR": 64,
     "PRMT": 64,
-    "IMAD.MOV.U32": 60,
+    "IMAD.MOV.U32": 59,
     "UIADD3": 52,
     "I2FP.F32.U32": 50
    }
@@ -1214,10 +1458,10 @@
     "R2UR": 32,
     "FMUL": 32,
     "IMAD": 28,
-    "VIADD": 23,
+    "VIADD": 24,
     "BRA": 21,
     "STS.128": 21,
-    "I2FP.F32.U32": 18
+    "NOP": 19
    }
   },
   "void carry_token::window<(int)0, (int)0, (int)336>(long long *, const unsigned int *, const unsigned int *, const unsigned int *, float *, unsigned int *, unsigned long long *, int)": {
@@ -1249,8 +1493,8 @@
     "PRMT": 129,
     "FMUL": 128,
     "BRA": 91,
-    "IADD3": 82,
-    "IMAD.X": 81,
+    "IADD3": 84,
+    "IMAD.X": 83,
     "I2FP.F32.U32": 68
    }
   },
@@ -1265,10 +1509,10 @@
     "SHF.R.U32.HI": 45,
     "STS.64": 32,
     "FMUL": 32,
-    "VIADD": 29,
+    "VIADD": 30,
     "IMAD": 29,
-    "BRA": 21,
-    "IADD3": 21
+    "IADD3": 22,
+    "BRA": 21
    }
   },
   "void carry_token::window<(int)2, (int)0, (int)81>(long long *, const unsigned int *, const unsigned int *, const unsigned int *, float *, unsigned int *, unsigned long long *, int)": {
@@ -1282,10 +1526,10 @@
     "R2UR": 32,
     "FMUL": 32,
     "IMAD": 27,
-    "VIADD": 23,
+    "VIADD": 24,
     "BRA": 21,
     "STS.128": 21,
-    "I2FP.F32.U32": 18
+    "NOP": 20
    }
   },
   "void carry_token::window<(int)0, (int)0, (int)80>(long long *, const unsigned int *, const unsigned int *, const unsigned int *, float *, unsigned int *, unsigned long long *, int)": {
@@ -1315,8 +1559,8 @@
     "STG.E": 128,
     "SHF.R.U32.HI": 101,
     "FMUL": 96,
-    "IADD3": 75,
-    "IMAD.X": 74,
+    "IADD3": 76,
+    "IMAD.X": 75,
     "BRA": 66,
     "PRMT": 65,
     "HGMMA.64": 64
@@ -1346,8 +1590,8 @@
     "R2UR": 144,
     "STG.E": 128,
     "LOP3.LUT": 92,
-    "IADD3": 67,
-    "IMAD.X": 67,
+    "IADD3": 68,
+    "IMAD.X": 68,
     "PRMT": 65,
     "SEL": 64,
     "SHF.R.U32.HI": 58,
@@ -1364,10 +1608,10 @@
     "R2UR": 146,
     "STG.E": 128,
     "UMOV": 123,
-    "IADD3": 113,
-    "IMAD.X": 112,
+    "IADD3": 114,
+    "IMAD.X": 113,
     "SHF.R.U32.HI": 107,
-    "VIADD": 104,
+    "VIADD": 105,
     "FMUL": 96,
     "ULOP3.LUT": 85,
     "BRA": 68
@@ -1383,8 +1627,8 @@
     "UMOV": 126,
     "SHF.R.U32.HI": 99,
     "FMUL": 96,
-    "IADD3": 80,
-    "IMAD.X": 79,
+    "IADD3": 81,
+    "IMAD.X": 80,
     "PRMT": 65,
     "BRA": 64,
     "HGMMA.64": 64
@@ -1400,8 +1644,8 @@
     "UMOV": 126,
     "SHF.R.U32.HI": 96,
     "FMUL": 96,
-    "IADD3": 80,
-    "IMAD.X": 79,
+    "IADD3": 81,
+    "IMAD.X": 80,
     "PRMT": 65,
     "BRA": 64,
     "HGMMA.64": 64
@@ -1417,11 +1661,11 @@
     "UMOV": 122,
     "SHF.R.U32.HI": 96,
     "FMUL": 96,
-    "IADD3": 80,
-    "IMAD.X": 79,
+    "IADD3": 81,
+    "IMAD.X": 80,
+    "VIADD": 65,
     "PRMT": 65,
-    "BRA": 64,
-    "VIADD": 64
+    "BRA": 64
    }
   },
   "void carry_token::window<(int)2, (int)8, (int)0>(long long *, const unsigned int *, const unsigned int *, const unsigned int *, float *, unsigned int *, unsigned long long *, int)": {
@@ -1434,9 +1678,9 @@
     "UMOV": 122,
     "SHF.R.U32.HI": 97,
     "FMUL": 96,
-    "IADD3": 78,
-    "IMAD.X": 77,
-    "VIADD": 68,
+    "IADD3": 79,
+    "IMAD.X": 78,
+    "VIADD": 69,
     "ULOP3.LUT": 67,
     "PRMT": 65
    }
@@ -1451,11 +1695,11 @@
     "STG.E": 128,
     "SHF.R.U32.HI": 97,
     "FMUL": 96,
-    "IADD3": 78,
-    "IMAD.X": 77,
+    "IADD3": 79,
+    "IMAD.X": 78,
+    "VIADD": 65,
     "PRMT": 65,
-    "BRA": 64,
-    "VIADD": 64
+    "BRA": 64
    }
   },
   "void carry_token::window<(int)2, (int)2, (int)0>(long long *, const unsigned int *, const unsigned int *, const unsigned int *, float *, unsigned int *, unsigned long long *, int)": {
@@ -1468,10 +1712,10 @@
     "STG.E": 128,
     "SHF.R.U32.HI": 96,
     "FMUL": 96,
-    "IADD3": 80,
-    "IMAD.X": 79,
+    "IADD3": 81,
+    "IMAD.X": 80,
     "ULOP3.LUT": 71,
-    "VIADD": 68,
+    "VIADD": 69,
     "PRMT": 65
    }
   },
@@ -1485,11 +1729,11 @@
     "UMOV": 125,
     "SHF.R.U32.HI": 96,
     "FMUL": 96,
-    "IADD3": 80,
-    "IMAD.X": 79,
+    "IADD3": 81,
+    "IMAD.X": 80,
     "ULOP3.LUT": 71,
-    "BRA": 68,
-    "VIADD": 68
+    "VIADD": 69,
+    "BRA": 68
    }
   },
   "void carry_token::window<(int)2, (int)0, (int)0>(long long *, const unsigned int *, const unsigned int *, const unsigned int *, float *, unsigned int *, unsigned long long *, int)": {
@@ -1502,8 +1746,8 @@
     "UMOV": 126,
     "SHF.R.U32.HI": 96,
     "FMUL": 96,
-    "IADD3": 80,
-    "IMAD.X": 79,
+    "IADD3": 81,
+    "IMAD.X": 80,
     "PRMT": 65,
     "BRA": 64,
     "HGMMA.64": 64
@@ -1519,8 +1763,8 @@
     "STG.E": 128,
     "SHF.R.U32.HI": 96,
     "FMUL": 96,
-    "IADD3": 75,
-    "IMAD.X": 74,
+    "IADD3": 76,
+    "IMAD.X": 75,
     "BRA": 65,
     "PRMT": 65,
     "HGMMA.64": 64
@@ -1536,8 +1780,8 @@
     "STG.E": 128,
     "SHF.R.U32.HI": 101,
     "FMUL": 96,
-    "IADD3": 75,
-    "IMAD.X": 74,
+    "IADD3": 76,
+    "IMAD.X": 75,
     "BRA": 66,
     "PRMT": 65,
     "HGMMA.64": 64
