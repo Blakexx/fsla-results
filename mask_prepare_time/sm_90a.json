@@ -1,0 +1,247 @@
+{
+ "experiment": "mask_prepare_time",
+ "question": "what does the LIBRARY's mask-preparation pass cost a token on a mask it reads once, at each of the seven group sizes its density byte can select -- the three the lab's own kernel measured (`mask_prep`: 1, 4 and 16 digits) and the four no kernel has (32 to 256 digits, whose lanes OR by warp shuffle)?",
+ "arch": "sm_90a",
+ "device": "NVIDIA H100 80GB HBM3",
+ "checks": [
+  {
+   "lab": "check",
+   "variant": "groups of 1 digit",
+   "ok": true,
+   "detail": "0 words, 0 counts and 0 totals differ over 528 windows of 256 groups"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "groups of 1 digit, the mask once-read",
+   "reason": "the row above checks this kernel's first round; this one is its time"
+  },
+  {
+   "lab": "check",
+   "variant": "groups of 4 digits",
+   "ok": true,
+   "detail": "0 words, 0 counts and 0 totals differ over 2112 windows of 64 groups"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "groups of 4 digits, the mask once-read",
+   "reason": "the row above checks this kernel's first round; this one is its time"
+  },
+  {
+   "lab": "check",
+   "variant": "groups of 16 digits",
+   "ok": true,
+   "detail": "0 words, 0 counts and 0 totals differ over 8448 windows of 16 groups"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "groups of 16 digits, the mask once-read",
+   "reason": "the row above checks this kernel's first round; this one is its time"
+  },
+  {
+   "lab": "check",
+   "variant": "groups of 32 digits",
+   "ok": true,
+   "detail": "0 words, 0 counts and 0 totals differ over 8448 windows of 8 groups"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "groups of 32 digits, the mask once-read",
+   "reason": "the row above checks this kernel's first round; this one is its time"
+  },
+  {
+   "lab": "check",
+   "variant": "groups of 64 digits",
+   "ok": true,
+   "detail": "0 words, 0 counts and 0 totals differ over 8448 windows of 4 groups"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "groups of 64 digits, the mask once-read",
+   "reason": "the row above checks this kernel's first round; this one is its time"
+  },
+  {
+   "lab": "check",
+   "variant": "groups of 128 digits",
+   "ok": true,
+   "detail": "0 words, 0 counts and 0 totals differ over 8448 windows of 2 groups"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "groups of 128 digits, the mask once-read",
+   "reason": "the row above checks this kernel's first round; this one is its time"
+  },
+  {
+   "lab": "check",
+   "variant": "groups of 256 digits",
+   "ok": true,
+   "detail": "0 words, 0 counts and 0 totals differ over 8448 windows of 1 groups"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "groups of 256 digits, the mask once-read",
+   "reason": "the row above checks this kernel's first round; this one is its time"
+  }
+ ],
+ "driver": "580.196.07",
+ "toolkit": "Build cuda_13.5.r13.5/compiler.39125733_0",
+ "git": {
+  "sha": "0fb5eb86f74c237d2cabd76145748f73cb4c419c",
+  "dirty": false
+ },
+ "reps": 7,
+ "date": "2026-11-24T19:30:01+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "groups of 1 digit, the mask once-read",
+   "unit": "SM-cycles a token",
+   "samples": [
+    4.075317,
+    4.020377,
+    4.041627,
+    4.044347,
+    4.036402,
+    4.020041,
+    4.042727
+   ],
+   "median": 4.041627,
+   "min": 4.020041,
+   "max": 4.075317,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "groups of 4 digits, the mask once-read",
+   "unit": "SM-cycles a token",
+   "samples": [
+    3.4655,
+    3.451042,
+    3.418287,
+    3.391011,
+    3.37877,
+    3.442795,
+    3.3766
+   ],
+   "median": 3.418287,
+   "min": 3.3766,
+   "max": 3.4655,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "groups of 16 digits, the mask once-read",
+   "unit": "SM-cycles a token",
+   "samples": [
+    2.734972,
+    2.7382,
+    2.741368,
+    2.732305,
+    2.731721,
+    2.736024,
+    2.735242
+   ],
+   "median": 2.735242,
+   "min": 2.731721,
+   "max": 2.741368,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "groups of 32 digits, the mask once-read",
+   "unit": "SM-cycles a token",
+   "samples": [
+    2.806584,
+    2.818978,
+    2.814124,
+    2.821401,
+    2.826581,
+    2.832042,
+    2.814855
+   ],
+   "median": 2.818978,
+   "min": 2.806584,
+   "max": 2.832042,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "groups of 64 digits, the mask once-read",
+   "unit": "SM-cycles a token",
+   "samples": [
+    2.775534,
+    2.757075,
+    2.763577,
+    2.756365,
+    2.766321,
+    2.771218,
+    2.769092
+   ],
+   "median": 2.766321,
+   "min": 2.756365,
+   "max": 2.775534,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "groups of 128 digits, the mask once-read",
+   "unit": "SM-cycles a token",
+   "samples": [
+    2.68214,
+    2.67504,
+    2.668056,
+    2.672167,
+    2.673853,
+    2.671882,
+    2.669948
+   ],
+   "median": 2.672167,
+   "min": 2.668056,
+   "max": 2.68214,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "groups of 256 digits, the mask once-read",
+   "unit": "SM-cycles a token",
+   "samples": [
+    2.539168,
+    2.539672,
+    2.544757,
+    2.550301,
+    2.548533,
+    2.548367,
+    2.549122
+   ],
+   "median": 2.548367,
+   "min": 2.539168,
+   "max": 2.550301,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "mask_prepare_time::timed(long long *, fsla::mask_prepare::detail::Args, const unsigned char *, unsigned char *, int, int)": {
+   "regs": 64,
+   "ops": {
+    "IMAD.MOV.U32": 349,
+    "LOP3.LUT": 152,
+    "SEL": 124,
+    "SHF.L.U32": 115,
+    "LEA": 97,
+    "LEA.HI.X": 97,
+    "LDG.E.128": 96,
+    "IMAD": 86,
+    "SHF.L.U64.HI": 86,
+    "IADD3": 75,
+    "VIADD": 73,
+    "ISETP.GE.AND": 67
+   }
+  }
+ },
+ "counters": {},
+ "counters_exception": {
+  "host": "Nebius preemptible VM, NVIDIA H100 80GB HBM3: its counters not yet read there",
+  "instead": "the kernels' own clocks and the SASS's static counts"
+ }
+}
