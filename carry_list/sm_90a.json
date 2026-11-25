@@ -1,0 +1,133 @@
+{
+ "experiment": "carry_list",
+ "question": "what does the LIBRARY's listing cost -- a warp turning a group's window of mask words into its live tokens in order, 32 places a round, counting inline -- by how many tokens are live, and where the words are two levels' ANDed?",
+ "arch": "sm_90a",
+ "device": "NVIDIA H100 80GB HBM3",
+ "checks": [
+  {
+   "lab": "check",
+   "variant": "a window of 64 live tokens, one level's words",
+   "ok": true,
+   "detail": "0 of 539874 places and 0 of 8448 totals differ"
+  },
+  {
+   "lab": "check",
+   "variant": "every token of a window live",
+   "ok": true,
+   "detail": "0 of 8650752 places and 0 of 8448 totals differ"
+  },
+  {
+   "lab": "check",
+   "variant": "a window of 64 live tokens, two levels' words ANDed, each a quarter live",
+   "ok": true,
+   "detail": "0 of 540301 places and 0 of 8448 totals differ"
+  }
+ ],
+ "driver": "580.196.07",
+ "toolkit": "Build cuda_13.5.r13.5/compiler.39125733_0",
+ "git": {
+  "sha": "ded43e54df78defd9fb500c7ec32b3d033240e6e",
+  "dirty": false
+ },
+ "reps": 7,
+ "date": "2026-11-25T04:15:50+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "a window of 64 live tokens, one level's words",
+   "unit": "cycles a listed token a CTA",
+   "samples": [
+    2.000331,
+    2.000141,
+    2.000468,
+    2.000889,
+    2.00026,
+    2.000171,
+    2.000703
+   ],
+   "median": 2.000331,
+   "min": 2.000141,
+   "max": 2.000889,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "every token of a window live",
+   "unit": "cycles a listed token a CTA",
+   "samples": [
+    1.007173,
+    1.0072,
+    1.007179,
+    1.007238,
+    1.007218,
+    1.007215,
+    1.007234
+   ],
+   "median": 1.007215,
+   "min": 1.007173,
+   "max": 1.007238,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a window of 64 live tokens, two levels' words ANDed, each a quarter live",
+   "unit": "cycles a listed token a CTA",
+   "samples": [
+    2.003216,
+    2.001976,
+    2.001832,
+    2.003127,
+    2.003154,
+    2.002624,
+    2.002053
+   ],
+   "median": 2.002624,
+   "min": 2.001832,
+   "max": 2.003216,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void carry_list::listed<(int)0>(long long *, const unsigned int *, const unsigned int *, unsigned int *, int *, int *, int)": {
+   "regs": 31,
+   "ops": {
+    "SEL": 20,
+    "IMAD.IADD": 16,
+    "NOP": 14,
+    "LOP3.LUT": 11,
+    "SHFL.IDX": 8,
+    "IMAD": 7,
+    "IMAD.SHL.U32": 7,
+    "IADD3": 7,
+    "ISETP.GE.AND": 7,
+    "S2R": 6,
+    "POPC": 6,
+    "ISETP.GT.AND": 6
+   }
+  },
+  "void carry_list::listed<(int)1>(long long *, const unsigned int *, const unsigned int *, unsigned int *, int *, int *, int)": {
+   "regs": 32,
+   "ops": {
+    "SEL": 20,
+    "IMAD.IADD": 16,
+    "NOP": 13,
+    "LOP3.LUT": 12,
+    "IADD3": 10,
+    "ISETP.GE.AND": 9,
+    "IMAD.SHL.U32": 8,
+    "SHFL.IDX": 8,
+    "S2R": 6,
+    "ULDC.64": 6,
+    "IMAD": 6,
+    "VIADD": 6
+   }
+  }
+ },
+ "counters": {},
+ "counters_exception": {
+  "host": "Nebius preemptible VM, NVIDIA H100 80GB HBM3: its counters not yet read there",
+  "instead": "the kernels' own clocks and the SASS's static counts"
+ }
+}
