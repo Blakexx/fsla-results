@@ -1,0 +1,68 @@
+{
+ "experiment": "carry_skeleton",
+ "question": "does the LIBRARY's carry skeleton -- its three roles at their registers, their barriers and their order of work, every component a stub -- run a call's windows to the end on every multiprocessor, and what does a window of nothing but its barriers cost?",
+ "arch": "sm_90a",
+ "device": "NVIDIA H100 80GB HBM3",
+ "checks": [
+  {
+   "lab": "check",
+   "variant": "the skeleton's roles, every component a stub",
+   "ok": true,
+   "detail": "0 of 132 CTAs did not return from every warp"
+  }
+ ],
+ "driver": "580.196.07",
+ "toolkit": "Build cuda_13.5.r13.5/compiler.39125733_0",
+ "git": {
+  "sha": "2ec94cc6503abd8ee8d44c6eb0cccc6de9cbd8d8",
+  "dirty": false
+ },
+ "reps": 7,
+ "date": "2026-11-25T03:33:32+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "the skeleton's roles, every component a stub",
+   "unit": "cycles a window a CTA",
+   "samples": [
+    848.761926,
+    848.593572,
+    848.883582,
+    848.525746,
+    848.837092,
+    848.753462,
+    848.736654
+   ],
+   "median": 848.753462,
+   "min": 848.525746,
+   "max": 848.883582,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "carry_skeleton::timed(long long *, int *, int)": {
+   "regs": 128,
+   "ops": {
+    "BRA": 67,
+    "SYNCS.PHASECHK.TRANS64.TRYWAIT": 32,
+    "NOP": 21,
+    "SYNCS.ARRIVE.TRANS64.A1T0": 16,
+    "SYNCS.EXCH.64": 12,
+    "SHF.L.U32": 10,
+    "FENCE.VIEW.ASYNC.S": 9,
+    "MEMBAR.ALL.CTA": 8,
+    "LOP3.LUT": 8,
+    "UMOV": 7,
+    "ISETP.GE.AND": 7,
+    "LDC": 6
+   }
+  }
+ },
+ "counters": {},
+ "counters_exception": {
+  "host": "Nebius preemptible VM, NVIDIA H100 80GB HBM3: its counters not yet read there",
+  "instead": "the kernels' own clocks and the SASS's static counts"
+ }
+}
