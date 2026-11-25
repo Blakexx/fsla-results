@@ -63,16 +63,28 @@
    "variant": "16 warps, a table of 1024 rows, a CTA its own rows, an instruction one piece of 32 rows into its brick's run",
    "ok": true,
    "detail": "0 of 4325376 ring words differ"
+  },
+  {
+   "lab": "check",
+   "variant": "16 warps, a table of 1024 rows, a CTA its own rows, a row's pieces turned within its 128 bytes where they land",
+   "ok": true,
+   "detail": "0 of 1081344 ring words differ"
+  },
+  {
+   "lab": "check",
+   "variant": "16 warps, a table of 1024 rows, a CTA its own rows, a row's pieces turned within its 128 bytes where they are read",
+   "ok": true,
+   "detail": "0 of 1081344 ring words differ"
   }
  ],
  "driver": "580.196.07",
  "toolkit": "Build cuda_13.5.r13.5/compiler.39125733_0",
  "git": {
-  "sha": "c1beb9052f0f4fc2d2fcb6bf26aaa1ee737f3e0b",
+  "sha": "0124dd4080878d03df7156a54915f2e1fc299e1f",
   "dirty": false
  },
  "reps": 7,
- "date": "2026-11-25T04:31:44+00:00",
+ "date": "2026-11-25T04:40:26+00:00",
  "utilization_before": 0,
  "inputs": {},
  "results": [
@@ -81,17 +93,17 @@
    "name": "4 warps, a table of 65536 rows, a CTA its own rows",
    "unit": "cycles a 128-byte row a CTA",
    "samples": [
-    5.792625,
-    5.792061,
-    5.792468,
-    5.792449,
-    5.792927,
-    5.792295,
-    5.792583
+    5.787468,
+    5.786997,
+    5.787822,
+    5.78863,
+    5.784953,
+    5.78716,
+    5.787698
    ],
-   "median": 5.792468,
-   "min": 5.792061,
-   "max": 5.792927,
+   "median": 5.787468,
+   "min": 5.784953,
+   "max": 5.78863,
    "unstable": false
   },
   {
@@ -99,17 +111,17 @@
    "name": "16 warps, a table of 65536 rows, a CTA its own rows",
    "unit": "cycles a 128-byte row a CTA",
    "samples": [
-    3.683619,
-    3.692197,
-    3.701072,
-    3.695097,
-    3.687616,
-    3.696971,
-    3.693684
+    3.674366,
+    3.689923,
+    3.674985,
+    3.679645,
+    3.674035,
+    3.690804,
+    3.690759
    ],
-   "median": 3.693684,
-   "min": 3.683619,
-   "max": 3.701072,
+   "median": 3.679645,
+   "min": 3.674035,
+   "max": 3.690804,
    "unstable": false
   },
   {
@@ -117,17 +129,17 @@
    "name": "4 warps, a table of 1048576 rows, a CTA its own rows",
    "unit": "cycles a 128-byte row a CTA",
    "samples": [
-    14.64796,
-    14.638052,
-    14.630752,
-    14.630898,
-    14.619531,
-    14.618992,
-    14.631099
+    14.616441,
+    14.623321,
+    14.617856,
+    14.6225,
+    14.627363,
+    14.623854,
+    14.634292
    ],
-   "median": 14.630898,
-   "min": 14.618992,
-   "max": 14.64796,
+   "median": 14.623321,
+   "min": 14.616441,
+   "max": 14.634292,
    "unstable": false
   },
   {
@@ -135,17 +147,17 @@
    "name": "16 warps, a table of 1048576 rows, a CTA its own rows",
    "unit": "cycles a 128-byte row a CTA",
    "samples": [
-    3.792417,
-    3.796783,
-    3.795716,
-    3.794922,
-    3.795255,
-    3.795982,
-    3.778131
+    3.792439,
+    3.778862,
+    3.772115,
+    3.776576,
+    3.787547,
+    3.77902,
+    3.775857
    ],
-   "median": 3.795255,
-   "min": 3.778131,
-   "max": 3.796783,
+   "median": 3.778862,
+   "min": 3.772115,
+   "max": 3.792439,
    "unstable": false
   },
   {
@@ -153,17 +165,17 @@
    "name": "16 warps, a table of 1024 rows, a CTA its own rows",
    "unit": "cycles a 128-byte row a CTA",
    "samples": [
-    2.699192,
-    2.700869,
-    2.69868,
-    2.699127,
-    2.697495,
-    2.698317,
-    2.698315
+    2.69616,
+    2.694648,
+    2.692485,
+    2.697526,
+    2.690687,
+    2.691395,
+    2.69442
    ],
-   "median": 2.69868,
-   "min": 2.697495,
-   "max": 2.700869,
+   "median": 2.69442,
+   "min": 2.690687,
+   "max": 2.697526,
    "unstable": false
   },
   {
@@ -171,17 +183,17 @@
    "name": "16 warps, a table of 1024 rows, a unit's 16 CTAs the same rows",
    "unit": "cycles a 128-byte row a CTA",
    "samples": [
-    2.553446,
-    2.549839,
-    2.55583,
-    2.54932,
-    2.552827,
-    2.554006,
-    2.551449
+    2.547546,
+    2.554795,
+    2.547436,
+    2.547028,
+    2.552567,
+    2.544929,
+    2.550947
    ],
-   "median": 2.552827,
-   "min": 2.54932,
-   "max": 2.55583,
+   "median": 2.547546,
+   "min": 2.544929,
+   "max": 2.554795,
    "unstable": false
   },
   {
@@ -189,17 +201,17 @@
    "name": "16 warps, a table of 1024 rows, a CTA its own rows, the copy's size a register",
    "unit": "cycles a 128-byte row a CTA",
    "samples": [
-    2.702063,
-    2.695001,
-    2.698991,
-    2.696366,
-    2.701811,
-    2.698713,
-    2.697547
+    2.660252,
+    2.664359,
+    2.660482,
+    2.672319,
+    2.676737,
+    2.67595,
+    2.677126
    ],
-   "median": 2.698713,
-   "min": 2.695001,
-   "max": 2.702063,
+   "median": 2.672319,
+   "min": 2.660252,
+   "max": 2.677126,
    "unstable": false
   },
   {
@@ -207,17 +219,17 @@
    "name": "16 warps, a table of 1024 rows, a CTA its own rows, a row's pieces in bricks 17 lines apart",
    "unit": "cycles a 128-byte row a CTA",
    "samples": [
-    16.569562,
-    16.568164,
-    16.568815,
-    16.562182,
-    16.560734,
-    16.571048,
-    16.5652
+    16.49995,
+    16.509764,
+    16.508426,
+    16.512227,
+    16.515953,
+    16.514586,
+    16.509452
    ],
-   "median": 16.568164,
-   "min": 16.560734,
-   "max": 16.571048,
+   "median": 16.509764,
+   "min": 16.49995,
+   "max": 16.515953,
    "unstable": false
   },
   {
@@ -225,17 +237,17 @@
    "name": "16 warps, a table of 1024 rows, a CTA its own rows, the copy's size a register, a row's pieces in bricks 17 lines apart",
    "unit": "cycles a 128-byte row a CTA",
    "samples": [
-    16.567099,
-    16.56901,
-    16.573132,
-    16.581601,
-    16.581016,
-    16.566209,
-    16.569382
+    16.516039,
+    16.51367,
+    16.499968,
+    16.520408,
+    16.516536,
+    16.522469,
+    16.518698
    ],
-   "median": 16.569382,
-   "min": 16.566209,
-   "max": 16.581601,
+   "median": 16.516536,
+   "min": 16.499968,
+   "max": 16.522469,
    "unstable": false
   },
   {
@@ -243,21 +255,91 @@
    "name": "16 warps, a table of 1024 rows, a CTA its own rows, an instruction one piece of 32 rows into its brick's run",
    "unit": "cycles a 128-byte row a CTA",
    "samples": [
-    16.617909,
-    16.606949,
-    16.591389,
-    16.618835,
-    16.621398,
-    16.620981,
-    16.620802
+    16.565687,
+    16.567522,
+    16.561193,
+    16.571969,
+    16.582089,
+    16.568734,
+    16.575548
    ],
-   "median": 16.618835,
-   "min": 16.591389,
-   "max": 16.621398,
+   "median": 16.568734,
+   "min": 16.561193,
+   "max": 16.582089,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "16 warps, a table of 1024 rows, a CTA its own rows, a row's pieces turned within its 128 bytes where they land",
+   "unit": "cycles a 128-byte row a CTA",
+   "samples": [
+    2.715157,
+    2.719367,
+    2.714515,
+    2.71883,
+    2.716644,
+    2.714238,
+    2.714877
+   ],
+   "median": 2.715157,
+   "min": 2.714238,
+   "max": 2.719367,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "16 warps, a table of 1024 rows, a CTA its own rows, a row's pieces turned within its 128 bytes where they are read",
+   "unit": "cycles a 128-byte row a CTA",
+   "samples": [
+    2.723178,
+    2.719143,
+    2.721281,
+    2.722642,
+    2.720216,
+    2.724785,
+    2.719073
+   ],
+   "median": 2.721281,
+   "min": 2.719073,
+   "max": 2.724785,
    "unstable": false
   }
  ],
  "kernels": {
+  "void value_fetch::fetch<(int)16, (int)8>(long long *, const unsigned int *, unsigned int *, int, int, int)": {
+   "regs": 22,
+   "ops": {
+    "IMAD": 16,
+    "LOP3.LUT": 13,
+    "NOP": 10,
+    "VIADD": 9,
+    "SHF.R.U32.HI": 7,
+    "LDS": 7,
+    "IMAD.SHL.U32": 5,
+    "IMAD.X": 5,
+    "BRA": 5,
+    "LEA": 4,
+    "LDGSTS.E.BYPASS.128": 4,
+    "SHF.R.S32.HI": 4
+   }
+  },
+  "void value_fetch::fetch<(int)16, (int)4>(long long *, const unsigned int *, unsigned int *, int, int, int)": {
+   "regs": 24,
+   "ops": {
+    "IMAD": 18,
+    "LOP3.LUT": 13,
+    "NOP": 12,
+    "VIADD": 9,
+    "SHF.R.U32.HI": 7,
+    "LDS": 7,
+    "IADD3": 6,
+    "IMAD.SHL.U32": 5,
+    "IMAD.X": 5,
+    "BRA": 5,
+    "LEA": 4,
+    "LDGSTS.E.BYPASS.128": 4
+   }
+  },
   "void value_fetch::fetch_runs<(int)16>(long long *, const unsigned int *, unsigned int *, int, int)": {
    "regs": 16,
    "ops": {
