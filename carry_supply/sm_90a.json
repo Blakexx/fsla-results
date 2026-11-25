@@ -1,0 +1,199 @@
+{
+ "experiment": "carry_supply",
+ "question": "does the LIBRARY's carry CTA, its fold warpgroups' SUPPLY built and every other component a stub, list each of its sets' live tokens from a call's real operands -- the masks, the mask-preparation pass's prepared words, the densities the carve is derived from -- and land their value lines in its rows, exactly; and what does a window cost a CTA with that supply running?",
+ "arch": "sm_90a",
+ "device": "NVIDIA H100 80GB HBM3",
+ "checks": [
+  {
+   "lab": "check",
+   "variant": "the cell, the write side masked on level 0: the folds' supply, the rest stubs",
+   "ok": true,
+   "detail": "12288 rounds of 128 CTAs: 0 missing, 0 twice, 0 not a set's, 0 tokens and 0 row bytes differ, 0 rows off a boundary, 0 warps past the kept rounds; 0 leaves not in one set; the carve 32 x 16, write groups 4 and 256, 4 sets a fold"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "the cell, the write side masked on level 0: the folds' supply, the rest stubs, timed",
+   "reason": "the row above checks this kernel's supply through its tracer; this is its time with the library's tracer"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "the cell, the write side masked on level 0: the folds' supply, the rest stubs, every warp's timeline stamped",
+   "reason": "the first row checks this kernel's supply; this is its timeline, its waits and phases stamped"
+  },
+  {
+   "lab": "check",
+   "variant": "the write side masked on both levels: the folds' supply, the rest stubs",
+   "ok": true,
+   "detail": "16384 rounds of 128 CTAs: 0 missing, 0 twice, 0 not a set's, 0 tokens and 0 row bytes differ, 0 rows off a boundary, 0 warps past the kept rounds; 0 leaves not in one set; the carve 256 x 2, write groups 4 and 32, 32 sets a fold"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "the write side masked on both levels: the folds' supply, the rest stubs, timed",
+   "reason": "the row above checks this kernel's supply through its tracer; this is its time with the library's tracer"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "the write side masked on both levels: the folds' supply, the rest stubs, every warp's timeline stamped",
+   "reason": "the first row checks this kernel's supply; this is its timeline, its waits and phases stamped"
+  }
+ ],
+ "driver": "580.196.07",
+ "toolkit": "Build cuda_13.5.r13.5/compiler.39125733_0",
+ "git": {
+  "sha": "b64785d8496bb937cccdb2dd7fc8540ac740b9cd",
+  "dirty": false
+ },
+ "reps": 7,
+ "date": "2026-11-25T07:03:49+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "the cell, the write side masked on level 0: the folds' supply, the rest stubs, timed",
+   "unit": "cycles a window a CTA",
+   "samples": [
+    3321.372192,
+    3323.065552,
+    3322.128906,
+    3322.678101,
+    3322.523315,
+    3322.925293,
+    3322.863159
+   ],
+   "median": 3322.678101,
+   "min": 3321.372192,
+   "max": 3323.065552,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the cell, the write side masked on level 0: the folds' supply, the rest stubs, every warp's timeline stamped",
+   "unit": "cycles a window a CTA",
+   "samples": [
+    4664.082642,
+    4660.661987,
+    4662.055542,
+    4669.819458,
+    4662.795532,
+    4667.197266,
+    4667.554443
+   ],
+   "median": 4664.082642,
+   "min": 4660.661987,
+   "max": 4669.819458,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the write side masked on both levels: the folds' supply, the rest stubs, timed",
+   "unit": "cycles a window a CTA",
+   "samples": [
+    11485.928345,
+    11485.089844,
+    11486.304077,
+    11486.714111,
+    11485.754272,
+    11485.302612,
+    11485.152222
+   ],
+   "median": 11485.754272,
+   "min": 11485.089844,
+   "max": 11486.714111,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the write side masked on both levels: the folds' supply, the rest stubs, every warp's timeline stamped",
+   "unit": "cycles a window a CTA",
+   "samples": [
+    13973.995972,
+    13976.184814,
+    13969.473267,
+    13975.489502,
+    13962.61792,
+    13979.395386,
+    13974.069702
+   ],
+   "median": 13974.069702,
+   "min": 13962.61792,
+   "max": 13979.395386,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void carry_supply::timed<(int)1>(long long *, unsigned long long *, fsla::carry::detail::Operands)": {
+   "regs": 128,
+   "ops": {
+    "SEL": 513,
+    "LOP3.LUT": 240,
+    "IMAD.MOV.U32": 222,
+    "VIADD": 206,
+    "ISETP.NE.AND": 118,
+    "IMAD": 117,
+    "SHF.L.U32": 109,
+    "IADD3": 102,
+    "ISETP.LT.U32.AND": 98,
+    "IMAD.WIDE.U32": 94,
+    "IMAD.IADD": 91,
+    "ISETP.GT.U32.AND": 86
+   }
+  },
+  "void carry_supply::timed<(int)0>(long long *, unsigned long long *, fsla::carry::detail::Operands)": {
+   "regs": 128,
+   "ops": {
+    "SEL": 513,
+    "LOP3.LUT": 226,
+    "VIADD": 130,
+    "IMAD.MOV.U32": 126,
+    "ISETP.NE.AND": 124,
+    "IMAD": 116,
+    "SHF.L.U32": 109,
+    "IADD3": 101,
+    "IMAD.IADD": 91,
+    "ISETP.GT.U32.AND": 86,
+    "IMAD.X": 75,
+    "IMAD.MOV": 69
+   }
+  },
+  "carry_supply::kept(fsla::carry::detail::Operands, unsigned char *, int *)": {
+   "regs": 128,
+   "ops": {
+    "SEL": 514,
+    "LOP3.LUT": 229,
+    "VIADD": 132,
+    "ISETP.NE.AND": 127,
+    "IMAD.MOV.U32": 124,
+    "IMAD": 118,
+    "SHF.L.U32": 110,
+    "IADD3": 104,
+    "IMAD.IADD": 96,
+    "ISETP.GT.U32.AND": 86,
+    "IMAD.X": 76,
+    "IMAD.MOV": 69
+   }
+  },
+  "void fsla::mask_prepare::detail::mask_prepare_kernel<denseref::arch::BuildTag<denseref::arch::Build{(int)900}>>(fsla::mask_prepare::detail::Args, const unsigned char *, unsigned char *)": {
+   "regs": 64,
+   "ops": {
+    "IMAD.MOV.U32": 356,
+    "LOP3.LUT": 168,
+    "IADD3": 132,
+    "LDG.E.128": 96,
+    "SHF.L.U32": 91,
+    "SEL": 89,
+    "SHF.L.U64.HI": 83,
+    "IMAD": 81,
+    "ISETP.GE.AND": 80,
+    "VIADD": 76,
+    "IADD3.X": 73,
+    "IMAD.U32": 69
+   }
+  }
+ },
+ "counters": {},
+ "counters_exception": {
+  "host": "Nebius preemptible VM, NVIDIA H100 80GB HBM3: its counters not yet read there",
+  "instead": "the kernels' own clocks and the SASS's static counts"
+ }
+}
