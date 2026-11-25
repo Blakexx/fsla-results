@@ -1,0 +1,205 @@
+{
+ "experiment": "value_fetch",
+ "question": "a token's 128-byte value fetched by index straight into shared memory by the THREADS' OWN ASYNCHRONOUS COPIES (`cp.async.cg`, 16 bytes a thread an instruction, no register holds the data): what does a scattered row cost a CTA, by the warps issuing, by the table, and where a unit's 16 CTAs ask for the same rows -- beside a warp's own loads (`value_gather`: 8.5 cycles with four warps) and the bulk engine's request (`state_move`: 32.8)?",
+ "arch": "sm_90a",
+ "device": "NVIDIA H100 80GB HBM3",
+ "checks": [
+  {
+   "lab": "check",
+   "variant": "4 warps, a table of 65536 rows, a CTA its own rows",
+   "ok": true,
+   "detail": "0 of 270336 ring words differ"
+  },
+  {
+   "lab": "check",
+   "variant": "16 warps, a table of 65536 rows, a CTA its own rows",
+   "ok": true,
+   "detail": "0 of 1081344 ring words differ"
+  },
+  {
+   "lab": "check",
+   "variant": "4 warps, a table of 1048576 rows, a CTA its own rows",
+   "ok": true,
+   "detail": "0 of 270336 ring words differ"
+  },
+  {
+   "lab": "check",
+   "variant": "16 warps, a table of 1048576 rows, a CTA its own rows",
+   "ok": true,
+   "detail": "0 of 1081344 ring words differ"
+  },
+  {
+   "lab": "check",
+   "variant": "16 warps, a table of 1024 rows, a CTA its own rows",
+   "ok": true,
+   "detail": "0 of 1081344 ring words differ"
+  },
+  {
+   "lab": "check",
+   "variant": "16 warps, a table of 1024 rows, a unit's 16 CTAs the same rows",
+   "ok": true,
+   "detail": "0 of 1081344 ring words differ"
+  }
+ ],
+ "driver": "580.196.07",
+ "toolkit": "Build cuda_13.5.r13.5/compiler.39125733_0",
+ "git": {
+  "sha": "1564c9793f183828e7c77006973abdeb47f8db35",
+  "dirty": false
+ },
+ "reps": 7,
+ "date": "2026-11-25T02:08:21+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "4 warps, a table of 65536 rows, a CTA its own rows",
+   "unit": "cycles a 128-byte row a CTA",
+   "samples": [
+    5.782172,
+    5.781978,
+    5.780814,
+    5.781067,
+    5.781733,
+    5.781362,
+    5.782332
+   ],
+   "median": 5.781733,
+   "min": 5.780814,
+   "max": 5.782332,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "16 warps, a table of 65536 rows, a CTA its own rows",
+   "unit": "cycles a 128-byte row a CTA",
+   "samples": [
+    3.69438,
+    3.682961,
+    3.681018,
+    3.69531,
+    3.69097,
+    3.685637,
+    3.685219
+   ],
+   "median": 3.685637,
+   "min": 3.681018,
+   "max": 3.69531,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 warps, a table of 1048576 rows, a CTA its own rows",
+   "unit": "cycles a 128-byte row a CTA",
+   "samples": [
+    14.620927,
+    14.610966,
+    14.620885,
+    14.617125,
+    14.628167,
+    14.619743,
+    14.617348
+   ],
+   "median": 14.619743,
+   "min": 14.610966,
+   "max": 14.628167,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "16 warps, a table of 1048576 rows, a CTA its own rows",
+   "unit": "cycles a 128-byte row a CTA",
+   "samples": [
+    3.792816,
+    3.788971,
+    3.789241,
+    3.79009,
+    3.787445,
+    3.789974,
+    3.787339
+   ],
+   "median": 3.789241,
+   "min": 3.787339,
+   "max": 3.792816,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "16 warps, a table of 1024 rows, a CTA its own rows",
+   "unit": "cycles a 128-byte row a CTA",
+   "samples": [
+    2.698609,
+    2.700097,
+    2.698249,
+    2.694978,
+    2.696172,
+    2.697473,
+    2.69826
+   ],
+   "median": 2.698249,
+   "min": 2.694978,
+   "max": 2.700097,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "16 warps, a table of 1024 rows, a unit's 16 CTAs the same rows",
+   "unit": "cycles a 128-byte row a CTA",
+   "samples": [
+    2.559139,
+    2.549826,
+    2.553251,
+    2.556035,
+    2.556751,
+    2.557055,
+    2.551739
+   ],
+   "median": 2.556035,
+   "min": 2.549826,
+   "max": 2.559139,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void value_fetch::fetch<(int)16>(long long *, const unsigned int *, unsigned int *, int, int, int)": {
+   "regs": 22,
+   "ops": {
+    "IMAD": 14,
+    "NOP": 11,
+    "VIADD": 8,
+    "LOP3.LUT": 7,
+    "SHF.R.U32.HI": 7,
+    "LDS": 7,
+    "IADD3": 5,
+    "IMAD.X": 5,
+    "BRA": 5,
+    "LDGSTS.E.BYPASS.128": 4,
+    "SHF.R.S32.HI": 4,
+    "LDC": 3
+   }
+  },
+  "void value_fetch::fetch<(int)4>(long long *, const unsigned int *, unsigned int *, int, int, int)": {
+   "regs": 22,
+   "ops": {
+    "IMAD": 14,
+    "NOP": 11,
+    "VIADD": 8,
+    "LOP3.LUT": 7,
+    "SHF.R.U32.HI": 7,
+    "LDS": 7,
+    "IADD3": 5,
+    "IMAD.X": 5,
+    "BRA": 5,
+    "LDGSTS.E.BYPASS.128": 4,
+    "SHF.R.S32.HI": 4,
+    "LDC": 3
+   }
+  }
+ },
+ "counters": {},
+ "counters_exception": {
+  "host": "Nebius preemptible VM, NVIDIA H100 80GB HBM3: its counters not yet read there",
+  "instead": "the kernels' own clocks and the SASS's static counts"
+ }
+}
