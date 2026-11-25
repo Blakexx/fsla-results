@@ -1,6 +1,6 @@
 {
  "experiment": "mask_prepare_time",
- "question": "what does the LIBRARY's mask-preparation pass cost a token on a mask it reads once, at each of the seven group sizes its density byte can select -- the three the lab's own kernel measured (`mask_prep`: 1, 4 and 16 digits) and the four no kernel has (32 to 256 digits, whose lanes OR by warp shuffle)?",
+ "question": "what does the LIBRARY's mask-preparation pass cost a token on a mask it reads once, at each of the eight group sizes the pass prepares on a level of 256 digits (a group of 256 is the level whole: nothing is prepared) -- the three the lab's own kernel measured (`mask_prep`: 1, 4 and 16 digits), 2 and 8, and the three whose lanes OR by warp shuffle (32 to 128 digits)?",
  "arch": "sm_90a",
  "device": "NVIDIA H100 80GB HBM3",
  "checks": [
@@ -17,6 +17,17 @@
   },
   {
    "lab": "check",
+   "variant": "groups of 2 digits",
+   "ok": true,
+   "detail": "0 words and 0 totals differ over 1056 windows of 128 groups"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "groups of 2 digits, the mask once-read",
+   "reason": "the row above checks this kernel's first round; this one is its time"
+  },
+  {
+   "lab": "check",
    "variant": "groups of 4 digits",
    "ok": true,
    "detail": "0 words and 0 totals differ over 2112 windows of 64 groups"
@@ -24,6 +35,17 @@
   {
    "lab": "unchecked",
    "variant": "groups of 4 digits, the mask once-read",
+   "reason": "the row above checks this kernel's first round; this one is its time"
+  },
+  {
+   "lab": "check",
+   "variant": "groups of 8 digits",
+   "ok": true,
+   "detail": "0 words and 0 totals differ over 4224 windows of 32 groups"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "groups of 8 digits, the mask once-read",
    "reason": "the row above checks this kernel's first round; this one is its time"
   },
   {
@@ -69,27 +91,16 @@
    "lab": "unchecked",
    "variant": "groups of 128 digits, the mask once-read",
    "reason": "the row above checks this kernel's first round; this one is its time"
-  },
-  {
-   "lab": "check",
-   "variant": "groups of 256 digits",
-   "ok": true,
-   "detail": "0 words and 0 totals differ over 8448 windows of 1 groups"
-  },
-  {
-   "lab": "unchecked",
-   "variant": "groups of 256 digits, the mask once-read",
-   "reason": "the row above checks this kernel's first round; this one is its time"
   }
  ],
  "driver": "580.196.07",
  "toolkit": "Build cuda_13.5.r13.5/compiler.39125733_0",
  "git": {
-  "sha": "9c2a0f30cac3a7c7d31559cefb4276c8b53984a0",
+  "sha": "4dca551b13dc198504b1495118e6343cac1f12ed",
   "dirty": false
  },
  "reps": 7,
- "date": "2026-11-25T02:56:56+00:00",
+ "date": "2026-11-25T05:49:13+00:00",
  "utilization_before": 0,
  "inputs": {},
  "results": [
@@ -98,17 +109,35 @@
    "name": "groups of 1 digit, the mask once-read",
    "unit": "SM-cycles a token",
    "samples": [
-    2.741365,
-    2.740191,
-    2.739196,
-    2.737358,
-    2.740662,
-    2.741707,
-    2.74124
+    2.764559,
+    2.765884,
+    2.768278,
+    2.764401,
+    2.767177,
+    2.769265,
+    2.768108
    ],
-   "median": 2.740662,
-   "min": 2.737358,
-   "max": 2.741707,
+   "median": 2.767177,
+   "min": 2.764401,
+   "max": 2.769265,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "groups of 2 digits, the mask once-read",
+   "unit": "SM-cycles a token",
+   "samples": [
+    3.803379,
+    3.711328,
+    3.674628,
+    3.714363,
+    3.694382,
+    3.687252,
+    3.673419
+   ],
+   "median": 3.694382,
+   "min": 3.673419,
+   "max": 3.803379,
    "unstable": false
   },
   {
@@ -116,17 +145,35 @@
    "name": "groups of 4 digits, the mask once-read",
    "unit": "SM-cycles a token",
    "samples": [
-    3.092549,
-    3.090911,
-    3.092566,
-    3.092909,
-    3.086233,
-    3.087924,
-    3.086025
+    3.121491,
+    3.126182,
+    3.119782,
+    3.119817,
+    3.116923,
+    3.119318,
+    3.12189
    ],
-   "median": 3.090911,
-   "min": 3.086025,
-   "max": 3.092909,
+   "median": 3.119817,
+   "min": 3.116923,
+   "max": 3.126182,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "groups of 8 digits, the mask once-read",
+   "unit": "SM-cycles a token",
+   "samples": [
+    2.794535,
+    2.789255,
+    2.793008,
+    2.787875,
+    2.788749,
+    2.792341,
+    2.793531
+   ],
+   "median": 2.792341,
+   "min": 2.787875,
+   "max": 2.794535,
    "unstable": false
   },
   {
@@ -134,17 +181,17 @@
    "name": "groups of 16 digits, the mask once-read",
    "unit": "SM-cycles a token",
    "samples": [
-    2.643597,
-    2.634651,
-    2.638105,
-    2.634789,
-    2.64205,
-    2.647465,
-    2.643944
+    2.64887,
+    2.649873,
+    2.646761,
+    2.641421,
+    2.647036,
+    2.6464,
+    2.643093
    ],
-   "median": 2.64205,
-   "min": 2.634651,
-   "max": 2.647465,
+   "median": 2.646761,
+   "min": 2.641421,
+   "max": 2.649873,
    "unstable": false
   },
   {
@@ -152,17 +199,17 @@
    "name": "groups of 32 digits, the mask once-read",
    "unit": "SM-cycles a token",
    "samples": [
-    2.672289,
-    2.666,
-    2.659385,
-    2.674447,
-    2.666202,
-    2.661332,
-    2.661619
+    2.6705,
+    2.663456,
+    2.660038,
+    2.666221,
+    2.676363,
+    2.667495,
+    2.669144
    ],
-   "median": 2.666,
-   "min": 2.659385,
-   "max": 2.674447,
+   "median": 2.667495,
+   "min": 2.660038,
+   "max": 2.676363,
    "unstable": false
   },
   {
@@ -170,17 +217,17 @@
    "name": "groups of 64 digits, the mask once-read",
    "unit": "SM-cycles a token",
    "samples": [
-    2.657226,
-    2.66339,
-    2.662523,
-    2.660113,
-    2.671402,
-    2.664662,
-    2.662512
+    2.669273,
+    2.668178,
+    2.661743,
+    2.667802,
+    2.666184,
+    2.671518,
+    2.673683
    ],
-   "median": 2.662523,
-   "min": 2.657226,
-   "max": 2.671402,
+   "median": 2.668178,
+   "min": 2.661743,
+   "max": 2.673683,
    "unstable": false
   },
   {
@@ -188,35 +235,17 @@
    "name": "groups of 128 digits, the mask once-read",
    "unit": "SM-cycles a token",
    "samples": [
-    2.610563,
-    2.616893,
-    2.593807,
-    2.617459,
-    2.600472,
-    2.61298,
-    2.610666
+    2.605298,
+    2.601307,
+    2.592528,
+    2.599484,
+    2.620519,
+    2.601104,
+    2.604126
    ],
-   "median": 2.610666,
-   "min": 2.593807,
-   "max": 2.617459,
-   "unstable": false
-  },
-  {
-   "lab": "result",
-   "name": "groups of 256 digits, the mask once-read",
-   "unit": "SM-cycles a token",
-   "samples": [
-    2.534433,
-    2.544996,
-    2.534956,
-    2.530675,
-    2.536831,
-    2.525513,
-    2.535209
-   ],
-   "median": 2.534956,
-   "min": 2.525513,
-   "max": 2.544996,
+   "median": 2.601307,
+   "min": 2.592528,
+   "max": 2.620519,
    "unstable": false
   }
  ],
@@ -224,18 +253,18 @@
   "mask_prepare_time::timed(long long *, fsla::mask_prepare::detail::Args, const unsigned char *, unsigned char *, int, int)": {
    "regs": 64,
    "ops": {
-    "IMAD.MOV.U32": 299,
-    "LOP3.LUT": 165,
-    "SEL": 114,
+    "IMAD.MOV.U32": 395,
+    "LOP3.LUT": 174,
+    "SEL": 129,
+    "SHF.L.U32": 128,
     "IADD3": 101,
     "LDG.E.128": 96,
-    "SHF.L.U32": 82,
-    "IMAD": 81,
-    "LEA": 69,
-    "LEA.HI.X": 69,
-    "SHF.L.U64.HI": 62,
-    "IMAD.X": 59,
-    "ISETP.LE.AND": 55
+    "IMAD": 92,
+    "SHF.L.U64.HI": 89,
+    "LEA": 87,
+    "LEA.HI.X": 87,
+    "VIADD": 71,
+    "IMAD.WIDE": 69
    }
   }
  },
