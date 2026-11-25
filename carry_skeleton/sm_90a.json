@@ -20,11 +20,11 @@
  "driver": "580.196.07",
  "toolkit": "Build cuda_13.5.r13.5/compiler.39125733_0",
  "git": {
-  "sha": "05b6fec2691efcf3cd0f9f70aa33a56008826b11",
+  "sha": "fc999aad7f42d2c13674078b2f40d0738f0e8c31",
   "dirty": false
  },
  "reps": 7,
- "date": "2026-11-25T18:04:20+00:00",
+ "date": "2026-11-25T20:09:12+00:00",
  "utilization_before": 0,
  "inputs": {},
  "results": [
@@ -33,17 +33,17 @@
    "name": "the carry on a call of no tokens, a window its hand-offs",
    "unit": "cycles a window a CTA",
    "samples": [
-    660.249882,
-    660.250266,
-    660.251272,
-    660.215672,
-    660.195608,
-    660.206084,
-    660.195579
+    748.473041,
+    748.602805,
+    748.621183,
+    748.463127,
+    748.565962,
+    748.586204,
+    748.608931
    ],
-   "median": 660.215672,
-   "min": 660.195579,
-   "max": 660.251272,
+   "median": 748.586204,
+   "min": 748.463127,
+   "max": 748.621183,
    "unstable": false
   },
   {
@@ -51,53 +51,53 @@
    "name": "the carry on a call of no tokens, a window its hand-offs, every warp's timeline stamped",
    "unit": "cycles a window a CTA",
    "samples": [
-    1468.923532,
-    1469.075758,
-    1469.152225,
-    1468.744437,
-    1469.143703,
-    1468.970762,
-    1469.461529
+    1672.763376,
+    1672.230232,
+    1672.655421,
+    1672.456321,
+    1672.791548,
+    1672.911932,
+    1672.430634
    ],
-   "median": 1469.075758,
-   "min": 1468.744437,
-   "max": 1469.461529,
+   "median": 1672.655421,
+   "min": 1672.230232,
+   "max": 1672.911932,
    "unstable": false
   }
  ],
  "kernels": {
-  "void carry_skeleton::timed<(int)1>(long long *, int *, unsigned long long *, int)": {
+  "void carry_skeleton::timed<(int)1>(long long *, int *, unsigned long long *, const unsigned char *, int)": {
    "regs": 128,
    "ops": {
-    "IMAD.MOV.U32": 100,
-    "VIADD": 79,
-    "CS2R.32": 78,
-    "ST.E.64": 78,
-    "IMAD.WIDE.U32": 76,
-    "ISETP.LT.U32.AND": 66,
-    "LOP3.LUT": 25,
-    "BRA": 24,
-    "BAR.SYNC.DEFER_BLOCKING": 20,
-    "IADD3": 18,
-    "BAR.ARV": 16,
-    "ISETP.NE.AND": 15
+    "FMUL": 2391,
+    "LOP3.LUT": 1866,
+    "IMAD.MOV.U32": 1295,
+    "F2FP.BF16.F32.PACK_AB": 1104,
+    "VIADD": 1066,
+    "IMAD.WIDE.U32": 962,
+    "CS2R.32": 802,
+    "ST.E.64": 802,
+    "ISETP.NE.AND": 755,
+    "SHF.R.U32.HI": 748,
+    "SEL": 611,
+    "IADD3": 607
    }
   },
-  "void carry_skeleton::timed<(int)0>(long long *, int *, unsigned long long *, int)": {
+  "void carry_skeleton::timed<(int)0>(long long *, int *, unsigned long long *, const unsigned char *, int)": {
    "regs": 128,
    "ops": {
-    "LOP3.LUT": 25,
-    "BAR.SYNC.DEFER_BLOCKING": 20,
-    "BRA": 18,
-    "BAR.ARV": 16,
-    "ISETP.NE.AND": 14,
-    "NOP": 13,
-    "IMAD.MOV.U32": 12,
-    "IADD3": 11,
-    "UMOV": 10,
-    "UIADD3": 10,
-    "SEL": 10,
-    "IMAD": 10
+    "FMUL": 2391,
+    "LOP3.LUT": 1839,
+    "F2FP.BF16.F32.PACK_AB": 1104,
+    "ISETP.NE.AND": 770,
+    "SHF.R.U32.HI": 768,
+    "SEL": 611,
+    "IADD3": 607,
+    "IMAD.IADD": 583,
+    "I2F.U8": 574,
+    "I2FP.F32.U32": 565,
+    "IMAD": 515,
+    "LDGSTS.E.BYPASS.128": 478
    }
   }
  },

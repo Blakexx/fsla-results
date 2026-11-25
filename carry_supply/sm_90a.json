@@ -1,6 +1,6 @@
 {
  "experiment": "carry_supply",
- "question": "does the LIBRARY's carry CTA, its fold warpgroups' SUPPLY built and every other component a stub, list each of its sets' live tokens from a call's real operands -- the masks, the mask-preparation pass's prepared words, the densities the carve is derived from -- and land their value lines in its rows, exactly; and what does a window cost a CTA with that supply running?",
+ "question": "does the LIBRARY's carry CTA, its fold warpgroups' SUPPLY and COEFFICIENTS built and every other component a stub, list each of its sets' live tokens from a call's real operands -- the masks, the mask-preparation pass's prepared words, the densities the carve is derived from, the write side's rows -- land their value lines in its rows and expand their coefficients into its tiles, exactly; and what does a window cost a CTA with them running?",
  "arch": "sm_90a",
  "device": "NVIDIA H100 80GB HBM3",
  "checks": [
@@ -88,11 +88,11 @@
  "driver": "580.196.07",
  "toolkit": "Build cuda_13.5.r13.5/compiler.39125733_0",
  "git": {
-  "sha": "ac5fc941171a313612a9aca1e9ef503c5740e5fb",
+  "sha": "fc999aad7f42d2c13674078b2f40d0738f0e8c31",
   "dirty": false
  },
  "reps": 7,
- "date": "2026-11-25T19:46:02+00:00",
+ "date": "2026-11-25T20:09:09+00:00",
  "utilization_before": 0,
  "inputs": {},
  "results": [
@@ -101,17 +101,17 @@
    "name": "the cell, the write side masked on level 0: the folds' supply and coefficients, the rest stubs, timed",
    "unit": "cycles a window a CTA",
    "samples": [
-    5133.489258,
-    5102.279297,
-    5135.997437,
-    5152.175293,
-    5139.068359,
-    5150.5625,
-    5112.70752
+    5502.245361,
+    5484.070679,
+    5497.303589,
+    5487.2677,
+    5471.158203,
+    5499.55188,
+    5472.812256
    ],
-   "median": 5135.997437,
-   "min": 5102.279297,
-   "max": 5152.175293,
+   "median": 5487.2677,
+   "min": 5471.158203,
+   "max": 5502.245361,
    "unstable": false
   },
   {
@@ -119,17 +119,17 @@
    "name": "the cell, the write side masked on level 0: the folds' supply and coefficients, the rest stubs, every warp's timeline stamped",
    "unit": "cycles a window a CTA",
    "samples": [
-    6814.516968,
-    6802.657837,
-    6773.134766,
-    6791.575073,
-    6793.511841,
-    6787.936035,
-    6791.671265
+    6690.756104,
+    6689.659058,
+    6717.121582,
+    6685.523315,
+    6699.821777,
+    6668.568237,
+    6685.466309
    ],
-   "median": 6791.671265,
-   "min": 6773.134766,
-   "max": 6814.516968,
+   "median": 6689.659058,
+   "min": 6668.568237,
+   "max": 6717.121582,
    "unstable": false
   },
   {
@@ -137,17 +137,17 @@
    "name": "the write side masked on both levels: the folds' supply and coefficients, the rest stubs, timed",
    "unit": "cycles a window a CTA",
    "samples": [
-    4375.658813,
-    4373.087036,
-    4382.107788,
-    4384.502441,
-    4381.468506,
-    4388.72522,
-    4353.001709
+    5112.335693,
+    5112.2146,
+    5101.734131,
+    5122.237061,
+    5106.823608,
+    5096.86145,
+    5088.417358
    ],
-   "median": 4381.468506,
-   "min": 4353.001709,
-   "max": 4388.72522,
+   "median": 5106.823608,
+   "min": 5088.417358,
+   "max": 5122.237061,
    "unstable": false
   },
   {
@@ -155,17 +155,17 @@
    "name": "the write side masked on both levels: the folds' supply and coefficients, the rest stubs, every warp's timeline stamped",
    "unit": "cycles a window a CTA",
    "samples": [
-    5767.034302,
-    5755.288208,
-    5769.936035,
-    5763.794189,
-    5761.525269,
-    5755.49292,
-    5773.621094
+    6475.620239,
+    6488.958496,
+    6475.759644,
+    6468.755859,
+    6482.470703,
+    6478.165527,
+    6483.670166
    ],
-   "median": 5763.794189,
-   "min": 5755.288208,
-   "max": 5773.621094,
+   "median": 6478.165527,
+   "min": 6468.755859,
+   "max": 6488.958496,
    "unstable": false
   },
   {
@@ -173,17 +173,17 @@
    "name": "the write side whole on both levels: the folds' supply and coefficients, the rest stubs, timed",
    "unit": "cycles a window a CTA",
    "samples": [
-    25150.22644,
-    25179.115479,
-    25176.303589,
-    25159.000244,
-    25148.09436,
-    25158.346069,
-    25150.372437
+    29716.594116,
+    29806.095215,
+    29751.077393,
+    29690.645752,
+    29795.848022,
+    29706.412598,
+    29868.594116
    ],
-   "median": 25158.346069,
-   "min": 25148.09436,
-   "max": 25179.115479,
+   "median": 29751.077393,
+   "min": 29690.645752,
+   "max": 29868.594116,
    "unstable": false
   },
   {
@@ -191,17 +191,17 @@
    "name": "the write side whole on both levels: the folds' supply and coefficients, the rest stubs, every warp's timeline stamped",
    "unit": "cycles a window a CTA",
    "samples": [
-    28160.40625,
-    28151.474609,
-    28084.770874,
-    28161.80896,
-    28146.022827,
-    28131.596313,
-    28188.156738
+    32045.669678,
+    31905.387207,
+    31936.34729,
+    31969.868408,
+    32003.973755,
+    32012.939331,
+    31967.381226
    ],
-   "median": 28151.474609,
-   "min": 28084.770874,
-   "max": 28188.156738,
+   "median": 31969.868408,
+   "min": 31905.387207,
+   "max": 32045.669678,
    "unstable": false
   },
   {
@@ -209,17 +209,17 @@
    "name": "the write side one digit a token on each level: the folds' supply and coefficients, the rest stubs, timed",
    "unit": "cycles a window a CTA",
    "samples": [
-    4351.971924,
-    4349.205933,
-    4349.028076,
-    4349.283691,
-    4350.059814,
-    4350.878906,
-    4350.583252
+    4912.825317,
+    4911.91394,
+    4913.886353,
+    4911.166992,
+    4913.15625,
+    4913.875122,
+    4911.224243
    ],
-   "median": 4350.059814,
-   "min": 4349.028076,
-   "max": 4351.971924,
+   "median": 4912.825317,
+   "min": 4911.166992,
+   "max": 4913.886353,
    "unstable": false
   },
   {
@@ -227,17 +227,17 @@
    "name": "the write side one digit a token on each level: the folds' supply and coefficients, the rest stubs, every warp's timeline stamped",
    "unit": "cycles a window a CTA",
    "samples": [
-    6637.548462,
-    6641.730835,
-    6639.481934,
-    6641.02356,
-    6632.261597,
-    6636.748169,
-    6640.722046
+    7030.890869,
+    7029.021484,
+    7025.937866,
+    7024.921021,
+    7029.042725,
+    7022.321045,
+    7032.081909
    ],
-   "median": 6639.481934,
-   "min": 6632.261597,
-   "max": 6641.730835,
+   "median": 7029.021484,
+   "min": 7022.321045,
+   "max": 7032.081909,
    "unstable": false
   },
   {
@@ -245,17 +245,17 @@
    "name": "the write side masked on both levels, the read side's densities crossed with it: the folds' supply and coefficients, the rest stubs, timed",
    "unit": "cycles a window a CTA",
    "samples": [
-    2727.269043,
-    2732.289917,
-    2722.523193,
-    2731.261597,
-    2742.97998,
-    2742.443604,
-    2735.939453
+    3272.910278,
+    3274.258667,
+    3278.520264,
+    3273.487183,
+    3285.919922,
+    3283.369507,
+    3270.083862
    ],
-   "median": 2732.289917,
-   "min": 2722.523193,
-   "max": 2742.97998,
+   "median": 3274.258667,
+   "min": 3270.083862,
+   "max": 3285.919922,
    "unstable": false
   },
   {
@@ -263,17 +263,17 @@
    "name": "the write side masked on both levels, the read side's densities crossed with it: the folds' supply and coefficients, the rest stubs, every warp's timeline stamped",
    "unit": "cycles a window a CTA",
    "samples": [
-    3791.071411,
-    3798.108032,
-    3817.64563,
-    3785.738892,
-    3793.036133,
-    3814.045532,
-    3794.323853
+    4162.209839,
+    4163.066284,
+    4210.484497,
+    4161.511841,
+    4159.281372,
+    4143.410645,
+    4156.953247
    ],
-   "median": 3794.323853,
-   "min": 3785.738892,
-   "max": 3817.64563,
+   "median": 4161.511841,
+   "min": 4143.410645,
+   "max": 4210.484497,
    "unstable": false
   }
  ],
@@ -282,51 +282,51 @@
    "regs": 128,
    "ops": {
     "FMUL": 2871,
-    "LOP3.LUT": 2283,
-    "IMAD.MOV.U32": 1804,
+    "LOP3.LUT": 2275,
+    "IMAD.MOV.U32": 1813,
+    "VIADD": 1368,
     "F2FP.BF16.F32.PACK_AB": 1344,
-    "VIADD": 1227,
-    "SEL": 1154,
-    "SHF.R.U32.HI": 1023,
-    "IMAD": 971,
-    "CS2R.32": 816,
-    "ST.E.64": 816,
-    "I2F.U8": 810,
-    "I2FP.F32.U32": 809
+    "IMAD": 1282,
+    "SEL": 1120,
+    "SHF.R.U32.HI": 1044,
+    "CS2R.32": 954,
+    "ST.E.64": 954,
+    "IADD3": 894,
+    "IMAD.WIDE.U32": 868
    }
   },
   "void carry_supply::timed<(int)0>(long long *, unsigned long long *, fsla::carry::detail::Operands)": {
    "regs": 128,
    "ops": {
     "FMUL": 2871,
-    "LOP3.LUT": 2239,
+    "LOP3.LUT": 2232,
     "F2FP.BF16.F32.PACK_AB": 1344,
-    "SEL": 1155,
-    "SHF.R.U32.HI": 1024,
-    "IMAD.MOV.U32": 972,
-    "IMAD": 952,
-    "I2F.U8": 810,
-    "I2FP.F32.U32": 809,
-    "IADD3": 683,
-    "IMAD.IADD": 683,
-    "ISETP.NE.AND": 594
+    "IMAD": 1240,
+    "SEL": 1119,
+    "SHF.R.U32.HI": 1046,
+    "IADD3": 905,
+    "ISETP.NE.AND": 857,
+    "I2F.U8": 814,
+    "I2FP.F32.U32": 805,
+    "IMAD.MOV.U32": 791,
+    "IMAD.IADD": 788
    }
   },
   "carry_supply::kept(fsla::carry::detail::Operands, unsigned char *, unsigned char *, int, int *)": {
    "regs": 128,
    "ops": {
     "FMUL": 2871,
-    "LOP3.LUT": 2330,
+    "LOP3.LUT": 2380,
+    "IMAD": 1443,
     "F2FP.BF16.F32.PACK_AB": 1344,
-    "SEL": 1327,
-    "IMAD": 1123,
-    "IMAD.MOV.U32": 1029,
-    "SHF.R.U32.HI": 1024,
-    "IADD3": 890,
-    "I2F.U8": 810,
-    "I2FP.F32.U32": 809,
-    "IMAD.IADD": 798,
-    "ISETP.NE.AND": 761
+    "SEL": 1242,
+    "IADD3": 1107,
+    "SHF.R.U32.HI": 1046,
+    "ISETP.NE.AND": 1024,
+    "IMAD.IADD": 939,
+    "IMAD.MOV.U32": 918,
+    "I2F.U8": 814,
+    "I2FP.F32.U32": 805
    }
   },
   "void fsla::mask_prepare::detail::mask_prepare_kernel<denseref::arch::BuildTag<denseref::arch::Build{(int)900}>>(fsla::mask_prepare::detail::Args, const unsigned char *, unsigned char *)": {
