@@ -1,6 +1,6 @@
 {
  "experiment": "carry_skeleton",
- "question": "does the LIBRARY's carry skeleton -- its three roles at their registers, their barriers and their order of work, every component a stub -- run a call's windows to the end on every multiprocessor, and what does a window of nothing but its barriers cost?",
+ "question": "does the LIBRARY's carry skeleton -- its three roles at their registers, their hand-offs and their order of work, every component a stub -- run a call's windows to the end on every multiprocessor, and what does a window of nothing but its hand-offs cost?",
  "arch": "sm_90a",
  "device": "NVIDIA H100 80GB HBM3",
  "checks": [
@@ -12,7 +12,7 @@
   },
   {
    "lab": "check",
-   "variant": "the skeleton's roles, every component a stub, its hand-offs named barriers",
+   "variant": "the skeleton's roles, every component a stub, every warp's timeline stamped",
    "ok": true,
    "detail": "0 of 132 CTAs did not return from every warp"
   }
@@ -20,11 +20,11 @@
  "driver": "580.196.07",
  "toolkit": "Build cuda_13.5.r13.5/compiler.39125733_0",
  "git": {
-  "sha": "819a33c0179dd1e88f9d0ac1bd5417412feb782a",
+  "sha": "19d2b0b0e71bc3873f8074b58ee27b0c8776aa4c",
   "dirty": false
  },
  "reps": 7,
- "date": "2026-11-25T03:53:18+00:00",
+ "date": "2026-11-25T04:04:23+00:00",
  "utilization_before": 0,
  "inputs": {},
  "results": [
@@ -33,71 +33,71 @@
    "name": "the skeleton's roles, every component a stub",
    "unit": "cycles a window a CTA",
    "samples": [
-    848.666667,
-    848.601503,
-    848.766039,
-    848.635062,
-    848.886748,
-    849.021751,
-    848.782079
+    516.715021,
+    517.770685,
+    516.709399,
+    516.484257,
+    516.506155,
+    516.50074,
+    516.497692
    ],
-   "median": 848.766039,
-   "min": 848.601503,
-   "max": 849.021751,
+   "median": 516.506155,
+   "min": 516.484257,
+   "max": 517.770685,
    "unstable": false
   },
   {
    "lab": "result",
-   "name": "the skeleton's roles, every component a stub, its hand-offs named barriers",
+   "name": "the skeleton's roles, every component a stub, every warp's timeline stamped",
    "unit": "cycles a window a CTA",
    "samples": [
-    527.715376,
-    527.383582,
-    527.642312,
-    527.693448,
-    527.850911,
-    527.354137,
-    527.45422
+    1367.058594,
+    1366.983073,
+    1367.07919,
+    1366.832386,
+    1367.116596,
+    1367.04214,
+    1367.164891
    ],
-   "median": 527.642312,
-   "min": 527.354137,
-   "max": 527.850911,
+   "median": 1367.058594,
+   "min": 1366.832386,
+   "max": 1367.164891,
    "unstable": false
   }
  ],
  "kernels": {
-  "void carry_skeleton::timed<(int)1>(long long *, int *, int)": {
+  "void carry_skeleton::timed<(int)1>(long long *, int *, unsigned long long *, int)": {
    "regs": 128,
    "ops": {
-    "NOP": 23,
-    "BAR.SYNC.DEFER_BLOCKING": 21,
+    "CS2R.32": 66,
+    "ST.E.64": 66,
+    "IMAD.WIDE.U32": 62,
+    "IMAD.MOV.U32": 62,
+    "ISETP.LT.U32.AND": 60,
+    "VIADD": 53,
+    "MOV": 20,
+    "BAR.SYNC.DEFER_BLOCKING": 20,
+    "BRA": 18,
     "BAR.ARV": 16,
-    "BRA": 13,
-    "SYNCS.EXCH.64": 12,
-    "FENCE.VIEW.ASYNC.S": 9,
-    "MEMBAR.ALL.CTA": 8,
-    "UMOV": 6,
-    "R2UR": 6,
-    "LDC": 5,
-    "UIADD3": 5,
-    "ISETP.GE.AND": 5
+    "IADD3": 13,
+    "NOP": 11
    }
   },
-  "void carry_skeleton::timed<(int)0>(long long *, int *, int)": {
+  "void carry_skeleton::timed<(int)0>(long long *, int *, unsigned long long *, int)": {
    "regs": 128,
    "ops": {
-    "BRA": 67,
-    "SYNCS.PHASECHK.TRANS64.TRYWAIT": 32,
-    "NOP": 21,
-    "SYNCS.ARRIVE.TRANS64.A1T0": 16,
-    "SYNCS.EXCH.64": 12,
-    "SHF.L.U32": 10,
-    "FENCE.VIEW.ASYNC.S": 9,
-    "MEMBAR.ALL.CTA": 8,
-    "LOP3.LUT": 8,
-    "UMOV": 7,
-    "ISETP.GE.AND": 7,
-    "LDC": 6
+    "BAR.SYNC.DEFER_BLOCKING": 20,
+    "BAR.ARV": 16,
+    "BRA": 12,
+    "NOP": 12,
+    "R2UR": 6,
+    "LDC": 5,
+    "ISETP.GE.AND": 5,
+    "S2R": 3,
+    "WARPSYNC.ALL": 3,
+    "UMOV": 3,
+    "UIADD3": 3,
+    "ISETP.LE.AND": 3
    }
   }
  },
