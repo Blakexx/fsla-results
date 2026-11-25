@@ -1,18 +1,18 @@
 {
  "experiment": "carry_skeleton",
- "question": "does the LIBRARY's carry skeleton -- its three roles at their registers, their hand-offs and their order of work, every component a stub -- run a call's windows to the end on every multiprocessor, and what does a window of nothing but its hand-offs cost?",
+ "question": "does the LIBRARY's carry skeleton -- its three roles at their registers, their hand-offs and their order of work -- run a call's windows to the end on every multiprocessor, and what does a window of nothing but its hand-offs cost? The call has no tokens and no levels: the folds' supply, the one component built, lists nothing.",
  "arch": "sm_90a",
  "device": "NVIDIA H100 80GB HBM3",
  "checks": [
   {
    "lab": "check",
-   "variant": "the skeleton's roles, every component a stub",
+   "variant": "the carry on a call of no tokens, a window its hand-offs",
    "ok": true,
    "detail": "0 of 132 CTAs did not return from every warp"
   },
   {
    "lab": "check",
-   "variant": "the skeleton's roles, every component a stub, every warp's timeline stamped",
+   "variant": "the carry on a call of no tokens, a window its hand-offs, every warp's timeline stamped",
    "ok": true,
    "detail": "0 of 132 CTAs did not return from every warp"
   }
@@ -20,48 +20,48 @@
  "driver": "580.196.07",
  "toolkit": "Build cuda_13.5.r13.5/compiler.39125733_0",
  "git": {
-  "sha": "19d2b0b0e71bc3873f8074b58ee27b0c8776aa4c",
+  "sha": "107a693f76cc668755de450a62e238afa6c4279f",
   "dirty": false
  },
  "reps": 7,
- "date": "2026-11-25T04:04:23+00:00",
+ "date": "2026-11-25T06:28:58+00:00",
  "utilization_before": 0,
  "inputs": {},
  "results": [
   {
    "lab": "result",
-   "name": "the skeleton's roles, every component a stub",
+   "name": "the carry on a call of no tokens, a window its hand-offs",
    "unit": "cycles a window a CTA",
    "samples": [
-    516.715021,
-    517.770685,
-    516.709399,
-    516.484257,
-    516.506155,
-    516.50074,
-    516.497692
+    590.874911,
+    590.447976,
+    590.803267,
+    591.323065,
+    590.943093,
+    591.002427,
+    591.132783
    ],
-   "median": 516.506155,
-   "min": 516.484257,
-   "max": 517.770685,
+   "median": 590.943093,
+   "min": 590.447976,
+   "max": 591.323065,
    "unstable": false
   },
   {
    "lab": "result",
-   "name": "the skeleton's roles, every component a stub, every warp's timeline stamped",
+   "name": "the carry on a call of no tokens, a window its hand-offs, every warp's timeline stamped",
    "unit": "cycles a window a CTA",
    "samples": [
-    1367.058594,
-    1366.983073,
-    1367.07919,
-    1366.832386,
-    1367.116596,
-    1367.04214,
-    1367.164891
+    1363.578717,
+    1363.530421,
+    1363.434659,
+    1363.502486,
+    1363.320312,
+    1363.61044,
+    1363.550545
    ],
-   "median": 1367.058594,
-   "min": 1366.832386,
-   "max": 1367.164891,
+   "median": 1363.530421,
+   "min": 1363.320312,
+   "max": 1363.61044,
    "unstable": false
   }
  ],
@@ -69,35 +69,35 @@
   "void carry_skeleton::timed<(int)1>(long long *, int *, unsigned long long *, int)": {
    "regs": 128,
    "ops": {
+    "IMAD.MOV.U32": 89,
+    "VIADD": 74,
     "CS2R.32": 66,
     "ST.E.64": 66,
-    "IMAD.WIDE.U32": 62,
-    "IMAD.MOV.U32": 62,
+    "IMAD.WIDE.U32": 64,
     "ISETP.LT.U32.AND": 60,
-    "VIADD": 53,
-    "MOV": 20,
-    "BAR.SYNC.DEFER_BLOCKING": 20,
-    "BRA": 18,
-    "BAR.ARV": 16,
-    "IADD3": 13,
-    "NOP": 11
+    "LOP3.LUT": 58,
+    "IMAD.IADD": 32,
+    "SHF.R.U32.HI": 23,
+    "BRA": 23,
+    "SEL": 22,
+    "BAR.SYNC.DEFER_BLOCKING": 20
    }
   },
   "void carry_skeleton::timed<(int)0>(long long *, int *, unsigned long long *, int)": {
    "regs": 128,
    "ops": {
+    "LOP3.LUT": 53,
+    "IMAD.IADD": 25,
+    "SEL": 22,
+    "SHF.R.U32.HI": 21,
     "BAR.SYNC.DEFER_BLOCKING": 20,
+    "BRA": 17,
+    "SHFL.IDX": 17,
+    "ISETP.GE.AND": 16,
     "BAR.ARV": 16,
-    "BRA": 12,
-    "NOP": 12,
-    "R2UR": 6,
-    "LDC": 5,
-    "ISETP.GE.AND": 5,
-    "S2R": 3,
-    "WARPSYNC.ALL": 3,
-    "UMOV": 3,
-    "UIADD3": 3,
-    "ISETP.LE.AND": 3
+    "IMAD": 13,
+    "IMAD.MOV.U32": 9,
+    "VIADD": 9
    }
   }
  },
