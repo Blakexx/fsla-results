@@ -9,16 +9,22 @@
    "variant": "the skeleton's roles, every component a stub",
    "ok": true,
    "detail": "0 of 132 CTAs did not return from every warp"
+  },
+  {
+   "lab": "check",
+   "variant": "the skeleton's roles, every component a stub, its hand-offs named barriers",
+   "ok": true,
+   "detail": "0 of 132 CTAs did not return from every warp"
   }
  ],
  "driver": "580.196.07",
  "toolkit": "Build cuda_13.5.r13.5/compiler.39125733_0",
  "git": {
-  "sha": "2ec94cc6503abd8ee8d44c6eb0cccc6de9cbd8d8",
+  "sha": "819a33c0179dd1e88f9d0ac1bd5417412feb782a",
   "dirty": false
  },
  "reps": 7,
- "date": "2026-11-25T03:33:32+00:00",
+ "date": "2026-11-25T03:53:18+00:00",
  "utilization_before": 0,
  "inputs": {},
  "results": [
@@ -27,22 +33,57 @@
    "name": "the skeleton's roles, every component a stub",
    "unit": "cycles a window a CTA",
    "samples": [
-    848.761926,
-    848.593572,
-    848.883582,
-    848.525746,
-    848.837092,
-    848.753462,
-    848.736654
+    848.666667,
+    848.601503,
+    848.766039,
+    848.635062,
+    848.886748,
+    849.021751,
+    848.782079
    ],
-   "median": 848.753462,
-   "min": 848.525746,
-   "max": 848.883582,
+   "median": 848.766039,
+   "min": 848.601503,
+   "max": 849.021751,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the skeleton's roles, every component a stub, its hand-offs named barriers",
+   "unit": "cycles a window a CTA",
+   "samples": [
+    527.715376,
+    527.383582,
+    527.642312,
+    527.693448,
+    527.850911,
+    527.354137,
+    527.45422
+   ],
+   "median": 527.642312,
+   "min": 527.354137,
+   "max": 527.850911,
    "unstable": false
   }
  ],
  "kernels": {
-  "carry_skeleton::timed(long long *, int *, int)": {
+  "void carry_skeleton::timed<(int)1>(long long *, int *, int)": {
+   "regs": 128,
+   "ops": {
+    "NOP": 23,
+    "BAR.SYNC.DEFER_BLOCKING": 21,
+    "BAR.ARV": 16,
+    "BRA": 13,
+    "SYNCS.EXCH.64": 12,
+    "FENCE.VIEW.ASYNC.S": 9,
+    "MEMBAR.ALL.CTA": 8,
+    "UMOV": 6,
+    "R2UR": 6,
+    "LDC": 5,
+    "UIADD3": 5,
+    "ISETP.GE.AND": 5
+   }
+  },
+  "void carry_skeleton::timed<(int)0>(long long *, int *, int)": {
    "regs": 128,
    "ops": {
     "BRA": 67,
