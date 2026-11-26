@@ -20,11 +20,11 @@
  "driver": "580.196.07",
  "toolkit": "Build cuda_13.5.r13.5/compiler.39125733_0",
  "git": {
-  "sha": "0691c5217ed12a7bbb5b30690553f2b1fcca5270",
+  "sha": "7e069c618f334baf12e84bd6153c80b598c9c4fd",
   "dirty": false
  },
  "reps": 7,
- "date": "2026-11-25T22:00:38+00:00",
+ "date": "2026-11-26T01:29:51+00:00",
  "utilization_before": 0,
  "inputs": {},
  "results": [
@@ -33,17 +33,17 @@
    "name": "the carry on a call of no tokens, a window its hand-offs",
    "unit": "cycles a window a CTA",
    "samples": [
-    749.363725,
-    749.381037,
-    749.714134,
-    749.436287,
-    749.394442,
-    749.222153,
-    749.514796
+    810.202415,
+    810.13157,
+    810.117898,
+    810.166963,
+    810.206084,
+    810.095437,
+    810.179806
    ],
-   "median": 749.394442,
-   "min": 749.222153,
-   "max": 749.714134,
+   "median": 810.166963,
+   "min": 810.095437,
+   "max": 810.206084,
    "unstable": false
   },
   {
@@ -51,17 +51,17 @@
    "name": "the carry on a call of no tokens, a window its hand-offs, every warp's timeline stamped",
    "unit": "cycles a window a CTA",
    "samples": [
-    1669.130445,
-    1669.173059,
-    1669.091738,
-    1669.501776,
-    1669.040246,
-    1668.83428,
-    1669.178504
+    1750.156605,
+    1749.121567,
+    1750.069839,
+    1749.229048,
+    1749.489465,
+    1750.348366,
+    1750.096946
    ],
-   "median": 1669.130445,
-   "min": 1668.83428,
-   "max": 1669.501776,
+   "median": 1750.069839,
+   "min": 1749.121567,
+   "max": 1750.348366,
    "unstable": false
   }
  ],
@@ -70,34 +70,34 @@
    "regs": 128,
    "ops": {
     "FMUL": 2391,
-    "LOP3.LUT": 1866,
-    "IMAD.MOV.U32": 1313,
+    "IMAD.MOV.U32": 2095,
+    "LOP3.LUT": 1607,
+    "VIADD": 1370,
     "F2FP.BF16.F32.PACK_AB": 1104,
-    "VIADD": 1066,
-    "IMAD.WIDE.U32": 962,
-    "CS2R.32": 802,
-    "ST.E.64": 802,
-    "ISETP.NE.AND": 755,
-    "SHF.R.U32.HI": 748,
-    "SEL": 611,
-    "IADD3": 607
+    "CS2R.32": 1038,
+    "ST.E.64": 1038,
+    "IMAD": 920,
+    "IMAD.WIDE.U32": 880,
+    "ISETP.LT.U32.AND": 818,
+    "ISETP.NE.AND": 800,
+    "SHF.R.U32.HI": 752
    }
   },
   "void carry_skeleton::timed<(int)0>(long long *, int *, unsigned long long *, const unsigned char *, int)": {
    "regs": 128,
    "ops": {
     "FMUL": 2391,
-    "LOP3.LUT": 1839,
+    "LOP3.LUT": 1530,
     "F2FP.BF16.F32.PACK_AB": 1104,
-    "ISETP.NE.AND": 770,
-    "SHF.R.U32.HI": 768,
-    "SEL": 611,
-    "IADD3": 607,
-    "IMAD.IADD": 583,
+    "IMAD.MOV.U32": 852,
+    "IMAD": 816,
+    "SHF.R.U32.HI": 732,
+    "ISETP.NE.AND": 681,
     "I2F.U8": 574,
     "I2FP.F32.U32": 565,
-    "IMAD": 515,
-    "LDGSTS.E.BYPASS.128": 478
+    "IMAD.IADD": 534,
+    "LDGSTS.E.BYPASS.128": 467,
+    "SEL": 463
    }
   }
  },
