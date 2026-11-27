@@ -1,5 +1,5 @@
-"""fsla-results' root package: its checks and gate over the data (the tracked tree beside them: records/ and lab/ hold no
-BUILD file, so their files are this package's), the records' index as a build output, and the store's command line."""
+"""fsla-results' root package: its checks and gate over the data (the tracked tree beside them: records/ holds no BUILD
+file, so its files are this package's), the records' index as a build output, and the store's command line."""
 
 load("@fsla_devtools//bazel:rules.bzl", "bazel_version_test")
 load("@fsla_devtools//bazel:results.bzl", "results_index")
@@ -19,20 +19,12 @@ filegroup(
     ],
 )
 
-#: every stored record consistent (fsla_devtools.results' own check): its key recomputes from its semantics, its
-#: location is its directory, its outputs exist
+#: every stored sample consistent (fsla_devtools.results' own check): a file under its producing target's label, its key
+#: recomputing from its semantics, its output and parts present, no lock file in the tree
 tree_test(
     name = "records",
     size = "small",
     cmd = ["python3", "-m", "fsla_devtools.results", "--root", "records", "check"],
-    data = [":tree"],
-)
-
-#: the lab's records, kept as written: every file parses where it is JSON or CSV
-tree_test(
-    name = "lab",
-    size = "small",
-    cmd = ["python3", "-m", "fsla_devtools.results", "check-files", "lab"],
     data = [":tree"],
 )
 
@@ -66,7 +58,6 @@ test_suite(
         ":bazelversion",
         ":declarations",
         ":docrefs",
-        ":lab",
         ":records",
     ],
 )

@@ -1,0 +1,127 @@
+{
+ "format": 2,
+ "key": "c6ff925214878c1adce530c1",
+ "label": "@fsla//measure:session_entmax",
+ "migrated": {
+  "commit": "9b185200d0f1cc1a30e73929f16e9b47db54ea96",
+  "from": "records/timing/session/c6ff925214878c1adce530c1.json#0",
+  "machine_paths": []
+ },
+ "ok": true,
+ "output": "20261127T094756Z-9da5a78b/output.json",
+ "provenance": {
+  "checkouts": {
+   "//measure:clock": {
+    "branch": null,
+    "checkout": "fsla",
+    "diff_sha256": null,
+    "git_sha": "4730cf91db80baeb3d616570c3ba09248a467ccf"
+   },
+   "//measure:entmax_solve_layer-alt-entmax1.5-64x64-T2048": {
+    "branch": null,
+    "checkout": "fsla",
+    "diff_sha256": null,
+    "git_sha": "4730cf91db80baeb3d616570c3ba09248a467ccf"
+   }
+  },
+  "host": "1fa6b99c2450",
+  "run": "20261127T094756Z-9da5a78b"
+ },
+ "run": "20261127T094756Z-9da5a78b",
+ "semantics": {
+  "claim": "unlocked",
+  "clock": "unlocked",
+  "clock_reader": {
+   "binds": [
+    "fsla",
+    "fsla_cu13._C"
+   ],
+   "bundle": {
+    "digest": "78f6a4461bb63a746e57264ebdb00bc71d1a4b11eb3284c3a5ec2c2c1b1e769f",
+    "environment": "5ffa054aa51fd9a3"
+   },
+   "cells": [],
+   "executor": "measure.executors:read_clock",
+   "kind": "clock",
+   "owner": "//measure:clock",
+   "params": {}
+  },
+  "entries": [
+   {
+    "binds": [
+     "fsla",
+     "fsla_cu13._C"
+    ],
+    "bundle": {
+     "digest": "78f6a4461bb63a746e57264ebdb00bc71d1a4b11eb3284c3a5ec2c2c1b1e769f",
+     "environment": "5ffa054aa51fd9a3"
+    },
+    "cells": [
+     {
+      "data": "fsla_devtools.cells.form:cell",
+      "draw": "018017d54e5bed7e9216a6aef694d40e09f8565fcced9fd0dd3219ca543c7df7",
+      "name": "layer-alt-entmax1.5-64x64-T2048",
+      "params": {
+       "B": 2,
+       "H": 8,
+       "hidden": 512,
+       "kind": "layer",
+       "note": "the mid-size entmax layer at the pinned shape (B 2, H 8, hidden 512)",
+       "routing": {
+        "read": [
+         [
+          "softmax",
+          "entmax1.5"
+         ]
+        ],
+        "topology": [
+         64,
+         64
+        ],
+        "write": [
+         "entmax1.5",
+         "softmax"
+        ]
+       },
+       "seed": 0,
+       "tokens": 2048
+      }
+     }
+    ],
+    "executor": "measure.executors:timed",
+    "kind": "timed",
+    "owner": "//measure:entmax_solve_layer-alt-entmax1.5-64x64-T2048",
+    "params": {
+     "arm": "entmax_solve"
+    }
+   }
+  ],
+  "machine": {
+   "devices": [
+    {
+     "compute_cap": "9.0",
+     "driver": "580.196.07",
+     "name": "NVIDIA H100 80GB HBM3"
+    }
+   ]
+  },
+  "reps": 11,
+  "rounds": 8,
+  "session": "//measure:session_entmax",
+  "warmup": 10
+ },
+ "summary": {
+  "members": [
+   {
+    "cell": "layer-alt-entmax1.5-64x64-T2048",
+    "error": null,
+    "id": "m0",
+    "owner": "//measure:entmax_solve_layer-alt-entmax1.5-64x64-T2048",
+    "status": "ok"
+   }
+  ],
+  "samples": 88
+ },
+ "utc": "2026-11-27T09:47:58Z",
+ "wall_s": null
+}

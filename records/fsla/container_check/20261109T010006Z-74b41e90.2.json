@@ -1,0 +1,93 @@
+{
+ "cold_start_seconds": 414.9,
+ "error": "RED: ['the commit gate']",
+ "format": 2,
+ "image": "rola-devbox:a94bd4aa548e",
+ "key": "74b41e90032061396586e118",
+ "label": "@fsla//:container_check",
+ "migrated": {
+  "commit": "9b185200d0f1cc1a30e73929f16e9b47db54ea96",
+  "from": "records/environment/74b41e90032061396586e118.json#2",
+  "machine_paths": [
+   "/root/.cache/rola/build/bazel/store/python/cpython-3.11.13-linux-x86_64-gnu/bin/python3.11",
+   "/root/.local/bin/bazel",
+   "/root/.local/share/rola/tools/bazelisk-1.30.0/bazelisk"
+  ]
+ },
+ "ok": false,
+ "provenance": {
+  "branch": "p93-bazel",
+  "checkout": "carry-vc",
+  "diff_sha256": "20a945ace293bd8bbe8e31b58d4409ed703d04dff24d312266097c23d0f86e2e",
+  "git_sha": "970150d331a0049d94ee51bf112ee79eef0114b1",
+  "host": "DESKTOP-MKIUJID"
+ },
+ "run": "20261109T010006Z-74b41e90.2",
+ "semantics": {
+  "image_digest": "sha256:a94bd4aa548e92bb91a3a160133d135f8963036830787e9edafed35c27379562"
+ },
+ "steps": [
+  {
+   "ok": true,
+   "seconds": 3.9,
+   "step": "clone the checkouts",
+   "tail": [
+    "  git switch -",
+    "",
+    "Turn off this advice by setting config variable advice.detachedHead to false"
+   ]
+  },
+  {
+   "ok": true,
+   "seconds": 0.9,
+   "step": "bootstrap",
+   "tail": [
+    "installed bazelisk 1.30.0 -> /root/.local/share/rola/tools/bazelisk-1.30.0/bazelisk",
+    "linked /root/.local/bin/bazel -> /root/.local/share/rola/tools/bazelisk-1.30.0/bazelisk",
+    "bootstrap: `bazel` is the pinned bazelisk; next, bazel run //:init"
+   ]
+  },
+  {
+   "ok": true,
+   "seconds": 403.8,
+   "step": "init",
+   "tail": [
+    "ok   store.root is a rola-results checkout: /workspace/rola-results",
+    "ok   workspace.devtools is a rola-devtools checkout: /workspace/rola-devtools",
+    "dev check: 1 red"
+   ]
+  },
+  {
+   "ok": true,
+   "seconds": 6.3,
+   "step": "dev_env",
+   "tail": [
+    "INFO: Build completed successfully, 6 total actions",
+    "Using CPython 3.11.13 interpreter at: /root/.cache/rola/build/bazel/store/python/cpython-3.11.13-linux-x86_64-gnu/bin/python3.11",
+    "Creating virtual environment at: /workspace/venv-rola"
+   ]
+  },
+  {
+   "ok": true,
+   "seconds": 0.4,
+   "step": "check",
+   "tail": [
+    "INFO: Elapsed time: 0.123s, Critical Path: 0.00s",
+    "INFO: 6 processes: 6 internal.",
+    "INFO: Build completed successfully, 6 total actions"
+   ]
+  },
+  {
+   "ok": false,
+   "seconds": 192.5,
+   "step": "the commit gate",
+   "tail": [
+    "INFO: Elapsed time: 7.809s, Critical Path: 6.92s",
+    "INFO: 31 processes: 150 action cache hit, 1 internal, 4 local, 56 processwrapper-sandbox.",
+    "INFO: Build completed, 1 test FAILED, 31 total actions"
+   ]
+  }
+ ],
+ "utc": "2026-11-09T01:00:06Z",
+ "wall_s": null
+}

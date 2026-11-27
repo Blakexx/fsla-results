@@ -1,0 +1,113 @@
+{
+ "format": 2,
+ "key": "8c7bd4e0e9dd1ec8a53c33e9",
+ "label": "@fsla//measure:session_entmax",
+ "migrated": {
+  "commit": "9b185200d0f1cc1a30e73929f16e9b47db54ea96",
+  "from": "records/timing/session/8c7bd4e0e9dd1ec8a53c33e9.json#0",
+  "machine_paths": []
+ },
+ "ok": true,
+ "output": "20261127T050546Z-f850afaf/output.json",
+ "provenance": {
+  "checkouts": {
+   "//measure:clock": {
+    "branch": null,
+    "checkout": "fsla",
+    "diff_sha256": null,
+    "git_sha": "7dfc25f60312298fb13c0332d5d1c758f8754174"
+   },
+   "//measure:entmax_solve_layer-B2-T2048-H8-h512-dv64-bf16-s0": {
+    "branch": null,
+    "checkout": "fsla",
+    "diff_sha256": null,
+    "git_sha": "7dfc25f60312298fb13c0332d5d1c758f8754174"
+   }
+  },
+  "host": "e6f098bec605",
+  "run": "20261127T050546Z-f850afaf"
+ },
+ "run": "20261127T050546Z-f850afaf",
+ "semantics": {
+  "claim": "unlocked",
+  "clock": "unlocked",
+  "clock_reader": {
+   "binds": [
+    "fsla",
+    "fsla_cu13._C"
+   ],
+   "bundle": {
+    "digest": "5010dd0c885cddeab4fbaac6f68e6731de31fa27337f9c3e548c385a15216792",
+    "environment": "43697cd2e4a7e662"
+   },
+   "cells": [],
+   "executor": "measure.executors:read_clock",
+   "kind": "clock",
+   "owner": "//measure:clock",
+   "params": {}
+  },
+  "entries": [
+   {
+    "binds": [
+     "fsla",
+     "fsla_cu13._C"
+    ],
+    "bundle": {
+     "digest": "5010dd0c885cddeab4fbaac6f68e6731de31fa27337f9c3e548c385a15216792",
+     "environment": "43697cd2e4a7e662"
+    },
+    "cells": [
+     {
+      "data": "fsla_devtools.cells.layer:layer_cell",
+      "draw": "3d05b9eb89fc3e7715f1e2fe2119e737903bbb56d627c60904acccb4eb70831a",
+      "name": "layer-B2-T2048-H8-h512-dv64-bf16-s0",
+      "params": {
+       "B": 2,
+       "H": 8,
+       "decode_steps": 0,
+       "dtype": "bf16",
+       "dv": 64,
+       "hidden": 512,
+       "note": "the input of chunk-p73-pinned (FSLA widths [64, 64], alpha 1.5, logit gain 1.0). THE pinned cell: the inventory constructor every published step number was taken on, unchanged",
+       "seed": 0,
+       "tokens": 2048
+      }
+     }
+    ],
+    "executor": "measure.executors:timed",
+    "kind": "timed",
+    "owner": "//measure:entmax_solve_layer-B2-T2048-H8-h512-dv64-bf16-s0",
+    "params": {
+     "arm": "entmax_solve@layer=chunk-p73-pinned"
+    }
+   }
+  ],
+  "machine": {
+   "devices": [
+    {
+     "compute_cap": "9.0",
+     "driver": "580.196.07",
+     "name": "NVIDIA H100 80GB HBM3"
+    }
+   ]
+  },
+  "reps": 11,
+  "rounds": 8,
+  "session": "//measure:session_entmax",
+  "warmup": 10
+ },
+ "summary": {
+  "members": [
+   {
+    "cell": "layer-B2-T2048-H8-h512-dv64-bf16-s0",
+    "error": null,
+    "id": "m0",
+    "owner": "//measure:entmax_solve_layer-B2-T2048-H8-h512-dv64-bf16-s0",
+    "status": "ok"
+   }
+  ],
+  "samples": 88
+ },
+ "utc": "2026-11-27T05:05:48Z",
+ "wall_s": null
+}
