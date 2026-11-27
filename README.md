@@ -8,7 +8,6 @@ writing a record, checking them, the index and its views, the verdict, the dashb
     records/<location>/<key>.<n>.out.<ext>   sample n's output
     lab/<experiment>/...                     the lab's records (fsla's `measure/lab/results/`, moved here with their
                                              history, byte-identical), kept as written
-    legacy_paths.json                        the machine paths files stored before the store refused them carry
 
 - **A location** names who stores: `fsla/sass`, `timing/session`, `mqar/<config>`, `environment`.
 - **A record** is everything kept under one key: the semantics the tool handed over and every sample.
@@ -32,13 +31,12 @@ fixed content; moving the pin to a newer commit is how a new record becomes cita
 
 ## The gate and the index
 
-    bazel test //:gate        every record consistent, every lab file parsed, no machine path, every path declared
+    bazel test //:gate        every record consistent, every lab file parsed, every path declared
     bazel build //:index      the records' SQLite index and views: a build output, never a file beside the records
 
 The gate is the store's own check over `records/` (`python3 -m fsla_devtools.results --root records check`: every key
-recomputes from its semantics, every location is its directory, every successful sample's output exists, and nothing
-carries a machine path but the exact paths `legacy_paths.json` admits for a file stored before the store refused every
-absolute path), the same over `lab/` (`check-files lab`: each file parses where it is JSON or CSV), and the declaration
+recomputes from its semantics, every location is its directory, every successful sample's output exists), the same over
+`lab/` (`check-files lab`: each file parses where it is JSON or CSV), and the declaration
 check (`python -m fsla_devtools.mirror --check`). Its environment is the standard library and fsla_devtools, from the
 module's source at the pinned commit (the front door overrides it with the machine's fsla-devtools checkout). The
 commit hook (`.githooks/pre-commit` -> `bazel/bazel --commit-gate`, fsla-devtools' commit gate) runs it on the commit as
@@ -56,5 +54,4 @@ front door (`bazel/bazel`), which runs fsla-devtools' from the machine's fsla-de
 ## Publishing
 
 This repository is developed in public, with its whole history. A record carries no machine path -- the store refuses
-one at the door -- so every record is stored as written; the files stored before that refusal keep exactly the paths
-`legacy_paths.json` lists for them, container and box paths, no home directory.
+one at the door (a path inside a home directory) -- so every record is stored as written.

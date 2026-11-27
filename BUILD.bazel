@@ -19,20 +19,19 @@ filegroup(
 )
 
 #: every stored record consistent (fsla_devtools.results' own check): its key recomputes from its semantics, its
-#: location is its directory, its outputs exist, and it carries no machine path but those legacy_paths.json admits
+#: location is its directory, its outputs exist
 tree_test(
     name = "records",
     size = "small",
-    cmd = ["python3", "-m", "fsla_devtools.results", "--root", "records", "check", "--admitted", "legacy_paths.json"],
+    cmd = ["python3", "-m", "fsla_devtools.results", "--root", "records", "check"],
     data = [":tree"],
 )
 
-#: the lab's records, kept as written: every file parses where it is JSON or CSV, and none carries a machine path but
-#: those legacy_paths.json admits
+#: the lab's records, kept as written: every file parses where it is JSON or CSV
 tree_test(
     name = "lab",
     size = "small",
-    cmd = ["python3", "-m", "fsla_devtools.results", "check-files", "lab", "--admitted", "legacy_paths.json"],
+    cmd = ["python3", "-m", "fsla_devtools.results", "check-files", "lab"],
     data = [":tree"],
 )
 
