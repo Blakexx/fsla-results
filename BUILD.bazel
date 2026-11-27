@@ -1,6 +1,8 @@
-"""fsla-results' root package: its checks and gate (the tracked tree beside them: fsla_results/, records/ and views/ hold
-no BUILD file, so their files are this package's)."""
+"""fsla-results' root package: its checks and gate over the data (the tracked tree beside them: records/ and lab/ hold no
+BUILD file, so their files are this package's), the records' index as a build output, and the store's command line."""
 
+load("@fsla_devtools//bazel:results.bzl", "results_index")
+load("@results_env//:flags.bzl", "VENV")
 load("//bazel:defs.bzl", "results_run", "tree_part", "tree_test")
 
 exports_files(["requirements.lock"])
@@ -16,30 +18,21 @@ filegroup(
     ],
 )
 
-#: fsla's rule set, over the library
-tree_test(
-    name = "ruff",
-    size = "small",
-    cmd = ["ruff", "check", "--select", "E,F,UP,B,SIM,I,C4", "--line-length", "127", "--target-version", "py310",
-           "fsla_results"],
-    data = [":tree"],
-)
-
-#: the store's, the index's, the verdict's and the dashboard's contracts
-tree_test(
-    name = "contract",
-    size = "small",
-    cmd = ["python3", "-m", "unittest", "fsla_results.test_store", "fsla_results.test_index", "fsla_results.test_verdict",
-           "fsla_results.test_dashboard"],
-    data = [":tree"],
-)
-
-#: every stored record consistent: its key recomputes from its semantics, its location is its directory, its outputs
-#: exist
+#: every stored record consistent (fsla_devtools.results' own check): its key recomputes from its semantics, its
+#: location is its directory, its outputs exist, and it carries no machine path but those legacy_paths.json admits
 tree_test(
     name = "records",
     size = "small",
-    cmd = ["python3", "-m", "fsla_results", "check"],
+    cmd = ["python3", "-m", "fsla_devtools.results", "--root", "records", "check", "--admitted", "legacy_paths.json"],
+    data = [":tree"],
+)
+
+#: the lab's records, kept as written: every file parses where it is JSON or CSV, and none carries a machine path but
+#: those legacy_paths.json admits
+tree_test(
+    name = "lab",
+    size = "small",
+    cmd = ["python3", "-m", "fsla_devtools.results", "check-files", "lab", "--admitted", "legacy_paths.json"],
     data = [":tree"],
 )
 
@@ -55,15 +48,22 @@ tree_test(
 test_suite(
     name = "gate",
     tests = [
-        ":contract",
         ":declarations",
+        ":lab",
         ":records",
-        ":ruff",
     ],
 )
 
-#: the store's command line (README.md): `bazel run //:results -- check|show|index|sql|history|latest|commit|dashboard`
+#: THE RECORDS' INDEX, derived: a build output (`bazel build //:index`), never a file beside the records
+results_index(
+    name = "index",
+    directory = "records",
+    records = [":tracked"],
+    venv = VENV,
+)
+
+#: the store's command line (README.md): `bazel run //:results -- --root records check|show|index|sql|history|latest|...`
 results_run(
     name = "results",
-    module = "fsla_results",
+    module = "fsla_devtools.results",
 )

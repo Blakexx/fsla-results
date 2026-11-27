@@ -8,10 +8,9 @@ startup --max_idle_secs=900
 # of them; a file nothing commits is a build output there, never written into the checkout
 build --symlink_prefix=.bazel/
 
-# THE TOOLS' CACHES NEVER LAND IN A CHECKOUT: a target that runs a tool in the source tree writes no bytecode and no ruff
-# cache there; pytest's and hypothesis's are off in the tool's own config (pyproject.toml, tests/conftest.py)
-run  --run_env=PYTHONDONTWRITEBYTECODE=1 --run_env=RUFF_NO_CACHE=true
-test --test_env=PYTHONDONTWRITEBYTECODE=1 --test_env=RUFF_NO_CACHE=true
+# THE TOOLS' CACHES NEVER LAND IN A CHECKOUT: a target that runs a tool in the source tree writes no bytecode there
+run  --run_env=PYTHONDONTWRITEBYTECODE=1
+test --test_env=PYTHONDONTWRITEBYTECODE=1
 
 # the shared disk cache's bound
 common --experimental_disk_cache_gc_max_size=5G

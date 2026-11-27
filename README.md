@@ -1,96 +1,60 @@
 # fsla-results
 
-The interface every fsla tool stores its measurements through (`fsla_results`), and, by default, the records themselves.
+The measurement records every reported FSLA number is read from: a repository of data and no code. The store's code --
+writing a record, checking them, the index and its views, the verdict, the dashboard -- is fsla-devtools'
+(`fsla_devtools.results`); this repository holds what it stored.
 
-```python
-from fsla_results import Store, checkout
+    records/<location>/<key>.json            a record (format 1: key, location, format, semantics, samples)
+    records/<location>/<key>.<n>.out.<ext>   sample n's output
+    lab/<experiment>/...                     the lab's records (fsla's `measure/lab/results/`, moved here with their
+                                             history, byte-identical), kept as written
+    legacy_paths.json                        the machine paths files stored before the store refused them carry
 
-store = Store("mqar/local")                        # the tool's own location
-semantics = {"bench": "mqar", "config": "local", "cell": "d1-n256", "local": checkouts}
-store.put(semantics, output=rows, wall_s=12.3, provenance=checkout(worktree))
-store.put(semantics, error="RuntimeError: ...")    # a failure is a sample too
-record = store.get(key(semantics))                  # Store.complete(record), store.output(record)
-```
-
-- **A location** names who stores: `fsla/sass`, `timing/session`, `mqar/<config>`.
+- **A location** names who stores: `fsla/sass`, `timing/session`, `mqar/<config>`, `environment`.
 - **A record** is everything kept under one key: the semantics the tool handed over and every sample.
 - **The key** is sha256 over the semantics, so a repeat lands on the same record and a changed input on a new one.
-- **A sample** is one execution: its output (JSON, or a file moved in) or its error, when, how long, its provenance
-  (the checkouts and commits the tool names; the host).
+- **A sample** is one execution: its output or its error, when, how long, its provenance (the checkouts and commits
+  the tool names; the host).
 
-Nothing derived from two records (a ratio, a baseline) is stored: that is the reader's.
+Nothing derived from two records (a ratio, a baseline) is stored: that is the reader's. A recorded result is never
+rewritten; a new run is a new sample. fsla-devtools' README (`The results store`) is the store's whole contract: what a
+record holds, the refusals at the door (a machine path, a timing without its commits), the index's tables and views,
+and the verdict.
 
-    records/<location>/<key>.json            the record (format 1: key, location, format, semantics, samples)
-    records/<location>/<key>.<n>.out.<ext>   sample n's output
-    views/<name>.sql                         a query view over the index
+## Who writes here and who reads it
 
-The index is derived from `records/` and lives in the machine's cache, `results/<12 hex of the records path>/index.sqlite`
-under the dev config's `host.build_cache`: it survives between runs (the incremental rebuild is its point) and a wipe only
-costs the next `index` a full read.
+A tool writes a record through `fsla_devtools.results.Store`, at the checkout the machine's dev config names as
+`store.root`, its `records/` the backend. A measurement taken on a rented card comes back as a patch, applied here,
+checked by this repository's gate, committed and pushed from the desk -- a rented box never holds push credentials.
+fsla pins this repository at ONE commit (fsla-devtools' `environment.data` tag, by the commit's archive digest) and
+cites a record by its path inside it (`data:lab/reg_trade/sm_90a.json`, `data:records/...`), so a citation resolves to
+fixed content; moving the pin to a newer commit is how a new record becomes citable.
 
-## Queries
+## The gate and the index
 
-    bazel run //:results -- index                  # bring the index up to date (derived; a machine cache, never in the checkout)
-    bazel run //:results -- sql "SELECT ..."       # any query; the index is brought up to date first
-    bazel run //:results -- history LOCATION [--where PATH=VALUE]   # every sample of the matching records
-    bazel run //:results -- latest LOCATION [--where PATH=VALUE]    # each matching record's newest good output
-    bazel run //:results -- verdict --reference LABEL [--candidate LABEL] [--cell C] [--arm A]   # judged in-session
-    bazel run //:results -- dashboard --out suite.html [--reference LABEL] [--run RUN]   # one run's sessions as a page
+    bazel test //:gate        every record consistent, every lab file parsed, no machine path, every path declared
+    bazel build //:index      the records' SQLite index and views: a build output, never a file beside the records
 
-The tables know no tool: `records(location, key, format, semantics)` and `samples(location, key, n, ok, utc, wall_s,
-provenance, error, output_path, output, extra)`, the JSON fields read with SQLite's JSON functions. A tool's shape is a
-view in `views/`, run after every index:
+The gate is the store's own check over `records/` (`python3 -m fsla_devtools.results --root records check`: every key
+recomputes from its semantics, every location is its directory, every successful sample's output exists, and nothing
+carries a machine path but the exact paths `legacy_paths.json` admits for a file stored before the store refused every
+absolute path), the same over `lab/` (`check-files lab`: each file parses where it is JSON or CSV), and the declaration
+check (`python -m fsla_devtools.mirror --check`). Its environment is the standard library and fsla_devtools, from the
+module's source at the pinned commit (the front door overrides it with the machine's fsla-devtools checkout). The
+commit hook (`.githooks/pre-commit` -> `bazel/bazel --commit-gate`, fsla-devtools' commit gate) runs it on the commit as
+git will write it.
 
-| view | from | one row per |
-|---|---|---|
-| `timing_members` | `timing/session` (fsla-devtools' `measure_timing`, through a store target) | member of a stored session: the run, the session, its registration (`owner`), the label and arm read from it, the cell, the LEVEL it prices (`kernel`, `op`, `layer`), whether it ran and why not, device, torch, the owner's commit and diff, the session's rounds, reps and clock reads |
-| `timing_samples` | `timing_members` | timed call, in the order taken: its member's label, arm and cell, its round, rep and position in the rep's random order, and its milliseconds |
-| `memory_rows` | `timing/memory` (fsla-devtools' `measure_memory`) | timing entry alone on a central cell: peak allocated and reserved bytes, what was allocated before the build and after the calls, bytes held outside the caching allocator (a paged state) and the totals with them, label, arm, commit |
-| `instrument_cells` | `fsla/<instrument>` (a fsla checkout's instrument targets) | cell of an instrument run: the run, whether the tool ran on it, and its exit and error when it could not |
-| `instrument_metrics` | `fsla/<instrument>` | every NUMBER an instrument recorded, one row each, in long form: the run, the cell (NULL for the whole-binary `sass`), a dotted `metric` (`sass.<cubin>.<function>.hmma`, and one per number each declared instrument records) and its value -- so a reading across runs is a join, never a parser per tool (`bazel run //:results -- instruments --baseline RUN`) |
-| `diff_cells` | `fsla/<name>` and `diff/<surface>` (fsla-devtools' diff targets) | cell and quantity of a stored diff: the claim (`expect`) and whether the diff as a whole `held`, the cell's status (a side that could not produce it, and why), and the quantity's verdict under the strategy with its worst slot (`ratio`, `at`, `bound_by`) |
-| `null_gates` | `timing/null` (fsla-devtools' `measure_null_gate`) | cell of a null gate: the run, whether the entry's two workers agree (the per-rep ratios' interquartile range holds one), the ratio's median and quartiles |
-| `cells` | fleet and local grids | stored grid cell: bench, config, cell, image or local checkouts, row |
+The store's command line runs on this checkout's records by `--root`:
 
-A session stores raw samples and no ratio: which label is the reference is the reader's, in a query.
+    bazel run //:results -- --root records show [LOCATION]
+    bazel run //:results -- --root records sql "SELECT ..."
+    bazel run //:results -- --root records verdict --reference LABEL
 
-```sql
--- the runs, newest first
-SELECT run, max(utc), count(DISTINCT session) FROM timing_members GROUP BY run ORDER BY max(utc) DESC;
--- one session's members that could not run, and why
-SELECT session, label, arm, cell, error FROM timing_members WHERE run = ? AND status = 'failed';
--- a label's arm on a cell over time: its mean call per stored session
-SELECT utc, git_sha, avg(ms) FROM timing_samples WHERE label = 'tip' AND arm = 'decode_step' AND cell = 'nl64k-alt-k4'
-GROUP BY location, key, n ORDER BY utc;
--- two labels in one session, round by round
-SELECT a.round, avg(a.ms) / avg(b.ms) FROM timing_samples a JOIN timing_samples b USING (location, key, n, arm, cell, round)
-WHERE a.label = 'tip' AND b.label = 'master' AND a.cell = 'flagship-dense' AND a.run = ? GROUP BY a.round;
-```
-
-**The verdict** is a query, never a stored row. `verdict --reference LABEL` pairs, in every stored session, each other
-label's member with the reference label's member of the same arm on the same cell, and judges the pair within its
-session. A pair whose members price different LEVELS is refused rather than reported -- a kernel's launch and a layer's
-whole call are different quantities, and a comparison between two libraries is a comparison of their layers. Otherwise: per round each member's median, their ratio and difference (`fsla_devtools.verdict.session`). A unit is the
-arm, the cell, the two labels and the code each ran (commit and diff); fsla-devtools' `fsla_devtools.verdict.classify`
-reads a unit's sessions oldest first and judges the newest: a regression needs the session's median ratio over one plus
-three sigmas of its own per-round ratio spread, a significant paired test, and a second session at the same code over its
-own limit; anything less says what it is. Host drift between sessions moves both members of a pair and cancels.
-
-The fsla tree names this checkout as `store.root` in its dev config, and each fsla checkout's venv
-(`bazel run //:dev_env` there) imports the package from it. Here, the command line is a run target, in the checkout,
-on this workspace's environment:
-
-    bazel run //:results -- check              every key recomputes, every location is its directory, every output exists
-    bazel run //:results -- show [LOCATION]
-    bazel run //:results -- commit -m MESSAGE  commits records/ only; the library goes through its gated commits
-
-The gate is `bazel test //:gate`: ruff with fsla's rule set and the contract tests on the library (the verdict's need
-fsla-devtools, which the environment carries), and `check` on the records. The commit hook (`.githooks/pre-commit` ->
-`bazel/bazel --commit-gate`, fsla-devtools' commit gate) runs it on the commit as git will write it, a records commit
-included. Bazel is fsla's pinned bazelisk (a fsla checkout's `python3 tools/bootstrap.py` links it), run through this
-checkout's front door (`bazel/bazel`), which runs fsla-devtools' from the machine's fsla-devtools checkout.
+Bazel is fsla's pinned bazelisk (a fsla checkout's `python3 tools/bootstrap.py` links it), run through this checkout's
+front door (`bazel/bazel`), which runs fsla-devtools' from the machine's fsla-devtools checkout.
 
 ## Publishing
 
-This repository is developed in public, with its whole history. A record carries no machine path, so every record is
-stored as written.
+This repository is developed in public, with its whole history. A record carries no machine path -- the store refuses
+one at the door -- so every record is stored as written; the files stored before that refusal keep exactly the paths
+`legacy_paths.json` lists for them, container and box paths, no home directory.

@@ -1,5 +1,6 @@
-"""fsla-results' build graph: its environment and its checks, on fsla-devtools' module (its environment extension and
-generic rules). Nothing here names a machine; the front door (bazel/bazel) hands Bazel the machine's settings."""
+"""fsla-results' build graph: the checks of its data and the records' index, on fsla-devtools' module (its environment
+extension, its generic rules and the store's code, `fsla_devtools.results`). Nothing here names a machine; the front door
+(bazel/bazel) hands Bazel the machine's settings."""
 
 module(name = "fsla_results")
 
@@ -10,13 +11,12 @@ bazel_dep(name = "bazel_skylib", version = "1.9.2")
 bazel_dep(name = "fsla_devtools", version = "0.1.0")
 git_override(
     module_name = "fsla_devtools",
-    commit = "7da5dde27158330ba07ccda5c962d2d04228425e",
+    commit = "657f6c08045d1c87a34ffeaaf57b3f5786246aa2",
     remote = "https://github.com/Blakexx/fsla-devtools.git",
 )
 
-#: THE ENVIRONMENT (fsla-devtools' environment extension): the pinned uv; `results_env`, the gate's linter beside
-#: fsla_devtools (the verdict's statistics and the declaration check), the library itself standard library only; the
-#: tracked tree
+#: THE ENVIRONMENT (fsla-devtools' environment extension): the pinned uv; `results_env`, the standard library and
+#: fsla_devtools (the store's check and the declaration check import nothing else); the tracked tree
 environment = use_extension("@fsla_devtools//bazel:environment.bzl", "environment")
 environment.pinned(
     name = "uv",
