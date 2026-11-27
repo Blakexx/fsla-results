@@ -1,9 +1,10 @@
 """fsla-results' root package: its checks and gate over the data (the tracked tree beside them: records/ and lab/ hold no
 BUILD file, so their files are this package's), the records' index as a build output, and the store's command line."""
 
+load("@fsla_devtools//bazel:rules.bzl", "bazel_version_test")
 load("@fsla_devtools//bazel:results.bzl", "results_index")
 load("@results_env//:flags.bzl", "VENV")
-load("//bazel:defs.bzl", "results_run", "tree_part", "tree_test")
+load("//bazel:defs.bzl", "docrefs_test", "results_run", "tree_part", "tree_test")
 
 exports_files(["requirements.lock"])
 
@@ -43,11 +44,28 @@ tree_test(
     git = True,
 )
 
+#: every citation the README makes of the tree pinned and read (fsla-devtools' `fsla_devtools.docrefs`); the data holds
+#: no Python package, so a citation is a path, a link, or a path of the pinned data -- which, here, is this checkout
+docrefs_test(
+    name = "docrefs",
+    size = "small",
+    data = "//:MODULE.bazel",
+    lock = "references.lock.json",
+)
+
+#: .bazelversion is the Bazel release fsla-devtools' shared pins are tested with
+bazel_version_test(
+    name = "bazelversion",
+    version = ".bazelversion",
+)
+
 #: THE GATE: every check this workspace holds; the commit hook runs it (.githooks/pre-commit)
 test_suite(
     name = "gate",
     tests = [
+        ":bazelversion",
         ":declarations",
+        ":docrefs",
         ":lab",
         ":records",
     ],

@@ -26,18 +26,20 @@ A tool writes a record through `fsla_devtools.results.Store`, at the checkout th
 `store.root`, its `records/` the backend. A measurement taken on a rented card comes back as a patch, applied here,
 checked by this repository's gate, committed and pushed from the desk -- a rented box never holds push credentials.
 fsla pins this repository at ONE commit (fsla-devtools' `environment.data` tag, by the commit's archive digest) and
-cites a record by its path inside it (`data:lab/reg_trade/sm_90a.json`, `data:records/...`), so a citation resolves to
-fixed content; moving the pin to a newer commit is how a new record becomes citable.
+cites a record by its path inside it (`data:lab/reg_trade/sm_90a.json`, `data:records/<location>/<key>.json`), so a
+citation resolves to fixed content; moving the pin to a newer commit is how a new record becomes citable.
 
 ## The gate and the index
 
-    bazel test //:gate        every record consistent, every lab file parsed, every path declared
+    bazel test //:gate        every record consistent, every lab file parsed, every path declared, every citation read
     bazel build //:index      the records' SQLite index and views: a build output, never a file beside the records
 
 The gate is the store's own check over `records/` (`python3 -m fsla_devtools.results --root records check`: every key
 recomputes from its semantics, every location is its directory, every successful sample's output exists), the same over
-`lab/` (`check-files lab`: each file parses where it is JSON or CSV), and the declaration
-check (`python -m fsla_devtools.mirror --check`). Its environment is the standard library and fsla_devtools, from the
+`lab/` (`check-files lab`: each file parses where it is JSON or CSV), the declaration check (`python -m
+fsla_devtools.mirror --check`), and the doc references (`//:docrefs`, fsla-devtools' `fsla_devtools.docrefs`: this
+README's citations pinned in `references.lock.json`, a `data:` citation resolving in this checkout, which is the data).
+Its environment is the standard library and fsla_devtools, from the
 module's source at the pinned commit (the front door overrides it with the machine's fsla-devtools checkout). The
 commit hook (`.githooks/pre-commit` -> `bazel/bazel --commit-gate`, fsla-devtools' commit gate) runs it on the commit as
 git will write it.

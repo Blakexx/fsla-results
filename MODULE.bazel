@@ -11,7 +11,7 @@ bazel_dep(name = "bazel_skylib", version = "1.9.2")
 bazel_dep(name = "fsla_devtools", version = "0.1.0")
 git_override(
     module_name = "fsla_devtools",
-    commit = "6849469fdea012da16f28e154e46a10d021d67e9",
+    commit = "b25ada8eec4e1880152a8bc56add737a6d93a855",
     remote = "https://github.com/Blakexx/fsla-devtools.git",
 )
 
@@ -30,4 +30,5 @@ environment.python(
     uv_pin = "@fsla_devtools//pins:uv_pin.json",
 )
 environment.tree(name = "results_tree")
-use_repo(environment, "results_env", "results_tree", "uv")
+environment.docrefs(name = "docrefs")
+use_repo(environment, "docrefs", "results_env", "results_tree", "uv")
