@@ -1,0 +1,109 @@
+{
+ "experiment": "carry_fetch",
+ "question": "what does a carry warp's own supply of a group's value lines cost -- the LIBRARY's listing of a window's live tokens, and the copies of their 128-byte value lines by token index straight into the steps' tiles in shared memory -- by how many tokens are live?",
+ "arch": "sm_90a",
+ "device": "NVIDIA H100 80GB HBM3",
+ "checks": [
+  {
+   "lab": "check",
+   "variant": "a window of 64 live tokens: listed, and their value lines fetched",
+   "ok": true,
+   "detail": "0 of 34603008 tile bytes differ; 0 tiles off a boundary"
+  },
+  {
+   "lab": "check",
+   "variant": "every token of a window live: listed, and their value lines fetched",
+   "ok": true,
+   "detail": "0 of 34603008 tile bytes differ; 0 tiles off a boundary"
+  }
+ ],
+ "driver": "580.196.07",
+ "toolkit": "Build cuda_13.5.r13.5/compiler.39125733_0",
+ "git": {
+  "sha": "73620f1ae1a6dca4a6abe2883f9ad9a14b1e6e03",
+  "dirty": false
+ },
+ "reps": 7,
+ "date": "2026-11-25T05:30:37+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "a window of 64 live tokens: listed, and their value lines fetched",
+   "unit": "cycles a 128-byte row a CTA",
+   "samples": [
+    2.968713,
+    2.962503,
+    2.957112,
+    2.968518,
+    2.96409,
+    2.963636,
+    2.963228
+   ],
+   "median": 2.963636,
+   "min": 2.957112,
+   "max": 2.968713,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "every token of a window live: listed, and their value lines fetched",
+   "unit": "cycles a 128-byte row a CTA",
+   "samples": [
+    2.097478,
+    2.098255,
+    2.098308,
+    2.131111,
+    2.100057,
+    2.100781,
+    2.09859
+   ],
+   "median": 2.09859,
+   "min": 2.097478,
+   "max": 2.131111,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "carry_fetch::checked(const unsigned int *, const unsigned char *, unsigned char *, int *)": {
+   "regs": 51,
+   "ops": {
+    "LOP3.LUT": 67,
+    "IMAD.IADD": 32,
+    "SEL": 21,
+    "SHF.R.U32.HI": 21,
+    "SHFL.IDX": 16,
+    "IADD3": 12,
+    "IMAD.SHL.U32": 11,
+    "NOP": 11,
+    "IMAD.WIDE": 8,
+    "IADD3.X": 8,
+    "LDGSTS.E.BYPASS.128": 8,
+    "POPC": 6
+   }
+  },
+  "carry_fetch::fetched(long long *, const unsigned int *, const unsigned char *, int)": {
+   "regs": 64,
+   "ops": {
+    "LOP3.LUT": 52,
+    "IMAD.IADD": 25,
+    "SHF.R.U32.HI": 22,
+    "SEL": 20,
+    "SHFL.IDX": 16,
+    "IMAD": 12,
+    "NOP": 12,
+    "IADD3": 11,
+    "ISETP.GE.AND": 9,
+    "IMAD.WIDE": 9,
+    "IMAD.SHL.U32": 8,
+    "IADD3.X": 8
+   }
+  }
+ },
+ "counters": {},
+ "counters_exception": {
+  "host": "Nebius preemptible VM, NVIDIA H100 80GB HBM3: its counters not yet read there",
+  "instead": "the kernels' own clocks and the SASS's static counts"
+ }
+}

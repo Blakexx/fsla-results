@@ -1,0 +1,1052 @@
+{
+ "experiment": "wgmma_width",
+ "question": "what is one wgmma's own time by its OUTPUT WIDTH -- 8, 16, 32, 64, 128 and 256 columns at 64 rows and K 16 -- apart from its commit group's round trip? Does a step narrower than 64 columns cost less?",
+ "arch": "sm_90a",
+ "device": "NVIDIA H100 80GB HBM3",
+ "checks": [
+  {
+   "lab": "check",
+   "variant": "8 columns, 1 step a group",
+   "ok": true,
+   "detail": "0 of 33792 extremes differ from the exact sum"
+  },
+  {
+   "lab": "check",
+   "variant": "8 columns, 2 steps a group",
+   "ok": true,
+   "detail": "0 of 33792 extremes differ from the exact sum"
+  },
+  {
+   "lab": "check",
+   "variant": "8 columns, 4 steps a group",
+   "ok": true,
+   "detail": "0 of 33792 extremes differ from the exact sum"
+  },
+  {
+   "lab": "check",
+   "variant": "8 columns, 8 steps a group",
+   "ok": true,
+   "detail": "0 of 33792 extremes differ from the exact sum"
+  },
+  {
+   "lab": "check",
+   "variant": "8 columns, 32 steps a group",
+   "ok": true,
+   "detail": "0 of 33792 extremes differ from the exact sum"
+  },
+  {
+   "lab": "check",
+   "variant": "16 columns, 1 step a group",
+   "ok": true,
+   "detail": "0 of 33792 extremes differ from the exact sum"
+  },
+  {
+   "lab": "check",
+   "variant": "16 columns, 2 steps a group",
+   "ok": true,
+   "detail": "0 of 33792 extremes differ from the exact sum"
+  },
+  {
+   "lab": "check",
+   "variant": "16 columns, 4 steps a group",
+   "ok": true,
+   "detail": "0 of 33792 extremes differ from the exact sum"
+  },
+  {
+   "lab": "check",
+   "variant": "16 columns, 8 steps a group",
+   "ok": true,
+   "detail": "0 of 33792 extremes differ from the exact sum"
+  },
+  {
+   "lab": "check",
+   "variant": "32 columns, 1 step a group",
+   "ok": true,
+   "detail": "0 of 33792 extremes differ from the exact sum"
+  },
+  {
+   "lab": "check",
+   "variant": "32 columns, 2 steps a group",
+   "ok": true,
+   "detail": "0 of 33792 extremes differ from the exact sum"
+  },
+  {
+   "lab": "check",
+   "variant": "32 columns, 4 steps a group",
+   "ok": true,
+   "detail": "0 of 33792 extremes differ from the exact sum"
+  },
+  {
+   "lab": "check",
+   "variant": "32 columns, 8 steps a group",
+   "ok": true,
+   "detail": "0 of 33792 extremes differ from the exact sum"
+  },
+  {
+   "lab": "check",
+   "variant": "64 columns, 1 step a group",
+   "ok": true,
+   "detail": "0 of 33792 extremes differ from the exact sum"
+  },
+  {
+   "lab": "check",
+   "variant": "64 columns, 2 steps a group",
+   "ok": true,
+   "detail": "0 of 33792 extremes differ from the exact sum"
+  },
+  {
+   "lab": "check",
+   "variant": "64 columns, 4 steps a group",
+   "ok": true,
+   "detail": "0 of 33792 extremes differ from the exact sum"
+  },
+  {
+   "lab": "check",
+   "variant": "64 columns, 8 steps a group",
+   "ok": true,
+   "detail": "0 of 33792 extremes differ from the exact sum"
+  },
+  {
+   "lab": "check",
+   "variant": "128 columns, 1 step a group",
+   "ok": true,
+   "detail": "0 of 33792 extremes differ from the exact sum"
+  },
+  {
+   "lab": "check",
+   "variant": "128 columns, 2 steps a group",
+   "ok": true,
+   "detail": "0 of 33792 extremes differ from the exact sum"
+  },
+  {
+   "lab": "check",
+   "variant": "128 columns, 4 steps a group",
+   "ok": true,
+   "detail": "0 of 33792 extremes differ from the exact sum"
+  },
+  {
+   "lab": "check",
+   "variant": "128 columns, 8 steps a group",
+   "ok": true,
+   "detail": "0 of 33792 extremes differ from the exact sum"
+  },
+  {
+   "lab": "check",
+   "variant": "256 columns, 1 step a group",
+   "ok": true,
+   "detail": "0 of 33792 extremes differ from the exact sum"
+  },
+  {
+   "lab": "check",
+   "variant": "256 columns, 2 steps a group",
+   "ok": true,
+   "detail": "0 of 33792 extremes differ from the exact sum"
+  },
+  {
+   "lab": "check",
+   "variant": "256 columns, 4 steps a group",
+   "ok": true,
+   "detail": "0 of 33792 extremes differ from the exact sum"
+  },
+  {
+   "lab": "check",
+   "variant": "256 columns, 8 steps a group",
+   "ok": true,
+   "detail": "0 of 33792 extremes differ from the exact sum"
+  }
+ ],
+ "driver": "595.91.07",
+ "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
+ "git": {
+  "sha": "1eba273ab8fe0520861068cb70ade7b6ac8f6e3b",
+  "dirty": false
+ },
+ "reps": 7,
+ "date": "2026-11-12T05:08:20+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "8 columns, 1 step a group",
+   "unit": "cycles a group",
+   "samples": [
+    77.039495,
+    77.039501,
+    77.039495,
+    77.039501,
+    77.039495,
+    77.039562,
+    77.03948
+   ],
+   "median": 77.039495,
+   "min": 77.03948,
+   "max": 77.039562,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "8 columns, 2 steps a group",
+   "unit": "cycles a group",
+   "samples": [
+    90.039989,
+    90.039984,
+    90.039989,
+    90.039969,
+    90.039989,
+    90.039984,
+    90.039989
+   ],
+   "median": 90.039989,
+   "min": 90.039969,
+   "max": 90.039989,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "8 columns, 4 steps a group",
+   "unit": "cycles a group",
+   "samples": [
+    121.039984,
+    121.039997,
+    121.039969,
+    121.039997,
+    121.039984,
+    121.039997,
+    121.039984
+   ],
+   "median": 121.039984,
+   "min": 121.039969,
+   "max": 121.039997,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "8 columns, 8 steps a group",
+   "unit": "cycles a group",
+   "samples": [
+    193.039989,
+    193.039984,
+    193.039989,
+    193.039961,
+    193.039989,
+    193.039961,
+    193.039997
+   ],
+   "median": 193.039989,
+   "min": 193.039961,
+   "max": 193.039997,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "8 columns, 32 steps a group",
+   "unit": "cycles a group",
+   "samples": [
+    625.039984,
+    625.039989,
+    625.039984,
+    625.039997,
+    625.039984,
+    625.039974,
+    625.039984
+   ],
+   "median": 625.039984,
+   "min": 625.039974,
+   "max": 625.039997,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "16 columns, 1 step a group",
+   "unit": "cycles a group",
+   "samples": [
+    81.039501,
+    81.039495,
+    81.039486,
+    81.039495,
+    81.039501,
+    81.039495,
+    81.039501
+   ],
+   "median": 81.039495,
+   "min": 81.039486,
+   "max": 81.039501,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "16 columns, 2 steps a group",
+   "unit": "cycles a group",
+   "samples": [
+    96.039969,
+    96.039989,
+    96.039961,
+    96.039989,
+    96.039984,
+    96.039974,
+    96.039969
+   ],
+   "median": 96.039974,
+   "min": 96.039961,
+   "max": 96.039989,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "16 columns, 4 steps a group",
+   "unit": "cycles a group",
+   "samples": [
+    131.039989,
+    131.039984,
+    131.039974,
+    131.039961,
+    131.039989,
+    131.039961,
+    131.039989
+   ],
+   "median": 131.039984,
+   "min": 131.039961,
+   "max": 131.039989,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "16 columns, 8 steps a group",
+   "unit": "cycles a group",
+   "samples": [
+    211.039984,
+    211.039989,
+    211.039969,
+    211.039989,
+    211.039984,
+    211.039997,
+    211.039984
+   ],
+   "median": 211.039984,
+   "min": 211.039969,
+   "max": 211.039997,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 columns, 1 step a group",
+   "unit": "cycles a group",
+   "samples": [
+    89.039501,
+    89.03948,
+    89.039501,
+    89.03948,
+    89.039508,
+    89.039495,
+    89.039486
+   ],
+   "median": 89.039495,
+   "min": 89.03948,
+   "max": 89.039508,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 columns, 2 steps a group",
+   "unit": "cycles a group",
+   "samples": [
+    108.039984,
+    108.039997,
+    108.039984,
+    108.039989,
+    108.039984,
+    108.039989,
+    108.039984
+   ],
+   "median": 108.039984,
+   "min": 108.039984,
+   "max": 108.039997,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 columns, 4 steps a group",
+   "unit": "cycles a group",
+   "samples": [
+    151.039989,
+    151.039984,
+    151.039989,
+    151.039969,
+    151.039989,
+    151.039984,
+    151.039997
+   ],
+   "median": 151.039989,
+   "min": 151.039969,
+   "max": 151.039997,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 columns, 8 steps a group",
+   "unit": "cycles a group",
+   "samples": [
+    247.039969,
+    247.039989,
+    247.039984,
+    247.039989,
+    247.039984,
+    247.039997,
+    247.039969
+   ],
+   "median": 247.039984,
+   "min": 247.039969,
+   "max": 247.039997,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "64 columns, 1 step a group",
+   "unit": "cycles a group",
+   "samples": [
+    105.039501,
+    105.039473,
+    105.039486,
+    105.03948,
+    105.039508,
+    105.039495,
+    105.039508
+   ],
+   "median": 105.039495,
+   "min": 105.039473,
+   "max": 105.039508,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "64 columns, 2 steps a group",
+   "unit": "cycles a group",
+   "samples": [
+    132.039969,
+    132.039974,
+    132.039984,
+    132.039989,
+    132.039969,
+    132.039989,
+    132.039984
+   ],
+   "median": 132.039984,
+   "min": 132.039969,
+   "max": 132.039989,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "64 columns, 4 steps a group",
+   "unit": "cycles a group",
+   "samples": [
+    191.039989,
+    191.039984,
+    191.039989,
+    191.039969,
+    191.039989,
+    191.039984,
+    191.039989
+   ],
+   "median": 191.039989,
+   "min": 191.039969,
+   "max": 191.039989,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "64 columns, 8 steps a group",
+   "unit": "cycles a group",
+   "samples": [
+    319.039984,
+    319.039989,
+    319.039984,
+    319.039989,
+    319.039984,
+    319.039997,
+    319.039984
+   ],
+   "median": 319.039984,
+   "min": 319.039984,
+   "max": 319.039997,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "128 columns, 1 step a group",
+   "unit": "cycles a group",
+   "samples": [
+    137.04121,
+    137.041204,
+    137.04121,
+    137.041204,
+    137.041195,
+    137.041182,
+    137.041217
+   ],
+   "median": 137.041204,
+   "min": 137.041182,
+   "max": 137.041217,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "128 columns, 2 steps a group",
+   "unit": "cycles a group",
+   "samples": [
+    191.041693,
+    191.041706,
+    191.041678,
+    191.041683,
+    191.041693,
+    191.041698,
+    191.041678
+   ],
+   "median": 191.041693,
+   "min": 191.041678,
+   "max": 191.041706,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "128 columns, 4 steps a group",
+   "unit": "cycles a group",
+   "samples": [
+    319.041698,
+    319.041678,
+    319.041706,
+    319.041693,
+    319.041706,
+    319.041678,
+    319.041706
+   ],
+   "median": 319.041698,
+   "min": 319.041678,
+   "max": 319.041706,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "128 columns, 8 steps a group",
+   "unit": "cycles a group",
+   "samples": [
+    575.041678,
+    575.041683,
+    575.041693,
+    575.041698,
+    575.041693,
+    575.041698,
+    575.041693
+   ],
+   "median": 575.041693,
+   "min": 575.041678,
+   "max": 575.041698,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "256 columns, 1 step a group",
+   "unit": "cycles a group",
+   "samples": [
+    201.05743,
+    201.05744,
+    201.057445,
+    201.05744,
+    201.057445,
+    201.057417,
+    201.057445
+   ],
+   "median": 201.05744,
+   "min": 201.057417,
+   "max": 201.057445,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "256 columns, 2 steps a group",
+   "unit": "cycles a group",
+   "samples": [
+    319.057928,
+    319.057933,
+    319.057928,
+    319.057933,
+    319.057928,
+    319.057941,
+    319.057913
+   ],
+   "median": 319.057928,
+   "min": 319.057913,
+   "max": 319.057941,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "256 columns, 4 steps a group",
+   "unit": "cycles a group",
+   "samples": [
+    575.057933,
+    575.057928,
+    575.057941,
+    575.057928,
+    575.057941,
+    575.057928,
+    575.057941
+   ],
+   "median": 575.057933,
+   "min": 575.057928,
+   "max": 575.057941,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "256 columns, 8 steps a group",
+   "unit": "cycles a group",
+   "samples": [
+    1087.057928,
+    1087.057933,
+    1087.057928,
+    1087.057941,
+    1087.057913,
+    1087.057941,
+    1087.057928
+   ],
+   "median": 1087.057928,
+   "min": 1087.057913,
+   "max": 1087.057941,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void wgmma_width::width<(int)256, (int)8>(long long *, float *, int)": {
+   "regs": 154,
+   "ops": {
+    "FMNMX": 254,
+    "CS2R": 66,
+    "NOP": 15,
+    "HGMMA.64": 8,
+    "BRA": 6,
+    "UMOV": 5,
+    "ULOP3.LUT": 4,
+    "VIADD": 3,
+    "USHF.R.U32.HI": 3,
+    "LDC": 2,
+    "S2R": 2,
+    "BSSY": 2
+   }
+  },
+  "void wgmma_width::width<(int)256, (int)4>(long long *, float *, int)": {
+   "regs": 154,
+   "ops": {
+    "FMNMX": 254,
+    "CS2R": 66,
+    "NOP": 11,
+    "BRA": 6,
+    "UMOV": 5,
+    "ULOP3.LUT": 4,
+    "HGMMA.64": 4,
+    "VIADD": 3,
+    "USHF.R.U32.HI": 3,
+    "LDC": 2,
+    "S2R": 2,
+    "BSSY": 2
+   }
+  },
+  "void wgmma_width::width<(int)256, (int)2>(long long *, float *, int)": {
+   "regs": 154,
+   "ops": {
+    "FMNMX": 254,
+    "CS2R": 66,
+    "NOP": 13,
+    "BRA": 6,
+    "UMOV": 5,
+    "ULOP3.LUT": 4,
+    "VIADD": 3,
+    "USHF.R.U32.HI": 3,
+    "LDC": 2,
+    "S2R": 2,
+    "BSSY": 2,
+    "S2UR": 2
+   }
+  },
+  "void wgmma_width::width<(int)256, (int)1>(long long *, float *, int)": {
+   "regs": 154,
+   "ops": {
+    "FMNMX": 254,
+    "CS2R": 66,
+    "NOP": 13,
+    "BRA": 6,
+    "UMOV": 5,
+    "ULOP3.LUT": 4,
+    "S2R": 3,
+    "VIADD": 3,
+    "USHF.R.U32.HI": 3,
+    "LDC": 2,
+    "BSSY": 2,
+    "S2UR": 2
+   }
+  },
+  "void wgmma_width::width<(int)128, (int)8>(long long *, float *, int)": {
+   "regs": 90,
+   "ops": {
+    "FMNMX": 126,
+    "CS2R": 34,
+    "NOP": 15,
+    "HGMMA.64": 8,
+    "BRA": 6,
+    "UMOV": 5,
+    "ULOP3.LUT": 4,
+    "VIADD": 3,
+    "USHF.R.U32.HI": 3,
+    "LDC": 2,
+    "S2R": 2,
+    "BSSY": 2
+   }
+  },
+  "void wgmma_width::width<(int)128, (int)4>(long long *, float *, int)": {
+   "regs": 90,
+   "ops": {
+    "FMNMX": 126,
+    "CS2R": 34,
+    "NOP": 11,
+    "BRA": 6,
+    "UMOV": 5,
+    "ULOP3.LUT": 4,
+    "HGMMA.64": 4,
+    "VIADD": 3,
+    "USHF.R.U32.HI": 3,
+    "LDC": 2,
+    "S2R": 2,
+    "BSSY": 2
+   }
+  },
+  "void wgmma_width::width<(int)128, (int)2>(long long *, float *, int)": {
+   "regs": 90,
+   "ops": {
+    "FMNMX": 126,
+    "CS2R": 34,
+    "NOP": 13,
+    "BRA": 6,
+    "UMOV": 5,
+    "ULOP3.LUT": 4,
+    "VIADD": 3,
+    "USHF.R.U32.HI": 3,
+    "LDC": 2,
+    "S2R": 2,
+    "BSSY": 2,
+    "S2UR": 2
+   }
+  },
+  "void wgmma_width::width<(int)128, (int)1>(long long *, float *, int)": {
+   "regs": 90,
+   "ops": {
+    "FMNMX": 126,
+    "CS2R": 34,
+    "NOP": 13,
+    "BRA": 6,
+    "UMOV": 5,
+    "ULOP3.LUT": 4,
+    "S2R": 3,
+    "VIADD": 3,
+    "USHF.R.U32.HI": 3,
+    "LDC": 2,
+    "BSSY": 2,
+    "S2UR": 2
+   }
+  },
+  "void wgmma_width::width<(int)64, (int)8>(long long *, float *, int)": {
+   "regs": 58,
+   "ops": {
+    "FMNMX": 62,
+    "CS2R": 18,
+    "NOP": 15,
+    "HGMMA.64": 8,
+    "BRA": 6,
+    "UMOV": 5,
+    "ULOP3.LUT": 4,
+    "VIADD": 3,
+    "USHF.R.U32.HI": 3,
+    "LDC": 2,
+    "S2R": 2,
+    "BSSY": 2
+   }
+  },
+  "void wgmma_width::width<(int)64, (int)4>(long long *, float *, int)": {
+   "regs": 58,
+   "ops": {
+    "FMNMX": 62,
+    "CS2R": 18,
+    "NOP": 11,
+    "BRA": 6,
+    "UMOV": 5,
+    "ULOP3.LUT": 4,
+    "HGMMA.64": 4,
+    "VIADD": 3,
+    "USHF.R.U32.HI": 3,
+    "LDC": 2,
+    "S2R": 2,
+    "BSSY": 2
+   }
+  },
+  "void wgmma_width::width<(int)64, (int)2>(long long *, float *, int)": {
+   "regs": 58,
+   "ops": {
+    "FMNMX": 62,
+    "CS2R": 18,
+    "NOP": 12,
+    "BRA": 6,
+    "UMOV": 5,
+    "ULOP3.LUT": 4,
+    "S2R": 3,
+    "VIADD": 3,
+    "USHF.R.U32.HI": 3,
+    "LDC": 2,
+    "BSSY": 2,
+    "S2UR": 2
+   }
+  },
+  "void wgmma_width::width<(int)64, (int)1>(long long *, float *, int)": {
+   "regs": 58,
+   "ops": {
+    "FMNMX": 62,
+    "CS2R": 18,
+    "NOP": 13,
+    "BRA": 6,
+    "UMOV": 5,
+    "ULOP3.LUT": 4,
+    "S2R": 3,
+    "VIADD": 3,
+    "USHF.R.U32.HI": 3,
+    "LDC": 2,
+    "BSSY": 2,
+    "S2UR": 2
+   }
+  },
+  "void wgmma_width::width<(int)32, (int)8>(long long *, float *, int)": {
+   "regs": 42,
+   "ops": {
+    "FMNMX": 30,
+    "NOP": 15,
+    "CS2R": 10,
+    "HGMMA.64": 8,
+    "BRA": 6,
+    "UMOV": 5,
+    "ULOP3.LUT": 4,
+    "VIADD": 3,
+    "USHF.R.U32.HI": 3,
+    "LDC": 2,
+    "S2R": 2,
+    "BSSY": 2
+   }
+  },
+  "void wgmma_width::width<(int)32, (int)4>(long long *, float *, int)": {
+   "regs": 42,
+   "ops": {
+    "FMNMX": 30,
+    "CS2R": 10,
+    "NOP": 10,
+    "BRA": 6,
+    "UMOV": 5,
+    "ULOP3.LUT": 4,
+    "HGMMA.64": 4,
+    "S2R": 3,
+    "VIADD": 3,
+    "USHF.R.U32.HI": 3,
+    "LDC": 2,
+    "BSSY": 2
+   }
+  },
+  "void wgmma_width::width<(int)32, (int)2>(long long *, float *, int)": {
+   "regs": 42,
+   "ops": {
+    "FMNMX": 30,
+    "NOP": 12,
+    "CS2R": 10,
+    "BRA": 6,
+    "UMOV": 5,
+    "ULOP3.LUT": 4,
+    "S2R": 3,
+    "VIADD": 3,
+    "USHF.R.U32.HI": 3,
+    "LDC": 2,
+    "BSSY": 2,
+    "S2UR": 2
+   }
+  },
+  "void wgmma_width::width<(int)32, (int)1>(long long *, float *, int)": {
+   "regs": 42,
+   "ops": {
+    "FMNMX": 30,
+    "NOP": 13,
+    "CS2R": 10,
+    "BRA": 6,
+    "UMOV": 5,
+    "ULOP3.LUT": 4,
+    "S2R": 3,
+    "VIADD": 3,
+    "USHF.R.U32.HI": 3,
+    "LDC": 2,
+    "BSSY": 2,
+    "S2UR": 2
+   }
+  },
+  "void wgmma_width::width<(int)16, (int)8>(long long *, float *, int)": {
+   "regs": 34,
+   "ops": {
+    "FMNMX": 14,
+    "NOP": 10,
+    "HGMMA.64": 8,
+    "BRA": 6,
+    "CS2R": 6,
+    "UMOV": 5,
+    "ULOP3.LUT": 4,
+    "S2R": 3,
+    "VIADD": 3,
+    "USHF.R.U32.HI": 3,
+    "LDC": 2,
+    "BSSY": 2
+   }
+  },
+  "void wgmma_width::width<(int)16, (int)4>(long long *, float *, int)": {
+   "regs": 34,
+   "ops": {
+    "FMNMX": 14,
+    "NOP": 14,
+    "BRA": 6,
+    "CS2R": 6,
+    "UMOV": 5,
+    "ULOP3.LUT": 4,
+    "HGMMA.64": 4,
+    "S2R": 3,
+    "VIADD": 3,
+    "USHF.R.U32.HI": 3,
+    "LDC": 2,
+    "BSSY": 2
+   }
+  },
+  "void wgmma_width::width<(int)16, (int)2>(long long *, float *, int)": {
+   "regs": 34,
+   "ops": {
+    "FMNMX": 14,
+    "NOP": 8,
+    "BRA": 6,
+    "CS2R": 6,
+    "UMOV": 5,
+    "ULOP3.LUT": 4,
+    "S2R": 3,
+    "VIADD": 3,
+    "USHF.R.U32.HI": 3,
+    "LDC": 2,
+    "BSSY": 2,
+    "S2UR": 2
+   }
+  },
+  "void wgmma_width::width<(int)16, (int)1>(long long *, float *, int)": {
+   "regs": 34,
+   "ops": {
+    "FMNMX": 14,
+    "NOP": 9,
+    "BRA": 6,
+    "CS2R": 6,
+    "UMOV": 5,
+    "ULOP3.LUT": 4,
+    "S2R": 3,
+    "VIADD": 3,
+    "USHF.R.U32.HI": 3,
+    "LDC": 2,
+    "BSSY": 2,
+    "S2UR": 2
+   }
+  },
+  "void wgmma_width::width<(int)8, (int)32>(long long *, float *, int)": {
+   "regs": 30,
+   "ops": {
+    "HGMMA.64": 32,
+    "NOP": 13,
+    "BRA": 6,
+    "FMNMX": 6,
+    "UMOV": 5,
+    "CS2R": 4,
+    "ULOP3.LUT": 4,
+    "VIADD": 3,
+    "USHF.R.U32.HI": 3,
+    "LDC": 2,
+    "S2R": 2,
+    "BSSY": 2
+   }
+  },
+  "void wgmma_width::width<(int)8, (int)8>(long long *, float *, int)": {
+   "regs": 30,
+   "ops": {
+    "NOP": 12,
+    "HGMMA.64": 8,
+    "BRA": 6,
+    "FMNMX": 6,
+    "UMOV": 5,
+    "CS2R": 4,
+    "ULOP3.LUT": 4,
+    "S2R": 3,
+    "VIADD": 3,
+    "USHF.R.U32.HI": 3,
+    "LDC": 2,
+    "BSSY": 2
+   }
+  },
+  "void wgmma_width::width<(int)8, (int)4>(long long *, float *, int)": {
+   "regs": 30,
+   "ops": {
+    "NOP": 8,
+    "BRA": 6,
+    "FMNMX": 6,
+    "UMOV": 5,
+    "CS2R": 4,
+    "ULOP3.LUT": 4,
+    "HGMMA.64": 4,
+    "S2R": 3,
+    "VIADD": 3,
+    "USHF.R.U32.HI": 3,
+    "LDC": 2,
+    "BSSY": 2
+   }
+  },
+  "void wgmma_width::width<(int)8, (int)2>(long long *, float *, int)": {
+   "regs": 30,
+   "ops": {
+    "NOP": 10,
+    "BRA": 6,
+    "FMNMX": 6,
+    "UMOV": 5,
+    "CS2R": 4,
+    "ULOP3.LUT": 4,
+    "S2R": 3,
+    "VIADD": 3,
+    "USHF.R.U32.HI": 3,
+    "LDC": 2,
+    "BSSY": 2,
+    "S2UR": 2
+   }
+  },
+  "void wgmma_width::width<(int)8, (int)1>(long long *, float *, int)": {
+   "regs": 30,
+   "ops": {
+    "NOP": 11,
+    "BRA": 6,
+    "FMNMX": 6,
+    "UMOV": 5,
+    "CS2R": 4,
+    "ULOP3.LUT": 4,
+    "S2R": 3,
+    "VIADD": 3,
+    "USHF.R.U32.HI": 3,
+    "LDC": 2,
+    "BSSY": 2,
+    "S2UR": 2
+   }
+  }
+ },
+ "counters": {},
+ "counters_exception": {
+  "host": "vast.ai rented box, NVIDIA H100 80GB HBM3: a box with a driver and no toolkit",
+  "instead": "the kernels' own clocks and the SASS's static counts"
+ }
+}

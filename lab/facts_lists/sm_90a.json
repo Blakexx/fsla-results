@@ -1,0 +1,632 @@
+{
+ "experiment": "facts_lists",
+ "question": "what does the facts pass cost a token on hopper when a sparse level's liveness is a MASK it is handed -- a bit a digit a token -- and the pass emits that mask TURNED AROUND, a window's tokens by digit, and nothing else; and what does a value test of the rows cost beside it?",
+ "arch": "sm_90a",
+ "device": "NVIDIA H100 80GB HBM3",
+ "checks": [
+  {
+   "lab": "check",
+   "variant": "4 to 5 live digits a token, the mask as handed, a window's counts",
+   "ok": true,
+   "detail": "0 of 33792 counts differ"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the mask as handed, a window's counts, the tables in cache",
+   "reason": "the row above checks this kernel's first round; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the mask as handed, a window's counts, the tables once-read",
+   "reason": "the row above checks this kernel's first round; this one is its time"
+  },
+  {
+   "lab": "check",
+   "variant": "4 to 5 live digits a token, the mask as handed, a window's lists",
+   "ok": true,
+   "detail": "0 of 33792 counts and 0 of 585728 entries differ"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the mask as handed, a window's lists, the tables in cache",
+   "reason": "the row above checks this kernel's first round; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the mask as handed, a window's lists, the tables once-read",
+   "reason": "the row above checks this kernel's first round; this one is its time"
+  },
+  {
+   "lab": "check",
+   "variant": "4 to 5 live digits a token, a value test of the rows, a window's counts",
+   "ok": true,
+   "detail": "0 of 33792 counts differ"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, a value test of the rows, a window's counts, the tables in cache",
+   "reason": "the row above checks this kernel's first round; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, a value test of the rows, a window's counts, the tables once-read",
+   "reason": "the row above checks this kernel's first round; this one is its time"
+  },
+  {
+   "lab": "check",
+   "variant": "4 to 5 live digits a token, a value test of the rows, a window's lists",
+   "ok": true,
+   "detail": "0 of 33792 counts and 0 of 585728 entries differ"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, a value test of the rows, a window's lists, the tables in cache",
+   "reason": "the row above checks this kernel's first round; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, a value test of the rows, a window's lists, the tables once-read",
+   "reason": "the row above checks this kernel's first round; this one is its time"
+  },
+  {
+   "lab": "check",
+   "variant": "4 to 5 live digits a token, the mask as handed, a window's data gathered into its digits' steps",
+   "ok": true,
+   "detail": "0 of 33792 counts and 0 of 14643200 arranged lines differ"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the mask as handed, a window's data gathered into its digits' steps, its rounds the same windows",
+   "reason": "the row above checks this kernel's first round; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the mask as handed, a window's data gathered into its digits' steps, a fresh window a round",
+   "reason": "the row above checks this kernel's first round; this one is its time"
+  },
+  {
+   "lab": "check",
+   "variant": "32 live digits a token, the mask as handed, a window's counts",
+   "ok": true,
+   "detail": "0 of 33792 counts differ"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the mask as handed, a window's counts, the tables in cache",
+   "reason": "the row above checks this kernel's first round; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the mask as handed, a window's counts, the tables once-read",
+   "reason": "the row above checks this kernel's first round; this one is its time"
+  },
+  {
+   "lab": "check",
+   "variant": "32 live digits a token, the mask as handed, a window's lists",
+   "ok": true,
+   "detail": "0 of 33792 counts and 0 of 4325376 entries differ"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the mask as handed, a window's lists, the tables in cache",
+   "reason": "the row above checks this kernel's first round; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the mask as handed, a window's lists, the tables once-read",
+   "reason": "the row above checks this kernel's first round; this one is its time"
+  },
+  {
+   "lab": "check",
+   "variant": "32 live digits a token, a value test of the rows, a window's counts",
+   "ok": true,
+   "detail": "0 of 33792 counts differ"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, a value test of the rows, a window's counts, the tables in cache",
+   "reason": "the row above checks this kernel's first round; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, a value test of the rows, a window's counts, the tables once-read",
+   "reason": "the row above checks this kernel's first round; this one is its time"
+  },
+  {
+   "lab": "check",
+   "variant": "32 live digits a token, a value test of the rows, a window's lists",
+   "ok": true,
+   "detail": "0 of 33792 counts and 0 of 4325376 entries differ"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, a value test of the rows, a window's lists, the tables in cache",
+   "reason": "the row above checks this kernel's first round; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, a value test of the rows, a window's lists, the tables once-read",
+   "reason": "the row above checks this kernel's first round; this one is its time"
+  },
+  {
+   "lab": "check",
+   "variant": "32 live digits a token, the mask as handed, a window's data gathered into its digits' steps",
+   "ok": true,
+   "detail": "0 of 33792 counts and 0 of 108134400 arranged lines differ"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the mask as handed, a window's data gathered into its digits' steps, its rounds the same windows",
+   "reason": "the row above checks this kernel's first round; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the mask as handed, a window's data gathered into its digits' steps, a fresh window a round",
+   "reason": "the row above checks this kernel's first round; this one is its time"
+  }
+ ],
+ "driver": "595.91.07",
+ "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
+ "git": {
+  "sha": "e34189c2a67390b3c823afc91dc1268b713116c7",
+  "dirty": false
+ },
+ "reps": 7,
+ "date": "2026-11-14T05:38:59+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the mask as handed, a window's counts, the tables in cache",
+   "unit": "SM-cycles a token",
+   "samples": [
+    5.042111,
+    5.037431,
+    5.043291,
+    5.042747,
+    5.043348,
+    5.043993,
+    5.043388
+   ],
+   "median": 5.043291,
+   "min": 5.037431,
+   "max": 5.043993,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the mask as handed, a window's counts, the tables once-read",
+   "unit": "SM-cycles a token",
+   "samples": [
+    6.087103,
+    6.194132,
+    6.089977,
+    6.066097,
+    6.125119,
+    6.198142,
+    6.174241
+   ],
+   "median": 6.125119,
+   "min": 6.066097,
+   "max": 6.198142,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the mask as handed, a window's lists, the tables in cache",
+   "unit": "SM-cycles a token",
+   "samples": [
+    8.233627,
+    8.245589,
+    8.254905,
+    8.252856,
+    8.254396,
+    8.245089,
+    8.252602
+   ],
+   "median": 8.252602,
+   "min": 8.233627,
+   "max": 8.254905,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the mask as handed, a window's lists, the tables once-read",
+   "unit": "SM-cycles a token",
+   "samples": [
+    9.945409,
+    9.931974,
+    9.902456,
+    9.895706,
+    9.889837,
+    10.023037,
+    10.018175
+   ],
+   "median": 9.931974,
+   "min": 9.889837,
+   "max": 10.023037,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, a value test of the rows, a window's counts, the tables in cache",
+   "unit": "SM-cycles a token",
+   "samples": [
+    10.658084,
+    10.875886,
+    10.91081,
+    11.042191,
+    10.958525,
+    11.07105,
+    11.010794
+   ],
+   "median": 10.958525,
+   "min": 10.658084,
+   "max": 11.07105,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, a value test of the rows, a window's counts, the tables once-read",
+   "unit": "SM-cycles a token",
+   "samples": [
+    19.564212,
+    19.30928,
+    19.300399,
+    19.202804,
+    19.205525,
+    19.280342,
+    19.185751
+   ],
+   "median": 19.280342,
+   "min": 19.185751,
+   "max": 19.564212,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, a value test of the rows, a window's lists, the tables in cache",
+   "unit": "SM-cycles a token",
+   "samples": [
+    13.986838,
+    14.028714,
+    14.015261,
+    14.036353,
+    14.016154,
+    14.043791,
+    14.020067
+   ],
+   "median": 14.020067,
+   "min": 13.986838,
+   "max": 14.043791,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, a value test of the rows, a window's lists, the tables once-read",
+   "unit": "SM-cycles a token",
+   "samples": [
+    20.504708,
+    20.32939,
+    20.278206,
+    20.615474,
+    20.662926,
+    20.551334,
+    20.618976
+   ],
+   "median": 20.551334,
+   "min": 20.278206,
+   "max": 20.662926,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the mask as handed, a window's data gathered into its digits' steps, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    1579.367473,
+    1598.897163,
+    1591.24305,
+    1579.002542,
+    1568.808057,
+    1569.785771,
+    1572.578675
+   ],
+   "median": 1579.002542,
+   "min": 1568.808057,
+   "max": 1598.897163,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the mask as handed, a window's data gathered into its digits' steps, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    1561.706533,
+    1556.630771,
+    1554.199686,
+    1568.118503,
+    1550.899633,
+    1553.996364,
+    1564.842446
+   ],
+   "median": 1556.630771,
+   "min": 1550.899633,
+   "max": 1568.118503,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the mask as handed, a window's counts, the tables in cache",
+   "unit": "SM-cycles a token",
+   "samples": [
+    9.458451,
+    9.459101,
+    9.461098,
+    9.461389,
+    9.462497,
+    9.460934,
+    9.462884
+   ],
+   "median": 9.461098,
+   "min": 9.458451,
+   "max": 9.462884,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the mask as handed, a window's counts, the tables once-read",
+   "unit": "SM-cycles a token",
+   "samples": [
+    10.475581,
+    10.435576,
+    10.501463,
+    10.492672,
+    10.518544,
+    10.476936,
+    10.508308
+   ],
+   "median": 10.492672,
+   "min": 10.435576,
+   "max": 10.518544,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the mask as handed, a window's lists, the tables in cache",
+   "unit": "SM-cycles a token",
+   "samples": [
+    43.808465,
+    43.838461,
+    43.662523,
+    43.341707,
+    43.376059,
+    43.628924,
+    43.615834
+   ],
+   "median": 43.628924,
+   "min": 43.341707,
+   "max": 43.838461,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the mask as handed, a window's lists, the tables once-read",
+   "unit": "SM-cycles a token",
+   "samples": [
+    45.972813,
+    45.645329,
+    45.181325,
+    45.379235,
+    45.438368,
+    45.309963,
+    45.374544
+   ],
+   "median": 45.379235,
+   "min": 45.181325,
+   "max": 45.972813,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, a value test of the rows, a window's counts, the tables in cache",
+   "unit": "SM-cycles a token",
+   "samples": [
+    15.007171,
+    15.049318,
+    15.111863,
+    15.105712,
+    15.130843,
+    15.146611,
+    15.147148
+   ],
+   "median": 15.111863,
+   "min": 15.007171,
+   "max": 15.147148,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, a value test of the rows, a window's counts, the tables once-read",
+   "unit": "SM-cycles a token",
+   "samples": [
+    18.252373,
+    18.775724,
+    18.78621,
+    18.839753,
+    18.938201,
+    18.910221,
+    18.735679
+   ],
+   "median": 18.78621,
+   "min": 18.252373,
+   "max": 18.938201,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, a value test of the rows, a window's lists, the tables in cache",
+   "unit": "SM-cycles a token",
+   "samples": [
+    46.879897,
+    46.475517,
+    47.301813,
+    46.954997,
+    46.927006,
+    47.122377,
+    47.000633
+   ],
+   "median": 46.954997,
+   "min": 46.475517,
+   "max": 47.301813,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, a value test of the rows, a window's lists, the tables once-read",
+   "unit": "SM-cycles a token",
+   "samples": [
+    46.847266,
+    47.066829,
+    46.753786,
+    47.280071,
+    47.056666,
+    46.734677,
+    46.457619
+   ],
+   "median": 46.847266,
+   "min": 46.457619,
+   "max": 47.280071,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the mask as handed, a window's data gathered into its digits' steps, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    5988.733715,
+    5755.704359,
+    5621.672067,
+    5599.942757,
+    5590.774124,
+    5624.94806,
+    5601.138243
+   ],
+   "median": 5621.672067,
+   "min": 5590.774124,
+   "max": 5988.733715,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the mask as handed, a window's data gathered into its digits' steps, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    5626.573889,
+    5631.4725,
+    5286.837057,
+    3632.118338,
+    2538.329182,
+    2520.581015,
+    4548.071834
+   ],
+   "median": 4548.071834,
+   "min": 2520.581015,
+   "max": 5631.4725,
+   "unstable": true
+  }
+ ],
+ "kernels": {
+  "void facts_lists::window<(int)0, (int)2>(long long *, const uint4 *, const uint4 *, const unsigned int *, unsigned short *, unsigned short *, int, int, const uint4 *, const uint4 *, uint4 *, int)": {
+   "regs": 62,
+   "ops": {
+    "LDG.E.128": 194,
+    "STG.E.128": 192,
+    "LOP3.LUT": 111,
+    "IMAD.IADD": 64,
+    "LEA": 53,
+    "IMAD.MOV.U32": 51,
+    "BRA": 40,
+    "IMAD": 39,
+    "VIADD": 28,
+    "IADD3": 28,
+    "IMAD.SHL.U32": 27,
+    "IMAD.WIDE.U32": 25
+   }
+  },
+  "void facts_lists::window<(int)1, (int)1>(long long *, const uint4 *, const uint4 *, const unsigned int *, unsigned short *, unsigned short *, int, int, const uint4 *, const uint4 *, uint4 *, int)": {
+   "regs": 64,
+   "ops": {
+    "LOP3.LUT": 287,
+    "SHF.R.U32.HI": 112,
+    "VIADD": 84,
+    "IMAD": 78,
+    "IMAD.IADD": 46,
+    "IMAD.MOV.U32": 45,
+    "BRA": 40,
+    "LEA": 39,
+    "IMAD.SHL.U32": 26,
+    "BSSY": 17,
+    "BSYNC": 17,
+    "LDS": 17
+   }
+  },
+  "void facts_lists::window<(int)1, (int)0>(long long *, const uint4 *, const uint4 *, const unsigned int *, unsigned short *, unsigned short *, int, int, const uint4 *, const uint4 *, uint4 *, int)": {
+   "regs": 62,
+   "ops": {
+    "LOP3.LUT": 220,
+    "SHF.R.U32.HI": 112,
+    "VIADD": 76,
+    "IMAD": 74,
+    "BRA": 23,
+    "IMAD.SHL.U32": 18,
+    "LDG.E.128": 16,
+    "LEA": 15,
+    "NOP": 12,
+    "S2R": 11,
+    "IMAD.MOV.U32": 11,
+    "BSSY": 10
+   }
+  },
+  "void facts_lists::window<(int)0, (int)1>(long long *, const uint4 *, const uint4 *, const unsigned int *, unsigned short *, unsigned short *, int, int, const uint4 *, const uint4 *, uint4 *, int)": {
+   "regs": 32,
+   "ops": {
+    "LOP3.LUT": 91,
+    "IMAD.IADD": 46,
+    "IMAD.MOV.U32": 45,
+    "BRA": 40,
+    "LEA": 38,
+    "VIADD": 20,
+    "BSSY": 17,
+    "BSYNC": 17,
+    "IMAD.SHL.U32": 17,
+    "LDS": 17,
+    "SHF.L.W.U32": 16,
+    "BREV": 16
+   }
+  },
+  "void facts_lists::window<(int)0, (int)0>(long long *, const uint4 *, const uint4 *, const unsigned int *, unsigned short *, unsigned short *, int, int, const uint4 *, const uint4 *, uint4 *, int)": {
+   "regs": 32,
+   "ops": {
+    "BRA": 23,
+    "LOP3.LUT": 18,
+    "LEA": 14,
+    "VIADD": 12,
+    "S2R": 11,
+    "IMAD": 11,
+    "BSSY": 10,
+    "BSYNC": 10,
+    "ISETP.NE.AND": 9,
+    "IMAD.IADD": 9,
+    "MOV": 8,
+    "BREV": 8
+   }
+  }
+ },
+ "counters": {},
+ "counters_exception": {
+  "host": "vast.ai rented box, NVIDIA H100 80GB HBM3: a box with a driver and no toolkit",
+  "instead": "the kernels' own clocks and the SASS's static counts"
+ }
+}

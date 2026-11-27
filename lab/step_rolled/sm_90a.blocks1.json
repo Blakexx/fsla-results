@@ -1,0 +1,151 @@
+{
+ "experiment": "step_rolled",
+ "question": "what does a tensor step cost its warpgroup when it is issued from a rolled loop with a run-time trip count, against the same steps written as a straight block?",
+ "arch": "sm_90a",
+ "device": "NVIDIA H100 80GB HBM3",
+ "checks": [
+  {
+   "lab": "check",
+   "variant": "16 steps a straight block behind one fence",
+   "ok": true,
+   "detail": "0 of 256 extremes differ from the exact sum"
+  },
+  {
+   "lab": "check",
+   "variant": "16 steps a straight block, a fence a step",
+   "ok": true,
+   "detail": "0 of 256 extremes differ from the exact sum"
+  },
+  {
+   "lab": "check",
+   "variant": "16 steps each in a rolled loop of a run-time count of one, a fence a step",
+   "ok": true,
+   "detail": "0 of 256 extremes differ from the exact sum"
+  }
+ ],
+ "driver": "580.196.07",
+ "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
+ "git": {
+  "sha": "bf48ca16783ce34095aa08b580736f440c64aa81",
+  "dirty": true
+ },
+ "reps": 7,
+ "date": "2026-11-21T02:01:18+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "16 steps a straight block behind one fence",
+   "unit": "cycles a step",
+   "samples": [
+    23.191055,
+    23.191055,
+    23.191055,
+    23.191055,
+    23.191055,
+    23.191055,
+    23.191055
+   ],
+   "median": 23.191055,
+   "min": 23.191055,
+   "max": 23.191055,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "16 steps a straight block, a fence a step",
+   "unit": "cycles a step",
+   "samples": [
+    23.191055,
+    23.191055,
+    23.191055,
+    23.191055,
+    23.191055,
+    23.191055,
+    23.191055
+   ],
+   "median": 23.191055,
+   "min": 23.191055,
+   "max": 23.191055,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "16 steps each in a rolled loop of a run-time count of one, a fence a step",
+   "unit": "cycles a step",
+   "samples": [
+    37.628464,
+    37.628464,
+    37.628464,
+    37.628464,
+    37.628464,
+    37.628464,
+    37.628464
+   ],
+   "median": 37.628464,
+   "min": 37.628464,
+   "max": 37.628464,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void step_rolled::steps<(int)2>(long long *, float *, int, int)": {
+   "regs": 154,
+   "ops": {
+    "FMNMX": 254,
+    "CS2R": 66,
+    "BRA": 22,
+    "UMOV": 20,
+    "UIADD3": 18,
+    "ISETP.LE.AND": 17,
+    "WARPGROUP.ARRIVE": 17,
+    "HGMMA.64": 17,
+    "NOP": 11,
+    "S2R": 4,
+    "ULOP3.LUT": 4,
+    "ISETP.GE.AND": 3
+   }
+  },
+  "void step_rolled::steps<(int)1>(long long *, float *, int, int)": {
+   "regs": 154,
+   "ops": {
+    "FMNMX": 254,
+    "CS2R": 66,
+    "WARPGROUP.ARRIVE": 16,
+    "HGMMA.64": 16,
+    "NOP": 15,
+    "BRA": 5,
+    "UMOV": 5,
+    "ULOP3.LUT": 4,
+    "VIADD": 3,
+    "LDC": 2,
+    "S2R": 2,
+    "S2UR": 2
+   }
+  },
+  "void step_rolled::steps<(int)0>(long long *, float *, int, int)": {
+   "regs": 154,
+   "ops": {
+    "FMNMX": 254,
+    "CS2R": 66,
+    "HGMMA.64": 16,
+    "NOP": 14,
+    "BRA": 5,
+    "UMOV": 5,
+    "ULOP3.LUT": 4,
+    "VIADD": 3,
+    "LDC": 2,
+    "S2R": 2,
+    "S2UR": 2,
+    "IMAD.MOV.U32": 2
+   }
+  }
+ },
+ "counters": {},
+ "counters_exception": {
+  "host": "a record at 1 CTAs",
+  "instead": "the kernels' own clocks and the SASS's static counts"
+ },
+ "blocks": 1
+}

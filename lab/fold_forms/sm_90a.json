@@ -1,0 +1,191 @@
+{
+ "experiment": "fold_forms",
+ "question": "the fold's step by where its coefficients are -- a TILE in shared memory, a step one sparse digit's 16 tokens (today's form, its absent steps not issued and its short steps padded by the layout), or the warpgroup's REGISTERS, a step 16 tokens by a GROUP of four sparse digits, a warp a digit, the values the step's one shared-memory operand -- what does a window cost a CTA of two boxes in each?",
+ "arch": "sm_90a",
+ "device": "NVIDIA H100 80GB HBM3",
+ "checks": [
+  {
+   "lab": "check",
+   "variant": "the fold's coefficients a tile in shared memory, a step a list",
+   "ok": true,
+   "detail": "0 accumulators differ"
+  },
+  {
+   "lab": "check",
+   "variant": "the fold's coefficients in registers, a step four digits, every class computed",
+   "ok": true,
+   "detail": "0 accumulators differ"
+  },
+  {
+   "lab": "check",
+   "variant": "the fold's coefficients in registers, a step four digits, a warp's own classes computed",
+   "ok": true,
+   "detail": "0 accumulators differ"
+  },
+  {
+   "lab": "check",
+   "variant": "the fold's coefficients a tile, its dense lines fetched from the level by token",
+   "ok": true,
+   "detail": "0 accumulators differ"
+  }
+ ],
+ "driver": "580.196.07",
+ "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
+ "git": {
+  "sha": "5979607b09119f319a011b076af431d96f32b691",
+  "dirty": false
+ },
+ "reps": 7,
+ "date": "2026-11-20T05:49:45+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "the fold's coefficients a tile in shared memory, a step a list",
+   "unit": "cycles a window a CTA",
+   "samples": [
+    2926.813802,
+    2921.170218,
+    2918.706795,
+    2934.211766,
+    2909.337595,
+    2933.61991,
+    2908.785866
+   ],
+   "median": 2921.170218,
+   "min": 2908.785866,
+   "max": 2934.211766,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the fold's coefficients in registers, a step four digits, every class computed",
+   "unit": "cycles a window a CTA",
+   "samples": [
+    4104.92803,
+    4100.016335,
+    4114.379853,
+    4081.276515,
+    4107.107363,
+    4088.223603,
+    4099.612098
+   ],
+   "median": 4100.016335,
+   "min": 4081.276515,
+   "max": 4114.379853,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the fold's coefficients in registers, a step four digits, a warp's own classes computed",
+   "unit": "cycles a window a CTA",
+   "samples": [
+    5253.414654,
+    5290.81392,
+    5277.191051,
+    5258.20419,
+    5253.158736,
+    5242.99858,
+    5233.786222
+   ],
+   "median": 5253.414654,
+   "min": 5233.786222,
+   "max": 5290.81392,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the fold's coefficients a tile, its dense lines fetched from the level by token",
+   "unit": "cycles a window a CTA",
+   "samples": [
+    3019.98982,
+    3020.413471,
+    3018.8634,
+    3018.453362,
+    3018.261009,
+    3019.093632,
+    3017.457741
+   ],
+   "median": 3018.8634,
+   "min": 3017.457741,
+   "max": 3020.413471,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void fold_forms::fold<(int)3>(long long *, const unsigned char *, const unsigned char *, float *, int)": {
+   "regs": 228,
+   "ops": {
+    "STG.E": 128,
+    "LOP3.LUT": 113,
+    "R2UR": 72,
+    "SHF.R.U32.HI": 69,
+    "IMAD": 61,
+    "I2FP.F32.U32": 48,
+    "IADD3": 47,
+    "IMAD.SHL.U32": 42,
+    "BRA": 40,
+    "VIADD": 40,
+    "SHF.R.S32.HI": 38,
+    "UMOV": 35
+   }
+  },
+  "void fold_forms::fold<(int)2>(long long *, const unsigned char *, const unsigned char *, float *, int)": {
+   "regs": 181,
+   "ops": {
+    "LOP3.LUT": 368,
+    "IMAD": 232,
+    "I2FP.F32.U32": 160,
+    "SHF.R.U32.HI": 151,
+    "STG.E": 128,
+    "IMAD.MOV.U32": 124,
+    "SEL": 96,
+    "LDS.U16": 84,
+    "PRMT": 80,
+    "SHF.R.S32.HI": 50,
+    "R2UR": 48,
+    "IMAD.SHL.U32": 44
+   }
+  },
+  "void fold_forms::fold<(int)1>(long long *, const unsigned char *, const unsigned char *, float *, int)": {
+   "regs": 178,
+   "ops": {
+    "IMAD": 232,
+    "LOP3.LUT": 206,
+    "I2FP.F32.U32": 160,
+    "SHF.R.U32.HI": 153,
+    "STG.E": 128,
+    "LDS.U16": 84,
+    "PRMT": 80,
+    "IMAD.MOV.U32": 74,
+    "R2UR": 48,
+    "VIADD": 40,
+    "IMAD.SHL.U32": 32,
+    "SHF.R.S32.HI": 25
+   }
+  },
+  "void fold_forms::fold<(int)0>(long long *, const unsigned char *, const unsigned char *, float *, int)": {
+   "regs": 226,
+   "ops": {
+    "STG.E": 128,
+    "LOP3.LUT": 98,
+    "R2UR": 72,
+    "SHF.R.U32.HI": 63,
+    "IMAD": 61,
+    "I2FP.F32.U32": 48,
+    "IADD3": 41,
+    "BRA": 40,
+    "VIADD": 40,
+    "SHF.R.S32.HI": 36,
+    "IADD3.X": 36,
+    "UMOV": 35
+   }
+  }
+ },
+ "counters": {},
+ "counters_exception": {
+  "host": "a record at every SM CTAs",
+  "instead": "the kernels' own clocks and the SASS's static counts"
+ }
+}

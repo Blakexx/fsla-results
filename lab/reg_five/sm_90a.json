@@ -1,0 +1,68 @@
+{
+ "experiment": "reg_five",
+ "question": "`reg_trade` traded registers between two warpgroups; can a CTA of FIVE warpgroups, 640 threads, trade them among its roles, and what does the compiler give such a kernel at entry?",
+ "arch": "sm_90a",
+ "device": "NVIDIA H100 80GB HBM3",
+ "checks": [
+  {
+   "lab": "check",
+   "variant": "five warpgroups: two at 160, one at 80, two at 40",
+   "ok": true,
+   "detail": "0 of 84480 sums differ"
+  }
+ ],
+ "driver": "580.173.02",
+ "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
+ "git": {
+  "sha": "bed4135581c71ae80ffd4be90a2397f03d66a57d",
+  "dirty": false
+ },
+ "reps": 7,
+ "date": "2026-11-13T00:28:49+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "five warpgroups: two at 160, one at 80, two at 40",
+   "unit": "cycles a trip a CTA, its 20 warps",
+   "samples": [
+    665.771906,
+    665.767049,
+    666.521557,
+    665.7561,
+    666.100867,
+    665.089563,
+    665.317978
+   ],
+   "median": 665.767049,
+   "min": 665.089563,
+   "max": 666.521557,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "reg_five::five(long long *, unsigned int *, int)": {
+   "regs": 96,
+   "ops": {
+    "IADD3": 246,
+    "IMAD": 228,
+    "VIADD": 54,
+    "MOV": 32,
+    "IMAD.MOV.U32": 14,
+    "BRA": 13,
+    "NOP": 13,
+    "CS2R": 6,
+    "ISETP.GE.AND": 6,
+    "LDC.64": 6,
+    "STG.E.64": 6,
+    "S2R": 5
+   }
+  }
+ },
+ "counters": {},
+ "counters_exception": {
+  "host": "vast.ai rented box, NVIDIA H100 80GB HBM3: a box with a driver and no toolkit",
+  "instead": "the kernels' own clocks and the SASS's static counts"
+ }
+}

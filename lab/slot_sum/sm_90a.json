@@ -1,0 +1,700 @@
+{
+ "experiment": "slot_sum",
+ "question": "an atomic add to global memory goes out at one line about every 10 to 12 cycles an SM, whatever the warps (`add_rate`). Were every CTA to STORE a token's partial line where no other CTA writes and a later pass to sum a token's partials, what does a line cost stored, and what does a token cost the pass that sums 32 partials in fp32, scales and writes a line -- into memory nothing has touched, and into a ring the cache holds because the pass keeps up?",
+ "arch": "sm_90a",
+ "device": "NVIDIA H100 80GB HBM3",
+ "checks": [
+  {
+   "lab": "check",
+   "variant": "a line stored, lines packed, 1 warp",
+   "ok": true,
+   "detail": "0 of 33554432 words differ"
+  },
+  {
+   "lab": "check",
+   "variant": "a line stored, lines packed, 4 warps",
+   "ok": true,
+   "detail": "0 of 33554432 words differ"
+  },
+  {
+   "lab": "check",
+   "variant": "a line stored, one every 4 KB, 1 warp",
+   "ok": true,
+   "detail": "0 of 33554432 words differ"
+  },
+  {
+   "lab": "check",
+   "variant": "a line stored, one every 4 KB, 4 warps",
+   "ok": true,
+   "detail": "0 of 33554432 words differ"
+  },
+  {
+   "lab": "check",
+   "variant": "a line stored into a ring of 128 KB, 1 warp",
+   "ok": true,
+   "detail": "0 of 33554432 words differ"
+  },
+  {
+   "lab": "check",
+   "variant": "a line stored into a ring of 128 KB, 4 warps",
+   "ok": true,
+   "detail": "0 of 33554432 words differ"
+  },
+  {
+   "lab": "check",
+   "variant": "a token's 32 slots, packed, summed, divided and stored, 4 warps",
+   "ok": true,
+   "detail": "0 of 8650752 output values differ"
+  },
+  {
+   "lab": "check",
+   "variant": "a token's 32 slots, packed, summed, divided and stored, 8 warps",
+   "ok": true,
+   "detail": "0 of 8650752 output values differ"
+  },
+  {
+   "lab": "check",
+   "variant": "a token's 32 slots, packed, summed, divided and stored, 16 warps",
+   "ok": true,
+   "detail": "0 of 8650752 output values differ"
+  },
+  {
+   "lab": "check",
+   "variant": "a token's 32 slots, packed, summed, divided and stored, 4 warps, the 128 KB of 32 tokens over and over",
+   "ok": true,
+   "detail": "0 of 8650752 output values differ"
+  },
+  {
+   "lab": "check",
+   "variant": "a token's 32 slots, packed, summed, divided and stored, 8 warps, the 128 KB of 32 tokens over and over",
+   "ok": true,
+   "detail": "0 of 8650752 output values differ"
+  },
+  {
+   "lab": "check",
+   "variant": "a token's 32 partials gathered from 32 streams summed, divided and stored, 4 warps",
+   "ok": true,
+   "detail": "0 of 8650752 output values differ"
+  },
+  {
+   "lab": "check",
+   "variant": "a token's 32 partials gathered from 32 streams summed, divided and stored, 8 warps",
+   "ok": true,
+   "detail": "0 of 8650752 output values differ"
+  },
+  {
+   "lab": "check",
+   "variant": "a token's 32 partials gathered from 32 streams summed, divided and stored, 16 warps",
+   "ok": true,
+   "detail": "0 of 8650752 output values differ"
+  },
+  {
+   "lab": "check",
+   "variant": "a token's 32 partials gathered from 32 streams summed, divided and stored, 4 warps, the 128 KB of 32 tokens over and over",
+   "ok": true,
+   "detail": "0 of 8650752 output values differ"
+  },
+  {
+   "lab": "check",
+   "variant": "a token's 32 partials gathered from 32 streams summed, divided and stored, 8 warps, the 128 KB of 32 tokens over and over",
+   "ok": true,
+   "detail": "0 of 8650752 output values differ"
+  }
+ ],
+ "driver": "595.91.07",
+ "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
+ "git": {
+  "sha": "fbdaa4cb623225917ce39e01b501adfe51ea5762",
+  "dirty": false
+ },
+ "reps": 7,
+ "date": "2026-11-12T09:59:59+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "a line stored, lines packed, 1 warp",
+   "unit": "cycles a line a CTA",
+   "samples": [
+    8.345166,
+    8.154123,
+    8.029396,
+    8.23951,
+    8.243212,
+    8.310662,
+    8.391878
+   ],
+   "median": 8.243212,
+   "min": 8.029396,
+   "max": 8.391878,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a line stored, lines packed, 4 warps",
+   "unit": "cycles a line a CTA",
+   "samples": [
+    7.605588,
+    8.024324,
+    7.892348,
+    7.729621,
+    7.722456,
+    7.752434,
+    7.817615
+   ],
+   "median": 7.752434,
+   "min": 7.605588,
+   "max": 8.024324,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "a line stored, one every 4 KB, 1 warp",
+   "unit": "cycles a line a CTA",
+   "samples": [
+    18.187256,
+    18.187256,
+    18.187256,
+    18.187256,
+    18.187256,
+    18.187256,
+    18.187256
+   ],
+   "median": 18.187256,
+   "min": 18.187256,
+   "max": 18.187256,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a line stored, one every 4 KB, 4 warps",
+   "unit": "cycles a line a CTA",
+   "samples": [
+    8.613593,
+    8.89734,
+    8.583333,
+    8.730601,
+    8.493925,
+    8.61357,
+    8.543719
+   ],
+   "median": 8.61357,
+   "min": 8.493925,
+   "max": 8.89734,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a line stored into a ring of 128 KB, 1 warp",
+   "unit": "cycles a line a CTA",
+   "samples": [
+    14.25061,
+    14.25061,
+    14.25061,
+    14.25061,
+    14.25061,
+    14.25061,
+    14.25061
+   ],
+   "median": 14.25061,
+   "min": 14.25061,
+   "max": 14.25061,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a line stored into a ring of 128 KB, 4 warps",
+   "unit": "cycles a line a CTA",
+   "samples": [
+    6.375959,
+    6.212545,
+    6.28517,
+    6.254691,
+    6.236411,
+    6.265526,
+    6.180374
+   ],
+   "median": 6.254691,
+   "min": 6.180374,
+   "max": 6.375959,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a token's 32 slots, packed, summed, divided and stored, 4 warps",
+   "unit": "cycles a token a CTA",
+   "samples": [
+    320.906294,
+    315.714289,
+    333.396026,
+    333.41697,
+    332.318367,
+    327.633841,
+    328.769716
+   ],
+   "median": 328.769716,
+   "min": 315.714289,
+   "max": 333.41697,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "a token's 32 slots, packed, summed, divided and stored, 8 warps",
+   "unit": "cycles a token a CTA",
+   "samples": [
+    309.484627,
+    303.443944,
+    321.238437,
+    316.448804,
+    314.335138,
+    311.431655,
+    310.437337
+   ],
+   "median": 311.431655,
+   "min": 303.443944,
+   "max": 321.238437,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "a token's 32 slots, packed, summed, divided and stored, 16 warps",
+   "unit": "cycles a token a CTA",
+   "samples": [
+    301.936812,
+    288.317901,
+    311.909712,
+    306.071178,
+    305.58306,
+    304.694047,
+    299.210124
+   ],
+   "median": 304.694047,
+   "min": 288.317901,
+   "max": 311.909712,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "a token's 32 slots, packed, summed, divided and stored, 4 warps, the 128 KB of 32 tokens over and over",
+   "unit": "cycles a token a CTA",
+   "samples": [
+    66.248202,
+    65.895789,
+    66.037672,
+    66.132916,
+    66.037612,
+    66.135883,
+    65.96565
+   ],
+   "median": 66.037672,
+   "min": 65.895789,
+   "max": 66.248202,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a token's 32 slots, packed, summed, divided and stored, 8 warps, the 128 KB of 32 tokens over and over",
+   "unit": "cycles a token a CTA",
+   "samples": [
+    53.289677,
+    52.983058,
+    53.23004,
+    53.115146,
+    53.162346,
+    53.324374,
+    53.168169
+   ],
+   "median": 53.168169,
+   "min": 52.983058,
+   "max": 53.324374,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a token's 32 partials gathered from 32 streams summed, divided and stored, 4 warps",
+   "unit": "cycles a token a CTA",
+   "samples": [
+    361.859057,
+    357.655207,
+    372.380867,
+    365.950957,
+    363.781413,
+    364.29234,
+    361.814276
+   ],
+   "median": 363.781413,
+   "min": 357.655207,
+   "max": 372.380867,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a token's 32 partials gathered from 32 streams summed, divided and stored, 8 warps",
+   "unit": "cycles a token a CTA",
+   "samples": [
+    311.450676,
+    304.232385,
+    306.547245,
+    302.429732,
+    297.009928,
+    294.429029,
+    288.170144
+   ],
+   "median": 302.429732,
+   "min": 288.170144,
+   "max": 311.450676,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "a token's 32 partials gathered from 32 streams summed, divided and stored, 16 warps",
+   "unit": "cycles a token a CTA",
+   "samples": [
+    293.115678,
+    288.971783,
+    296.595385,
+    285.575055,
+    282.425877,
+    274.191258,
+    270.175308
+   ],
+   "median": 285.575055,
+   "min": 270.175308,
+   "max": 296.595385,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "a token's 32 partials gathered from 32 streams summed, divided and stored, 4 warps, the 128 KB of 32 tokens over and over",
+   "unit": "cycles a token a CTA",
+   "samples": [
+    107.708563,
+    108.865197,
+    108.931263,
+    108.81796,
+    108.853841,
+    108.183978,
+    108.164876
+   ],
+   "median": 108.81796,
+   "min": 107.708563,
+   "max": 108.931263,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a token's 32 partials gathered from 32 streams summed, divided and stored, 8 warps, the 128 KB of 32 tokens over and over",
+   "unit": "cycles a token a CTA",
+   "samples": [
+    55.878943,
+    55.24002,
+    55.908447,
+    55.935976,
+    55.911429,
+    55.941473,
+    55.995753
+   ],
+   "median": 55.911429,
+   "min": 55.24002,
+   "max": 55.995753,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void slot_sum::sum<(int)8, (int)1, (int)32>(long long *, const uint4 *, const float *, uint4 *)": {
+   "regs": 244,
+   "ops": {
+    "HADD2.F32": 256,
+    "FADD": 256,
+    "LOP3.LUT": 69,
+    "LEA": 65,
+    "LEA.HI.X": 49,
+    "LDG.E.128": 48,
+    "IADD3": 32,
+    "SHF.L.U64.HI": 18,
+    "IADD3.X": 16,
+    "NOP": 9,
+    "FMUL": 8,
+    "ULDC.64": 4
+   }
+  },
+  "void slot_sum::sum<(int)4, (int)1, (int)32>(long long *, const uint4 *, const float *, uint4 *)": {
+   "regs": 205,
+   "ops": {
+    "HADD2.F32": 256,
+    "FADD": 256,
+    "LOP3.LUT": 134,
+    "IADD3": 82,
+    "LEA": 54,
+    "LEA.HI.X": 51,
+    "SHF.L.U32": 50,
+    "SHF.L.U64.HI": 49,
+    "LDG.E.128": 48,
+    "IADD3.X": 34,
+    "NOP": 12,
+    "FMUL": 8
+   }
+  },
+  "void slot_sum::sum<(int)16, (int)1, (int)0>(long long *, const uint4 *, const float *, uint4 *)": {
+   "regs": 123,
+   "ops": {
+    "HADD2.F32": 256,
+    "FADD": 256,
+    "LOP3.LUT": 99,
+    "IADD3": 82,
+    "LEA": 54,
+    "LEA.HI.X": 51,
+    "SHF.L.U32": 49,
+    "SHF.L.U64.HI": 48,
+    "LDG.E.128": 48,
+    "MOV": 40,
+    "IADD3.X": 33,
+    "ULOP3.LUT": 31
+   }
+  },
+  "void slot_sum::sum<(int)8, (int)1, (int)0>(long long *, const uint4 *, const float *, uint4 *)": {
+   "regs": 209,
+   "ops": {
+    "HADD2.F32": 256,
+    "FADD": 256,
+    "LOP3.LUT": 130,
+    "IADD3": 82,
+    "LEA": 54,
+    "LEA.HI.X": 51,
+    "SHF.L.U32": 49,
+    "SHF.L.U64.HI": 48,
+    "LDG.E.128": 48,
+    "IADD3.X": 33,
+    "NOP": 12,
+    "FMUL": 8
+   }
+  },
+  "void slot_sum::sum<(int)4, (int)1, (int)0>(long long *, const uint4 *, const float *, uint4 *)": {
+   "regs": 209,
+   "ops": {
+    "HADD2.F32": 256,
+    "FADD": 256,
+    "LOP3.LUT": 130,
+    "IADD3": 82,
+    "LEA": 54,
+    "LEA.HI.X": 51,
+    "SHF.L.U32": 49,
+    "SHF.L.U64.HI": 48,
+    "LDG.E.128": 48,
+    "IADD3.X": 33,
+    "NOP": 12,
+    "FMUL": 8
+   }
+  },
+  "void slot_sum::sum<(int)8, (int)0, (int)32>(long long *, const uint4 *, const float *, uint4 *)": {
+   "regs": 205,
+   "ops": {
+    "HADD2.F32": 256,
+    "FADD": 256,
+    "LDG.E.128": 48,
+    "NOP": 13,
+    "FMUL": 8,
+    "LOP3.LUT": 5,
+    "ULDC.64": 4,
+    "F2FP.BF16.F32.PACK_AB": 4,
+    "LEA": 3,
+    "LEA.HI.X": 3,
+    "S2R": 2,
+    "SHF.L.U64.HI": 2
+   }
+  },
+  "void slot_sum::sum<(int)4, (int)0, (int)32>(long long *, const uint4 *, const float *, uint4 *)": {
+   "regs": 208,
+   "ops": {
+    "HADD2.F32": 256,
+    "FADD": 256,
+    "LDG.E.128": 48,
+    "LEA": 9,
+    "NOP": 9,
+    "FMUL": 8,
+    "LOP3.LUT": 6,
+    "LEA.HI.X": 6,
+    "ULDC.64": 4,
+    "SHF.L.U64.HI": 4,
+    "IADD3": 4,
+    "F2FP.BF16.F32.PACK_AB": 4
+   }
+  },
+  "void slot_sum::sum<(int)16, (int)0, (int)0>(long long *, const uint4 *, const float *, uint4 *)": {
+   "regs": 126,
+   "ops": {
+    "HADD2.F32": 256,
+    "FADD": 256,
+    "LDG.E.128": 48,
+    "NOP": 12,
+    "LEA": 9,
+    "FMUL": 8,
+    "IMAD.WIDE.U32": 6,
+    "LEA.HI.X": 6,
+    "ULDC.64": 4,
+    "LOP3.LUT": 4,
+    "MOV": 4,
+    "IADD3": 4
+   }
+  },
+  "void slot_sum::sum<(int)8, (int)0, (int)0>(long long *, const uint4 *, const float *, uint4 *)": {
+   "regs": 205,
+   "ops": {
+    "HADD2.F32": 256,
+    "FADD": 256,
+    "LDG.E.128": 48,
+    "NOP": 12,
+    "LEA": 9,
+    "FMUL": 8,
+    "IMAD.WIDE.U32": 6,
+    "LEA.HI.X": 6,
+    "ULDC.64": 4,
+    "LOP3.LUT": 4,
+    "MOV": 4,
+    "IADD3": 4
+   }
+  },
+  "void slot_sum::sum<(int)4, (int)0, (int)0>(long long *, const uint4 *, const float *, uint4 *)": {
+   "regs": 205,
+   "ops": {
+    "HADD2.F32": 256,
+    "FADD": 256,
+    "LDG.E.128": 48,
+    "NOP": 12,
+    "LEA": 9,
+    "FMUL": 8,
+    "IMAD.WIDE.U32": 6,
+    "LEA.HI.X": 6,
+    "ULDC.64": 4,
+    "LOP3.LUT": 4,
+    "MOV": 4,
+    "IADD3": 4
+   }
+  },
+  "void slot_sum::store<(int)4, (int)1, (int)1024>(long long *, unsigned int *)": {
+   "regs": 69,
+   "ops": {
+    "VIADD": 19,
+    "LOP3.LUT": 18,
+    "IADD3": 16,
+    "IMAD.X": 16,
+    "LEA": 16,
+    "LEA.HI.X": 16,
+    "IMAD.IADD": 16,
+    "STG.E": 16,
+    "NOP": 8,
+    "IMAD.SHL.U32": 3,
+    "S2R": 2,
+    "ULDC.64": 2
+   }
+  },
+  "void slot_sum::store<(int)1, (int)1, (int)1024>(long long *, unsigned int *)": {
+   "regs": 68,
+   "ops": {
+    "LOP3.LUT": 18,
+    "VIADD": 18,
+    "IADD3": 16,
+    "IMAD.X": 16,
+    "LEA": 16,
+    "LEA.HI.X": 16,
+    "IMAD.IADD": 16,
+    "STG.E": 16,
+    "NOP": 10,
+    "S2R": 2,
+    "ULDC.64": 2,
+    "CS2R": 2
+   }
+  },
+  "void slot_sum::store<(int)4, (int)32, (int)0>(long long *, unsigned int *)": {
+   "regs": 64,
+   "ops": {
+    "LOP3.LUT": 50,
+    "IMAD.SHL.U32": 33,
+    "VIADD": 18,
+    "SHF.R.U32.HI": 16,
+    "IADD3": 16,
+    "IMAD.X": 16,
+    "LEA": 16,
+    "LEA.HI.X": 16,
+    "STG.E": 16,
+    "NOP": 13,
+    "UMOV": 7,
+    "UIADD3": 7
+   }
+  },
+  "void slot_sum::store<(int)1, (int)32, (int)0>(long long *, unsigned int *)": {
+   "regs": 64,
+   "ops": {
+    "LOP3.LUT": 50,
+    "IMAD.SHL.U32": 33,
+    "VIADD": 18,
+    "SHF.R.U32.HI": 16,
+    "IADD3": 16,
+    "IMAD.X": 16,
+    "LEA": 16,
+    "LEA.HI.X": 16,
+    "STG.E": 16,
+    "NOP": 13,
+    "UMOV": 7,
+    "UIADD3": 7
+   }
+  },
+  "void slot_sum::store<(int)4, (int)1, (int)0>(long long *, unsigned int *)": {
+   "regs": 32,
+   "ops": {
+    "STG.E": 16,
+    "VIADD": 13,
+    "NOP": 8,
+    "IADD3": 7,
+    "LOP3.LUT": 4,
+    "S2R": 2,
+    "ULDC.64": 2,
+    "CS2R": 2,
+    "IMAD.MOV.U32": 2,
+    "BRA": 2,
+    "EXIT": 2,
+    "STG.E.64": 2
+   }
+  },
+  "void slot_sum::store<(int)1, (int)1, (int)0>(long long *, unsigned int *)": {
+   "regs": 32,
+   "ops": {
+    "STG.E": 16,
+    "NOP": 15,
+    "VIADD": 12,
+    "IADD3": 9,
+    "LOP3.LUT": 3,
+    "S2R": 2,
+    "ULDC.64": 2,
+    "CS2R": 2,
+    "IMAD.MOV.U32": 2,
+    "IMAD.X": 2,
+    "BRA": 2,
+    "EXIT": 2
+   }
+  },
+  "slot_sum::fill(unsigned short *, float *, int)": {
+   "regs": 16,
+   "ops": {
+    "NOP": 10,
+    "SHF.R.S32.HI": 7,
+    "LEA": 7,
+    "BRA": 6,
+    "LEA.HI.X": 6,
+    "IMAD.MOV.U32": 4,
+    "IMAD": 4,
+    "LEA.HI": 4,
+    "LOP3.LUT": 4,
+    "IMAD.IADD": 4,
+    "S2R": 3,
+    "ULDC.64": 3
+   }
+  }
+ },
+ "counters": {},
+ "counters_exception": {
+  "host": "vast.ai rented box, NVIDIA H100 80GB HBM3: a box with a driver and no toolkit",
+  "instead": "the kernels' own clocks and the SASS's static counts"
+ }
+}

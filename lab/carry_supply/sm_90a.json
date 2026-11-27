@@ -1,0 +1,355 @@
+{
+ "experiment": "carry_supply",
+ "question": "does the LIBRARY's carry CTA, its fold warpgroups' SUPPLY and COEFFICIENTS built and every other component a stub, list each of its sets' live tokens from a call's real operands -- the masks, the mask-preparation pass's prepared words, the densities the carve is derived from, the write side's rows -- land their value lines in its rows and expand their coefficients into its tiles, exactly; and what does a window cost a CTA with them running?",
+ "arch": "sm_90a",
+ "device": "NVIDIA H100 80GB HBM3",
+ "checks": [
+  {
+   "lab": "check",
+   "variant": "the cell, the write side masked on level 0: the folds' supply and coefficients, the rest stubs",
+   "ok": true,
+   "detail": "12288 rounds of 128 CTAs: 0 missing, 0 twice, 0 not a set's, 0 tokens, 0 row bytes and 0 coefficients differ, 0 leaves not once in their set's columns, 0 rows off a boundary, 0 warps past the kept rounds; 0 leaves not in one set; the carve 32 x 16, write groups 4 and 256, 4 sets a fold"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "the cell, the write side masked on level 0: the folds' supply and coefficients, the rest stubs, timed",
+   "reason": "the row above checks this kernel's supply through its tracer; this is its time with the library's tracer"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "the cell, the write side masked on level 0: the folds' supply and coefficients, the rest stubs, every warp's timeline stamped",
+   "reason": "the first row checks this kernel's supply; this is its timeline, its waits and phases stamped"
+  },
+  {
+   "lab": "check",
+   "variant": "the write side masked on both levels: the folds' supply and coefficients, the rest stubs",
+   "ok": true,
+   "detail": "4096 rounds of 128 CTAs: 0 missing, 0 twice, 0 not a set's, 0 tokens, 0 row bytes and 0 coefficients differ, 0 leaves not once in their set's columns, 0 rows off a boundary, 0 warps past the kept rounds; 0 leaves not in one set; the carve 64 x 8, write groups 4 and 32, 8 sets a fold"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "the write side masked on both levels: the folds' supply and coefficients, the rest stubs, timed",
+   "reason": "the row above checks this kernel's supply through its tracer; this is its time with the library's tracer"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "the write side masked on both levels: the folds' supply and coefficients, the rest stubs, every warp's timeline stamped",
+   "reason": "the first row checks this kernel's supply; this is its timeline, its waits and phases stamped"
+  },
+  {
+   "lab": "check",
+   "variant": "the write side whole on both levels: the folds' supply and coefficients, the rest stubs",
+   "ok": true,
+   "detail": "16384 rounds of 128 CTAs: 0 missing, 0 twice, 0 not a set's, 0 tokens, 0 row bytes and 0 coefficients differ, 0 leaves not once in their set's columns, 0 rows off a boundary, 0 warps past the kept rounds; 0 leaves not in one set; the carve 128 x 4, write groups 256 and 256, 1 sets a fold"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "the write side whole on both levels: the folds' supply and coefficients, the rest stubs, timed",
+   "reason": "the row above checks this kernel's supply through its tracer; this is its time with the library's tracer"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "the write side whole on both levels: the folds' supply and coefficients, the rest stubs, every warp's timeline stamped",
+   "reason": "the first row checks this kernel's supply; this is its timeline, its waits and phases stamped"
+  },
+  {
+   "lab": "check",
+   "variant": "the write side one digit a token on each level: the folds' supply and coefficients, the rest stubs",
+   "ok": true,
+   "detail": "3920 rounds of 128 CTAs: 0 missing, 0 twice, 0 not a set's, 0 tokens, 0 row bytes and 0 coefficients differ, 0 leaves not once in their set's columns, 0 rows off a boundary, 0 warps past the kept rounds; 0 leaves not in one set; the carve 128 x 4, write groups 4 and 4, 16 sets a fold"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "the write side one digit a token on each level: the folds' supply and coefficients, the rest stubs, timed",
+   "reason": "the row above checks this kernel's supply through its tracer; this is its time with the library's tracer"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "the write side one digit a token on each level: the folds' supply and coefficients, the rest stubs, every warp's timeline stamped",
+   "reason": "the first row checks this kernel's supply; this is its timeline, its waits and phases stamped"
+  },
+  {
+   "lab": "check",
+   "variant": "the write side masked on both levels, the read side's densities crossed with it: the folds' supply and coefficients, the rest stubs",
+   "ok": true,
+   "detail": "4096 rounds of 128 CTAs: 0 missing, 0 twice, 0 not a set's, 0 tokens, 0 row bytes and 0 coefficients differ, 0 leaves not once in their set's columns, 0 rows off a boundary, 0 warps past the kept rounds; 0 leaves not in one set; the carve 32 x 16, write groups 4 and 32, 4 sets a fold"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "the write side masked on both levels, the read side's densities crossed with it: the folds' supply and coefficients, the rest stubs, timed",
+   "reason": "the row above checks this kernel's supply through its tracer; this is its time with the library's tracer"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "the write side masked on both levels, the read side's densities crossed with it: the folds' supply and coefficients, the rest stubs, every warp's timeline stamped",
+   "reason": "the first row checks this kernel's supply; this is its timeline, its waits and phases stamped"
+  }
+ ],
+ "driver": "580.196.07",
+ "toolkit": "Build cuda_13.5.r13.5/compiler.39125733_0",
+ "git": {
+  "sha": "7e069c618f334baf12e84bd6153c80b598c9c4fd",
+  "dirty": false
+ },
+ "reps": 7,
+ "date": "2026-11-26T01:29:49+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "the cell, the write side masked on level 0: the folds' supply and coefficients, the rest stubs, timed",
+   "unit": "cycles a window a CTA",
+   "samples": [
+    4665.500854,
+    4658.433105,
+    4664.31897,
+    4671.695435,
+    4671.898071,
+    4654.147461,
+    4671.216553
+   ],
+   "median": 4665.500854,
+   "min": 4654.147461,
+   "max": 4671.898071,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the cell, the write side masked on level 0: the folds' supply and coefficients, the rest stubs, every warp's timeline stamped",
+   "unit": "cycles a window a CTA",
+   "samples": [
+    6286.762695,
+    6285.282104,
+    6277.856934,
+    6289.065308,
+    6289.035156,
+    6284.026367,
+    6284.987671
+   ],
+   "median": 6285.282104,
+   "min": 6277.856934,
+   "max": 6289.065308,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the write side masked on both levels: the folds' supply and coefficients, the rest stubs, timed",
+   "unit": "cycles a window a CTA",
+   "samples": [
+    4317.567993,
+    4313.387085,
+    4306.399414,
+    4289.828857,
+    4290.7052,
+    4266.146118,
+    4290.983398
+   ],
+   "median": 4290.983398,
+   "min": 4266.146118,
+   "max": 4317.567993,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the write side masked on both levels: the folds' supply and coefficients, the rest stubs, every warp's timeline stamped",
+   "unit": "cycles a window a CTA",
+   "samples": [
+    5727.166382,
+    5721.294556,
+    5721.975342,
+    5719.737793,
+    5715.349609,
+    5736.856812,
+    5718.991943
+   ],
+   "median": 5721.294556,
+   "min": 5715.349609,
+   "max": 5736.856812,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the write side whole on both levels: the folds' supply and coefficients, the rest stubs, timed",
+   "unit": "cycles a window a CTA",
+   "samples": [
+    23663.336304,
+    23660.506226,
+    23669.800537,
+    23656.673706,
+    23650.86499,
+    23654.451416,
+    23659.46814
+   ],
+   "median": 23659.46814,
+   "min": 23650.86499,
+   "max": 23669.800537,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the write side whole on both levels: the folds' supply and coefficients, the rest stubs, every warp's timeline stamped",
+   "unit": "cycles a window a CTA",
+   "samples": [
+    27381.750122,
+    27377.596436,
+    27381.136475,
+    27395.89624,
+    27381.802368,
+    27377.371826,
+    27392.874634
+   ],
+   "median": 27381.750122,
+   "min": 27377.371826,
+   "max": 27395.89624,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the write side one digit a token on each level: the folds' supply and coefficients, the rest stubs, timed",
+   "unit": "cycles a window a CTA",
+   "samples": [
+    4758.196289,
+    4759.83374,
+    4755.915283,
+    4761.932495,
+    4760.955078,
+    4758.332153,
+    4761.458374
+   ],
+   "median": 4759.83374,
+   "min": 4755.915283,
+   "max": 4761.932495,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the write side one digit a token on each level: the folds' supply and coefficients, the rest stubs, every warp's timeline stamped",
+   "unit": "cycles a window a CTA",
+   "samples": [
+    7103.330811,
+    7107.076904,
+    7107.62085,
+    7107.194946,
+    7111.469482,
+    7107.589478,
+    7110.04834
+   ],
+   "median": 7107.589478,
+   "min": 7103.330811,
+   "max": 7111.469482,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the write side masked on both levels, the read side's densities crossed with it: the folds' supply and coefficients, the rest stubs, timed",
+   "unit": "cycles a window a CTA",
+   "samples": [
+    2514.526611,
+    2503.785034,
+    2506.854004,
+    2495.723022,
+    2510.625122,
+    2503.763184,
+    2497.044678
+   ],
+   "median": 2503.785034,
+   "min": 2495.723022,
+   "max": 2514.526611,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the write side masked on both levels, the read side's densities crossed with it: the folds' supply and coefficients, the rest stubs, every warp's timeline stamped",
+   "unit": "cycles a window a CTA",
+   "samples": [
+    3395.43457,
+    3390.115479,
+    3402.553955,
+    3398.286987,
+    3401.062866,
+    3402.89917,
+    3402.135132
+   ],
+   "median": 3401.062866,
+   "min": 3390.115479,
+   "max": 3402.89917,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void carry_supply::timed<(int)1>(long long *, unsigned long long *, fsla::carry::detail::Operands)": {
+   "regs": 128,
+   "ops": {
+    "FMUL": 2871,
+    "LOP3.LUT": 2315,
+    "IMAD.MOV.U32": 2030,
+    "IMAD": 1383,
+    "UIADD3": 1367,
+    "F2FP.BF16.F32.PACK_AB": 1344,
+    "IMAD.U32": 1299,
+    "CS2R.32": 1254,
+    "ST.E.64": 1254,
+    "IMAD.WIDE.U32": 1162,
+    "SEL": 1104,
+    "SHF.R.U32.HI": 1016
+   }
+  },
+  "void carry_supply::timed<(int)0>(long long *, unsigned long long *, fsla::carry::detail::Operands)": {
+   "regs": 128,
+   "ops": {
+    "FMUL": 2871,
+    "LOP3.LUT": 2307,
+    "IMAD": 1354,
+    "F2FP.BF16.F32.PACK_AB": 1344,
+    "SEL": 1105,
+    "SHF.R.U32.HI": 1019,
+    "IMAD.IADD": 935,
+    "ISETP.NE.AND": 915,
+    "IADD3": 902,
+    "IMAD.MOV.U32": 834,
+    "I2F.U8": 814,
+    "I2FP.F32.U32": 805
+   }
+  },
+  "carry_supply::kept(fsla::carry::detail::Operands, unsigned char *, unsigned char *, int, int *)": {
+   "regs": 128,
+   "ops": {
+    "FMUL": 2871,
+    "LOP3.LUT": 2445,
+    "IMAD": 1539,
+    "F2FP.BF16.F32.PACK_AB": 1344,
+    "SEL": 1228,
+    "IADD3": 1123,
+    "ISETP.NE.AND": 1082,
+    "IMAD.IADD": 1078,
+    "SHF.R.U32.HI": 1019,
+    "IMAD.MOV.U32": 979,
+    "I2F.U8": 814,
+    "I2FP.F32.U32": 805
+   }
+  },
+  "void fsla::mask_prepare::detail::mask_prepare_kernel<denseref::arch::BuildTag<denseref::arch::Build{(int)900}>>(fsla::mask_prepare::detail::Args, const unsigned char *, unsigned char *)": {
+   "regs": 64,
+   "ops": {
+    "IMAD.MOV.U32": 412,
+    "LOP3.LUT": 262,
+    "SEL": 225,
+    "VIADD": 154,
+    "IADD3": 134,
+    "IMAD.MOV": 132,
+    "ISETP.GT.AND": 123,
+    "SHF.L.U32": 103,
+    "LDG.E.128": 96,
+    "ISETP.GE.AND": 87,
+    "IMAD": 85,
+    "UIADD3": 82
+   }
+  }
+ },
+ "counters": {},
+ "counters_exception": {
+  "host": "Nebius preemptible VM, NVIDIA H100 80GB HBM3: its counters not yet read there",
+  "instead": "the kernels' own clocks and the SASS's static counts"
+ }
+}

@@ -1,0 +1,109 @@
+{
+ "experiment": "carry_skeleton",
+ "question": "does the LIBRARY's carry skeleton -- its three roles at their registers, their hand-offs and their order of work -- run a call's windows to the end on every multiprocessor, and what does a window of nothing but its hand-offs cost? The call has no tokens and no levels: the folds' supply, the one component built, lists nothing.",
+ "arch": "sm_90a",
+ "device": "NVIDIA H100 80GB HBM3",
+ "checks": [
+  {
+   "lab": "check",
+   "variant": "the carry on a call of no tokens, a window its hand-offs",
+   "ok": true,
+   "detail": "0 of 132 CTAs did not return from every warp"
+  },
+  {
+   "lab": "check",
+   "variant": "the carry on a call of no tokens, a window its hand-offs, every warp's timeline stamped",
+   "ok": true,
+   "detail": "0 of 132 CTAs did not return from every warp"
+  }
+ ],
+ "driver": "580.196.07",
+ "toolkit": "Build cuda_13.5.r13.5/compiler.39125733_0",
+ "git": {
+  "sha": "7e069c618f334baf12e84bd6153c80b598c9c4fd",
+  "dirty": false
+ },
+ "reps": 7,
+ "date": "2026-11-26T01:29:51+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "the carry on a call of no tokens, a window its hand-offs",
+   "unit": "cycles a window a CTA",
+   "samples": [
+    810.202415,
+    810.13157,
+    810.117898,
+    810.166963,
+    810.206084,
+    810.095437,
+    810.179806
+   ],
+   "median": 810.166963,
+   "min": 810.095437,
+   "max": 810.206084,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the carry on a call of no tokens, a window its hand-offs, every warp's timeline stamped",
+   "unit": "cycles a window a CTA",
+   "samples": [
+    1750.156605,
+    1749.121567,
+    1750.069839,
+    1749.229048,
+    1749.489465,
+    1750.348366,
+    1750.096946
+   ],
+   "median": 1750.069839,
+   "min": 1749.121567,
+   "max": 1750.348366,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void carry_skeleton::timed<(int)1>(long long *, int *, unsigned long long *, const unsigned char *, int)": {
+   "regs": 128,
+   "ops": {
+    "FMUL": 2391,
+    "IMAD.MOV.U32": 2095,
+    "LOP3.LUT": 1607,
+    "VIADD": 1370,
+    "F2FP.BF16.F32.PACK_AB": 1104,
+    "CS2R.32": 1038,
+    "ST.E.64": 1038,
+    "IMAD": 920,
+    "IMAD.WIDE.U32": 880,
+    "ISETP.LT.U32.AND": 818,
+    "ISETP.NE.AND": 800,
+    "SHF.R.U32.HI": 752
+   }
+  },
+  "void carry_skeleton::timed<(int)0>(long long *, int *, unsigned long long *, const unsigned char *, int)": {
+   "regs": 128,
+   "ops": {
+    "FMUL": 2391,
+    "LOP3.LUT": 1530,
+    "F2FP.BF16.F32.PACK_AB": 1104,
+    "IMAD.MOV.U32": 852,
+    "IMAD": 816,
+    "SHF.R.U32.HI": 732,
+    "ISETP.NE.AND": 681,
+    "I2F.U8": 574,
+    "I2FP.F32.U32": 565,
+    "IMAD.IADD": 534,
+    "LDGSTS.E.BYPASS.128": 467,
+    "SEL": 463
+   }
+  }
+ },
+ "counters": {},
+ "counters_exception": {
+  "host": "Nebius preemptible VM, NVIDIA H100 80GB HBM3: its counters not yet read there",
+  "instead": "the kernels' own clocks and the SASS's static counts"
+ }
+}

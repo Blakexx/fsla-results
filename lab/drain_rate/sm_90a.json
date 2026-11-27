@@ -1,0 +1,396 @@
+{
+ "experiment": "drain_rate",
+ "question": "what is an SM's capacity for fp32 adds into global memory -- does a token's partial cost less as more warps issue it, or is the 4-warp number the path's own rate? And what do the adds cost when the CTAs' rows are spread over a window, as a carry's are, beside every CTA its own rows and every CTA the same ones?",
+ "arch": "sm_90a",
+ "device": "NVIDIA H100 80GB HBM3",
+ "checks": [
+  {
+   "lab": "check",
+   "variant": "each CTA its own rows, 4 warps",
+   "ok": true,
+   "detail": "0 of 540672 sums differ from the exact ones at 16 rounds"
+  },
+  {
+   "lab": "check",
+   "variant": "every CTA the same rows, 4 warps",
+   "ok": true,
+   "detail": "0 of 4096 sums differ from the exact ones at 16 rounds"
+  },
+  {
+   "lab": "check",
+   "variant": "rows spread over 1,024, 4 warps",
+   "ok": true,
+   "detail": "0 of 65536 sums differ from the exact ones at 16 rounds"
+  },
+  {
+   "lab": "check",
+   "variant": "each CTA its own rows, 8 warps",
+   "ok": true,
+   "detail": "0 of 540672 sums differ from the exact ones at 16 rounds"
+  },
+  {
+   "lab": "check",
+   "variant": "every CTA the same rows, 8 warps",
+   "ok": true,
+   "detail": "0 of 4096 sums differ from the exact ones at 16 rounds"
+  },
+  {
+   "lab": "check",
+   "variant": "rows spread over 1,024, 8 warps",
+   "ok": true,
+   "detail": "0 of 65536 sums differ from the exact ones at 16 rounds"
+  },
+  {
+   "lab": "check",
+   "variant": "each CTA its own rows, 16 warps",
+   "ok": true,
+   "detail": "0 of 540672 sums differ from the exact ones at 16 rounds"
+  },
+  {
+   "lab": "check",
+   "variant": "every CTA the same rows, 16 warps",
+   "ok": true,
+   "detail": "0 of 4096 sums differ from the exact ones at 16 rounds"
+  },
+  {
+   "lab": "check",
+   "variant": "rows spread over 1,024, 16 warps",
+   "ok": true,
+   "detail": "0 of 65536 sums differ from the exact ones at 16 rounds"
+  }
+ ],
+ "driver": "615.71.09",
+ "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
+ "git": {
+  "sha": "41730f9b6e37c2267536b77bff45b7b761fedbac",
+  "dirty": false
+ },
+ "reps": 7,
+ "date": "2026-11-12T01:58:27+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "each CTA its own rows, 4 warps",
+   "unit": "cycles a token a CTA",
+   "samples": [
+    19.148609,
+    19.160363,
+    19.160247,
+    19.160499,
+    19.161768,
+    19.155219,
+    19.157114
+   ],
+   "median": 19.160247,
+   "min": 19.148609,
+   "max": 19.161768,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "every CTA the same rows, 4 warps",
+   "unit": "cycles a token a CTA",
+   "samples": [
+    46.714908,
+    47.009083,
+    47.101121,
+    46.736408,
+    46.879811,
+    46.701383,
+    46.718442
+   ],
+   "median": 46.736408,
+   "min": 46.701383,
+   "max": 47.101121,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "rows spread over 1,024, 4 warps",
+   "unit": "cycles a token a CTA",
+   "samples": [
+    24.832127,
+    24.835007,
+    24.838118,
+    24.853348,
+    24.809432,
+    24.886855,
+    24.827939
+   ],
+   "median": 24.835007,
+   "min": 24.809432,
+   "max": 24.886855,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "each CTA its own rows, 8 warps",
+   "unit": "cycles a token a CTA",
+   "samples": [
+    19.133174,
+    19.136935,
+    19.133961,
+    19.136116,
+    19.134793,
+    19.137254,
+    19.133068
+   ],
+   "median": 19.134793,
+   "min": 19.133068,
+   "max": 19.137254,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "every CTA the same rows, 8 warps",
+   "unit": "cycles a token a CTA",
+   "samples": [
+    46.655486,
+    46.650545,
+    46.667247,
+    46.643906,
+    46.64833,
+    46.643005,
+    46.664815
+   ],
+   "median": 46.650545,
+   "min": 46.643005,
+   "max": 46.667247,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "rows spread over 1,024, 8 warps",
+   "unit": "cycles a token a CTA",
+   "samples": [
+    24.815064,
+    24.866763,
+    24.81845,
+    24.916047,
+    24.857522,
+    24.947147,
+    24.859829
+   ],
+   "median": 24.859829,
+   "min": 24.815064,
+   "max": 24.947147,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "each CTA its own rows, 16 warps",
+   "unit": "cycles a token a CTA",
+   "samples": [
+    19.226188,
+    19.224541,
+    19.235427,
+    19.22237,
+    19.230473,
+    19.215798,
+    19.233891
+   ],
+   "median": 19.226188,
+   "min": 19.215798,
+   "max": 19.235427,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "every CTA the same rows, 16 warps",
+   "unit": "cycles a token a CTA",
+   "samples": [
+    46.910358,
+    46.876768,
+    46.793515,
+    46.844242,
+    46.870289,
+    46.857146,
+    46.914484
+   ],
+   "median": 46.870289,
+   "min": 46.793515,
+   "max": 46.914484,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "rows spread over 1,024, 16 warps",
+   "unit": "cycles a token a CTA",
+   "samples": [
+    24.827935,
+    24.817042,
+    24.843996,
+    24.805863,
+    24.820058,
+    24.848321,
+    24.830008
+   ],
+   "median": 24.827935,
+   "min": 24.805863,
+   "max": 24.848321,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void drain_rate::drain<(int)16, (int)2>(long long *, float *, int)": {
+   "regs": 62,
+   "ops": {
+    "VIADD": 24,
+    "LOP3.LUT": 17,
+    "IMAD": 17,
+    "SHF.R.U32.HI": 16,
+    "LEA.HI.SX32": 16,
+    "NOP": 12,
+    "SHF.R.S32.HI": 9,
+    "IMAD.MOV.U32": 9,
+    "LEA.HI": 8,
+    "IMAD.IADD": 8,
+    "IMAD.HI": 8,
+    "I2FP.F32.S32": 8
+   }
+  },
+  "void drain_rate::drain<(int)16, (int)1>(long long *, float *, int)": {
+   "regs": 30,
+   "ops": {
+    "VIADD": 15,
+    "NOP": 13,
+    "SHF.R.S32.HI": 9,
+    "LOP3.LUT": 9,
+    "SHF.R.U32.HI": 9,
+    "IMAD": 9,
+    "LEA.HI": 8,
+    "IMAD.MOV.U32": 8,
+    "IMAD.IADD": 8,
+    "IMAD.HI": 8,
+    "LEA.HI.SX32": 8,
+    "I2FP.F32.S32": 8
+   }
+  },
+  "void drain_rate::drain<(int)16, (int)0>(long long *, float *, int)": {
+   "regs": 48,
+   "ops": {
+    "SHF.R.S32.HI": 17,
+    "VIADD": 15,
+    "NOP": 12,
+    "LOP3.LUT": 9,
+    "SHF.R.U32.HI": 9,
+    "IMAD": 9,
+    "IMAD.MOV.U32": 8,
+    "LEA.HI": 8,
+    "IMAD.IADD": 8,
+    "IMAD.WIDE.U32": 8,
+    "IMAD.HI": 8,
+    "LEA": 8
+   }
+  },
+  "void drain_rate::drain<(int)8, (int)2>(long long *, float *, int)": {
+   "regs": 118,
+   "ops": {
+    "VIADD": 41,
+    "LOP3.LUT": 33,
+    "IMAD": 33,
+    "SHF.R.U32.HI": 32,
+    "SHF.R.S32.HI": 25,
+    "LEA.HI.SX32": 24,
+    "IMAD.MOV.U32": 17,
+    "LEA.HI": 16,
+    "IMAD.IADD": 16,
+    "IMAD.HI": 16,
+    "I2FP.F32.S32": 16,
+    "IADD3": 16
+   }
+  },
+  "void drain_rate::drain<(int)8, (int)1>(long long *, float *, int)": {
+   "regs": 50,
+   "ops": {
+    "VIADD": 31,
+    "SHF.R.S32.HI": 17,
+    "LOP3.LUT": 17,
+    "SHF.R.U32.HI": 17,
+    "IMAD": 17,
+    "IMAD.MOV.U32": 16,
+    "LEA.HI": 16,
+    "IMAD.IADD": 16,
+    "IMAD.HI": 16,
+    "LEA.HI.SX32": 16,
+    "I2FP.F32.S32": 16,
+    "REDG.E.ADD.F32.FTZ.RN.STRONG.GPU": 16
+   }
+  },
+  "void drain_rate::drain<(int)8, (int)0>(long long *, float *, int)": {
+   "regs": 80,
+   "ops": {
+    "SHF.R.S32.HI": 33,
+    "VIADD": 31,
+    "LOP3.LUT": 17,
+    "SHF.R.U32.HI": 17,
+    "IMAD": 17,
+    "IMAD.MOV.U32": 16,
+    "LEA.HI": 16,
+    "IMAD.WIDE.U32": 16,
+    "IMAD.IADD": 16,
+    "LEA": 16,
+    "LEA.HI.X": 16,
+    "IMAD.HI": 16
+   }
+  },
+  "void drain_rate::drain<(int)4, (int)2>(long long *, float *, int)": {
+   "regs": 246,
+   "ops": {
+    "VIADD": 73,
+    "LOP3.LUT": 65,
+    "IMAD": 65,
+    "SHF.R.U32.HI": 64,
+    "SHF.R.S32.HI": 57,
+    "LEA.HI.SX32": 40,
+    "IMAD.MOV.U32": 33,
+    "LEA.HI": 32,
+    "IMAD.IADD": 32,
+    "IMAD.HI": 32,
+    "I2FP.F32.S32": 32,
+    "IADD3": 32
+   }
+  },
+  "void drain_rate::drain<(int)4, (int)1>(long long *, float *, int)": {
+   "regs": 88,
+   "ops": {
+    "VIADD": 63,
+    "SHF.R.S32.HI": 33,
+    "LOP3.LUT": 33,
+    "SHF.R.U32.HI": 33,
+    "IMAD": 33,
+    "LEA.HI": 32,
+    "IMAD.IADD": 32,
+    "IMAD.MOV.U32": 32,
+    "IMAD.HI": 32,
+    "LEA.HI.SX32": 32,
+    "I2FP.F32.S32": 32,
+    "REDG.E.ADD.F32.FTZ.RN.STRONG.GPU": 32
+   }
+  },
+  "void drain_rate::drain<(int)4, (int)0>(long long *, float *, int)": {
+   "regs": 144,
+   "ops": {
+    "SHF.R.S32.HI": 65,
+    "VIADD": 63,
+    "LOP3.LUT": 33,
+    "SHF.R.U32.HI": 33,
+    "IMAD": 33,
+    "IMAD.MOV.U32": 32,
+    "LEA.HI": 32,
+    "IMAD.IADD": 32,
+    "IMAD.WIDE.U32": 32,
+    "LEA": 32,
+    "LEA.HI.X": 32,
+    "IMAD.HI": 32
+   }
+  }
+ },
+ "counters": {},
+ "counters_exception": {
+  "host": "vast.ai rented box, NVIDIA H100 80GB HBM3: a box with a driver and no toolkit",
+  "instead": "the kernels' own clocks and the SASS's static counts"
+ }
+}

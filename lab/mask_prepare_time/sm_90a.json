@@ -1,0 +1,276 @@
+{
+ "experiment": "mask_prepare_time",
+ "question": "what does the LIBRARY's mask-preparation pass cost a token on a mask it reads once, at each of the eight group sizes the pass prepares on a level of 256 digits (a group of 256 is the level whole: nothing is prepared) -- the three the lab's own kernel measured (`mask_prep`: 1, 4 and 16 digits), 2 and 8, and the three whose lanes OR by warp shuffle (32 to 128 digits)?",
+ "arch": "sm_90a",
+ "device": "NVIDIA H100 80GB HBM3",
+ "checks": [
+  {
+   "lab": "check",
+   "variant": "groups of 1 digit",
+   "ok": true,
+   "detail": "0 words and 0 totals differ over 528 windows of 256 groups"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "groups of 1 digit, the mask once-read",
+   "reason": "the row above checks this kernel's first round; this one is its time"
+  },
+  {
+   "lab": "check",
+   "variant": "groups of 2 digits",
+   "ok": true,
+   "detail": "0 words and 0 totals differ over 1056 windows of 128 groups"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "groups of 2 digits, the mask once-read",
+   "reason": "the row above checks this kernel's first round; this one is its time"
+  },
+  {
+   "lab": "check",
+   "variant": "groups of 4 digits",
+   "ok": true,
+   "detail": "0 words and 0 totals differ over 2112 windows of 64 groups"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "groups of 4 digits, the mask once-read",
+   "reason": "the row above checks this kernel's first round; this one is its time"
+  },
+  {
+   "lab": "check",
+   "variant": "groups of 8 digits",
+   "ok": true,
+   "detail": "0 words and 0 totals differ over 4224 windows of 32 groups"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "groups of 8 digits, the mask once-read",
+   "reason": "the row above checks this kernel's first round; this one is its time"
+  },
+  {
+   "lab": "check",
+   "variant": "groups of 16 digits",
+   "ok": true,
+   "detail": "0 words and 0 totals differ over 8448 windows of 16 groups"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "groups of 16 digits, the mask once-read",
+   "reason": "the row above checks this kernel's first round; this one is its time"
+  },
+  {
+   "lab": "check",
+   "variant": "groups of 32 digits",
+   "ok": true,
+   "detail": "0 words and 0 totals differ over 8448 windows of 8 groups"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "groups of 32 digits, the mask once-read",
+   "reason": "the row above checks this kernel's first round; this one is its time"
+  },
+  {
+   "lab": "check",
+   "variant": "groups of 64 digits",
+   "ok": true,
+   "detail": "0 words and 0 totals differ over 8448 windows of 4 groups"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "groups of 64 digits, the mask once-read",
+   "reason": "the row above checks this kernel's first round; this one is its time"
+  },
+  {
+   "lab": "check",
+   "variant": "groups of 128 digits",
+   "ok": true,
+   "detail": "0 words and 0 totals differ over 8448 windows of 2 groups"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "groups of 128 digits, the mask once-read",
+   "reason": "the row above checks this kernel's first round; this one is its time"
+  }
+ ],
+ "driver": "580.196.07",
+ "toolkit": "Build cuda_13.5.r13.5/compiler.39125733_0",
+ "git": {
+  "sha": "34b9a08d89e9f35c3c94306f26b80fa078c4ce52",
+  "dirty": false
+ },
+ "reps": 7,
+ "date": "2026-11-25T09:52:02+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "groups of 1 digit, the mask once-read",
+   "unit": "SM-cycles a token",
+   "samples": [
+    3.630334,
+    3.62578,
+    3.62757,
+    3.633076,
+    3.643963,
+    3.640227,
+    3.632199
+   ],
+   "median": 3.632199,
+   "min": 3.62578,
+   "max": 3.643963,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "groups of 2 digits, the mask once-read",
+   "unit": "SM-cycles a token",
+   "samples": [
+    3.849599,
+    3.843543,
+    3.860654,
+    3.840113,
+    3.884978,
+    3.844037,
+    3.873897
+   ],
+   "median": 3.849599,
+   "min": 3.840113,
+   "max": 3.884978,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "groups of 4 digits, the mask once-read",
+   "unit": "SM-cycles a token",
+   "samples": [
+    3.151476,
+    3.132367,
+    3.132575,
+    3.141123,
+    3.140619,
+    3.13582,
+    3.135641
+   ],
+   "median": 3.13582,
+   "min": 3.132367,
+   "max": 3.151476,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "groups of 8 digits, the mask once-read",
+   "unit": "SM-cycles a token",
+   "samples": [
+    2.852911,
+    2.838654,
+    2.864924,
+    2.831794,
+    2.854702,
+    2.869728,
+    2.863408
+   ],
+   "median": 2.854702,
+   "min": 2.831794,
+   "max": 2.869728,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "groups of 16 digits, the mask once-read",
+   "unit": "SM-cycles a token",
+   "samples": [
+    2.732197,
+    2.742646,
+    2.73903,
+    2.723805,
+    2.73184,
+    2.732371,
+    2.743905
+   ],
+   "median": 2.732371,
+   "min": 2.723805,
+   "max": 2.743905,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "groups of 32 digits, the mask once-read",
+   "unit": "SM-cycles a token",
+   "samples": [
+    2.758479,
+    2.762861,
+    2.757277,
+    2.756884,
+    2.76106,
+    2.735247,
+    2.753787
+   ],
+   "median": 2.757277,
+   "min": 2.735247,
+   "max": 2.762861,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "groups of 64 digits, the mask once-read",
+   "unit": "SM-cycles a token",
+   "samples": [
+    2.741525,
+    2.737667,
+    2.74619,
+    2.727679,
+    2.740509,
+    2.735778,
+    2.734574
+   ],
+   "median": 2.737667,
+   "min": 2.727679,
+   "max": 2.74619,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "groups of 128 digits, the mask once-read",
+   "unit": "SM-cycles a token",
+   "samples": [
+    2.661894,
+    2.674556,
+    2.663388,
+    2.671444,
+    2.665021,
+    2.677475,
+    2.673271
+   ],
+   "median": 2.671444,
+   "min": 2.661894,
+   "max": 2.677475,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "mask_prepare_time::timed(long long *, fsla::mask_prepare::detail::Args, const unsigned char *, unsigned char *, int, int)": {
+   "regs": 64,
+   "ops": {
+    "IMAD.MOV.U32": 439,
+    "LOP3.LUT": 262,
+    "SEL": 236,
+    "VIADD": 220,
+    "IMAD.MOV": 141,
+    "ISETP.GT.AND": 139,
+    "SHF.L.U32": 129,
+    "ISETP.GE.AND": 119,
+    "LDG.E.128": 96,
+    "IMAD": 95,
+    "LEA": 93,
+    "LEA.HI.X": 93
+   }
+  }
+ },
+ "counters": {},
+ "counters_exception": {
+  "host": "Nebius preemptible VM, NVIDIA H100 80GB HBM3: its counters not yet read there",
+  "instead": "the kernels' own clocks and the SASS's static counts"
+ }
+}

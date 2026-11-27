@@ -1,0 +1,157 @@
+{
+ "experiment": "value_gather",
+ "question": "a token's 128-byte value fetched by a WARP'S OWN LOAD from a row scattered over a table, and stored into shared memory: what does a row cost a CTA, by the warps issuing and by whether the cache holds the table -- beside the bulk engine's 128-byte request (`state_move`: 32.8 cycles)?",
+ "arch": "sm_90a",
+ "device": "NVIDIA H100 80GB HBM3",
+ "checks": [
+  {
+   "lab": "check",
+   "variant": "1 warp, a table of 65536 rows",
+   "ok": true,
+   "detail": "0 of 67584 ring words differ"
+  },
+  {
+   "lab": "check",
+   "variant": "4 warps, a table of 65536 rows",
+   "ok": true,
+   "detail": "0 of 270336 ring words differ"
+  },
+  {
+   "lab": "check",
+   "variant": "1 warp, a table of 1048576 rows",
+   "ok": true,
+   "detail": "0 of 67584 ring words differ"
+  },
+  {
+   "lab": "check",
+   "variant": "4 warps, a table of 1048576 rows",
+   "ok": true,
+   "detail": "0 of 270336 ring words differ"
+  }
+ ],
+ "driver": "595.91.07",
+ "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
+ "git": {
+  "sha": "1eba273ab8fe0520861068cb70ade7b6ac8f6e3b",
+  "dirty": false
+ },
+ "reps": 7,
+ "date": "2026-11-12T05:08:23+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "1 warp, a table of 65536 rows",
+   "unit": "cycles a 128-byte row a CTA",
+   "samples": [
+    33.36756,
+    33.362678,
+    33.362722,
+    33.363832,
+    33.367179,
+    33.367335,
+    33.367445
+   ],
+   "median": 33.367179,
+   "min": 33.362678,
+   "max": 33.36756,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 warps, a table of 65536 rows",
+   "unit": "cycles a 128-byte row a CTA",
+   "samples": [
+    8.49265,
+    8.513066,
+    8.513124,
+    8.503576,
+    8.509183,
+    8.531172,
+    8.51928
+   ],
+   "median": 8.513066,
+   "min": 8.49265,
+   "max": 8.531172,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "1 warp, a table of 1048576 rows",
+   "unit": "cycles a 128-byte row a CTA",
+   "samples": [
+    62.492885,
+    62.547488,
+    62.48657,
+    62.529526,
+    62.42303,
+    62.480821,
+    62.481967
+   ],
+   "median": 62.48657,
+   "min": 62.42303,
+   "max": 62.547488,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 warps, a table of 1048576 rows",
+   "unit": "cycles a 128-byte row a CTA",
+   "samples": [
+    13.778637,
+    13.739954,
+    13.721407,
+    13.740786,
+    13.753654,
+    13.742713,
+    13.71931
+   ],
+   "median": 13.740786,
+   "min": 13.71931,
+   "max": 13.778637,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void value_gather::gather<(int)4>(long long *, const unsigned int *, unsigned int *, int, int)": {
+   "regs": 63,
+   "ops": {
+    "IMAD": 67,
+    "LOP3.LUT": 66,
+    "IMAD.SHL.U32": 34,
+    "SHF.R.U32.HI": 33,
+    "LDG.E": 32,
+    "IMAD.MOV.U32": 32,
+    "VIMNMX": 29,
+    "LEA": 19,
+    "VIADD": 18,
+    "IMAD.WIDE.U32": 17,
+    "LEA.HI.X": 17,
+    "STS": 16
+   }
+  },
+  "void value_gather::gather<(int)1>(long long *, const unsigned int *, unsigned int *, int, int)": {
+   "regs": 63,
+   "ops": {
+    "IMAD": 67,
+    "LOP3.LUT": 66,
+    "IMAD.SHL.U32": 34,
+    "SHF.R.U32.HI": 33,
+    "LDG.E": 32,
+    "IMAD.MOV.U32": 32,
+    "VIMNMX": 29,
+    "LEA": 19,
+    "VIADD": 18,
+    "IMAD.WIDE.U32": 17,
+    "LEA.HI.X": 17,
+    "STS": 16
+   }
+  }
+ },
+ "counters": {},
+ "counters_exception": {
+  "host": "vast.ai rented box, NVIDIA H100 80GB HBM3: a box with a driver and no toolkit",
+  "instead": "the kernels' own clocks and the SASS's static counts"
+ }
+}

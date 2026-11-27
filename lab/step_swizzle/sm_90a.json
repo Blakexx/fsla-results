@@ -1,0 +1,173 @@
+{
+ "experiment": "step_swizzle",
+ "question": "does the tensor step read its A operand from TOKEN-MAJOR ROWS -- each of its 16 K entries a contiguous 128 bytes holding that entry's 64 M values, the row's eight 16-byte pieces turned by the row's place (the descriptor's 128-byte swizzle) -- and compute what it computes from the unswizzled brick layout the lab's kernels use?",
+ "arch": "sm_90a",
+ "device": "NVIDIA H100 80GB HBM3",
+ "checks": [
+  {
+   "lab": "check",
+   "variant": "a step's A read from token-major rows, the 128-byte swizzle, against the brick layout",
+   "ok": true,
+   "detail": "0 of 135168 sums differ between the layouts; 0 of 132 warpgroups' totals are not the product's; 0 tiles off a boundary"
+  },
+  {
+   "lab": "check",
+   "variant": "a step's A in bricks 16 lines apart",
+   "ok": true,
+   "detail": "0 of 16896 threads' sums are not the first kernel's step's, 16,384 times over"
+  },
+  {
+   "lab": "check",
+   "variant": "a step's A in bricks 17 lines apart",
+   "ok": true,
+   "detail": "0 of 16896 threads' sums are not the first kernel's step's, 16,384 times over"
+  },
+  {
+   "lab": "check",
+   "variant": "a step's A in token-major rows, the 128-byte swizzle",
+   "ok": true,
+   "detail": "0 of 16896 threads' sums are not the first kernel's step's, 16,384 times over"
+  }
+ ],
+ "driver": "580.196.07",
+ "toolkit": "Build cuda_13.5.r13.5/compiler.39125733_0",
+ "git": {
+  "sha": "73620f1ae1a6dca4a6abe2883f9ad9a14b1e6e03",
+  "dirty": false
+ },
+ "reps": 7,
+ "date": "2026-11-25T05:30:28+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "a step's A in bricks 16 lines apart",
+   "unit": "cycles a step",
+   "samples": [
+    27.638519,
+    27.638822,
+    27.638484,
+    27.639509,
+    27.638978,
+    27.639295,
+    27.638664
+   ],
+   "median": 27.638822,
+   "min": 27.638484,
+   "max": 27.639509,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a step's A in bricks 17 lines apart",
+   "unit": "cycles a step",
+   "samples": [
+    27.637194,
+    27.637213,
+    27.637565,
+    27.637158,
+    27.637362,
+    27.637153,
+    27.637589
+   ],
+   "median": 27.637213,
+   "min": 27.637153,
+   "max": 27.637589,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a step's A in token-major rows, the 128-byte swizzle",
+   "unit": "cycles a step",
+   "samples": [
+    27.635952,
+    27.635751,
+    27.635812,
+    27.635867,
+    27.635972,
+    27.635664,
+    27.635626
+   ],
+   "median": 27.635812,
+   "min": 27.635626,
+   "max": 27.635972,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void step_swizzle::timed<(int)2>(long long *, const unsigned int *, const unsigned int *, int *, int)": {
+   "regs": 34,
+   "ops": {
+    "HGMMA.64": 8,
+    "FADD": 8,
+    "NOP": 8,
+    "BRA": 5,
+    "MOV": 5,
+    "IMAD.MOV.U32": 5,
+    "UMOV": 5,
+    "LDC.64": 4,
+    "IADD3": 4,
+    "UIADD3": 4,
+    "LDC": 3,
+    "IMAD.WIDE": 3
+   }
+  },
+  "void step_swizzle::timed<(int)1>(long long *, const unsigned int *, const unsigned int *, int *, int)": {
+   "regs": 34,
+   "ops": {
+    "HGMMA.64": 8,
+    "FADD": 8,
+    "NOP": 8,
+    "BRA": 5,
+    "MOV": 5,
+    "IMAD.MOV.U32": 5,
+    "UMOV": 5,
+    "LDC.64": 4,
+    "IADD3": 4,
+    "UIADD3": 4,
+    "LDC": 3,
+    "IMAD.WIDE": 3
+   }
+  },
+  "void step_swizzle::timed<(int)0>(long long *, const unsigned int *, const unsigned int *, int *, int)": {
+   "regs": 34,
+   "ops": {
+    "HGMMA.64": 8,
+    "FADD": 8,
+    "NOP": 8,
+    "BRA": 5,
+    "MOV": 5,
+    "IMAD.MOV.U32": 5,
+    "UMOV": 5,
+    "LDC.64": 4,
+    "IADD3": 4,
+    "UIADD3": 4,
+    "LDC": 3,
+    "IMAD.WIDE": 3
+   }
+  },
+  "step_swizzle::stepped(const unsigned int *, const unsigned int *, const unsigned int *, float *, int *)": {
+   "regs": 42,
+   "ops": {
+    "STG.E": 17,
+    "NOP": 13,
+    "ULOP3.LUT": 7,
+    "MOV": 6,
+    "IMAD.MOV.U32": 6,
+    "UMOV": 5,
+    "LDC.64": 4,
+    "VIADD": 4,
+    "UIADD3": 4,
+    "S2R": 3,
+    "BRA": 3,
+    "IMAD.WIDE": 3
+   }
+  }
+ },
+ "counters": {},
+ "counters_exception": {
+  "host": "Nebius preemptible VM, NVIDIA H100 80GB HBM3: its counters not yet read there",
+  "instead": "the kernels' own clocks and the SASS's static counts"
+ }
+}

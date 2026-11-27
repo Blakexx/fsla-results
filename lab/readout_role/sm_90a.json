@@ -1,0 +1,150 @@
+{
+ "experiment": "readout_role",
+ "question": "a CTA's two boxes share their read digits and each has left its state as an image in shared memory; what does a token cost when ONE readout warpgroup reads both images into one accumulator, stores the token's partial to a panel, and drain warps issue it as one line of f16 pairs?",
+ "arch": "sm_90a",
+ "device": "NVIDIA H100 80GB HBM3",
+ "checks": [
+  {
+   "lab": "check",
+   "variant": "one readout warpgroup over two images, 1 drain warp",
+   "ok": true,
+   "detail": "0 of 2162688 output values differ"
+  },
+  {
+   "lab": "check",
+   "variant": "one readout warpgroup over two images, 2 drain warps",
+   "ok": true,
+   "detail": "0 of 2162688 output values differ"
+  },
+  {
+   "lab": "check",
+   "variant": "one readout warpgroup over two images, 4 drain warps",
+   "ok": true,
+   "detail": "0 of 2162688 output values differ"
+  }
+ ],
+ "driver": "595.91.07",
+ "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
+ "git": {
+  "sha": "1eba273ab8fe0520861068cb70ade7b6ac8f6e3b",
+  "dirty": false
+ },
+ "reps": 7,
+ "date": "2026-11-12T05:08:26+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "one readout warpgroup over two images, 1 drain warp",
+   "unit": "cycles a token a CTA",
+   "samples": [
+    21.744421,
+    21.744438,
+    21.74588,
+    21.745425,
+    21.744525,
+    21.744574,
+    21.74444
+   ],
+   "median": 21.744525,
+   "min": 21.744421,
+   "max": 21.74588,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "one readout warpgroup over two images, 2 drain warps",
+   "unit": "cycles a token a CTA",
+   "samples": [
+    15.587591,
+    15.441382,
+    15.586225,
+    15.547929,
+    15.583188,
+    15.575458,
+    15.584758
+   ],
+   "median": 15.583188,
+   "min": 15.441382,
+   "max": 15.587591,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "one readout warpgroup over two images, 4 drain warps",
+   "unit": "cycles a token a CTA",
+   "samples": [
+    11.983676,
+    11.988159,
+    11.984436,
+    11.991586,
+    11.991609,
+    11.988564,
+    11.988056
+   ],
+   "median": 11.988159,
+   "min": 11.983676,
+   "max": 11.991609,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void readout_role::readout<(int)4>(long long *, unsigned int *, int, int)": {
+   "regs": 106,
+   "ops": {
+    "LOP3.LUT": 40,
+    "SHF.R.S32.HI": 33,
+    "STS": 32,
+    "ULOP3.LUT": 24,
+    "IMAD.SHL.U32": 23,
+    "UMOV": 23,
+    "IMAD": 22,
+    "VIADD": 22,
+    "LEA": 21,
+    "IMAD.IADD": 19,
+    "IADD3": 17,
+    "IMAD.WIDE.U32": 16
+   }
+  },
+  "void readout_role::readout<(int)2>(long long *, unsigned int *, int, int)": {
+   "regs": 122,
+   "ops": {
+    "IADD3": 36,
+    "VIADD": 34,
+    "IMAD": 33,
+    "STS": 32,
+    "IMAD.WIDE": 31,
+    "LOP3.LUT": 27,
+    "UMOV": 24,
+    "LDS.64": 24,
+    "ULOP3.LUT": 24,
+    "SHF.R.S32.HI": 18,
+    "IMAD.IADD": 18,
+    "IMAD.MOV.U32": 17
+   }
+  },
+  "void readout_role::readout<(int)1>(long long *, unsigned int *, int, int)": {
+   "regs": 122,
+   "ops": {
+    "IADD3": 34,
+    "IMAD.WIDE": 33,
+    "IMAD": 32,
+    "VIADD": 32,
+    "STS": 32,
+    "LOP3.LUT": 24,
+    "UMOV": 24,
+    "LDS.64": 24,
+    "ULOP3.LUT": 24,
+    "BRA": 16,
+    "SHF.R.S32.HI": 16,
+    "IMAD.IADD": 16
+   }
+  }
+ },
+ "counters": {},
+ "counters_exception": {
+  "host": "vast.ai rented box, NVIDIA H100 80GB HBM3: a box with a driver and no toolkit",
+  "instead": "the kernels' own clocks and the SASS's static counts"
+ }
+}

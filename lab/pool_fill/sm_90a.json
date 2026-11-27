@@ -1,0 +1,270 @@
+{
+ "experiment": "pool_fill",
+ "question": "a 16 x 16 box's fold takes, for each of its 16 lists, the listed tokens' values and their coefficients on the box's 16 dense leaves; what does an entry cost a CTA when producer warps fill those two pools from SCATTERED rows of global memory -- a value's 128 bytes and the token's 16 dense bytes, each by the warps' own load -- and the fold's steps consume them?",
+ "arch": "sm_90a",
+ "device": "NVIDIA H100 80GB HBM3",
+ "checks": [
+  {
+   "lab": "unchecked",
+   "variant": "the producers alone, 2 producers",
+   "reason": "an isolation: the pools are filled and no step reads them"
+  },
+  {
+   "lab": "check",
+   "variant": "the producers and the fold, 2 producers",
+   "ok": true,
+   "detail": "0 of 2162688 state values differ"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "the producers alone, 4 producers",
+   "reason": "an isolation: the pools are filled and no step reads them"
+  },
+  {
+   "lab": "check",
+   "variant": "the producers and the fold, 4 producers",
+   "ok": true,
+   "detail": "0 of 2162688 state values differ"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "the producers alone, 8 producers",
+   "reason": "an isolation: the pools are filled and no step reads them"
+  },
+  {
+   "lab": "check",
+   "variant": "the producers and the fold, 8 producers",
+   "ok": true,
+   "detail": "0 of 2162688 state values differ"
+  }
+ ],
+ "driver": "595.91.07",
+ "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
+ "git": {
+  "sha": "a82c550e457fbbe379903cdd18155a34d26c1c58",
+  "dirty": false
+ },
+ "reps": 7,
+ "date": "2026-11-12T05:50:06+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "the producers alone, 2 producers",
+   "unit": "cycles an entry a CTA",
+   "samples": [
+    6.004896,
+    6.12638,
+    6.111759,
+    6.110082,
+    6.126322,
+    6.108046,
+    6.120327
+   ],
+   "median": 6.111759,
+   "min": 6.004896,
+   "max": 6.12638,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the producers and the fold, 2 producers",
+   "unit": "cycles an entry a CTA",
+   "samples": [
+    6.826768,
+    6.845034,
+    6.838946,
+    6.85239,
+    6.845862,
+    6.854135,
+    6.846656
+   ],
+   "median": 6.845862,
+   "min": 6.826768,
+   "max": 6.854135,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the producers alone, 4 producers",
+   "unit": "cycles an entry a CTA",
+   "samples": [
+    6.135702,
+    6.317867,
+    6.239645,
+    6.293187,
+    6.213857,
+    6.274801,
+    6.276663
+   ],
+   "median": 6.274801,
+   "min": 6.135702,
+   "max": 6.317867,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the producers and the fold, 4 producers",
+   "unit": "cycles an entry a CTA",
+   "samples": [
+    6.26014,
+    6.306367,
+    6.268297,
+    6.299752,
+    6.252927,
+    6.281025,
+    6.293493
+   ],
+   "median": 6.281025,
+   "min": 6.252927,
+   "max": 6.306367,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the producers alone, 8 producers",
+   "unit": "cycles an entry a CTA",
+   "samples": [
+    4.523823,
+    5.405335,
+    5.266072,
+    5.34228,
+    5.364176,
+    5.339235,
+    5.321788
+   ],
+   "median": 5.339235,
+   "min": 4.523823,
+   "max": 5.405335,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "the producers and the fold, 8 producers",
+   "unit": "cycles an entry a CTA",
+   "samples": [
+    5.300503,
+    5.410502,
+    5.369463,
+    5.378933,
+    5.393232,
+    5.389056,
+    5.387698
+   ],
+   "median": 5.387698,
+   "min": 5.300503,
+   "max": 5.410502,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void pool_fill::fill<(int)1, (int)8>(long long *, const unsigned int *, const unsigned int *, float *, int)": {
+   "regs": 154,
+   "ops": {
+    "STG.E": 128,
+    "LOP3.LUT": 115,
+    "CS2R": 67,
+    "UMOV": 66,
+    "ULOP3.LUT": 64,
+    "SHF.R.U32.HI": 58,
+    "IMAD": 48,
+    "LEA": 39,
+    "IMAD.IADD": 37,
+    "LDG.E.128": 36,
+    "USHF.R.U32.HI": 34,
+    "UIADD3": 33
+   }
+  },
+  "void pool_fill::fill<(int)0, (int)8>(long long *, const unsigned int *, const unsigned int *, float *, int)": {
+   "regs": 121,
+   "ops": {
+    "STG.E": 128,
+    "LOP3.LUT": 113,
+    "SHF.R.U32.HI": 58,
+    "IMAD": 47,
+    "LEA": 39,
+    "IMAD.IADD": 37,
+    "LDG.E.128": 36,
+    "LEA.HI.X": 33,
+    "FMUL": 32,
+    "VIADD": 29,
+    "STS.128": 24,
+    "SHF.R.S32.HI": 21
+   }
+  },
+  "void pool_fill::fill<(int)1, (int)4>(long long *, const unsigned int *, const unsigned int *, float *, int)": {
+   "regs": 212,
+   "ops": {
+    "LOP3.LUT": 168,
+    "STG.E": 128,
+    "SHF.R.U32.HI": 96,
+    "IMAD": 88,
+    "IMAD.IADD": 84,
+    "CS2R": 67,
+    "UMOV": 66,
+    "ULOP3.LUT": 64,
+    "FMUL": 64,
+    "LEA": 58,
+    "LDG.E.128": 54,
+    "VIADD": 53
+   }
+  },
+  "void pool_fill::fill<(int)0, (int)4>(long long *, const unsigned int *, const unsigned int *, float *, int)": {
+   "regs": 210,
+   "ops": {
+    "LOP3.LUT": 166,
+    "STG.E": 128,
+    "SHF.R.U32.HI": 97,
+    "IMAD": 87,
+    "IMAD.IADD": 84,
+    "FMUL": 64,
+    "LEA": 58,
+    "LDG.E.128": 54,
+    "VIADD": 52,
+    "LEA.HI.X": 49,
+    "STS.128": 48,
+    "SHF.R.S32.HI": 39
+   }
+  },
+  "void pool_fill::fill<(int)1, (int)2>(long long *, const unsigned int *, const unsigned int *, float *, int)": {
+   "regs": 255,
+   "ops": {
+    "LOP3.LUT": 296,
+    "SHF.R.U32.HI": 167,
+    "IMAD": 146,
+    "IMAD.IADD": 132,
+    "STG.E": 128,
+    "FMUL": 128,
+    "VIADD": 103,
+    "LEA": 96,
+    "STS.128": 96,
+    "LDG.E.128": 90,
+    "LEA.HI.X": 81,
+    "SHF.R.S32.HI": 75
+   }
+  },
+  "void pool_fill::fill<(int)0, (int)2>(long long *, const unsigned int *, const unsigned int *, float *, int)": {
+   "regs": 255,
+   "ops": {
+    "LOP3.LUT": 258,
+    "SHF.R.U32.HI": 167,
+    "IMAD": 144,
+    "STG.E": 128,
+    "FMUL": 128,
+    "IMAD.IADD": 120,
+    "STS.128": 96,
+    "LDG.E.128": 90,
+    "VIADD": 89,
+    "IMAD.WIDE.U32": 81,
+    "SHF.R.S32.HI": 76,
+    "I2F.U8": 64
+   }
+  }
+ },
+ "counters": {},
+ "counters_exception": {
+  "host": "vast.ai rented box, NVIDIA H100 80GB HBM3: a box with a driver and no toolkit",
+  "instead": "the kernels' own clocks and the SASS's static counts"
+ }
+}

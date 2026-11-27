@@ -1,0 +1,437 @@
+{
+ "experiment": "load_rate",
+ "question": "a warp's own load of a scattered 128-byte row costs it about 33 cycles (`value_gather`), and four warps a quarter of that. What is that cost a property of: the instruction, its bytes, the loads in flight, or the warps issuing?",
+ "arch": "sm_90a",
+ "device": "NVIDIA H100 80GB HBM3",
+ "checks": [
+  {
+   "lab": "check",
+   "variant": "4 bytes a lane, a row an instruction, 1 warp, 16 in flight",
+   "ok": true,
+   "detail": "0 of 4224 lane sums differ"
+  },
+  {
+   "lab": "check",
+   "variant": "4 bytes a lane, a row an instruction, 4 warps, 16 in flight",
+   "ok": true,
+   "detail": "0 of 16896 lane sums differ"
+  },
+  {
+   "lab": "check",
+   "variant": "4 bytes a lane, a row an instruction, 8 warps, 16 in flight",
+   "ok": true,
+   "detail": "0 of 33792 lane sums differ"
+  },
+  {
+   "lab": "check",
+   "variant": "4 bytes a lane, a row an instruction, 16 warps, 16 in flight",
+   "ok": true,
+   "detail": "0 of 67584 lane sums differ"
+  },
+  {
+   "lab": "check",
+   "variant": "16 bytes a lane, 4 rows an instruction, 1 warp, 16 in flight",
+   "ok": true,
+   "detail": "0 of 4224 lane sums differ"
+  },
+  {
+   "lab": "check",
+   "variant": "16 bytes a lane, 4 rows an instruction, 4 warps, 16 in flight",
+   "ok": true,
+   "detail": "0 of 16896 lane sums differ"
+  },
+  {
+   "lab": "check",
+   "variant": "16 bytes a lane, 4 rows an instruction, 8 warps, 16 in flight",
+   "ok": true,
+   "detail": "0 of 33792 lane sums differ"
+  },
+  {
+   "lab": "check",
+   "variant": "16 bytes a lane, 4 rows an instruction, 16 warps, 16 in flight",
+   "ok": true,
+   "detail": "0 of 67584 lane sums differ"
+  },
+  {
+   "lab": "check",
+   "variant": "4 bytes a lane, a row an instruction, 4 warps, 4 in flight",
+   "ok": true,
+   "detail": "0 of 16896 lane sums differ"
+  },
+  {
+   "lab": "check",
+   "variant": "4 bytes a lane, a row an instruction, 4 warps, 64 in flight",
+   "ok": true,
+   "detail": "0 of 16896 lane sums differ"
+  }
+ ],
+ "driver": "595.91.07",
+ "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
+ "git": {
+  "sha": "3699007c9ab27bc1dec6c4cc9bbf6ef310795538",
+  "dirty": false
+ },
+ "reps": 7,
+ "date": "2026-11-12T05:34:32+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "4 bytes a lane, a row an instruction, 1 warp, 16 in flight",
+   "unit": "cycles a 128-byte row a CTA",
+   "samples": [
+    33.038204,
+    33.002589,
+    33.005074,
+    33.002398,
+    33.002174,
+    33.003657,
+    33.006637
+   ],
+   "median": 33.003657,
+   "min": 33.002174,
+   "max": 33.038204,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 bytes a lane, a row an instruction, 4 warps, 16 in flight",
+   "unit": "cycles a 128-byte row a CTA",
+   "samples": [
+    8.459236,
+    8.472172,
+    8.471775,
+    8.454738,
+    8.452675,
+    8.48171,
+    8.457865
+   ],
+   "median": 8.459236,
+   "min": 8.452675,
+   "max": 8.48171,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 bytes a lane, a row an instruction, 8 warps, 16 in flight",
+   "unit": "cycles a 128-byte row a CTA",
+   "samples": [
+    4.693547,
+    4.669812,
+    4.726194,
+    4.693098,
+    4.713553,
+    4.710404,
+    4.729634
+   ],
+   "median": 4.710404,
+   "min": 4.669812,
+   "max": 4.729634,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 bytes a lane, a row an instruction, 16 warps, 16 in flight",
+   "unit": "cycles a 128-byte row a CTA",
+   "samples": [
+    3.326408,
+    3.323213,
+    3.324331,
+    3.327861,
+    3.326305,
+    3.327779,
+    3.327818
+   ],
+   "median": 3.326408,
+   "min": 3.323213,
+   "max": 3.327861,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "16 bytes a lane, 4 rows an instruction, 1 warp, 16 in flight",
+   "unit": "cycles a 128-byte row a CTA",
+   "samples": [
+    10.54746,
+    10.552027,
+    10.555917,
+    10.54786,
+    10.55029,
+    10.548754,
+    10.547208
+   ],
+   "median": 10.548754,
+   "min": 10.547208,
+   "max": 10.555917,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "16 bytes a lane, 4 rows an instruction, 4 warps, 16 in flight",
+   "unit": "cycles a 128-byte row a CTA",
+   "samples": [
+    3.492272,
+    3.477256,
+    3.468744,
+    3.487991,
+    3.490168,
+    3.491253,
+    3.495571
+   ],
+   "median": 3.490168,
+   "min": 3.468744,
+   "max": 3.495571,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "16 bytes a lane, 4 rows an instruction, 8 warps, 16 in flight",
+   "unit": "cycles a 128-byte row a CTA",
+   "samples": [
+    2.148206,
+    2.165211,
+    2.148528,
+    2.147163,
+    2.157189,
+    2.131842,
+    2.175961
+   ],
+   "median": 2.148528,
+   "min": 2.131842,
+   "max": 2.175961,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "16 bytes a lane, 4 rows an instruction, 16 warps, 16 in flight",
+   "unit": "cycles a 128-byte row a CTA",
+   "samples": [
+    1.459652,
+    1.462903,
+    1.460394,
+    1.471249,
+    1.45853,
+    1.461933,
+    1.462922
+   ],
+   "median": 1.461933,
+   "min": 1.45853,
+   "max": 1.471249,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 bytes a lane, a row an instruction, 4 warps, 4 in flight",
+   "unit": "cycles a 128-byte row a CTA",
+   "samples": [
+    22.840589,
+    22.837525,
+    22.839378,
+    22.841108,
+    22.84056,
+    22.838431,
+    22.841087
+   ],
+   "median": 22.84056,
+   "min": 22.837525,
+   "max": 22.841108,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 bytes a lane, a row an instruction, 4 warps, 64 in flight",
+   "unit": "cycles a 128-byte row a CTA",
+   "samples": [
+    5.08768,
+    5.010121,
+    4.869301,
+    4.952236,
+    4.972038,
+    4.860017,
+    4.878513
+   ],
+   "median": 4.952236,
+   "min": 4.860017,
+   "max": 5.08768,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void load_rate::fetch<(int)4, (int)0, (int)64>(long long *, const unsigned int *, unsigned int *, int)": {
+   "regs": 168,
+   "ops": {
+    "IMAD": 323,
+    "LOP3.LUT": 256,
+    "SHF.R.U32.HI": 129,
+    "LDG.E": 128,
+    "LEA": 66,
+    "VIMNMX": 65,
+    "IMAD.WIDE.U32": 65,
+    "LEA.HI.X": 65,
+    "VIADDMNMX": 63,
+    "NOP": 10,
+    "IMAD.MOV.U32": 6,
+    "BRA": 4
+   }
+  },
+  "void load_rate::fetch<(int)4, (int)0, (int)4>(long long *, const unsigned int *, unsigned int *, int)": {
+   "regs": 26,
+   "ops": {
+    "IMAD": 23,
+    "LOP3.LUT": 17,
+    "NOP": 11,
+    "SHF.R.U32.HI": 9,
+    "LDG.E": 8,
+    "LEA": 6,
+    "VIMNMX": 5,
+    "IMAD.WIDE.U32": 5,
+    "LEA.HI.X": 5,
+    "IMAD.MOV.U32": 4,
+    "BRA": 4,
+    "ULDC.64": 3
+   }
+  },
+  "void load_rate::fetch<(int)16, (int)1, (int)16>(long long *, const unsigned int *, unsigned int *, int)": {
+   "regs": 83,
+   "ops": {
+    "IMAD": 115,
+    "LOP3.LUT": 65,
+    "SHF.R.U32.HI": 34,
+    "LDG.E.128": 32,
+    "LEA": 18,
+    "VIMNMX": 18,
+    "IMAD.WIDE.U32": 17,
+    "LEA.HI.X": 17,
+    "IADD3": 16,
+    "IMAD.IADD": 16,
+    "VIADDMNMX": 14,
+    "NOP": 13
+   }
+  },
+  "void load_rate::fetch<(int)8, (int)1, (int)16>(long long *, const unsigned int *, unsigned int *, int)": {
+   "regs": 80,
+   "ops": {
+    "IMAD": 115,
+    "LOP3.LUT": 65,
+    "SHF.R.U32.HI": 34,
+    "LDG.E.128": 32,
+    "VIMNMX": 29,
+    "LEA": 18,
+    "IMAD.WIDE.U32": 17,
+    "LEA.HI.X": 17,
+    "IADD3": 16,
+    "IMAD.IADD": 16,
+    "UMOV": 13,
+    "UIADD3": 13
+   }
+  },
+  "void load_rate::fetch<(int)4, (int)1, (int)16>(long long *, const unsigned int *, unsigned int *, int)": {
+   "regs": 80,
+   "ops": {
+    "IMAD": 115,
+    "LOP3.LUT": 65,
+    "SHF.R.U32.HI": 34,
+    "LDG.E.128": 32,
+    "VIMNMX": 29,
+    "LEA": 18,
+    "IMAD.WIDE.U32": 17,
+    "LEA.HI.X": 17,
+    "IADD3": 16,
+    "IMAD.IADD": 16,
+    "UMOV": 13,
+    "UIADD3": 13
+   }
+  },
+  "void load_rate::fetch<(int)1, (int)1, (int)16>(long long *, const unsigned int *, unsigned int *, int)": {
+   "regs": 80,
+   "ops": {
+    "IMAD": 115,
+    "LOP3.LUT": 65,
+    "SHF.R.U32.HI": 34,
+    "LDG.E.128": 32,
+    "VIMNMX": 29,
+    "LEA": 18,
+    "IMAD.WIDE.U32": 17,
+    "LEA.HI.X": 17,
+    "IADD3": 16,
+    "IMAD.IADD": 16,
+    "UMOV": 13,
+    "UIADD3": 13
+   }
+  },
+  "void load_rate::fetch<(int)16, (int)0, (int)16>(long long *, const unsigned int *, unsigned int *, int)": {
+   "regs": 48,
+   "ops": {
+    "IMAD": 83,
+    "LOP3.LUT": 65,
+    "SHF.R.U32.HI": 33,
+    "LDG.E": 32,
+    "VIMNMX": 29,
+    "LEA": 18,
+    "IMAD.WIDE.U32": 17,
+    "LEA.HI.X": 17,
+    "UMOV": 13,
+    "UIADD3": 13,
+    "NOP": 9,
+    "IMAD.MOV.U32": 6
+   }
+  },
+  "void load_rate::fetch<(int)8, (int)0, (int)16>(long long *, const unsigned int *, unsigned int *, int)": {
+   "regs": 48,
+   "ops": {
+    "IMAD": 83,
+    "LOP3.LUT": 65,
+    "SHF.R.U32.HI": 33,
+    "LDG.E": 32,
+    "VIMNMX": 29,
+    "LEA": 18,
+    "IMAD.WIDE.U32": 17,
+    "LEA.HI.X": 17,
+    "UMOV": 13,
+    "UIADD3": 13,
+    "NOP": 9,
+    "IMAD.MOV.U32": 6
+   }
+  },
+  "void load_rate::fetch<(int)4, (int)0, (int)16>(long long *, const unsigned int *, unsigned int *, int)": {
+   "regs": 48,
+   "ops": {
+    "IMAD": 83,
+    "LOP3.LUT": 65,
+    "SHF.R.U32.HI": 33,
+    "LDG.E": 32,
+    "VIMNMX": 29,
+    "LEA": 18,
+    "IMAD.WIDE.U32": 17,
+    "LEA.HI.X": 17,
+    "UMOV": 13,
+    "UIADD3": 13,
+    "NOP": 9,
+    "IMAD.MOV.U32": 6
+   }
+  },
+  "void load_rate::fetch<(int)1, (int)0, (int)16>(long long *, const unsigned int *, unsigned int *, int)": {
+   "regs": 48,
+   "ops": {
+    "IMAD": 83,
+    "LOP3.LUT": 65,
+    "SHF.R.U32.HI": 33,
+    "LDG.E": 32,
+    "VIMNMX": 29,
+    "LEA": 18,
+    "IMAD.WIDE.U32": 17,
+    "LEA.HI.X": 17,
+    "UMOV": 13,
+    "UIADD3": 13,
+    "NOP": 9,
+    "IMAD.MOV.U32": 6
+   }
+  }
+ },
+ "counters": {},
+ "counters_exception": {
+  "host": "vast.ai rented box, NVIDIA H100 80GB HBM3: a box with a driver and no toolkit",
+  "instead": "the kernels' own clocks and the SASS's static counts"
+ }
+}

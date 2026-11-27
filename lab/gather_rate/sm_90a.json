@@ -1,0 +1,352 @@
+{
+ "experiment": "gather_rate",
+ "question": "what does the gather's own access pattern cost a row -- rows fetched scattered from a table, stored into shared memory in the order they will be read, and the image stored out to global memory by one bulk copy -- when the table is one the card's cache holds (8 MB: `load_rate`, `state_move`) and when it is not (2 GB), and when the image goes to a ring the cache holds or to fresh memory?",
+ "arch": "sm_90a",
+ "device": "NVIDIA H100 80GB HBM3",
+ "checks": [
+  {
+   "lab": "check",
+   "variant": "an 8 MB table, 512 rows in flight: loaded and folded",
+   "ok": true,
+   "detail": "0 words differ"
+  },
+  {
+   "lab": "check",
+   "variant": "an 8 MB table, 512 rows in flight: loaded and stored into shared memory",
+   "ok": true,
+   "detail": "0 words differ"
+  },
+  {
+   "lab": "check",
+   "variant": "an 8 MB table, 512 rows in flight: loaded, stored and copied out to a ring of 256 KB a CTA",
+   "ok": true,
+   "detail": "0 words differ"
+  },
+  {
+   "lab": "check",
+   "variant": "an 8 MB table, 512 rows in flight: loaded, stored and copied out to fresh memory",
+   "ok": true,
+   "detail": "0 words differ"
+  },
+  {
+   "lab": "check",
+   "variant": "an 8 MB table, 256 rows in flight: loaded, stored and copied out to a ring of 256 KB a CTA",
+   "ok": true,
+   "detail": "0 words differ"
+  },
+  {
+   "lab": "check",
+   "variant": "a 2 GB table, 512 rows in flight: loaded and folded",
+   "ok": true,
+   "detail": "0 words differ"
+  },
+  {
+   "lab": "check",
+   "variant": "a 2 GB table, 512 rows in flight: loaded and stored into shared memory",
+   "ok": true,
+   "detail": "0 words differ"
+  },
+  {
+   "lab": "check",
+   "variant": "a 2 GB table, 512 rows in flight: loaded, stored and copied out to a ring of 256 KB a CTA",
+   "ok": true,
+   "detail": "0 words differ"
+  },
+  {
+   "lab": "check",
+   "variant": "a 2 GB table, 512 rows in flight: loaded, stored and copied out to fresh memory",
+   "ok": true,
+   "detail": "0 words differ"
+  },
+  {
+   "lab": "check",
+   "variant": "a 2 GB table, 256 rows in flight: loaded, stored and copied out to a ring of 256 KB a CTA",
+   "ok": true,
+   "detail": "0 words differ"
+  }
+ ],
+ "driver": "580.196.07",
+ "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
+ "git": {
+  "sha": "7d0d6925ca87fb553c83cd7211f304198da1267c",
+  "dirty": false
+ },
+ "reps": 7,
+ "date": "2026-11-20T23:51:22+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "an 8 MB table, 512 rows in flight: loaded and folded",
+   "unit": "cycles a 128-byte row a CTA",
+   "samples": [
+    2.595609,
+    2.582751,
+    2.571196,
+    2.598656,
+    2.536974,
+    2.543486,
+    2.583684
+   ],
+   "median": 2.582751,
+   "min": 2.536974,
+   "max": 2.598656,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "an 8 MB table, 512 rows in flight: loaded and stored into shared memory",
+   "unit": "cycles a 128-byte row a CTA",
+   "samples": [
+    3.707939,
+    3.716499,
+    3.696827,
+    3.694848,
+    3.68779,
+    3.716496,
+    3.709493
+   ],
+   "median": 3.707939,
+   "min": 3.68779,
+   "max": 3.716499,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "an 8 MB table, 512 rows in flight: loaded, stored and copied out to a ring of 256 KB a CTA",
+   "unit": "cycles a 128-byte row a CTA",
+   "samples": [
+    10.065549,
+    10.055947,
+    10.033679,
+    10.046637,
+    10.039757,
+    10.040234,
+    10.067866
+   ],
+   "median": 10.046637,
+   "min": 10.033679,
+   "max": 10.067866,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "an 8 MB table, 512 rows in flight: loaded, stored and copied out to fresh memory",
+   "unit": "cycles a 128-byte row a CTA",
+   "samples": [
+    12.299618,
+    12.329493,
+    12.324031,
+    12.308587,
+    12.294125,
+    12.28761,
+    12.293906
+   ],
+   "median": 12.299618,
+   "min": 12.28761,
+   "max": 12.329493,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "an 8 MB table, 256 rows in flight: loaded, stored and copied out to a ring of 256 KB a CTA",
+   "unit": "cycles a 128-byte row a CTA",
+   "samples": [
+    10.914381,
+    10.83071,
+    11.063103,
+    11.086847,
+    10.709331,
+    10.883215,
+    11.001117
+   ],
+   "median": 10.914381,
+   "min": 10.709331,
+   "max": 11.086847,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a 2 GB table, 512 rows in flight: loaded and folded",
+   "unit": "cycles a 128-byte row a CTA",
+   "samples": [
+    9.705634,
+    9.713365,
+    9.719786,
+    9.731441,
+    9.689226,
+    9.738683,
+    9.710973
+   ],
+   "median": 9.713365,
+   "min": 9.689226,
+   "max": 9.738683,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a 2 GB table, 512 rows in flight: loaded and stored into shared memory",
+   "unit": "cycles a 128-byte row a CTA",
+   "samples": [
+    9.809949,
+    9.833048,
+    9.793103,
+    9.820003,
+    9.758987,
+    9.797923,
+    9.790279
+   ],
+   "median": 9.797923,
+   "min": 9.758987,
+   "max": 9.833048,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a 2 GB table, 512 rows in flight: loaded, stored and copied out to a ring of 256 KB a CTA",
+   "unit": "cycles a 128-byte row a CTA",
+   "samples": [
+    19.128947,
+    19.088265,
+    19.102587,
+    19.091848,
+    19.101349,
+    19.115055,
+    19.127681
+   ],
+   "median": 19.102587,
+   "min": 19.088265,
+   "max": 19.128947,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a 2 GB table, 512 rows in flight: loaded, stored and copied out to fresh memory",
+   "unit": "cycles a 128-byte row a CTA",
+   "samples": [
+    21.043248,
+    20.969103,
+    20.97089,
+    21.174646,
+    21.17887,
+    21.058202,
+    21.140355
+   ],
+   "median": 21.058202,
+   "min": 20.969103,
+   "max": 21.17887,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a 2 GB table, 256 rows in flight: loaded, stored and copied out to a ring of 256 KB a CTA",
+   "unit": "cycles a 128-byte row a CTA",
+   "samples": [
+    20.89758,
+    20.815362,
+    20.859647,
+    20.916334,
+    20.855038,
+    20.800743,
+    20.876755
+   ],
+   "median": 20.859647,
+   "min": 20.800743,
+   "max": 20.916334,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void gather_rate::fetch<(int)2, (int)4>(long long *, const uint4 *, uint4 *, unsigned int, int, int)": {
+   "regs": 52,
+   "ops": {
+    "LOP3.LUT": 31,
+    "IMAD": 25,
+    "NOP": 13,
+    "IMAD.IADD": 11,
+    "SHF.R.U32.HI": 10,
+    "IMAD.SHL.U32": 10,
+    "IMAD.WIDE.U32": 10,
+    "VIADD": 8,
+    "LDG.E.128": 8,
+    "LDC.64": 5,
+    "IADD3": 5,
+    "BRA": 5
+   }
+  },
+  "void gather_rate::fetch<(int)2, (int)8>(long long *, const uint4 *, uint4 *, unsigned int, int, int)": {
+   "regs": 64,
+   "ops": {
+    "LOP3.LUT": 58,
+    "IMAD": 35,
+    "VIADD": 21,
+    "SHF.R.U32.HI": 18,
+    "IMAD.WIDE.U32": 18,
+    "LDG.E.128": 16,
+    "IMAD.SHL.U32": 15,
+    "IMAD.IADD": 10,
+    "NOP": 10,
+    "STS.128": 8,
+    "LDC.64": 5,
+    "BRA": 5
+   }
+  },
+  "void gather_rate::fetch<(int)1, (int)8>(long long *, const uint4 *, uint4 *, unsigned int, int, int)": {
+   "regs": 71,
+   "ops": {
+    "LOP3.LUT": 58,
+    "IMAD": 33,
+    "VIADD": 27,
+    "IMAD.SHL.U32": 25,
+    "SHF.R.U32.HI": 19,
+    "LDG.E.128": 16,
+    "LEA": 11,
+    "IMAD.WIDE.U32": 10,
+    "NOP": 10,
+    "LEA.HI.X": 9,
+    "IMAD.IADD": 8,
+    "STS.128": 8
+   }
+  },
+  "void gather_rate::fetch<(int)0, (int)8>(long long *, const uint4 *, uint4 *, unsigned int, int, int)": {
+   "regs": 50,
+   "ops": {
+    "LOP3.LUT": 34,
+    "IMAD": 31,
+    "SHF.R.U32.HI": 18,
+    "IMAD.SHL.U32": 17,
+    "VIADD": 16,
+    "LDG.E.128": 16,
+    "IMAD.WIDE.U32": 9,
+    "LEA": 9,
+    "LEA.HI.X": 9,
+    "NOP": 9,
+    "IADD3": 8,
+    "IMAD.IADD": 8
+   }
+  },
+  "gather_rate::fill(unsigned int *, long long)": {
+   "regs": 30,
+   "ops": {
+    "IADD3": 22,
+    "IMAD": 20,
+    "IMAD.MOV.U32": 14,
+    "IMAD.X": 12,
+    "IMAD.HI.U32": 11,
+    "IMAD.WIDE.U32": 9,
+    "IADD3.X": 9,
+    "SEL": 8,
+    "NOP": 8,
+    "ISETP.GE.U32.AND": 7,
+    "BRA": 6,
+    "ULDC.64": 5
+   }
+  }
+ },
+ "counters": {},
+ "counters_exception": {
+  "host": "Nebius preemptible VM, NVIDIA H100 80GB HBM3: its counters not yet read there",
+  "instead": "the kernels' own clocks and the SASS's static counts"
+ }
+}

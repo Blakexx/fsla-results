@@ -1,0 +1,517 @@
+{
+ "experiment": "state_move",
+ "question": "a CTA's state leaves its registers for other CTAs once a window; what does a kilobyte of it cost a CTA by bulk copies into its cluster-mates' shared memory, and by a bulk copy out to global memory and one back in? And what does a token's 128-byte value cost, loaded by itself?",
+ "arch": "sm_90a",
+ "device": "NVIDIA H100 80GB HBM3",
+ "checks": [
+  {
+   "lab": "unchecked",
+   "variant": "the stage's stores alone, blocks of 1024 bytes",
+   "reason": "the base: it writes shared memory alone"
+  },
+  {
+   "lab": "check",
+   "variant": "a bulk copy a cluster-mate, blocks of 1024 bytes",
+   "ok": true,
+   "detail": "0 of 262144 words differ from the exact ones after 4 rounds"
+  },
+  {
+   "lab": "check",
+   "variant": "one bulk copy out to global memory, blocks of 1024 bytes",
+   "ok": true,
+   "detail": "0 of 262144 words differ from the exact ones after 4 rounds"
+  },
+  {
+   "lab": "check",
+   "variant": "one bulk copy out to global memory and one back in, blocks of 1024 bytes",
+   "ok": true,
+   "detail": "0 of 262144 words differ from the exact ones after 4 rounds"
+  },
+  {
+   "lab": "check",
+   "variant": "one bulk copy in from global memory, blocks of 1024 bytes",
+   "ok": true,
+   "detail": "0 of 262144 words differ from the exact ones after 4 rounds"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "the stage's stores alone, blocks of 8192 bytes",
+   "reason": "the base: it writes shared memory alone"
+  },
+  {
+   "lab": "check",
+   "variant": "a bulk copy a cluster-mate, blocks of 8192 bytes",
+   "ok": true,
+   "detail": "0 of 2097152 words differ from the exact ones after 4 rounds"
+  },
+  {
+   "lab": "check",
+   "variant": "one bulk copy out to global memory, blocks of 8192 bytes",
+   "ok": true,
+   "detail": "0 of 2097152 words differ from the exact ones after 4 rounds"
+  },
+  {
+   "lab": "check",
+   "variant": "one bulk copy out to global memory and one back in, blocks of 8192 bytes",
+   "ok": true,
+   "detail": "0 of 2097152 words differ from the exact ones after 4 rounds"
+  },
+  {
+   "lab": "check",
+   "variant": "one bulk copy in from global memory, blocks of 8192 bytes",
+   "ok": true,
+   "detail": "0 of 2097152 words differ from the exact ones after 4 rounds"
+  },
+  {
+   "lab": "check",
+   "variant": "64 loads of 128 bytes, one thread issuing",
+   "ok": true,
+   "detail": "0 of 262144 words differ from the exact ones after 4 rounds"
+  },
+  {
+   "lab": "check",
+   "variant": "64 loads of 128 bytes, a thread each",
+   "ok": true,
+   "detail": "0 of 262144 words differ from the exact ones after 4 rounds"
+  }
+ ],
+ "driver": "580.173.02",
+ "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
+ "git": {
+  "sha": "93eae8f4adbc565addd5eee6b69f77d0007e04ed",
+  "dirty": false
+ },
+ "reps": 7,
+ "date": "2026-11-11T20:06:24+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "the stage's stores alone, blocks of 1024 bytes",
+   "unit": "cycles a kilobyte a CTA",
+   "samples": [
+    87.147012,
+    87.147456,
+    87.144923,
+    87.146952,
+    87.14521,
+    87.14263,
+    87.146902
+   ],
+   "median": 87.146902,
+   "min": 87.14263,
+   "max": 87.147456,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a bulk copy a cluster-mate, blocks of 1024 bytes",
+   "unit": "cycles a kilobyte a CTA",
+   "samples": [
+    1009.880889,
+    1011.041099,
+    1010.836226,
+    1011.439865,
+    1010.672789,
+    1011.34339,
+    1011.3657
+   ],
+   "median": 1011.041099,
+   "min": 1009.880889,
+   "max": 1011.439865,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "one bulk copy out to global memory, blocks of 1024 bytes",
+   "unit": "cycles a kilobyte a CTA",
+   "samples": [
+    130.467802,
+    130.471756,
+    130.454131,
+    130.292555,
+    130.463873,
+    130.355571,
+    130.461453
+   ],
+   "median": 130.461453,
+   "min": 130.292555,
+   "max": 130.471756,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "one bulk copy out to global memory and one back in, blocks of 1024 bytes",
+   "unit": "cycles a kilobyte a CTA",
+   "samples": [
+    204.589725,
+    203.779705,
+    204.073378,
+    204.261049,
+    204.013951,
+    203.997327,
+    204.098359
+   ],
+   "median": 204.073378,
+   "min": 203.779705,
+   "max": 204.589725,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "one bulk copy in from global memory, blocks of 1024 bytes",
+   "unit": "cycles a kilobyte a CTA",
+   "samples": [
+    60.831256,
+    61.024722,
+    60.958771,
+    60.876377,
+    60.970733,
+    60.961625,
+    60.925116
+   ],
+   "median": 60.958771,
+   "min": 60.831256,
+   "max": 61.024722,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the stage's stores alone, blocks of 8192 bytes",
+   "unit": "cycles a kilobyte a CTA",
+   "samples": [
+    75.607667,
+    75.607773,
+    75.607561,
+    75.607726,
+    75.607971,
+    75.607801,
+    75.607665
+   ],
+   "median": 75.607726,
+   "min": 75.607561,
+   "max": 75.607971,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a bulk copy a cluster-mate, blocks of 8192 bytes",
+   "unit": "cycles a kilobyte a CTA",
+   "samples": [
+    228.282402,
+    228.580118,
+    228.41804,
+    228.133663,
+    228.604613,
+    228.16092,
+    228.307308
+   ],
+   "median": 228.307308,
+   "min": 228.133663,
+   "max": 228.604613,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "one bulk copy out to global memory, blocks of 8192 bytes",
+   "unit": "cycles a kilobyte a CTA",
+   "samples": [
+    109.324508,
+    109.328029,
+    109.328899,
+    109.32624,
+    109.327414,
+    109.346535,
+    109.328713
+   ],
+   "median": 109.328029,
+   "min": 109.324508,
+   "max": 109.346535,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "one bulk copy out to global memory and one back in, blocks of 8192 bytes",
+   "unit": "cycles a kilobyte a CTA",
+   "samples": [
+    127.822951,
+    127.829253,
+    127.811853,
+    128.168033,
+    127.865907,
+    128.156905,
+    128.197589
+   ],
+   "median": 127.865907,
+   "min": 127.811853,
+   "max": 128.197589,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "one bulk copy in from global memory, blocks of 8192 bytes",
+   "unit": "cycles a kilobyte a CTA",
+   "samples": [
+    32.834587,
+    33.048556,
+    32.878558,
+    32.807683,
+    32.803013,
+    32.781288,
+    33.010103
+   ],
+   "median": 32.834587,
+   "min": 32.781288,
+   "max": 33.048556,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "64 loads of 128 bytes, one thread issuing",
+   "unit": "cycles a 128-byte load a CTA",
+   "samples": [
+    103.728616,
+    103.728526,
+    103.728008,
+    103.728416,
+    103.728171,
+    103.728091,
+    103.728482
+   ],
+   "median": 103.728416,
+   "min": 103.728008,
+   "max": 103.728616,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "64 loads of 128 bytes, a thread each",
+   "unit": "cycles a 128-byte load a CTA",
+   "samples": [
+    32.805782,
+    32.80585,
+    32.805149,
+    32.805179,
+    32.806158,
+    32.805459,
+    32.804633
+   ],
+   "median": 32.805459,
+   "min": 32.804633,
+   "max": 32.806158,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void state_move::move<(int)6, (int)1024>(long long *, int *, unsigned int *, unsigned int *, int)": {
+   "regs": 21,
+   "ops": {
+    "NOP": 13,
+    "BRA": 10,
+    "VIADD": 10,
+    "IMAD.MOV.U32": 9,
+    "IMAD": 6,
+    "ISETP.GE.AND": 6,
+    "LEA": 5,
+    "S2R": 4,
+    "UMOV": 4,
+    "USHF.L.U32": 4,
+    "R2UR": 4,
+    "LOP3.LUT": 4
+   }
+  },
+  "void state_move::move<(int)5, (int)1024>(long long *, int *, unsigned int *, unsigned int *, int)": {
+   "regs": 21,
+   "ops": {
+    "NOP": 15,
+    "BRA": 10,
+    "IMAD.MOV.U32": 9,
+    "VIADD": 9,
+    "IMAD": 6,
+    "LEA": 5,
+    "ISETP.GE.AND": 5,
+    "S2R": 4,
+    "UMOV": 4,
+    "USHF.L.U32": 4,
+    "R2UR": 4,
+    "LOP3.LUT": 4
+   }
+  },
+  "void state_move::move<(int)4, (int)8192>(long long *, int *, unsigned int *, unsigned int *, int)": {
+   "regs": 20,
+   "ops": {
+    "NOP": 12,
+    "BRA": 8,
+    "VIADD": 7,
+    "IMAD.MOV.U32": 6,
+    "UMOV": 5,
+    "LEA": 4,
+    "ISETP.GE.AND": 4,
+    "VOTEU.ALL": 4,
+    "USHF.L.U32": 4,
+    "PLOP3.LUT": 4,
+    "LDC": 3,
+    "S2UR": 3
+   }
+  },
+  "void state_move::move<(int)3, (int)8192>(long long *, int *, unsigned int *, unsigned int *, int)": {
+   "regs": 18,
+   "ops": {
+    "NOP": 16,
+    "BRA": 11,
+    "VIADD": 10,
+    "IMAD.MOV.U32": 9,
+    "ISETP.GE.AND": 5,
+    "UMOV": 5,
+    "USHF.L.U32": 5,
+    "BSSY": 4,
+    "LEA": 4,
+    "IMAD": 4,
+    "BSYNC": 4,
+    "VOTEU.ALL": 4
+   }
+  },
+  "void state_move::move<(int)2, (int)8192>(long long *, int *, unsigned int *, unsigned int *, int)": {
+   "regs": 18,
+   "ops": {
+    "NOP": 13,
+    "BRA": 10,
+    "VIADD": 8,
+    "IMAD.MOV.U32": 5,
+    "ISETP.GE.AND": 5,
+    "USHF.L.U32": 5,
+    "BSSY": 4,
+    "LEA": 4,
+    "IMAD": 4,
+    "BSYNC": 4,
+    "UMOV": 4,
+    "MEMBAR.ALL.CTA": 4
+   }
+  },
+  "void state_move::move<(int)1, (int)8192>(long long *, int *, unsigned int *, unsigned int *, int)": {
+   "regs": 20,
+   "ops": {
+    "MEMBAR.ALL.CTA": 14,
+    "BRA": 12,
+    "VIADD": 11,
+    "UMOV": 11,
+    "MEMBAR.ALL.GPU": 11,
+    "ERRBAR": 11,
+    "CGAERRBAR": 11,
+    "IMAD.MOV.U32": 10,
+    "NOP": 9,
+    "UPRMT": 8,
+    "SYNCS.ARRIVE.TRANS64.RED.A1T0": 8,
+    "LEA": 6
+   }
+  },
+  "void state_move::move<(int)0, (int)8192>(long long *, int *, unsigned int *, unsigned int *, int)": {
+   "regs": 20,
+   "ops": {
+    "VIADD": 10,
+    "BRA": 9,
+    "NOP": 9,
+    "IMAD.MOV.U32": 6,
+    "LEA": 5,
+    "ISETP.GE.AND": 5,
+    "USHF.L.U32": 5,
+    "IMAD": 4,
+    "LOP3.LUT": 4,
+    "LDC": 3,
+    "S2R": 3,
+    "BSSY": 3
+   }
+  },
+  "void state_move::move<(int)4, (int)1024>(long long *, int *, unsigned int *, unsigned int *, int)": {
+   "regs": 20,
+   "ops": {
+    "NOP": 12,
+    "BRA": 8,
+    "VIADD": 7,
+    "IMAD.MOV.U32": 6,
+    "UMOV": 5,
+    "LEA": 4,
+    "ISETP.GE.AND": 4,
+    "VOTEU.ALL": 4,
+    "USHF.L.U32": 4,
+    "PLOP3.LUT": 4,
+    "LDC": 3,
+    "S2UR": 3
+   }
+  },
+  "void state_move::move<(int)3, (int)1024>(long long *, int *, unsigned int *, unsigned int *, int)": {
+   "regs": 18,
+   "ops": {
+    "NOP": 16,
+    "BRA": 11,
+    "VIADD": 10,
+    "IMAD.MOV.U32": 9,
+    "ISETP.GE.AND": 5,
+    "UMOV": 5,
+    "USHF.L.U32": 5,
+    "BSSY": 4,
+    "LEA": 4,
+    "IMAD": 4,
+    "BSYNC": 4,
+    "VOTEU.ALL": 4
+   }
+  },
+  "void state_move::move<(int)2, (int)1024>(long long *, int *, unsigned int *, unsigned int *, int)": {
+   "regs": 18,
+   "ops": {
+    "NOP": 13,
+    "BRA": 10,
+    "VIADD": 8,
+    "IMAD.MOV.U32": 5,
+    "ISETP.GE.AND": 5,
+    "USHF.L.U32": 5,
+    "BSSY": 4,
+    "LEA": 4,
+    "IMAD": 4,
+    "BSYNC": 4,
+    "UMOV": 4,
+    "MEMBAR.ALL.CTA": 4
+   }
+  },
+  "void state_move::move<(int)1, (int)1024>(long long *, int *, unsigned int *, unsigned int *, int)": {
+   "regs": 20,
+   "ops": {
+    "MEMBAR.ALL.CTA": 14,
+    "BRA": 12,
+    "VIADD": 11,
+    "UMOV": 11,
+    "MEMBAR.ALL.GPU": 11,
+    "ERRBAR": 11,
+    "CGAERRBAR": 11,
+    "IMAD.MOV.U32": 10,
+    "NOP": 9,
+    "UPRMT": 8,
+    "SYNCS.ARRIVE.TRANS64.RED.A1T0": 8,
+    "LEA": 6
+   }
+  },
+  "void state_move::move<(int)0, (int)1024>(long long *, int *, unsigned int *, unsigned int *, int)": {
+   "regs": 20,
+   "ops": {
+    "VIADD": 10,
+    "BRA": 9,
+    "NOP": 9,
+    "IMAD.MOV.U32": 6,
+    "LEA": 5,
+    "ISETP.GE.AND": 5,
+    "USHF.L.U32": 5,
+    "IMAD": 4,
+    "LOP3.LUT": 4,
+    "LDC": 3,
+    "S2R": 3,
+    "BSSY": 3
+   }
+  }
+ },
+ "counters": {},
+ "counters_exception": {
+  "host": "vast.ai rented box, NVIDIA H100 80GB HBM3: a box with a driver and no toolkit",
+  "instead": "the kernels' own clocks and the SASS's static counts"
+ }
+}

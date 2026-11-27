@@ -1,0 +1,4823 @@
+{
+ "experiment": "gather_pass",
+ "question": "`facts_lists` moved a live (token, digit) pair's lines to its place in its digit's steps by its token's thread, a load and a store of global memory a line, and it cost twice the carry's window. What does the same re-arrangement cost when every byte crosses global memory in a BULK COPY and a line is moved in SHARED memory -- and what is the floor, the same copies with no line moved?",
+ "arch": "sm_90a",
+ "device": "NVIDIA H100 PCIe",
+ "checks": [
+  {
+   "lab": "check",
+   "variant": "4 to 5 live digits a token, the block stream's tables, values and sparse bytes, its lists made from the mask, 512 threads",
+   "ok": true,
+   "detail": "0 of 5499360 words, bytes, lines, pads, steps and plans differ"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the block stream's tables, values and sparse bytes, its lists made from the mask, 512 threads, its plane a ring of 164 KB a CTA, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; a ring keeps no round to check"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the block stream's tables, values and sparse bytes, its lists made from the mask, 512 threads, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the block stream's tables, values and sparse bytes, its lists made from the mask, 512 threads, a quarter of the multiprocessors, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "check",
+   "variant": "4 to 5 live digits a token, the block stream's tables, values and sparse bytes, its lists made from the mask, 512 threads, an entry's values multiplied by its sparse byte",
+   "ok": true,
+   "detail": "0 of 31318964 scaled values differ"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the block stream's tables, values and sparse bytes, its lists made from the mask, 512 threads, an entry's values multiplied by its sparse byte, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "check",
+   "variant": "4 to 5 live digits a token, the block stream's coefficients in the step's format, every dense block's, its lists made from the mask, 512 threads",
+   "ok": true,
+   "detail": "0 of 28075008 coefficient lines differ"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the block stream's coefficients in the step's format, every dense block's, its lists made from the mask, 512 threads, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the block stream's coefficients in the step's format, every dense block's, its lists made from the mask, 512 threads, a quarter of the multiprocessors, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "check",
+   "variant": "4 to 5 live digits a token, the block stream's coefficients in the step's format, every dense block's, its lists made from the mask, 512 threads, four slots a trip",
+   "ok": true,
+   "detail": "0 of 28075008 coefficient lines differ"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the block stream's coefficients in the step's format, every dense block's, its lists made from the mask, 512 threads, four slots a trip, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the block stream's coefficients in the step's format, every dense block's, its lists made from the mask, 512 threads, four slots a trip, a quarter of the multiprocessors, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the block stream's coefficients in the step's format, every dense block's, its lists made from the mask, 512 threads, four slots a trip, its plane a ring of 256 KB a CTA, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; a ring keeps no round to check"
+  },
+  {
+   "lab": "check",
+   "variant": "4 to 5 live digits a token, the block stream's coefficients in the step's format, every dense block's, its lists made from the mask, 512 threads, the dense digits widened alone, four slots a trip",
+   "ok": true,
+   "detail": "0 of 28075008 coefficient lines differ"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the block stream's coefficients in the step's format, every dense block's, its lists made from the mask, 512 threads, the dense digits widened alone, four slots a trip, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the block stream's coefficients in the step's format, every dense block's, its lists made from the mask, 512 threads, the dense digits widened alone, four slots a trip, a quarter of the multiprocessors, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the values plane, 256 threads, a flat stream of its copies, its rounds the same windows",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the values plane, 256 threads, a flat stream of its copies, a fresh window a round",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "check",
+   "variant": "4 to 5 live digits a token, the values plane, 256 threads, its lines moved",
+   "ok": true,
+   "detail": "0 of 4924192 arranged lines differ"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the values plane, 256 threads, its lines moved, its rounds the same windows",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the values plane, 256 threads, its lines moved, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the values plane, 512 threads, a flat stream of its copies, its rounds the same windows",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the values plane, 512 threads, a flat stream of its copies, a fresh window a round",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "check",
+   "variant": "4 to 5 live digits a token, the values plane, 512 threads, its lines moved",
+   "ok": true,
+   "detail": "0 of 4924192 arranged lines differ"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the values plane, 512 threads, its lines moved, its rounds the same windows",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the values plane, 512 threads, its lines moved, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the values plane, 1024 threads, a flat stream of its copies, its rounds the same windows",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the values plane, 1024 threads, a flat stream of its copies, a fresh window a round",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "check",
+   "variant": "4 to 5 live digits a token, the values plane, 1024 threads, its lines moved",
+   "ok": true,
+   "detail": "0 of 4924192 arranged lines differ"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the values plane, 1024 threads, its lines moved, its rounds the same windows",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the values plane, 1024 threads, its lines moved, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the values plane, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, its rounds the same windows",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the values plane, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, a fresh window a round",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the values plane, 512 threads, its lines moved, a quarter of the multiprocessors, its rounds the same windows",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the values plane, 512 threads, its lines moved, a quarter of the multiprocessors, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the dense plane, 256 threads, a flat stream of its copies, its rounds the same windows",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the dense plane, 256 threads, a flat stream of its copies, a fresh window a round",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "check",
+   "variant": "4 to 5 live digits a token, the dense plane, 256 threads, its lines moved",
+   "ok": true,
+   "detail": "0 of 14037504 arranged lines differ"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the dense plane, 256 threads, its lines moved, its rounds the same windows",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the dense plane, 256 threads, its lines moved, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the dense plane, 512 threads, a flat stream of its copies, its rounds the same windows",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the dense plane, 512 threads, a flat stream of its copies, a fresh window a round",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "check",
+   "variant": "4 to 5 live digits a token, the dense plane, 512 threads, its lines moved",
+   "ok": true,
+   "detail": "0 of 14037504 arranged lines differ"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the dense plane, 512 threads, its lines moved, its rounds the same windows",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the dense plane, 512 threads, its lines moved, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the dense plane, 1024 threads, a flat stream of its copies, its rounds the same windows",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the dense plane, 1024 threads, a flat stream of its copies, a fresh window a round",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "check",
+   "variant": "4 to 5 live digits a token, the dense plane, 1024 threads, its lines moved",
+   "ok": true,
+   "detail": "0 of 14037504 arranged lines differ"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the dense plane, 1024 threads, its lines moved, its rounds the same windows",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the dense plane, 1024 threads, its lines moved, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the dense plane, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, its rounds the same windows",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the dense plane, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, a fresh window a round",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the dense plane, 512 threads, its lines moved, a quarter of the multiprocessors, its rounds the same windows",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the dense plane, 512 threads, its lines moved, a quarter of the multiprocessors, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the dense plane, 512 threads, a flat stream of its copies, six buffers out, its rounds the same windows",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the dense plane, 512 threads, a flat stream of its copies, six buffers out, a fresh window a round",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "check",
+   "variant": "4 to 5 live digits a token, the dense plane, 512 threads, its lines moved, six buffers out",
+   "ok": true,
+   "detail": "0 of 14037504 arranged lines differ"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the dense plane, 512 threads, its lines moved, six buffers out, its rounds the same windows",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the dense plane, 512 threads, its lines moved, six buffers out, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the dense plane, 512 threads, a flat stream of its copies, six buffers out, a quarter of the multiprocessors, its rounds the same windows",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the dense plane, 512 threads, a flat stream of its copies, six buffers out, a quarter of the multiprocessors, a fresh window a round",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the dense plane, 512 threads, its lines moved, six buffers out, a quarter of the multiprocessors, its rounds the same windows",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the dense plane, 512 threads, its lines moved, six buffers out, a quarter of the multiprocessors, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, its rounds the same windows",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, a fresh window a round",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "check",
+   "variant": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved",
+   "ok": true,
+   "detail": "0 of 4570944 arranged lines differ"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, its rounds the same windows",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, its rounds the same windows",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, a fresh window a round",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, a quarter of the multiprocessors, its rounds the same windows",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, a quarter of the multiprocessors, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, its rounds the same windows",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, a fresh window a round",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "check",
+   "variant": "4 to 5 live digits a token, the stream's dense lines, 512 threads, its lines moved",
+   "ok": true,
+   "detail": "0 of 8385536 arranged lines differ"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's dense lines, 512 threads, its lines moved, its rounds the same windows",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's dense lines, 512 threads, its lines moved, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, its rounds the same windows",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, a fresh window a round",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's dense lines, 512 threads, its lines moved, a quarter of the multiprocessors, its rounds the same windows",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's dense lines, 512 threads, its lines moved, a quarter of the multiprocessors, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 16 multiprocessors, its plane a ring, its rounds the same windows",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 16 multiprocessors, its plane a ring, a fresh window a round",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 16 multiprocessors, its plane a ring, its rounds the same windows",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 16 multiprocessors, its plane a ring, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 16 multiprocessors, its plane a ring, its rounds the same windows",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 16 multiprocessors, its plane a ring, a fresh window a round",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's dense lines, 512 threads, its lines moved, 16 multiprocessors, its plane a ring, its rounds the same windows",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's dense lines, 512 threads, its lines moved, 16 multiprocessors, its plane a ring, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 16 multiprocessors, a new region a round, its rounds the same windows",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 16 multiprocessors, a new region a round, a fresh window a round",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 16 multiprocessors, a new region a round, its rounds the same windows",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 16 multiprocessors, a new region a round, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 16 multiprocessors, a new region a round, its rounds the same windows",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 16 multiprocessors, a new region a round, a fresh window a round",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's dense lines, 512 threads, its lines moved, 16 multiprocessors, a new region a round, its rounds the same windows",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's dense lines, 512 threads, its lines moved, 16 multiprocessors, a new region a round, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 8 multiprocessors, its plane a ring, its rounds the same windows",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 8 multiprocessors, its plane a ring, a fresh window a round",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 8 multiprocessors, its plane a ring, its rounds the same windows",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 8 multiprocessors, its plane a ring, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 8 multiprocessors, its plane a ring, its rounds the same windows",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 8 multiprocessors, its plane a ring, a fresh window a round",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's dense lines, 512 threads, its lines moved, 8 multiprocessors, its plane a ring, its rounds the same windows",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's dense lines, 512 threads, its lines moved, 8 multiprocessors, its plane a ring, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 8 multiprocessors, a new region a round, its rounds the same windows",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 8 multiprocessors, a new region a round, a fresh window a round",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 8 multiprocessors, a new region a round, its rounds the same windows",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 8 multiprocessors, a new region a round, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 8 multiprocessors, a new region a round, its rounds the same windows",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 8 multiprocessors, a new region a round, a fresh window a round",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's dense lines, 512 threads, its lines moved, 8 multiprocessors, a new region a round, its rounds the same windows",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "4 to 5 live digits a token, the stream's dense lines, 512 threads, its lines moved, 8 multiprocessors, a new region a round, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the values plane, 256 threads, a flat stream of its copies, its rounds the same windows",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the values plane, 256 threads, a flat stream of its copies, a fresh window a round",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "check",
+   "variant": "32 live digits a token, the values plane, 256 threads, its lines moved",
+   "ok": true,
+   "detail": "0 of 33754944 arranged lines differ"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the values plane, 256 threads, its lines moved, its rounds the same windows",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the values plane, 256 threads, its lines moved, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the values plane, 512 threads, a flat stream of its copies, its rounds the same windows",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the values plane, 512 threads, a flat stream of its copies, a fresh window a round",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "check",
+   "variant": "32 live digits a token, the values plane, 512 threads, its lines moved",
+   "ok": true,
+   "detail": "0 of 33754944 arranged lines differ"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the values plane, 512 threads, its lines moved, its rounds the same windows",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the values plane, 512 threads, its lines moved, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the values plane, 1024 threads, a flat stream of its copies, its rounds the same windows",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the values plane, 1024 threads, a flat stream of its copies, a fresh window a round",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "check",
+   "variant": "32 live digits a token, the values plane, 1024 threads, its lines moved",
+   "ok": true,
+   "detail": "0 of 33754944 arranged lines differ"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the values plane, 1024 threads, its lines moved, its rounds the same windows",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the values plane, 1024 threads, its lines moved, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the values plane, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, its rounds the same windows",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the values plane, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, a fresh window a round",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the values plane, 512 threads, its lines moved, a quarter of the multiprocessors, its rounds the same windows",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the values plane, 512 threads, its lines moved, a quarter of the multiprocessors, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the dense plane, 256 threads, a flat stream of its copies, its rounds the same windows",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the dense plane, 256 threads, a flat stream of its copies, a fresh window a round",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "check",
+   "variant": "32 live digits a token, the dense plane, 256 threads, its lines moved",
+   "ok": true,
+   "detail": "0 of 61928448 arranged lines differ"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the dense plane, 256 threads, its lines moved, its rounds the same windows",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the dense plane, 256 threads, its lines moved, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the dense plane, 512 threads, a flat stream of its copies, its rounds the same windows",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the dense plane, 512 threads, a flat stream of its copies, a fresh window a round",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "check",
+   "variant": "32 live digits a token, the dense plane, 512 threads, its lines moved",
+   "ok": true,
+   "detail": "0 of 61928448 arranged lines differ"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the dense plane, 512 threads, its lines moved, its rounds the same windows",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the dense plane, 512 threads, its lines moved, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the dense plane, 1024 threads, a flat stream of its copies, its rounds the same windows",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the dense plane, 1024 threads, a flat stream of its copies, a fresh window a round",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "check",
+   "variant": "32 live digits a token, the dense plane, 1024 threads, its lines moved",
+   "ok": true,
+   "detail": "0 of 61928448 arranged lines differ"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the dense plane, 1024 threads, its lines moved, its rounds the same windows",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the dense plane, 1024 threads, its lines moved, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the dense plane, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, its rounds the same windows",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the dense plane, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, a fresh window a round",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the dense plane, 512 threads, its lines moved, a quarter of the multiprocessors, its rounds the same windows",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the dense plane, 512 threads, its lines moved, a quarter of the multiprocessors, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the dense plane, 512 threads, a flat stream of its copies, six buffers out, its rounds the same windows",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the dense plane, 512 threads, a flat stream of its copies, six buffers out, a fresh window a round",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "check",
+   "variant": "32 live digits a token, the dense plane, 512 threads, its lines moved, six buffers out",
+   "ok": true,
+   "detail": "0 of 61928448 arranged lines differ"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the dense plane, 512 threads, its lines moved, six buffers out, its rounds the same windows",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the dense plane, 512 threads, its lines moved, six buffers out, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the dense plane, 512 threads, a flat stream of its copies, six buffers out, a quarter of the multiprocessors, its rounds the same windows",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the dense plane, 512 threads, a flat stream of its copies, six buffers out, a quarter of the multiprocessors, a fresh window a round",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the dense plane, 512 threads, its lines moved, six buffers out, a quarter of the multiprocessors, its rounds the same windows",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the dense plane, 512 threads, its lines moved, six buffers out, a quarter of the multiprocessors, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, its rounds the same windows",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, a fresh window a round",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "check",
+   "variant": "32 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved",
+   "ok": true,
+   "detail": "0 of 15321600 arranged lines differ"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, its rounds the same windows",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, its rounds the same windows",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, a fresh window a round",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, a quarter of the multiprocessors, its rounds the same windows",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, a quarter of the multiprocessors, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, its rounds the same windows",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, a fresh window a round",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "check",
+   "variant": "32 live digits a token, the stream's dense lines, 512 threads, its lines moved",
+   "ok": true,
+   "detail": "0 of 27549696 arranged lines differ"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's dense lines, 512 threads, its lines moved, its rounds the same windows",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's dense lines, 512 threads, its lines moved, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, its rounds the same windows",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, a fresh window a round",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's dense lines, 512 threads, its lines moved, a quarter of the multiprocessors, its rounds the same windows",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's dense lines, 512 threads, its lines moved, a quarter of the multiprocessors, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 16 multiprocessors, its plane a ring, its rounds the same windows",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 16 multiprocessors, its plane a ring, a fresh window a round",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 16 multiprocessors, its plane a ring, its rounds the same windows",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 16 multiprocessors, its plane a ring, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 16 multiprocessors, its plane a ring, its rounds the same windows",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 16 multiprocessors, its plane a ring, a fresh window a round",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's dense lines, 512 threads, its lines moved, 16 multiprocessors, its plane a ring, its rounds the same windows",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's dense lines, 512 threads, its lines moved, 16 multiprocessors, its plane a ring, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 16 multiprocessors, a new region a round, its rounds the same windows",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 16 multiprocessors, a new region a round, a fresh window a round",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 16 multiprocessors, a new region a round, its rounds the same windows",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 16 multiprocessors, a new region a round, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 16 multiprocessors, a new region a round, its rounds the same windows",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 16 multiprocessors, a new region a round, a fresh window a round",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's dense lines, 512 threads, its lines moved, 16 multiprocessors, a new region a round, its rounds the same windows",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's dense lines, 512 threads, its lines moved, 16 multiprocessors, a new region a round, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 8 multiprocessors, its plane a ring, its rounds the same windows",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 8 multiprocessors, its plane a ring, a fresh window a round",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 8 multiprocessors, its plane a ring, its rounds the same windows",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 8 multiprocessors, its plane a ring, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 8 multiprocessors, its plane a ring, its rounds the same windows",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 8 multiprocessors, its plane a ring, a fresh window a round",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's dense lines, 512 threads, its lines moved, 8 multiprocessors, its plane a ring, its rounds the same windows",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's dense lines, 512 threads, its lines moved, 8 multiprocessors, its plane a ring, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 8 multiprocessors, a new region a round, its rounds the same windows",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 8 multiprocessors, a new region a round, a fresh window a round",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 8 multiprocessors, a new region a round, its rounds the same windows",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 8 multiprocessors, a new region a round, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 8 multiprocessors, a new region a round, its rounds the same windows",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 8 multiprocessors, a new region a round, a fresh window a round",
+   "reason": "a flat stream moves no line: its copies in and out are the floor"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's dense lines, 512 threads, its lines moved, 8 multiprocessors, a new region a round, its rounds the same windows",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "32 live digits a token, the stream's dense lines, 512 threads, its lines moved, 8 multiprocessors, a new region a round, a fresh window a round",
+   "reason": "its kernel's first round is checked on every multiprocessor; this one is its time"
+  }
+ ],
+ "driver": "580.196.07",
+ "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
+ "git": {
+  "sha": "310ddfdf2f7fcc9b326badf88c7ffa841ddaf7a7",
+  "dirty": false
+ },
+ "reps": 7,
+ "date": "2026-11-15T06:09:25+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the block stream's tables, values and sparse bytes, its lists made from the mask, 512 threads, its plane a ring of 164 KB a CTA, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    158.166626,
+    157.930831,
+    158.036364,
+    157.403557,
+    157.98317,
+    157.569701,
+    158.134445
+   ],
+   "median": 157.98317,
+   "min": 157.403557,
+   "max": 158.166626,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the block stream's tables, values and sparse bytes, its lists made from the mask, 512 threads, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    159.029596,
+    158.619414,
+    159.029813,
+    158.86671,
+    158.813613,
+    158.889924,
+    158.913598
+   ],
+   "median": 158.889924,
+   "min": 158.619414,
+   "max": 159.029813,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the block stream's tables, values and sparse bytes, its lists made from the mask, 512 threads, a quarter of the multiprocessors, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    147.85832,
+    148.290357,
+    148.070971,
+    148.222334,
+    148.252411,
+    148.169368,
+    148.343628
+   ],
+   "median": 148.222334,
+   "min": 147.85832,
+   "max": 148.343628,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the block stream's tables, values and sparse bytes, its lists made from the mask, 512 threads, an entry's values multiplied by its sparse byte, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    162.356348,
+    162.853222,
+    162.94954,
+    162.463699,
+    162.982487,
+    162.670136,
+    162.281756
+   ],
+   "median": 162.670136,
+   "min": 162.281756,
+   "max": 162.982487,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the block stream's coefficients in the step's format, every dense block's, its lists made from the mask, 512 threads, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    726.177395,
+    726.621093,
+    726.902301,
+    724.993489,
+    725.726219,
+    726.767919,
+    726.648314
+   ],
+   "median": 726.621093,
+   "min": 724.993489,
+   "max": 726.902301,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the block stream's coefficients in the step's format, every dense block's, its lists made from the mask, 512 threads, a quarter of the multiprocessors, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    701.490657,
+    701.507834,
+    701.446581,
+    701.439484,
+    701.509147,
+    701.419163,
+    701.541687
+   ],
+   "median": 701.490657,
+   "min": 701.419163,
+   "max": 701.541687,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the block stream's coefficients in the step's format, every dense block's, its lists made from the mask, 512 threads, four slots a trip, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    622.037628,
+    653.212082,
+    629.139025,
+    665.195627,
+    618.025402,
+    657.379156,
+    647.217525
+   ],
+   "median": 647.217525,
+   "min": 618.025402,
+   "max": 665.195627,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the block stream's coefficients in the step's format, every dense block's, its lists made from the mask, 512 threads, four slots a trip, a quarter of the multiprocessors, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    577.836565,
+    577.851501,
+    577.85556,
+    577.838366,
+    577.848982,
+    577.909302,
+    577.788722
+   ],
+   "median": 577.848982,
+   "min": 577.788722,
+   "max": 577.909302,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the block stream's coefficients in the step's format, every dense block's, its lists made from the mask, 512 threads, four slots a trip, its plane a ring of 256 KB a CTA, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    639.385933,
+    639.353525,
+    639.404067,
+    639.368336,
+    639.417434,
+    639.430829,
+    639.357347
+   ],
+   "median": 639.385933,
+   "min": 639.353525,
+   "max": 639.430829,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the block stream's coefficients in the step's format, every dense block's, its lists made from the mask, 512 threads, the dense digits widened alone, four slots a trip, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    619.081249,
+    654.053365,
+    633.766025,
+    623.538207,
+    613.097586,
+    675.940977,
+    622.084572
+   ],
+   "median": 623.538207,
+   "min": 613.097586,
+   "max": 675.940977,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the block stream's coefficients in the step's format, every dense block's, its lists made from the mask, 512 threads, the dense digits widened alone, four slots a trip, a quarter of the multiprocessors, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    562.433236,
+    562.445221,
+    562.450906,
+    562.447959,
+    562.398756,
+    562.415994,
+    562.442178
+   ],
+   "median": 562.442178,
+   "min": 562.398756,
+   "max": 562.450906,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the values plane, 256 threads, a flat stream of its copies, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    163.400243,
+    162.525251,
+    162.238872,
+    163.040361,
+    163.089108,
+    162.333497,
+    163.792893
+   ],
+   "median": 163.040361,
+   "min": 162.238872,
+   "max": 163.792893,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the values plane, 256 threads, a flat stream of its copies, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    163.602333,
+    163.277304,
+    162.835008,
+    162.530561,
+    163.014111,
+    162.683552,
+    162.168011
+   ],
+   "median": 162.835008,
+   "min": 162.168011,
+   "max": 163.602333,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the values plane, 256 threads, its lines moved, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    172.586201,
+    172.015397,
+    173.209533,
+    172.849073,
+    172.20065,
+    173.32648,
+    172.953153
+   ],
+   "median": 172.849073,
+   "min": 172.015397,
+   "max": 173.32648,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the values plane, 256 threads, its lines moved, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    173.311482,
+    173.243535,
+    173.569248,
+    173.179358,
+    173.276258,
+    173.468371,
+    173.06536
+   ],
+   "median": 173.276258,
+   "min": 173.06536,
+   "max": 173.569248,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the values plane, 512 threads, a flat stream of its copies, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    164.225938,
+    163.069139,
+    163.101992,
+    163.201589,
+    162.811063,
+    163.352437,
+    163.188717
+   ],
+   "median": 163.188717,
+   "min": 162.811063,
+   "max": 164.225938,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the values plane, 512 threads, a flat stream of its copies, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    164.194373,
+    162.580478,
+    163.236923,
+    163.376887,
+    163.006094,
+    163.524591,
+    162.995535
+   ],
+   "median": 163.236923,
+   "min": 162.580478,
+   "max": 164.194373,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the values plane, 512 threads, its lines moved, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    172.720947,
+    171.104805,
+    172.134564,
+    172.726452,
+    172.820446,
+    172.104655,
+    172.438096
+   ],
+   "median": 172.438096,
+   "min": 171.104805,
+   "max": 172.820446,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the values plane, 512 threads, its lines moved, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    173.55335,
+    172.392486,
+    172.456588,
+    172.893883,
+    172.787041,
+    172.748952,
+    172.244406
+   ],
+   "median": 172.748952,
+   "min": 172.244406,
+   "max": 173.55335,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the values plane, 1024 threads, a flat stream of its copies, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    165.972794,
+    163.83151,
+    165.199467,
+    164.36476,
+    164.879544,
+    164.255242,
+    164.940259
+   ],
+   "median": 164.879544,
+   "min": 163.83151,
+   "max": 165.972794,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the values plane, 1024 threads, a flat stream of its copies, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    165.401041,
+    165.272587,
+    164.497487,
+    164.734711,
+    165.020258,
+    164.796404,
+    165.355563
+   ],
+   "median": 165.020258,
+   "min": 164.497487,
+   "max": 165.401041,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the values plane, 1024 threads, its lines moved, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    178.016666,
+    177.560682,
+    177.937544,
+    178.16636,
+    177.86757,
+    178.131892,
+    178.28189
+   ],
+   "median": 178.016666,
+   "min": 177.560682,
+   "max": 178.28189,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the values plane, 1024 threads, its lines moved, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    178.459823,
+    178.290671,
+    178.333763,
+    178.158755,
+    177.99515,
+    178.191972,
+    178.26057
+   ],
+   "median": 178.26057,
+   "min": 177.99515,
+   "max": 178.459823,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the values plane, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    78.470101,
+    78.43018,
+    78.403081,
+    78.432016,
+    78.420218,
+    78.405116,
+    78.440622
+   ],
+   "median": 78.43018,
+   "min": 78.403081,
+   "max": 78.470101,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the values plane, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    83.481376,
+    83.473075,
+    83.45639,
+    83.522801,
+    83.411373,
+    83.550511,
+    83.506465
+   ],
+   "median": 83.481376,
+   "min": 83.411373,
+   "max": 83.550511,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the values plane, 512 threads, its lines moved, a quarter of the multiprocessors, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    129.122415,
+    128.975163,
+    129.012268,
+    128.919285,
+    128.878557,
+    128.911852,
+    129.03254
+   ],
+   "median": 128.975163,
+   "min": 128.878557,
+   "max": 129.122415,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the values plane, 512 threads, its lines moved, a quarter of the multiprocessors, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    130.025691,
+    130.235112,
+    129.684592,
+    130.063202,
+    130.222456,
+    129.992977,
+    130.276633
+   ],
+   "median": 130.063202,
+   "min": 129.684592,
+   "max": 130.276633,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the dense plane, 256 threads, a flat stream of its copies, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    219.054526,
+    230.206378,
+    230.754101,
+    237.693883,
+    235.153329,
+    224.866845,
+    216.317021
+   ],
+   "median": 230.206378,
+   "min": 216.317021,
+   "max": 237.693883,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the dense plane, 256 threads, a flat stream of its copies, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    228.236165,
+    233.306732,
+    228.143873,
+    228.19198,
+    231.63574,
+    231.629664,
+    235.54639
+   ],
+   "median": 231.629664,
+   "min": 228.143873,
+   "max": 235.54639,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the dense plane, 256 threads, its lines moved, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    226.758849,
+    224.147365,
+    217.293336,
+    234.872375,
+    212.370776,
+    231.76511,
+    207.880003
+   ],
+   "median": 224.147365,
+   "min": 207.880003,
+   "max": 234.872375,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the dense plane, 256 threads, its lines moved, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    227.44899,
+    235.50747,
+    236.990598,
+    227.317807,
+    215.108517,
+    224.405439,
+    234.180876
+   ],
+   "median": 227.44899,
+   "min": 215.108517,
+   "max": 236.990598,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the dense plane, 512 threads, a flat stream of its copies, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    226.364467,
+    234.442648,
+    211.506004,
+    208.166717,
+    228.821213,
+    226.299347,
+    237.360523
+   ],
+   "median": 226.364467,
+   "min": 208.166717,
+   "max": 237.360523,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the dense plane, 512 threads, a flat stream of its copies, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    205.333683,
+    213.686589,
+    214.915116,
+    231.596275,
+    220.556789,
+    232.245209,
+    221.933782
+   ],
+   "median": 220.556789,
+   "min": 205.333683,
+   "max": 232.245209,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the dense plane, 512 threads, its lines moved, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    208.310955,
+    212.427549,
+    213.591815,
+    221.623668,
+    213.446002,
+    218.820008,
+    211.814465
+   ],
+   "median": 213.446002,
+   "min": 208.310955,
+   "max": 221.623668,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the dense plane, 512 threads, its lines moved, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    239.197198,
+    223.934566,
+    226.584875,
+    233.081972,
+    224.446189,
+    223.217712,
+    237.539458
+   ],
+   "median": 226.584875,
+   "min": 223.217712,
+   "max": 239.197198,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the dense plane, 1024 threads, a flat stream of its copies, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    230.135893,
+    221.973761,
+    215.064648,
+    222.608474,
+    229.723243,
+    212.865611,
+    232.119027
+   ],
+   "median": 222.608474,
+   "min": 212.865611,
+   "max": 232.119027,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the dense plane, 1024 threads, a flat stream of its copies, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    221.569804,
+    227.28039,
+    214.408482,
+    229.804529,
+    228.739948,
+    223.24721,
+    211.826089
+   ],
+   "median": 223.24721,
+   "min": 211.826089,
+   "max": 229.804529,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the dense plane, 1024 threads, its lines moved, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    219.003862,
+    225.758183,
+    220.797334,
+    215.115855,
+    213.74464,
+    215.485685,
+    220.011868
+   ],
+   "median": 219.003862,
+   "min": 213.74464,
+   "max": 225.758183,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the dense plane, 1024 threads, its lines moved, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    235.662748,
+    227.572449,
+    215.135878,
+    220.282398,
+    231.648828,
+    228.144903,
+    226.440973
+   ],
+   "median": 227.572449,
+   "min": 215.135878,
+   "max": 235.662748,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the dense plane, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    85.764156,
+    85.586369,
+    85.817243,
+    85.581369,
+    85.896083,
+    85.734506,
+    85.718009
+   ],
+   "median": 85.734506,
+   "min": 85.581369,
+   "max": 85.896083,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the dense plane, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    86.641628,
+    86.484414,
+    86.461195,
+    86.39856,
+    86.857396,
+    86.840964,
+    86.498221
+   ],
+   "median": 86.498221,
+   "min": 86.39856,
+   "max": 86.857396,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the dense plane, 512 threads, its lines moved, a quarter of the multiprocessors, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    109.795401,
+    109.760895,
+    109.78227,
+    109.80004,
+    109.740487,
+    109.826965,
+    109.764614
+   ],
+   "median": 109.78227,
+   "min": 109.740487,
+   "max": 109.826965,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the dense plane, 512 threads, its lines moved, a quarter of the multiprocessors, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    110.031516,
+    110.069898,
+    110.119045,
+    110.118308,
+    110.092285,
+    110.06076,
+    110.153669
+   ],
+   "median": 110.092285,
+   "min": 110.031516,
+   "max": 110.153669,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the dense plane, 512 threads, a flat stream of its copies, six buffers out, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    209.677512,
+    217.050776,
+    215.029086,
+    230.520186,
+    228.360972,
+    218.620405,
+    220.47963
+   ],
+   "median": 218.620405,
+   "min": 209.677512,
+   "max": 230.520186,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the dense plane, 512 threads, a flat stream of its copies, six buffers out, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    224.200524,
+    239.109862,
+    221.338634,
+    219.17418,
+    233.633806,
+    238.115081,
+    222.178019
+   ],
+   "median": 224.200524,
+   "min": 219.17418,
+   "max": 239.109862,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the dense plane, 512 threads, its lines moved, six buffers out, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    236.560263,
+    225.80399,
+    230.88557,
+    231.843185,
+    238.792465,
+    239.218154,
+    235.928937
+   ],
+   "median": 235.928937,
+   "min": 225.80399,
+   "max": 239.218154,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the dense plane, 512 threads, its lines moved, six buffers out, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    240.153582,
+    242.52679,
+    243.00004,
+    240.484226,
+    238.983437,
+    237.186338,
+    238.048075
+   ],
+   "median": 240.153582,
+   "min": 237.186338,
+   "max": 243.00004,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the dense plane, 512 threads, a flat stream of its copies, six buffers out, a quarter of the multiprocessors, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    97.401463,
+    97.244088,
+    97.237736,
+    97.39866,
+    97.288169,
+    97.346287,
+    97.533321
+   ],
+   "median": 97.346287,
+   "min": 97.237736,
+   "max": 97.533321,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the dense plane, 512 threads, a flat stream of its copies, six buffers out, a quarter of the multiprocessors, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    99.384469,
+    99.2307,
+    99.30688,
+    99.428349,
+    99.328465,
+    99.358712,
+    99.306274
+   ],
+   "median": 99.328465,
+   "min": 99.2307,
+   "max": 99.428349,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the dense plane, 512 threads, its lines moved, six buffers out, a quarter of the multiprocessors, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    137.773734,
+    137.702175,
+    137.660636,
+    137.606192,
+    137.702855,
+    137.712036,
+    137.766122
+   ],
+   "median": 137.702855,
+   "min": 137.606192,
+   "max": 137.773734,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the dense plane, 512 threads, its lines moved, six buffers out, a quarter of the multiprocessors, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    138.902828,
+    138.791966,
+    138.925829,
+    138.70033,
+    138.759365,
+    138.694388,
+    138.734671
+   ],
+   "median": 138.759365,
+   "min": 138.694388,
+   "max": 138.925829,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    119.508442,
+    117.554303,
+    117.913947,
+    118.42602,
+    117.950705,
+    118.612047,
+    118.036568
+   ],
+   "median": 118.036568,
+   "min": 117.554303,
+   "max": 119.508442,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    118.526774,
+    118.252037,
+    118.082823,
+    118.515937,
+    117.159958,
+    118.478005,
+    118.265499
+   ],
+   "median": 118.265499,
+   "min": 117.159958,
+   "max": 118.526774,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    121.782303,
+    120.565672,
+    121.7537,
+    122.384778,
+    123.061761,
+    122.448501,
+    122.321657
+   ],
+   "median": 122.321657,
+   "min": 120.565672,
+   "max": 123.061761,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    123.478312,
+    122.558189,
+    121.553593,
+    122.607118,
+    122.127764,
+    122.159166,
+    122.238184
+   ],
+   "median": 122.238184,
+   "min": 121.553593,
+   "max": 123.478312,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    55.66534,
+    55.644252,
+    55.655247,
+    55.673702,
+    55.673536,
+    55.64141,
+    55.673497
+   ],
+   "median": 55.66534,
+   "min": 55.64141,
+   "max": 55.673702,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    59.759883,
+    59.76845,
+    59.724518,
+    59.619176,
+    59.529349,
+    59.871329,
+    59.766562
+   ],
+   "median": 59.759883,
+   "min": 59.529349,
+   "max": 59.871329,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, a quarter of the multiprocessors, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    80.228965,
+    80.216575,
+    80.211652,
+    80.218536,
+    80.215384,
+    80.211273,
+    80.215437
+   ],
+   "median": 80.215437,
+   "min": 80.211273,
+   "max": 80.228965,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, a quarter of the multiprocessors, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    83.18011,
+    83.162986,
+    83.168344,
+    83.175886,
+    83.171932,
+    83.136876,
+    83.101462
+   ],
+   "median": 83.168344,
+   "min": 83.101462,
+   "max": 83.18011,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    143.363204,
+    143.494603,
+    151.837419,
+    148.446234,
+    150.894485,
+    141.686248,
+    143.432099
+   ],
+   "median": 143.494603,
+   "min": 141.686248,
+   "max": 151.837419,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    152.633797,
+    146.731875,
+    145.291308,
+    148.926056,
+    143.710205,
+    136.850719,
+    147.565809
+   ],
+   "median": 146.731875,
+   "min": 136.850719,
+   "max": 152.633797,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, its lines moved, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    150.562098,
+    151.223708,
+    149.15508,
+    150.387524,
+    143.958477,
+    145.303052,
+    147.635939
+   ],
+   "median": 149.15508,
+   "min": 143.958477,
+   "max": 151.223708,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, its lines moved, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    156.834968,
+    155.025053,
+    150.55703,
+    151.441785,
+    155.005935,
+    154.545369,
+    152.065738
+   ],
+   "median": 154.545369,
+   "min": 150.55703,
+   "max": 156.834968,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    57.449319,
+    57.47403,
+    57.485914,
+    57.562766,
+    57.414852,
+    57.502267,
+    57.491364
+   ],
+   "median": 57.485914,
+   "min": 57.414852,
+   "max": 57.562766,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    60.269954,
+    60.138807,
+    59.794765,
+    60.215158,
+    60.058764,
+    60.056737,
+    59.820033
+   ],
+   "median": 60.058764,
+   "min": 59.794765,
+   "max": 60.269954,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, its lines moved, a quarter of the multiprocessors, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    81.985844,
+    81.931449,
+    81.893097,
+    81.94056,
+    81.893507,
+    81.909733,
+    81.902871
+   ],
+   "median": 81.909733,
+   "min": 81.893097,
+   "max": 81.985844,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, its lines moved, a quarter of the multiprocessors, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    82.906573,
+    82.881836,
+    82.888236,
+    82.860705,
+    82.876042,
+    82.917816,
+    82.945779
+   ],
+   "median": 82.888236,
+   "min": 82.860705,
+   "max": 82.945779,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 16 multiprocessors, its plane a ring, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    55.508354,
+    55.509193,
+    55.515533,
+    55.506195,
+    55.518227,
+    55.512856,
+    55.501877
+   ],
+   "median": 55.509193,
+   "min": 55.501877,
+   "max": 55.518227,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 16 multiprocessors, its plane a ring, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    56.736671,
+    56.75692,
+    56.724953,
+    56.764801,
+    56.763336,
+    56.750389,
+    56.763
+   ],
+   "median": 56.75692,
+   "min": 56.724953,
+   "max": 56.764801,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 16 multiprocessors, its plane a ring, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    80.138832,
+    80.145386,
+    80.135666,
+    80.157455,
+    80.142288,
+    80.150291,
+    80.148605
+   ],
+   "median": 80.145386,
+   "min": 80.135666,
+   "max": 80.157455,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 16 multiprocessors, its plane a ring, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    81.073746,
+    81.05954,
+    81.088913,
+    81.02507,
+    81.098297,
+    81.073814,
+    81.060738
+   ],
+   "median": 81.073746,
+   "min": 81.02507,
+   "max": 81.098297,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 16 multiprocessors, its plane a ring, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    55.231606,
+    55.222366,
+    55.230881,
+    55.229752,
+    55.218887,
+    55.223579,
+    55.231125
+   ],
+   "median": 55.229752,
+   "min": 55.218887,
+   "max": 55.231606,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 16 multiprocessors, its plane a ring, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    55.800858,
+    55.751831,
+    55.787094,
+    55.780067,
+    55.830643,
+    55.744545,
+    55.815353
+   ],
+   "median": 55.787094,
+   "min": 55.744545,
+   "max": 55.830643,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, its lines moved, 16 multiprocessors, its plane a ring, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    81.134521,
+    81.16214,
+    81.1371,
+    81.149574,
+    81.137474,
+    81.135254,
+    81.123383
+   ],
+   "median": 81.1371,
+   "min": 81.123383,
+   "max": 81.16214,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, its lines moved, 16 multiprocessors, its plane a ring, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    81.66349,
+    81.716896,
+    81.636536,
+    81.653221,
+    81.659523,
+    81.632469,
+    81.677124
+   ],
+   "median": 81.659523,
+   "min": 81.632469,
+   "max": 81.716896,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 16 multiprocessors, a new region a round, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    55.518293,
+    55.524048,
+    55.536011,
+    55.522147,
+    55.53254,
+    55.518223,
+    55.52056
+   ],
+   "median": 55.522147,
+   "min": 55.518223,
+   "max": 55.536011,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 16 multiprocessors, a new region a round, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    58.580383,
+    58.59566,
+    58.570443,
+    58.591492,
+    58.58783,
+    58.56441,
+    58.594639
+   ],
+   "median": 58.58783,
+   "min": 58.56441,
+   "max": 58.59566,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 16 multiprocessors, a new region a round, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    80.155483,
+    80.160531,
+    80.149135,
+    80.157462,
+    80.154402,
+    80.160191,
+    80.154166
+   ],
+   "median": 80.155483,
+   "min": 80.149135,
+   "max": 80.160531,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 16 multiprocessors, a new region a round, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    81.892378,
+    81.91966,
+    81.95595,
+    81.969953,
+    81.929164,
+    81.923261,
+    81.928301
+   ],
+   "median": 81.928301,
+   "min": 81.892378,
+   "max": 81.969953,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 16 multiprocessors, a new region a round, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    55.263245,
+    55.264744,
+    55.267317,
+    55.247445,
+    55.247995,
+    55.257315,
+    55.256644
+   ],
+   "median": 55.257315,
+   "min": 55.247445,
+   "max": 55.267317,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 16 multiprocessors, a new region a round, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    56.814235,
+    56.680289,
+    56.704973,
+    56.759478,
+    56.647095,
+    56.846453,
+    56.769906
+   ],
+   "median": 56.759478,
+   "min": 56.647095,
+   "max": 56.846453,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, its lines moved, 16 multiprocessors, a new region a round, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    81.065918,
+    81.063895,
+    81.033534,
+    81.039141,
+    81.053981,
+    81.058725,
+    81.069327
+   ],
+   "median": 81.058725,
+   "min": 81.033534,
+   "max": 81.069327,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, its lines moved, 16 multiprocessors, a new region a round, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    81.966204,
+    82.00524,
+    82.007377,
+    81.962385,
+    81.981559,
+    81.98536,
+    82.031904
+   ],
+   "median": 81.98536,
+   "min": 81.962385,
+   "max": 82.031904,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 8 multiprocessors, its plane a ring, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    55.50676,
+    55.512527,
+    55.521393,
+    55.523026,
+    55.524261,
+    55.51796,
+    55.521378
+   ],
+   "median": 55.521378,
+   "min": 55.50676,
+   "max": 55.524261,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 8 multiprocessors, its plane a ring, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    55.669006,
+    55.6521,
+    55.655701,
+    55.639557,
+    55.644135,
+    55.650513,
+    55.650024
+   ],
+   "median": 55.650513,
+   "min": 55.639557,
+   "max": 55.669006,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 8 multiprocessors, its plane a ring, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    80.14917,
+    80.141922,
+    80.151825,
+    80.161819,
+    80.146133,
+    80.156479,
+    80.162201
+   ],
+   "median": 80.151825,
+   "min": 80.141922,
+   "max": 80.162201,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 8 multiprocessors, its plane a ring, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    80.226349,
+    80.204269,
+    80.209641,
+    80.191772,
+    80.194794,
+    80.203293,
+    80.206894
+   ],
+   "median": 80.204269,
+   "min": 80.191772,
+   "max": 80.226349,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 8 multiprocessors, its plane a ring, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    55.176865,
+    55.168793,
+    55.177734,
+    55.165573,
+    55.182114,
+    55.168198,
+    55.177292
+   ],
+   "median": 55.176865,
+   "min": 55.165573,
+   "max": 55.182114,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 8 multiprocessors, its plane a ring, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    55.247833,
+    55.248779,
+    55.247284,
+    55.251251,
+    55.24411,
+    55.253784,
+    55.247757
+   ],
+   "median": 55.247833,
+   "min": 55.24411,
+   "max": 55.253784,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, its lines moved, 8 multiprocessors, its plane a ring, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    80.896957,
+    80.872955,
+    80.887482,
+    80.868454,
+    80.880341,
+    80.874115,
+    80.87204
+   ],
+   "median": 80.874115,
+   "min": 80.868454,
+   "max": 80.896957,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, its lines moved, 8 multiprocessors, its plane a ring, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    81.132019,
+    81.171432,
+    81.151764,
+    81.156021,
+    81.131058,
+    81.131653,
+    81.151306
+   ],
+   "median": 81.151306,
+   "min": 81.131058,
+   "max": 81.171432,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 8 multiprocessors, a new region a round, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    55.516388,
+    55.512741,
+    55.511658,
+    55.509628,
+    55.524841,
+    55.509109,
+    55.521591
+   ],
+   "median": 55.512741,
+   "min": 55.509109,
+   "max": 55.524841,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 8 multiprocessors, a new region a round, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    56.920166,
+    56.861267,
+    56.896057,
+    56.886444,
+    56.898407,
+    56.89418,
+    56.907928
+   ],
+   "median": 56.896057,
+   "min": 56.861267,
+   "max": 56.920166,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 8 multiprocessors, a new region a round, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    80.139267,
+    80.162521,
+    80.136749,
+    80.145462,
+    80.154907,
+    80.153549,
+    80.154495
+   ],
+   "median": 80.153549,
+   "min": 80.136749,
+   "max": 80.162521,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 8 multiprocessors, a new region a round, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    80.884094,
+    80.908829,
+    80.927689,
+    80.920181,
+    80.951202,
+    80.949768,
+    80.912231
+   ],
+   "median": 80.920181,
+   "min": 80.884094,
+   "max": 80.951202,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 8 multiprocessors, a new region a round, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    55.176407,
+    55.171768,
+    55.179382,
+    55.167267,
+    55.181656,
+    55.169037,
+    55.176575
+   ],
+   "median": 55.176407,
+   "min": 55.167267,
+   "max": 55.181656,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 8 multiprocessors, a new region a round, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    55.622864,
+    55.595078,
+    55.640671,
+    55.633469,
+    55.64505,
+    55.608673,
+    55.622131
+   ],
+   "median": 55.622864,
+   "min": 55.595078,
+   "max": 55.64505,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, its lines moved, 8 multiprocessors, a new region a round, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    80.899277,
+    80.872116,
+    80.880127,
+    80.860855,
+    80.866791,
+    80.871323,
+    80.870773
+   ],
+   "median": 80.871323,
+   "min": 80.860855,
+   "max": 80.899277,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "4 to 5 live digits a token, the stream's dense lines, 512 threads, its lines moved, 8 multiprocessors, a new region a round, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    81.597626,
+    81.641525,
+    81.627975,
+    81.645447,
+    81.588394,
+    81.632141,
+    81.602524
+   ],
+   "median": 81.627975,
+   "min": 81.588394,
+   "max": 81.645447,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the values plane, 256 threads, a flat stream of its copies, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    559.469836,
+    558.133672,
+    559.319643,
+    558.83827,
+    559.405364,
+    558.469493,
+    558.804344
+   ],
+   "median": 558.83827,
+   "min": 558.133672,
+   "max": 559.469836,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the values plane, 256 threads, a flat stream of its copies, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    558.873787,
+    558.745411,
+    559.401891,
+    560.796908,
+    558.292661,
+    558.212183,
+    558.22607
+   ],
+   "median": 558.745411,
+   "min": 558.212183,
+   "max": 560.796908,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the values plane, 256 threads, its lines moved, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    623.358039,
+    622.972961,
+    622.67506,
+    623.479953,
+    622.949134,
+    623.490899,
+    623.074125
+   ],
+   "median": 623.074125,
+   "min": 622.67506,
+   "max": 623.490899,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the values plane, 256 threads, its lines moved, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    623.319457,
+    623.522471,
+    623.142889,
+    623.036684,
+    623.323987,
+    624.034301,
+    622.828125
+   ],
+   "median": 623.319457,
+   "min": 622.828125,
+   "max": 624.034301,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the values plane, 512 threads, a flat stream of its copies, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    557.801839,
+    558.461833,
+    561.40336,
+    559.811769,
+    561.003506,
+    560.029743,
+    559.396149
+   ],
+   "median": 559.811769,
+   "min": 557.801839,
+   "max": 561.40336,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the values plane, 512 threads, a flat stream of its copies, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    558.342093,
+    560.267674,
+    556.554589,
+    558.494537,
+    560.322103,
+    561.072789,
+    559.823147
+   ],
+   "median": 559.823147,
+   "min": 556.554589,
+   "max": 561.072789,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the values plane, 512 threads, its lines moved, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    626.028355,
+    625.813646,
+    625.479929,
+    625.571473,
+    625.706192,
+    625.775355,
+    625.851262
+   ],
+   "median": 625.775355,
+   "min": 625.479929,
+   "max": 626.028355,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the values plane, 512 threads, its lines moved, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    625.559962,
+    625.664061,
+    625.834781,
+    625.409354,
+    625.554001,
+    625.765128,
+    625.522085
+   ],
+   "median": 625.559962,
+   "min": 625.409354,
+   "max": 625.834781,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the values plane, 1024 threads, a flat stream of its copies, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    567.675961,
+    565.536356,
+    566.154893,
+    567.760129,
+    567.322304,
+    566.821918,
+    566.163799
+   ],
+   "median": 566.821918,
+   "min": 565.536356,
+   "max": 567.760129,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the values plane, 1024 threads, a flat stream of its copies, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    566.946645,
+    565.44111,
+    565.55953,
+    566.233578,
+    567.98407,
+    566.20076,
+    566.976382
+   ],
+   "median": 566.233578,
+   "min": 565.44111,
+   "max": 567.98407,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the values plane, 1024 threads, its lines moved, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    687.719858,
+    687.743475,
+    687.899207,
+    687.595157,
+    687.466309,
+    687.803865,
+    687.425153
+   ],
+   "median": 687.719858,
+   "min": 687.425153,
+   "max": 687.899207,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the values plane, 1024 threads, its lines moved, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    687.902907,
+    687.57843,
+    687.621931,
+    687.689069,
+    687.775491,
+    687.831133,
+    688.008631
+   ],
+   "median": 687.775491,
+   "min": 687.57843,
+   "max": 688.008631,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the values plane, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    296.682556,
+    296.703435,
+    296.549508,
+    296.414956,
+    296.594094,
+    296.447558,
+    296.485513
+   ],
+   "median": 296.549508,
+   "min": 296.414956,
+   "max": 296.703435,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the values plane, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    296.57213,
+    296.5482,
+    296.399196,
+    296.418017,
+    296.502167,
+    296.439946,
+    296.554151
+   ],
+   "median": 296.502167,
+   "min": 296.399196,
+   "max": 296.57213,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the values plane, 512 threads, its lines moved, a quarter of the multiprocessors, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    579.490705,
+    579.454808,
+    579.461461,
+    578.948826,
+    579.266436,
+    579.62078,
+    579.399745
+   ],
+   "median": 579.454808,
+   "min": 578.948826,
+   "max": 579.62078,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the values plane, 512 threads, its lines moved, a quarter of the multiprocessors, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    579.822074,
+    579.443447,
+    579.573709,
+    579.415388,
+    579.562596,
+    579.362994,
+    579.617349
+   ],
+   "median": 579.562596,
+   "min": 579.362994,
+   "max": 579.822074,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the dense plane, 256 threads, a flat stream of its copies, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    1043.188176,
+    1046.214051,
+    1046.183922,
+    1053.282702,
+    1048.686969,
+    1041.36826,
+    1040.337578
+   ],
+   "median": 1046.183922,
+   "min": 1040.337578,
+   "max": 1053.282702,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the dense plane, 256 threads, a flat stream of its copies, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    1050.143484,
+    1051.333101,
+    1049.732478,
+    1049.538653,
+    1051.727223,
+    1040.755309,
+    1043.978009
+   ],
+   "median": 1049.732478,
+   "min": 1040.755309,
+   "max": 1051.727223,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the dense plane, 256 threads, its lines moved, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    1058.857288,
+    1055.2987,
+    1056.674692,
+    1059.458055,
+    1056.971225,
+    1052.419721,
+    1051.689561
+   ],
+   "median": 1056.674692,
+   "min": 1051.689561,
+   "max": 1059.458055,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the dense plane, 256 threads, its lines moved, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    1053.202012,
+    1058.185158,
+    1058.727975,
+    1060.963886,
+    1057.736569,
+    1054.650957,
+    1059.028648
+   ],
+   "median": 1058.185158,
+   "min": 1053.202012,
+   "max": 1060.963886,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the dense plane, 512 threads, a flat stream of its copies, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    1045.333754,
+    1046.36706,
+    1049.713647,
+    1052.677299,
+    1046.699671,
+    1041.82372,
+    1047.559327
+   ],
+   "median": 1046.699671,
+   "min": 1041.82372,
+   "max": 1052.677299,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the dense plane, 512 threads, a flat stream of its copies, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    1049.608291,
+    1051.295046,
+    1054.668609,
+    1051.317498,
+    1047.3237,
+    1053.237034,
+    1047.620861
+   ],
+   "median": 1051.295046,
+   "min": 1047.3237,
+   "max": 1054.668609,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the dense plane, 512 threads, its lines moved, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    1057.502506,
+    1054.646623,
+    1047.302919,
+    1056.527924,
+    1061.129225,
+    1057.004688,
+    1051.812136
+   ],
+   "median": 1056.527924,
+   "min": 1047.302919,
+   "max": 1061.129225,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the dense plane, 512 threads, its lines moved, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    1061.41871,
+    1056.971893,
+    1053.271636,
+    1059.906637,
+    1055.584055,
+    1059.522117,
+    1055.979753
+   ],
+   "median": 1056.971893,
+   "min": 1053.271636,
+   "max": 1061.41871,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the dense plane, 1024 threads, a flat stream of its copies, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    1043.097436,
+    1044.981454,
+    1046.00452,
+    1049.315883,
+    1044.989732,
+    1046.953214,
+    1046.925797
+   ],
+   "median": 1046.00452,
+   "min": 1043.097436,
+   "max": 1049.315883,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the dense plane, 1024 threads, a flat stream of its copies, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    1049.2247,
+    1053.929392,
+    1042.658321,
+    1051.082567,
+    1043.509681,
+    1049.760427,
+    1049.887397
+   ],
+   "median": 1049.760427,
+   "min": 1042.658321,
+   "max": 1053.929392,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the dense plane, 1024 threads, its lines moved, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    1064.488324,
+    1057.998548,
+    1061.516432,
+    1064.053576,
+    1051.944022,
+    1059.083266,
+    1063.314968
+   ],
+   "median": 1061.516432,
+   "min": 1051.944022,
+   "max": 1064.488324,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the dense plane, 1024 threads, its lines moved, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    1064.120177,
+    1057.91726,
+    1060.731396,
+    1067.13538,
+    1061.095614,
+    1061.711563,
+    1064.486654
+   ],
+   "median": 1061.711563,
+   "min": 1057.91726,
+   "max": 1067.13538,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the dense plane, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    313.556322,
+    313.651912,
+    313.555668,
+    313.917729,
+    313.558838,
+    313.652348,
+    313.610796
+   ],
+   "median": 313.610796,
+   "min": 313.555668,
+   "max": 313.917729,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the dense plane, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    316.246368,
+    316.504652,
+    316.178554,
+    316.370292,
+    316.572327,
+    316.558677,
+    316.207894
+   ],
+   "median": 316.370292,
+   "min": 316.178554,
+   "max": 316.572327,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the dense plane, 512 threads, its lines moved, a quarter of the multiprocessors, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    417.38681,
+    417.370213,
+    417.290231,
+    416.94897,
+    417.415519,
+    417.07142,
+    417.462755
+   ],
+   "median": 417.370213,
+   "min": 416.94897,
+   "max": 417.462755,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the dense plane, 512 threads, its lines moved, a quarter of the multiprocessors, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    420.047721,
+    420.004242,
+    420.277784,
+    419.905849,
+    420.20592,
+    420.068194,
+    419.94669
+   ],
+   "median": 420.047721,
+   "min": 419.905849,
+   "max": 420.277784,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the dense plane, 512 threads, a flat stream of its copies, six buffers out, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    1066.797961,
+    1073.936621,
+    1076.488975,
+    1075.376662,
+    1074.759102,
+    1074.404052,
+    1065.264867
+   ],
+   "median": 1074.404052,
+   "min": 1065.264867,
+   "max": 1076.488975,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the dense plane, 512 threads, a flat stream of its copies, six buffers out, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    1077.264016,
+    1073.684102,
+    1064.548639,
+    1074.476555,
+    1068.982562,
+    1073.934914,
+    1069.582411
+   ],
+   "median": 1073.684102,
+   "min": 1064.548639,
+   "max": 1077.264016,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the dense plane, 512 threads, its lines moved, six buffers out, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    1086.098283,
+    1087.658777,
+    1090.369465,
+    1090.797873,
+    1086.842526,
+    1088.17216,
+    1088.878609
+   ],
+   "median": 1088.17216,
+   "min": 1086.098283,
+   "max": 1090.797873,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the dense plane, 512 threads, its lines moved, six buffers out, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    1093.608586,
+    1090.155685,
+    1094.009088,
+    1095.231704,
+    1091.214464,
+    1093.474756,
+    1093.426021
+   ],
+   "median": 1093.474756,
+   "min": 1090.155685,
+   "max": 1095.231704,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the dense plane, 512 threads, a flat stream of its copies, six buffers out, a quarter of the multiprocessors, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    325.687099,
+    323.499098,
+    323.558576,
+    324.299774,
+    323.022653,
+    324.145556,
+    324.520299
+   ],
+   "median": 324.145556,
+   "min": 323.022653,
+   "max": 325.687099,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the dense plane, 512 threads, a flat stream of its copies, six buffers out, a quarter of the multiprocessors, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    331.84334,
+    331.850359,
+    332.151088,
+    331.35655,
+    332.165353,
+    332.440225,
+    332.058419
+   ],
+   "median": 332.058419,
+   "min": 331.35655,
+   "max": 332.440225,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the dense plane, 512 threads, its lines moved, six buffers out, a quarter of the multiprocessors, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    520.070369,
+    520.086155,
+    520.059989,
+    520.175023,
+    520.040619,
+    520.103891,
+    519.930764
+   ],
+   "median": 520.070369,
+   "min": 519.930764,
+   "max": 520.175023,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the dense plane, 512 threads, its lines moved, six buffers out, a quarter of the multiprocessors, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    523.598973,
+    523.560826,
+    523.443037,
+    523.485674,
+    523.501256,
+    523.56519,
+    523.676243
+   ],
+   "median": 523.560826,
+   "min": 523.443037,
+   "max": 523.676243,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    285.051325,
+    281.574349,
+    284.667478,
+    281.930906,
+    284.967162,
+    279.408207,
+    282.931007
+   ],
+   "median": 282.931007,
+   "min": 279.408207,
+   "max": 285.051325,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    284.874207,
+    285.36762,
+    284.729379,
+    282.407577,
+    283.070836,
+    284.175678,
+    284.153012
+   ],
+   "median": 284.175678,
+   "min": 282.407577,
+   "max": 285.36762,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    290.951866,
+    289.145676,
+    291.081682,
+    290.748995,
+    290.81139,
+    290.824055,
+    290.946247
+   ],
+   "median": 290.824055,
+   "min": 289.145676,
+   "max": 291.081682,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    291.25347,
+    291.911125,
+    291.281026,
+    291.01382,
+    292.050484,
+    291.201161,
+    291.67811
+   ],
+   "median": 291.281026,
+   "min": 291.01382,
+   "max": 292.050484,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    141.415894,
+    141.356737,
+    141.355517,
+    141.547878,
+    141.345869,
+    141.499486,
+    141.509962
+   ],
+   "median": 141.415894,
+   "min": 141.345869,
+   "max": 141.547878,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    141.548017,
+    141.330566,
+    141.198007,
+    141.383558,
+    141.2947,
+    141.663849,
+    141.48679
+   ],
+   "median": 141.383558,
+   "min": 141.198007,
+   "max": 141.663849,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, a quarter of the multiprocessors, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    193.991385,
+    193.875253,
+    193.534999,
+    193.789097,
+    193.817984,
+    193.789677,
+    193.706482
+   ],
+   "median": 193.789677,
+   "min": 193.534999,
+   "max": 193.991385,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, a quarter of the multiprocessors, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    194.122123,
+    194.039185,
+    193.933241,
+    194.218911,
+    194.243905,
+    194.068647,
+    193.742998
+   ],
+   "median": 194.068647,
+   "min": 193.742998,
+   "max": 194.243905,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    440.671571,
+    449.262066,
+    441.050307,
+    441.035583,
+    444.45647,
+    444.561217,
+    449.871418
+   ],
+   "median": 444.45647,
+   "min": 440.671571,
+   "max": 449.871418,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    454.396015,
+    442.37158,
+    445.910098,
+    447.585573,
+    448.663371,
+    452.263231,
+    444.461186
+   ],
+   "median": 447.585573,
+   "min": 442.37158,
+   "max": 454.396015,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's dense lines, 512 threads, its lines moved, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    446.992114,
+    445.933874,
+    437.874003,
+    444.904659,
+    446.416951,
+    443.944112,
+    439.052882
+   ],
+   "median": 444.904659,
+   "min": 437.874003,
+   "max": 446.992114,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's dense lines, 512 threads, its lines moved, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    448.599964,
+    453.990456,
+    442.665644,
+    441.771769,
+    449.149766,
+    447.882709,
+    447.543423
+   ],
+   "median": 447.882709,
+   "min": 441.771769,
+   "max": 453.990456,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    143.399606,
+    143.445788,
+    143.440883,
+    143.506871,
+    143.473982,
+    143.38508,
+    143.565765
+   ],
+   "median": 143.445788,
+   "min": 143.38508,
+   "max": 143.565765,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, a quarter of the multiprocessors, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    144.39144,
+    144.244864,
+    144.304696,
+    144.30348,
+    144.292001,
+    144.2819,
+    144.181226
+   ],
+   "median": 144.292001,
+   "min": 144.181226,
+   "max": 144.39144,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's dense lines, 512 threads, its lines moved, a quarter of the multiprocessors, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    172.022827,
+    172.047525,
+    172.080946,
+    172.090092,
+    172.076935,
+    172.049356,
+    172.008323
+   ],
+   "median": 172.049356,
+   "min": 172.008323,
+   "max": 172.090092,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's dense lines, 512 threads, its lines moved, a quarter of the multiprocessors, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    173.041112,
+    173.234868,
+    173.030914,
+    173.148686,
+    173.089931,
+    173.020133,
+    173.112074
+   ],
+   "median": 173.089931,
+   "min": 173.020133,
+   "max": 173.234868,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 16 multiprocessors, its plane a ring, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    128.699333,
+    128.638214,
+    128.719856,
+    128.830727,
+    128.708107,
+    128.784248,
+    128.754021
+   ],
+   "median": 128.719856,
+   "min": 128.638214,
+   "max": 128.830727,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 16 multiprocessors, its plane a ring, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    133.350098,
+    133.369507,
+    132.899605,
+    133.36834,
+    133.396584,
+    132.952827,
+    133.266945
+   ],
+   "median": 133.350098,
+   "min": 132.899605,
+   "max": 133.396584,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 16 multiprocessors, its plane a ring, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    191.371025,
+    191.327255,
+    191.371361,
+    191.371185,
+    191.355164,
+    191.398178,
+    191.385887
+   ],
+   "median": 191.371185,
+   "min": 191.327255,
+   "max": 191.398178,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 16 multiprocessors, its plane a ring, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    191.737595,
+    191.771721,
+    191.764374,
+    191.75737,
+    191.777649,
+    191.764297,
+    191.765022
+   ],
+   "median": 191.764374,
+   "min": 191.737595,
+   "max": 191.777649,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 16 multiprocessors, its plane a ring, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    142.657036,
+    142.647385,
+    142.646042,
+    142.661552,
+    142.671486,
+    142.681656,
+    142.674461
+   ],
+   "median": 142.661552,
+   "min": 142.646042,
+   "max": 142.681656,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 16 multiprocessors, its plane a ring, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    142.829659,
+    142.834213,
+    142.827187,
+    142.828423,
+    142.87439,
+    142.841637,
+    142.848572
+   ],
+   "median": 142.834213,
+   "min": 142.827187,
+   "max": 142.87439,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's dense lines, 512 threads, its lines moved, 16 multiprocessors, its plane a ring, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    171.468819,
+    171.468155,
+    171.450653,
+    171.446838,
+    171.447418,
+    171.430313,
+    171.454163
+   ],
+   "median": 171.450653,
+   "min": 171.430313,
+   "max": 171.468819,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's dense lines, 512 threads, its lines moved, 16 multiprocessors, its plane a ring, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    172.135239,
+    172.101067,
+    172.157959,
+    172.145035,
+    172.119614,
+    172.136894,
+    172.147995
+   ],
+   "median": 172.136894,
+   "min": 172.101067,
+   "max": 172.157959,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 16 multiprocessors, a new region a round, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    129.625227,
+    129.643624,
+    129.550807,
+    129.616385,
+    129.529288,
+    129.704738,
+    129.641183
+   ],
+   "median": 129.625227,
+   "min": 129.529288,
+   "max": 129.704738,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 16 multiprocessors, a new region a round, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    133.43668,
+    133.172049,
+    133.010638,
+    133.391523,
+    133.101876,
+    133.236067,
+    133.020621
+   ],
+   "median": 133.172049,
+   "min": 133.010638,
+   "max": 133.43668,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 16 multiprocessors, a new region a round, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    191.190081,
+    191.246242,
+    191.266602,
+    191.179644,
+    191.24585,
+    191.244001,
+    191.236947
+   ],
+   "median": 191.244001,
+   "min": 191.179644,
+   "max": 191.266602,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 16 multiprocessors, a new region a round, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    191.791173,
+    191.834865,
+    191.803353,
+    191.808672,
+    191.844526,
+    191.884338,
+    191.81189
+   ],
+   "median": 191.81189,
+   "min": 191.791173,
+   "max": 191.884338,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 16 multiprocessors, a new region a round, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    142.70091,
+    142.690281,
+    142.69696,
+    142.709778,
+    142.705732,
+    142.723554,
+    142.690656
+   ],
+   "median": 142.70091,
+   "min": 142.690281,
+   "max": 142.723554,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 16 multiprocessors, a new region a round, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    142.88596,
+    142.885681,
+    142.867109,
+    142.864476,
+    142.895255,
+    142.906302,
+    142.896563
+   ],
+   "median": 142.88596,
+   "min": 142.864476,
+   "max": 142.906302,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's dense lines, 512 threads, its lines moved, 16 multiprocessors, a new region a round, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    171.509844,
+    171.469727,
+    171.461679,
+    171.470816,
+    171.50987,
+    171.452366,
+    171.553563
+   ],
+   "median": 171.470816,
+   "min": 171.452366,
+   "max": 171.553563,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's dense lines, 512 threads, its lines moved, 16 multiprocessors, a new region a round, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    172.167568,
+    172.202314,
+    172.243931,
+    172.203683,
+    172.191476,
+    172.230913,
+    172.212211
+   ],
+   "median": 172.203683,
+   "min": 172.167568,
+   "max": 172.243931,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 8 multiprocessors, its plane a ring, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    117.600082,
+    117.610565,
+    117.58696,
+    117.603561,
+    117.601852,
+    117.57782,
+    117.591049
+   ],
+   "median": 117.600082,
+   "min": 117.57782,
+   "max": 117.610565,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 8 multiprocessors, its plane a ring, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    125.017471,
+    124.915359,
+    124.846313,
+    124.835327,
+    124.85202,
+    124.831909,
+    124.932571
+   ],
+   "median": 124.85202,
+   "min": 124.831909,
+   "max": 125.017471,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 8 multiprocessors, its plane a ring, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    190.35173,
+    190.326996,
+    190.381714,
+    190.324631,
+    190.363693,
+    190.344833,
+    190.287933
+   ],
+   "median": 190.344833,
+   "min": 190.287933,
+   "max": 190.381714,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 8 multiprocessors, its plane a ring, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    190.655624,
+    190.663452,
+    190.646347,
+    190.633606,
+    190.651596,
+    190.618881,
+    190.640182
+   ],
+   "median": 190.646347,
+   "min": 190.618881,
+   "max": 190.663452,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 8 multiprocessors, its plane a ring, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    142.519516,
+    142.506195,
+    142.530579,
+    142.513626,
+    142.518524,
+    142.520721,
+    142.53447
+   ],
+   "median": 142.519516,
+   "min": 142.506195,
+   "max": 142.53447,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 8 multiprocessors, its plane a ring, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    142.577774,
+    142.586838,
+    142.561279,
+    142.576401,
+    142.581451,
+    142.563232,
+    142.597778
+   ],
+   "median": 142.577774,
+   "min": 142.561279,
+   "max": 142.597778,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's dense lines, 512 threads, its lines moved, 8 multiprocessors, its plane a ring, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    171.188782,
+    171.176437,
+    171.149872,
+    171.154495,
+    171.189606,
+    171.174606,
+    171.199799
+   ],
+   "median": 171.176437,
+   "min": 171.149872,
+   "max": 171.199799,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's dense lines, 512 threads, its lines moved, 8 multiprocessors, its plane a ring, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    171.784058,
+    171.735062,
+    171.743988,
+    171.74234,
+    171.748627,
+    171.783829,
+    171.758011
+   ],
+   "median": 171.748627,
+   "min": 171.735062,
+   "max": 171.784058,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 8 multiprocessors, a new region a round, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    117.759125,
+    117.7379,
+    117.731796,
+    117.728027,
+    117.753387,
+    117.747604,
+    117.74379
+   ],
+   "median": 117.74379,
+   "min": 117.728027,
+   "max": 117.759125,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, a flat stream of its copies, 8 multiprocessors, a new region a round, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    130.410507,
+    130.349396,
+    130.473663,
+    130.408112,
+    130.409821,
+    130.413849,
+    130.334549
+   ],
+   "median": 130.409821,
+   "min": 130.334549,
+   "max": 130.473663,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 8 multiprocessors, a new region a round, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    190.384888,
+    190.321289,
+    190.370026,
+    190.364456,
+    190.372223,
+    190.371368,
+    190.373749
+   ],
+   "median": 190.371368,
+   "min": 190.321289,
+   "max": 190.384888,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's values and sparse lines, 512 threads, its lines moved, 8 multiprocessors, a new region a round, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    191.056473,
+    191.046494,
+    191.049347,
+    191.101257,
+    191.044403,
+    191.133347,
+    191.110962
+   ],
+   "median": 191.056473,
+   "min": 191.044403,
+   "max": 191.133347,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 8 multiprocessors, a new region a round, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    142.558609,
+    142.523254,
+    142.540161,
+    142.539841,
+    142.536819,
+    142.533798,
+    142.540024
+   ],
+   "median": 142.539841,
+   "min": 142.523254,
+   "max": 142.558609,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's dense lines, 512 threads, a flat stream of its copies, 8 multiprocessors, a new region a round, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    142.624496,
+    142.609222,
+    142.634293,
+    142.621506,
+    142.637558,
+    142.640884,
+    142.632553
+   ],
+   "median": 142.632553,
+   "min": 142.609222,
+   "max": 142.640884,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's dense lines, 512 threads, its lines moved, 8 multiprocessors, a new region a round, its rounds the same windows",
+   "unit": "SM-cycles a token",
+   "samples": [
+    171.131332,
+    171.16626,
+    171.206558,
+    171.169601,
+    171.170441,
+    171.169373,
+    171.185104
+   ],
+   "median": 171.169601,
+   "min": 171.131332,
+   "max": 171.206558,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "32 live digits a token, the stream's dense lines, 512 threads, its lines moved, 8 multiprocessors, a new region a round, a fresh window a round",
+   "unit": "SM-cycles a token",
+   "samples": [
+    171.938797,
+    171.863831,
+    171.948166,
+    171.875977,
+    171.898132,
+    171.895233,
+    171.911423
+   ],
+   "median": 171.898132,
+   "min": 171.863831,
+   "max": 171.948166,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void gather_pass::coefs::plane<(int)512, (int)1, (int)4>(long long *, const uint4 *, const uint4 *, const unsigned int *, uint4 *, int, int, int, int)": {
+   "regs": 28,
+   "ops": {
+    "PLOP3.LUT": 203,
+    "UIADD3": 169,
+    "UMOV": 116,
+    "ELECT": 66,
+    "UBLKCP.S.G": 66,
+    "BRA.U.ANY": 66,
+    "UIADD3.X": 60,
+    "LOP3.LUT": 45,
+    "BRA": 39,
+    "LDS": 33,
+    "VIADD": 28,
+    "IMAD.U32": 24
+   }
+  },
+  "void gather_pass::coefs::plane<(int)512, (int)0, (int)4>(long long *, const uint4 *, const uint4 *, const unsigned int *, uint4 *, int, int, int, int)": {
+   "regs": 30,
+   "ops": {
+    "PLOP3.LUT": 203,
+    "UIADD3": 169,
+    "UMOV": 116,
+    "ELECT": 66,
+    "UBLKCP.S.G": 66,
+    "BRA.U.ANY": 66,
+    "UIADD3.X": 60,
+    "LOP3.LUT": 45,
+    "BRA": 39,
+    "LDS": 33,
+    "FMUL": 32,
+    "VIADD": 28
+   }
+  },
+  "void gather_pass::coefs::plane<(int)512, (int)0, (int)1>(long long *, const uint4 *, const uint4 *, const unsigned int *, uint4 *, int, int, int, int)": {
+   "regs": 25,
+   "ops": {
+    "PLOP3.LUT": 203,
+    "UIADD3": 146,
+    "UMOV": 115,
+    "ELECT": 66,
+    "UBLKCP.S.G": 66,
+    "BRA.U.ANY": 66,
+    "UIADD3.X": 60,
+    "BRA": 27,
+    "LOP3.LUT": 23,
+    "VIADD": 18,
+    "ULOP3.LUT": 15,
+    "LDS": 15
+   }
+  },
+  "void gather_pass::blocks::plane<(int)512, (int)1>(long long *, const uint4 *, const uint4 *, const unsigned int *, uint4 *, unsigned int *, int, int, int, int)": {
+   "regs": 40,
+   "ops": {
+    "PLOP3.LUT": 154,
+    "UIADD3": 113,
+    "UMOV": 96,
+    "ELECT": 50,
+    "UBLKCP.S.G": 50,
+    "BRA.U.ANY": 50,
+    "UIADD3.X": 45,
+    "LOP3.LUT": 34,
+    "FMUL": 32,
+    "IMAD.U32": 29,
+    "BRA": 28,
+    "ULEA": 19
+   }
+  },
+  "void gather_pass::blocks::plane<(int)512, (int)0>(long long *, const uint4 *, const uint4 *, const unsigned int *, uint4 *, unsigned int *, int, int, int, int)": {
+   "regs": 38,
+   "ops": {
+    "PLOP3.LUT": 154,
+    "UIADD3": 113,
+    "UMOV": 96,
+    "ELECT": 50,
+    "UBLKCP.S.G": 50,
+    "BRA.U.ANY": 50,
+    "UIADD3.X": 45,
+    "BRA": 28,
+    "ULEA": 19,
+    "LOP3.LUT": 19,
+    "IMAD": 17,
+    "IMAD.MOV.U32": 16
+   }
+  },
+  "void gather_pass::dense::plane<(int)512, (int)1, (int)6>(long long *, const uint4 *, const uint4 *, const unsigned int *, uint4 *, int, int, int, int)": {
+   "regs": 16,
+   "ops": {
+    "UMOV": 75,
+    "PLOP3.LUT": 55,
+    "UIADD3": 51,
+    "BRA": 24,
+    "ELECT": 17,
+    "UBLKCP.S.G": 17,
+    "BRA.U.ANY": 17,
+    "IMAD.U32": 16,
+    "UIADD3.X": 15,
+    "USHF.L.U32": 14,
+    "UIMAD": 13,
+    "ULOP3.LUT": 11
+   }
+  },
+  "void gather_pass::dense::plane<(int)512, (int)0, (int)6>(long long *, const uint4 *, const uint4 *, const unsigned int *, uint4 *, int, int, int, int)": {
+   "regs": 12,
+   "ops": {
+    "UMOV": 77,
+    "PLOP3.LUT": 55,
+    "UIADD3": 51,
+    "BRA": 22,
+    "ELECT": 17,
+    "UBLKCP.S.G": 17,
+    "BRA.U.ANY": 17,
+    "UIADD3.X": 15,
+    "NOP": 14,
+    "USHF.L.U32": 13,
+    "IMAD.U32": 13,
+    "UIMAD": 11
+   }
+  },
+  "void gather_pass::dense::plane<(int)1024, (int)1, (int)3>(long long *, const uint4 *, const uint4 *, const unsigned int *, uint4 *, int, int, int, int)": {
+   "regs": 16,
+   "ops": {
+    "UMOV": 75,
+    "PLOP3.LUT": 54,
+    "UIADD3": 47,
+    "BRA": 24,
+    "IMAD.U32": 17,
+    "ELECT": 17,
+    "UBLKCP.S.G": 17,
+    "BRA.U.ANY": 17,
+    "UIADD3.X": 15,
+    "NOP": 14,
+    "USHF.L.U32": 11,
+    "UIMAD": 11
+   }
+  },
+  "void gather_pass::dense::plane<(int)1024, (int)0, (int)3>(long long *, const uint4 *, const uint4 *, const unsigned int *, uint4 *, int, int, int, int)": {
+   "regs": 12,
+   "ops": {
+    "UMOV": 78,
+    "PLOP3.LUT": 54,
+    "UIADD3": 47,
+    "BRA": 22,
+    "ELECT": 17,
+    "UBLKCP.S.G": 17,
+    "BRA.U.ANY": 17,
+    "UIADD3.X": 15,
+    "IMAD.U32": 13,
+    "ULEA": 12,
+    "S2UR": 10,
+    "USHF.L.U32": 10
+   }
+  },
+  "void gather_pass::dense::plane<(int)256, (int)1, (int)3>(long long *, const uint4 *, const uint4 *, const unsigned int *, uint4 *, int, int, int, int)": {
+   "regs": 16,
+   "ops": {
+    "UMOV": 75,
+    "PLOP3.LUT": 55,
+    "UIADD3": 51,
+    "BRA": 24,
+    "ELECT": 17,
+    "UBLKCP.S.G": 17,
+    "BRA.U.ANY": 17,
+    "IMAD.U32": 16,
+    "UIADD3.X": 15,
+    "USHF.L.U32": 14,
+    "UIMAD": 13,
+    "ULOP3.LUT": 11
+   }
+  },
+  "void gather_pass::dense::plane<(int)256, (int)0, (int)3>(long long *, const uint4 *, const uint4 *, const unsigned int *, uint4 *, int, int, int, int)": {
+   "regs": 12,
+   "ops": {
+    "UMOV": 77,
+    "PLOP3.LUT": 55,
+    "UIADD3": 51,
+    "BRA": 22,
+    "ELECT": 17,
+    "UBLKCP.S.G": 17,
+    "BRA.U.ANY": 17,
+    "UIADD3.X": 15,
+    "NOP": 14,
+    "USHF.L.U32": 13,
+    "IMAD.U32": 13,
+    "UIMAD": 11
+   }
+  },
+  "void gather_pass::dense::plane<(int)512, (int)1, (int)3>(long long *, const uint4 *, const uint4 *, const unsigned int *, uint4 *, int, int, int, int)": {
+   "regs": 16,
+   "ops": {
+    "UMOV": 75,
+    "PLOP3.LUT": 55,
+    "UIADD3": 51,
+    "BRA": 24,
+    "ELECT": 17,
+    "UBLKCP.S.G": 17,
+    "BRA.U.ANY": 17,
+    "IMAD.U32": 16,
+    "UIADD3.X": 15,
+    "USHF.L.U32": 14,
+    "UIMAD": 13,
+    "ULOP3.LUT": 11
+   }
+  },
+  "void gather_pass::dense::plane<(int)512, (int)0, (int)3>(long long *, const uint4 *, const uint4 *, const unsigned int *, uint4 *, int, int, int, int)": {
+   "regs": 12,
+   "ops": {
+    "UMOV": 77,
+    "PLOP3.LUT": 55,
+    "UIADD3": 51,
+    "BRA": 22,
+    "ELECT": 17,
+    "UBLKCP.S.G": 17,
+    "BRA.U.ANY": 17,
+    "UIADD3.X": 15,
+    "NOP": 14,
+    "USHF.L.U32": 13,
+    "IMAD.U32": 13,
+    "UIMAD": 11
+   }
+  },
+  "void gather_pass::values::plane<(int)1024, (int)1, (int)0>(long long *, const uint4 *, const uint4 *, const uint4 *, const unsigned int *, uint4 *, int, int, int, int)": {
+   "regs": 29,
+   "ops": {
+    "PLOP3.LUT": 103,
+    "UMOV": 96,
+    "UIADD3": 79,
+    "IMAD": 51,
+    "BRA": 46,
+    "LOP3.LUT": 38,
+    "ELECT": 33,
+    "UBLKCP.S.G": 33,
+    "BRA.U.ANY": 33,
+    "UIADD3.X": 30,
+    "BSSY": 15,
+    "BSYNC": 15
+   }
+  },
+  "void gather_pass::values::plane<(int)1024, (int)0, (int)0>(long long *, const uint4 *, const uint4 *, const uint4 *, const unsigned int *, uint4 *, int, int, int, int)": {
+   "regs": 13,
+   "ops": {
+    "PLOP3.LUT": 103,
+    "UMOV": 93,
+    "UIADD3": 82,
+    "BRA": 33,
+    "ELECT": 33,
+    "UBLKCP.S.G": 33,
+    "BRA.U.ANY": 33,
+    "UIADD3.X": 30,
+    "NOP": 15,
+    "ULEA": 14,
+    "USHF.L.U32": 11,
+    "IMAD.U32": 11
+   }
+  },
+  "void gather_pass::values::plane<(int)512, (int)1, (int)0>(long long *, const uint4 *, const uint4 *, const uint4 *, const unsigned int *, uint4 *, int, int, int, int)": {
+   "regs": 45,
+   "ops": {
+    "PLOP3.LUT": 104,
+    "UMOV": 95,
+    "UIADD3": 83,
+    "IMAD": 52,
+    "BRA": 45,
+    "LOP3.LUT": 36,
+    "ELECT": 33,
+    "UBLKCP.S.G": 33,
+    "BRA.U.ANY": 33,
+    "UIADD3.X": 30,
+    "IMAD.U32": 15,
+    "NOP": 15
+   }
+  },
+  "void gather_pass::values::plane<(int)512, (int)0, (int)0>(long long *, const uint4 *, const uint4 *, const uint4 *, const unsigned int *, uint4 *, int, int, int, int)": {
+   "regs": 13,
+   "ops": {
+    "PLOP3.LUT": 104,
+    "UMOV": 93,
+    "UIADD3": 86,
+    "ELECT": 33,
+    "UBLKCP.S.G": 33,
+    "BRA.U.ANY": 33,
+    "BRA": 32,
+    "UIADD3.X": 30,
+    "USHF.L.U32": 12,
+    "UIMAD": 12,
+    "ULEA": 11,
+    "IMAD.U32": 11
+   }
+  },
+  "void gather_pass::values::plane<(int)256, (int)1, (int)0>(long long *, const uint4 *, const uint4 *, const uint4 *, const unsigned int *, uint4 *, int, int, int, int)": {
+   "regs": 45,
+   "ops": {
+    "PLOP3.LUT": 104,
+    "UMOV": 98,
+    "UIADD3": 84,
+    "IMAD": 51,
+    "BRA": 46,
+    "LOP3.LUT": 35,
+    "ELECT": 33,
+    "UBLKCP.S.G": 33,
+    "BRA.U.ANY": 33,
+    "UIADD3.X": 30,
+    "IMAD.U32": 16,
+    "BSSY": 15
+   }
+  },
+  "void gather_pass::values::plane<(int)256, (int)0, (int)0>(long long *, const uint4 *, const uint4 *, const uint4 *, const unsigned int *, uint4 *, int, int, int, int)": {
+   "regs": 13,
+   "ops": {
+    "PLOP3.LUT": 104,
+    "UMOV": 93,
+    "UIADD3": 86,
+    "ELECT": 33,
+    "UBLKCP.S.G": 33,
+    "BRA.U.ANY": 33,
+    "BRA": 32,
+    "UIADD3.X": 30,
+    "USHF.L.U32": 12,
+    "UIMAD": 12,
+    "ULEA": 11,
+    "IMAD.U32": 11
+   }
+  },
+  "void gather_pass::values::plane<(int)512, (int)1, (int)1>(long long *, const uint4 *, const uint4 *, const uint4 *, const unsigned int *, uint4 *, int, int, int, int)": {
+   "regs": 40,
+   "ops": {
+    "PLOP3.LUT": 104,
+    "UMOV": 95,
+    "UIADD3": 83,
+    "BRA": 45,
+    "IMAD": 40,
+    "ELECT": 33,
+    "UBLKCP.S.G": 33,
+    "BRA.U.ANY": 33,
+    "UIADD3.X": 30,
+    "LOP3.LUT": 21,
+    "ISETP.NE.AND": 16,
+    "STS.128": 16
+   }
+  },
+  "void gather_pass::values::plane<(int)512, (int)0, (int)1>(long long *, const uint4 *, const uint4 *, const uint4 *, const unsigned int *, uint4 *, int, int, int, int)": {
+   "regs": 13,
+   "ops": {
+    "PLOP3.LUT": 104,
+    "UMOV": 93,
+    "UIADD3": 86,
+    "ELECT": 33,
+    "UBLKCP.S.G": 33,
+    "BRA.U.ANY": 33,
+    "BRA": 32,
+    "UIADD3.X": 30,
+    "USHF.L.U32": 12,
+    "UIMAD": 12,
+    "ULEA": 11,
+    "IMAD.U32": 11
+   }
+  }
+ },
+ "counters": {},
+ "counters_exception": {
+  "host": "Hyperstack spot VM, NVIDIA H100 PCIe: its counters not yet read there",
+  "instead": "the kernels' own clocks and the SASS's static counts"
+ }
+}

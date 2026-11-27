@@ -1,0 +1,354 @@
+{
+ "experiment": "gather_group",
+ "question": "the gather of a sparse block's window in the grouped digit stream's plainest form -- every list a run of its own, values only -- what does a block's window cost a CTA, and a token a side?",
+ "arch": "sm_90a",
+ "device": "NVIDIA H100 80GB HBM3",
+ "checks": [
+  {
+   "lab": "check",
+   "variant": "a block's window gathered: every list a run, values only, 4 live digits a token, a thread an entry's eight loads",
+   "ok": true,
+   "detail": "0 bytes differ"
+  },
+  {
+   "lab": "check",
+   "variant": "a block's window gathered: every list a run, values only, 4 live digits a token, loads and stores, 8 lanes a row",
+   "ok": true,
+   "detail": "0 bytes differ"
+  },
+  {
+   "lab": "check",
+   "variant": "a block's window gathered: every list a run, values only, 4 live digits a token, loads and stores, 8 lanes a row, its phases clocked",
+   "ok": true,
+   "detail": "0 bytes differ"
+  }
+ ],
+ "driver": "580.196.07",
+ "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
+ "git": {
+  "sha": "7d0d6925ca87fb553c83cd7211f304198da1267c",
+  "dirty": false
+ },
+ "reps": 7,
+ "date": "2026-11-20T23:51:25+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "a block's window gathered: every list a run, values only, 4 live digits a token, a thread an entry's eight loads",
+   "unit": "cycles a block's window a CTA",
+   "samples": [
+    5530.672378,
+    5551.214252,
+    5548.790601,
+    5530.816377,
+    5553.439986,
+    5532.141424,
+    5532.111121
+   ],
+   "median": 5532.141424,
+   "min": 5530.672378,
+   "max": 5553.439986,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a block's window gathered: every list a run, values only, 4 live digits a token, a thread an entry's eight loads: a token a side",
+   "unit": "SM-cycles a token",
+   "samples": [
+    86.416756,
+    86.737723,
+    86.699853,
+    86.419006,
+    86.7725,
+    86.43971,
+    86.439236
+   ],
+   "median": 86.43971,
+   "min": 86.416756,
+   "max": 86.7725,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a block's window gathered: every list a run, values only, 4 live digits a token, a thread an entry's eight loads: an entry",
+   "unit": "cycles an entry a CTA",
+   "samples": [
+    21.603709,
+    21.683949,
+    21.674482,
+    21.604272,
+    21.692643,
+    21.609448,
+    21.609329
+   ],
+   "median": 21.609448,
+   "min": 21.603709,
+   "max": 21.692643,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a block's window gathered: every list a run, values only, 4 live digits a token, loads and stores, 8 lanes a row, PROBE no packet stored",
+   "unit": "cycles a block's window a CTA",
+   "samples": [
+    2305.464933,
+    2305.289921,
+    2305.195401,
+    2305.054924,
+    2305.208777,
+    2305.449485,
+    2305.144176
+   ],
+   "median": 2305.208777,
+   "min": 2305.054924,
+   "max": 2305.464933,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a block's window gathered: every list a run, values only, 4 live digits a token, loads and stores, 8 lanes a row, PROBE no entry's token written",
+   "unit": "cycles a block's window a CTA",
+   "samples": [
+    2922.90992,
+    2920.574722,
+    2922.607008,
+    2924.066051,
+    2922.864347,
+    2922.165365,
+    2924.013672
+   ],
+   "median": 2922.864347,
+   "min": 2920.574722,
+   "max": 2924.066051,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a block's window gathered: every list a run, values only, 4 live digits a token, loads and stores, 8 lanes a row",
+   "unit": "cycles a block's window a CTA",
+   "samples": [
+    3043.612009,
+    3044.580552,
+    3044.068507,
+    3045.10174,
+    3044.607659,
+    3045.691673,
+    3046.219815
+   ],
+   "median": 3044.607659,
+   "min": 3043.612009,
+   "max": 3046.219815,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a block's window gathered: every list a run, values only, 4 live digits a token, loads and stores, 8 lanes a row: a token a side",
+   "unit": "SM-cycles a token",
+   "samples": [
+    47.556438,
+    47.571571,
+    47.56357,
+    47.579715,
+    47.571995,
+    47.588932,
+    47.597185
+   ],
+   "median": 47.571995,
+   "min": 47.556438,
+   "max": 47.597185,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a block's window gathered: every list a run, values only, 4 live digits a token, loads and stores, 8 lanes a row: an entry",
+   "unit": "cycles an entry a CTA",
+   "samples": [
+    11.888846,
+    11.892629,
+    11.890629,
+    11.894665,
+    11.892735,
+    11.896969,
+    11.899032
+   ],
+   "median": 11.892735,
+   "min": 11.888846,
+   "max": 11.899032,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a block's window gathered: every list a run, values only, 4 live digits a token, loads and stores, 8 lanes a row, its phases clocked",
+   "unit": "cycles a block's window a CTA",
+   "samples": [
+    3356.636571,
+    3355.289862,
+    3354.524384,
+    3354.404386,
+    3354.016779,
+    3355.384026,
+    3354.991211
+   ],
+   "median": 3354.991211,
+   "min": 3354.016779,
+   "max": 3356.636571,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a block's window gathered: every list a run, values only, 4 live digits a token, loads and stores, 8 lanes a row, its phases clocked: a token a side",
+   "unit": "SM-cycles a token",
+   "samples": [
+    52.447446,
+    52.426404,
+    52.414444,
+    52.412569,
+    52.406512,
+    52.427875,
+    52.421738
+   ],
+   "median": 52.421738,
+   "min": 52.406512,
+   "max": 52.447446,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a block's window gathered: every list a run, values only, 4 live digits a token, loads and stores, 8 lanes a row, its phases clocked: an entry",
+   "unit": "cycles an entry a CTA",
+   "samples": [
+    13.111571,
+    13.10631,
+    13.10332,
+    13.102851,
+    13.101337,
+    13.106678,
+    13.105144
+   ],
+   "median": 13.105144,
+   "min": 13.101337,
+   "max": 13.111571,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a block's window gathered: every list a run, values only, 4 live digits a token, loads and stores, 8 lanes a row, its phases clocked: thread 0, the lists and their barrier",
+   "unit": "cycles a trip",
+   "samples": [
+    1705.647313
+   ],
+   "median": 1705.647313,
+   "min": 1705.647313,
+   "max": 1705.647313,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a block's window gathered: every list a run, values only, 4 live digits a token, loads and stores, 8 lanes a row, its phases clocked: thread 0, the entries' tokens and their barrier",
+   "unit": "cycles a trip",
+   "samples": [
+    650.880238
+   ],
+   "median": 650.880238,
+   "min": 650.880238,
+   "max": 650.880238,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a block's window gathered: every list a run, values only, 4 live digits a token, loads and stores, 8 lanes a row, its phases clocked: thread 0, the values landing",
+   "unit": "cycles a trip",
+   "samples": [
+    103.751391
+   ],
+   "median": 103.751391,
+   "min": 103.751391,
+   "max": 103.751391,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a block's window gathered: every list a run, values only, 4 live digits a token, loads and stores, 8 lanes a row, its phases clocked: thread 0, the values' stores and their barrier",
+   "unit": "cycles a trip",
+   "samples": [
+    550.839134
+   ],
+   "median": 550.839134,
+   "min": 550.839134,
+   "max": 550.839134,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a block's window gathered: every list a run, values only, 4 live digits a token, loads and stores, 8 lanes a row, its phases clocked: thread 0, the packet's store",
+   "unit": "cycles a trip",
+   "samples": [
+    328.640891
+   ],
+   "median": 328.640891,
+   "min": 328.640891,
+   "max": 328.640891,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void gather_group::gather<(int)5>(long long *, const unsigned int *, const uint4 *, const unsigned char *, unsigned char *, long long *, int, int, int)": {
+   "regs": 78,
+   "ops": {
+    "LOP3.LUT": 56,
+    "ISETP.GE.U32.AND": 25,
+    "VIADD": 25,
+    "IMAD.MOV.U32": 23,
+    "IMAD.IADD": 21,
+    "LEA": 18,
+    "SHFL.UP": 18,
+    "SEL": 18,
+    "BRA": 18,
+    "ISETP.GE.AND": 18,
+    "CS2R": 16,
+    "IADD3": 13
+   }
+  },
+  "void gather_group::gather<(int)4>(long long *, const unsigned int *, const uint4 *, const unsigned char *, unsigned char *, long long *, int, int, int)": {
+   "regs": 64,
+   "ops": {
+    "LOP3.LUT": 37,
+    "VIADD": 25,
+    "ISETP.GE.U32.AND": 24,
+    "IMAD.MOV.U32": 22,
+    "IMAD.IADD": 20,
+    "LEA": 18,
+    "SHFL.UP": 18,
+    "SEL": 18,
+    "ISETP.GE.AND": 18,
+    "BRA": 17,
+    "ULDC.64": 12,
+    "IMAD": 12
+   }
+  },
+  "void gather_group::gather<(int)0>(long long *, const unsigned int *, const uint4 *, const unsigned char *, unsigned char *, long long *, int, int, int)": {
+   "regs": 59,
+   "ops": {
+    "IMAD.IADD": 20,
+    "SHFL.UP": 18,
+    "SEL": 18,
+    "LOP3.LUT": 17,
+    "ISETP.GE.U32.AND": 16,
+    "UIADD3": 14,
+    "LEA": 13,
+    "IMAD.U32": 13,
+    "VIADD": 13,
+    "NOP": 12,
+    "BRA": 11,
+    "STS.128": 11
+   }
+  }
+ },
+ "counters": {},
+ "counters_exception": {
+  "host": "Nebius preemptible VM, NVIDIA H100 80GB HBM3: its counters not yet read there",
+  "instead": "the kernels' own clocks and the SASS's static counts"
+ }
+}

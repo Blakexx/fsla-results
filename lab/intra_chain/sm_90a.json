@@ -1,0 +1,519 @@
+{
+ "experiment": "intra_chain",
+ "question": "what does the intra's chain cost a tile pair on hopper, alone -- 64 readers by 64 writers of one window: each level's pair products as INTEGER steps of the rows' bytes, the levels multiplied in fp32, the causal mask, the product rounded to bf16 in the registers it lies in as the A operand of the value steps -- and which of its parts is the cost?",
+ "arch": "sm_90a",
+ "device": "NVIDIA H100 80GB HBM3",
+ "checks": [
+  {
+   "lab": "check",
+   "variant": "the chain, the causal mask on, 256 digits a level",
+   "ok": true,
+   "detail": "0 of 540672 sums and 0 of 16896 threads' products differ"
+  },
+  {
+   "lab": "check",
+   "variant": "the chain, no mask, 256 digits a level",
+   "ok": true,
+   "detail": "0 of 540672 sums and 0 of 16896 threads' products differ"
+  },
+  {
+   "lab": "check",
+   "variant": "the integer steps alone, 256 digits a level",
+   "ok": true,
+   "detail": "0 of 540672 sums and 0 of 16896 threads' products differ"
+  },
+  {
+   "lab": "check",
+   "variant": "the arithmetic alone, the mask on, 256 digits a level",
+   "ok": true,
+   "detail": "0 of 540672 sums and 0 of 16896 threads' products differ"
+  },
+  {
+   "lab": "check",
+   "variant": "the value steps and the arithmetic, no integer step, 256 digits a level",
+   "ok": true,
+   "detail": "0 of 540672 sums and 0 of 16896 threads' products differ"
+  },
+  {
+   "lab": "check",
+   "variant": "the chain, the causal mask on, the products by the conversion unit, 256 digits a level",
+   "ok": true,
+   "detail": "0 of 540672 sums and 0 of 16896 threads' products differ"
+  },
+  {
+   "lab": "check",
+   "variant": "the chain, the causal mask on, 64 digits a level",
+   "ok": true,
+   "detail": "0 of 540672 sums and 0 of 16896 threads' products differ"
+  },
+  {
+   "lab": "check",
+   "variant": "the chain, no mask, 64 digits a level",
+   "ok": true,
+   "detail": "0 of 540672 sums and 0 of 16896 threads' products differ"
+  },
+  {
+   "lab": "check",
+   "variant": "the integer steps alone, 64 digits a level",
+   "ok": true,
+   "detail": "0 of 540672 sums and 0 of 16896 threads' products differ"
+  },
+  {
+   "lab": "check",
+   "variant": "the arithmetic alone, the mask on, 64 digits a level",
+   "ok": true,
+   "detail": "0 of 540672 sums and 0 of 16896 threads' products differ"
+  },
+  {
+   "lab": "check",
+   "variant": "the value steps and the arithmetic, no integer step, 64 digits a level",
+   "ok": true,
+   "detail": "0 of 540672 sums and 0 of 16896 threads' products differ"
+  },
+  {
+   "lab": "check",
+   "variant": "the chain, the causal mask on, the products by the conversion unit, 64 digits a level",
+   "ok": true,
+   "detail": "0 of 540672 sums and 0 of 16896 threads' products differ"
+  }
+ ],
+ "driver": "580.173.02",
+ "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
+ "git": {
+  "sha": "c063e24d875a5d04ceb4575646d7dca9959280a1",
+  "dirty": false
+ },
+ "reps": 7,
+ "date": "2026-11-13T19:49:59+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "the chain, the causal mask on, 256 digits a level",
+   "unit": "cycles a tile pair",
+   "samples": [
+    1335.916008,
+    1335.931156,
+    1335.916008,
+    1335.931156,
+    1335.916008,
+    1335.931163,
+    1335.900853
+   ],
+   "median": 1335.916008,
+   "min": 1335.900853,
+   "max": 1335.931163,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the chain, no mask, 256 digits a level",
+   "unit": "cycles a tile pair",
+   "samples": [
+    1272.042273,
+    1272.042233,
+    1272.042266,
+    1272.042233,
+    1272.042266,
+    1272.042255,
+    1272.042251
+   ],
+   "median": 1272.042255,
+   "min": 1272.042233,
+   "max": 1272.042273,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the integer steps alone, 256 digits a level",
+   "unit": "cycles a tile pair",
+   "samples": [
+    573.043997,
+    573.04401,
+    573.043997,
+    573.044003,
+    573.043997,
+    573.04401,
+    573.043997
+   ],
+   "median": 573.043997,
+   "min": 573.043997,
+   "max": 573.04401,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the arithmetic alone, the mask on, 256 digits a level",
+   "unit": "cycles a tile pair",
+   "samples": [
+    40.068402,
+    40.068411,
+    40.068402,
+    40.068411,
+    40.068417,
+    40.068396,
+    40.068417
+   ],
+   "median": 40.068411,
+   "min": 40.068396,
+   "max": 40.068417,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the value steps and the arithmetic, no integer step, 256 digits a level",
+   "unit": "cycles a tile pair",
+   "samples": [
+    206.039358,
+    206.039364,
+    206.039344,
+    206.039371,
+    206.039358,
+    206.039371,
+    206.039358
+   ],
+   "median": 206.039358,
+   "min": 206.039344,
+   "max": 206.039371,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the chain, the causal mask on, the products by the conversion unit, 256 digits a level",
+   "unit": "cycles a tile pair",
+   "samples": [
+    985.040951,
+    985.040945,
+    985.040958,
+    985.040945,
+    985.040958,
+    985.040945,
+    985.040951
+   ],
+   "median": 985.040951,
+   "min": 985.040945,
+   "max": 985.040958,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the chain, the causal mask on, 64 digits a level",
+   "unit": "cycles a tile pair",
+   "samples": [
+    951.916071,
+    951.93123,
+    951.916071,
+    951.931237,
+    951.900927,
+    951.93123,
+    951.900927
+   ],
+   "median": 951.916071,
+   "min": 951.900927,
+   "max": 951.931237,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the chain, no mask, 64 digits a level",
+   "unit": "cycles a tile pair",
+   "samples": [
+    887.072809,
+    887.072791,
+    887.072802,
+    887.072769,
+    887.072802,
+    887.072791,
+    887.072787
+   ],
+   "median": 887.072791,
+   "min": 887.072769,
+   "max": 887.072809,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the integer steps alone, 64 digits a level",
+   "unit": "cycles a tile pair",
+   "samples": [
+    189.043975,
+    189.044003,
+    189.043997,
+    189.043988,
+    189.043997,
+    189.044003,
+    189.043997
+   ],
+   "median": 189.043997,
+   "min": 189.043975,
+   "max": 189.044003,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the arithmetic alone, the mask on, 64 digits a level",
+   "unit": "cycles a tile pair",
+   "samples": [
+    40.068424,
+    40.068411,
+    40.068424,
+    40.068389,
+    40.068417,
+    40.068389,
+    40.068402
+   ],
+   "median": 40.068411,
+   "min": 40.068389,
+   "max": 40.068424,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the value steps and the arithmetic, no integer step, 64 digits a level",
+   "unit": "cycles a tile pair",
+   "samples": [
+    206.039358,
+    206.039364,
+    206.039358,
+    206.039364,
+    206.039358,
+    206.039349,
+    206.039344
+   ],
+   "median": 206.039358,
+   "min": 206.039344,
+   "max": 206.039364,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the chain, the causal mask on, the products by the conversion unit, 64 digits a level",
+   "unit": "cycles a tile pair",
+   "samples": [
+    601.040951,
+    601.040945,
+    601.040951,
+    601.040945,
+    601.040951,
+    601.040945,
+    601.040951
+   ],
+   "median": 601.040951,
+   "min": 601.040945,
+   "max": 601.040951,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void intra_chain::chain<(int)31, (int)2>(long long *, float *, int *, int)": {
+   "regs": 144,
+   "ops": {
+    "I2FP.F32.S32": 64,
+    "VIMNMX3": 62,
+    "LOP3.LUT": 36,
+    "STG.E": 35,
+    "SEL": 32,
+    "FMUL": 32,
+    "FSEL": 32,
+    "ISETP.GE.AND": 21,
+    "F2FP.BF16.F32.PACK_AB": 16,
+    "UMOV": 12,
+    "NOP": 12,
+    "ULOP3.LUT": 10
+   }
+  },
+  "void intra_chain::chain<(int)6, (int)2>(long long *, float *, int *, int)": {
+   "regs": 74,
+   "ops": {
+    "STG.E": 35,
+    "IMAD.MOV.U32": 12,
+    "NOP": 10,
+    "BRA": 8,
+    "MOV": 7,
+    "UMOV": 5,
+    "VIADD": 4,
+    "HGMMA.64": 4,
+    "S2R": 3,
+    "BSSY": 3,
+    "S2UR": 3,
+    "ULEA": 3
+   }
+  },
+  "void intra_chain::chain<(int)10, (int)2>(long long *, float *, int *, int)": {
+   "regs": 36,
+   "ops": {
+    "LOP3.LUT": 67,
+    "STG.E": 35,
+    "SEL": 32,
+    "FSEL": 32,
+    "ISETP.GE.AND": 21,
+    "F2FP.BF16.F32.PACK_AB": 16,
+    "NOP": 11,
+    "VIADD": 9,
+    "BRA": 7,
+    "IMAD.MOV.U32": 7,
+    "ISETP.GT.AND": 4,
+    "LDC": 3
+   }
+  },
+  "void intra_chain::chain<(int)1, (int)2>(long long *, float *, int *, int)": {
+   "regs": 90,
+   "ops": {
+    "VIMNMX3": 62,
+    "STG.E": 35,
+    "NOP": 9,
+    "BRA": 8,
+    "UMOV": 8,
+    "ULOP3.LUT": 8,
+    "VIADD": 7,
+    "USHF.R.U32.HI": 5,
+    "UIADD3": 4,
+    "IGMMA.64": 4,
+    "S2R": 3,
+    "BSSY": 3
+   }
+  },
+  "void intra_chain::chain<(int)7, (int)2>(long long *, float *, int *, int)": {
+   "regs": 172,
+   "ops": {
+    "LOP3.LUT": 129,
+    "FADD": 128,
+    "LEA.HI": 64,
+    "FFMA": 64,
+    "VIMNMX3": 62,
+    "STG.E": 35,
+    "FMUL": 32,
+    "F2FP.BF16.F32.PACK_AB": 16,
+    "UMOV": 12,
+    "NOP": 11,
+    "ULOP3.LUT": 10,
+    "BRA": 8
+   }
+  },
+  "void intra_chain::chain<(int)15, (int)2>(long long *, float *, int *, int)": {
+   "regs": 155,
+   "ops": {
+    "LOP3.LUT": 164,
+    "FADD": 128,
+    "LEA.HI": 64,
+    "FFMA": 64,
+    "VIMNMX3": 62,
+    "STG.E": 35,
+    "SEL": 32,
+    "FMUL": 32,
+    "FSEL": 32,
+    "ISETP.GE.AND": 21,
+    "F2FP.BF16.F32.PACK_AB": 16,
+    "UMOV": 12
+   }
+  },
+  "void intra_chain::chain<(int)31, (int)8>(long long *, float *, int *, int)": {
+   "regs": 144,
+   "ops": {
+    "I2FP.F32.S32": 64,
+    "VIMNMX3": 62,
+    "LOP3.LUT": 36,
+    "STG.E": 35,
+    "SEL": 32,
+    "FMUL": 32,
+    "FSEL": 32,
+    "ISETP.GE.AND": 21,
+    "IGMMA.64": 16,
+    "F2FP.BF16.F32.PACK_AB": 16,
+    "UMOV": 12,
+    "ULOP3.LUT": 10
+   }
+  },
+  "void intra_chain::chain<(int)6, (int)8>(long long *, float *, int *, int)": {
+   "regs": 74,
+   "ops": {
+    "STG.E": 35,
+    "IMAD.MOV.U32": 12,
+    "NOP": 10,
+    "BRA": 8,
+    "MOV": 7,
+    "UMOV": 5,
+    "VIADD": 4,
+    "HGMMA.64": 4,
+    "S2R": 3,
+    "BSSY": 3,
+    "S2UR": 3,
+    "ULEA": 3
+   }
+  },
+  "void intra_chain::chain<(int)10, (int)8>(long long *, float *, int *, int)": {
+   "regs": 36,
+   "ops": {
+    "LOP3.LUT": 67,
+    "STG.E": 35,
+    "SEL": 32,
+    "FSEL": 32,
+    "ISETP.GE.AND": 21,
+    "F2FP.BF16.F32.PACK_AB": 16,
+    "NOP": 11,
+    "VIADD": 9,
+    "BRA": 7,
+    "IMAD.MOV.U32": 7,
+    "ISETP.GT.AND": 4,
+    "LDC": 3
+   }
+  },
+  "void intra_chain::chain<(int)1, (int)8>(long long *, float *, int *, int)": {
+   "regs": 90,
+   "ops": {
+    "VIMNMX3": 62,
+    "STG.E": 35,
+    "IGMMA.64": 16,
+    "NOP": 14,
+    "BRA": 8,
+    "UMOV": 8,
+    "ULOP3.LUT": 8,
+    "VIADD": 7,
+    "USHF.R.U32.HI": 5,
+    "UIADD3": 4,
+    "BSSY": 3,
+    "S2UR": 3
+   }
+  },
+  "void intra_chain::chain<(int)7, (int)8>(long long *, float *, int *, int)": {
+   "regs": 172,
+   "ops": {
+    "LOP3.LUT": 129,
+    "FADD": 128,
+    "LEA.HI": 64,
+    "FFMA": 64,
+    "VIMNMX3": 62,
+    "STG.E": 35,
+    "FMUL": 32,
+    "IGMMA.64": 16,
+    "F2FP.BF16.F32.PACK_AB": 16,
+    "NOP": 15,
+    "UMOV": 12,
+    "ULOP3.LUT": 10
+   }
+  },
+  "void intra_chain::chain<(int)15, (int)8>(long long *, float *, int *, int)": {
+   "regs": 155,
+   "ops": {
+    "LOP3.LUT": 164,
+    "FADD": 128,
+    "LEA.HI": 64,
+    "FFMA": 64,
+    "VIMNMX3": 62,
+    "STG.E": 35,
+    "SEL": 32,
+    "FMUL": 32,
+    "FSEL": 32,
+    "ISETP.GE.AND": 21,
+    "IGMMA.64": 16,
+    "F2FP.BF16.F32.PACK_AB": 16
+   }
+  }
+ },
+ "counters": {},
+ "counters_exception": {
+  "host": "vast.ai rented box, NVIDIA H100 80GB HBM3: a box with a driver and no toolkit",
+  "instead": "the kernels' own clocks and the SASS's static counts"
+ }
+}

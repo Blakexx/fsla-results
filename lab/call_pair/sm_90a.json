@@ -1,0 +1,1298 @@
+{
+ "experiment": "call_pair",
+ "question": "what is a call's time with the carry AND the intra, and does launching the two kernels TOGETHER on two streams buy anything over one after the other? The carry's CTA takes its multiprocessor's whole register file for the call, so an intra CTA runs only on a multiprocessor the carry left free or has left.",
+ "arch": "sm_90a",
+ "device": "NVIDIA H100 80GB HBM3",
+ "checks": [
+  {
+   "lab": "unchecked",
+   "variant": "the carry alone",
+   "reason": "a pair of kernels each checked in its own experiment; this row is their wall time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "the intra alone",
+   "reason": "a pair of kernels each checked in its own experiment; this row is their wall time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "the carry, then the intra: one stream",
+   "reason": "a pair of kernels each checked in its own experiment; this row is their wall time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "the carry and the intra together: two streams",
+   "reason": "a pair of kernels each checked in its own experiment; this row is their wall time"
+  },
+  {
+   "lab": "unchecked",
+   "variant": "the intra and the carry together, the intra launched first",
+   "reason": "a pair of kernels each checked in its own experiment; this row is their wall time"
+  }
+ ],
+ "driver": "595.91.07",
+ "toolkit": "Build cuda_13.0.r13.0/compiler.36260728_0",
+ "git": {
+  "sha": "89ce5851da599aad3bc3bedf8dbb3316c36a8bc7",
+  "dirty": false
+ },
+ "reps": 7,
+ "date": "2026-11-13T20:45:52+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "the carry alone",
+   "unit": "milliseconds a call of 65,536 tokens",
+   "samples": [
+    0.284389,
+    0.284407,
+    0.284533,
+    0.285332,
+    0.302361,
+    0.3008,
+    0.301021
+   ],
+   "median": 0.285332,
+   "min": 0.284389,
+   "max": 0.302361,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "the intra alone",
+   "unit": "milliseconds a call of 65,536 tokens",
+   "samples": [
+    0.071686,
+    0.071329,
+    0.071638,
+    0.071253,
+    0.071397,
+    0.071601,
+    0.076427
+   ],
+   "median": 0.071601,
+   "min": 0.071253,
+   "max": 0.076427,
+   "unstable": true
+  },
+  {
+   "lab": "result",
+   "name": "the carry, then the intra: one stream",
+   "unit": "milliseconds a call of 65,536 tokens",
+   "samples": [
+    0.399573,
+    0.399952,
+    0.400685,
+    0.401187,
+    0.399644,
+    0.401031,
+    0.405008
+   ],
+   "median": 0.400685,
+   "min": 0.399573,
+   "max": 0.405008,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the carry and the intra together: two streams",
+   "unit": "milliseconds a call of 65,536 tokens",
+   "samples": [
+    0.393217,
+    0.393161,
+    0.393459,
+    0.392319,
+    0.389358,
+    0.389166,
+    0.389072
+   ],
+   "median": 0.392319,
+   "min": 0.389072,
+   "max": 0.393459,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the intra and the carry together, the intra launched first",
+   "unit": "milliseconds a call of 65,536 tokens",
+   "samples": [
+    0.400527,
+    0.400703,
+    0.397607,
+    0.400829,
+    0.399678,
+    0.399384,
+    0.398495
+   ],
+   "median": 0.399678,
+   "min": 0.397607,
+   "max": 0.400829,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void intra_window::window<(int)2>(CUtensorMap_st, CUtensorMap_st, CUtensorMap_st, intra_window::Tiled, long long *, unsigned int *, float *, int)": {
+   "regs": 126,
+   "ops": {
+    "I2FP.F32.S32": 64,
+    "LOP3.LUT": 59,
+    "R2UR": 55,
+    "IMAD.MOV.U32": 42,
+    "SEL": 34,
+    "FMUL": 32,
+    "FSEL": 32,
+    "BRA": 23,
+    "IADD3": 21,
+    "IMAD.X": 20,
+    "ISETP.GT.AND": 19,
+    "IGMMA.64": 16
+   }
+  },
+  "void intra_window::window<(int)1>(CUtensorMap_st, CUtensorMap_st, CUtensorMap_st, intra_window::Tiled, long long *, unsigned int *, float *, int)": {
+   "regs": 126,
+   "ops": {
+    "I2FP.F32.S32": 64,
+    "LOP3.LUT": 59,
+    "R2UR": 53,
+    "IMAD.MOV.U32": 44,
+    "SEL": 34,
+    "FMUL": 32,
+    "FSEL": 32,
+    "BRA": 23,
+    "IADD3": 20,
+    "ISETP.GT.AND": 19,
+    "IMAD.X": 19,
+    "IGMMA.64": 16
+   }
+  },
+  "void intra_window::window<(int)0>(CUtensorMap_st, CUtensorMap_st, CUtensorMap_st, intra_window::Tiled, long long *, unsigned int *, float *, int)": {
+   "regs": 126,
+   "ops": {
+    "I2FP.F32.S32": 64,
+    "LOP3.LUT": 62,
+    "R2UR": 60,
+    "IMAD.MOV.U32": 48,
+    "SEL": 35,
+    "FMUL": 32,
+    "FSEL": 32,
+    "BRA": 22,
+    "IADD3": 22,
+    "IMAD.X": 20,
+    "ISETP.GT.AND": 19,
+    "IGMMA.64": 16
+   }
+  },
+  "void carry_window::window<(int)138674467>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 304,
+    "SHF.R.U32.HI": 237,
+    "VIADD": 172,
+    "STG.E": 140,
+    "IMAD": 124,
+    "IADD3": 107,
+    "IMAD.MOV.U32": 100,
+    "IMAD.IADD": 83,
+    "FMUL": 80,
+    "IMAD.X": 71,
+    "IMAD.SHL.U32": 70,
+    "PRMT": 64
+   }
+  },
+  "void carry_window::window<(int)4456739>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 351,
+    "SHF.R.U32.HI": 189,
+    "VIADD": 172,
+    "STG.E": 140,
+    "IMAD.SHL.U32": 117,
+    "IADD3": 107,
+    "IMAD.MOV.U32": 100,
+    "FMUL": 80,
+    "LEA": 79,
+    "IMAD": 76,
+    "IMAD.X": 71,
+    "LEA.HI.X": 69
+   }
+  },
+  "void carry_window::window<(int)138412323>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 242,
+    "SHF.R.U32.HI": 182,
+    "STG.E": 140,
+    "VIADD": 130,
+    "IADD3": 113,
+    "IMAD": 112,
+    "IMAD.MOV.U32": 97,
+    "FMUL": 80,
+    "IMAD.X": 77,
+    "IMAD.IADD": 71,
+    "IMAD.SHL.U32": 66,
+    "PRMT": 64
+   }
+  },
+  "void carry_window::window<(int)5243171>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 289,
+    "STG.E": 140,
+    "SHF.R.U32.HI": 134,
+    "VIADD": 130,
+    "IADD3": 113,
+    "IMAD.MOV.U32": 97,
+    "FMUL": 80,
+    "LEA": 79,
+    "IMAD.X": 77,
+    "LEA.HI.X": 69,
+    "IMAD.SHL.U32": 65,
+    "IMAD": 64
+   }
+  },
+  "void carry_window::window<(int)63439139>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 299,
+    "STG.E": 144,
+    "VIADD": 137,
+    "SHF.R.U32.HI": 137,
+    "IMAD.MOV.U32": 122,
+    "IADD3": 117,
+    "FMUL": 80,
+    "LEA": 79,
+    "IMAD.X": 79,
+    "R2UR": 72,
+    "LEA.HI.X": 68,
+    "PRMT": 68
+   }
+  },
+  "void carry_window::window<(int)29884707>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 299,
+    "STG.E": 144,
+    "VIADD": 137,
+    "SHF.R.U32.HI": 137,
+    "IMAD.MOV.U32": 122,
+    "IADD3": 117,
+    "FMUL": 80,
+    "LEA": 79,
+    "IMAD.X": 79,
+    "R2UR": 72,
+    "LEA.HI.X": 68,
+    "PRMT": 68
+   }
+  },
+  "void carry_window::window<(int)13107491>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 299,
+    "STG.E": 144,
+    "VIADD": 137,
+    "SHF.R.U32.HI": 137,
+    "IMAD.MOV.U32": 122,
+    "IADD3": 117,
+    "FMUL": 80,
+    "LEA": 79,
+    "IMAD.X": 79,
+    "R2UR": 72,
+    "LEA.HI.X": 68,
+    "PRMT": 68
+   }
+  },
+  "void carry_window::window<(int)4718883>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 294,
+    "STG.E": 144,
+    "VIADD": 136,
+    "SHF.R.U32.HI": 136,
+    "IMAD.MOV.U32": 122,
+    "IADD3": 115,
+    "FMUL": 80,
+    "LEA": 79,
+    "IMAD.X": 79,
+    "R2UR": 72,
+    "LEA.HI.X": 68,
+    "BRA": 65
+   }
+  },
+  "void carry_window::window<(int)132645155>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 304,
+    "SHF.R.U32.HI": 147,
+    "STG.E": 144,
+    "VIADD": 140,
+    "IMAD.MOV.U32": 124,
+    "IADD3": 120,
+    "STS": 83,
+    "LEA": 81,
+    "IMAD.X": 81,
+    "FMUL": 80,
+    "R2UR": 72,
+    "LEA.HI.X": 69
+   }
+  },
+  "void carry_window::window<(int)6291747>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 289,
+    "STG.E": 140,
+    "SHF.R.U32.HI": 134,
+    "VIADD": 130,
+    "IADD3": 113,
+    "IMAD.MOV.U32": 97,
+    "STS": 81,
+    "FMUL": 80,
+    "LEA": 79,
+    "IMAD.X": 77,
+    "LEA.HI.X": 69,
+    "IMAD.SHL.U32": 66
+   }
+  },
+  "void carry_window::window<(int)4194595>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 289,
+    "STG.E": 140,
+    "SHF.R.U32.HI": 134,
+    "VIADD": 130,
+    "IADD3": 113,
+    "IMAD.MOV.U32": 97,
+    "FMUL": 80,
+    "LEA": 79,
+    "IMAD.X": 77,
+    "LEA.HI.X": 69,
+    "IMAD.SHL.U32": 65,
+    "IMAD": 64
+   }
+  },
+  "void carry_window::window<(int)128450851>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 304,
+    "SHF.R.U32.HI": 147,
+    "STG.E": 144,
+    "VIADD": 140,
+    "IMAD.MOV.U32": 128,
+    "IADD3": 123,
+    "STS": 83,
+    "LEA": 81,
+    "IMAD.X": 81,
+    "FMUL": 80,
+    "R2UR": 72,
+    "LEA.HI.X": 69
+   }
+  },
+  "void carry_window::window<(int)2097443>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 289,
+    "STG.E": 140,
+    "SHF.R.U32.HI": 134,
+    "VIADD": 130,
+    "IADD3": 123,
+    "IMAD.MOV.U32": 110,
+    "STS": 81,
+    "FMUL": 80,
+    "LEA": 79,
+    "IMAD.X": 77,
+    "LEA.HI.X": 69,
+    "IMAD.SHL.U32": 66
+   }
+  },
+  "void carry_window::window<(int)127402275>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 304,
+    "STG.E": 144,
+    "SHF.R.U32.HI": 139,
+    "VIADD": 138,
+    "IMAD.MOV.U32": 127,
+    "IADD3": 125,
+    "LEA": 81,
+    "IMAD.X": 81,
+    "FMUL": 80,
+    "R2UR": 72,
+    "LEA.HI.X": 69,
+    "IMAD": 68
+   }
+  },
+  "void carry_window::window<(int)1048867>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 289,
+    "STG.E": 140,
+    "SHF.R.U32.HI": 134,
+    "VIADD": 130,
+    "IADD3": 123,
+    "IMAD.MOV.U32": 114,
+    "FMUL": 80,
+    "LEA": 79,
+    "IMAD.X": 77,
+    "LEA.HI.X": 69,
+    "IMAD.SHL.U32": 65,
+    "IMAD": 65
+   }
+  },
+  "void carry_window::window<(int)126615843>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 366,
+    "SHF.R.U32.HI": 194,
+    "VIADD": 180,
+    "STG.E": 144,
+    "IMAD.MOV.U32": 130,
+    "IMAD.SHL.U32": 120,
+    "IADD3": 119,
+    "LEA": 81,
+    "IMAD": 80,
+    "FMUL": 80,
+    "IMAD.X": 75,
+    "R2UR": 72
+   }
+  },
+  "void carry_window::window<(int)126353699>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 304,
+    "STG.E": 144,
+    "SHF.R.U32.HI": 139,
+    "VIADD": 138,
+    "IMAD.MOV.U32": 127,
+    "IADD3": 125,
+    "LEA": 81,
+    "IMAD.X": 81,
+    "FMUL": 80,
+    "R2UR": 72,
+    "LEA.HI.X": 69,
+    "IMAD": 68
+   }
+  },
+  "void carry_window::window<(int)126353409>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "STG.E": 144,
+    "IMAD.MOV.U32": 97,
+    "LOP3.LUT": 89,
+    "R2UR": 72,
+    "SHF.R.U32.HI": 62,
+    "VIADD": 44,
+    "IMAD": 39,
+    "IADD3": 39,
+    "IMAD.X": 35,
+    "FMUL": 32,
+    "LDG.E.128": 27,
+    "BRA": 25
+   }
+  },
+  "void carry_window::window<(int)262145>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "STG.E": 140,
+    "LOP3.LUT": 111,
+    "SHF.R.U32.HI": 87,
+    "IMAD.MOV.U32": 74,
+    "R2UR": 64,
+    "VIADD": 59,
+    "IMAD": 45,
+    "IMAD.SHL.U32": 34,
+    "IADD3": 34,
+    "FMUL": 32,
+    "IMAD.X": 30,
+    "LDG.E.128": 27
+   }
+  },
+  "void carry_window::window<(int)262435>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 351,
+    "SHF.R.U32.HI": 189,
+    "VIADD": 172,
+    "STG.E": 140,
+    "IMAD.MOV.U32": 117,
+    "IMAD.SHL.U32": 117,
+    "IADD3": 117,
+    "FMUL": 80,
+    "LEA": 79,
+    "IMAD": 77,
+    "IMAD.X": 71,
+    "LEA.HI.X": 69
+   }
+  },
+  "void carry_window::window<(int)262147>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 222,
+    "STG.E": 140,
+    "SHF.R.U32.HI": 112,
+    "VIADD": 108,
+    "IMAD.MOV.U32": 91,
+    "IADD3": 84,
+    "IMAD.SHL.U32": 82,
+    "IMAD.X": 71,
+    "PRMT": 64,
+    "R2UR": 64,
+    "LEA": 63,
+    "IMAD": 59
+   }
+  },
+  "void carry_window::window<(int)9475>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 279,
+    "STG.E": 140,
+    "VIADD": 132,
+    "SHF.R.U32.HI": 129,
+    "IADD3": 115,
+    "IMAD.MOV.U32": 92,
+    "FMUL": 80,
+    "IMAD.X": 79,
+    "LEA": 75,
+    "IMAD.SHL.U32": 69,
+    "IMAD": 68,
+    "LEA.HI.X": 65
+   }
+  },
+  "void carry_window::window<(int)8483>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 281,
+    "STG.E": 140,
+    "SHF.R.U32.HI": 130,
+    "VIADD": 125,
+    "IADD3": 117,
+    "IMAD.MOV.U32": 102,
+    "FMUL": 80,
+    "IMAD.X": 79,
+    "LEA": 76,
+    "IMAD.SHL.U32": 68,
+    "IMAD": 66,
+    "LEA.HI.X": 65
+   }
+  },
+  "void carry_window::window<(int)8227>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 190,
+    "STG.E": 140,
+    "IMAD.MOV.U32": 93,
+    "IADD3": 88,
+    "SHF.R.U32.HI": 82,
+    "VIADD": 80,
+    "IMAD.X": 76,
+    "PRMT": 64,
+    "R2UR": 64,
+    "BRA": 63,
+    "LEA": 61,
+    "IMAD.SHL.U32": 61
+   }
+  },
+  "void carry_window::window<(int)291>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 289,
+    "STG.E": 140,
+    "SHF.R.U32.HI": 134,
+    "VIADD": 130,
+    "IADD3": 123,
+    "IMAD.MOV.U32": 114,
+    "FMUL": 80,
+    "LEA": 79,
+    "IMAD.X": 77,
+    "LEA.HI.X": 69,
+    "IMAD.SHL.U32": 65,
+    "IMAD": 65
+   }
+  },
+  "void carry_window::window<(int)131075>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 190,
+    "STG.E": 140,
+    "IMAD.MOV.U32": 88,
+    "VIADD": 87,
+    "IADD3": 87,
+    "SHF.R.U32.HI": 85,
+    "IMAD.X": 74,
+    "PRMT": 64,
+    "R2UR": 64,
+    "LEA": 63,
+    "IMAD.SHL.U32": 54,
+    "IMAD": 53
+   }
+  },
+  "void carry_window::window<(int)65602>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 109,
+    "VIADD": 53,
+    "IMAD.SHL.U32": 52,
+    "IADD3": 45,
+    "LEA": 41,
+    "IMAD.X": 41,
+    "LEA.HI.X": 36,
+    "LDS": 32,
+    "SHF.L.U64.HI": 32,
+    "REDG.E.ADD.F16": 32,
+    "SEL": 32,
+    "SHF.R.U32.HI": 29
+   }
+  },
+  "void carry_window::window<(int)32834>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 109,
+    "VIADD": 53,
+    "IMAD.SHL.U32": 52,
+    "IADD3": 45,
+    "LEA": 41,
+    "IMAD.X": 41,
+    "LEA.HI.X": 36,
+    "LDS": 32,
+    "SHF.L.U64.HI": 32,
+    "REDG.E.ADD.F16": 32,
+    "SEL": 32,
+    "SHF.R.U32.HI": 29
+   }
+  },
+  "void carry_window::window<(int)16387>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 190,
+    "STG.E": 140,
+    "IMAD.MOV.U32": 88,
+    "VIADD": 87,
+    "IADD3": 87,
+    "SHF.R.U32.HI": 85,
+    "IMAD.X": 74,
+    "PRMT": 64,
+    "R2UR": 64,
+    "LEA": 63,
+    "IMAD.SHL.U32": 54,
+    "IMAD": 53
+   }
+  },
+  "void carry_window::window<(int)16402>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "STG.E": 144,
+    "LOP3.LUT": 110,
+    "VIADD": 54,
+    "IMAD.SHL.U32": 52,
+    "IADD3": 50,
+    "LEA": 42,
+    "IMAD.X": 41,
+    "LEA.HI.X": 37,
+    "LDS": 32,
+    "SHF.L.U64.HI": 32,
+    "REDG.E.ADD.F16": 32,
+    "SEL": 32
+   }
+  },
+  "void carry_window::window<(int)16386>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "STG.E": 144,
+    "LOP3.LUT": 112,
+    "IMAD.MOV.U32": 61,
+    "VIADD": 54,
+    "IMAD.SHL.U32": 52,
+    "IADD3": 50,
+    "LEA": 42,
+    "IMAD.X": 41,
+    "LEA.HI.X": 37,
+    "LDS": 32,
+    "SHF.L.U64.HI": 32,
+    "REDG.E.ADD.F16": 32
+   }
+  },
+  "void carry_window::window<(int)18>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "STG.E": 144,
+    "LOP3.LUT": 110,
+    "VIADD": 54,
+    "IMAD.SHL.U32": 52,
+    "IADD3": 50,
+    "LEA": 42,
+    "IMAD.X": 41,
+    "LEA.HI.X": 37,
+    "LDS": 32,
+    "SHF.L.U64.HI": 32,
+    "REDG.E.ADD.F16": 32,
+    "SEL": 32
+   }
+  },
+  "void carry_window::window<(int)9219>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 187,
+    "STG.E": 140,
+    "IMAD.MOV.U32": 103,
+    "IADD3": 88,
+    "VIADD": 87,
+    "SHF.R.U32.HI": 81,
+    "IMAD.X": 76,
+    "PRMT": 64,
+    "R2UR": 64,
+    "IMAD.SHL.U32": 62,
+    "LEA": 59,
+    "IMAD": 56
+   }
+  },
+  "void carry_window::window<(int)8258>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 108,
+    "IMAD.SHL.U32": 59,
+    "VIADD": 46,
+    "IADD3": 46,
+    "IMAD.X": 43,
+    "LDS": 40,
+    "LEA": 39,
+    "SHF.L.U64.HI": 32,
+    "LEA.HI.X": 32,
+    "REDG.E.ADD.F16": 32,
+    "SEL": 32,
+    "SHF.R.U32.HI": 26
+   }
+  },
+  "void carry_window::window<(int)8194>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "STG.E": 144,
+    "LOP3.LUT": 112,
+    "IMAD.MOV.U32": 66,
+    "IMAD.SHL.U32": 59,
+    "IADD3": 51,
+    "VIADD": 47,
+    "IMAD.X": 43,
+    "LEA": 40,
+    "LDS": 40,
+    "LEA.HI.X": 33,
+    "SHF.L.U64.HI": 32,
+    "REDG.E.ADD.F16": 32
+   }
+  },
+  "void carry_window::window<(int)8195>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 190,
+    "STG.E": 140,
+    "IMAD.MOV.U32": 93,
+    "IADD3": 88,
+    "SHF.R.U32.HI": 82,
+    "VIADD": 80,
+    "IMAD.X": 76,
+    "PRMT": 64,
+    "R2UR": 64,
+    "LEA": 61,
+    "IMAD.SHL.U32": 61,
+    "IMAD": 57
+   }
+  },
+  "void carry_window::window<(int)4107>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "STG.E": 141,
+    "LOP3.LUT": 122,
+    "VIADD": 97,
+    "IMAD.MOV.U32": 93,
+    "SHF.R.U32.HI": 84,
+    "PRMT": 64,
+    "R2UR": 64,
+    "IMAD": 55,
+    "IMAD.IADD": 51,
+    "FMUL": 48,
+    "IADD3": 47,
+    "BRA": 42
+   }
+  },
+  "void carry_window::window<(int)4099>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 181,
+    "STG.E": 140,
+    "VIADD": 97,
+    "IMAD.MOV.U32": 92,
+    "IADD3": 87,
+    "SHF.R.U32.HI": 84,
+    "IMAD.X": 74,
+    "PRMT": 64,
+    "R2UR": 64,
+    "LEA": 59,
+    "IMAD.SHL.U32": 54,
+    "IMAD": 53
+   }
+  },
+  "void carry_window::window<(int)4162>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 100,
+    "VIADD": 63,
+    "IMAD.SHL.U32": 52,
+    "IADD3": 45,
+    "IMAD.X": 41,
+    "LEA": 37,
+    "LDS": 32,
+    "SHF.L.U64.HI": 32,
+    "LEA.HI.X": 32,
+    "REDG.E.ADD.F16": 32,
+    "SEL": 32,
+    "SHF.R.U32.HI": 28
+   }
+  },
+  "void carry_window::window<(int)4098>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "STG.E": 144,
+    "LOP3.LUT": 103,
+    "IMAD.MOV.U32": 65,
+    "VIADD": 64,
+    "IMAD.SHL.U32": 52,
+    "IADD3": 50,
+    "IMAD.X": 41,
+    "LEA": 38,
+    "LEA.HI.X": 33,
+    "LDS": 32,
+    "SHF.L.U64.HI": 32,
+    "REDG.E.ADD.F16": 32
+   }
+  },
+  "void carry_window::window<(int)2053>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "STG.E": 140,
+    "IMAD.MOV.U32": 104,
+    "R2UR": 64,
+    "LOP3.LUT": 40,
+    "SHF.R.U32.HI": 38,
+    "IADD3": 38,
+    "IMAD": 33,
+    "VIADD": 32,
+    "IMAD.X": 30,
+    "BRA": 23,
+    "SYNCS.EXCH.64": 21,
+    "STS.128": 20
+   }
+  },
+  "void carry_window::window<(int)2049>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "STG.E": 140,
+    "IMAD.MOV.U32": 75,
+    "LOP3.LUT": 64,
+    "R2UR": 64,
+    "SHF.R.U32.HI": 50,
+    "IMAD": 41,
+    "IADD3": 37,
+    "VIADD": 35,
+    "IMAD.X": 33,
+    "LDG.E.128": 27,
+    "BRA": 23,
+    "LEA": 23
+   }
+  },
+  "void carry_window::window<(int)5>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "STG.E": 140,
+    "IMAD.MOV.U32": 113,
+    "R2UR": 64,
+    "LOP3.LUT": 44,
+    "SHF.R.U32.HI": 42,
+    "IADD3": 39,
+    "IMAD": 37,
+    "VIADD": 36,
+    "IMAD.X": 29,
+    "BRA": 23,
+    "SYNCS.EXCH.64": 21,
+    "STS.128": 20
+   }
+  },
+  "void carry_window::window<(int)1026>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "STG.E": 144,
+    "LOP3.LUT": 109,
+    "IMAD.MOV.U32": 66,
+    "VIADD": 54,
+    "IMAD.SHL.U32": 51,
+    "IADD3": 50,
+    "LEA": 42,
+    "IMAD.X": 41,
+    "LEA.HI.X": 37,
+    "LDS": 32,
+    "SHF.L.U64.HI": 32,
+    "REDG.E.ADD.F16": 32
+   }
+  },
+  "void carry_window::window<(int)1025>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "STG.E": 140,
+    "LOP3.LUT": 85,
+    "R2UR": 64,
+    "IMAD.MOV.U32": 63,
+    "SHF.R.U32.HI": 60,
+    "VIADD": 43,
+    "IMAD": 39,
+    "IADD3": 37,
+    "IMAD.X": 33,
+    "FMUL": 32,
+    "LDG.E.128": 27,
+    "LEA": 21
+   }
+  },
+  "void carry_window::window<(int)1027>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 188,
+    "STG.E": 140,
+    "IMAD.MOV.U32": 102,
+    "VIADD": 93,
+    "IADD3": 87,
+    "SHF.R.U32.HI": 84,
+    "IMAD.X": 74,
+    "PRMT": 64,
+    "R2UR": 64,
+    "LEA": 62,
+    "IMAD.SHL.U32": 55,
+    "LEA.HI.X": 53
+   }
+  },
+  "void carry_window::window<(int)514>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 96,
+   "ops": {
+    "STG.E": 140,
+    "IMAD.MOV.U32": 76,
+    "LOP3.LUT": 55,
+    "SHF.R.U32.HI": 33,
+    "SEL": 32,
+    "BRA": 30,
+    "VIADD": 28,
+    "ULOP3.LUT": 28,
+    "UMOV": 22,
+    "SYNCS.EXCH.64": 21,
+    "IMAD": 18,
+    "STS": 17
+   }
+  },
+  "void carry_window::window<(int)513>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 96,
+   "ops": {
+    "STG.E": 140,
+    "LOP3.LUT": 100,
+    "IMAD.MOV.U32": 69,
+    "IMAD": 69,
+    "SHF.R.U32.HI": 67,
+    "R2UR": 64,
+    "IADD3": 53,
+    "VIADD": 39,
+    "IMAD.X": 33,
+    "FMUL": 32,
+    "IMAD.SHL.U32": 31,
+    "LEA": 24
+   }
+  },
+  "void carry_window::window<(int)515>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 96,
+   "ops": {
+    "LOP3.LUT": 149,
+    "STG.E": 136,
+    "SHF.R.U32.HI": 94,
+    "IMAD": 86,
+    "IMAD.MOV.U32": 77,
+    "IADD3": 69,
+    "VIADD": 64,
+    "PRMT": 64,
+    "R2UR": 64,
+    "FMUL": 48,
+    "BRA": 42,
+    "IMAD.SHL.U32": 41
+   }
+  },
+  "void carry_window::window<(int)258>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "STG.E": 144,
+    "LOP3.LUT": 112,
+    "IMAD.MOV.U32": 63,
+    "VIADD": 54,
+    "IMAD.SHL.U32": 52,
+    "IADD3": 49,
+    "LEA": 42,
+    "IMAD.X": 41,
+    "LEA.HI.X": 37,
+    "LDS": 32,
+    "SHF.L.U64.HI": 32,
+    "REDG.E.ADD.F16": 32
+   }
+  },
+  "void carry_window::window<(int)257>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 183,
+    "STG.E": 140,
+    "SHF.R.U32.HI": 109,
+    "IMAD.MOV.U32": 95,
+    "VIADD": 81,
+    "IADD3": 74,
+    "FMUL": 64,
+    "R2UR": 64,
+    "LDG.E.128": 54,
+    "IMAD": 51,
+    "STS.128": 40,
+    "LEA": 39
+   }
+  },
+  "void carry_window::window<(int)259>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 289,
+    "STG.E": 140,
+    "SHF.R.U32.HI": 134,
+    "VIADD": 130,
+    "IADD3": 123,
+    "IMAD.MOV.U32": 114,
+    "FMUL": 80,
+    "LEA": 79,
+    "IMAD.X": 77,
+    "LEA.HI.X": 69,
+    "IMAD.SHL.U32": 65,
+    "IMAD": 65
+   }
+  },
+  "void carry_window::window<(int)130>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "STG.E": 144,
+    "LOP3.LUT": 113,
+    "IMAD.MOV.U32": 68,
+    "VIADD": 56,
+    "IMAD.SHL.U32": 54,
+    "IADD3": 51,
+    "LEA": 45,
+    "IMAD.X": 42,
+    "LDS": 40,
+    "REDG.E.ADD.F16": 40,
+    "LEA.HI.X": 38,
+    "SHF.L.U64.HI": 33
+   }
+  },
+  "void carry_window::window<(int)129>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "STG.E": 140,
+    "LOP3.LUT": 103,
+    "IMAD.MOV.U32": 73,
+    "R2UR": 64,
+    "SHF.R.U32.HI": 60,
+    "IADD3": 53,
+    "VIADD": 44,
+    "IMAD": 37,
+    "IMAD.X": 33,
+    "FMUL": 32,
+    "LDG.E.128": 27,
+    "BRA": 23
+   }
+  },
+  "void carry_window::window<(int)131>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 211,
+    "STG.E": 140,
+    "IADD3": 104,
+    "IMAD.MOV.U32": 97,
+    "VIADD": 95,
+    "SHF.R.U32.HI": 85,
+    "IMAD.X": 75,
+    "LEA": 66,
+    "PRMT": 64,
+    "R2UR": 64,
+    "IMAD.SHL.U32": 61,
+    "IMAD": 55
+   }
+  },
+  "void carry_window::window<(int)35>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 190,
+    "STG.E": 140,
+    "IMAD.MOV.U32": 88,
+    "VIADD": 87,
+    "IADD3": 87,
+    "SHF.R.U32.HI": 85,
+    "IMAD.X": 74,
+    "PRMT": 64,
+    "R2UR": 64,
+    "BRA": 63,
+    "LEA": 63,
+    "IMAD.SHL.U32": 54
+   }
+  },
+  "void carry_window::window<(int)34>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "STG.E": 144,
+    "LOP3.LUT": 112,
+    "IMAD.MOV.U32": 61,
+    "VIADD": 54,
+    "IMAD.SHL.U32": 52,
+    "IADD3": 50,
+    "BRA": 42,
+    "LEA": 42,
+    "IMAD.X": 41,
+    "LEA.HI.X": 37,
+    "LDS": 32,
+    "SHF.L.U64.HI": 32
+   }
+  },
+  "void carry_window::window<(int)66>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 109,
+    "VIADD": 53,
+    "IMAD.SHL.U32": 52,
+    "IADD3": 45,
+    "LEA": 41,
+    "IMAD.X": 41,
+    "LEA.HI.X": 36,
+    "LDS": 32,
+    "SHF.L.U64.HI": 32,
+    "REDG.E.ADD.F16": 32,
+    "SEL": 32,
+    "SHF.R.U32.HI": 29
+   }
+  },
+  "void carry_window::window<(int)19>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 188,
+    "STG.E": 140,
+    "VIADD": 87,
+    "IADD3": 87,
+    "SHF.R.U32.HI": 83,
+    "IMAD.MOV.U32": 77,
+    "IMAD.X": 74,
+    "LEA": 66,
+    "R2UR": 64,
+    "IMAD.SHL.U32": 54,
+    "LEA.HI.X": 53,
+    "IMAD": 49
+   }
+  },
+  "void carry_window::window<(int)11>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "STG.E": 141,
+    "LOP3.LUT": 131,
+    "IMAD.MOV.U32": 89,
+    "VIADD": 87,
+    "SHF.R.U32.HI": 85,
+    "PRMT": 64,
+    "R2UR": 64,
+    "IMAD": 55,
+    "IMAD.IADD": 51,
+    "FMUL": 48,
+    "IADD3": 47,
+    "BRA": 42
+   }
+  },
+  "void carry_window::window<(int)7>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 150,
+    "STG.E": 140,
+    "IMAD.MOV.U32": 128,
+    "VIADD": 87,
+    "IADD3": 86,
+    "IMAD.X": 71,
+    "SHF.R.U32.HI": 67,
+    "PRMT": 64,
+    "R2UR": 64,
+    "IMAD.SHL.U32": 54,
+    "IMAD": 51,
+    "LEA": 46
+   }
+  },
+  "void carry_window::window<(int)3>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 190,
+    "STG.E": 140,
+    "IMAD.MOV.U32": 88,
+    "VIADD": 87,
+    "IADD3": 87,
+    "SHF.R.U32.HI": 85,
+    "IMAD.X": 74,
+    "PRMT": 64,
+    "R2UR": 64,
+    "LEA": 63,
+    "IMAD.SHL.U32": 54,
+    "IMAD": 53
+   }
+  },
+  "void carry_window::window<(int)2>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "STG.E": 144,
+    "LOP3.LUT": 112,
+    "IMAD.MOV.U32": 61,
+    "VIADD": 54,
+    "IMAD.SHL.U32": 52,
+    "IADD3": 50,
+    "LEA": 42,
+    "IMAD.X": 41,
+    "LEA.HI.X": 37,
+    "LDS": 32,
+    "SHF.L.U64.HI": 32,
+    "REDG.E.ADD.F16": 32
+   }
+  },
+  "void carry_window::window<(int)1>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "STG.E": 140,
+    "LOP3.LUT": 84,
+    "IMAD.MOV.U32": 71,
+    "R2UR": 64,
+    "SHF.R.U32.HI": 60,
+    "IMAD": 39,
+    "VIADD": 38,
+    "IADD3": 37,
+    "IMAD.X": 33,
+    "FMUL": 32,
+    "LDG.E.128": 27,
+    "BRA": 23
+   }
+  },
+  "void carry_window::window<(int)130548003>(long long *, unsigned int *, int *, const unsigned int *, const unsigned int *, float *, unsigned int *, int)": {
+   "regs": 128,
+   "ops": {
+    "LOP3.LUT": 304,
+    "STG.E": 144,
+    "SHF.R.U32.HI": 139,
+    "VIADD": 138,
+    "IMAD.MOV.U32": 123,
+    "IADD3": 122,
+    "LEA": 81,
+    "IMAD.X": 81,
+    "FMUL": 80,
+    "R2UR": 72,
+    "LEA.HI.X": 69,
+    "IMAD": 68
+   }
+  }
+ },
+ "counters": {},
+ "counters_exception": {
+  "host": "vast.ai rented box, NVIDIA H100 80GB HBM3: a box with a driver and no toolkit",
+  "instead": "the kernels' own clocks and the SASS's static counts"
+ }
+}
