@@ -1,0 +1,67 @@
+{
+ "experiment": "produce_skeleton",
+ "question": "does the LIBRARY's producer skeleton -- its grid, its two math warpgroups and loader warp, its ring's two edges, its job table and its tickets -- write every element of every output for every routing of the test matrix, and where does the empty pipeline's time go at the design's cell?",
+ "arch": "sm_90a",
+ "git": {
+  "sha": "bcd48e72e3711e8317025a2c7e3e98201c920111",
+  "dirty": false
+ },
+ "date": "2026-11-28T09:51:46+00:00",
+ "metrics": [
+  "dram__bytes_write.sum",
+  "dram__bytes_read.sum",
+  "dram__throughput.avg.pct_of_peak_sustained_elapsed",
+  "smsp__inst_executed.sum",
+  "lts__t_sectors_op_write.sum",
+  "l1tex__t_requests_pipe_lsu_mem_global_op_st.sum",
+  "gpu__time_duration.sum"
+ ],
+ "inputs": {},
+ "kernels": {
+  "void skeleton<0, 1, 0>(Plan, unsigned long long *)": {
+   "dram__bytes_read.sum": 19456.0,
+   "dram__bytes_write.sum": 0.0,
+   "dram__throughput.avg.pct_of_peak_sustained_elapsed": 0.05,
+   "gpu__time_duration.sum": 13008.0,
+   "l1tex__t_requests_pipe_lsu_mem_global_op_st.sum": 573.0,
+   "lts__t_sectors_op_write.sum": 14000.0,
+   "smsp__inst_executed.sum": 73254.0
+  },
+  "void skeleton<0, 1, 1>(Plan, unsigned long long *)": {
+   "dram__bytes_read.sum": 18488704.0,
+   "dram__bytes_write.sum": 321549440.0,
+   "dram__throughput.avg.pct_of_peak_sustained_elapsed": 48.765,
+   "gpu__time_duration.sum": 208112.0,
+   "l1tex__t_requests_pipe_lsu_mem_global_op_st.sum": 1712393.0,
+   "lts__t_sectors_op_write.sum": 18908375.0,
+   "smsp__inst_executed.sum": 28827954.5
+  },
+  "void skeleton<0, 2, 0>(Plan, unsigned long long *)": {
+   "dram__bytes_read.sum": 19456.0,
+   "dram__bytes_write.sum": 0.0,
+   "dram__throughput.avg.pct_of_peak_sustained_elapsed": 0.04,
+   "gpu__time_duration.sum": 15008.0,
+   "l1tex__t_requests_pipe_lsu_mem_global_op_st.sum": 573.0,
+   "lts__t_sectors_op_write.sum": 13916.0,
+   "smsp__inst_executed.sum": 73038.0
+  },
+  "void skeleton<0, 2, 1>(Plan, unsigned long long *)": {
+   "dram__bytes_read.sum": 17930752.0,
+   "dram__bytes_write.sum": 325647104.0,
+   "dram__throughput.avg.pct_of_peak_sustained_elapsed": 51.75,
+   "gpu__time_duration.sum": 198016.0,
+   "l1tex__t_requests_pipe_lsu_mem_global_op_st.sum": 2265353.0,
+   "lts__t_sectors_op_write.sum": 19678507.0,
+   "smsp__inst_executed.sum": 38642485.0
+  },
+  "void skeleton<1, 1, 0>(Plan, unsigned long long *)": {
+   "dram__bytes_read.sum": 21760.0,
+   "dram__bytes_write.sum": 0.0,
+   "dram__throughput.avg.pct_of_peak_sustained_elapsed": 0.05,
+   "gpu__time_duration.sum": 14848.0,
+   "l1tex__t_requests_pipe_lsu_mem_global_op_st.sum": 693.0,
+   "lts__t_sectors_op_write.sum": 16879.0,
+   "smsp__inst_executed.sum": 82764.0
+  }
+ }
+}

@@ -1,0 +1,79 @@
+{
+ "experiment": "produce_skeleton",
+ "question": "does the LIBRARY's producer skeleton -- its grid, its two math warpgroups and loader warp, its ring's two edges, its job table and its tickets -- write every element of every output for every routing of the test matrix, and where does the empty pipeline's time go at the design's cell?",
+ "arch": "sm_90a",
+ "git": {
+  "sha": "bcd48e72e3711e8317025a2c7e3e98201c920111",
+  "dirty": false
+ },
+ "date": "2026-11-28T09:53:12+00:00",
+ "metrics": [
+  "smsp__average_warps_issue_stalled_drain_per_issue_active.ratio",
+  "smsp__average_warps_issue_stalled_lg_throttle_per_issue_active.ratio",
+  "smsp__average_warps_issue_stalled_long_scoreboard_per_issue_active.ratio",
+  "smsp__average_warps_issue_stalled_barrier_per_issue_active.ratio",
+  "smsp__average_warps_issue_stalled_membar_per_issue_active.ratio",
+  "smsp__average_warps_issue_stalled_mio_throttle_per_issue_active.ratio",
+  "lts__t_requests_srcunit_tex_op_write.sum",
+  "l1tex__t_sectors_pipe_lsu_mem_global_op_st.sum",
+  "sm__warps_active.avg.pct_of_peak_sustained_active"
+ ],
+ "inputs": {},
+ "kernels": {
+  "void skeleton<0, 1, 0>(Plan, unsigned long long *)": {
+   "l1tex__t_sectors_pipe_lsu_mem_global_op_st.sum": 8883.0,
+   "lts__t_requests_srcunit_tex_op_write.sum": 6336.5,
+   "sm__warps_active.avg.pct_of_peak_sustained_active": 7.355,
+   "smsp__average_warps_issue_stalled_barrier_per_issue_active.ratio": 2.07,
+   "smsp__average_warps_issue_stalled_drain_per_issue_active.ratio": 0.02,
+   "smsp__average_warps_issue_stalled_lg_throttle_per_issue_active.ratio": 0.0,
+   "smsp__average_warps_issue_stalled_long_scoreboard_per_issue_active.ratio": 1.58,
+   "smsp__average_warps_issue_stalled_membar_per_issue_active.ratio": 0.21,
+   "smsp__average_warps_issue_stalled_mio_throttle_per_issue_active.ratio": 0.01
+  },
+  "void skeleton<0, 1, 1>(Plan, unsigned long long *)": {
+   "l1tex__t_sectors_pipe_lsu_mem_global_op_st.sum": 12591369.0,
+   "lts__t_requests_srcunit_tex_op_write.sum": 5102466.0,
+   "sm__warps_active.avg.pct_of_peak_sustained_active": 11.83,
+   "smsp__average_warps_issue_stalled_barrier_per_issue_active.ratio": 2.285,
+   "smsp__average_warps_issue_stalled_drain_per_issue_active.ratio": 0.27999999999999997,
+   "smsp__average_warps_issue_stalled_lg_throttle_per_issue_active.ratio": 0.0,
+   "smsp__average_warps_issue_stalled_long_scoreboard_per_issue_active.ratio": 4.585,
+   "smsp__average_warps_issue_stalled_membar_per_issue_active.ratio": 0.215,
+   "smsp__average_warps_issue_stalled_mio_throttle_per_issue_active.ratio": 0.005
+  },
+  "void skeleton<0, 2, 0>(Plan, unsigned long long *)": {
+   "l1tex__t_sectors_pipe_lsu_mem_global_op_st.sum": 8883.0,
+   "lts__t_requests_srcunit_tex_op_write.sum": 6389.0,
+   "sm__warps_active.avg.pct_of_peak_sustained_active": 6.93,
+   "smsp__average_warps_issue_stalled_barrier_per_issue_active.ratio": 1.35,
+   "smsp__average_warps_issue_stalled_drain_per_issue_active.ratio": 0.03,
+   "smsp__average_warps_issue_stalled_lg_throttle_per_issue_active.ratio": 0.0,
+   "smsp__average_warps_issue_stalled_long_scoreboard_per_issue_active.ratio": 1.83,
+   "smsp__average_warps_issue_stalled_membar_per_issue_active.ratio": 0.2,
+   "smsp__average_warps_issue_stalled_mio_throttle_per_issue_active.ratio": 0.0
+  },
+  "void skeleton<0, 2, 1>(Plan, unsigned long long *)": {
+   "l1tex__t_sectors_pipe_lsu_mem_global_op_st.sum": 13144329.0,
+   "lts__t_requests_srcunit_tex_op_write.sum": 5606440.0,
+   "sm__warps_active.avg.pct_of_peak_sustained_active": 22.78,
+   "smsp__average_warps_issue_stalled_barrier_per_issue_active.ratio": 1.15,
+   "smsp__average_warps_issue_stalled_drain_per_issue_active.ratio": 0.24,
+   "smsp__average_warps_issue_stalled_lg_throttle_per_issue_active.ratio": 0.0,
+   "smsp__average_warps_issue_stalled_long_scoreboard_per_issue_active.ratio": 7.65,
+   "smsp__average_warps_issue_stalled_membar_per_issue_active.ratio": 0.26,
+   "smsp__average_warps_issue_stalled_mio_throttle_per_issue_active.ratio": 0.01
+  },
+  "void skeleton<1, 1, 0>(Plan, unsigned long long *)": {
+   "l1tex__t_sectors_pipe_lsu_mem_global_op_st.sum": 10803.0,
+   "lts__t_requests_srcunit_tex_op_write.sum": 6849.0,
+   "sm__warps_active.avg.pct_of_peak_sustained_active": 7.79,
+   "smsp__average_warps_issue_stalled_barrier_per_issue_active.ratio": 2.03,
+   "smsp__average_warps_issue_stalled_drain_per_issue_active.ratio": 0.02,
+   "smsp__average_warps_issue_stalled_lg_throttle_per_issue_active.ratio": 0.0,
+   "smsp__average_warps_issue_stalled_long_scoreboard_per_issue_active.ratio": 1.56,
+   "smsp__average_warps_issue_stalled_membar_per_issue_active.ratio": 0.18,
+   "smsp__average_warps_issue_stalled_mio_throttle_per_issue_active.ratio": 0.01
+  }
+ }
+}
