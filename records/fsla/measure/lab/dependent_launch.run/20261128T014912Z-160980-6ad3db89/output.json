@@ -1,0 +1,208 @@
+{
+ "experiment": "dependent_launch",
+ "question": "the producer's launch is followed by the op's, which reads what it wrote. What does PROGRAMMATIC DEPENDENT LAUNCH save a pair of dependent kernels -- the second launched with the attribute, its prologue (what it reads that the first does not write) run while the first drains, then `griddepcontrol.wait` before it reads the first's outputs; the first `griddepcontrol.launch_dependents` at its top -- against the two launched plainly?",
+ "arch": "sm_90a",
+ "device": "NVIDIA H100 80GB HBM3",
+ "checks": [
+  {
+   "lab": "check",
+   "variant": "two plain launches",
+   "ok": true,
+   "detail": "0 of 33792 folds differ"
+  },
+  {
+   "lab": "check",
+   "variant": "the second launched dependent (griddepcontrol)",
+   "ok": true,
+   "detail": "0 of 33792 folds differ"
+  }
+ ],
+ "driver": "580.196.07",
+ "toolkit": "Build cuda_13.5.r13.5/compiler.39125733_0",
+ "git": {
+  "sha": "001238816fb9d98cccfbaf0ee250c363d31d9104",
+  "dirty": false
+ },
+ "reps": 7,
+ "date": "2026-11-28T01:49:12+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "two plain launches: a pair",
+   "unit": "microseconds a pair",
+   "samples": [
+    8.3225,
+    8.2835,
+    8.304,
+    8.27,
+    8.2915,
+    8.329,
+    8.295
+   ],
+   "median": 8.295,
+   "min": 8.27,
+   "max": 8.329,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the second launched dependent (griddepcontrol): a pair",
+   "unit": "microseconds a pair",
+   "samples": [
+    9.228,
+    9.238,
+    9.204,
+    9.2215,
+    9.258,
+    9.2745,
+    9.2665
+   ],
+   "median": 9.238,
+   "min": 9.204,
+   "max": 9.2745,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "dependent_launch::second(const uint4 *, const uint4 *, unsigned int *)": {
+   "regs": 47,
+   "ops": {
+    "LDG.E": 32,
+    "LOP3.LUT": 24,
+    "IMAD": 23,
+    "NOP": 11,
+    "LDG.E.128": 8,
+    "STS.128": 8,
+    "LDS": 8,
+    "LEA": 5,
+    "VIADD": 5,
+    "IADD3": 5,
+    "ULDC.64": 3,
+    "IMAD.WIDE.U32": 3
+   }
+  },
+  "dependent_launch::first(uint4 *, unsigned int)": {
+   "regs": 38,
+   "ops": {
+    "VIADD": 32,
+    "IADD3": 31,
+    "STG.E.128": 16,
+    "NOP": 10,
+    "ULDC.64": 2,
+    "S2R": 2,
+    "LEA": 2,
+    "LDC": 1,
+    "HFMA2.MMA": 1,
+    "ULDC": 1,
+    "PREEXIT": 1,
+    "IMAD": 1
+   }
+  }
+ },
+ "counters": {
+  "first": {
+   "hmma": 1056.0,
+   "imma": 0.0,
+   "inst": 98208.0,
+   "alu": 35904.0,
+   "fma": 35904.0,
+   "fmaheavy": 35904.0,
+   "xu": 0.0,
+   "wavefronts": 1056.0,
+   "conflicts": 0.0,
+   "load_wavefronts": 0.0,
+   "stores": 0.0,
+   "store_wavefronts": 0.0,
+   "atomics": 0.0,
+   "atomic_wavefronts": 0.0,
+   "copy_bypass_bytes": 0.0,
+   "copy_access_bytes": 0.0,
+   "global_reads": 0.0,
+   "global_fill_bytes": 0.0,
+   "l2_read": 0.0,
+   "red_requests": 0.0,
+   "l2_write": 270336.0,
+   "elapsed": 8631.45,
+   "elapsed_sum": 1139352.0,
+   "busy_issue": 2.27,
+   "busy_alu": 1.58,
+   "busy_fma": 0.81,
+   "busy_fmaheavy": 1.62,
+   "stalls": {
+    "long_scoreboard": 20.4,
+    "short_scoreboard": 0.58,
+    "mio_throttle": 0.0,
+    "math_pipe_throttle": 0.31,
+    "barrier": 0.0,
+    "wait": 0.88,
+    "not_selected": 0.68,
+    "lg_throttle": 14.14,
+    "dispatch_stall": 0.1,
+    "branch_resolving": 0.24,
+    "no_instruction": 10.05,
+    "membar": 0.0,
+    "drain": 44.97,
+    "sleeping": 0.0,
+    "tex_throttle": 0.0,
+    "imc_miss": 3.97,
+    "misc": 0.0
+   },
+   "uncollected": [
+    "l1tex__data_pipe_lsu_wavefronts_mem_lg_cmd_read.sum"
+   ]
+  },
+  "second": {
+   "hmma": 0.0,
+   "imma": 0.0,
+   "inst": 147840.0,
+   "alu": 38016.0,
+   "fma": 35904.0,
+   "fmaheavy": 35904.0,
+   "xu": 0.0,
+   "wavefronts": 68772.0,
+   "conflicts": 25344.0,
+   "load_wavefronts": 33792.0,
+   "stores": 8448.0,
+   "store_wavefronts": 33792.0,
+   "atomics": 0.0,
+   "atomic_wavefronts": 0.0,
+   "copy_bypass_bytes": 0.0,
+   "copy_access_bytes": 0.0,
+   "global_reads": 0.0,
+   "global_fill_bytes": 12976128.0,
+   "l2_read": 405504.0,
+   "red_requests": 0.0,
+   "l2_write": 4224.0,
+   "elapsed": 15369.05,
+   "elapsed_sum": 2028714.0,
+   "busy_issue": 1.87,
+   "busy_alu": 0.94,
+   "busy_fma": 0.48,
+   "busy_fmaheavy": 0.96,
+   "stalls": {
+    "long_scoreboard": 82.75,
+    "short_scoreboard": 0.46,
+    "mio_throttle": 1.99,
+    "math_pipe_throttle": 0.02,
+    "barrier": 5.04,
+    "wait": 2.73,
+    "not_selected": 0.38,
+    "lg_throttle": 2.39,
+    "dispatch_stall": 0.07,
+    "branch_resolving": 0.09,
+    "no_instruction": 5.92,
+    "membar": 0.0,
+    "drain": 0.24,
+    "sleeping": 0.0,
+    "tex_throttle": 0.0,
+    "imc_miss": 1.44,
+    "misc": 0.0
+   },
+   "uncollected": [
+    "l1tex__data_pipe_lsu_wavefronts_mem_lg_cmd_read.sum"
+   ]
+  }
+ }
+}

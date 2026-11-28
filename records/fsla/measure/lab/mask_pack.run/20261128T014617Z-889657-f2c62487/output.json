@@ -1,0 +1,164 @@
+{
+ "experiment": "mask_pack",
+ "question": "the producer writes a level-side's mask as 32-token words, a bit the u8 digit is nonzero, from the epilogue's registers: what does the packer cost a 64-token block of 256 digits laid in a `wgmma` m64n256 accumulator (a thread's `d[4 q + 2 j + i]` is row `16 w + g + 8 j`, column `8 q + 2 t + i`)?",
+ "arch": "sm_90a",
+ "device": "NVIDIA H100 80GB HBM3",
+ "checks": [
+  {
+   "lab": "check",
+   "variant": "256 columns, 10% of digits nonzero",
+   "ok": true,
+   "detail": "0 of 67584 mask words differ"
+  },
+  {
+   "lab": "check",
+   "variant": "256 columns, 50% of digits nonzero",
+   "ok": true,
+   "detail": "0 of 67584 mask words differ"
+  },
+  {
+   "lab": "check",
+   "variant": "256 columns, 100% of digits nonzero",
+   "ok": true,
+   "detail": "0 of 67584 mask words differ"
+  }
+ ],
+ "driver": "580.196.07",
+ "toolkit": "Build cuda_13.5.r13.5/compiler.39125733_0",
+ "git": {
+  "sha": "001238816fb9d98cccfbaf0ee250c363d31d9104",
+  "dirty": false
+ },
+ "reps": 7,
+ "date": "2026-11-28T01:46:17+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "256 columns, 10% of digits nonzero: a 64-token block",
+   "unit": "cycles a block",
+   "samples": [
+    1130.281516,
+    1129.696289,
+    1130.600112,
+    1130.773763,
+    1131.786547,
+    1130.321348,
+    1130.214903
+   ],
+   "median": 1130.321348,
+   "min": 1129.696289,
+   "max": 1131.786547,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "256 columns, 50% of digits nonzero: a 64-token block",
+   "unit": "cycles a block",
+   "samples": [
+    1130.284032,
+    1130.296431,
+    1130.802705,
+    1132.170129,
+    1130.311139,
+    1130.238903,
+    1130.868638
+   ],
+   "median": 1130.311139,
+   "min": 1130.238903,
+   "max": 1132.170129,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "256 columns, 100% of digits nonzero: a 64-token block",
+   "unit": "cycles a block",
+   "samples": [
+    1130.278616,
+    1130.845614,
+    1131.831676,
+    1130.385713,
+    1130.381895,
+    1130.755978,
+    1132.030658
+   ],
+   "median": 1130.755978,
+   "min": 1130.278616,
+   "max": 1132.030658,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "mask_pack::pack(long long *, const float *, unsigned int *, float, int)": {
+   "regs": 162,
+   "ops": {
+    "FSETP.GT.AND": 128,
+    "VOTE.ANY": 128,
+    "LOP3.LUT": 66,
+    "LDG.E.64": 64,
+    "SEL": 64,
+    "LEA.HI": 48,
+    "ISETP.NE.AND": 33,
+    "IMAD": 14,
+    "SHF.R.U32.HI": 13,
+    "NOP": 9,
+    "IMAD.SHL.U32": 6,
+    "PRMT": 6
+   }
+  }
+ },
+ "counters": {
+  "pack": {
+   "hmma": 0.0,
+   "imma": 0.0,
+   "inst": 328416.0,
+   "alu": 264528.0,
+   "fma": 13728.0,
+   "fmaheavy": 13728.0,
+   "xu": 0.0,
+   "wavefronts": 5297.0,
+   "conflicts": 88.0,
+   "load_wavefronts": 2112.0,
+   "stores": 528.0,
+   "store_wavefronts": 2209.0,
+   "atomics": 0.0,
+   "atomic_wavefronts": 0.0,
+   "copy_bypass_bytes": 0.0,
+   "copy_access_bytes": 0.0,
+   "global_reads": 0.0,
+   "global_fill_bytes": 8650752.0,
+   "l2_read": 270336.0,
+   "red_requests": 0.0,
+   "l2_write": 8716.0,
+   "elapsed": 13114.38,
+   "elapsed_sum": 1731098.0,
+   "busy_issue": 4.78,
+   "busy_alu": 7.64,
+   "busy_fma": 0.22,
+   "busy_fmaheavy": 0.44,
+   "stalls": {
+    "long_scoreboard": 51.92,
+    "short_scoreboard": 2.72,
+    "mio_throttle": 0.0,
+    "math_pipe_throttle": 0.0,
+    "barrier": 1.31,
+    "wait": 8.93,
+    "not_selected": 0.0,
+    "lg_throttle": 12.31,
+    "dispatch_stall": 0.07,
+    "branch_resolving": 0.19,
+    "no_instruction": 3.43,
+    "membar": 0.0,
+    "drain": 0.33,
+    "sleeping": 0.0,
+    "tex_throttle": 0.0,
+    "imc_miss": 2.81,
+    "misc": 8.67
+   },
+   "uncollected": [
+    "l1tex__data_pipe_lsu_wavefronts_mem_lg_cmd_read.sum"
+   ]
+  }
+ }
+}

@@ -1,0 +1,396 @@
+{
+ "experiment": "l2_policy",
+ "question": "the producer streams what it reads once (its `x` tile, its outputs) beside what every CTA reuses (a write head's weights from L2). Does an L2 policy -- the stream's loads `evict_first`, the table's `evict_last` (`createpolicy` and the loads' `L2::cache_hint`) -- keep the table and save time, against plain loads?",
+ "arch": "sm_90a",
+ "device": "NVIDIA H100 80GB HBM3",
+ "checks": [
+  {
+   "lab": "check",
+   "variant": "16 MB table beside a 1 GiB stream, no hint",
+   "ok": true,
+   "detail": "0 of 67584 chains differ"
+  },
+  {
+   "lab": "check",
+   "variant": "16 MB table beside a 1 GiB stream, the stream evict-first and the table evict-last",
+   "ok": true,
+   "detail": "0 of 67584 chains differ"
+  },
+  {
+   "lab": "check",
+   "variant": "40 MB table beside a 1 GiB stream, no hint",
+   "ok": true,
+   "detail": "0 of 67584 chains differ"
+  },
+  {
+   "lab": "check",
+   "variant": "40 MB table beside a 1 GiB stream, the stream evict-first and the table evict-last",
+   "ok": true,
+   "detail": "0 of 67584 chains differ"
+  }
+ ],
+ "driver": "580.196.07",
+ "toolkit": "Build cuda_13.5.r13.5/compiler.39125733_0",
+ "git": {
+  "sha": "001238816fb9d98cccfbaf0ee250c363d31d9104",
+  "dirty": false
+ },
+ "reps": 7,
+ "date": "2026-11-28T01:46:45+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "16 MB table beside a 1 GiB stream, no hint: a trip",
+   "unit": "cycles a trip a CTA (64 KB of the stream, 64 KB of the table)",
+   "samples": [
+    6743.152248,
+    6750.835288,
+    6786.043561,
+    6782.762219,
+    6780.557918,
+    6793.986315,
+    6770.469514
+   ],
+   "median": 6780.557918,
+   "min": 6743.152248,
+   "max": 6793.986315,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "16 MB table beside a 1 GiB stream, no hint: the launch",
+   "unit": "microseconds",
+   "samples": [
+    449.344009,
+    448.992014,
+    451.775998,
+    450.336009,
+    449.952006,
+    449.824005,
+    449.47201
+   ],
+   "median": 449.824005,
+   "min": 448.992014,
+   "max": 451.775998,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "16 MB table beside a 1 GiB stream, the stream evict-first and the table evict-last: a trip",
+   "unit": "cycles a trip a CTA (64 KB of the stream, 64 KB of the table)",
+   "samples": [
+    5196.297898,
+    5170.226662,
+    5194.243768,
+    5169.260203,
+    5169.011364,
+    5185.117546,
+    5203.917827
+   ],
+   "median": 5185.117546,
+   "min": 5169.011364,
+   "max": 5203.917827,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "16 MB table beside a 1 GiB stream, the stream evict-first and the table evict-last: the launch",
+   "unit": "microseconds",
+   "samples": [
+    348.767996,
+    344.128013,
+    345.72801,
+    344.128013,
+    347.263992,
+    343.935996,
+    344.799995
+   ],
+   "median": 344.799995,
+   "min": 343.935996,
+   "max": 348.767996,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "40 MB table beside a 1 GiB stream, no hint: a trip",
+   "unit": "cycles a trip a CTA (64 KB of the stream, 64 KB of the table)",
+   "samples": [
+    8029.458333,
+    7977.17968,
+    8003.404326,
+    8020.303091,
+    8037.28458,
+    7985.403531,
+    8046.162451
+   ],
+   "median": 8020.303091,
+   "min": 7977.17968,
+   "max": 8046.162451,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "40 MB table beside a 1 GiB stream, no hint: the launch",
+   "unit": "microseconds",
+   "samples": [
+    536.736012,
+    530.431986,
+    534.720004,
+    533.504009,
+    535.679996,
+    531.423986,
+    536.800027
+   ],
+   "median": 534.720004,
+   "min": 530.431986,
+   "max": 536.800027,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "40 MB table beside a 1 GiB stream, the stream evict-first and the table evict-last: a trip",
+   "unit": "cycles a trip a CTA (64 KB of the stream, 64 KB of the table)",
+   "samples": [
+    7273.455401,
+    7251.249267,
+    7277.346652,
+    7288.976662,
+    7278.048387,
+    7283.86828,
+    7280.124511
+   ],
+   "median": 7278.048387,
+   "min": 7251.249267,
+   "max": 7288.976662,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "40 MB table beside a 1 GiB stream, the stream evict-first and the table evict-last: the launch",
+   "unit": "microseconds",
+   "samples": [
+    484.192014,
+    483.648002,
+    484.95999,
+    485.184014,
+    484.223992,
+    485.376,
+    485.888004
+   ],
+   "median": 484.95999,
+   "min": 483.648002,
+   "max": 485.888004,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void l2_policy::kept<(int)1>(long long *, const uint4 *, const uint4 *, unsigned int *, long long, long long, int)": {
+   "regs": 87,
+   "ops": {
+    "IADD3": 62,
+    "SEL": 50,
+    "IMAD.X": 47,
+    "LEA": 37,
+    "LEA.HI.X": 37,
+    "IMAD": 32,
+    "LDG.E.128": 32,
+    "ISETP.GE.U32.AND": 22,
+    "IMAD.IADD": 20,
+    "ISETP.GE.AND.EX": 18,
+    "NOP": 13,
+    "IMAD.HI.U32": 11
+   }
+  },
+  "void l2_policy::kept<(int)0>(long long *, const uint4 *, const uint4 *, unsigned int *, long long, long long, int)": {
+   "regs": 87,
+   "ops": {
+    "IADD3": 62,
+    "SEL": 50,
+    "IMAD.X": 47,
+    "LEA": 37,
+    "LEA.HI.X": 37,
+    "IMAD": 32,
+    "LDG.E.128": 32,
+    "ISETP.GE.U32.AND": 22,
+    "IMAD.IADD": 20,
+    "ISETP.GE.AND.EX": 18,
+    "NOP": 14,
+    "IMAD.HI.U32": 11
+   }
+  },
+  "l2_policy::fill(uint4 *, long long)": {
+   "regs": 32,
+   "ops": {
+    "IADD3": 28,
+    "IMAD": 19,
+    "VIADD": 17,
+    "IMAD.WIDE.U32": 12,
+    "IMAD.HI.U32": 11,
+    "NOP": 11,
+    "IADD3.X": 10,
+    "IMAD.X": 9,
+    "SEL": 8,
+    "ISETP.GE.U32.AND": 7,
+    "BRA": 6,
+    "IMAD.MOV.U32": 6
+   }
+  }
+ },
+ "counters": {
+  "fill": {
+   "hmma": 2112.0,
+   "imma": 0.0,
+   "inst": 20070912.0,
+   "alu": 7921408.0,
+   "fma": 9480128.0,
+   "fmaheavy": 9480128.0,
+   "xu": 6336.0,
+   "wavefronts": 2112.0,
+   "conflicts": 0.0,
+   "load_wavefronts": 0.0,
+   "stores": 0.0,
+   "store_wavefronts": 0.0,
+   "atomics": 0.0,
+   "atomic_wavefronts": 0.0,
+   "copy_bypass_bytes": 0.0,
+   "copy_access_bytes": 0.0,
+   "global_reads": 0.0,
+   "global_fill_bytes": 0.0,
+   "l2_read": 0.0,
+   "red_requests": 0.0,
+   "l2_write": 33554432.0,
+   "elapsed": 673429.58,
+   "elapsed_sum": 88892704.0,
+   "busy_issue": 5.65,
+   "busy_alu": 4.46,
+   "busy_fma": 3.11,
+   "busy_fmaheavy": 6.22,
+   "stalls": {
+    "long_scoreboard": 60.61,
+    "short_scoreboard": 0.03,
+    "mio_throttle": 0.0,
+    "math_pipe_throttle": 0.23,
+    "barrier": 0.0,
+    "wait": 0.68,
+    "not_selected": 0.72,
+    "lg_throttle": 35.73,
+    "dispatch_stall": 0.1,
+    "branch_resolving": 0.19,
+    "no_instruction": 0.12,
+    "membar": 0.0,
+    "drain": 0.17,
+    "sleeping": 0.0,
+    "tex_throttle": 0.0,
+    "imc_miss": 0.01,
+    "misc": 0.0
+   },
+   "uncollected": [
+    "l1tex__data_pipe_lsu_wavefronts_mem_lg_cmd_read.sum"
+   ]
+  },
+  "kept<0>": {
+   "hmma": 0.0,
+   "imma": 0.0,
+   "inst": 2008512.0,
+   "alu": 1174272.0,
+   "fma": 559680.0,
+   "fmaheavy": 559680.0,
+   "xu": 6336.0,
+   "wavefronts": 4224.0,
+   "conflicts": 0.0,
+   "load_wavefronts": 0.0,
+   "stores": 0.0,
+   "store_wavefronts": 0.0,
+   "atomics": 0.0,
+   "atomic_wavefronts": 0.0,
+   "copy_bypass_bytes": 0.0,
+   "copy_access_bytes": 0.0,
+   "global_reads": 0.0,
+   "global_fill_bytes": 77861248.0,
+   "l2_read": 2433144.0,
+   "red_requests": 0.0,
+   "l2_write": 10583.0,
+   "elapsed": 43264.03,
+   "elapsed_sum": 5710852.0,
+   "busy_issue": 8.83,
+   "busy_alu": 10.28,
+   "busy_fma": 2.53,
+   "busy_fmaheavy": 5.07,
+   "stalls": {
+    "long_scoreboard": 88.18,
+    "short_scoreboard": 0.41,
+    "mio_throttle": 0.01,
+    "math_pipe_throttle": 0.94,
+    "barrier": 0.0,
+    "wait": 3.53,
+    "not_selected": 1.03,
+    "lg_throttle": 0.33,
+    "dispatch_stall": 0.11,
+    "branch_resolving": 0.11,
+    "no_instruction": 1.07,
+    "membar": 0.0,
+    "drain": 0.07,
+    "sleeping": 0.0,
+    "tex_throttle": 0.0,
+    "imc_miss": 1.01,
+    "misc": 0.0
+   },
+   "uncollected": [
+    "l1tex__data_pipe_lsu_wavefronts_mem_lg_cmd_read.sum"
+   ]
+  },
+  "kept<1>": {
+   "hmma": 0.0,
+   "imma": 0.0,
+   "inst": 2044416.0,
+   "alu": 1174272.0,
+   "fma": 559680.0,
+   "fmaheavy": 559680.0,
+   "xu": 6336.0,
+   "wavefronts": 4224.0,
+   "conflicts": 0.0,
+   "load_wavefronts": 0.0,
+   "stores": 0.0,
+   "store_wavefronts": 0.0,
+   "atomics": 0.0,
+   "atomic_wavefronts": 0.0,
+   "copy_bypass_bytes": 0.0,
+   "copy_access_bytes": 0.0,
+   "global_reads": 0.0,
+   "global_fill_bytes": 77863168.0,
+   "l2_read": 2433152.0,
+   "red_requests": 0.0,
+   "l2_write": 10566.0,
+   "elapsed": 39809.97,
+   "elapsed_sum": 5254916.0,
+   "busy_issue": 9.79,
+   "busy_alu": 11.17,
+   "busy_fma": 2.75,
+   "busy_fmaheavy": 5.51,
+   "stalls": {
+    "long_scoreboard": 93.63,
+    "short_scoreboard": 0.57,
+    "mio_throttle": 0.01,
+    "math_pipe_throttle": 0.72,
+    "barrier": 0.0,
+    "wait": 3.33,
+    "not_selected": 0.87,
+    "lg_throttle": 0.4,
+    "dispatch_stall": 0.14,
+    "branch_resolving": 0.12,
+    "no_instruction": 0.97,
+    "membar": 0.0,
+    "drain": 0.07,
+    "sleeping": 0.0,
+    "tex_throttle": 0.0,
+    "imc_miss": 0.97,
+    "misc": 0.0
+   },
+   "uncollected": [
+    "l1tex__data_pipe_lsu_wavefronts_mem_lg_cmd_read.sum"
+   ]
+  }
+ }
+}

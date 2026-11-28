@@ -1,0 +1,25 @@
+{
+ "experiment": "l2_policy",
+ "question": "the producer streams what it reads once (its `x` tile, its outputs) beside what every CTA reuses (a write head's weights from L2). Does an L2 policy -- the stream's loads `evict_first`, the table's `evict_last` (`createpolicy` and the loads' `L2::cache_hint`) -- keep the table and save time, against plain loads?",
+ "arch": "sm_90a",
+ "git": {
+  "sha": "001238816fb9d98cccfbaf0ee250c363d31d9104",
+  "dirty": false
+ },
+ "date": "2026-11-28T01:47:11+00:00",
+ "metrics": [
+  "lts__t_sector_op_read_hit_rate.pct"
+ ],
+ "inputs": {},
+ "kernels": {
+  "fill(uint4 *, long long)": {
+   "lts__t_sector_op_read_hit_rate.pct": 65.62
+  },
+  "void kept<0>(long long *, const uint4 *, const uint4 *, unsigned int *, long long, long long, int)": {
+   "lts__t_sector_op_read_hit_rate.pct": 15.174999999999999
+  },
+  "void kept<1>(long long *, const uint4 *, const uint4 *, unsigned int *, long long, long long, int)": {
+   "lts__t_sector_op_read_hit_rate.pct": 22.195
+  }
+ }
+}
