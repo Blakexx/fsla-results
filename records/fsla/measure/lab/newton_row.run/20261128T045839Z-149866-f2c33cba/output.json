@@ -1,0 +1,5448 @@
+{
+ "experiment": "newton_row",
+ "question": "(no QUESTION in the header)",
+ "arch": "sm_90a",
+ "device": "NVIDIA H100 80GB HBM3",
+ "checks": [
+  {
+   "lab": "check",
+   "variant": "alpha 1.5, random, 1 warpgroup a CTA",
+   "ok": true,
+   "detail": "0 of 2162688 levels off fp64 past the stored values' clause; 0 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 108549 nonzero digits against fp64's 108549; 0 capped; the threshold within 8.26e-07 of fp64"
+  },
+  {
+   "lab": "check",
+   "variant": "alpha 1.5, random, 2 warpgroups a CTA",
+   "ok": true,
+   "detail": "0 of 4325376 levels off fp64 past the stored values' clause; 0 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 217312 nonzero digits against fp64's 217312; 0 capped; the threshold within 8.28e-07 of fp64"
+  },
+  {
+   "lab": "check",
+   "variant": "alpha 2, random, 1 warpgroup a CTA",
+   "ok": true,
+   "detail": "0 of 2162688 levels off fp64 past the stored values' clause; 0 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 31221 nonzero digits against fp64's 31221; 0 capped; the threshold within 1.02e-07 of fp64"
+  },
+  {
+   "lab": "check",
+   "variant": "alpha 2, random, 2 warpgroups a CTA",
+   "ok": true,
+   "detail": "0 of 4325376 levels off fp64 past the stored values' clause; 0 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 62638 nonzero digits against fp64's 62638; 0 capped; the threshold within 1.02e-07 of fp64"
+  },
+  {
+   "lab": "check",
+   "variant": "alpha 1.5, random, 1 warpgroup a CTA, both rows interleaved",
+   "ok": true,
+   "detail": "0 of 2162688 levels off fp64 past the stored values' clause; 0 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 108549 nonzero digits against fp64's 108549; 0 capped; the threshold within 8.28e-07 of fp64"
+  },
+  {
+   "lab": "check",
+   "variant": "alpha 1.5, random, 2 warpgroups a CTA, both rows interleaved",
+   "ok": true,
+   "detail": "0 of 4325376 levels off fp64 past the stored values' clause; 0 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 217312 nonzero digits against fp64's 217312; 0 capped; the threshold within 8.28e-07 of fp64"
+  },
+  {
+   "lab": "check",
+   "variant": "alpha 2, random, 1 warpgroup a CTA, both rows interleaved",
+   "ok": true,
+   "detail": "0 of 2162688 levels off fp64 past the stored values' clause; 0 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 31221 nonzero digits against fp64's 31221; 0 capped; the threshold within 1.02e-07 of fp64"
+  },
+  {
+   "lab": "check",
+   "variant": "alpha 2, random, 2 warpgroups a CTA, both rows interleaved",
+   "ok": true,
+   "detail": "0 of 4325376 levels off fp64 past the stored values' clause; 0 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 62638 nonzero digits against fp64's 62638; 0 capped; the threshold within 1.02e-07 of fp64"
+  },
+  {
+   "lab": "check",
+   "variant": "alpha 1.5, random, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE",
+   "ok": true,
+   "detail": "0 of 2162688 levels off fp64 past the stored values' clause; 0 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 108549 nonzero digits against fp64's 108549; 0 capped; the threshold within 8.28e-07 of fp64"
+  },
+  {
+   "lab": "check",
+   "variant": "alpha 1.5, random, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE",
+   "ok": true,
+   "detail": "0 of 4325376 levels off fp64 past the stored values' clause; 0 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 217312 nonzero digits against fp64's 217312; 0 capped; the threshold within 8.28e-07 of fp64"
+  },
+  {
+   "lab": "check",
+   "variant": "alpha 2, random, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE",
+   "ok": true,
+   "detail": "0 of 2162688 levels off fp64 past the stored values' clause; 0 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 31221 nonzero digits against fp64's 31221; 0 capped; the threshold within 5.96e-08 of fp64"
+  },
+  {
+   "lab": "check",
+   "variant": "alpha 2, random, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE",
+   "ok": true,
+   "detail": "0 of 4325376 levels off fp64 past the stored values' clause; 0 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 62638 nonzero digits against fp64's 62638; 0 capped; the threshold within 7.15e-08 of fp64"
+  },
+  {
+   "lab": "check",
+   "variant": "alpha 1.5, near the boundary, 1 warpgroup a CTA",
+   "ok": true,
+   "detail": "0 of 2162688 levels off fp64 past the stored values' clause; 1 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 105606 nonzero digits against fp64's 105606; 0 capped; the threshold within 1.42e-06 of fp64"
+  },
+  {
+   "lab": "check",
+   "variant": "alpha 1.5, near the boundary, 2 warpgroups a CTA",
+   "ok": true,
+   "detail": "0 of 4325376 levels off fp64 past the stored values' clause; 1 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 211253 nonzero digits against fp64's 211253; 0 capped; the threshold within 1.51e-06 of fp64"
+  },
+  {
+   "lab": "check",
+   "variant": "alpha 2, near the boundary, 1 warpgroup a CTA",
+   "ok": true,
+   "detail": "0 of 2162688 levels off fp64 past the stored values' clause; 0 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 30562 nonzero digits against fp64's 30562; 0 capped; the threshold within 9.37e-08 of fp64"
+  },
+  {
+   "lab": "check",
+   "variant": "alpha 2, near the boundary, 2 warpgroups a CTA",
+   "ok": true,
+   "detail": "0 of 4325376 levels off fp64 past the stored values' clause; 0 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 60888 nonzero digits against fp64's 60888; 0 capped; the threshold within 9.37e-08 of fp64"
+  },
+  {
+   "lab": "check",
+   "variant": "alpha 1.5, near the boundary, 1 warpgroup a CTA, both rows interleaved",
+   "ok": true,
+   "detail": "0 of 2162688 levels off fp64 past the stored values' clause; 1 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 105606 nonzero digits against fp64's 105606; 0 capped; the threshold within 1.09e-06 of fp64"
+  },
+  {
+   "lab": "check",
+   "variant": "alpha 1.5, near the boundary, 2 warpgroups a CTA, both rows interleaved",
+   "ok": true,
+   "detail": "0 of 4325376 levels off fp64 past the stored values' clause; 1 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 211253 nonzero digits against fp64's 211253; 0 capped; the threshold within 2.02e-06 of fp64"
+  },
+  {
+   "lab": "check",
+   "variant": "alpha 2, near the boundary, 1 warpgroup a CTA, both rows interleaved",
+   "ok": true,
+   "detail": "0 of 2162688 levels off fp64 past the stored values' clause; 0 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 30562 nonzero digits against fp64's 30562; 0 capped; the threshold within 9.37e-08 of fp64"
+  },
+  {
+   "lab": "check",
+   "variant": "alpha 2, near the boundary, 2 warpgroups a CTA, both rows interleaved",
+   "ok": true,
+   "detail": "0 of 4325376 levels off fp64 past the stored values' clause; 0 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 60888 nonzero digits against fp64's 60888; 0 capped; the threshold within 9.37e-08 of fp64"
+  },
+  {
+   "lab": "check",
+   "variant": "alpha 1.5, near the boundary, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE",
+   "ok": true,
+   "detail": "0 of 2162688 levels off fp64 past the stored values' clause; 1 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 105606 nonzero digits against fp64's 105606; 0 capped; the threshold within 1.09e-06 of fp64"
+  },
+  {
+   "lab": "check",
+   "variant": "alpha 1.5, near the boundary, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE",
+   "ok": true,
+   "detail": "0 of 4325376 levels off fp64 past the stored values' clause; 1 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 211253 nonzero digits against fp64's 211253; 0 capped; the threshold within 2.02e-06 of fp64"
+  },
+  {
+   "lab": "check",
+   "variant": "alpha 2, near the boundary, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE",
+   "ok": true,
+   "detail": "0 of 2162688 levels off fp64 past the stored values' clause; 0 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 30562 nonzero digits against fp64's 30562; 0 capped; the threshold within 7.66e-08 of fp64"
+  },
+  {
+   "lab": "check",
+   "variant": "alpha 2, near the boundary, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE",
+   "ok": true,
+   "detail": "0 of 4325376 levels off fp64 past the stored values' clause; 0 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 60888 nonzero digits against fp64's 60888; 0 capped; the threshold within 7.66e-08 of fp64"
+  },
+  {
+   "lab": "check",
+   "variant": "alpha 1.5, a collapsed support, 1 warpgroup a CTA",
+   "ok": true,
+   "detail": "0 of 2162688 levels off fp64 past the stored values' clause; 0 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 8448 nonzero digits against fp64's 8448; 0 capped; the threshold within 0.00e+00 of fp64"
+  },
+  {
+   "lab": "check",
+   "variant": "alpha 1.5, a collapsed support, 2 warpgroups a CTA",
+   "ok": true,
+   "detail": "0 of 4325376 levels off fp64 past the stored values' clause; 0 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 16896 nonzero digits against fp64's 16896; 0 capped; the threshold within 0.00e+00 of fp64"
+  },
+  {
+   "lab": "check",
+   "variant": "alpha 2, a collapsed support, 1 warpgroup a CTA",
+   "ok": true,
+   "detail": "0 of 2162688 levels off fp64 past the stored values' clause; 0 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 8448 nonzero digits against fp64's 8448; 0 capped; the threshold within 0.00e+00 of fp64"
+  },
+  {
+   "lab": "check",
+   "variant": "alpha 2, a collapsed support, 2 warpgroups a CTA",
+   "ok": true,
+   "detail": "0 of 4325376 levels off fp64 past the stored values' clause; 0 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 16896 nonzero digits against fp64's 16896; 0 capped; the threshold within 0.00e+00 of fp64"
+  },
+  {
+   "lab": "check",
+   "variant": "alpha 1.5, a collapsed support, 1 warpgroup a CTA, both rows interleaved",
+   "ok": true,
+   "detail": "0 of 2162688 levels off fp64 past the stored values' clause; 0 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 8448 nonzero digits against fp64's 8448; 0 capped; the threshold within 0.00e+00 of fp64"
+  },
+  {
+   "lab": "check",
+   "variant": "alpha 1.5, a collapsed support, 2 warpgroups a CTA, both rows interleaved",
+   "ok": true,
+   "detail": "0 of 4325376 levels off fp64 past the stored values' clause; 0 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 16896 nonzero digits against fp64's 16896; 0 capped; the threshold within 0.00e+00 of fp64"
+  },
+  {
+   "lab": "check",
+   "variant": "alpha 2, a collapsed support, 1 warpgroup a CTA, both rows interleaved",
+   "ok": true,
+   "detail": "0 of 2162688 levels off fp64 past the stored values' clause; 0 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 8448 nonzero digits against fp64's 8448; 0 capped; the threshold within 0.00e+00 of fp64"
+  },
+  {
+   "lab": "check",
+   "variant": "alpha 2, a collapsed support, 2 warpgroups a CTA, both rows interleaved",
+   "ok": true,
+   "detail": "0 of 4325376 levels off fp64 past the stored values' clause; 0 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 16896 nonzero digits against fp64's 16896; 0 capped; the threshold within 0.00e+00 of fp64"
+  },
+  {
+   "lab": "check",
+   "variant": "alpha 1.5, a collapsed support, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE",
+   "ok": true,
+   "detail": "0 of 2162688 levels off fp64 past the stored values' clause; 0 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 8448 nonzero digits against fp64's 8448; 0 capped; the threshold within 0.00e+00 of fp64"
+  },
+  {
+   "lab": "check",
+   "variant": "alpha 1.5, a collapsed support, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE",
+   "ok": true,
+   "detail": "0 of 4325376 levels off fp64 past the stored values' clause; 0 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 16896 nonzero digits against fp64's 16896; 0 capped; the threshold within 0.00e+00 of fp64"
+  },
+  {
+   "lab": "check",
+   "variant": "alpha 2, a collapsed support, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE",
+   "ok": true,
+   "detail": "0 of 2162688 levels off fp64 past the stored values' clause; 0 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 8448 nonzero digits against fp64's 8448; 0 capped; the threshold within 0.00e+00 of fp64"
+  },
+  {
+   "lab": "check",
+   "variant": "alpha 2, a collapsed support, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE",
+   "ok": true,
+   "detail": "0 of 4325376 levels off fp64 past the stored values' clause; 0 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 16896 nonzero digits against fp64's 16896; 0 capped; the threshold within 0.00e+00 of fp64"
+  },
+  {
+   "lab": "check",
+   "variant": "alpha 1.5, five times the scale, 1 warpgroup a CTA",
+   "ok": true,
+   "detail": "0 of 2162688 levels off fp64 past the stored values' clause; 0 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 19923 nonzero digits against fp64's 19923; 0 capped; the threshold within 2.40e-07 of fp64"
+  },
+  {
+   "lab": "check",
+   "variant": "alpha 1.5, five times the scale, 2 warpgroups a CTA",
+   "ok": true,
+   "detail": "0 of 4325376 levels off fp64 past the stored values' clause; 0 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 40086 nonzero digits against fp64's 40086; 0 capped; the threshold within 2.40e-07 of fp64"
+  },
+  {
+   "lab": "check",
+   "variant": "alpha 2, five times the scale, 1 warpgroup a CTA",
+   "ok": true,
+   "detail": "0 of 2162688 levels off fp64 past the stored values' clause; 0 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 13152 nonzero digits against fp64's 13152; 0 capped; the threshold within 3.97e-08 of fp64"
+  },
+  {
+   "lab": "check",
+   "variant": "alpha 2, five times the scale, 2 warpgroups a CTA",
+   "ok": true,
+   "detail": "0 of 4325376 levels off fp64 past the stored values' clause; 0 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 26352 nonzero digits against fp64's 26352; 0 capped; the threshold within 3.97e-08 of fp64"
+  },
+  {
+   "lab": "check",
+   "variant": "alpha 1.5, five times the scale, 1 warpgroup a CTA, both rows interleaved",
+   "ok": true,
+   "detail": "0 of 2162688 levels off fp64 past the stored values' clause; 0 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 19923 nonzero digits against fp64's 19923; 0 capped; the threshold within 2.40e-07 of fp64"
+  },
+  {
+   "lab": "check",
+   "variant": "alpha 1.5, five times the scale, 2 warpgroups a CTA, both rows interleaved",
+   "ok": true,
+   "detail": "0 of 4325376 levels off fp64 past the stored values' clause; 0 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 40086 nonzero digits against fp64's 40086; 0 capped; the threshold within 2.48e-07 of fp64"
+  },
+  {
+   "lab": "check",
+   "variant": "alpha 2, five times the scale, 1 warpgroup a CTA, both rows interleaved",
+   "ok": true,
+   "detail": "0 of 2162688 levels off fp64 past the stored values' clause; 0 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 13152 nonzero digits against fp64's 13152; 0 capped; the threshold within 3.97e-08 of fp64"
+  },
+  {
+   "lab": "check",
+   "variant": "alpha 2, five times the scale, 2 warpgroups a CTA, both rows interleaved",
+   "ok": true,
+   "detail": "0 of 4325376 levels off fp64 past the stored values' clause; 0 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 26352 nonzero digits against fp64's 26352; 0 capped; the threshold within 3.97e-08 of fp64"
+  },
+  {
+   "lab": "check",
+   "variant": "alpha 1.5, five times the scale, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE",
+   "ok": true,
+   "detail": "0 of 2162688 levels off fp64 past the stored values' clause; 0 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 19923 nonzero digits against fp64's 19923; 0 capped; the threshold within 2.29e-07 of fp64"
+  },
+  {
+   "lab": "check",
+   "variant": "alpha 1.5, five times the scale, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE",
+   "ok": true,
+   "detail": "0 of 4325376 levels off fp64 past the stored values' clause; 0 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 40086 nonzero digits against fp64's 40086; 0 capped; the threshold within 2.29e-07 of fp64"
+  },
+  {
+   "lab": "check",
+   "variant": "alpha 2, five times the scale, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE",
+   "ok": true,
+   "detail": "0 of 2162688 levels off fp64 past the stored values' clause; 0 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 13152 nonzero digits against fp64's 13152; 0 capped; the threshold within 1.99e-08 of fp64"
+  },
+  {
+   "lab": "check",
+   "variant": "alpha 2, five times the scale, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE",
+   "ok": true,
+   "detail": "0 of 4325376 levels off fp64 past the stored values' clause; 0 digits differ from fp64's, 0 past its allowance; 0 mask bits differ, the density 26352 nonzero digits against fp64's 26352; 0 capped; the threshold within 2.38e-08 of fp64"
+  }
+ ],
+ "driver": "580.196.07",
+ "toolkit": "Build cuda_13.5.r13.5/compiler.39125733_0",
+ "git": {
+  "sha": "0aac2c88609acadcdf25402c1937e79e1bd2814e",
+  "dirty": false
+ },
+ "reps": 7,
+ "date": "2026-11-28T04:58:39+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "alpha 1.5, random, 1 warpgroup a CTA: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    7318.268348,
+    7318.907789,
+    7318.572325,
+    7316.708688,
+    7316.46295,
+    7316.202652,
+    7316.653646
+   ],
+   "median": 7316.708688,
+   "min": 7316.202652,
+   "max": 7318.907789,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, random, 1 warpgroup a CTA: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    4.293916
+   ],
+   "median": 4.293916,
+   "min": 4.293916,
+   "max": 4.293916,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, random, 1 warpgroup a CTA: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    7.0
+   ],
+   "median": 7.0,
+   "min": 7.0,
+   "max": 7.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, random, 1 warpgroup a CTA: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    5.587121
+   ],
+   "median": 5.587121,
+   "min": 5.587121,
+   "max": 5.587121,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, random, 1 warpgroup a CTA: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    5.992424
+   ],
+   "median": 5.992424,
+   "min": 5.992424,
+   "max": 5.992424,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, random, 1 warpgroup a CTA: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, random, 1 warpgroup a CTA: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, random, 2 warpgroups a CTA: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    6334.145597,
+    6334.075284,
+    6334.995502,
+    6334.270833,
+    6334.442531,
+    6334.263258,
+    6334.600616
+   ],
+   "median": 6334.270833,
+   "min": 6334.075284,
+   "max": 6334.995502,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, random, 2 warpgroups a CTA: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    4.299183
+   ],
+   "median": 4.299183,
+   "min": 4.299183,
+   "max": 4.299183,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, random, 2 warpgroups a CTA: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    7.0
+   ],
+   "median": 7.0,
+   "min": 7.0,
+   "max": 7.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, random, 2 warpgroups a CTA: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    5.607955
+   ],
+   "median": 5.607955,
+   "min": 5.607955,
+   "max": 5.607955,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, random, 2 warpgroups a CTA: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    6.007576
+   ],
+   "median": 6.007576,
+   "min": 6.007576,
+   "max": 6.007576,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, random, 2 warpgroups a CTA: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, random, 2 warpgroups a CTA: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, random, 1 warpgroup a CTA: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    5638.999527,
+    5638.984138,
+    5637.373816,
+    5636.338542,
+    5636.386364,
+    5636.586411,
+    5637.305634
+   ],
+   "median": 5637.305634,
+   "min": 5636.338542,
+   "max": 5638.999527,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, random, 1 warpgroup a CTA: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    2.599669
+   ],
+   "median": 2.599669,
+   "min": 2.599669,
+   "max": 2.599669,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, random, 1 warpgroup a CTA: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    6.0
+   ],
+   "median": 6.0,
+   "min": 6.0,
+   "max": 6.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, random, 1 warpgroup a CTA: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    4.039773
+   ],
+   "median": 4.039773,
+   "min": 4.039773,
+   "max": 4.039773,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, random, 1 warpgroup a CTA: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    4.393939
+   ],
+   "median": 4.393939,
+   "min": 4.393939,
+   "max": 4.393939,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, random, 1 warpgroup a CTA: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, random, 1 warpgroup a CTA: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, random, 2 warpgroups a CTA: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    4045.46295,
+    4044.366063,
+    4045.655658,
+    4045.134115,
+    4044.778883,
+    4043.699811,
+    4044.029179
+   ],
+   "median": 4044.778883,
+   "min": 4043.699811,
+   "max": 4045.655658,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, random, 2 warpgroups a CTA: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    2.602569
+   ],
+   "median": 2.602569,
+   "min": 2.602569,
+   "max": 2.602569,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, random, 2 warpgroups a CTA: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    6.0
+   ],
+   "median": 6.0,
+   "min": 6.0,
+   "max": 6.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, random, 2 warpgroups a CTA: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    4.025568
+   ],
+   "median": 4.025568,
+   "min": 4.025568,
+   "max": 4.025568,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, random, 2 warpgroups a CTA: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    4.382576
+   ],
+   "median": 4.382576,
+   "min": 4.382576,
+   "max": 4.382576,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, random, 2 warpgroups a CTA: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, random, 2 warpgroups a CTA: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, random, 1 warpgroup a CTA, both rows interleaved: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    6843.67294,
+    6842.721709,
+    6846.050071,
+    6842.078598,
+    6845.237808,
+    6844.085464,
+    6846.184304
+   ],
+   "median": 6844.085464,
+   "min": 6842.078598,
+   "max": 6846.184304,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, random, 1 warpgroup a CTA, both rows interleaved: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    4.293916
+   ],
+   "median": 4.293916,
+   "min": 4.293916,
+   "max": 4.293916,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, random, 1 warpgroup a CTA, both rows interleaved: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    7.0
+   ],
+   "median": 7.0,
+   "min": 7.0,
+   "max": 7.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, random, 1 warpgroup a CTA, both rows interleaved: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    5.587121
+   ],
+   "median": 5.587121,
+   "min": 5.587121,
+   "max": 5.587121,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, random, 1 warpgroup a CTA, both rows interleaved: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    5.992424
+   ],
+   "median": 5.992424,
+   "min": 5.992424,
+   "max": 5.992424,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, random, 1 warpgroup a CTA, both rows interleaved: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, random, 1 warpgroup a CTA, both rows interleaved: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, random, 2 warpgroups a CTA, both rows interleaved: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    6039.111624,
+    6038.973366,
+    6040.415187,
+    6038.082919,
+    6039.228338,
+    6040.242839,
+    6041.173414
+   ],
+   "median": 6039.228338,
+   "min": 6038.082919,
+   "max": 6041.173414,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, random, 2 warpgroups a CTA, both rows interleaved: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    4.299183
+   ],
+   "median": 4.299183,
+   "min": 4.299183,
+   "max": 4.299183,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, random, 2 warpgroups a CTA, both rows interleaved: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    7.0
+   ],
+   "median": 7.0,
+   "min": 7.0,
+   "max": 7.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, random, 2 warpgroups a CTA, both rows interleaved: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    5.607955
+   ],
+   "median": 5.607955,
+   "min": 5.607955,
+   "max": 5.607955,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, random, 2 warpgroups a CTA, both rows interleaved: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    6.007576
+   ],
+   "median": 6.007576,
+   "min": 6.007576,
+   "max": 6.007576,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, random, 2 warpgroups a CTA, both rows interleaved: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, random, 2 warpgroups a CTA, both rows interleaved: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, random, 1 warpgroup a CTA, both rows interleaved: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    4580.013021,
+    4584.368963,
+    4591.077888,
+    4585.600142,
+    4589.527107,
+    4584.524384,
+    4592.595526
+   ],
+   "median": 4585.600142,
+   "min": 4580.013021,
+   "max": 4592.595526,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, random, 1 warpgroup a CTA, both rows interleaved: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    2.599669
+   ],
+   "median": 2.599669,
+   "min": 2.599669,
+   "max": 2.599669,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, random, 1 warpgroup a CTA, both rows interleaved: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    6.0
+   ],
+   "median": 6.0,
+   "min": 6.0,
+   "max": 6.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, random, 1 warpgroup a CTA, both rows interleaved: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    4.039773
+   ],
+   "median": 4.039773,
+   "min": 4.039773,
+   "max": 4.039773,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, random, 1 warpgroup a CTA, both rows interleaved: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    4.393939
+   ],
+   "median": 4.393939,
+   "min": 4.393939,
+   "max": 4.393939,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, random, 1 warpgroup a CTA, both rows interleaved: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, random, 1 warpgroup a CTA, both rows interleaved: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, random, 2 warpgroups a CTA, both rows interleaved: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    3963.748639,
+    3967.817827,
+    3966.202592,
+    3963.380031,
+    3965.522727,
+    3967.259588,
+    3967.282138
+   ],
+   "median": 3966.202592,
+   "min": 3963.380031,
+   "max": 3967.817827,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, random, 2 warpgroups a CTA, both rows interleaved: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    2.602569
+   ],
+   "median": 2.602569,
+   "min": 2.602569,
+   "max": 2.602569,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, random, 2 warpgroups a CTA, both rows interleaved: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    6.0
+   ],
+   "median": 6.0,
+   "min": 6.0,
+   "max": 6.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, random, 2 warpgroups a CTA, both rows interleaved: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    4.025568
+   ],
+   "median": 4.025568,
+   "min": 4.025568,
+   "max": 4.025568,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, random, 2 warpgroups a CTA, both rows interleaved: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    4.382576
+   ],
+   "median": 4.382576,
+   "min": 4.382576,
+   "max": 4.382576,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, random, 2 warpgroups a CTA, both rows interleaved: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, random, 2 warpgroups a CTA, both rows interleaved: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, random, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    8712.808239,
+    8712.201823,
+    8711.98982,
+    8711.923295,
+    8712.290601,
+    8712.66643,
+    8711.46875
+   ],
+   "median": 8712.201823,
+   "min": 8711.46875,
+   "max": 8712.808239,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, random, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    4.293916
+   ],
+   "median": 4.293916,
+   "min": 4.293916,
+   "max": 4.293916,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, random, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    7.0
+   ],
+   "median": 7.0,
+   "min": 7.0,
+   "max": 7.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, random, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    5.587121
+   ],
+   "median": 5.587121,
+   "min": 5.587121,
+   "max": 5.587121,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, random, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    5.992424
+   ],
+   "median": 5.992424,
+   "min": 5.992424,
+   "max": 5.992424,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, random, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, random, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, random, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    6690.735144,
+    6690.896248,
+    6692.24349,
+    6692.438861,
+    6689.770241,
+    6693.113755,
+    6689.879025
+   ],
+   "median": 6690.896248,
+   "min": 6689.770241,
+   "max": 6693.113755,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, random, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    4.299183
+   ],
+   "median": 4.299183,
+   "min": 4.299183,
+   "max": 4.299183,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, random, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    7.0
+   ],
+   "median": 7.0,
+   "min": 7.0,
+   "max": 7.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, random, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    5.607955
+   ],
+   "median": 5.607955,
+   "min": 5.607955,
+   "max": 5.607955,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, random, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    6.007576
+   ],
+   "median": 6.007576,
+   "min": 6.007576,
+   "max": 6.007576,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, random, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, random, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, random, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    4976.132221,
+    4976.08215,
+    4975.831203,
+    4974.194129,
+    4976.150568,
+    4975.707386,
+    4975.641809
+   ],
+   "median": 4975.831203,
+   "min": 4974.194129,
+   "max": 4976.150568,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, random, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    2.599669
+   ],
+   "median": 2.599669,
+   "min": 2.599669,
+   "max": 2.599669,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, random, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    6.0
+   ],
+   "median": 6.0,
+   "min": 6.0,
+   "max": 6.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, random, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    4.039773
+   ],
+   "median": 4.039773,
+   "min": 4.039773,
+   "max": 4.039773,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, random, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    4.393939
+   ],
+   "median": 4.393939,
+   "min": 4.393939,
+   "max": 4.393939,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, random, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, random, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, random, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    4117.758464,
+    4116.632517,
+    4116.334162,
+    4117.499941,
+    4118.460523,
+    4115.660926,
+    4117.352865
+   ],
+   "median": 4117.352865,
+   "min": 4115.660926,
+   "max": 4118.460523,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, random, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    2.602569
+   ],
+   "median": 2.602569,
+   "min": 2.602569,
+   "max": 2.602569,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, random, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    6.0
+   ],
+   "median": 6.0,
+   "min": 6.0,
+   "max": 6.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, random, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    4.025568
+   ],
+   "median": 4.025568,
+   "min": 4.025568,
+   "max": 4.025568,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, random, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    4.382576
+   ],
+   "median": 4.382576,
+   "min": 4.382576,
+   "max": 4.382576,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, random, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, random, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, near the boundary, 1 warpgroup a CTA: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    8059.516098,
+    8058.085109,
+    8057.275805,
+    8056.839015,
+    8056.355469,
+    8056.226089,
+    8056.538944
+   ],
+   "median": 8056.839015,
+   "min": 8056.226089,
+   "max": 8059.516098,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, near the boundary, 1 warpgroup a CTA: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    3.344815
+   ],
+   "median": 3.344815,
+   "min": 3.344815,
+   "max": 3.344815,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, near the boundary, 1 warpgroup a CTA: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    7.0
+   ],
+   "median": 7.0,
+   "min": 7.0,
+   "max": 7.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, near the boundary, 1 warpgroup a CTA: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    5.55303
+   ],
+   "median": 5.55303,
+   "min": 5.55303,
+   "max": 5.55303,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, near the boundary, 1 warpgroup a CTA: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    6.659091
+   ],
+   "median": 6.659091,
+   "min": 6.659091,
+   "max": 6.659091,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, near the boundary, 1 warpgroup a CTA: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, near the boundary, 1 warpgroup a CTA: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, near the boundary, 2 warpgroups a CTA: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    6713.714666,
+    6713.773023,
+    6714.30232,
+    6714.527876,
+    6714.231001,
+    6714.767401,
+    6714.117839
+   ],
+   "median": 6714.231001,
+   "min": 6713.714666,
+   "max": 6714.767401,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, near the boundary, 2 warpgroups a CTA: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    3.341442
+   ],
+   "median": 3.341442,
+   "min": 3.341442,
+   "max": 3.341442,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, near the boundary, 2 warpgroups a CTA: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    7.0
+   ],
+   "median": 7.0,
+   "min": 7.0,
+   "max": 7.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, near the boundary, 2 warpgroups a CTA: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    5.50947
+   ],
+   "median": 5.50947,
+   "min": 5.50947,
+   "max": 5.50947,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, near the boundary, 2 warpgroups a CTA: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    6.590909
+   ],
+   "median": 6.590909,
+   "min": 6.590909,
+   "max": 6.590909,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, near the boundary, 2 warpgroups a CTA: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, near the boundary, 2 warpgroups a CTA: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, near the boundary, 1 warpgroup a CTA: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    5459.531132,
+    5458.426847,
+    5457.588187,
+    5457.868134,
+    5457.233902,
+    5457.933949,
+    5457.995384
+   ],
+   "median": 5457.933949,
+   "min": 5457.233902,
+   "max": 5459.531132,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, near the boundary, 1 warpgroup a CTA: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    2.19768
+   ],
+   "median": 2.19768,
+   "min": 2.19768,
+   "max": 2.19768,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, near the boundary, 1 warpgroup a CTA: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    5.0
+   ],
+   "median": 5.0,
+   "min": 5.0,
+   "max": 5.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, near the boundary, 1 warpgroup a CTA: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    3.581439
+   ],
+   "median": 3.581439,
+   "min": 3.581439,
+   "max": 3.581439,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, near the boundary, 1 warpgroup a CTA: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    4.212121
+   ],
+   "median": 4.212121,
+   "min": 4.212121,
+   "max": 4.212121,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, near the boundary, 1 warpgroup a CTA: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, near the boundary, 1 warpgroup a CTA: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, near the boundary, 2 warpgroups a CTA: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    3940.704368,
+    3942.658499,
+    3943.33286,
+    3939.242543,
+    3944.496686,
+    3940.524089,
+    3941.18821
+   ],
+   "median": 3941.18821,
+   "min": 3939.242543,
+   "max": 3944.496686,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, near the boundary, 2 warpgroups a CTA: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    2.1962
+   ],
+   "median": 2.1962,
+   "min": 2.1962,
+   "max": 2.1962,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, near the boundary, 2 warpgroups a CTA: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    5.0
+   ],
+   "median": 5.0,
+   "min": 5.0,
+   "max": 5.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, near the boundary, 2 warpgroups a CTA: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    3.567235
+   ],
+   "median": 3.567235,
+   "min": 3.567235,
+   "max": 3.567235,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, near the boundary, 2 warpgroups a CTA: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    4.155303
+   ],
+   "median": 4.155303,
+   "min": 4.155303,
+   "max": 4.155303,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, near the boundary, 2 warpgroups a CTA: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, near the boundary, 2 warpgroups a CTA: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, near the boundary, 1 warpgroup a CTA, both rows interleaved: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    7543.349195,
+    7541.009588,
+    7544.195431,
+    7541.523201,
+    7543.643703,
+    7544.109138,
+    7544.437737
+   ],
+   "median": 7543.643703,
+   "min": 7541.009588,
+   "max": 7544.437737,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, near the boundary, 1 warpgroup a CTA, both rows interleaved: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    3.344934
+   ],
+   "median": 3.344934,
+   "min": 3.344934,
+   "max": 3.344934,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, near the boundary, 1 warpgroup a CTA, both rows interleaved: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    7.0
+   ],
+   "median": 7.0,
+   "min": 7.0,
+   "max": 7.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, near the boundary, 1 warpgroup a CTA, both rows interleaved: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    5.554924
+   ],
+   "median": 5.554924,
+   "min": 5.554924,
+   "max": 5.554924,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, near the boundary, 1 warpgroup a CTA, both rows interleaved: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    6.666667
+   ],
+   "median": 6.666667,
+   "min": 6.666667,
+   "max": 6.666667,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, near the boundary, 1 warpgroup a CTA, both rows interleaved: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, near the boundary, 1 warpgroup a CTA, both rows interleaved: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, near the boundary, 2 warpgroups a CTA, both rows interleaved: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    6380.39968,
+    6380.615708,
+    6379.697443,
+    6380.753729,
+    6382.089252,
+    6380.915069,
+    6380.361683
+   ],
+   "median": 6380.615708,
+   "min": 6379.697443,
+   "max": 6382.089252,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, near the boundary, 2 warpgroups a CTA, both rows interleaved: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    3.341383
+   ],
+   "median": 3.341383,
+   "min": 3.341383,
+   "max": 3.341383,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, near the boundary, 2 warpgroups a CTA, both rows interleaved: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    7.0
+   ],
+   "median": 7.0,
+   "min": 7.0,
+   "max": 7.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, near the boundary, 2 warpgroups a CTA, both rows interleaved: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    5.508523
+   ],
+   "median": 5.508523,
+   "min": 5.508523,
+   "max": 5.508523,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, near the boundary, 2 warpgroups a CTA, both rows interleaved: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    6.594697
+   ],
+   "median": 6.594697,
+   "min": 6.594697,
+   "max": 6.594697,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, near the boundary, 2 warpgroups a CTA, both rows interleaved: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, near the boundary, 2 warpgroups a CTA, both rows interleaved: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, near the boundary, 1 warpgroup a CTA, both rows interleaved: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    4448.932528,
+    4447.211174,
+    4452.058712,
+    4449.783144,
+    4450.861742,
+    4448.080374,
+    4451.368963
+   ],
+   "median": 4449.783144,
+   "min": 4447.211174,
+   "max": 4452.058712,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, near the boundary, 1 warpgroup a CTA, both rows interleaved: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    2.19768
+   ],
+   "median": 2.19768,
+   "min": 2.19768,
+   "max": 2.19768,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, near the boundary, 1 warpgroup a CTA, both rows interleaved: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    5.0
+   ],
+   "median": 5.0,
+   "min": 5.0,
+   "max": 5.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, near the boundary, 1 warpgroup a CTA, both rows interleaved: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    3.581439
+   ],
+   "median": 3.581439,
+   "min": 3.581439,
+   "max": 3.581439,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, near the boundary, 1 warpgroup a CTA, both rows interleaved: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    4.212121
+   ],
+   "median": 4.212121,
+   "min": 4.212121,
+   "max": 4.212121,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, near the boundary, 1 warpgroup a CTA, both rows interleaved: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, near the boundary, 1 warpgroup a CTA, both rows interleaved: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, near the boundary, 2 warpgroups a CTA, both rows interleaved: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    3823.077888,
+    3824.117898,
+    3822.990708,
+    3823.270064,
+    3824.5683,
+    3824.136186,
+    3824.593395
+   ],
+   "median": 3824.117898,
+   "min": 3822.990708,
+   "max": 3824.593395,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, near the boundary, 2 warpgroups a CTA, both rows interleaved: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    2.1962
+   ],
+   "median": 2.1962,
+   "min": 2.1962,
+   "max": 2.1962,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, near the boundary, 2 warpgroups a CTA, both rows interleaved: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    5.0
+   ],
+   "median": 5.0,
+   "min": 5.0,
+   "max": 5.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, near the boundary, 2 warpgroups a CTA, both rows interleaved: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    3.567235
+   ],
+   "median": 3.567235,
+   "min": 3.567235,
+   "max": 3.567235,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, near the boundary, 2 warpgroups a CTA, both rows interleaved: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    4.155303
+   ],
+   "median": 4.155303,
+   "min": 4.155303,
+   "max": 4.155303,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, near the boundary, 2 warpgroups a CTA, both rows interleaved: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, near the boundary, 2 warpgroups a CTA, both rows interleaved: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, near the boundary, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    9605.92223,
+    9606.424479,
+    9604.712831,
+    9603.913589,
+    9604.054096,
+    9604.362808,
+    9604.012311
+   ],
+   "median": 9604.362808,
+   "min": 9603.913589,
+   "max": 9606.424479,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, near the boundary, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    3.344934
+   ],
+   "median": 3.344934,
+   "min": 3.344934,
+   "max": 3.344934,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, near the boundary, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    7.0
+   ],
+   "median": 7.0,
+   "min": 7.0,
+   "max": 7.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, near the boundary, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    5.554924
+   ],
+   "median": 5.554924,
+   "min": 5.554924,
+   "max": 5.554924,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, near the boundary, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    6.666667
+   ],
+   "median": 6.666667,
+   "min": 6.666667,
+   "max": 6.666667,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, near the boundary, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, near the boundary, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, near the boundary, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    7189.553977,
+    7189.902876,
+    7189.80599,
+    7190.221709,
+    7189.015507,
+    7189.220407,
+    7187.911044
+   ],
+   "median": 7189.553977,
+   "min": 7187.911044,
+   "max": 7190.221709,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, near the boundary, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    3.341383
+   ],
+   "median": 3.341383,
+   "min": 3.341383,
+   "max": 3.341383,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, near the boundary, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    7.0
+   ],
+   "median": 7.0,
+   "min": 7.0,
+   "max": 7.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, near the boundary, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    5.508523
+   ],
+   "median": 5.508523,
+   "min": 5.508523,
+   "max": 5.508523,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, near the boundary, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    6.594697
+   ],
+   "median": 6.594697,
+   "min": 6.594697,
+   "max": 6.594697,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, near the boundary, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, near the boundary, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, near the boundary, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    4832.794981,
+    4831.508996,
+    4831.89678,
+    4831.078243,
+    4831.532197,
+    4830.918442,
+    4831.252723
+   ],
+   "median": 4831.508996,
+   "min": 4830.918442,
+   "max": 4832.794981,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, near the boundary, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    2.19768
+   ],
+   "median": 2.19768,
+   "min": 2.19768,
+   "max": 2.19768,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, near the boundary, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    5.0
+   ],
+   "median": 5.0,
+   "min": 5.0,
+   "max": 5.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, near the boundary, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    3.581439
+   ],
+   "median": 3.581439,
+   "min": 3.581439,
+   "max": 3.581439,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, near the boundary, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    4.212121
+   ],
+   "median": 4.212121,
+   "min": 4.212121,
+   "max": 4.212121,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, near the boundary, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, near the boundary, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, near the boundary, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    3977.467093,
+    3976.004676,
+    3977.525982,
+    3976.58138,
+    3978.306345,
+    3978.458511,
+    3978.447266
+   ],
+   "median": 3977.525982,
+   "min": 3976.004676,
+   "max": 3978.458511,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, near the boundary, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    2.196141
+   ],
+   "median": 2.196141,
+   "min": 2.196141,
+   "max": 2.196141,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, near the boundary, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    5.0
+   ],
+   "median": 5.0,
+   "min": 5.0,
+   "max": 5.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, near the boundary, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    3.566288
+   ],
+   "median": 3.566288,
+   "min": 3.566288,
+   "max": 3.566288,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, near the boundary, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    4.155303
+   ],
+   "median": 4.155303,
+   "min": 4.155303,
+   "max": 4.155303,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, near the boundary, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, near the boundary, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, a collapsed support, 1 warpgroup a CTA: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    1567.36553,
+    1566.423651,
+    1566.240649,
+    1565.476089,
+    1567.353575,
+    1564.452296,
+    1566.884351
+   ],
+   "median": 1566.423651,
+   "min": 1564.452296,
+   "max": 1567.36553,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, a collapsed support, 1 warpgroup a CTA: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, a collapsed support, 1 warpgroup a CTA: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, a collapsed support, 1 warpgroup a CTA: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, a collapsed support, 1 warpgroup a CTA: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, a collapsed support, 1 warpgroup a CTA: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, a collapsed support, 1 warpgroup a CTA: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, a collapsed support, 2 warpgroups a CTA: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    1366.815459,
+    1364.713364,
+    1366.036044,
+    1369.483665,
+    1364.780954,
+    1365.51669,
+    1366.120975
+   ],
+   "median": 1366.036044,
+   "min": 1364.713364,
+   "max": 1369.483665,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, a collapsed support, 2 warpgroups a CTA: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, a collapsed support, 2 warpgroups a CTA: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, a collapsed support, 2 warpgroups a CTA: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, a collapsed support, 2 warpgroups a CTA: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, a collapsed support, 2 warpgroups a CTA: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, a collapsed support, 2 warpgroups a CTA: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, a collapsed support, 1 warpgroup a CTA: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    1562.805043,
+    1562.553977,
+    1562.603575,
+    1561.661103,
+    1561.657197,
+    1561.822443,
+    1562.41205
+   ],
+   "median": 1562.41205,
+   "min": 1561.657197,
+   "max": 1562.805043,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, a collapsed support, 1 warpgroup a CTA: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, a collapsed support, 1 warpgroup a CTA: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, a collapsed support, 1 warpgroup a CTA: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, a collapsed support, 1 warpgroup a CTA: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, a collapsed support, 1 warpgroup a CTA: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, a collapsed support, 1 warpgroup a CTA: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, a collapsed support, 2 warpgroups a CTA: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    1186.203598,
+    1185.326941,
+    1186.572325,
+    1186.464134,
+    1185.335286,
+    1185.25148,
+    1185.349018
+   ],
+   "median": 1185.349018,
+   "min": 1185.25148,
+   "max": 1186.572325,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, a collapsed support, 2 warpgroups a CTA: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, a collapsed support, 2 warpgroups a CTA: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, a collapsed support, 2 warpgroups a CTA: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, a collapsed support, 2 warpgroups a CTA: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, a collapsed support, 2 warpgroups a CTA: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, a collapsed support, 2 warpgroups a CTA: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, a collapsed support, 1 warpgroup a CTA, both rows interleaved: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    1528.953125,
+    1529.828007,
+    1531.095644,
+    1528.319484,
+    1531.156487,
+    1529.764086,
+    1530.107481
+   ],
+   "median": 1529.828007,
+   "min": 1528.319484,
+   "max": 1531.156487,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, a collapsed support, 1 warpgroup a CTA, both rows interleaved: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, a collapsed support, 1 warpgroup a CTA, both rows interleaved: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, a collapsed support, 1 warpgroup a CTA, both rows interleaved: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, a collapsed support, 1 warpgroup a CTA, both rows interleaved: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, a collapsed support, 1 warpgroup a CTA, both rows interleaved: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, a collapsed support, 1 warpgroup a CTA, both rows interleaved: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, a collapsed support, 2 warpgroups a CTA, both rows interleaved: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    1369.881629,
+    1373.221532,
+    1370.416785,
+    1371.213127,
+    1371.342211,
+    1371.739169,
+    1371.660393
+   ],
+   "median": 1371.342211,
+   "min": 1369.881629,
+   "max": 1373.221532,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, a collapsed support, 2 warpgroups a CTA, both rows interleaved: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, a collapsed support, 2 warpgroups a CTA, both rows interleaved: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, a collapsed support, 2 warpgroups a CTA, both rows interleaved: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, a collapsed support, 2 warpgroups a CTA, both rows interleaved: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, a collapsed support, 2 warpgroups a CTA, both rows interleaved: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, a collapsed support, 2 warpgroups a CTA, both rows interleaved: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, a collapsed support, 1 warpgroup a CTA, both rows interleaved: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    1343.154001,
+    1343.133168,
+    1347.58866,
+    1344.52983,
+    1344.735204,
+    1343.810724,
+    1347.87062
+   ],
+   "median": 1344.52983,
+   "min": 1343.133168,
+   "max": 1347.87062,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, a collapsed support, 1 warpgroup a CTA, both rows interleaved: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, a collapsed support, 1 warpgroup a CTA, both rows interleaved: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, a collapsed support, 1 warpgroup a CTA, both rows interleaved: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, a collapsed support, 1 warpgroup a CTA, both rows interleaved: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, a collapsed support, 1 warpgroup a CTA, both rows interleaved: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, a collapsed support, 1 warpgroup a CTA, both rows interleaved: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, a collapsed support, 2 warpgroups a CTA, both rows interleaved: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    1187.996626,
+    1187.77255,
+    1187.687382,
+    1188.084339,
+    1187.555339,
+    1187.812618,
+    1187.994259
+   ],
+   "median": 1187.812618,
+   "min": 1187.555339,
+   "max": 1188.084339,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, a collapsed support, 2 warpgroups a CTA, both rows interleaved: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, a collapsed support, 2 warpgroups a CTA, both rows interleaved: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, a collapsed support, 2 warpgroups a CTA, both rows interleaved: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, a collapsed support, 2 warpgroups a CTA, both rows interleaved: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, a collapsed support, 2 warpgroups a CTA, both rows interleaved: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, a collapsed support, 2 warpgroups a CTA, both rows interleaved: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, a collapsed support, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    1771.886837,
+    1772.08357,
+    1770.367069,
+    1769.240649,
+    1770.218513,
+    1769.931226,
+    1769.783736
+   ],
+   "median": 1770.218513,
+   "min": 1769.240649,
+   "max": 1772.08357,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, a collapsed support, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, a collapsed support, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, a collapsed support, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, a collapsed support, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, a collapsed support, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, a collapsed support, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, a collapsed support, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    1447.24201,
+    1446.950343,
+    1447.023615,
+    1447.182173,
+    1447.115471,
+    1447.174124,
+    1447.132161
+   ],
+   "median": 1447.132161,
+   "min": 1446.950343,
+   "max": 1447.24201,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, a collapsed support, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, a collapsed support, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, a collapsed support, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, a collapsed support, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, a collapsed support, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, a collapsed support, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, a collapsed support, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    1429.514086,
+    1428.713542,
+    1428.206321,
+    1426.775095,
+    1427.357363,
+    1427.23402,
+    1428.917732
+   ],
+   "median": 1428.206321,
+   "min": 1426.775095,
+   "max": 1429.514086,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, a collapsed support, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, a collapsed support, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, a collapsed support, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, a collapsed support, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, a collapsed support, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, a collapsed support, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, a collapsed support, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    1213.175367,
+    1213.358842,
+    1212.469638,
+    1213.635062,
+    1214.022372,
+    1213.115471,
+    1212.803326
+   ],
+   "median": 1213.175367,
+   "min": 1212.469638,
+   "max": 1214.022372,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, a collapsed support, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, a collapsed support, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, a collapsed support, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, a collapsed support, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    1.0
+   ],
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, a collapsed support, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, a collapsed support, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, five times the scale, 1 warpgroup a CTA: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    4169.721473,
+    4169.198153,
+    4167.174598,
+    4167.555279,
+    4168.371449,
+    4166.393111,
+    4167.190341
+   ],
+   "median": 4167.555279,
+   "min": 4166.393111,
+   "max": 4169.721473,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, five times the scale, 1 warpgroup a CTA: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    1.32339
+   ],
+   "median": 1.32339,
+   "min": 1.32339,
+   "max": 1.32339,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, five times the scale, 1 warpgroup a CTA: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    5.0
+   ],
+   "median": 5.0,
+   "min": 5.0,
+   "max": 5.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, five times the scale, 1 warpgroup a CTA: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    2.789773
+   ],
+   "median": 2.789773,
+   "min": 2.789773,
+   "max": 2.789773,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, five times the scale, 1 warpgroup a CTA: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    3.409091
+   ],
+   "median": 3.409091,
+   "min": 3.409091,
+   "max": 3.409091,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, five times the scale, 1 warpgroup a CTA: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, five times the scale, 1 warpgroup a CTA: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, five times the scale, 2 warpgroups a CTA: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    3466.148674,
+    3468.473603,
+    3467.771958,
+    3467.578421,
+    3466.873165,
+    3469.39459,
+    3466.7471
+   ],
+   "median": 3467.578421,
+   "min": 3466.148674,
+   "max": 3469.39459,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, five times the scale, 2 warpgroups a CTA: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    1.331262
+   ],
+   "median": 1.331262,
+   "min": 1.331262,
+   "max": 1.331262,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, five times the scale, 2 warpgroups a CTA: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    5.0
+   ],
+   "median": 5.0,
+   "min": 5.0,
+   "max": 5.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, five times the scale, 2 warpgroups a CTA: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    2.803977
+   ],
+   "median": 2.803977,
+   "min": 2.803977,
+   "max": 2.803977,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, five times the scale, 2 warpgroups a CTA: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    3.386364
+   ],
+   "median": 3.386364,
+   "min": 3.386364,
+   "max": 3.386364,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, five times the scale, 2 warpgroups a CTA: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, five times the scale, 2 warpgroups a CTA: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, five times the scale, 1 warpgroup a CTA: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    3269.58357,
+    3270.029001,
+    3269.356534,
+    3268.303622,
+    3268.182292,
+    3268.821259,
+    3269.199219
+   ],
+   "median": 3269.199219,
+   "min": 3268.182292,
+   "max": 3270.029001,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, five times the scale, 1 warpgroup a CTA: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    1.124645
+   ],
+   "median": 1.124645,
+   "min": 1.124645,
+   "max": 1.124645,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, five times the scale, 1 warpgroup a CTA: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    3.0
+   ],
+   "median": 3.0,
+   "min": 3.0,
+   "max": 3.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, five times the scale, 1 warpgroup a CTA: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    1.92803
+   ],
+   "median": 1.92803,
+   "min": 1.92803,
+   "max": 1.92803,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, five times the scale, 1 warpgroup a CTA: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    2.219697
+   ],
+   "median": 2.219697,
+   "min": 2.219697,
+   "max": 2.219697,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, five times the scale, 1 warpgroup a CTA: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, five times the scale, 1 warpgroup a CTA: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, five times the scale, 2 warpgroups a CTA: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    2383.431522,
+    2384.934896,
+    2385.826941,
+    2385.528883,
+    2385.479522,
+    2383.398438,
+    2386.087417
+   ],
+   "median": 2385.479522,
+   "min": 2383.398438,
+   "max": 2386.087417,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, five times the scale, 2 warpgroups a CTA: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    1.124704
+   ],
+   "median": 1.124704,
+   "min": 1.124704,
+   "max": 1.124704,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, five times the scale, 2 warpgroups a CTA: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    3.0
+   ],
+   "median": 3.0,
+   "min": 3.0,
+   "max": 3.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, five times the scale, 2 warpgroups a CTA: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    1.932765
+   ],
+   "median": 1.932765,
+   "min": 1.932765,
+   "max": 1.932765,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, five times the scale, 2 warpgroups a CTA: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    2.234848
+   ],
+   "median": 2.234848,
+   "min": 2.234848,
+   "max": 2.234848,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, five times the scale, 2 warpgroups a CTA: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, five times the scale, 2 warpgroups a CTA: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, five times the scale, 1 warpgroup a CTA, both rows interleaved: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    4044.666667,
+    4044.645952,
+    4045.722183,
+    4044.634943,
+    4045.510653,
+    4044.535275,
+    4046.621449
+   ],
+   "median": 4044.666667,
+   "min": 4044.535275,
+   "max": 4046.621449,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, five times the scale, 1 warpgroup a CTA, both rows interleaved: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    1.32339
+   ],
+   "median": 1.32339,
+   "min": 1.32339,
+   "max": 1.32339,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, five times the scale, 1 warpgroup a CTA, both rows interleaved: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    5.0
+   ],
+   "median": 5.0,
+   "min": 5.0,
+   "max": 5.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, five times the scale, 1 warpgroup a CTA, both rows interleaved: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    2.789773
+   ],
+   "median": 2.789773,
+   "min": 2.789773,
+   "max": 2.789773,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, five times the scale, 1 warpgroup a CTA, both rows interleaved: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    3.409091
+   ],
+   "median": 3.409091,
+   "min": 3.409091,
+   "max": 3.409091,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, five times the scale, 1 warpgroup a CTA, both rows interleaved: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, five times the scale, 1 warpgroup a CTA, both rows interleaved: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, five times the scale, 2 warpgroups a CTA, both rows interleaved: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    3470.039062,
+    3469.482304,
+    3469.062263,
+    3469.682884,
+    3468.492128,
+    3471.337713,
+    3470.265329
+   ],
+   "median": 3469.682884,
+   "min": 3468.492128,
+   "max": 3471.337713,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, five times the scale, 2 warpgroups a CTA, both rows interleaved: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    1.331262
+   ],
+   "median": 1.331262,
+   "min": 1.331262,
+   "max": 1.331262,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, five times the scale, 2 warpgroups a CTA, both rows interleaved: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    5.0
+   ],
+   "median": 5.0,
+   "min": 5.0,
+   "max": 5.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, five times the scale, 2 warpgroups a CTA, both rows interleaved: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    2.803977
+   ],
+   "median": 2.803977,
+   "min": 2.803977,
+   "max": 2.803977,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, five times the scale, 2 warpgroups a CTA, both rows interleaved: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    3.386364
+   ],
+   "median": 3.386364,
+   "min": 3.386364,
+   "max": 3.386364,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, five times the scale, 2 warpgroups a CTA, both rows interleaved: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, five times the scale, 2 warpgroups a CTA, both rows interleaved: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, five times the scale, 1 warpgroup a CTA, both rows interleaved: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    2703.060606,
+    2703.915483,
+    2706.046283,
+    2705.443774,
+    2705.296283,
+    2704.397491,
+    2706.626302
+   ],
+   "median": 2705.296283,
+   "min": 2703.060606,
+   "max": 2706.626302,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, five times the scale, 1 warpgroup a CTA, both rows interleaved: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    1.124645
+   ],
+   "median": 1.124645,
+   "min": 1.124645,
+   "max": 1.124645,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, five times the scale, 1 warpgroup a CTA, both rows interleaved: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    3.0
+   ],
+   "median": 3.0,
+   "min": 3.0,
+   "max": 3.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, five times the scale, 1 warpgroup a CTA, both rows interleaved: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    1.92803
+   ],
+   "median": 1.92803,
+   "min": 1.92803,
+   "max": 1.92803,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, five times the scale, 1 warpgroup a CTA, both rows interleaved: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    2.219697
+   ],
+   "median": 2.219697,
+   "min": 2.219697,
+   "max": 2.219697,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, five times the scale, 1 warpgroup a CTA, both rows interleaved: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, five times the scale, 1 warpgroup a CTA, both rows interleaved: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, five times the scale, 2 warpgroups a CTA, both rows interleaved: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    2329.084162,
+    2333.737926,
+    2334.580788,
+    2329.951705,
+    2334.090021,
+    2331.821319,
+    2331.732185
+   ],
+   "median": 2331.821319,
+   "min": 2329.084162,
+   "max": 2334.580788,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, five times the scale, 2 warpgroups a CTA, both rows interleaved: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    1.124704
+   ],
+   "median": 1.124704,
+   "min": 1.124704,
+   "max": 1.124704,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, five times the scale, 2 warpgroups a CTA, both rows interleaved: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    3.0
+   ],
+   "median": 3.0,
+   "min": 3.0,
+   "max": 3.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, five times the scale, 2 warpgroups a CTA, both rows interleaved: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    1.932765
+   ],
+   "median": 1.932765,
+   "min": 1.932765,
+   "max": 1.932765,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, five times the scale, 2 warpgroups a CTA, both rows interleaved: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    2.234848
+   ],
+   "median": 2.234848,
+   "min": 2.234848,
+   "max": 2.234848,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, five times the scale, 2 warpgroups a CTA, both rows interleaved: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, five times the scale, 2 warpgroups a CTA, both rows interleaved: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, five times the scale, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    4920.993845,
+    4919.909446,
+    4918.78776,
+    4919.258286,
+    4918.469697,
+    4918.111624,
+    4919.033973
+   ],
+   "median": 4919.033973,
+   "min": 4918.111624,
+   "max": 4920.993845,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, five times the scale, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    1.32339
+   ],
+   "median": 1.32339,
+   "min": 1.32339,
+   "max": 1.32339,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, five times the scale, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    5.0
+   ],
+   "median": 5.0,
+   "min": 5.0,
+   "max": 5.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, five times the scale, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    2.789773
+   ],
+   "median": 2.789773,
+   "min": 2.789773,
+   "max": 2.789773,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, five times the scale, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    3.409091
+   ],
+   "median": 3.409091,
+   "min": 3.409091,
+   "max": 3.409091,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, five times the scale, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, five times the scale, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, five times the scale, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    3840.213246,
+    3838.817708,
+    3839.05084,
+    3839.018111,
+    3838.061139,
+    3839.613873,
+    3838.65915
+   ],
+   "median": 3839.018111,
+   "min": 3838.061139,
+   "max": 3840.213246,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, five times the scale, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    1.331262
+   ],
+   "median": 1.331262,
+   "min": 1.331262,
+   "max": 1.331262,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, five times the scale, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    5.0
+   ],
+   "median": 5.0,
+   "min": 5.0,
+   "max": 5.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, five times the scale, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    2.803977
+   ],
+   "median": 2.803977,
+   "min": 2.803977,
+   "max": 2.803977,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, five times the scale, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    3.386364
+   ],
+   "median": 3.386364,
+   "min": 3.386364,
+   "max": 3.386364,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, five times the scale, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 1.5, five times the scale, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, five times the scale, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    2915.136837,
+    2913.296165,
+    2914.186198,
+    2913.600024,
+    2914.640743,
+    2913.999645,
+    2914.101562
+   ],
+   "median": 2914.101562,
+   "min": 2913.296165,
+   "max": 2915.136837,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, five times the scale, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    1.124645
+   ],
+   "median": 1.124645,
+   "min": 1.124645,
+   "max": 1.124645,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, five times the scale, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    3.0
+   ],
+   "median": 3.0,
+   "min": 3.0,
+   "max": 3.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, five times the scale, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    1.92803
+   ],
+   "median": 1.92803,
+   "min": 1.92803,
+   "max": 1.92803,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, five times the scale, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    2.219697
+   ],
+   "median": 2.219697,
+   "min": 2.219697,
+   "max": 2.219697,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, five times the scale, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, five times the scale, 1 warpgroup a CTA, both rows interleaved, the closed form IEEE: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, five times the scale, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: a 64-token block",
+   "unit": "cycles a block (the CTA's span over its blocks)",
+   "samples": [
+    2407.343217,
+    2405.569484,
+    2405.220526,
+    2406.51598,
+    2407.029948,
+    2406.089666,
+    2406.095644
+   ],
+   "median": 2406.095644,
+   "min": 2405.220526,
+   "max": 2407.343217,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, five times the scale, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: steps a row, the mean",
+   "unit": "steps",
+   "samples": [
+    1.124704
+   ],
+   "median": 1.124704,
+   "min": 1.124704,
+   "max": 1.124704,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, five times the scale, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: steps a row, the most",
+   "unit": "steps",
+   "samples": [
+    3.0
+   ],
+   "median": 3.0,
+   "min": 3.0,
+   "max": 3.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, five times the scale, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: steps a warp (its 16 rows' vote), the mean",
+   "unit": "steps",
+   "samples": [
+    1.932765
+   ],
+   "median": 1.932765,
+   "min": 1.932765,
+   "max": 1.932765,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, five times the scale, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: steps a block (its 4 warps' most), the mean",
+   "unit": "steps",
+   "samples": [
+    2.234848
+   ],
+   "median": 2.234848,
+   "min": 2.234848,
+   "max": 2.234848,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, five times the scale, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: digits that differ from fp64's",
+   "unit": "digits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "alpha 2, five times the scale, 2 warpgroups a CTA, both rows interleaved, the closed form IEEE: mask bits that differ from fp64's",
+   "unit": "bits",
+   "samples": [
+    0.0
+   ],
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void newton_row::solve<(int)0, (int)2, (int)2>(long long *, const float *, float *, int *, float *, int)": {
+   "regs": 155,
+   "ops": {
+    "FADD": 520,
+    "FMNMX": 258,
+    "FFMA": 147,
+    "STG.E": 132,
+    "FSETP.GT.AND": 128,
+    "FSETP.GE.AND": 124,
+    "LDG.E.64": 64,
+    "LOP3.LUT": 24,
+    "BRA": 23,
+    "MOV": 16,
+    "SHFL.BFLY": 16,
+    "IADD3": 15
+   }
+  },
+  "void newton_row::solve<(int)0, (int)1, (int)2>(long long *, const float *, float *, int *, float *, int)": {
+   "regs": 155,
+   "ops": {
+    "FADD": 520,
+    "FMNMX": 258,
+    "FFMA": 147,
+    "STG.E": 132,
+    "FSETP.GT.AND": 128,
+    "FSETP.GE.AND": 124,
+    "LDG.E.64": 64,
+    "LOP3.LUT": 24,
+    "BRA": 23,
+    "IADD3": 16,
+    "MOV": 16,
+    "SHFL.BFLY": 16
+   }
+  },
+  "void newton_row::solve<(int)1, (int)2, (int)2>(long long *, const float *, float *, int *, float *, int)": {
+   "regs": 159,
+   "ops": {
+    "FADD": 535,
+    "FFMA": 290,
+    "FMNMX": 260,
+    "FMUL": 139,
+    "STG.E": 132,
+    "FSETP.GT.AND": 128,
+    "FSETP.GE.AND": 124,
+    "LDG.E.64": 64,
+    "BRA": 30,
+    "LOP3.LUT": 25,
+    "MOV": 20,
+    "SHFL.BFLY": 20
+   }
+  },
+  "void newton_row::solve<(int)1, (int)1, (int)2>(long long *, const float *, float *, int *, float *, int)": {
+   "regs": 159,
+   "ops": {
+    "FADD": 535,
+    "FFMA": 290,
+    "FMNMX": 260,
+    "FMUL": 139,
+    "STG.E": 132,
+    "FSETP.GT.AND": 128,
+    "FSETP.GE.AND": 124,
+    "LDG.E.64": 64,
+    "BRA": 30,
+    "LOP3.LUT": 25,
+    "MOV": 20,
+    "SHFL.BFLY": 20
+   }
+  },
+  "void newton_row::solve<(int)0, (int)2, (int)1>(long long *, const float *, float *, int *, float *, int)": {
+   "regs": 151,
+   "ops": {
+    "FADD": 520,
+    "FMNMX": 258,
+    "STG.E": 132,
+    "FSETP.GT.AND": 128,
+    "FFMA": 128,
+    "FSETP.GE.AND": 124,
+    "LDG.E.64": 64,
+    "SHFL.BFLY": 16,
+    "NOP": 9,
+    "LOP3.LUT": 7,
+    "FMUL": 6,
+    "ULDC.64": 5
+   }
+  },
+  "void newton_row::solve<(int)0, (int)1, (int)1>(long long *, const float *, float *, int *, float *, int)": {
+   "regs": 151,
+   "ops": {
+    "FADD": 520,
+    "FMNMX": 258,
+    "STG.E": 132,
+    "FSETP.GT.AND": 128,
+    "FFMA": 128,
+    "FSETP.GE.AND": 124,
+    "LDG.E.64": 64,
+    "SHFL.BFLY": 16,
+    "NOP": 9,
+    "LOP3.LUT": 7,
+    "FMUL": 6,
+    "ULDC.64": 5
+   }
+  },
+  "void newton_row::solve<(int)1, (int)2, (int)1>(long long *, const float *, float *, int *, float *, int)": {
+   "regs": 157,
+   "ops": {
+    "FADD": 535,
+    "FFMA": 264,
+    "FMNMX": 260,
+    "FMUL": 149,
+    "STG.E": 132,
+    "FSETP.GT.AND": 128,
+    "FSETP.GE.AND": 124,
+    "LDG.E.64": 64,
+    "SHFL.BFLY": 20,
+    "FSEL": 10,
+    "NOP": 8,
+    "LOP3.LUT": 7
+   }
+  },
+  "void newton_row::solve<(int)1, (int)1, (int)1>(long long *, const float *, float *, int *, float *, int)": {
+   "regs": 157,
+   "ops": {
+    "FADD": 535,
+    "FFMA": 264,
+    "FMNMX": 260,
+    "FMUL": 149,
+    "STG.E": 132,
+    "FSETP.GT.AND": 128,
+    "FSETP.GE.AND": 124,
+    "LDG.E.64": 64,
+    "SHFL.BFLY": 20,
+    "FSEL": 10,
+    "NOP": 8,
+    "LOP3.LUT": 7
+   }
+  },
+  "void newton_row::solve<(int)0, (int)2, (int)0>(long long *, const float *, float *, int *, float *, int)": {
+   "regs": 149,
+   "ops": {
+    "FADD": 518,
+    "FMNMX": 258,
+    "STG.E": 132,
+    "FSETP.GT.AND": 128,
+    "FFMA": 128,
+    "FSETP.GE.AND": 126,
+    "LDG.E.64": 64,
+    "SHFL.BFLY": 16,
+    "NOP": 13,
+    "LOP3.LUT": 7,
+    "MOV": 7,
+    "FMUL": 6
+   }
+  },
+  "void newton_row::solve<(int)0, (int)1, (int)0>(long long *, const float *, float *, int *, float *, int)": {
+   "regs": 149,
+   "ops": {
+    "FADD": 518,
+    "FMNMX": 258,
+    "STG.E": 132,
+    "FSETP.GT.AND": 128,
+    "FFMA": 128,
+    "FSETP.GE.AND": 126,
+    "LDG.E.64": 64,
+    "SHFL.BFLY": 16,
+    "NOP": 13,
+    "LOP3.LUT": 7,
+    "MOV": 7,
+    "FMUL": 6
+   }
+  },
+  "void newton_row::solve<(int)1, (int)2, (int)0>(long long *, const float *, float *, int *, float *, int)": {
+   "regs": 154,
+   "ops": {
+    "FADD": 531,
+    "FFMA": 264,
+    "FMNMX": 260,
+    "FMUL": 149,
+    "STG.E": 132,
+    "FSETP.GT.AND": 128,
+    "FSETP.GE.AND": 126,
+    "LDG.E.64": 64,
+    "SHFL.BFLY": 20,
+    "NOP": 11,
+    "LOP3.LUT": 7,
+    "FSEL": 6
+   }
+  },
+  "void newton_row::solve<(int)1, (int)1, (int)0>(long long *, const float *, float *, int *, float *, int)": {
+   "regs": 154,
+   "ops": {
+    "FADD": 531,
+    "FFMA": 264,
+    "FMNMX": 260,
+    "FMUL": 149,
+    "STG.E": 132,
+    "FSETP.GT.AND": 128,
+    "FSETP.GE.AND": 126,
+    "LDG.E.64": 64,
+    "SHFL.BFLY": 20,
+    "NOP": 11,
+    "LOP3.LUT": 7,
+    "FSEL": 6
+   }
+  }
+ },
+ "counters": {
+  "solve<1,1,0>": {
+   "hmma": 2112.0,
+   "imma": 0.0,
+   "inst": 3029934.0,
+   "alu": 999896.0,
+   "fma": 1850964.0,
+   "fmaheavy": 513493.0,
+   "xu": 17700.0,
+   "wavefronts": 40682.0,
+   "conflicts": 2.0,
+   "load_wavefronts": 0.0,
+   "stores": 0.0,
+   "store_wavefronts": 0.0,
+   "atomics": 0.0,
+   "atomic_wavefronts": 0.0,
+   "copy_bypass_bytes": 0.0,
+   "copy_access_bytes": 0.0,
+   "global_reads": 0.0,
+   "global_fill_bytes": 8650752.0,
+   "l2_read": 270336.0,
+   "red_requests": 0.0,
+   "l2_write": 507851.0,
+   "elapsed": 36196.0,
+   "elapsed_sum": 4777872.0,
+   "busy_issue": 15.86,
+   "busy_alu": 10.46,
+   "busy_fma": 9.69,
+   "busy_fmaheavy": 5.38,
+   "stalls": {
+    "long_scoreboard": 36.55,
+    "short_scoreboard": 1.64,
+    "mio_throttle": 0.0,
+    "math_pipe_throttle": 0.0,
+    "barrier": 0.0,
+    "wait": 5.51,
+    "not_selected": 0.0,
+    "lg_throttle": 15.3,
+    "dispatch_stall": 1.72,
+    "branch_resolving": 0.16,
+    "no_instruction": 4.98,
+    "membar": 0.0,
+    "drain": 5.16,
+    "sleeping": 0.0,
+    "tex_throttle": 0.0,
+    "imc_miss": 0.92,
+    "misc": 5.88
+   },
+   "uncollected": [
+    "l1tex__data_pipe_lsu_wavefronts_mem_lg_cmd_read.sum"
+   ]
+  },
+  "solve<1,2,0>": {
+   "hmma": 4224.0,
+   "imma": 0.0,
+   "inst": 6078810.0,
+   "alu": 2004984.0,
+   "fma": 3715260.0,
+   "fmaheavy": 1076522.0,
+   "xu": 35532.0,
+   "wavefronts": 81637.0,
+   "conflicts": 13.0,
+   "load_wavefronts": 0.0,
+   "stores": 0.0,
+   "store_wavefronts": 0.0,
+   "atomics": 0.0,
+   "atomic_wavefronts": 0.0,
+   "copy_bypass_bytes": 0.0,
+   "copy_access_bytes": 0.0,
+   "global_reads": 0.0,
+   "global_fill_bytes": 17301504.0,
+   "l2_read": 540672.0,
+   "red_requests": 0.0,
+   "l2_write": 1039265.0,
+   "elapsed": 67554.71,
+   "elapsed_sum": 8917222.0,
+   "busy_issue": 17.05,
+   "busy_alu": 11.24,
+   "busy_fma": 10.42,
+   "busy_fmaheavy": 6.05,
+   "stalls": {
+    "long_scoreboard": 38.13,
+    "short_scoreboard": 2.07,
+    "mio_throttle": 0.35,
+    "math_pipe_throttle": 1.08,
+    "barrier": 0.0,
+    "wait": 2.95,
+    "not_selected": 8.18,
+    "lg_throttle": 28.01,
+    "dispatch_stall": 1.97,
+    "branch_resolving": 0.09,
+    "no_instruction": 1.22,
+    "membar": 0.0,
+    "drain": 2.51,
+    "sleeping": 0.0,
+    "tex_throttle": 0.0,
+    "imc_miss": 0.35,
+    "misc": 0.0
+   },
+   "uncollected": [
+    "l1tex__data_pipe_lsu_wavefronts_mem_lg_cmd_read.sum"
+   ]
+  },
+  "solve<0,1,0>": {
+   "hmma": 2112.0,
+   "imma": 0.0,
+   "inst": 1981089.0,
+   "alu": 795102.0,
+   "fma": 1037916.0,
+   "fmaheavy": 66966.0,
+   "xu": 4554.0,
+   "wavefronts": 23498.0,
+   "conflicts": 2.0,
+   "load_wavefronts": 0.0,
+   "stores": 0.0,
+   "store_wavefronts": 0.0,
+   "atomics": 0.0,
+   "atomic_wavefronts": 0.0,
+   "copy_bypass_bytes": 0.0,
+   "copy_access_bytes": 0.0,
+   "global_reads": 0.0,
+   "global_fill_bytes": 8650752.0,
+   "l2_read": 270336.0,
+   "red_requests": 0.0,
+   "l2_write": 506250.0,
+   "elapsed": 32299.89,
+   "elapsed_sum": 4263586.0,
+   "busy_issue": 11.62,
+   "busy_alu": 9.32,
+   "busy_fma": 6.09,
+   "busy_fmaheavy": 0.79,
+   "stalls": {
+    "long_scoreboard": 35.89,
+    "short_scoreboard": 2.57,
+    "mio_throttle": 0.0,
+    "math_pipe_throttle": 0.0,
+    "barrier": 0.0,
+    "wait": 8.83,
+    "not_selected": 0.0,
+    "lg_throttle": 20.17,
+    "dispatch_stall": 0.03,
+    "branch_resolving": 0.17,
+    "no_instruction": 4.2,
+    "membar": 0.0,
+    "drain": 5.29,
+    "sleeping": 0.0,
+    "tex_throttle": 0.0,
+    "imc_miss": 1.07,
+    "misc": 7.12
+   },
+   "uncollected": [
+    "l1tex__data_pipe_lsu_wavefronts_mem_lg_cmd_read.sum"
+   ]
+  },
+  "solve<0,2,0>": {
+   "hmma": 4224.0,
+   "imma": 0.0,
+   "inst": 3958068.0,
+   "alu": 1587480.0,
+   "fma": 2074512.0,
+   "fmaheavy": 553583.0,
+   "xu": 9096.0,
+   "wavefronts": 46955.0,
+   "conflicts": 11.0,
+   "load_wavefronts": 0.0,
+   "stores": 0.0,
+   "store_wavefronts": 0.0,
+   "atomics": 0.0,
+   "atomic_wavefronts": 0.0,
+   "copy_bypass_bytes": 0.0,
+   "copy_access_bytes": 0.0,
+   "global_reads": 0.0,
+   "global_fill_bytes": 17301504.0,
+   "l2_read": 540672.0,
+   "red_requests": 0.0,
+   "l2_write": 1021612.0,
+   "elapsed": 59004.29,
+   "elapsed_sum": 7788566.0,
+   "busy_issue": 12.71,
+   "busy_alu": 10.19,
+   "busy_fma": 6.69,
+   "busy_fmaheavy": 3.57,
+   "stalls": {
+    "long_scoreboard": 33.57,
+    "short_scoreboard": 3.72,
+    "mio_throttle": 0.96,
+    "math_pipe_throttle": 0.64,
+    "barrier": 0.0,
+    "wait": 4.97,
+    "not_selected": 4.52,
+    "lg_throttle": 38.03,
+    "dispatch_stall": 0.25,
+    "branch_resolving": 0.1,
+    "no_instruction": 2.07,
+    "membar": 0.0,
+    "drain": 2.79,
+    "sleeping": 0.0,
+    "tex_throttle": 0.0,
+    "imc_miss": 0.53,
+    "misc": 0.0
+   },
+   "uncollected": [
+    "l1tex__data_pipe_lsu_wavefronts_mem_lg_cmd_read.sum"
+   ]
+  },
+  "solve<1,1,1>": {
+   "hmma": 2112.0,
+   "imma": 0.0,
+   "inst": 3062384.0,
+   "alu": 1020546.0,
+   "fma": 1862764.0,
+   "fmaheavy": 490093.0,
+   "xu": 17700.0,
+   "wavefronts": 40681.0,
+   "conflicts": 1.0,
+   "load_wavefronts": 0.0,
+   "stores": 0.0,
+   "store_wavefronts": 0.0,
+   "atomics": 0.0,
+   "atomic_wavefronts": 0.0,
+   "copy_bypass_bytes": 0.0,
+   "copy_access_bytes": 0.0,
+   "global_reads": 0.0,
+   "global_fill_bytes": 8650752.0,
+   "l2_read": 270336.0,
+   "red_requests": 0.0,
+   "l2_write": 512385.0,
+   "elapsed": 34488.21,
+   "elapsed_sum": 4552444.0,
+   "busy_issue": 16.82,
+   "busy_alu": 11.21,
+   "busy_fma": 10.23,
+   "busy_fmaheavy": 5.39,
+   "stalls": {
+    "long_scoreboard": 37.83,
+    "short_scoreboard": 1.57,
+    "mio_throttle": 0.0,
+    "math_pipe_throttle": 0.0,
+    "barrier": 0.0,
+    "wait": 4.35,
+    "not_selected": 0.0,
+    "lg_throttle": 16.03,
+    "dispatch_stall": 0.68,
+    "branch_resolving": 0.16,
+    "no_instruction": 4.79,
+    "membar": 0.0,
+    "drain": 5.05,
+    "sleeping": 0.0,
+    "tex_throttle": 0.0,
+    "imc_miss": 0.79,
+    "misc": 5.87
+   },
+   "uncollected": [
+    "l1tex__data_pipe_lsu_wavefronts_mem_lg_cmd_read.sum"
+   ]
+  },
+  "solve<1,2,1>": {
+   "hmma": 4224.0,
+   "imma": 0.0,
+   "inst": 6143952.0,
+   "alu": 2046438.0,
+   "fma": 3738948.0,
+   "fmaheavy": 1023281.0,
+   "xu": 35532.0,
+   "wavefronts": 81651.0,
+   "conflicts": 27.0,
+   "load_wavefronts": 0.0,
+   "stores": 0.0,
+   "store_wavefronts": 0.0,
+   "atomics": 0.0,
+   "atomic_wavefronts": 0.0,
+   "copy_bypass_bytes": 0.0,
+   "copy_access_bytes": 0.0,
+   "global_reads": 0.0,
+   "global_fill_bytes": 17301504.0,
+   "l2_read": 540672.0,
+   "red_requests": 0.0,
+   "l2_write": 1039946.0,
+   "elapsed": 66585.0,
+   "elapsed_sum": 8789220.0,
+   "busy_issue": 17.48,
+   "busy_alu": 11.64,
+   "busy_fma": 10.64,
+   "busy_fmaheavy": 5.83,
+   "stalls": {
+    "long_scoreboard": 38.16,
+    "short_scoreboard": 2.05,
+    "mio_throttle": 0.37,
+    "math_pipe_throttle": 1.1,
+    "barrier": 0.0,
+    "wait": 2.29,
+    "not_selected": 8.48,
+    "lg_throttle": 28.64,
+    "dispatch_stall": 0.71,
+    "branch_resolving": 0.09,
+    "no_instruction": 1.24,
+    "membar": 0.0,
+    "drain": 2.66,
+    "sleeping": 0.0,
+    "tex_throttle": 0.0,
+    "imc_miss": 0.31,
+    "misc": 0.0
+   },
+   "uncollected": [
+    "l1tex__data_pipe_lsu_wavefronts_mem_lg_cmd_read.sum"
+   ]
+  },
+  "solve<0,1,1>": {
+   "hmma": 1584.0,
+   "imma": 0.0,
+   "inst": 1991946.0,
+   "alu": 801933.0,
+   "fma": 1042470.0,
+   "fmaheavy": 249871.0,
+   "xu": 4554.0,
+   "wavefronts": 23496.0,
+   "conflicts": 0.0,
+   "load_wavefronts": 0.0,
+   "stores": 0.0,
+   "store_wavefronts": 0.0,
+   "atomics": 0.0,
+   "atomic_wavefronts": 0.0,
+   "copy_bypass_bytes": 0.0,
+   "copy_access_bytes": 0.0,
+   "global_reads": 0.0,
+   "global_fill_bytes": 8650752.0,
+   "l2_read": 270336.0,
+   "red_requests": 0.0,
+   "l2_write": 513796.0,
+   "elapsed": 31384.98,
+   "elapsed_sum": 4142818.0,
+   "busy_issue": 12.02,
+   "busy_alu": 9.68,
+   "busy_fma": 6.29,
+   "busy_fmaheavy": 3.02,
+   "stalls": {
+    "long_scoreboard": 37.57,
+    "short_scoreboard": 2.04,
+    "mio_throttle": 0.0,
+    "math_pipe_throttle": 0.0,
+    "barrier": 0.0,
+    "wait": 4.41,
+    "not_selected": 0.0,
+    "lg_throttle": 21.88,
+    "dispatch_stall": 0.04,
+    "branch_resolving": 0.16,
+    "no_instruction": 5.11,
+    "membar": 0.0,
+    "drain": 5.42,
+    "sleeping": 0.0,
+    "tex_throttle": 0.0,
+    "imc_miss": 0.97,
+    "misc": 6.22
+   },
+   "uncollected": [
+    "l1tex__data_pipe_lsu_wavefronts_mem_lg_cmd_read.sum"
+   ]
+  },
+  "solve<0,2,1>": {
+   "hmma": 3168.0,
+   "imma": 0.0,
+   "inst": 3979752.0,
+   "alu": 1601124.0,
+   "fma": 2083608.0,
+   "fmaheavy": 517545.0,
+   "xu": 9096.0,
+   "wavefronts": 46964.0,
+   "conflicts": 20.0,
+   "load_wavefronts": 0.0,
+   "stores": 0.0,
+   "store_wavefronts": 0.0,
+   "atomics": 0.0,
+   "atomic_wavefronts": 0.0,
+   "copy_bypass_bytes": 0.0,
+   "copy_access_bytes": 0.0,
+   "global_reads": 0.0,
+   "global_fill_bytes": 17301504.0,
+   "l2_read": 540672.0,
+   "red_requests": 0.0,
+   "l2_write": 1028567.0,
+   "elapsed": 57742.24,
+   "elapsed_sum": 7621976.0,
+   "busy_issue": 13.06,
+   "busy_alu": 10.5,
+   "busy_fma": 6.84,
+   "busy_fmaheavy": 3.41,
+   "stalls": {
+    "long_scoreboard": 30.04,
+    "short_scoreboard": 2.65,
+    "mio_throttle": 0.75,
+    "math_pipe_throttle": 1.01,
+    "barrier": 0.0,
+    "wait": 2.16,
+    "not_selected": 5.55,
+    "lg_throttle": 33.5,
+    "dispatch_stall": 0.05,
+    "branch_resolving": 0.08,
+    "no_instruction": 1.15,
+    "membar": 0.0,
+    "drain": 2.41,
+    "sleeping": 0.0,
+    "tex_throttle": 0.0,
+    "imc_miss": 0.34,
+    "misc": 0.0
+   },
+   "uncollected": [
+    "l1tex__data_pipe_lsu_wavefronts_mem_lg_cmd_read.sum"
+   ]
+  },
+  "solve<1,1,2>": {
+   "hmma": 4911.0,
+   "imma": 0.0,
+   "inst": 3139221.0,
+   "alu": 1021914.0,
+   "fma": 1883496.0,
+   "fmaheavy": 573447.0,
+   "xu": 23600.0,
+   "wavefronts": 40690.0,
+   "conflicts": 10.0,
+   "load_wavefronts": 0.0,
+   "stores": 0.0,
+   "store_wavefronts": 0.0,
+   "atomics": 0.0,
+   "atomic_wavefronts": 0.0,
+   "copy_bypass_bytes": 0.0,
+   "copy_access_bytes": 0.0,
+   "global_reads": 0.0,
+   "global_fill_bytes": 8650752.0,
+   "l2_read": 270336.0,
+   "red_requests": 0.0,
+   "l2_write": 514291.0,
+   "elapsed": 35796.85,
+   "elapsed_sum": 4725184.0,
+   "busy_issue": 16.61,
+   "busy_alu": 10.81,
+   "busy_fma": 9.97,
+   "busy_fmaheavy": 6.07,
+   "stalls": {
+    "long_scoreboard": 34.37,
+    "short_scoreboard": 2.31,
+    "mio_throttle": 0.0,
+    "math_pipe_throttle": 0.0,
+    "barrier": 0.0,
+    "wait": 8.12,
+    "not_selected": 0.0,
+    "lg_throttle": 14.0,
+    "dispatch_stall": 0.16,
+    "branch_resolving": 1.79,
+    "no_instruction": 5.09,
+    "membar": 0.0,
+    "drain": 4.38,
+    "sleeping": 0.0,
+    "tex_throttle": 0.0,
+    "imc_miss": 0.96,
+    "misc": 5.23
+   },
+   "uncollected": [
+    "l1tex__data_pipe_lsu_wavefronts_mem_lg_cmd_read.sum"
+   ]
+  },
+  "solve<1,2,2>": {
+   "hmma": 9827.0,
+   "imma": 0.0,
+   "inst": 6298146.0,
+   "alu": 2049135.0,
+   "fma": 3780624.0,
+   "fmaheavy": 1189907.0,
+   "xu": 47376.0,
+   "wavefronts": 81974.0,
+   "conflicts": 350.0,
+   "load_wavefronts": 0.0,
+   "stores": 0.0,
+   "store_wavefronts": 0.0,
+   "atomics": 0.0,
+   "atomic_wavefronts": 0.0,
+   "copy_bypass_bytes": 0.0,
+   "copy_access_bytes": 0.0,
+   "global_reads": 0.0,
+   "global_fill_bytes": 17301504.0,
+   "l2_read": 540672.0,
+   "red_requests": 0.0,
+   "l2_write": 1049395.0,
+   "elapsed": 65361.38,
+   "elapsed_sum": 8627702.0,
+   "busy_issue": 18.26,
+   "busy_alu": 11.88,
+   "busy_fma": 10.96,
+   "busy_fmaheavy": 6.91,
+   "stalls": {
+    "long_scoreboard": 41.38,
+    "short_scoreboard": 2.19,
+    "mio_throttle": 0.42,
+    "math_pipe_throttle": 1.54,
+    "barrier": 0.0,
+    "wait": 4.51,
+    "not_selected": 7.52,
+    "lg_throttle": 30.3,
+    "dispatch_stall": 0.2,
+    "branch_resolving": 1.04,
+    "no_instruction": 1.8,
+    "membar": 0.0,
+    "drain": 2.53,
+    "sleeping": 0.0,
+    "tex_throttle": 0.0,
+    "imc_miss": 0.78,
+    "misc": 0.0
+   },
+   "uncollected": [
+    "l1tex__data_pipe_lsu_wavefronts_mem_lg_cmd_read.sum"
+   ]
+  },
+  "solve<0,1,2>": {
+   "hmma": 2112.0,
+   "imma": 0.0,
+   "inst": 2017521.0,
+   "alu": 799656.0,
+   "fma": 1051578.0,
+   "fmaheavy": 210707.0,
+   "xu": 9108.0,
+   "wavefronts": 23496.0,
+   "conflicts": 0.0,
+   "load_wavefronts": 0.0,
+   "stores": 0.0,
+   "store_wavefronts": 0.0,
+   "atomics": 0.0,
+   "atomic_wavefronts": 0.0,
+   "copy_bypass_bytes": 0.0,
+   "copy_access_bytes": 0.0,
+   "global_reads": 0.0,
+   "global_fill_bytes": 8650752.0,
+   "l2_read": 270336.0,
+   "red_requests": 0.0,
+   "l2_write": 520964.0,
+   "elapsed": 32526.2,
+   "elapsed_sum": 4293458.0,
+   "busy_issue": 11.75,
+   "busy_alu": 9.31,
+   "busy_fma": 6.13,
+   "busy_fmaheavy": 2.46,
+   "stalls": {
+    "long_scoreboard": 37.45,
+    "short_scoreboard": 1.72,
+    "mio_throttle": 0.0,
+    "math_pipe_throttle": 0.0,
+    "barrier": 0.0,
+    "wait": 5.52,
+    "not_selected": 0.0,
+    "lg_throttle": 21.45,
+    "dispatch_stall": 0.04,
+    "branch_resolving": 0.56,
+    "no_instruction": 4.66,
+    "membar": 0.0,
+    "drain": 5.3,
+    "sleeping": 0.0,
+    "tex_throttle": 0.0,
+    "imc_miss": 0.84,
+    "misc": 5.53
+   },
+   "uncollected": [
+    "l1tex__data_pipe_lsu_wavefronts_mem_lg_cmd_read.sum"
+   ]
+  },
+  "solve<0,2,2>": {
+   "hmma": 4224.0,
+   "imma": 0.0,
+   "inst": 4030836.0,
+   "alu": 1596576.0,
+   "fma": 2101800.0,
+   "fmaheavy": 445613.0,
+   "xu": 18192.0,
+   "wavefronts": 46968.0,
+   "conflicts": 24.0,
+   "load_wavefronts": 0.0,
+   "stores": 0.0,
+   "store_wavefronts": 0.0,
+   "atomics": 0.0,
+   "atomic_wavefronts": 0.0,
+   "copy_bypass_bytes": 0.0,
+   "copy_access_bytes": 0.0,
+   "global_reads": 0.0,
+   "global_fill_bytes": 17301504.0,
+   "l2_read": 540672.0,
+   "red_requests": 0.0,
+   "l2_write": 1039132.0,
+   "elapsed": 59033.36,
+   "elapsed_sum": 7792404.0,
+   "busy_issue": 12.94,
+   "busy_alu": 10.24,
+   "busy_fma": 6.75,
+   "busy_fmaheavy": 2.87,
+   "stalls": {
+    "long_scoreboard": 37.24,
+    "short_scoreboard": 1.98,
+    "mio_throttle": 0.38,
+    "math_pipe_throttle": 1.24,
+    "barrier": 0.0,
+    "wait": 2.99,
+    "not_selected": 5.76,
+    "lg_throttle": 38.76,
+    "dispatch_stall": 0.05,
+    "branch_resolving": 0.33,
+    "no_instruction": 1.24,
+    "membar": 0.0,
+    "drain": 2.57,
+    "sleeping": 0.0,
+    "tex_throttle": 0.0,
+    "imc_miss": 0.58,
+    "misc": 0.0
+   },
+   "uncollected": [
+    "l1tex__data_pipe_lsu_wavefronts_mem_lg_cmd_read.sum"
+   ]
+  }
+ }
+}
