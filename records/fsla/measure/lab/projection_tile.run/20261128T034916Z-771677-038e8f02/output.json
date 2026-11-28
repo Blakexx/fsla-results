@@ -1,0 +1,354 @@
+{
+ "experiment": "projection_tile",
+ "question": "the producer's projection tile alone: what does a job cost a CTA -- 128 tokens x 256 columns over the hidden axis, two math warpgroups of 64 tokens each issuing `wgmma` m64n256k16 from shared memory, one loader warp staging a K-step (64 hidden) of `x` [128 x 64] and the job's weights [256 x 64] by `cp.async` into a ring of three stages -- at hidden 256, 512 and 2,048, against its tensor floor (two warpgroups' steps on one pipe, 128 cycles a step)?",
+ "arch": "sm_90a",
+ "device": "NVIDIA H100 80GB HBM3",
+ "checks": [
+  {
+   "lab": "check",
+   "variant": "hidden 256, a job 128 tokens x 256 columns, three stages",
+   "ok": true,
+   "detail": "0 of 65536 accumulators differ"
+  },
+  {
+   "lab": "check",
+   "variant": "hidden 512, a job 128 tokens x 256 columns, three stages",
+   "ok": true,
+   "detail": "0 of 65536 accumulators differ"
+  },
+  {
+   "lab": "check",
+   "variant": "hidden 2048, a job 128 tokens x 256 columns, three stages",
+   "ok": true,
+   "detail": "0 of 65536 accumulators differ"
+  }
+ ],
+ "driver": "580.196.07",
+ "toolkit": "Build cuda_13.5.r13.5/compiler.39125733_0",
+ "git": {
+  "sha": "b7215a57ed18d3d2c8b54a01ecce4a8489b12a54",
+  "dirty": false
+ },
+ "reps": 7,
+ "date": "2026-11-28T03:49:16+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "hidden 256, a job 128 tokens x 256 columns, three stages: a job",
+   "unit": "cycles a job a CTA",
+   "samples": [
+    21767.147727,
+    21960.960227,
+    21818.198864,
+    21808.227273,
+    21862.613636,
+    21859.778409,
+    21869.253788
+   ],
+   "median": 21859.778409,
+   "min": 21767.147727,
+   "max": 21960.960227,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "hidden 256, a job 128 tokens x 256 columns, three stages: against the tensor floor",
+   "unit": "the job's cycles over 16 x hidden",
+   "samples": [
+    5.314245,
+    5.361563,
+    5.326709,
+    5.324274,
+    5.337552,
+    5.33686,
+    5.339173
+   ],
+   "median": 5.33686,
+   "min": 5.314245,
+   "max": 5.361563,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "hidden 512, a job 128 tokens x 256 columns, three stages: a job",
+   "unit": "cycles a job a CTA",
+   "samples": [
+    42855.378788,
+    43306.748106,
+    43253.808712,
+    43469.339015,
+    43210.785985,
+    43086.554924,
+    42995.399621
+   ],
+   "median": 43210.785985,
+   "min": 42855.378788,
+   "max": 43469.339015,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "hidden 512, a job 128 tokens x 256 columns, three stages: against the tensor floor",
+   "unit": "the job's cycles over 16 x hidden",
+   "samples": [
+    5.231369,
+    5.286468,
+    5.280006,
+    5.306316,
+    5.274754,
+    5.259589,
+    5.248462
+   ],
+   "median": 5.274754,
+   "min": 5.231369,
+   "max": 5.306316,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "hidden 2048, a job 128 tokens x 256 columns, three stages: a job",
+   "unit": "cycles a job a CTA",
+   "samples": [
+    174570.407197,
+    174225.149621,
+    175023.712121,
+    174095.3125,
+    174622.742424,
+    175540.761364,
+    175482.848485
+   ],
+   "median": 174622.742424,
+   "min": 174095.3125,
+   "max": 175540.761364,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "hidden 2048, a job 128 tokens x 256 columns, three stages: against the tensor floor",
+   "unit": "the job's cycles over 16 x hidden",
+   "samples": [
+    5.327466,
+    5.31693,
+    5.3413,
+    5.312967,
+    5.329063,
+    5.357079,
+    5.355312
+   ],
+   "median": 5.329063,
+   "min": 5.312967,
+   "max": 5.357079,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void projection_tile::project<(int)2048>(long long *, const __nv_bfloat16 *, const __nv_bfloat16 *, float *, int *, int)": {
+   "regs": 154,
+   "ops": {
+    "STG.E": 129,
+    "FADD": 128,
+    "LDGSTS.E.BYPASS.128": 96,
+    "IMAD.U32": 80,
+    "CS2R": 67,
+    "MOV": 64,
+    "UMOV": 58,
+    "LOP3.LUT": 33,
+    "R2UR": 33,
+    "IADD3": 33,
+    "IMAD.MOV.U32": 25,
+    "SHF.R.U32.HI": 23
+   }
+  },
+  "void projection_tile::project<(int)512>(long long *, const __nv_bfloat16 *, const __nv_bfloat16 *, float *, int *, int)": {
+   "regs": 154,
+   "ops": {
+    "STG.E": 129,
+    "FADD": 128,
+    "LDGSTS.E.BYPASS.128": 96,
+    "IMAD.U32": 80,
+    "CS2R": 67,
+    "MOV": 64,
+    "UMOV": 58,
+    "LOP3.LUT": 33,
+    "R2UR": 33,
+    "IADD3": 33,
+    "IMAD.MOV.U32": 25,
+    "SHF.R.U32.HI": 23
+   }
+  },
+  "void projection_tile::project<(int)256>(long long *, const __nv_bfloat16 *, const __nv_bfloat16 *, float *, int *, int)": {
+   "regs": 154,
+   "ops": {
+    "STG.E": 129,
+    "FADD": 128,
+    "LDGSTS.E.BYPASS.128": 96,
+    "IMAD.U32": 80,
+    "CS2R": 67,
+    "MOV": 64,
+    "UMOV": 58,
+    "LOP3.LUT": 33,
+    "R2UR": 33,
+    "IADD3": 33,
+    "IMAD.MOV.U32": 25,
+    "SHF.R.U32.HI": 23
+   }
+  }
+ },
+ "counters": {
+  "project<256>": {
+   "hmma": 512.0,
+   "imma": 0.0,
+   "inst": 33556.0,
+   "alu": 11445.0,
+   "fma": 6980.0,
+   "fmaheavy": 4932.0,
+   "xu": 0.0,
+   "wavefronts": 11084.0,
+   "conflicts": 0.0,
+   "load_wavefronts": 0.0,
+   "stores": 0.0,
+   "store_wavefronts": 0.0,
+   "atomics": 0.0,
+   "atomic_wavefronts": 0.0,
+   "copy_bypass_bytes": 786432.0,
+   "copy_access_bytes": 0.0,
+   "global_reads": 0.0,
+   "global_fill_bytes": 1572864.0,
+   "l2_read": 22528.0,
+   "red_requests": 0.0,
+   "l2_write": 65620.0,
+   "elapsed": 101644.12,
+   "elapsed_sum": 13417024.0,
+   "busy_issue": 0.07,
+   "busy_alu": 0.04,
+   "busy_fma": 0.01,
+   "busy_fmaheavy": 0.02,
+   "stalls": {
+    "long_scoreboard": 12.64,
+    "short_scoreboard": 1.81,
+    "mio_throttle": 1.42,
+    "math_pipe_throttle": 0.32,
+    "barrier": 1.63,
+    "wait": 3.62,
+    "not_selected": 0.54,
+    "lg_throttle": 65.41,
+    "dispatch_stall": 1.05,
+    "branch_resolving": 8.42,
+    "no_instruction": 1.55,
+    "membar": 0.0,
+    "drain": 4.47,
+    "sleeping": 0.0,
+    "tex_throttle": 0.0,
+    "imc_miss": 0.07,
+    "misc": 0.34
+   },
+   "uncollected": [
+    "l1tex__data_pipe_lsu_wavefronts_mem_lg_cmd_read.sum"
+   ]
+  },
+  "project<512>": {
+   "hmma": 1024.0,
+   "imma": 0.0,
+   "inst": 57448.0,
+   "alu": 20582.0,
+   "fma": 10516.0,
+   "fmaheavy": 8468.0,
+   "xu": 0.0,
+   "wavefronts": 22102.0,
+   "conflicts": 0.0,
+   "load_wavefronts": 0.0,
+   "stores": 0.0,
+   "store_wavefronts": 0.0,
+   "atomics": 0.0,
+   "atomic_wavefronts": 0.0,
+   "copy_bypass_bytes": 1572864.0,
+   "copy_access_bytes": 0.0,
+   "global_reads": 0.0,
+   "global_fill_bytes": 3145728.0,
+   "l2_read": 45074.0,
+   "red_requests": 0.0,
+   "l2_write": 65625.0,
+   "elapsed": 130939.97,
+   "elapsed_sum": 17284076.0,
+   "busy_issue": 0.09,
+   "busy_alu": 0.06,
+   "busy_fma": 0.02,
+   "busy_fmaheavy": 0.03,
+   "stalls": {
+    "long_scoreboard": 19.19,
+    "short_scoreboard": 0.13,
+    "mio_throttle": 1.44,
+    "math_pipe_throttle": 0.41,
+    "barrier": 1.31,
+    "wait": 4.64,
+    "not_selected": 0.61,
+    "lg_throttle": 47.11,
+    "dispatch_stall": 1.83,
+    "branch_resolving": 12.57,
+    "no_instruction": 1.87,
+    "membar": 0.0,
+    "drain": 3.35,
+    "sleeping": 0.0,
+    "tex_throttle": 0.0,
+    "imc_miss": 0.05,
+    "misc": 0.51
+   },
+   "uncollected": [
+    "l1tex__data_pipe_lsu_wavefronts_mem_lg_cmd_read.sum"
+   ]
+  },
+  "project<2048>": {
+   "hmma": 4096.0,
+   "imma": 0.0,
+   "inst": 201324.0,
+   "alu": 75752.0,
+   "fma": 31732.0,
+   "fmaheavy": 29687.0,
+   "xu": 0.0,
+   "wavefronts": 88367.0,
+   "conflicts": 0.0,
+   "load_wavefronts": 0.0,
+   "stores": 0.0,
+   "store_wavefronts": 0.0,
+   "atomics": 0.0,
+   "atomic_wavefronts": 0.0,
+   "copy_bypass_bytes": 6291456.0,
+   "copy_access_bytes": 0.0,
+   "global_reads": 0.0,
+   "global_fill_bytes": 12582912.0,
+   "l2_read": 180224.0,
+   "red_requests": 0.0,
+   "l2_write": 65627.0,
+   "elapsed": 304889.62,
+   "elapsed_sum": 40245430.0,
+   "busy_issue": 0.14,
+   "busy_alu": 0.09,
+   "busy_fma": 0.02,
+   "busy_fmaheavy": 0.04,
+   "stalls": {
+    "long_scoreboard": 33.13,
+    "short_scoreboard": 0.05,
+    "mio_throttle": 2.02,
+    "math_pipe_throttle": 0.63,
+    "barrier": 0.54,
+    "wait": 7.11,
+    "not_selected": 0.75,
+    "lg_throttle": 20.6,
+    "dispatch_stall": 3.4,
+    "branch_resolving": 21.05,
+    "no_instruction": 1.95,
+    "membar": 0.0,
+    "drain": 1.43,
+    "sleeping": 0.0,
+    "tex_throttle": 0.0,
+    "imc_miss": 0.04,
+    "misc": 0.86
+   },
+   "uncollected": [
+    "l1tex__data_pipe_lsu_wavefronts_mem_lg_cmd_read.sum"
+   ]
+  }
+ }
+}

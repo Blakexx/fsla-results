@@ -1,0 +1,300 @@
+{
+ "experiment": "tma_box",
+ "question": "the producer's loader stages a K-step's `x` [128 x 64] and weights [256 x 64] bf16 (48 KB) a stage; what does a stage cost a CTA by the tensor copy (TMA) against `cp.async` by one warp?",
+ "arch": "sm_90a",
+ "device": "NVIDIA H100 80GB HBM3",
+ "checks": [
+  {
+   "lab": "check",
+   "variant": "cp.async, a warp, 16 bytes a lane",
+   "ok": true,
+   "detail": "0 of 9732096 landed values differ"
+  },
+  {
+   "lab": "check",
+   "variant": "a tensor copy, 128-byte lines swizzled",
+   "ok": true,
+   "detail": "0 of 9732096 landed values differ"
+  },
+  {
+   "lab": "check",
+   "variant": "a tensor copy, 16-byte lines (the unswizzled bricks)",
+   "ok": true,
+   "detail": "0 of 9732096 landed values differ"
+  }
+ ],
+ "driver": "580.196.07",
+ "toolkit": "Build cuda_13.5.r13.5/compiler.39125733_0",
+ "git": {
+  "sha": "b7215a57ed18d3d2c8b54a01ecce4a8489b12a54",
+  "dirty": false
+ },
+ "reps": 7,
+ "date": "2026-11-28T03:49:56+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "cp.async, a warp, 16 bytes a lane: a 48 KB stage",
+   "unit": "cycles a stage a CTA",
+   "samples": [
+    5670.709399,
+    5663.715169,
+    5662.156191,
+    5672.910571,
+    5657.369851,
+    5655.281132,
+    5667.776219
+   ],
+   "median": 5663.715169,
+   "min": 5655.281132,
+   "max": 5672.910571,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a tensor copy, 128-byte lines swizzled: a 48 KB stage",
+   "unit": "cycles a stage a CTA",
+   "samples": [
+    965.172733,
+    962.144827,
+    969.95277,
+    967.614317,
+    967.049302,
+    966.35535,
+    966.292821
+   ],
+   "median": 966.35535,
+   "min": 962.144827,
+   "max": 969.95277,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "a tensor copy, 16-byte lines (the unswizzled bricks): a 48 KB stage",
+   "unit": "cycles a stage a CTA",
+   "samples": [
+    5359.878226,
+    5350.130978,
+    5332.929628,
+    5400.772402,
+    5386.590169,
+    5341.179184,
+    5421.413915
+   ],
+   "median": 5359.878226,
+   "min": 5332.929628,
+   "max": 5421.413915,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void tma_box::copy<(int)2>(CUtensorMap_st, CUtensorMap_st, const __nv_bfloat16 *, const __nv_bfloat16 *, long long *, int *, unsigned char *, int)": {
+   "regs": 32,
+   "ops": {
+    "R2UR": 62,
+    "LDS.U8": 29,
+    "STG.E.U8": 29,
+    "BRA": 18,
+    "IMAD.MOV.U32": 15,
+    "NOP": 14,
+    "VIADD": 10,
+    "IMAD": 9,
+    "PLOP3.LUT": 9,
+    "UIADD3": 8,
+    "IADD3": 8,
+    "S2R": 7
+   }
+  },
+  "void tma_box::copy<(int)1>(CUtensorMap_st, CUtensorMap_st, const __nv_bfloat16 *, const __nv_bfloat16 *, long long *, int *, unsigned char *, int)": {
+   "regs": 32,
+   "ops": {
+    "R2UR": 62,
+    "LDS.U8": 29,
+    "STG.E.U8": 29,
+    "BRA": 18,
+    "NOP": 15,
+    "IMAD.MOV.U32": 15,
+    "VIADD": 10,
+    "IMAD": 9,
+    "PLOP3.LUT": 9,
+    "UIADD3": 8,
+    "IADD3": 8,
+    "S2R": 7
+   }
+  },
+  "void tma_box::copy<(int)0>(CUtensorMap_st, CUtensorMap_st, const __nv_bfloat16 *, const __nv_bfloat16 *, long long *, int *, unsigned char *, int)": {
+   "regs": 47,
+   "ops": {
+    "LDGSTS.E.BYPASS.128": 96,
+    "IADD3": 32,
+    "LDS.U8": 29,
+    "STG.E.U8": 29,
+    "IMAD.X": 26,
+    "BRA": 16,
+    "IMAD.MOV.U32": 16,
+    "LOP3.LUT": 16,
+    "NOP": 13,
+    "IMAD": 11,
+    "VIADD": 11,
+    "S2R": 8
+   }
+  }
+ },
+ "counters": {
+  "copy<0>": {
+   "hmma": 0.0,
+   "imma": 0.0,
+   "inst": 3838072.0,
+   "alu": 655601.0,
+   "fma": 318648.0,
+   "fmaheavy": 318648.0,
+   "xu": 0.0,
+   "wavefronts": 642470.0,
+   "conflicts": 1742.0,
+   "load_wavefronts": 618984.0,
+   "stores": 0.0,
+   "store_wavefronts": 0.0,
+   "atomics": 0.0,
+   "atomic_wavefronts": 0.0,
+   "copy_bypass_bytes": 110297088.0,
+   "copy_access_bytes": 0.0,
+   "global_reads": 0.0,
+   "global_fill_bytes": 220594176.0,
+   "l2_read": 5817229.0,
+   "red_requests": 0.0,
+   "l2_write": 611418.0,
+   "elapsed": 135282.32,
+   "elapsed_sum": 17857266.0,
+   "busy_issue": 5.97,
+   "busy_alu": 1.84,
+   "busy_fma": 0.47,
+   "busy_fmaheavy": 0.94,
+   "stalls": {
+    "long_scoreboard": 28.06,
+    "short_scoreboard": 16.26,
+    "mio_throttle": 3.61,
+    "math_pipe_throttle": 0.01,
+    "barrier": 0.57,
+    "wait": 11.03,
+    "not_selected": 0.23,
+    "lg_throttle": 6.81,
+    "dispatch_stall": 0.04,
+    "branch_resolving": 24.33,
+    "no_instruction": 2.65,
+    "membar": 0.0,
+    "drain": 0.0,
+    "sleeping": 0.0,
+    "tex_throttle": 0.0,
+    "imc_miss": 0.18,
+    "misc": 1.08
+   },
+   "uncollected": [
+    "l1tex__data_pipe_lsu_wavefronts_mem_lg_cmd_read.sum"
+   ]
+  },
+  "copy<1>": {
+   "hmma": 0.0,
+   "imma": 0.0,
+   "inst": 3262864.0,
+   "alu": 1297623.0,
+   "fma": 249876.0,
+   "fmaheavy": 249876.0,
+   "xu": 0.0,
+   "wavefronts": 624263.0,
+   "conflicts": 2270.0,
+   "load_wavefronts": 619538.0,
+   "stores": 0.0,
+   "store_wavefronts": 0.0,
+   "atomics": 0.0,
+   "atomic_wavefronts": 0.0,
+   "copy_bypass_bytes": 0.0,
+   "copy_access_bytes": 0.0,
+   "global_reads": 0.0,
+   "global_fill_bytes": 0.0,
+   "l2_read": 1785820.0,
+   "red_requests": 0.0,
+   "l2_write": 611474.0,
+   "elapsed": 40909.71,
+   "elapsed_sum": 5400082.0,
+   "busy_issue": 15.59,
+   "busy_alu": 12.01,
+   "busy_fma": 1.23,
+   "busy_fmaheavy": 2.45,
+   "stalls": {
+    "long_scoreboard": 26.67,
+    "short_scoreboard": 4.05,
+    "mio_throttle": 3.08,
+    "math_pipe_throttle": 0.27,
+    "barrier": 1.65,
+    "wait": 20.15,
+    "not_selected": 1.12,
+    "lg_throttle": 0.53,
+    "dispatch_stall": 0.18,
+    "branch_resolving": 21.66,
+    "no_instruction": 3.24,
+    "membar": 0.0,
+    "drain": 0.02,
+    "sleeping": 0.0,
+    "tex_throttle": 0.0,
+    "imc_miss": 0.35,
+    "misc": 0.93
+   },
+   "uncollected": [
+    "l1tex__data_pipe_lsu_wavefronts_mem_lg_cmd_read.sum"
+   ]
+  },
+  "copy<2>": {
+   "hmma": 0.0,
+   "imma": 0.0,
+   "inst": 5076724.0,
+   "alu": 1738352.0,
+   "fma": 249876.0,
+   "fmaheavy": 249876.0,
+   "xu": 0.0,
+   "wavefronts": 624016.0,
+   "conflicts": 2032.0,
+   "load_wavefronts": 619318.0,
+   "stores": 0.0,
+   "store_wavefronts": 0.0,
+   "atomics": 0.0,
+   "atomic_wavefronts": 0.0,
+   "copy_bypass_bytes": 0.0,
+   "copy_access_bytes": 0.0,
+   "global_reads": 0.0,
+   "global_fill_bytes": 0.0,
+   "l2_read": 5349277.0,
+   "red_requests": 0.0,
+   "l2_write": 611484.0,
+   "elapsed": 119273.53,
+   "elapsed_sum": 15744106.0,
+   "busy_issue": 8.95,
+   "busy_alu": 5.52,
+   "busy_fma": 0.42,
+   "busy_fmaheavy": 0.84,
+   "stalls": {
+    "long_scoreboard": 32.01,
+    "short_scoreboard": 1.27,
+    "mio_throttle": 0.95,
+    "math_pipe_throttle": 0.09,
+    "barrier": 2.25,
+    "wait": 12.39,
+    "not_selected": 0.37,
+    "lg_throttle": 0.23,
+    "dispatch_stall": 0.06,
+    "branch_resolving": 35.44,
+    "no_instruction": 4.11,
+    "membar": 0.0,
+    "drain": 0.0,
+    "sleeping": 0.0,
+    "tex_throttle": 0.0,
+    "imc_miss": 0.11,
+    "misc": 1.61
+   },
+   "uncollected": [
+    "l1tex__data_pipe_lsu_wavefronts_mem_lg_cmd_read.sum"
+   ]
+  }
+ }
+}

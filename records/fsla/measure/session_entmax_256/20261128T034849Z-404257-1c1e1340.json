@@ -1,0 +1,122 @@
+{
+ "format": 2,
+ "key": "08c952e9c94b3dff51d42d09",
+ "label": "@fsla//measure:session_entmax_256",
+ "ok": true,
+ "output": "20261128T034849Z-404257-1c1e1340/output.json",
+ "provenance": {
+  "checkouts": {
+   "//measure:clock": {
+    "branch": null,
+    "checkout": "fsla",
+    "diff_sha256": null,
+    "git_sha": "b7215a57ed18d3d2c8b54a01ecce4a8489b12a54"
+   },
+   "//measure:entmax_solve_layer-alt-entmax1.5-256x256-T65536-h4": {
+    "branch": null,
+    "checkout": "fsla",
+    "diff_sha256": null,
+    "git_sha": "b7215a57ed18d3d2c8b54a01ecce4a8489b12a54"
+   }
+  },
+  "host": "8990a2ccf418",
+  "run": "20261128T034849Z-404257-1c1e1340"
+ },
+ "run": "20261128T034849Z-404257-1c1e1340",
+ "semantics": {
+  "claim": "unlocked",
+  "clock": "unlocked",
+  "clock_reader": {
+   "binds": [
+    "fsla",
+    "fsla_cu13._C"
+   ],
+   "bundle": {
+    "digest": "3a46cf896e191aee4a1617fd37a2a82bcccb2654f4001965ee9b768426e0dced",
+    "environment": "627214263751c08d"
+   },
+   "cells": [],
+   "executor": "measure.provider:read_clock",
+   "kind": "clock",
+   "owner": "//measure:clock",
+   "params": {}
+  },
+  "entries": [
+   {
+    "binds": [
+     "fsla",
+     "fsla_cu13._C"
+    ],
+    "bundle": {
+     "digest": "3a46cf896e191aee4a1617fd37a2a82bcccb2654f4001965ee9b768426e0dced",
+     "environment": "627214263751c08d"
+    },
+    "cells": [
+     {
+      "data": "fsla_devtools.cells.form:cell",
+      "draw": "674ed438da98d510b8731ba3c431d9bc7acfcb3d77fa6afe9deba681c238895f",
+      "name": "layer-alt-entmax1.5-256x256-T65536-h4",
+      "params": {
+       "B": 1,
+       "H": 4,
+       "hidden": 256,
+       "kind": "layer",
+       "note": "the capacity-fair long layer, T = N = 65,536 a head, four heads, hidden = H dv, at logit gain 1: beside FlashAttention with its QKV projection from the same hidden",
+       "routing": {
+        "read": [
+         [
+          "softmax",
+          "entmax1.5"
+         ]
+        ],
+        "topology": [
+         256,
+         256
+        ],
+        "write": [
+         "entmax1.5",
+         "softmax"
+        ]
+       },
+       "seed": 11,
+       "tokens": 65536
+      }
+     }
+    ],
+    "executor": "measure.provider:timed",
+    "kind": "timed",
+    "owner": "//measure:entmax_solve_layer-alt-entmax1.5-256x256-T65536-h4",
+    "params": {
+     "arm": "entmax_solve"
+    }
+   }
+  ],
+  "machine": {
+   "devices": [
+    {
+     "compute_cap": "9.0",
+     "driver": "580.196.07",
+     "name": "NVIDIA H100 80GB HBM3"
+    }
+   ]
+  },
+  "reps": 11,
+  "rounds": 8,
+  "session": "//measure:session_entmax_256",
+  "warmup": 10
+ },
+ "summary": {
+  "members": [
+   {
+    "cell": "layer-alt-entmax1.5-256x256-T65536-h4",
+    "error": null,
+    "id": "m0",
+    "owner": "//measure:entmax_solve_layer-alt-entmax1.5-256x256-T65536-h4",
+    "status": "ok"
+   }
+  ],
+  "samples": 88
+ },
+ "utc": "2026-11-28T03:48:51Z",
+ "wall_s": null
+}
