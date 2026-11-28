@@ -1,0 +1,289 @@
+{
+ "experiment": "decode_ring",
+ "question": "(no QUESTION in the header)",
+ "arch": "sm_90a",
+ "git": {
+  "sha": "3db2b4458ea143edb472e95b2eab99d1897f04c3",
+  "dirty": false
+ },
+ "date": "2026-11-28T08:56:09+00:00",
+ "metrics": [
+  "dram__bytes_read.sum",
+  "dram__bytes_write.sum"
+ ],
+ "inputs": {},
+ "kernels": {
+  "void fill<64>(unsigned char *, long long, int)": {
+   "dram__bytes_read.sum": 4825969664.0,
+   "dram__bytes_write.sum": 22157235200.0
+  },
+  "void walk<0, 0, 64, 1, 0>(Args)": {
+   "dram__bytes_read.sum": 432579328.0,
+   "dram__bytes_write.sum": 407473664.0
+  },
+  "void walk<1, 0, 64, 1, 0>(Args)": {
+   "dram__bytes_read.sum": 432797696.0,
+   "dram__bytes_write.sum": 407262720.0
+  },
+  "void walk<2, 0, 64, 1, 0>(Args)": {
+   "dram__bytes_read.sum": 432887552.0,
+   "dram__bytes_write.sum": 407323648.0
+  },
+  "void walk<3, 0, 64, 1, 0>(Args)": {
+   "dram__bytes_read.sum": 432651776.0,
+   "dram__bytes_write.sum": 407475456.0
+  },
+  "void walk<0, 1, 64, 1, 0>(Args)": {
+   "dram__bytes_read.sum": 596932352.0,
+   "dram__bytes_write.sum": 188928.0
+  },
+  "void walk<1, 1, 64, 1, 0>(Args)": {
+   "dram__bytes_read.sum": 596930048.0,
+   "dram__bytes_write.sum": 294144.0
+  },
+  "void walk<2, 1, 64, 1, 0>(Args)": {
+   "dram__bytes_read.sum": 596930304.0,
+   "dram__bytes_write.sum": 283136.0
+  },
+  "void walk<3, 1, 64, 1, 0>(Args)": {
+   "dram__bytes_read.sum": 596935680.0,
+   "dram__bytes_write.sum": 25856.0
+  },
+  "void walk<0, 2, 64, 1, 0>(Args)": {
+   "dram__bytes_read.sum": 395973632.0,
+   "dram__bytes_write.sum": 267127808.0
+  },
+  "void walk<1, 2, 64, 1, 0>(Args)": {
+   "dram__bytes_read.sum": 462009856.0,
+   "dram__bytes_write.sum": 266367488.0
+  },
+  "void walk<2, 2, 64, 1, 0>(Args)": {
+   "dram__bytes_read.sum": 461441280.0,
+   "dram__bytes_write.sum": 266354176.0
+  },
+  "void walk<3, 2, 64, 1, 0>(Args)": {
+   "dram__bytes_read.sum": 395861504.0,
+   "dram__bytes_write.sum": 266553600.0
+  },
+  "void walk<0, 3, 64, 1, 0>(Args)": {
+   "dram__bytes_read.sum": 441219072.0,
+   "dram__bytes_write.sum": 78848.0
+  },
+  "void walk<1, 3, 64, 1, 0>(Args)": {
+   "dram__bytes_read.sum": 441239808.0,
+   "dram__bytes_write.sum": 42752.0
+  },
+  "void walk<2, 3, 64, 1, 0>(Args)": {
+   "dram__bytes_read.sum": 441217280.0,
+   "dram__bytes_write.sum": 252416.0
+  },
+  "void walk<3, 3, 64, 1, 0>(Args)": {
+   "dram__bytes_read.sum": 441241600.0,
+   "dram__bytes_write.sum": 32000.0
+  },
+  "void walk<0, 4, 64, 1, 0>(Args)": {
+   "dram__bytes_read.sum": 311453952.0,
+   "dram__bytes_write.sum": 48384.0
+  },
+  "void walk<2, 4, 64, 1, 0>(Args)": {
+   "dram__bytes_read.sum": 311447808.0,
+   "dram__bytes_write.sum": 292352.0
+  },
+  "void walk<1, 0, 64, 8, 0>(Args)": {
+   "dram__bytes_read.sum": 433280000.0,
+   "dram__bytes_write.sum": 425610752.0
+  },
+  "void walk<2, 0, 64, 8, 0>(Args)": {
+   "dram__bytes_read.sum": 433303296.0,
+   "dram__bytes_write.sum": 425614336.0
+  },
+  "void walk<3, 0, 64, 8, 0>(Args)": {
+   "dram__bytes_read.sum": 433196800.0,
+   "dram__bytes_write.sum": 425720576.0
+  },
+  "void walk<1, 1, 64, 8, 0>(Args)": {
+   "dram__bytes_read.sum": 597481472.0,
+   "dram__bytes_write.sum": 654848.0
+  },
+  "void walk<2, 1, 64, 8, 0>(Args)": {
+   "dram__bytes_read.sum": 597348608.0,
+   "dram__bytes_write.sum": 1049088.0
+  },
+  "void walk<3, 1, 64, 8, 0>(Args)": {
+   "dram__bytes_read.sum": 601554432.0,
+   "dram__bytes_write.sum": 4842496.0
+  },
+  "void walk<0, 2, 64, 8, 0>(Args)": {
+   "dram__bytes_read.sum": 396621312.0,
+   "dram__bytes_write.sum": 278374144.0
+  },
+  "void walk<1, 2, 64, 8, 0>(Args)": {
+   "dram__bytes_read.sum": 464004096.0,
+   "dram__bytes_write.sum": 278107904.0
+  },
+  "void walk<2, 2, 64, 8, 0>(Args)": {
+   "dram__bytes_read.sum": 462553088.0,
+   "dram__bytes_write.sum": 278530304.0
+  },
+  "void walk<3, 2, 64, 8, 0>(Args)": {
+   "dram__bytes_read.sum": 398795520.0,
+   "dram__bytes_write.sum": 278941184.0
+  },
+  "void walk<0, 3, 64, 8, 0>(Args)": {
+   "dram__bytes_read.sum": 443395840.0,
+   "dram__bytes_write.sum": 2612224.0
+  },
+  "void walk<1, 3, 64, 8, 0>(Args)": {
+   "dram__bytes_read.sum": 442158592.0,
+   "dram__bytes_write.sum": 1111552.0
+  },
+  "void walk<2, 3, 64, 8, 0>(Args)": {
+   "dram__bytes_read.sum": 442010368.0,
+   "dram__bytes_write.sum": 1664512.0
+  },
+  "void walk<3, 3, 64, 8, 0>(Args)": {
+   "dram__bytes_read.sum": 445925376.0,
+   "dram__bytes_write.sum": 4998400.0
+  },
+  "void walk<0, 4, 64, 8, 0>(Args)": {
+   "dram__bytes_read.sum": 313505280.0,
+   "dram__bytes_write.sum": 2292992.0
+  },
+  "void walk<2, 4, 64, 8, 0>(Args)": {
+   "dram__bytes_read.sum": 312336384.0,
+   "dram__bytes_write.sum": 1285888.0
+  },
+  "void fill<32>(unsigned char *, long long, int)": {
+   "dram__bytes_read.sum": 3490658688.0,
+   "dram__bytes_write.sum": 11748092928.0
+  },
+  "void walk<1, 0, 32, 8, 0>(Args)": {
+   "dram__bytes_read.sum": 230036992.0,
+   "dram__bytes_write.sum": 218989312.0
+  },
+  "void walk<2, 0, 32, 8, 0>(Args)": {
+   "dram__bytes_read.sum": 230191104.0,
+   "dram__bytes_write.sum": 218665216.0
+  },
+  "void walk<3, 0, 32, 8, 0>(Args)": {
+   "dram__bytes_read.sum": 227935744.0,
+   "dram__bytes_write.sum": 220868352.0
+  },
+  "void walk<1, 1, 32, 8, 0>(Args)": {
+   "dram__bytes_read.sum": 325434368.0,
+   "dram__bytes_write.sum": 1160960.0
+  },
+  "void walk<2, 1, 32, 8, 0>(Args)": {
+   "dram__bytes_read.sum": 325110016.0,
+   "dram__bytes_write.sum": 1034496.0
+  },
+  "void walk<3, 1, 32, 8, 0>(Args)": {
+   "dram__bytes_read.sum": 329541888.0,
+   "dram__bytes_write.sum": 5392896.0
+  },
+  "void walk<0, 2, 32, 8, 0>(Args)": {
+   "dram__bytes_read.sum": 643486976.0,
+   "dram__bytes_write.sum": 408004096.0
+  },
+  "void walk<1, 2, 32, 8, 0>(Args)": {
+   "dram__bytes_read.sum": 897111040.0,
+   "dram__bytes_write.sum": 408609792.0
+  },
+  "void walk<2, 2, 32, 8, 0>(Args)": {
+   "dram__bytes_read.sum": 895898368.0,
+   "dram__bytes_write.sum": 408778752.0
+  },
+  "void walk<3, 2, 32, 8, 0>(Args)": {
+   "dram__bytes_read.sum": 634371840.0,
+   "dram__bytes_write.sum": 407328768.0
+  },
+  "void walk<0, 3, 32, 8, 0>(Args)": {
+   "dram__bytes_read.sum": 701820416.0,
+   "dram__bytes_write.sum": 3197696.0
+  },
+  "void walk<1, 3, 32, 8, 0>(Args)": {
+   "dram__bytes_read.sum": 701668352.0,
+   "dram__bytes_write.sum": 1183744.0
+  },
+  "void walk<2, 3, 32, 8, 0>(Args)": {
+   "dram__bytes_read.sum": 701388800.0,
+   "dram__bytes_write.sum": 2337536.0
+  },
+  "void walk<3, 3, 32, 8, 0>(Args)": {
+   "dram__bytes_read.sum": 704815360.0,
+   "dram__bytes_write.sum": 4230400.0
+  },
+  "void walk<0, 4, 32, 8, 0>(Args)": {
+   "dram__bytes_read.sum": 417126144.0,
+   "dram__bytes_write.sum": 2236416.0
+  },
+  "void walk<2, 4, 32, 8, 0>(Args)": {
+   "dram__bytes_read.sum": 416027648.0,
+   "dram__bytes_write.sum": 1505280.0
+  },
+  "void walk<1, 0, 64, 8, 1>(Args)": {
+   "dram__bytes_read.sum": 433637376.0,
+   "dram__bytes_write.sum": 431465472.0
+  },
+  "void walk<2, 0, 64, 8, 1>(Args)": {
+   "dram__bytes_read.sum": 433778432.0,
+   "dram__bytes_write.sum": 431632896.0
+  },
+  "void walk<3, 0, 64, 8, 1>(Args)": {
+   "dram__bytes_read.sum": 433979904.0,
+   "dram__bytes_write.sum": 435390464.0
+  },
+  "void walk<1, 1, 64, 8, 1>(Args)": {
+   "dram__bytes_read.sum": 597472512.0,
+   "dram__bytes_write.sum": 11409664.0
+  },
+  "void walk<2, 1, 64, 8, 1>(Args)": {
+   "dram__bytes_read.sum": 597532416.0,
+   "dram__bytes_write.sum": 11806464.0
+  },
+  "void walk<3, 1, 64, 8, 1>(Args)": {
+   "dram__bytes_read.sum": 598412288.0,
+   "dram__bytes_write.sum": 18656000.0
+  },
+  "void walk<0, 2, 64, 8, 1>(Args)": {
+   "dram__bytes_read.sum": 396858368.0,
+   "dram__bytes_write.sum": 287246848.0
+  },
+  "void walk<1, 2, 64, 8, 1>(Args)": {
+   "dram__bytes_read.sum": 466236416.0,
+   "dram__bytes_write.sum": 289754624.0
+  },
+  "void walk<2, 2, 64, 8, 1>(Args)": {
+   "dram__bytes_read.sum": 464678912.0,
+   "dram__bytes_write.sum": 290405888.0
+  },
+  "void walk<3, 2, 64, 8, 1>(Args)": {
+   "dram__bytes_read.sum": 397246464.0,
+   "dram__bytes_write.sum": 294783744.0
+  },
+  "void walk<0, 3, 64, 8, 1>(Args)": {
+   "dram__bytes_read.sum": 442337536.0,
+   "dram__bytes_write.sum": 14600192.0
+  },
+  "void walk<1, 3, 64, 8, 1>(Args)": {
+   "dram__bytes_read.sum": 442026752.0,
+   "dram__bytes_write.sum": 16689408.0
+  },
+  "void walk<2, 3, 64, 8, 1>(Args)": {
+   "dram__bytes_read.sum": 441836032.0,
+   "dram__bytes_write.sum": 17954816.0
+  },
+  "void walk<3, 3, 64, 8, 1>(Args)": {
+   "dram__bytes_read.sum": 442720512.0,
+   "dram__bytes_write.sum": 26338048.0
+  },
+  "void walk<0, 4, 64, 8, 1>(Args)": {
+   "dram__bytes_read.sum": 312595456.0,
+   "dram__bytes_write.sum": 14119424.0
+  },
+  "void walk<2, 4, 64, 8, 1>(Args)": {
+   "dram__bytes_read.sum": 312166912.0,
+   "dram__bytes_write.sum": 16946944.0
+  }
+ }
+}
