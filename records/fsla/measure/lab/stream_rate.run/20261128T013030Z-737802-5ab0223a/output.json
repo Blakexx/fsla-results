@@ -1,0 +1,658 @@
+{
+ "experiment": "stream_rate",
+ "question": "what does the H100 stream, a CTA an SM, from HBM and from L2: the read rate, the write rate and a copy's, in bytes a cycle an SM and in GB/s the device? The producer's floors (its outputs to HBM, its weights from L2) are priced on these and no lab row recorded either.",
+ "arch": "sm_90a",
+ "device": "NVIDIA H100 80GB HBM3",
+ "checks": [
+  {
+   "lab": "check",
+   "variant": "HBM read, a CTA its own slice of a 1 GiB table",
+   "ok": true,
+   "detail": "0 of 67584 words differ"
+  },
+  {
+   "lab": "check",
+   "variant": "HBM write, a CTA its own slice of a 1 GiB table",
+   "ok": true,
+   "detail": "0 of 8650752 words differ"
+  },
+  {
+   "lab": "check",
+   "variant": "HBM copy, a CTA its own slice of 512 MB into 512 MB",
+   "ok": true,
+   "detail": "0 of 8650752 words differ"
+  },
+  {
+   "lab": "check",
+   "variant": "L2 read, a CTA its own 128 KB slice 64 times",
+   "ok": true,
+   "detail": "0 of 67584 words differ"
+  },
+  {
+   "lab": "check",
+   "variant": "L2 read, every CTA one 4 MB table 4 times",
+   "ok": true,
+   "detail": "0 of 67584 words differ"
+  },
+  {
+   "lab": "check",
+   "variant": "L2 read past L1 (ld.global.cg), a CTA its own 128 KB slice 64 times",
+   "ok": true,
+   "detail": "0 of 67584 words differ"
+  },
+  {
+   "lab": "check",
+   "variant": "L2 read past L1 (ld.global.cg), every CTA one 4 MB table 4 times",
+   "ok": true,
+   "detail": "0 of 67584 words differ"
+  }
+ ],
+ "driver": "580.196.07",
+ "toolkit": "Build cuda_13.5.r13.5/compiler.39125733_0",
+ "git": {
+  "sha": "01ead387f1c16b1f48c6a1495b77c3fdeeeddc0b",
+  "dirty": false
+ },
+ "reps": 7,
+ "date": "2026-11-28T01:30:30+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "HBM read, a CTA its own slice of a 1 GiB table: the device",
+   "unit": "GB/s",
+   "samples": [
+    3172.297111,
+    3163.615051,
+    3180.42348,
+    3173.197927,
+    3171.996859,
+    3160.930139,
+    3166.304249
+   ],
+   "median": 3171.996859,
+   "min": 3160.930139,
+   "max": 3180.42348,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "HBM read, a CTA its own slice of a 1 GiB table: a CTA",
+   "unit": "bytes a cycle an SM",
+   "samples": [
+    12.970704,
+    13.005975,
+    13.007006,
+    12.97443,
+    13.003577,
+    12.988795,
+    12.976329
+   ],
+   "median": 12.988795,
+   "min": 12.970704,
+   "max": 13.007006,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "HBM write, a CTA its own slice of a 1 GiB table: the device",
+   "unit": "GB/s",
+   "samples": [
+    3192.539472,
+    3189.501686,
+    3189.198452,
+    3189.805261,
+    3174.099535,
+    3195.278373,
+    3191.931338
+   ],
+   "median": 3189.805261,
+   "min": 3174.099535,
+   "max": 3195.278373,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "HBM write, a CTA its own slice of a 1 GiB table: a CTA",
+   "unit": "bytes a cycle an SM",
+   "samples": [
+    13.192786,
+    13.2153,
+    13.22339,
+    13.235549,
+    13.20639,
+    13.216122,
+    13.219594
+   ],
+   "median": 13.216122,
+   "min": 13.192786,
+   "max": 13.235549,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "HBM copy, a CTA its own slice of 512 MB into 512 MB: the device",
+   "unit": "GB/s",
+   "samples": [
+    2851.208897,
+    2859.966196,
+    2849.51237,
+    2855.580946,
+    2856.067431,
+    2875.914825,
+    2864.854647
+   ],
+   "median": 2856.067431,
+   "min": 2849.51237,
+   "max": 2875.914825,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "HBM copy, a CTA its own slice of 512 MB into 512 MB: a CTA",
+   "unit": "bytes a cycle an SM",
+   "samples": [
+    12.319024,
+    12.56141,
+    12.563659,
+    12.76246,
+    12.572856,
+    12.731022,
+    12.787142
+   ],
+   "median": 12.572856,
+   "min": 12.319024,
+   "max": 12.787142,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "L2 read, a CTA its own 128 KB slice 64 times: the device",
+   "unit": "GB/s",
+   "samples": [
+    15643.312277,
+    15685.860141,
+    15579.923153,
+    15579.923153,
+    15858.389858,
+    15636.243397,
+    15793.249325
+   ],
+   "median": 15643.312277,
+   "min": 15579.923153,
+   "max": 15858.389858,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "L2 read, a CTA its own 128 KB slice 64 times: a CTA",
+   "unit": "bytes a cycle an SM",
+   "samples": [
+    65.157791,
+    65.182051,
+    65.124033,
+    65.268625,
+    65.297788,
+    65.28334,
+    65.28901
+   ],
+   "median": 65.268625,
+   "min": 65.124033,
+   "max": 65.297788,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "L2 read, every CTA one 4 MB table 4 times: the device",
+   "unit": "GB/s",
+   "samples": [
+    10487.348691,
+    10216.418232,
+    10369.495858,
+    10485.760057,
+    10402.226754,
+    10525.629799,
+    10332.340741
+   ],
+   "median": 10402.226754,
+   "min": 10216.418232,
+   "max": 10525.629799,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "L2 read, every CTA one 4 MB table 4 times: a CTA",
+   "unit": "bytes a cycle an SM",
+   "samples": [
+    43.576244,
+    43.183318,
+    43.553689,
+    43.706209,
+    43.330954,
+    44.060358,
+    43.24909
+   ],
+   "median": 43.553689,
+   "min": 43.183318,
+   "max": 44.060358,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "L2 read past L1 (ld.global.cg), a CTA its own 128 KB slice 64 times: the device",
+   "unit": "GB/s",
+   "samples": [
+    7307.921489,
+    7312.554251,
+    7309.464851,
+    7272.595348,
+    7324.93801,
+    7323.388107,
+    7306.37806
+   ],
+   "median": 7309.464851,
+   "min": 7272.595348,
+   "max": 7324.93801,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "L2 read past L1 (ld.global.cg), a CTA its own 128 KB slice 64 times: a CTA",
+   "unit": "bytes a cycle an SM",
+   "samples": [
+    30.856471,
+    30.876814,
+    30.954549,
+    30.944573,
+    30.981882,
+    31.328095,
+    31.391372
+   ],
+   "median": 30.954549,
+   "min": 30.856471,
+   "max": 31.391372,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "L2 read past L1 (ld.global.cg), every CTA one 4 MB table 4 times: the device",
+   "unit": "GB/s",
+   "samples": [
+    10160.918602,
+    9865.433363,
+    9996.535804,
+    10000.869259,
+    10129.686378,
+    10101.593668,
+    10045.872449
+   ],
+   "median": 10045.872449,
+   "min": 9865.433363,
+   "max": 10160.918602,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "L2 read past L1 (ld.global.cg), every CTA one 4 MB table 4 times: a CTA",
+   "unit": "bytes a cycle an SM",
+   "samples": [
+    42.421808,
+    42.181439,
+    42.376398,
+    42.548528,
+    42.395968,
+    42.022482,
+    41.987983
+   ],
+   "median": 42.376398,
+   "min": 41.987983,
+   "max": 42.548528,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void stream_rate::stream<(int)3>(long long *, const uint4 *, uint4 *, unsigned int *, stream_rate::Walk, int)": {
+   "regs": 86,
+   "ops": {
+    "LOP3.LUT": 129,
+    "LEA": 65,
+    "LEA.HI.X": 65,
+    "SEL": 64,
+    "IMAD.IADD": 48,
+    "ISETP.LT.U32.AND": 32,
+    "ISETP.LT.AND.EX": 32,
+    "IMAD.WIDE.U32": 32,
+    "LDG.E.128.STRONG.GPU": 32,
+    "IADD3": 32,
+    "IMAD": 19,
+    "IMAD.X": 16
+   }
+  },
+  "void stream_rate::stream<(int)2>(long long *, const uint4 *, uint4 *, unsigned int *, stream_rate::Walk, int)": {
+   "regs": 126,
+   "ops": {
+    "LOP3.LUT": 193,
+    "LEA": 97,
+    "LEA.HI.X": 97,
+    "SEL": 96,
+    "ISETP.LT.U32.AND": 48,
+    "ISETP.LT.AND.EX": 48,
+    "IMAD.WIDE.U32": 48,
+    "IMAD.IADD": 48,
+    "LDG.E.128": 32,
+    "IADD3": 31,
+    "IMAD.X": 31,
+    "STG.E.128": 16
+   }
+  },
+  "void stream_rate::stream<(int)1>(long long *, const uint4 *, uint4 *, unsigned int *, stream_rate::Walk, int)": {
+   "regs": 64,
+   "ops": {
+    "VIADD": 65,
+    "LOP3.LUT": 65,
+    "LEA": 33,
+    "LEA.HI.X": 33,
+    "SEL": 32,
+    "IMAD": 19,
+    "IADD3": 16,
+    "ISETP.LT.U32.AND": 16,
+    "IMAD.X": 16,
+    "ISETP.LT.AND.EX": 16,
+    "IMAD.WIDE.U32": 16,
+    "IMAD.IADD": 16
+   }
+  },
+  "void stream_rate::stream<(int)0>(long long *, const uint4 *, uint4 *, unsigned int *, stream_rate::Walk, int)": {
+   "regs": 86,
+   "ops": {
+    "LOP3.LUT": 129,
+    "LEA": 65,
+    "LEA.HI.X": 65,
+    "SEL": 64,
+    "IMAD.IADD": 48,
+    "ISETP.LT.U32.AND": 32,
+    "ISETP.LT.AND.EX": 32,
+    "IMAD.WIDE.U32": 32,
+    "LDG.E.128": 32,
+    "IADD3": 32,
+    "IMAD": 19,
+    "IMAD.X": 16
+   }
+  },
+  "stream_rate::fill(uint4 *, long long)": {
+   "regs": 32,
+   "ops": {
+    "IADD3": 28,
+    "IMAD": 19,
+    "VIADD": 17,
+    "IMAD.WIDE.U32": 12,
+    "IMAD.HI.U32": 11,
+    "NOP": 11,
+    "IADD3.X": 10,
+    "IMAD.X": 9,
+    "SEL": 8,
+    "ISETP.GE.U32.AND": 7,
+    "BRA": 6,
+    "IMAD.MOV.U32": 6
+   }
+  }
+ },
+ "counters": {
+  "fill": {
+   "hmma": 2112.0,
+   "imma": 0.0,
+   "inst": 20070912.0,
+   "alu": 7921408.0,
+   "fma": 9480128.0,
+   "fmaheavy": 9480128.0,
+   "xu": 6336.0,
+   "wavefronts": 2112.0,
+   "conflicts": 0.0,
+   "load_wavefronts": 0.0,
+   "stores": 0.0,
+   "store_wavefronts": 0.0,
+   "atomics": 0.0,
+   "atomic_wavefronts": 0.0,
+   "copy_bypass_bytes": 0.0,
+   "copy_access_bytes": 0.0,
+   "global_reads": 0.0,
+   "global_fill_bytes": 0.0,
+   "l2_read": 0.0,
+   "red_requests": 0.0,
+   "l2_write": 33554432.0,
+   "elapsed": 656607.26,
+   "elapsed_sum": 86672158.0,
+   "busy_issue": 5.79,
+   "busy_alu": 4.57,
+   "busy_fma": 3.19,
+   "busy_fmaheavy": 6.38,
+   "stalls": {
+    "long_scoreboard": 60.38,
+    "short_scoreboard": 0.03,
+    "mio_throttle": 0.0,
+    "math_pipe_throttle": 0.23,
+    "barrier": 0.0,
+    "wait": 0.68,
+    "not_selected": 0.72,
+    "lg_throttle": 35.57,
+    "dispatch_stall": 0.1,
+    "branch_resolving": 0.19,
+    "no_instruction": 0.12,
+    "membar": 0.0,
+    "drain": 0.17,
+    "sleeping": 0.0,
+    "tex_throttle": 0.0,
+    "imc_miss": 0.01,
+    "misc": 0.0
+   },
+   "uncollected": [
+    "l1tex__data_pipe_lsu_wavefronts_mem_lg_cmd_read.sum"
+   ]
+  },
+  "stream<0>": {
+   "hmma": 0.0,
+   "imma": 0.0,
+   "inst": 1987392.0,
+   "alu": 1385472.0,
+   "fma": 439296.0,
+   "fmaheavy": 439296.0,
+   "xu": 0.0,
+   "wavefronts": 2112.0,
+   "conflicts": 0.0,
+   "load_wavefronts": 0.0,
+   "stores": 0.0,
+   "store_wavefronts": 0.0,
+   "atomics": 0.0,
+   "atomic_wavefronts": 0.0,
+   "copy_bypass_bytes": 0.0,
+   "copy_access_bytes": 0.0,
+   "global_reads": 0.0,
+   "global_fill_bytes": 34603008.0,
+   "l2_read": 1081344.0,
+   "red_requests": 0.0,
+   "l2_write": 10572.0,
+   "elapsed": 29978.77,
+   "elapsed_sum": 3957198.0,
+   "busy_issue": 12.68,
+   "busy_alu": 17.51,
+   "busy_fma": 3.44,
+   "busy_fmaheavy": 6.88,
+   "stalls": {
+    "long_scoreboard": 80.59,
+    "short_scoreboard": 0.03,
+    "mio_throttle": 0.08,
+    "math_pipe_throttle": 2.85,
+    "barrier": 0.0,
+    "wait": 3.23,
+    "not_selected": 2.98,
+    "lg_throttle": 1.19,
+    "dispatch_stall": 1.1,
+    "branch_resolving": 0.14,
+    "no_instruction": 1.55,
+    "membar": 0.0,
+    "drain": 0.11,
+    "sleeping": 0.0,
+    "tex_throttle": 0.0,
+    "imc_miss": 2.03,
+    "misc": 0.0
+   },
+   "uncollected": [
+    "l1tex__data_pipe_lsu_wavefronts_mem_lg_cmd_read.sum"
+   ]
+  },
+  "stream<1>": {
+   "hmma": 0.0,
+   "imma": 0.0,
+   "inst": 1605120.0,
+   "alu": 912384.0,
+   "fma": 563904.0,
+   "fmaheavy": 563904.0,
+   "xu": 0.0,
+   "wavefronts": 2112.0,
+   "conflicts": 0.0,
+   "load_wavefronts": 0.0,
+   "stores": 0.0,
+   "store_wavefronts": 0.0,
+   "atomics": 0.0,
+   "atomic_wavefronts": 0.0,
+   "copy_bypass_bytes": 0.0,
+   "copy_access_bytes": 0.0,
+   "global_reads": 0.0,
+   "global_fill_bytes": 0.0,
+   "l2_read": 0.0,
+   "red_requests": 0.0,
+   "l2_write": 1091022.0,
+   "elapsed": 23067.38,
+   "elapsed_sum": 3044894.0,
+   "busy_issue": 13.33,
+   "busy_alu": 14.98,
+   "busy_fma": 5.22,
+   "busy_fmaheavy": 10.44,
+   "stalls": {
+    "long_scoreboard": 75.63,
+    "short_scoreboard": 1.09,
+    "mio_throttle": 0.0,
+    "math_pipe_throttle": 3.59,
+    "barrier": 0.0,
+    "wait": 2.63,
+    "not_selected": 3.88,
+    "lg_throttle": 1.74,
+    "dispatch_stall": 1.21,
+    "branch_resolving": 0.17,
+    "no_instruction": 1.71,
+    "membar": 0.0,
+    "drain": 2.64,
+    "sleeping": 0.0,
+    "tex_throttle": 0.0,
+    "imc_miss": 1.21,
+    "misc": 0.0
+   },
+   "uncollected": [
+    "l1tex__data_pipe_lsu_wavefronts_mem_lg_cmd_read.sum"
+   ]
+  },
+  "stream<2>": {
+   "hmma": 0.0,
+   "imma": 0.0,
+   "inst": 2918784.0,
+   "alu": 2190144.0,
+   "fma": 496320.0,
+   "fmaheavy": 496320.0,
+   "xu": 0.0,
+   "wavefronts": 2112.0,
+   "conflicts": 0.0,
+   "load_wavefronts": 0.0,
+   "stores": 0.0,
+   "store_wavefronts": 0.0,
+   "atomics": 0.0,
+   "atomic_wavefronts": 0.0,
+   "copy_bypass_bytes": 0.0,
+   "copy_access_bytes": 0.0,
+   "global_reads": 0.0,
+   "global_fill_bytes": 34679296.0,
+   "l2_read": 1083620.0,
+   "red_requests": 0.0,
+   "l2_write": 1091551.0,
+   "elapsed": 44953.32,
+   "elapsed_sum": 5933838.0,
+   "busy_issue": 12.38,
+   "busy_alu": 18.45,
+   "busy_fma": 2.82,
+   "busy_fmaheavy": 5.64,
+   "stalls": {
+    "long_scoreboard": 72.25,
+    "short_scoreboard": 0.02,
+    "mio_throttle": 0.05,
+    "math_pipe_throttle": 2.96,
+    "barrier": 0.0,
+    "wait": 3.28,
+    "not_selected": 3.22,
+    "lg_throttle": 11.4,
+    "dispatch_stall": 1.18,
+    "branch_resolving": 0.1,
+    "no_instruction": 1.18,
+    "membar": 0.0,
+    "drain": 0.98,
+    "sleeping": 0.0,
+    "tex_throttle": 0.0,
+    "imc_miss": 1.27,
+    "misc": 0.0
+   },
+   "uncollected": [
+    "l1tex__data_pipe_lsu_wavefronts_mem_lg_cmd_read.sum"
+   ]
+  },
+  "stream<3>": {
+   "hmma": 0.0,
+   "imma": 0.0,
+   "inst": 1987392.0,
+   "alu": 1385472.0,
+   "fma": 439296.0,
+   "fmaheavy": 439296.0,
+   "xu": 0.0,
+   "wavefronts": 2112.0,
+   "conflicts": 0.0,
+   "load_wavefronts": 0.0,
+   "stores": 0.0,
+   "store_wavefronts": 0.0,
+   "atomics": 0.0,
+   "atomic_wavefronts": 0.0,
+   "copy_bypass_bytes": 0.0,
+   "copy_access_bytes": 0.0,
+   "global_reads": 0.0,
+   "global_fill_bytes": 51904512.0,
+   "l2_read": 1217112.0,
+   "red_requests": 0.0,
+   "l2_write": 10620.0,
+   "elapsed": 26541.86,
+   "elapsed_sum": 3503526.0,
+   "busy_issue": 14.32,
+   "busy_alu": 19.77,
+   "busy_fma": 3.89,
+   "busy_fmaheavy": 7.78,
+   "stalls": {
+    "long_scoreboard": 77.56,
+    "short_scoreboard": 0.04,
+    "mio_throttle": 0.09,
+    "math_pipe_throttle": 3.2,
+    "barrier": 0.0,
+    "wait": 3.56,
+    "not_selected": 3.41,
+    "lg_throttle": 1.27,
+    "dispatch_stall": 1.23,
+    "branch_resolving": 0.16,
+    "no_instruction": 1.77,
+    "membar": 0.0,
+    "drain": 0.12,
+    "sleeping": 0.0,
+    "tex_throttle": 0.0,
+    "imc_miss": 1.93,
+    "misc": 0.0
+   },
+   "uncollected": [
+    "l1tex__data_pipe_lsu_wavefronts_mem_lg_cmd_read.sum"
+   ]
+  }
+ }
+}
