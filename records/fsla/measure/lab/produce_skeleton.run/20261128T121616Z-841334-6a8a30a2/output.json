@@ -1,0 +1,85 @@
+{
+ "experiment": "produce_skeleton",
+ "question": "does the LIBRARY's producer skeleton -- its grid, its two math warpgroups and loader warp, its ring's two edges, its job table and its tickets -- write every element of every output for every routing of the test matrix, and where does the empty pipeline's time go at the design's cell?",
+ "arch": "sm_90a",
+ "git": {
+  "sha": "7ef8a4d0a328d771a58ba8d581b09b076a497575",
+  "dirty": false
+ },
+ "date": "2026-11-28T12:16:16+00:00",
+ "metrics": [
+  "dram__throughput.avg.pct_of_peak_sustained_elapsed",
+  "smsp__inst_executed.sum",
+  "smsp__average_warps_issue_stalled_long_scoreboard_per_issue_active.ratio",
+  "smsp__average_warps_issue_stalled_barrier_per_issue_active.ratio",
+  "smsp__average_warps_issue_stalled_wait_per_issue_active.ratio",
+  "smsp__average_warps_issue_stalled_lg_throttle_per_issue_active.ratio",
+  "lts__throughput.avg.pct_of_peak_sustained_elapsed",
+  "l1tex__throughput.avg.pct_of_peak_sustained_elapsed",
+  "sm__warps_active.avg.pct_of_peak_sustained_active",
+  "gpu__time_duration.sum"
+ ],
+ "inputs": {},
+ "kernels": {
+  "void skeleton<0, 1, 0>(Plan, unsigned long long *)": {
+   "dram__throughput.avg.pct_of_peak_sustained_elapsed": 0.05,
+   "gpu__time_duration.sum": 15008.0,
+   "l1tex__throughput.avg.pct_of_peak_sustained_elapsed": 0.27,
+   "lts__throughput.avg.pct_of_peak_sustained_elapsed": 3.65,
+   "sm__warps_active.avg.pct_of_peak_sustained_active": 7.41,
+   "smsp__average_warps_issue_stalled_barrier_per_issue_active.ratio": 2.32,
+   "smsp__average_warps_issue_stalled_lg_throttle_per_issue_active.ratio": 0.0,
+   "smsp__average_warps_issue_stalled_long_scoreboard_per_issue_active.ratio": 1.21,
+   "smsp__average_warps_issue_stalled_wait_per_issue_active.ratio": 2.14,
+   "smsp__inst_executed.sum": 86214.0
+  },
+  "void skeleton<0, 1, 1>(Plan, unsigned long long *)": {
+   "dram__throughput.avg.pct_of_peak_sustained_elapsed": 57.69,
+   "gpu__time_duration.sum": 173648.0,
+   "l1tex__throughput.avg.pct_of_peak_sustained_elapsed": 24.83,
+   "lts__throughput.avg.pct_of_peak_sustained_elapsed": 54.9,
+   "sm__warps_active.avg.pct_of_peak_sustained_active": 10.535,
+   "smsp__average_warps_issue_stalled_barrier_per_issue_active.ratio": 1.63,
+   "smsp__average_warps_issue_stalled_lg_throttle_per_issue_active.ratio": 0.0,
+   "smsp__average_warps_issue_stalled_long_scoreboard_per_issue_active.ratio": 3.8099999999999996,
+   "smsp__average_warps_issue_stalled_wait_per_issue_active.ratio": 2.075,
+   "smsp__inst_executed.sum": 24389437.0
+  },
+  "void skeleton<0, 2, 0>(Plan, unsigned long long *)": {
+   "dram__throughput.avg.pct_of_peak_sustained_elapsed": 0.05,
+   "gpu__time_duration.sum": 15200.0,
+   "l1tex__throughput.avg.pct_of_peak_sustained_elapsed": 0.27,
+   "lts__throughput.avg.pct_of_peak_sustained_elapsed": 3.56,
+   "sm__warps_active.avg.pct_of_peak_sustained_active": 7.04,
+   "smsp__average_warps_issue_stalled_barrier_per_issue_active.ratio": 2.07,
+   "smsp__average_warps_issue_stalled_lg_throttle_per_issue_active.ratio": 0.0,
+   "smsp__average_warps_issue_stalled_long_scoreboard_per_issue_active.ratio": 1.58,
+   "smsp__average_warps_issue_stalled_wait_per_issue_active.ratio": 2.15,
+   "smsp__inst_executed.sum": 85920.0
+  },
+  "void skeleton<0, 2, 1>(Plan, unsigned long long *)": {
+   "dram__throughput.avg.pct_of_peak_sustained_elapsed": 58.85,
+   "gpu__time_duration.sum": 170656.0,
+   "l1tex__throughput.avg.pct_of_peak_sustained_elapsed": 25.78,
+   "lts__throughput.avg.pct_of_peak_sustained_elapsed": 56.26,
+   "sm__warps_active.avg.pct_of_peak_sustained_active": 21.58,
+   "smsp__average_warps_issue_stalled_barrier_per_issue_active.ratio": 2.12,
+   "smsp__average_warps_issue_stalled_lg_throttle_per_issue_active.ratio": 0.76,
+   "smsp__average_warps_issue_stalled_long_scoreboard_per_issue_active.ratio": 9.3,
+   "smsp__average_warps_issue_stalled_wait_per_issue_active.ratio": 2.07,
+   "smsp__inst_executed.sum": 26974061.0
+  },
+  "void skeleton<1, 1, 0>(Plan, unsigned long long *)": {
+   "dram__throughput.avg.pct_of_peak_sustained_elapsed": 0.06,
+   "gpu__time_duration.sum": 15520.0,
+   "l1tex__throughput.avg.pct_of_peak_sustained_elapsed": 0.32,
+   "lts__throughput.avg.pct_of_peak_sustained_elapsed": 3.57,
+   "sm__warps_active.avg.pct_of_peak_sustained_active": 8.05,
+   "smsp__average_warps_issue_stalled_barrier_per_issue_active.ratio": 2.46,
+   "smsp__average_warps_issue_stalled_lg_throttle_per_issue_active.ratio": 0.0,
+   "smsp__average_warps_issue_stalled_long_scoreboard_per_issue_active.ratio": 1.22,
+   "smsp__average_warps_issue_stalled_wait_per_issue_active.ratio": 1.98,
+   "smsp__inst_executed.sum": 99246.0
+  }
+ }
+}
