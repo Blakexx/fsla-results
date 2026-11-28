@@ -38,21 +38,22 @@ citable.
 
 ## The gate and the index
 
-    bazel test //:gate        every sample consistent, every path declared, every citation read
+    bazel test //:gate        every sample consistent, every path declared, every citation read, the graph hermetic
     bazel build //:index      the records' SQLite index and views: a build output, never a file beside the records
 
 The gate is the store's own check over `records/` (`python3 -m fsla_devtools.results --root records check`: every
 sample is under its label's folder and recomputes its key, its output and parts exist, no lock file is there), the
 declaration check (`python -m fsla_devtools.mirror --check`), and the doc references (`//:docrefs`, fsla-devtools'
 `fsla_devtools.docrefs`: this README's citations pinned in `references.lock.json`, a `data:` citation resolving in this
-checkout, which is the data). Its environment is the standard library and fsla_devtools, from the module's source at the
+checkout, which is the data), and the hermetic check (`//:hermetic`, fsla-devtools' `hermetic_test`: no machine path
+or machine tool in any action of the checks, the index or the store's command line, beyond fsla-devtools' allowlist). Its environment is the standard library and fsla_devtools, from the module's source at the
 pinned commit (the front door overrides it with the machine's fsla-devtools checkout). The
 commit hook (`.githooks/pre-commit` -> `bazel/bazel --commit-gate`, fsla-devtools' commit gate) runs it on the commit as
 git will write it.
 
 The store's command line runs on this checkout's records by `--root`:
 
-    bazel run //:results -- --root records show [LOCATION]
+    bazel run //:results -- --root records show [LABEL]
     bazel run //:results -- --root records sql "SELECT ..."
     bazel run //:results -- --root records verdict --reference LABEL
 

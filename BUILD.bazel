@@ -1,6 +1,7 @@
 """fsla-results' root package: its checks and gate over the data (the tracked tree beside them: records/ holds no BUILD
 file, so its files are this package's), the records' index as a build output, and the store's command line."""
 
+load("@fsla_devtools//bazel:hermetic.bzl", "hermetic_test")
 load("@fsla_devtools//bazel:rules.bzl", "bazel_version_test")
 load("@fsla_devtools//bazel:results.bzl", "results_index")
 load("@results_env//:flags.bzl", "VENV")
@@ -51,6 +52,23 @@ bazel_version_test(
     version = ".bazelversion",
 )
 
+#: THE HERMETIC CHECK (fsla-devtools' `hermetic_test`): the gate's checks, the records' index and the store's command line
+#: read whole -- no machine path, no machine tool but fsla-devtools' default allowlist's -- with the lockfile, `.bazelrc`
+#: and the repository rules' Starlark
+hermetic_test(
+    name = "hermetic",
+    size = "small",
+    targets = [
+        ":bazelversion",
+        ":declarations",
+        ":docrefs",
+        ":index",
+        ":records",
+        ":results",
+    ],
+    venv = VENV,
+)
+
 #: THE GATE: every check this workspace holds; the commit hook runs it (.githooks/pre-commit)
 test_suite(
     name = "gate",
@@ -58,6 +76,7 @@ test_suite(
         ":bazelversion",
         ":declarations",
         ":docrefs",
+        ":hermetic",
         ":records",
     ],
 )
