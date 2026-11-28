@@ -1,0 +1,300 @@
+{
+ "experiment": "write_pattern",
+ "question": "at what rate does the H100 write the producer's outputs at its cell, and which part of their address pattern prices it? The producer's floor prices its 323.0 MB at HBM's write rate as `stream_rate` measured it (3,170 GB/s, each CTA one contiguous slice), and the library's stores alone at the cell (`produce_skeleton`) wrote them at ~2.0 TB/s.",
+ "arch": "sm_90a",
+ "device": "NVIDIA H100 80GB HBM3",
+ "checks": [
+  {
+   "lab": "check",
+   "variant": "the producer's 323.0 MB at the cell, three CTAs an SM: a share's bytes one contiguous run",
+   "ok": true,
+   "detail": "0 wrong bytes over 322961408 written"
+  },
+  {
+   "lab": "check",
+   "variant": "the producer's 323.0 MB at the cell, three CTAs an SM: its regions, every sector whole",
+   "ok": true,
+   "detail": "0 wrong bytes over 322961408 written"
+  },
+  {
+   "lab": "check",
+   "variant": "the producer's 323.0 MB at the cell, three CTAs an SM: its regions as the producer lays them out",
+   "ok": true,
+   "detail": "0 wrong bytes over 322961408 written"
+  }
+ ],
+ "driver": "580.196.07",
+ "toolkit": "Build cuda_13.5.r13.5/compiler.39125733_0",
+ "git": {
+  "sha": "efaf9272af0db3650df675ad5bf4a578bea75e78",
+  "dirty": false
+ },
+ "reps": 7,
+ "date": "2026-11-28T14:10:16+00:00",
+ "utilization_before": 0,
+ "inputs": {},
+ "results": [
+  {
+   "lab": "result",
+   "name": "the producer's 323.0 MB at the cell, three CTAs an SM: a share's bytes one contiguous run",
+   "unit": "microseconds a launch",
+   "samples": [
+    107.008003,
+    104.575999,
+    104.255997,
+    103.647999,
+    106.303997,
+    103.776,
+    104.704
+   ],
+   "median": 104.575999,
+   "min": 103.647999,
+   "max": 107.008003,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the producer's 323.0 MB at the cell, three CTAs an SM: its regions, every sector whole",
+   "unit": "microseconds a launch",
+   "samples": [
+    107.263997,
+    106.207997,
+    107.072003,
+    107.040003,
+    106.912002,
+    106.463999,
+    105.856001
+   ],
+   "median": 106.912002,
+   "min": 105.856001,
+   "max": 107.263997,
+   "unstable": false
+  },
+  {
+   "lab": "result",
+   "name": "the producer's 323.0 MB at the cell, three CTAs an SM: its regions as the producer lays them out",
+   "unit": "microseconds a launch",
+   "samples": [
+    144.672006,
+    144.319996,
+    144.896001,
+    143.776,
+    142.176002,
+    142.304003,
+    143.968001
+   ],
+   "median": 143.968001,
+   "min": 142.176002,
+   "max": 144.896001,
+   "unstable": false
+  }
+ ],
+ "kernels": {
+  "void write_pattern::stores<(int)2>(write_pattern::Planes)": {
+   "regs": 48,
+   "ops": {
+    "IADD3": 70,
+    "IMAD.X": 66,
+    "STG.E.128": 52,
+    "ISETP.GT.AND": 49,
+    "IMAD.WIDE": 21,
+    "VIADD": 17,
+    "IMAD.WIDE.U32": 14,
+    "IMAD.U32": 12,
+    "NOP": 12,
+    "SHF.R.S32.HI": 11,
+    "ULDC.64": 8,
+    "BRA": 7
+   }
+  },
+  "void write_pattern::stores<(int)1>(write_pattern::Planes)": {
+   "regs": 48,
+   "ops": {
+    "IADD3": 70,
+    "IMAD.X": 61,
+    "STG.E.128": 60,
+    "ISETP.GT.AND": 49,
+    "IMAD.WIDE": 23,
+    "VIADD": 19,
+    "IMAD.U32": 16,
+    "IMAD.MOV.U32": 14,
+    "IMAD.WIDE.U32": 14,
+    "ULDC.64": 12,
+    "BRA": 11,
+    "BSSY": 10
+   }
+  },
+  "void write_pattern::stores<(int)0>(write_pattern::Planes)": {
+   "regs": 32,
+   "ops": {
+    "NOP": 15,
+    "IADD3": 11,
+    "IMAD.WIDE": 10,
+    "ISETP.GT.AND": 8,
+    "STG.E.128": 8,
+    "IMAD.WIDE.U32": 7,
+    "VIADD": 6,
+    "IMAD.X": 5,
+    "SHF.R.S32.HI": 4,
+    "IADD3.X": 4,
+    "S2R": 2,
+    "ULDC.64": 2
+   }
+  }
+ },
+ "counters": {
+  "stores<0>": {
+   "hmma": 0.0,
+   "imma": 0.0,
+   "inst": 3735552.0,
+   "alu": 1998848.0,
+   "fma": 901120.0,
+   "fmaheavy": 901120.0,
+   "xu": 0.0,
+   "wavefronts": 40960.0,
+   "conflicts": 0.0,
+   "load_wavefronts": 0.0,
+   "stores": 0.0,
+   "store_wavefronts": 0.0,
+   "atomics": 0.0,
+   "atomic_wavefronts": 0.0,
+   "copy_bypass_bytes": 0.0,
+   "copy_access_bytes": 0.0,
+   "global_reads": 0.0,
+   "global_fill_bytes": 0.0,
+   "l2_read": 0.0,
+   "red_requests": 0.0,
+   "l2_write": 10092544.0,
+   "elapsed": 198754.5,
+   "elapsed_sum": 26235594.0,
+   "busy_issue": 3.57,
+   "busy_alu": 3.81,
+   "busy_fma": 1.12,
+   "busy_fmaheavy": 2.25,
+   "stalls": {
+    "long_scoreboard": 59.06,
+    "short_scoreboard": 4.29,
+    "mio_throttle": 2.37,
+    "math_pipe_throttle": 0.15,
+    "barrier": 0.0,
+    "wait": 0.96,
+    "not_selected": 0.29,
+    "lg_throttle": 24.99,
+    "dispatch_stall": 0.08,
+    "branch_resolving": 0.06,
+    "no_instruction": 0.18,
+    "membar": 0.0,
+    "drain": 6.43,
+    "sleeping": 0.0,
+    "tex_throttle": 0.0,
+    "imc_miss": 0.06,
+    "misc": 0.0
+   },
+   "uncollected": [
+    "l1tex__data_pipe_lsu_wavefronts_mem_lg_cmd_read.sum"
+   ]
+  },
+  "stores<1>": {
+   "hmma": 0.0,
+   "imma": 0.0,
+   "inst": 6565888.0,
+   "alu": 2375680.0,
+   "fma": 2437120.0,
+   "fmaheavy": 2437120.0,
+   "xu": 0.0,
+   "wavefronts": 262144.0,
+   "conflicts": 0.0,
+   "load_wavefronts": 0.0,
+   "stores": 0.0,
+   "store_wavefronts": 0.0,
+   "atomics": 0.0,
+   "atomic_wavefronts": 0.0,
+   "copy_bypass_bytes": 0.0,
+   "copy_access_bytes": 0.0,
+   "global_reads": 0.0,
+   "global_fill_bytes": 0.0,
+   "l2_read": 0.0,
+   "red_requests": 0.0,
+   "l2_write": 10092544.0,
+   "elapsed": 200253.67,
+   "elapsed_sum": 26433484.0,
+   "busy_issue": 6.23,
+   "busy_alu": 4.49,
+   "busy_fma": 2.83,
+   "busy_fmaheavy": 5.66,
+   "stalls": {
+    "long_scoreboard": 60.73,
+    "short_scoreboard": 2.79,
+    "mio_throttle": 1.11,
+    "math_pipe_throttle": 0.26,
+    "barrier": 0.0,
+    "wait": 2.33,
+    "not_selected": 0.44,
+    "lg_throttle": 23.78,
+    "dispatch_stall": 0.12,
+    "branch_resolving": 0.35,
+    "no_instruction": 0.25,
+    "membar": 0.0,
+    "drain": 5.9,
+    "sleeping": 0.0,
+    "tex_throttle": 0.0,
+    "imc_miss": 0.1,
+    "misc": 0.0
+   },
+   "uncollected": [
+    "l1tex__data_pipe_lsu_wavefronts_mem_lg_cmd_read.sum"
+   ]
+  },
+  "stores<2>": {
+   "hmma": 0.0,
+   "imma": 0.0,
+   "inst": 6340608.0,
+   "alu": 2473984.0,
+   "fma": 2392064.0,
+   "fmaheavy": 2392064.0,
+   "xu": 0.0,
+   "wavefronts": 278528.0,
+   "conflicts": 0.0,
+   "load_wavefronts": 0.0,
+   "stores": 0.0,
+   "store_wavefronts": 0.0,
+   "atomics": 0.0,
+   "atomic_wavefronts": 0.0,
+   "copy_bypass_bytes": 0.0,
+   "copy_access_bytes": 0.0,
+   "global_reads": 0.0,
+   "global_fill_bytes": 0.0,
+   "l2_read": 0.0,
+   "red_requests": 0.0,
+   "l2_write": 10485760.0,
+   "elapsed": 267400.11,
+   "elapsed_sum": 35296814.0,
+   "busy_issue": 4.5,
+   "busy_alu": 3.5,
+   "busy_fma": 2.1,
+   "busy_fmaheavy": 4.2,
+   "stalls": {
+    "long_scoreboard": 65.26,
+    "short_scoreboard": 2.84,
+    "mio_throttle": 1.04,
+    "math_pipe_throttle": 0.19,
+    "barrier": 0.0,
+    "wait": 1.63,
+    "not_selected": 0.3,
+    "lg_throttle": 21.82,
+    "dispatch_stall": 0.08,
+    "branch_resolving": 0.14,
+    "no_instruction": 0.14,
+    "membar": 0.0,
+    "drain": 5.54,
+    "sleeping": 0.0,
+    "tex_throttle": 0.0,
+    "imc_miss": 0.05,
+    "misc": 0.0
+   },
+   "uncollected": [
+    "l1tex__data_pipe_lsu_wavefronts_mem_lg_cmd_read.sum"
+   ]
+  }
+ }
+}
